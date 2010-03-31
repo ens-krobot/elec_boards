@@ -1,0 +1,1773 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence du fichier usb_ch9.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier usb_ch9.h</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c6d0566773ed4549fe1a7a932e6c46de">USB_DESCRIPTOR_DEVICE</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a17b365c4eb8bd2f6a4d4e4fb5f881c7">USB_DESCRIPTOR_CONFIGURATION</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#bbad38caa1ca9c52f47adccd3a850aed">USB_DESCRIPTOR_STRING</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#5856eef11136823c671407f77cc5d254">USB_DESCRIPTOR_INTERFACE</a>&nbsp;&nbsp;&nbsp;0x04</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c3f574f82929eedc3386195f9a941203">USB_DESCRIPTOR_ENDPOINT</a>&nbsp;&nbsp;&nbsp;0x05</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#fd341d3128818c2db68a3523118e0820">USB_DESCRIPTOR_DEVICE_QUALIFIER</a>&nbsp;&nbsp;&nbsp;0x06</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#23e9c1e9645156958e80e9aa2ee77ef7">USB_DESCRIPTOR_OTHER_SPEED</a>&nbsp;&nbsp;&nbsp;0x07</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b02fac418606f02b4681c3302fbbce07">USB_DESCRIPTOR_INTERFACE_POWER</a>&nbsp;&nbsp;&nbsp;0x08</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c75fbfa446e248951836d6b6bfad44d0">USB_DESCRIPTOR_OTG</a>&nbsp;&nbsp;&nbsp;0x09</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#51abbbc55c8a00001a73c001e702d1d3">USB_CFG_DSC_REQUIRED</a>&nbsp;&nbsp;&nbsp;0x80</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#4deebaa1fdd165129e0305e6cce4f124">USB_CFG_DSC_SELF_PWR</a>&nbsp;&nbsp;&nbsp;(0x40|USB_CFG_DSC_REQUIRED)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#59d8cda8ae599133ebea3d3862844c6e">USB_CFG_DSC_REM_WAKE</a>&nbsp;&nbsp;&nbsp;(0x20|USB_CFG_DSC_REQUIRED)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3d9e141318c6c67acab7662b25bea7c6">EP_DIR_IN</a>&nbsp;&nbsp;&nbsp;0x80</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#953972739493f5c8a9e0292c598b6b4b">EP_DIR_OUT</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#7f595ce8464c911db3b89f9063bf99f4">EP_ATTR_CONTROL</a>&nbsp;&nbsp;&nbsp;(0&lt;&lt;0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a12449e9edc4015973c865be61bf7ce5">EP_ATTR_ISOCH</a>&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#30324b09479cd91b16efa4133c94b51b">EP_ATTR_BULK</a>&nbsp;&nbsp;&nbsp;(2&lt;&lt;0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f7c61d6a5a34f977f8b7377fd5f848ba">EP_ATTR_INTR</a>&nbsp;&nbsp;&nbsp;(3&lt;&lt;0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#43b60d69e97d37f6e323a08684c6d573">EP_ATTR_NO_SYNC</a>&nbsp;&nbsp;&nbsp;(0&lt;&lt;2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#adf4542713fe85f06b9b0c1bad508563">EP_ATTR_ASYNC</a>&nbsp;&nbsp;&nbsp;(1&lt;&lt;2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#7d9be22714e8d2bde3cea75eac3f90c6">EP_ATTR_ADAPT</a>&nbsp;&nbsp;&nbsp;(2&lt;&lt;2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#944e507fd94f9eaee29665d3c9399217">EP_ATTR_SYNC</a>&nbsp;&nbsp;&nbsp;(3&lt;&lt;2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#498f15f36d1b5bf2ca7113c11fa11c24">EP_ATTR_DATA</a>&nbsp;&nbsp;&nbsp;(0&lt;&lt;4)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#d8756d0673ebe7f64407b4cc9f929ea5">EP_ATTR_FEEDBACK</a>&nbsp;&nbsp;&nbsp;(1&lt;&lt;4)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#01702a929dd37a289786f783ff3ce8c8">EP_ATTR_IMP_FB</a>&nbsp;&nbsp;&nbsp;(2&lt;&lt;4)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#8f181e7a3d441703526daebe18711661">EP_MAX_PKT_INTR_LS</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#28764f9d96b9754c03bbb2c0d2ddd65e">EP_MAX_PKT_INTR_FS</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#9a55a0d598f354eb92be9cd57b974d45">EP_MAX_PKT_ISOCH_FS</a>&nbsp;&nbsp;&nbsp;1023</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#2d412098a16e7b5e3b8e8d36abab7a90">EP_MAX_PKT_BULK_FS</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#0f44097a5ffa107eb7e804b91420798f">EP_LG_PKT_BULK_FS</a>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#dba13ef98966bafe22a73f12386234e4">EP_MED_PKT_BULK_FS</a>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#e75147cf1aeeee6adceef5d903ef9893">EP_SM_PKT_BULK_FS</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a343b884e93bb18c6744597ead317d3a">PID_OUT</a>&nbsp;&nbsp;&nbsp;0x1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a6a3b4bc4d7eefb123d1e6e954b7978b">PID_ACK</a>&nbsp;&nbsp;&nbsp;0x2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#52c6e71c87133a4cae4e00b4394e75fd">PID_DATA0</a>&nbsp;&nbsp;&nbsp;0x3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#39f56fb16e324f6ca9287d8d82bb5db9">PID_PING</a>&nbsp;&nbsp;&nbsp;0x4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#6cb656efd215f825bc36b036bd9532c0">PID_SOF</a>&nbsp;&nbsp;&nbsp;0x5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a34a9f82c67edfba688e94ccb28dcb61">PID_NYET</a>&nbsp;&nbsp;&nbsp;0x6</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#e92a09963b409b8b2e9340ff77250492">PID_DATA2</a>&nbsp;&nbsp;&nbsp;0x7</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#8c902dcc1eb49067af112bf4bc9e9719">PID_SPLIT</a>&nbsp;&nbsp;&nbsp;0x8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3be42af9535e8271a6472f25a081b5d2">PID_IN</a>&nbsp;&nbsp;&nbsp;0x9</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#52933fa701cadb337d23f910887da15b">PID_NAK</a>&nbsp;&nbsp;&nbsp;0xA</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f6a832351a609fccdf8d6914c59de862">PID_DATA1</a>&nbsp;&nbsp;&nbsp;0xB</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b20d5afc7d5e1f0ffb303a078707a927">PID_PRE</a>&nbsp;&nbsp;&nbsp;0xC</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a01362983376cc94600287e1d1a16536">PID_ERR</a>&nbsp;&nbsp;&nbsp;0xC</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#81a58e0f945c2faf7cd8a63aa876c9b9">PID_SETUP</a>&nbsp;&nbsp;&nbsp;0xD</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#4834b4024d3990a67f884c7884c99cd7">PID_STALL</a>&nbsp;&nbsp;&nbsp;0xE</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#e3b019b2cbc4a3fdcdd7e56852cc2a09">PID_MDATA</a>&nbsp;&nbsp;&nbsp;0xF</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#d45187382d8ad6f53f377cce2f755b66">PID_MASK_DATA</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#77f144a9a3f2d9d3911a997a45c38236">PID_MASK_DATA_SHIFTED</a>&nbsp;&nbsp;&nbsp;(PID_MASK_DATA &lt;&lt; 2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#fcfbc0d8482be9f165ecf3b667c88690">USB_TOKEN_OUT</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#968bc64509f5e26dc669c8bb6d054997">USB_TOKEN_IN</a>&nbsp;&nbsp;&nbsp;0x09</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#dae04f8bc6dfef0098fa81681e9a6a75">USB_TOKEN_SETUP</a>&nbsp;&nbsp;&nbsp;0x0D</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#1981f948103730f633340ad9976db440">OTG_HNP_SUPPORT</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f72664eb0d963d3b9fd1193f7990e693">OTG_SRP_SUPPORT</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#221d6827d5958f2b9f719b8768f68c58">USB_IN_EP</a>&nbsp;&nbsp;&nbsp;0x80</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#17b3854e69d034fe34a440fbdf241f42">USB_OUT_EP</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#062f3147a1bae954b642b915827b3f3f">USB_REQUEST_GET_STATUS</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b9fe860caa1f21c9410984a24bf57c7c">USB_REQUEST_CLEAR_FEATURE</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a2b4d305dcd185cc1242e94ee78eea25">USB_REQUEST_SET_FEATURE</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c87659819bfd6491120c819fae2d46bc">USB_REQUEST_SET_ADDRESS</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3572226ee2137c7fbf7487a02b0f560f">USB_REQUEST_GET_DESCRIPTOR</a>&nbsp;&nbsp;&nbsp;6</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3c80fdedd69586ccf2894f5bd4638252">USB_REQUEST_SET_DESCRIPTOR</a>&nbsp;&nbsp;&nbsp;7</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#341ed4aff1f0d5a1a4a4f17cb606d08d">USB_REQUEST_GET_CONFIGURATION</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#adef005acc40340955d34d9767ef297c">USB_REQUEST_SET_CONFIGURATION</a>&nbsp;&nbsp;&nbsp;9</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#25550f44898d9c9a3bf0a7814af7fe96">USB_REQUEST_GET_INTERFACE</a>&nbsp;&nbsp;&nbsp;10</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f8d2ea632916bfc2a7628f63d3f643aa">USB_REQUEST_SET_INTERFACE</a>&nbsp;&nbsp;&nbsp;11</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#7497da1d974b456583b64889a2b5dd04">USB_REQUEST_SYNCH_FRAME</a>&nbsp;&nbsp;&nbsp;12</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#0a75e9871273bf2c40d1d9aa1641c8ce">USB_FEATURE_ENDPOINT_HALT</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b75da7fec6dd00924f1d9f4e3c587a6f">USB_FEATURE_DEVICE_REMOTE_WAKEUP</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#90a1a76a81c04849dc897dacf6c3a213">USB_FEATURE_TEST_MODE</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#610dad02930a3061c746f84885e1e11e">USB_SETUP_HOST_TO_DEVICE</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#35c2a529dc87a274b2eb6f9e33682449">USB_SETUP_DEVICE_TO_HOST</a>&nbsp;&nbsp;&nbsp;0x80</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3b51a35acaa76cafbb987c07186a7868">USB_SETUP_TYPE_STANDARD</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#cf3fd30992e9fe01f1bac9aaa7fea61b">USB_SETUP_TYPE_CLASS</a>&nbsp;&nbsp;&nbsp;0x20</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#876bdd74d8bfb072121b9643556271ba">USB_SETUP_TYPE_VENDOR</a>&nbsp;&nbsp;&nbsp;0x40</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#d48131dc5ca47b4b2def65e7bbc8442f">USB_SETUP_RECIPIENT_DEVICE</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#59754621c21db801e11513ba06a3a02e">USB_SETUP_RECIPIENT_INTERFACE</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c6ef27ac78140749f3607246f21c1471">USB_SETUP_RECIPIENT_ENDPOINT</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#a1a71b2e05ba5682c956d8dfdf01d40b">USB_SETUP_RECIPIENT_OTHER</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b1eb008c2545555250224ffdd22e6ef7">OTG_FEATURE_B_HNP_ENABLE</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c95e8be488ed9ca8ebf9541306fe070b">OTG_FEATURE_A_HNP_SUPPORT</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#4c05deae742762f3110366a7bb8bffc2">OTG_FEATURE_A_ALT_HNP_SUPPORT</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#ca5ae035469fa5e3d238eea0942bba88">USB_TRANSFER_TYPE_CONTROL</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#e0865fa52b39929c055e59559e138392">USB_TRANSFER_TYPE_ISOCHRONOUS</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#54c90d3ca8c3f7911d9d8cb17f59d939">USB_TRANSFER_TYPE_BULK</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c80ae240a4a703b554aa8edee201495f">USB_TRANSFER_TYPE_INTERRUPT</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#3ff0518fb298c9c9b556f59c0468ec0d">USB_FEATURE_ENDPOINT_STALL</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#b75da7fec6dd00924f1d9f4e3c587a6f">USB_FEATURE_DEVICE_REMOTE_WAKEUP</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#90a1a76a81c04849dc897dacf6c3a213">USB_FEATURE_TEST_MODE</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#896f66a073bbc8cebd4ea1984153160a">USB_HUB_CLASSCODE</a>&nbsp;&nbsp;&nbsp;0x09</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#185baa3caa63cc50c020154b49d54149">__attribute__</a> ((packed)) _USB_DEVICE_DESCRIPTOR</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#d7ce0a3b2c181d57c0aa02db35e484ed">USB_DEVICE_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f69d3876fdb347905874789bdbdba0a1">USB_CONFIGURATION_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#dfc7694c5adb71495d210dd8e5079f57">USB_INTERFACE_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#0e69c6f54cfc1417c35338fec9ca3267">USB_ENDPOINT_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#85723dbb562a9e9ca8bdf63a0ae29619">USB_OTG_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#c076ca21d18665eaceedd95fa5b403e3">USB_STRING_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#f2cd2c0d92774744c3204830aa2ab596">USB_DEVICE_QUALIFIER_DESCRIPTOR</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#7c60c0122c3f1e05db4bc0939595f868">SETUP_PKT</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__ch9_8h.html#73ae812266559c75655a48fa98815d27">PSETUP_PKT</a></td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="7d9be22714e8d2bde3cea75eac3f90c6"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_ADAPT" ref="7d9be22714e8d2bde3cea75eac3f90c6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_ADAPT&nbsp;&nbsp;&nbsp;(2&lt;&lt;2)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="adf4542713fe85f06b9b0c1bad508563"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_ASYNC" ref="adf4542713fe85f06b9b0c1bad508563" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_ASYNC&nbsp;&nbsp;&nbsp;(1&lt;&lt;2)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="30324b09479cd91b16efa4133c94b51b"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_BULK" ref="30324b09479cd91b16efa4133c94b51b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_BULK&nbsp;&nbsp;&nbsp;(2&lt;&lt;0)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f595ce8464c911db3b89f9063bf99f4"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_CONTROL" ref="7f595ce8464c911db3b89f9063bf99f4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_CONTROL&nbsp;&nbsp;&nbsp;(0&lt;&lt;0)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="498f15f36d1b5bf2ca7113c11fa11c24"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_DATA" ref="498f15f36d1b5bf2ca7113c11fa11c24" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_DATA&nbsp;&nbsp;&nbsp;(0&lt;&lt;4)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d8756d0673ebe7f64407b4cc9f929ea5"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_FEEDBACK" ref="d8756d0673ebe7f64407b4cc9f929ea5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_FEEDBACK&nbsp;&nbsp;&nbsp;(1&lt;&lt;4)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="01702a929dd37a289786f783ff3ce8c8"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_IMP_FB" ref="01702a929dd37a289786f783ff3ce8c8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_IMP_FB&nbsp;&nbsp;&nbsp;(2&lt;&lt;4)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f7c61d6a5a34f977f8b7377fd5f848ba"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_INTR" ref="f7c61d6a5a34f977f8b7377fd5f848ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_INTR&nbsp;&nbsp;&nbsp;(3&lt;&lt;0)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a12449e9edc4015973c865be61bf7ce5"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_ISOCH" ref="a12449e9edc4015973c865be61bf7ce5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_ISOCH&nbsp;&nbsp;&nbsp;(1&lt;&lt;0)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="43b60d69e97d37f6e323a08684c6d573"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_NO_SYNC" ref="43b60d69e97d37f6e323a08684c6d573" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_NO_SYNC&nbsp;&nbsp;&nbsp;(0&lt;&lt;2)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="944e507fd94f9eaee29665d3c9399217"></a><!-- doxytag: member="usb_ch9.h::EP_ATTR_SYNC" ref="944e507fd94f9eaee29665d3c9399217" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_ATTR_SYNC&nbsp;&nbsp;&nbsp;(3&lt;&lt;2)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3d9e141318c6c67acab7662b25bea7c6"></a><!-- doxytag: member="usb_ch9.h::EP_DIR_IN" ref="3d9e141318c6c67acab7662b25bea7c6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_DIR_IN&nbsp;&nbsp;&nbsp;0x80          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="953972739493f5c8a9e0292c598b6b4b"></a><!-- doxytag: member="usb_ch9.h::EP_DIR_OUT" ref="953972739493f5c8a9e0292c598b6b4b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_DIR_OUT&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0f44097a5ffa107eb7e804b91420798f"></a><!-- doxytag: member="usb_ch9.h::EP_LG_PKT_BULK_FS" ref="0f44097a5ffa107eb7e804b91420798f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_LG_PKT_BULK_FS&nbsp;&nbsp;&nbsp;32          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2d412098a16e7b5e3b8e8d36abab7a90"></a><!-- doxytag: member="usb_ch9.h::EP_MAX_PKT_BULK_FS" ref="2d412098a16e7b5e3b8e8d36abab7a90" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_MAX_PKT_BULK_FS&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="28764f9d96b9754c03bbb2c0d2ddd65e"></a><!-- doxytag: member="usb_ch9.h::EP_MAX_PKT_INTR_FS" ref="28764f9d96b9754c03bbb2c0d2ddd65e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_MAX_PKT_INTR_FS&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8f181e7a3d441703526daebe18711661"></a><!-- doxytag: member="usb_ch9.h::EP_MAX_PKT_INTR_LS" ref="8f181e7a3d441703526daebe18711661" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_MAX_PKT_INTR_LS&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9a55a0d598f354eb92be9cd57b974d45"></a><!-- doxytag: member="usb_ch9.h::EP_MAX_PKT_ISOCH_FS" ref="9a55a0d598f354eb92be9cd57b974d45" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_MAX_PKT_ISOCH_FS&nbsp;&nbsp;&nbsp;1023          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dba13ef98966bafe22a73f12386234e4"></a><!-- doxytag: member="usb_ch9.h::EP_MED_PKT_BULK_FS" ref="dba13ef98966bafe22a73f12386234e4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_MED_PKT_BULK_FS&nbsp;&nbsp;&nbsp;16          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e75147cf1aeeee6adceef5d903ef9893"></a><!-- doxytag: member="usb_ch9.h::EP_SM_PKT_BULK_FS" ref="e75147cf1aeeee6adceef5d903ef9893" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EP_SM_PKT_BULK_FS&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4c05deae742762f3110366a7bb8bffc2"></a><!-- doxytag: member="usb_ch9.h::OTG_FEATURE_A_ALT_HNP_SUPPORT" ref="4c05deae742762f3110366a7bb8bffc2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OTG_FEATURE_A_ALT_HNP_SUPPORT&nbsp;&nbsp;&nbsp;5          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c95e8be488ed9ca8ebf9541306fe070b"></a><!-- doxytag: member="usb_ch9.h::OTG_FEATURE_A_HNP_SUPPORT" ref="c95e8be488ed9ca8ebf9541306fe070b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OTG_FEATURE_A_HNP_SUPPORT&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b1eb008c2545555250224ffdd22e6ef7"></a><!-- doxytag: member="usb_ch9.h::OTG_FEATURE_B_HNP_ENABLE" ref="b1eb008c2545555250224ffdd22e6ef7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OTG_FEATURE_B_HNP_ENABLE&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1981f948103730f633340ad9976db440"></a><!-- doxytag: member="usb_ch9.h::OTG_HNP_SUPPORT" ref="1981f948103730f633340ad9976db440" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OTG_HNP_SUPPORT&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f72664eb0d963d3b9fd1193f7990e693"></a><!-- doxytag: member="usb_ch9.h::OTG_SRP_SUPPORT" ref="f72664eb0d963d3b9fd1193f7990e693" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OTG_SRP_SUPPORT&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a6a3b4bc4d7eefb123d1e6e954b7978b"></a><!-- doxytag: member="usb_ch9.h::PID_ACK" ref="a6a3b4bc4d7eefb123d1e6e954b7978b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_ACK&nbsp;&nbsp;&nbsp;0x2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="52c6e71c87133a4cae4e00b4394e75fd"></a><!-- doxytag: member="usb_ch9.h::PID_DATA0" ref="52c6e71c87133a4cae4e00b4394e75fd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_DATA0&nbsp;&nbsp;&nbsp;0x3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f6a832351a609fccdf8d6914c59de862"></a><!-- doxytag: member="usb_ch9.h::PID_DATA1" ref="f6a832351a609fccdf8d6914c59de862" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_DATA1&nbsp;&nbsp;&nbsp;0xB          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e92a09963b409b8b2e9340ff77250492"></a><!-- doxytag: member="usb_ch9.h::PID_DATA2" ref="e92a09963b409b8b2e9340ff77250492" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_DATA2&nbsp;&nbsp;&nbsp;0x7          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a01362983376cc94600287e1d1a16536"></a><!-- doxytag: member="usb_ch9.h::PID_ERR" ref="a01362983376cc94600287e1d1a16536" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_ERR&nbsp;&nbsp;&nbsp;0xC          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3be42af9535e8271a6472f25a081b5d2"></a><!-- doxytag: member="usb_ch9.h::PID_IN" ref="3be42af9535e8271a6472f25a081b5d2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_IN&nbsp;&nbsp;&nbsp;0x9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d45187382d8ad6f53f377cce2f755b66"></a><!-- doxytag: member="usb_ch9.h::PID_MASK_DATA" ref="d45187382d8ad6f53f377cce2f755b66" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_MASK_DATA&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="77f144a9a3f2d9d3911a997a45c38236"></a><!-- doxytag: member="usb_ch9.h::PID_MASK_DATA_SHIFTED" ref="77f144a9a3f2d9d3911a997a45c38236" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_MASK_DATA_SHIFTED&nbsp;&nbsp;&nbsp;(PID_MASK_DATA &lt;&lt; 2)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e3b019b2cbc4a3fdcdd7e56852cc2a09"></a><!-- doxytag: member="usb_ch9.h::PID_MDATA" ref="e3b019b2cbc4a3fdcdd7e56852cc2a09" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_MDATA&nbsp;&nbsp;&nbsp;0xF          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="52933fa701cadb337d23f910887da15b"></a><!-- doxytag: member="usb_ch9.h::PID_NAK" ref="52933fa701cadb337d23f910887da15b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_NAK&nbsp;&nbsp;&nbsp;0xA          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a34a9f82c67edfba688e94ccb28dcb61"></a><!-- doxytag: member="usb_ch9.h::PID_NYET" ref="a34a9f82c67edfba688e94ccb28dcb61" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_NYET&nbsp;&nbsp;&nbsp;0x6          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a343b884e93bb18c6744597ead317d3a"></a><!-- doxytag: member="usb_ch9.h::PID_OUT" ref="a343b884e93bb18c6744597ead317d3a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_OUT&nbsp;&nbsp;&nbsp;0x1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="39f56fb16e324f6ca9287d8d82bb5db9"></a><!-- doxytag: member="usb_ch9.h::PID_PING" ref="39f56fb16e324f6ca9287d8d82bb5db9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_PING&nbsp;&nbsp;&nbsp;0x4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b20d5afc7d5e1f0ffb303a078707a927"></a><!-- doxytag: member="usb_ch9.h::PID_PRE" ref="b20d5afc7d5e1f0ffb303a078707a927" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_PRE&nbsp;&nbsp;&nbsp;0xC          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="81a58e0f945c2faf7cd8a63aa876c9b9"></a><!-- doxytag: member="usb_ch9.h::PID_SETUP" ref="81a58e0f945c2faf7cd8a63aa876c9b9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_SETUP&nbsp;&nbsp;&nbsp;0xD          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6cb656efd215f825bc36b036bd9532c0"></a><!-- doxytag: member="usb_ch9.h::PID_SOF" ref="6cb656efd215f825bc36b036bd9532c0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_SOF&nbsp;&nbsp;&nbsp;0x5          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c902dcc1eb49067af112bf4bc9e9719"></a><!-- doxytag: member="usb_ch9.h::PID_SPLIT" ref="8c902dcc1eb49067af112bf4bc9e9719" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_SPLIT&nbsp;&nbsp;&nbsp;0x8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4834b4024d3990a67f884c7884c99cd7"></a><!-- doxytag: member="usb_ch9.h::PID_STALL" ref="4834b4024d3990a67f884c7884c99cd7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PID_STALL&nbsp;&nbsp;&nbsp;0xE          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="59d8cda8ae599133ebea3d3862844c6e"></a><!-- doxytag: member="usb_ch9.h::USB_CFG_DSC_REM_WAKE" ref="59d8cda8ae599133ebea3d3862844c6e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_CFG_DSC_REM_WAKE&nbsp;&nbsp;&nbsp;(0x20|USB_CFG_DSC_REQUIRED)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="51abbbc55c8a00001a73c001e702d1d3"></a><!-- doxytag: member="usb_ch9.h::USB_CFG_DSC_REQUIRED" ref="51abbbc55c8a00001a73c001e702d1d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_CFG_DSC_REQUIRED&nbsp;&nbsp;&nbsp;0x80          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4deebaa1fdd165129e0305e6cce4f124"></a><!-- doxytag: member="usb_ch9.h::USB_CFG_DSC_SELF_PWR" ref="4deebaa1fdd165129e0305e6cce4f124" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_CFG_DSC_SELF_PWR&nbsp;&nbsp;&nbsp;(0x40|USB_CFG_DSC_REQUIRED)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a17b365c4eb8bd2f6a4d4e4fb5f881c7"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_CONFIGURATION" ref="a17b365c4eb8bd2f6a4d4e4fb5f881c7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_CONFIGURATION&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c6d0566773ed4549fe1a7a932e6c46de"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_DEVICE" ref="c6d0566773ed4549fe1a7a932e6c46de" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_DEVICE&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fd341d3128818c2db68a3523118e0820"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_DEVICE_QUALIFIER" ref="fd341d3128818c2db68a3523118e0820" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_DEVICE_QUALIFIER&nbsp;&nbsp;&nbsp;0x06          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c3f574f82929eedc3386195f9a941203"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_ENDPOINT" ref="c3f574f82929eedc3386195f9a941203" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_ENDPOINT&nbsp;&nbsp;&nbsp;0x05          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5856eef11136823c671407f77cc5d254"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_INTERFACE" ref="5856eef11136823c671407f77cc5d254" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_INTERFACE&nbsp;&nbsp;&nbsp;0x04          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b02fac418606f02b4681c3302fbbce07"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_INTERFACE_POWER" ref="b02fac418606f02b4681c3302fbbce07" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_INTERFACE_POWER&nbsp;&nbsp;&nbsp;0x08          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c75fbfa446e248951836d6b6bfad44d0"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_OTG" ref="c75fbfa446e248951836d6b6bfad44d0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_OTG&nbsp;&nbsp;&nbsp;0x09          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="23e9c1e9645156958e80e9aa2ee77ef7"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_OTHER_SPEED" ref="23e9c1e9645156958e80e9aa2ee77ef7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_OTHER_SPEED&nbsp;&nbsp;&nbsp;0x07          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbad38caa1ca9c52f47adccd3a850aed"></a><!-- doxytag: member="usb_ch9.h::USB_DESCRIPTOR_STRING" ref="bbad38caa1ca9c52f47adccd3a850aed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_DESCRIPTOR_STRING&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b75da7fec6dd00924f1d9f4e3c587a6f"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_DEVICE_REMOTE_WAKEUP" ref="b75da7fec6dd00924f1d9f4e3c587a6f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_DEVICE_REMOTE_WAKEUP&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b75da7fec6dd00924f1d9f4e3c587a6f"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_DEVICE_REMOTE_WAKEUP" ref="b75da7fec6dd00924f1d9f4e3c587a6f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_DEVICE_REMOTE_WAKEUP&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0a75e9871273bf2c40d1d9aa1641c8ce"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_ENDPOINT_HALT" ref="0a75e9871273bf2c40d1d9aa1641c8ce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_ENDPOINT_HALT&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3ff0518fb298c9c9b556f59c0468ec0d"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_ENDPOINT_STALL" ref="3ff0518fb298c9c9b556f59c0468ec0d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_ENDPOINT_STALL&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="90a1a76a81c04849dc897dacf6c3a213"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_TEST_MODE" ref="90a1a76a81c04849dc897dacf6c3a213" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_TEST_MODE&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="90a1a76a81c04849dc897dacf6c3a213"></a><!-- doxytag: member="usb_ch9.h::USB_FEATURE_TEST_MODE" ref="90a1a76a81c04849dc897dacf6c3a213" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_FEATURE_TEST_MODE&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="896f66a073bbc8cebd4ea1984153160a"></a><!-- doxytag: member="usb_ch9.h::USB_HUB_CLASSCODE" ref="896f66a073bbc8cebd4ea1984153160a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_HUB_CLASSCODE&nbsp;&nbsp;&nbsp;0x09          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="221d6827d5958f2b9f719b8768f68c58"></a><!-- doxytag: member="usb_ch9.h::USB_IN_EP" ref="221d6827d5958f2b9f719b8768f68c58" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_IN_EP&nbsp;&nbsp;&nbsp;0x80          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="17b3854e69d034fe34a440fbdf241f42"></a><!-- doxytag: member="usb_ch9.h::USB_OUT_EP" ref="17b3854e69d034fe34a440fbdf241f42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_OUT_EP&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b9fe860caa1f21c9410984a24bf57c7c"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_CLEAR_FEATURE" ref="b9fe860caa1f21c9410984a24bf57c7c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_CLEAR_FEATURE&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="341ed4aff1f0d5a1a4a4f17cb606d08d"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_GET_CONFIGURATION" ref="341ed4aff1f0d5a1a4a4f17cb606d08d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_GET_CONFIGURATION&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3572226ee2137c7fbf7487a02b0f560f"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_GET_DESCRIPTOR" ref="3572226ee2137c7fbf7487a02b0f560f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_GET_DESCRIPTOR&nbsp;&nbsp;&nbsp;6          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="25550f44898d9c9a3bf0a7814af7fe96"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_GET_INTERFACE" ref="25550f44898d9c9a3bf0a7814af7fe96" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_GET_INTERFACE&nbsp;&nbsp;&nbsp;10          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="062f3147a1bae954b642b915827b3f3f"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_GET_STATUS" ref="062f3147a1bae954b642b915827b3f3f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_GET_STATUS&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c87659819bfd6491120c819fae2d46bc"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SET_ADDRESS" ref="c87659819bfd6491120c819fae2d46bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SET_ADDRESS&nbsp;&nbsp;&nbsp;5          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="adef005acc40340955d34d9767ef297c"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SET_CONFIGURATION" ref="adef005acc40340955d34d9767ef297c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SET_CONFIGURATION&nbsp;&nbsp;&nbsp;9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3c80fdedd69586ccf2894f5bd4638252"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SET_DESCRIPTOR" ref="3c80fdedd69586ccf2894f5bd4638252" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SET_DESCRIPTOR&nbsp;&nbsp;&nbsp;7          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a2b4d305dcd185cc1242e94ee78eea25"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SET_FEATURE" ref="a2b4d305dcd185cc1242e94ee78eea25" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SET_FEATURE&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f8d2ea632916bfc2a7628f63d3f643aa"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SET_INTERFACE" ref="f8d2ea632916bfc2a7628f63d3f643aa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SET_INTERFACE&nbsp;&nbsp;&nbsp;11          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7497da1d974b456583b64889a2b5dd04"></a><!-- doxytag: member="usb_ch9.h::USB_REQUEST_SYNCH_FRAME" ref="7497da1d974b456583b64889a2b5dd04" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_REQUEST_SYNCH_FRAME&nbsp;&nbsp;&nbsp;12          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="35c2a529dc87a274b2eb6f9e33682449"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_DEVICE_TO_HOST" ref="35c2a529dc87a274b2eb6f9e33682449" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_DEVICE_TO_HOST&nbsp;&nbsp;&nbsp;0x80          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="610dad02930a3061c746f84885e1e11e"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_HOST_TO_DEVICE" ref="610dad02930a3061c746f84885e1e11e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_HOST_TO_DEVICE&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d48131dc5ca47b4b2def65e7bbc8442f"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_RECIPIENT_DEVICE" ref="d48131dc5ca47b4b2def65e7bbc8442f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_RECIPIENT_DEVICE&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c6ef27ac78140749f3607246f21c1471"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_RECIPIENT_ENDPOINT" ref="c6ef27ac78140749f3607246f21c1471" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_RECIPIENT_ENDPOINT&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="59754621c21db801e11513ba06a3a02e"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_RECIPIENT_INTERFACE" ref="59754621c21db801e11513ba06a3a02e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_RECIPIENT_INTERFACE&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a1a71b2e05ba5682c956d8dfdf01d40b"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_RECIPIENT_OTHER" ref="a1a71b2e05ba5682c956d8dfdf01d40b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_RECIPIENT_OTHER&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="cf3fd30992e9fe01f1bac9aaa7fea61b"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_TYPE_CLASS" ref="cf3fd30992e9fe01f1bac9aaa7fea61b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_TYPE_CLASS&nbsp;&nbsp;&nbsp;0x20          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3b51a35acaa76cafbb987c07186a7868"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_TYPE_STANDARD" ref="3b51a35acaa76cafbb987c07186a7868" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_TYPE_STANDARD&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="876bdd74d8bfb072121b9643556271ba"></a><!-- doxytag: member="usb_ch9.h::USB_SETUP_TYPE_VENDOR" ref="876bdd74d8bfb072121b9643556271ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_SETUP_TYPE_VENDOR&nbsp;&nbsp;&nbsp;0x40          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="968bc64509f5e26dc669c8bb6d054997"></a><!-- doxytag: member="usb_ch9.h::USB_TOKEN_IN" ref="968bc64509f5e26dc669c8bb6d054997" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TOKEN_IN&nbsp;&nbsp;&nbsp;0x09          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fcfbc0d8482be9f165ecf3b667c88690"></a><!-- doxytag: member="usb_ch9.h::USB_TOKEN_OUT" ref="fcfbc0d8482be9f165ecf3b667c88690" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TOKEN_OUT&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dae04f8bc6dfef0098fa81681e9a6a75"></a><!-- doxytag: member="usb_ch9.h::USB_TOKEN_SETUP" ref="dae04f8bc6dfef0098fa81681e9a6a75" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TOKEN_SETUP&nbsp;&nbsp;&nbsp;0x0D          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="54c90d3ca8c3f7911d9d8cb17f59d939"></a><!-- doxytag: member="usb_ch9.h::USB_TRANSFER_TYPE_BULK" ref="54c90d3ca8c3f7911d9d8cb17f59d939" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TRANSFER_TYPE_BULK&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ca5ae035469fa5e3d238eea0942bba88"></a><!-- doxytag: member="usb_ch9.h::USB_TRANSFER_TYPE_CONTROL" ref="ca5ae035469fa5e3d238eea0942bba88" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TRANSFER_TYPE_CONTROL&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c80ae240a4a703b554aa8edee201495f"></a><!-- doxytag: member="usb_ch9.h::USB_TRANSFER_TYPE_INTERRUPT" ref="c80ae240a4a703b554aa8edee201495f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TRANSFER_TYPE_INTERRUPT&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e0865fa52b39929c055e59559e138392"></a><!-- doxytag: member="usb_ch9.h::USB_TRANSFER_TYPE_ISOCHRONOUS" ref="e0865fa52b39929c055e59559e138392" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_TRANSFER_TYPE_ISOCHRONOUS&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="185baa3caa63cc50c020154b49d54149"></a><!-- doxytag: member="usb_ch9.h::__attribute__" ref="185baa3caa63cc50c020154b49d54149" args="((packed)) _USB_DEVICE_DESCRIPTOR" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union __attribute__           </td>
+          <td>(</td>
+          <td class="paramtype">(packed)&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [read, write]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<div class="fragment"><pre class="fragment"><a name="l00111"></a>00111 {
+<a name="l00112"></a>00112     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="code" href="usb__descriptors_8c.html#8e443464272fdf3bd5148df0b7f5dcaf">bLength</a>;               <span class="comment">// Length of this descriptor.</span>
+<a name="l00113"></a>00113     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bDescriptorType;       <span class="comment">// DEVICE descriptor type (USB_DESCRIPTOR_DEVICE).</span>
+<a name="l00114"></a>00114     <a class="code" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> bcdUSB;                <span class="comment">// USB Spec Release Number (BCD).</span>
+<a name="l00115"></a>00115     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bDeviceClass;          <span class="comment">// Class code (assigned by the USB-IF). 0xFF-Vendor specific.</span>
+<a name="l00116"></a>00116     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bDeviceSubClass;       <span class="comment">// Subclass code (assigned by the USB-IF).</span>
+<a name="l00117"></a>00117     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bDeviceProtocol;       <span class="comment">// Protocol code (assigned by the USB-IF). 0xFF-Vendor specific.</span>
+<a name="l00118"></a>00118     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bMaxPacketSize0;       <span class="comment">// Maximum packet size for endpoint 0.</span>
+<a name="l00119"></a>00119     <a class="code" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> idVendor;              <span class="comment">// Vendor ID (assigned by the USB-IF).</span>
+<a name="l00120"></a>00120     <a class="code" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> idProduct;             <span class="comment">// Product ID (assigned by the manufacturer).</span>
+<a name="l00121"></a>00121     <a class="code" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> bcdDevice;             <span class="comment">// Device release number (BCD).</span>
+<a name="l00122"></a>00122     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> iManufacturer;         <span class="comment">// Index of String Descriptor describing the manufacturer.</span>
+<a name="l00123"></a>00123     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> iProduct;              <span class="comment">// Index of String Descriptor describing the product.</span>
+<a name="l00124"></a>00124     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> iSerialNumber;         <span class="comment">// Index of String Descriptor with the device's serial number.</span>
+<a name="l00125"></a>00125     <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> bNumConfigurations;    <span class="comment">// Number of possible configurations.</span>
+<a name="l00126"></a>00126 } <a class="code" href="usb__ch9_8h.html#d7ce0a3b2c181d57c0aa02db35e484ed">USB_DEVICE_DESCRIPTOR</a>;
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="73ae812266559c75655a48fa98815d27"></a><!-- doxytag: member="usb_ch9.h::PSETUP_PKT" ref="73ae812266559c75655a48fa98815d27" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">* <a class="el" href="usb__ch9_8h.html#73ae812266559c75655a48fa98815d27">PSETUP_PKT</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c60c0122c3f1e05db4bc0939595f868"></a><!-- doxytag: member="usb_ch9.h::SETUP_PKT" ref="7c60c0122c3f1e05db4bc0939595f868" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#7c60c0122c3f1e05db4bc0939595f868">SETUP_PKT</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f69d3876fdb347905874789bdbdba0a1"></a><!-- doxytag: member="usb_ch9.h::USB_CONFIGURATION_DESCRIPTOR" ref="f69d3876fdb347905874789bdbdba0a1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#f69d3876fdb347905874789bdbdba0a1">USB_CONFIGURATION_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d7ce0a3b2c181d57c0aa02db35e484ed"></a><!-- doxytag: member="usb_ch9.h::USB_DEVICE_DESCRIPTOR" ref="d7ce0a3b2c181d57c0aa02db35e484ed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#d7ce0a3b2c181d57c0aa02db35e484ed">USB_DEVICE_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f2cd2c0d92774744c3204830aa2ab596"></a><!-- doxytag: member="usb_ch9.h::USB_DEVICE_QUALIFIER_DESCRIPTOR" ref="f2cd2c0d92774744c3204830aa2ab596" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#f2cd2c0d92774744c3204830aa2ab596">USB_DEVICE_QUALIFIER_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e69c6f54cfc1417c35338fec9ca3267"></a><!-- doxytag: member="usb_ch9.h::USB_ENDPOINT_DESCRIPTOR" ref="0e69c6f54cfc1417c35338fec9ca3267" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#0e69c6f54cfc1417c35338fec9ca3267">USB_ENDPOINT_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfc7694c5adb71495d210dd8e5079f57"></a><!-- doxytag: member="usb_ch9.h::USB_INTERFACE_DESCRIPTOR" ref="dfc7694c5adb71495d210dd8e5079f57" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#dfc7694c5adb71495d210dd8e5079f57">USB_INTERFACE_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="85723dbb562a9e9ca8bdf63a0ae29619"></a><!-- doxytag: member="usb_ch9.h::USB_OTG_DESCRIPTOR" ref="85723dbb562a9e9ca8bdf63a0ae29619" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#85723dbb562a9e9ca8bdf63a0ae29619">USB_OTG_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c076ca21d18665eaceedd95fa5b403e3"></a><!-- doxytag: member="usb_ch9.h::USB_STRING_DESCRIPTOR" ref="c076ca21d18665eaceedd95fa5b403e3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="usb__ch9_8h.html#c076ca21d18665eaceedd95fa5b403e3">USB_STRING_DESCRIPTOR</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:23 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

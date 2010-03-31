@@ -1,0 +1,25 @@
+AX12 Interface  Revised: Saturday, April 18, 2009
+          Revision: 1.0
+
+Olivier BICHLER
+
+
+
+
+
+Bill Of Materials          April 19,2009      15:12:11	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	1	C1	500 uF
+2	1	C2	100n
+3	1	D1	LED alim 10V
+4	1	J1	Bornier alim. 12 V
+5	1	J2	Con. Robot Interface
+6	1	J3	AX12 Con. 1
+7	1	J4	AX12 Con. 2
+8	1	R1	1.6k
+9	2	R2,R3	10k
+10	1	U1	TEN 30-2412WIN
+11	1	U2	74HCT126

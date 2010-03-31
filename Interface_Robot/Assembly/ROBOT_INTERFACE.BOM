@@ -1,0 +1,57 @@
+Carte d'interfaces - Alimentation  Revised: Saturday, April 18, 2009
+          Revision: 1.0
+
+Olivier BICHLER
+
+
+
+
+
+Bill Of Materials          April 18,2009      16:45:55	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	1	C1	1000 uF
+2	2	C3,C7	100n
+3	2	C4,C5	22p
+4	1	C6	220n
+5	1	D1	LED alim 5V
+6	1	D3	D1N5817
+7	1	D4	LED1
+8	1	D5	LED2
+9	2	D6,D7	D1N4148
+10	1	J1	Bornier alim. 12 V
+11	1	J2	Con. PROG
+12	2	J3,J4	Bus I2C
+13	1	J5	Bus série
+14	1	J6	Con. USB
+15	1	J9	SW1
+16	1	J10	RELAY1
+17	1	J11	SW2
+18	1	J12	CSW1
+19	1	J13	RELAY2
+20	1	J14	CSW2
+21	1	J15	Codeur moteur 1
+22	1	J16	PWM 1
+23	1	J17	Servo 1
+24	1	J18	Servo 2
+25	1	J19	Servo 3
+26	1	J20	Codeur moteur 2
+27	1	J21	PWM 2
+28	1	J22	Servo 4
+29	1	J23	Servo 5
+30	1	J24	5V
+31	1	J25	SW3
+32	2	LS1,LS2	RELAY SPDT
+33	2	Q1,Q2	BC547B
+34	3	R1,R6,R7	680
+35	10	R3,R4,R5,R10,R11,R16,R17,	10k
+		R18,R19,R20
+36	2	R12,R15	3.3k
+37	2	R13,R14	1k
+38	1	SW1	RESET
+39	1	U1	THN15-2411WI
+40	1	U3	PIC18F4550-PDIP
+41	1	U5	LAA110
+42	1	X1	8 MHz

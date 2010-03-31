@@ -1,0 +1,93 @@
+(ExpressProject "Motor_controller"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\motor_controller.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\krobot\USB_Module\Motor_controller\Board\Motor_controller-1_1.mnl")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\krobot\USB_Module\Motor_Controller\Assembly\MOTOR_CONTROLLER.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File "..\board\motor_controller-1_1.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\motor_controller.bom"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\USB_Module\Motor_Controller\Schematic\motor_controller.dsn")
+      (Path "Design Resources"
+         "C:\krobot\USB_Module\Motor_Controller\Schematic\motor_controller.dsn"
+         "SCHEMATIC1")
+      (Path "Outputs"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 304 0 758"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1053")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Alimentation"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Microcontrôleur"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Modules LM")))
+  (MPSSessionName "Olivier"))

@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence du fichier HardwareProfile.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier HardwareProfile.h</h1>Définitions spécifiques au PIC utilisé, pour l'USB et les LEDs notamment. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dynsection">
+<p><center><img src="_hardware_profile_8h__dep__incl.png" border="0" usemap="#HardwareProfile.hdep_map" alt=""></center>
+<map name="HardwareProfile.hdep_map">
+<area shape="rect" href="main_8c.html" title="Contient la fonction main() du programme." alt="" coords="8,160,77,189"><area shape="rect" href="rangefinder_8h.html" title="Gère la télémétrie." alt="" coords="97,83,217,112"><area shape="rect" href="tor_8h.html" title="Gère les capteurs de contact TOR." alt="" coords="20,83,73,112"><area shape="rect" href="usb__device_8c.html" title="usb_device.c" alt="" coords="241,83,359,112"><area shape="rect" href="rangefinder_8c.html" title="Gère la télémétrie." alt="" coords="101,160,221,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#ba35cc821d7d3d1c490ce9778e80f363">tris_self_power</a>&nbsp;&nbsp;&nbsp;TRISBbits.TRISB7</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#54cca94d2a6aee7594ba7e0685298454">self_power</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#232aeea381ca80764b4a70a64b0a658d">tris_usb_bus_sense</a>&nbsp;&nbsp;&nbsp;TRISBbits.TRISB6</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#ec3d232fabd3960fba528e9386144a95">USB_BUS_SENSE</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#a204d4dc37a119ddba848b4f8e13d157">PROGRAMMABLE_WITH_USB_MCHPUSB_BOOTLOADER</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#9d53f8509e83dab48b3e6868774fb56b">CLOCK_FREQ</a>&nbsp;&nbsp;&nbsp;48000000</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Board definition.  <a href="#9d53f8509e83dab48b3e6868774fb56b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#1a806e0533aa476bb6e62b7d22c93572">INPUT_PIN</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TRIS.  <a href="#1a806e0533aa476bb6e62b7d22c93572"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#a600b28b8b5a973164811aac98de8e2d">OUTPUT_PIN</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#27e6bd4d852b6452a2aeadd96df5139e">mInitAllLEDs</a>()&nbsp;&nbsp;&nbsp;LATB&amp;= 0b11110011; TRISB&amp;= 0b11110011;</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">LED.  <a href="#27e6bd4d852b6452a2aeadd96df5139e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#04aa82f4e3203028b4c2a46a8ba77700">mLED_1</a>&nbsp;&nbsp;&nbsp;LATBbits.LATB3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#476d0fb8e112f93f323a827a3444d752">mLED_2</a>&nbsp;&nbsp;&nbsp;LATBbits.LATB2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#0ab4d6b68d300cfb30fe4fd70104c6fc">mGetLED_1</a>()&nbsp;&nbsp;&nbsp;mLED_1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#905dd61051a02cfa46146a5e5890c91a">mGetLED_2</a>()&nbsp;&nbsp;&nbsp;mLED_2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#ab110df5a302055594278d4e907692bf">mLED_1_On</a>()&nbsp;&nbsp;&nbsp;mLED_1 = 1;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#22f2591efef8efbc59ca78f23592628a">mLED_2_On</a>()&nbsp;&nbsp;&nbsp;mLED_2 = 1;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#2d25cb2660321cbd2ef2f4ff64723511">mLED_1_Off</a>()&nbsp;&nbsp;&nbsp;mLED_1 = 0;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#a677cbc2658fcdcaa6c5205296fdb069">mLED_2_Off</a>()&nbsp;&nbsp;&nbsp;mLED_2 = 0;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#e9c56afc3ce3e0237f8bd50a58211935">mLED_1_Toggle</a>()&nbsp;&nbsp;&nbsp;mLED_1 = !mLED_1;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hardware_profile_8h.html#3f0c0a50ee639f96bf603828d4f26fbe">mLED_2_Toggle</a>()&nbsp;&nbsp;&nbsp;mLED_2 = !mLED_2;</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Définitions spécifiques au PIC utilisé, pour l'USB et les LEDs notamment. 
+<p>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="9d53f8509e83dab48b3e6868774fb56b"></a><!-- doxytag: member="HardwareProfile.h::CLOCK_FREQ" ref="9d53f8509e83dab48b3e6868774fb56b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLOCK_FREQ&nbsp;&nbsp;&nbsp;48000000          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Board definition. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1a806e0533aa476bb6e62b7d22c93572"></a><!-- doxytag: member="HardwareProfile.h::INPUT_PIN" ref="1a806e0533aa476bb6e62b7d22c93572" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INPUT_PIN&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+TRIS. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0ab4d6b68d300cfb30fe4fd70104c6fc"></a><!-- doxytag: member="HardwareProfile.h::mGetLED_1" ref="0ab4d6b68d300cfb30fe4fd70104c6fc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mGetLED_1          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="905dd61051a02cfa46146a5e5890c91a"></a><!-- doxytag: member="HardwareProfile.h::mGetLED_2" ref="905dd61051a02cfa46146a5e5890c91a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mGetLED_2          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_2</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="27e6bd4d852b6452a2aeadd96df5139e"></a><!-- doxytag: member="HardwareProfile.h::mInitAllLEDs" ref="27e6bd4d852b6452a2aeadd96df5139e" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mInitAllLEDs          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;LATB&amp;= 0b11110011; TRISB&amp;= 0b11110011;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+LED. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="04aa82f4e3203028b4c2a46a8ba77700"></a><!-- doxytag: member="HardwareProfile.h::mLED_1" ref="04aa82f4e3203028b4c2a46a8ba77700" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_1&nbsp;&nbsp;&nbsp;LATBbits.LATB3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2d25cb2660321cbd2ef2f4ff64723511"></a><!-- doxytag: member="HardwareProfile.h::mLED_1_Off" ref="2d25cb2660321cbd2ef2f4ff64723511" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_1_Off          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_1 = 0;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ab110df5a302055594278d4e907692bf"></a><!-- doxytag: member="HardwareProfile.h::mLED_1_On" ref="ab110df5a302055594278d4e907692bf" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_1_On          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_1 = 1;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e9c56afc3ce3e0237f8bd50a58211935"></a><!-- doxytag: member="HardwareProfile.h::mLED_1_Toggle" ref="e9c56afc3ce3e0237f8bd50a58211935" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_1_Toggle          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_1 = !mLED_1;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="476d0fb8e112f93f323a827a3444d752"></a><!-- doxytag: member="HardwareProfile.h::mLED_2" ref="476d0fb8e112f93f323a827a3444d752" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_2&nbsp;&nbsp;&nbsp;LATBbits.LATB2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a677cbc2658fcdcaa6c5205296fdb069"></a><!-- doxytag: member="HardwareProfile.h::mLED_2_Off" ref="a677cbc2658fcdcaa6c5205296fdb069" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_2_Off          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_2 = 0;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="22f2591efef8efbc59ca78f23592628a"></a><!-- doxytag: member="HardwareProfile.h::mLED_2_On" ref="22f2591efef8efbc59ca78f23592628a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_2_On          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_2 = 1;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3f0c0a50ee639f96bf603828d4f26fbe"></a><!-- doxytag: member="HardwareProfile.h::mLED_2_Toggle" ref="3f0c0a50ee639f96bf603828d4f26fbe" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define mLED_2_Toggle          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;mLED_2 = !mLED_2;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a600b28b8b5a973164811aac98de8e2d"></a><!-- doxytag: member="HardwareProfile.h::OUTPUT_PIN" ref="a600b28b8b5a973164811aac98de8e2d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OUTPUT_PIN&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a204d4dc37a119ddba848b4f8e13d157"></a><!-- doxytag: member="HardwareProfile.h::PROGRAMMABLE_WITH_USB_MCHPUSB_BOOTLOADER" ref="a204d4dc37a119ddba848b4f8e13d157" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PROGRAMMABLE_WITH_USB_MCHPUSB_BOOTLOADER          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="54cca94d2a6aee7594ba7e0685298454"></a><!-- doxytag: member="HardwareProfile.h::self_power" ref="54cca94d2a6aee7594ba7e0685298454" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define self_power&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ba35cc821d7d3d1c490ce9778e80f363"></a><!-- doxytag: member="HardwareProfile.h::tris_self_power" ref="ba35cc821d7d3d1c490ce9778e80f363" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define tris_self_power&nbsp;&nbsp;&nbsp;TRISBbits.TRISB7          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="232aeea381ca80764b4a70a64b0a658d"></a><!-- doxytag: member="HardwareProfile.h::tris_usb_bus_sense" ref="232aeea381ca80764b4a70a64b0a658d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define tris_usb_bus_sense&nbsp;&nbsp;&nbsp;TRISBbits.TRISB6          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ec3d232fabd3960fba528e9386144a95"></a><!-- doxytag: member="HardwareProfile.h::USB_BUS_SENSE" ref="ec3d232fabd3960fba528e9386144a95" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_BUS_SENSE&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:19 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

@@ -1,0 +1,224 @@
+(ExpressProject "VNH3SP30E_H_Bridge"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\library\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\vnh3sp30e_h_bridge.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\krobot\VNH3SP30E_H_Bridge\Board\VNH3SP30E_H_BRIDGE.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (FALSE)
+    (FALSE)
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\krobot\VNH3SP30E_H_Bridge\Assembly\VNH3SP30E_H_BRIDGE.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File "..\board\vnh3sp30e_h_bridge.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\vnh3sp30e_h_bridge.bom"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (OFFPAGELEFT-L
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-R
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (74HCT640
+      (FullPartName "74HCT640.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\BUSDRIVERTRANSCEIVER.OLB")
+      (DeviceIndex "0"))
+    (JP2
+      (FullPartName "JP2.Normal")
+      (LibraryName "C:\KROBOT\LIBRARY\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (LTL-14C
+      (FullPartName "LTL-14C.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (CON8
+      (FullPartName "CON8.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON6
+      (FullPartName "CON6.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (ACS712
+      (FullPartName "ACS712.Normal")
+      (LibraryName "C:\KROBOT\LIBRARY\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (IE0505S
+      (FullPartName "IE0505S.Normal")
+      (LibraryName "C:\KROBOT\LIBRARY\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (VCC_ARROW
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (74HCT240
+      (FullPartName "74HCT240.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\BUSDRIVERTRANSCEIVER.OLB")
+      (DeviceIndex "0"))
+    (74HCT04
+      (FullPartName "74HCT04.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\74HCT.OLB")
+      (DeviceIndex "0"))
+    (LED
+      (FullPartName "LED.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    ("CAP POL"
+      (FullPartName "CAP POL.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (L
+      (FullPartName "L.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    ("DIODE SCHOTTKY"
+      (FullPartName "DIODE SCHOTTKY.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("FUSE THERMAL"
+      (FullPartName "FUSE THERMAL.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (CON2
+      (FullPartName "CON2.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (LM2575/TO
+      (FullPartName "LM2575/TO.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (7404
+      (FullPartName "7404.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\7400.OLB")
+      (DeviceIndex "0"))
+    ("MOSFET P"
+      (FullPartName "MOSFET P.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (VCC
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (GND_SIGNAL
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\VNH3SP30E_H_Bridge\Schematic\vnh3sp30e_h_bridge.dsn")
+      (Path "Design Resources"
+         "C:\krobot\VNH3SP30E_H_Bridge\Schematic\vnh3sp30e_h_bridge.dsn"
+         "SCHEMATIC1")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\VNH3SP30E_H_Bridge\Schematic\vnh3sp30e_h_bridge.dsn"
+         "SCHEMATIC1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 306 0 708"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 308 1888 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Power Supply"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 307 1887 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "H-Bridge 1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 307 1887 1 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Diagnostic"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 307 1887 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "H-Bridge 2"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 307 1887 1 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\VNH3SP30E_H_BRIDGE\SCHEMATIC\VNH3SP30E_H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Command")))
+  (MPSSessionName "Olivier"))

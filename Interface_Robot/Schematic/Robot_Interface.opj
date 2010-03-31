@@ -1,0 +1,201 @@
+(ExpressProject "Robot_Interface"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\library\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\robot_interface.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\BOARD\ROBOT_INTERFACE.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (CrossRef_Scope "0")
+    (Crossref__Mode "0")
+    (CrossRef_Sorting "0")
+    (CrossRef_Destination_File
+       "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.XRF")
+    (CrossRef_XY "FALSE")
+    (CrossRef_Unused "FALSE")
+    (XRF_View_Output "FALSE")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (FALSE)
+    (FALSE)
+    (FALSE)
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\ASSEMBLY\ROBOT_INTERFACE.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE")
+    (FALSE)
+    ( "FALSE"))
+  (Folder "Outputs"
+    (File "..\board\robot_interface.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\robot_interface.bom"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (OFFPAGELEFT-L
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (BC547B
+      (FullPartName "BC547B.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\EBIPOLAR.OLB")
+      (DeviceIndex "0"))
+    (1N4148
+      (FullPartName "1N4148.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\EDIODE.OLB")
+      (DeviceIndex "0"))
+    ("RELAY SPDT"
+      (FullPartName "RELAY SPDT.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("RESISTOR SIP 9"
+      (FullPartName "RESISTOR SIP 9.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (74HCT151
+      (FullPartName "74HCT151.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\MUXDECODER.OLB")
+      (DeviceIndex "0"))
+    (CON3
+      (FullPartName "CON3.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (74HCT126
+      (FullPartName "74HCT126.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\BUSDRIVERTRANSCEIVER.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-R
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (THN15-2411WI
+      (FullPartName "THN15-2411WI.Normal")
+      (LibraryName "C:\KROBOT\LIBRARY\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (CON4
+      (FullPartName "CON4.Normal")
+      (LibraryName
+         "D:\PROGRAM FILES\ORCAD\ORCAD_10.5\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    ("CAP POL"
+      (FullPartName "CAP POL.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (TEL30-2412
+      (FullPartName "TEL30-2412.Normal")
+      (LibraryName "C:\KROBOT\LIBRARY\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (LAA110
+      (FullPartName "LAA110A.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (GND
+      (LibraryName "E:\PROGRAMMES\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (CON2
+      (FullPartName "CON2.Normal")
+      (LibraryName "D:\ORCAD\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\USB_Module\Robot_Interface\Schematic\robot_interface.dsn")
+      (Path "Design Resources"
+         "C:\krobot\USB_Module\Robot_Interface\Schematic\robot_interface.dsn"
+         "SCHEMATIC1")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\USB_Module\Robot_Interface\Schematic\robot_interface.dsn"
+         "SCHEMATIC1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -9 -34 0 304 0 766"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Alimentation"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Microcontrôleur"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Périph. Contrôle"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\USB_MODULE\ROBOT_INTERFACE\SCHEMATIC\ROBOT_INTERFACE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Périph. Puissance")))
+  (MPSSessionName "Olivier"))

@@ -1,0 +1,561 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte d&#39;asservissement (bi): Référence du fichier motor.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier motor.h</h1>Gère l'interface avec la carte de puissance du moteur. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &lt;adc.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="_compiler_8h.html">Compiler.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_hardware_profile_8h.html">HardwareProfile.h</a>&quot;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de motor.h:</div>
+<div class="dynsection">
+<p><center><img src="motor_8h__incl.png" border="0" usemap="#motor.h_map" alt=""></center>
+<map name="motor.h_map">
+<area shape="rect" href="_compiler_8h.html" title="Compiler.h" alt="" coords="91,83,189,112"><area shape="rect" href="_hardware_profile_8h.html" title="Définitions spécifiques au PIC utilisé, pour l&#39;USB et les LEDs notamment." alt="" coords="213,83,365,112"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dynsection">
+<p><center><img src="motor_8h__dep__incl.png" border="0" usemap="#motor.hdep_map" alt=""></center>
+<map name="motor.hdep_map">
+<area shape="rect" href="lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="27,83,104,112"><area shape="rect" href="main_8c.html" title="Contient la fonction main() du programme." alt="" coords="107,160,176,189"><area shape="rect" href="motor_8c.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="179,83,253,112"><area shape="rect" href="lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="5,160,83,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#d65c917ac3ed9125b9e2cfce907b465c">ISENS_R</a>&nbsp;&nbsp;&nbsp;0.02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Valeur de la résistance de mesure du courant (en ohm).  <a href="#d65c917ac3ed9125b9e2cfce907b465c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#e196926e1a9c0e08a74bd2264ef01bf4">ISENS_GAIN</a>&nbsp;&nbsp;&nbsp;4.0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gain du circuit de mesure (en V/V).  <a href="#e196926e1a9c0e08a74bd2264ef01bf4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea">ISENS_AVR0</a>&nbsp;&nbsp;&nbsp;10</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nombre de mesure du courant pour la moyenne de 1er niveau.  <a href="#0a401eeede7dde5c8fcdd190eafaeeea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#d966b7f80ba162892302fe67c7eface8">ISENS_AVR1</a>&nbsp;&nbsp;&nbsp;10</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui sera renvoyée par la fonction <a class="el" href="motor_8c.html#f28faafd0d5603bd1dfabbcd9731e0d9" title="Récupère la mesure du courant dans un moteur.">getIsens()</a> sera en fait une moyenne sur (ISENS_AVR0 * ISENS_AVR1) échantillons.  <a href="#d966b7f80ba162892302fe67c7eface8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#d41891eae65784e529cc980a9d495258">ISENS_COEF</a>&nbsp;&nbsp;&nbsp;(1000.0 / (ISENS_R * ISENS_GAIN))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#406f4e30a8e0fe3a239116479f1321a1">EN_MOTOR1</a>&nbsp;&nbsp;&nbsp;PORTAbits.RA2</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Signal ENABLE du moteur de droite (moteur 1).  <a href="#406f4e30a8e0fe3a239116479f1321a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#dd640e90a2a671994234666df2f5fac3">EN_MOTOR2</a>&nbsp;&nbsp;&nbsp;PORTAbits.RA1</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Signal ENABLE du moteur de gauche (moteur 2).  <a href="#dd640e90a2a671994234666df2f5fac3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc">MOTOR_RIGHT</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sélection du moteur de droite (moteur 1).  <a href="#9eff471d17bc68f18b14ff75f23aa3bc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778">MOTOR_LEFT</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sélection du moteur de gauche (moteur 2).  <a href="#0e2d750df9008232cafa398d2424b778"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c">MOTOR_BOTH</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sélection des 2 moteurs simultanément.  <a href="#327dd27b4e08cc7c38cb5d48d55dac7c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#55db44d33ee15a8b5d52fbbde42acbaa">ADC_ANA</a>&nbsp;&nbsp;&nbsp;0b1110</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sélection de la PIN AN0.  <a href="#55db44d33ee15a8b5d52fbbde42acbaa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#8a878d2e3b31dfd8c15559651852d37d">initMotors</a>()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise l'interface de commande des cartes de puissance.  <a href="#8a878d2e3b31dfd8c15559651852d37d"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#0aa5b74df1b3a0f3cf909fc230d4735b">interruptMotor</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction d'interruption pour les moteurs.  <a href="#0aa5b74df1b3a0f3cf909fc230d4735b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">long&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#f28faafd0d5603bd1dfabbcd9731e0d9">getIsens</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupère la mesure du courant dans un moteur.  <a href="#f28faafd0d5603bd1dfabbcd9731e0d9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#189f66fb3cf35d131837dd26974a3b8c">enableMotor</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Active un ou plusieurs axe(s) moteur(s).  <a href="#189f66fb3cf35d131837dd26974a3b8c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#0d5557f2de215c57a9cfc2dbf1114afb">disableMotor</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactive un ou plusieurs axe(s) moteur(s).  <a href="#0d5557f2de215c57a9cfc2dbf1114afb"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Gère l'interface avec la carte de puissance du moteur. 
+<p>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="55db44d33ee15a8b5d52fbbde42acbaa"></a><!-- doxytag: member="motor.h::ADC_ANA" ref="55db44d33ee15a8b5d52fbbde42acbaa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADC_ANA&nbsp;&nbsp;&nbsp;0b1110          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sélection de la PIN AN0. 
+<p>
+<dl compact><dt><b><a class="el" href="bug.html#_bug000001">Bogue:</a></b></dt><dd>Sur la révision 1.0 de la carte, il n'est pas possible de mettre AN0 et AN3 en analogique sans mettre également AN1 et AN2 en analogique, alors que ces deux sorties sont prévues pour être des sorties numériques sur cette version de la carte. Ce bug a été corrigé dans la révision 1.1. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="406f4e30a8e0fe3a239116479f1321a1"></a><!-- doxytag: member="motor.h::EN_MOTOR1" ref="406f4e30a8e0fe3a239116479f1321a1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EN_MOTOR1&nbsp;&nbsp;&nbsp;PORTAbits.RA2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Signal ENABLE du moteur de droite (moteur 1). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dd640e90a2a671994234666df2f5fac3"></a><!-- doxytag: member="motor.h::EN_MOTOR2" ref="dd640e90a2a671994234666df2f5fac3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EN_MOTOR2&nbsp;&nbsp;&nbsp;PORTAbits.RA1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Signal ENABLE du moteur de gauche (moteur 2). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8a878d2e3b31dfd8c15559651852d37d"></a><!-- doxytag: member="motor.h::initMotors" ref="8a878d2e3b31dfd8c15559651852d37d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define initMotors          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{                                                                                                                                                                       \
+        TRISA&amp;= 0b11111001;                                                                                                                                                                     \
+        PORTA&amp;= 0b11111001;                                                                                                                                                                     \
+                                                                                                                                                                                                                \
+        OpenADC(ADC_FOSC_64                     <span class="comment">/* A/D clock source (forc�ment Fosc / 64 car PIC � 48 MHz) */</span>                   \
+                &amp; ADC_RIGHT_JUST                <span class="comment">/* A/D result justification */</span>                                                                                  \
+                &amp; ADC_0_TAD,                    <span class="comment">/* A/D acquisition time select (pas la peine d'attendre avant le */</span>             \
+                                                                <span class="comment">/* d�but de la conversion car l'acquisition a largement eu le */</span>                \
+                                                                <span class="comment">/* temps de se faire entre chaque interruption, toutes les 1 ms) */</span>             \
+                ADC_CH0                                 <span class="comment">/* Channel */</span>                                                                                                                   \
+                &amp; ADC_INT_OFF                   <span class="comment">/* A/D Interrupts */</span>                                                                                                    \
+                &amp; ADC_REF_VDD_VSS,              <span class="comment">/* A/D voltage configuration */</span>                                                                                 \
+                <a class="code" href="motor_8h.html#55db44d33ee15a8b5d52fbbde42acbaa" title="Sélection de la PIN AN0.">ADC_ANA</a>                                                                                                                                                                                 \
+        );                                                                                                                                                                                                      \
+}
+</pre></div>Initialise l'interface de commande des cartes de puissance. 
+<p>
+Cette commande ne doit être appelée qu'une seule fois au début du programme. 
+</div>
+</div><p>
+<a class="anchor" name="0a401eeede7dde5c8fcdd190eafaeeea"></a><!-- doxytag: member="motor.h::ISENS_AVR0" ref="0a401eeede7dde5c8fcdd190eafaeeea" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ISENS_AVR0&nbsp;&nbsp;&nbsp;10          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Nombre de mesure du courant pour la moyenne de 1er niveau. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d966b7f80ba162892302fe67c7eface8"></a><!-- doxytag: member="motor.h::ISENS_AVR1" ref="d966b7f80ba162892302fe67c7eface8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ISENS_AVR1&nbsp;&nbsp;&nbsp;10          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui sera renvoyée par la fonction <a class="el" href="motor_8c.html#f28faafd0d5603bd1dfabbcd9731e0d9" title="Récupère la mesure du courant dans un moteur.">getIsens()</a> sera en fait une moyenne sur (ISENS_AVR0 * ISENS_AVR1) échantillons. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d41891eae65784e529cc980a9d495258"></a><!-- doxytag: member="motor.h::ISENS_COEF" ref="d41891eae65784e529cc980a9d495258" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ISENS_COEF&nbsp;&nbsp;&nbsp;(1000.0 / (ISENS_R * ISENS_GAIN))          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e196926e1a9c0e08a74bd2264ef01bf4"></a><!-- doxytag: member="motor.h::ISENS_GAIN" ref="e196926e1a9c0e08a74bd2264ef01bf4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ISENS_GAIN&nbsp;&nbsp;&nbsp;4.0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gain du circuit de mesure (en V/V). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d65c917ac3ed9125b9e2cfce907b465c"></a><!-- doxytag: member="motor.h::ISENS_R" ref="d65c917ac3ed9125b9e2cfce907b465c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ISENS_R&nbsp;&nbsp;&nbsp;0.02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Valeur de la résistance de mesure du courant (en ohm). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="327dd27b4e08cc7c38cb5d48d55dac7c"></a><!-- doxytag: member="motor.h::MOTOR_BOTH" ref="327dd27b4e08cc7c38cb5d48d55dac7c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MOTOR_BOTH&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sélection des 2 moteurs simultanément. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e2d750df9008232cafa398d2424b778"></a><!-- doxytag: member="motor.h::MOTOR_LEFT" ref="0e2d750df9008232cafa398d2424b778" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MOTOR_LEFT&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sélection du moteur de gauche (moteur 2). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9eff471d17bc68f18b14ff75f23aa3bc"></a><!-- doxytag: member="motor.h::MOTOR_RIGHT" ref="9eff471d17bc68f18b14ff75f23aa3bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MOTOR_RIGHT&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sélection du moteur de droite (moteur 1). 
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="0d5557f2de215c57a9cfc2dbf1114afb"></a><!-- doxytag: member="motor.h::disableMotor" ref="0d5557f2de215c57a9cfc2dbf1114afb" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void disableMotor           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Désactive un ou plusieurs axe(s) moteur(s). 
+<p>
+Cette fonction désactive un axe moteur et le rend inerte à toute commande du LM629. Désactiver un moteur revient à désactiver la carte de puissance associée.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur à activer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00155"></a>00155                              {
+<a name="l00156"></a>00156         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>)
+<a name="l00157"></a>00157                 <a class="code" href="motor_8h.html#406f4e30a8e0fe3a239116479f1321a1" title="Signal ENABLE du moteur de droite (moteur 1).">EN_MOTOR1</a> = 0;
+<a name="l00158"></a>00158         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>)
+<a name="l00159"></a>00159                 <a class="code" href="motor_8h.html#dd640e90a2a671994234666df2f5fac3" title="Signal ENABLE du moteur de gauche (moteur 2).">EN_MOTOR2</a> = 0;
+<a name="l00160"></a>00160         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00161"></a>00161                 <a class="code" href="motor_8h.html#406f4e30a8e0fe3a239116479f1321a1" title="Signal ENABLE du moteur de droite (moteur 1).">EN_MOTOR1</a> = 0;
+<a name="l00162"></a>00162                 <a class="code" href="motor_8h.html#dd640e90a2a671994234666df2f5fac3" title="Signal ENABLE du moteur de gauche (moteur 2).">EN_MOTOR2</a> = 0;
+<a name="l00163"></a>00163         }
+<a name="l00164"></a>00164 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="189f66fb3cf35d131837dd26974a3b8c"></a><!-- doxytag: member="motor.h::enableMotor" ref="189f66fb3cf35d131837dd26974a3b8c" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void enableMotor           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Active un ou plusieurs axe(s) moteur(s). 
+<p>
+Cette fonction permet d'activer un axe moteur en vue d'une commande par le LM629. L'activation d'un moteur rend la carte de puissance correspondante réceptive au signal PWM délivré par le LM629.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur à activer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00134"></a>00134                             {
+<a name="l00135"></a>00135         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>)
+<a name="l00136"></a>00136                 <a class="code" href="motor_8h.html#406f4e30a8e0fe3a239116479f1321a1" title="Signal ENABLE du moteur de droite (moteur 1).">EN_MOTOR1</a> = 1;
+<a name="l00137"></a>00137         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>)
+<a name="l00138"></a>00138                 <a class="code" href="motor_8h.html#dd640e90a2a671994234666df2f5fac3" title="Signal ENABLE du moteur de gauche (moteur 2).">EN_MOTOR2</a> = 1;
+<a name="l00139"></a>00139         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00140"></a>00140                 <a class="code" href="motor_8h.html#406f4e30a8e0fe3a239116479f1321a1" title="Signal ENABLE du moteur de droite (moteur 1).">EN_MOTOR1</a> = 1;
+<a name="l00141"></a>00141                 <a class="code" href="motor_8h.html#dd640e90a2a671994234666df2f5fac3" title="Signal ENABLE du moteur de gauche (moteur 2).">EN_MOTOR2</a> = 1;
+<a name="l00142"></a>00142         }
+<a name="l00143"></a>00143 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f28faafd0d5603bd1dfabbcd9731e0d9"></a><!-- doxytag: member="motor.h::getIsens" ref="f28faafd0d5603bd1dfabbcd9731e0d9" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long getIsens           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupère la mesure du courant dans un moteur. 
+<p>
+Cette fonction donne une valeur "instantanée moyenne" du courant dans le moteur. En fait, la valeur renvoyée est déjà une moyenne sur un certain nombre d'échantillons.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur dont on veut le courant, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Isens courant mesuré, en mA (entier sur 16 bits) </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00107"></a>00107                          {
+<a name="l00108"></a>00108         <span class="keywordtype">char</span> i;
+<a name="l00109"></a>00109         <span class="keywordtype">long</span> Isens = 0;
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>) {
+<a name="l00112"></a>00112                 <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="motor_8h.html#d966b7f80ba162892302fe67c7eface8" title="Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui...">ISENS_AVR1</a>; i++)
+<a name="l00113"></a>00113                         Isens+= <a class="code" href="motor_8c.html#4dc89859216e6f4e3872d3423c17edea">Isens1</a>[i];
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>) {
+<a name="l00116"></a>00116                 <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="motor_8h.html#d966b7f80ba162892302fe67c7eface8" title="Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui...">ISENS_AVR1</a>; i++)
+<a name="l00117"></a>00117                         Isens+= <a class="code" href="motor_8c.html#9bdd19a9e27680ae4a92348dbfe16f60">Isens2</a>[i];
+<a name="l00118"></a>00118         }
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         <span class="keywordflow">return</span> (<span class="keywordtype">long</span>) ((((float) Isens / <a class="code" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea" title="Nombre de mesure du courant pour la moyenne de 1er niveau.">ISENS_AVR0</a> / <a class="code" href="motor_8h.html#d966b7f80ba162892302fe67c7eface8" title="Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui...">ISENS_AVR1</a>) * 5.0 / 1023.0 - 2.5) * <a class="code" href="motor_8h.html#d41891eae65784e529cc980a9d495258">ISENS_COEF</a>);
+<a name="l00121"></a>00121 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0aa5b74df1b3a0f3cf909fc230d4735b"></a><!-- doxytag: member="motor.h::interruptMotor" ref="0aa5b74df1b3a0f3cf909fc230d4735b" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void interruptMotor           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction d'interruption pour les moteurs. 
+<p>
+Cette fonction ne doit être appelée que dans une interruption. Elle permet la mesure du courant dans le moteur. <div class="fragment"><pre class="fragment"><a name="l00019"></a>00019                           {
+<a name="l00020"></a>00020         <span class="keyword">static</span> <span class="keywordtype">char</span> state = 0;
+<a name="l00021"></a>00021         <span class="keyword">static</span> <span class="keywordtype">char</span> Isens_idx0 = 0;
+<a name="l00022"></a>00022         <span class="keyword">static</span> <span class="keywordtype">char</span> Isens_idx1 = 0;
+<a name="l00023"></a>00023         <span class="keyword">static</span> <span class="keywordtype">long</span> Isens1_0[<a class="code" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea" title="Nombre de mesure du courant pour la moyenne de 1er niveau.">ISENS_AVR0</a>];
+<a name="l00024"></a>00024         <span class="keyword">static</span> <span class="keywordtype">long</span> Isens2_0[<a class="code" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea" title="Nombre de mesure du courant pour la moyenne de 1er niveau.">ISENS_AVR0</a>];
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="keywordtype">char</span> i;
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028         <span class="keywordflow">switch</span> (state) {
+<a name="l00029"></a>00029                 <span class="keywordflow">case</span> 0:
+<a name="l00030"></a>00030                         <span class="comment">// Démarre la convertion sur RA0 (Isens1)</span>
+<a name="l00031"></a>00031                         SetChanADC(ADC_CH0);
+<a name="l00032"></a>00032                         ConvertADC();
+<a name="l00033"></a>00033                         state = 1;
+<a name="l00034"></a>00034                 <span class="keywordflow">break</span>;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036                 <span class="keywordflow">case</span> 1:
+<a name="l00037"></a>00037                         <span class="comment">// Récupère le résultat de la conversion</span>
+<a name="l00038"></a>00038                         <span class="keywordflow">if</span> (!BusyADC()) {
+<a name="l00039"></a>00039                                 Isens1_0[Isens_idx0] = ReadADC();
+<a name="l00040"></a>00040                                 state = 2;
+<a name="l00041"></a>00041                         }
+<a name="l00042"></a>00042                 <span class="keywordflow">break</span>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044                 <span class="keywordflow">case</span> 2:
+<a name="l00045"></a>00045                         <span class="comment">// Démarre la convertion sur RA3 (Isens2)</span>
+<a name="l00046"></a>00046 <span class="preprocessor">                        #if defined(REV_1_0)</span>
+<a name="l00047"></a>00047 <span class="preprocessor"></span>                                <span class="comment">// Board revision 1.0</span>
+<a name="l00048"></a>00048                                 SetChanADC(ADC_CH3);
+<a name="l00049"></a>00049 <span class="preprocessor">                        #elif defined(REV_1_1)</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span>                                <span class="comment">// Board revision 1.1</span>
+<a name="l00051"></a>00051                                 SetChanADC(ADC_CH1);
+<a name="l00052"></a>00052 <span class="preprocessor">                        #else</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span><span class="preprocessor">                                #error Unknown board revision</span>
+<a name="l00054"></a>00054 <span class="preprocessor"></span><span class="preprocessor">                        #endif</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>
+<a name="l00056"></a>00056                         ConvertADC();
+<a name="l00057"></a>00057                         state = 3;
+<a name="l00058"></a>00058                 <span class="keywordflow">break</span>;
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060                 <span class="keywordflow">case</span> 3:
+<a name="l00061"></a>00061                         <span class="comment">// Récupère le résultat de la conversion</span>
+<a name="l00062"></a>00062                         <span class="keywordflow">if</span> (!BusyADC()) {
+<a name="l00063"></a>00063                                 Isens2_0[Isens_idx0] = ReadADC();
+<a name="l00064"></a>00064                                 state = 4;
+<a name="l00065"></a>00065                         }
+<a name="l00066"></a>00066                 <span class="keywordflow">break</span>;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068                 <span class="keywordflow">case</span> 4:
+<a name="l00069"></a>00069                         <span class="comment">// Traitement des résultats</span>
+<a name="l00070"></a>00070                         Isens_idx0++;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072                         <span class="keywordflow">if</span> (Isens_idx0 &gt;= <a class="code" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea" title="Nombre de mesure du courant pour la moyenne de 1er niveau.">ISENS_AVR0</a>) {
+<a name="l00073"></a>00073                                 Isens_idx0 = 0;
+<a name="l00074"></a>00074                                 <a class="code" href="motor_8c.html#4dc89859216e6f4e3872d3423c17edea">Isens1</a>[Isens_idx1] = 0;
+<a name="l00075"></a>00075                                 <a class="code" href="motor_8c.html#9bdd19a9e27680ae4a92348dbfe16f60">Isens2</a>[Isens_idx1] = 0;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077                                 <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="motor_8h.html#0a401eeede7dde5c8fcdd190eafaeeea" title="Nombre de mesure du courant pour la moyenne de 1er niveau.">ISENS_AVR0</a>; i++) {
+<a name="l00078"></a>00078                                         <a class="code" href="motor_8c.html#4dc89859216e6f4e3872d3423c17edea">Isens1</a>[Isens_idx1]+= Isens1_0[i];
+<a name="l00079"></a>00079                                         <a class="code" href="motor_8c.html#9bdd19a9e27680ae4a92348dbfe16f60">Isens2</a>[Isens_idx1]+= Isens2_0[i];
+<a name="l00080"></a>00080                                 }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082                                 Isens_idx1++;
+<a name="l00083"></a>00083         
+<a name="l00084"></a>00084                                 <span class="keywordflow">if</span> (Isens_idx1 &gt;= <a class="code" href="motor_8h.html#d966b7f80ba162892302fe67c7eface8" title="Nombre de mesure du courant pour la moyenne de 2nd niveau la valeur du courant qui...">ISENS_AVR1</a>)
+<a name="l00085"></a>00085                                         Isens_idx1 = 0;
+<a name="l00086"></a>00086                         }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088                         state = 0;
+<a name="l00089"></a>00089                 <span class="keywordflow">break</span>;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <span class="keywordflow">default</span>:
+<a name="l00092"></a>00092                         state = 0;
+<a name="l00093"></a>00093         }
+<a name="l00094"></a>00094 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:04:57 2009 pour Carte d'asservissement (bi) par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

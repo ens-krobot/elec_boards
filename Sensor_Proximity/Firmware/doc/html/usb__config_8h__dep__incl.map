@@ -1,0 +1,8 @@
+<area shape="rect" href="$usb_8h.html" title="usb.h" alt="" coords="5,83,67,112">
+<area shape="rect" href="$usb__common_8h.html" title="usb_common.h" alt="" coords="91,83,221,112">
+<area shape="rect" href="$usb__device_8h.html" title="usb_device.h" alt="" coords="245,83,363,112">
+<area shape="rect" href="$usb__function__generic_8h.html" title="usb_function_generic.h" alt="" coords="387,83,579,112">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="603,83,672,112">
+<area shape="rect" href="$usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="696,83,848,112">
+<area shape="rect" href="$usb__device_8c.html" title="usb_device.c" alt="" coords="872,83,989,112">
+<area shape="rect" href="$usb__function__hid_8c.html" title="usb_function_hid.c" alt="" coords="1013,83,1173,112">

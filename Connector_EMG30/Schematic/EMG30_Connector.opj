@@ -1,0 +1,53 @@
+(ExpressProject "EMG30_Connector"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\emg30_connector.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\krobot\EMG30_Connector\Board\EMG30_Connector-1_0.mnl")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    ( "FALSE")
+    (LAYOUT_Units "0"))
+  (Folder "Outputs"
+    (File "..\board\emg30_connector-1_0.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\KROBOT\EMG30_Connector\Schematic\emg30_connector.dsn")
+      (Path "Design Resources"
+         "C:\KROBOT\EMG30_Connector\Schematic\emg30_connector.dsn" "SCHEMATIC1")
+      (Path "Outputs"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 302 0 754"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\EMG30_CONNECTOR\SCHEMATIC\EMG30_CONNECTOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Carte"))))

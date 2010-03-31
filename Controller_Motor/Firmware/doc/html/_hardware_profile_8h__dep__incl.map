@@ -1,0 +1,6 @@
+<area shape="rect" href="$lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="16,160,93,189">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="107,237,176,267">
+<area shape="rect" href="$motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="168,83,243,112">
+<area shape="rect" href="$usb__device_8c.html" title="usb_device.c" alt="" coords="267,83,384,112">
+<area shape="rect" href="$lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="5,237,83,267">
+<area shape="rect" href="$motor_8c.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="219,160,293,189">

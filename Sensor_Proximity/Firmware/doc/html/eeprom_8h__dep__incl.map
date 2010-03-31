@@ -1,0 +1,4 @@
+<area shape="rect" href="$eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="5,83,96,112">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="99,160,168,189">
+<area shape="rect" href="$rangefinder_8h.html" title="Gère la télémétrie." alt="" coords="171,83,291,112">
+<area shape="rect" href="$rangefinder_8c.html" title="Gère la télémétrie." alt="" coords="192,160,312,189">

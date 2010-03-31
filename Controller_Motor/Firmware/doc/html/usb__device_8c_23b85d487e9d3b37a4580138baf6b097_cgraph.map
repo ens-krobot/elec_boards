@@ -1,0 +1,3 @@
+<area shape="rect" href="$usb__device_8h.html#e69da16b1f966a62cdd1831df5561cbf" title="This function is called when the device becomes initialized, which occurs after the..." alt="" coords="239,5,359,35">
+<area shape="rect" href="$usb__device_8h.html#25c6b82e249f563f00732a7e242c4267" title="USBEnableEndpoint" alt="" coords="408,5,576,35">
+<area shape="rect" href="$usb__device_8h.html#1901fa27385226b6cdad1f5b091e5374" title="USBConfigureEndpoint" alt="" coords="625,5,815,35">

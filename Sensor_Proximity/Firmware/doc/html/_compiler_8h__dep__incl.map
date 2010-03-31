@@ -1,0 +1,11 @@
+<area shape="rect" href="$eeprom_8h.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="137,83,228,112">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="275,237,344,267">
+<area shape="rect" href="$rangefinder_8h.html" title="Gère la télémétrie." alt="" coords="5,160,125,189">
+<area shape="rect" href="$usb__device_8h.html" title="usb_device.h" alt="" coords="303,83,420,112">
+<area shape="rect" href="$usb__function__msd_8h.html" title="usb_function_msd.h" alt="" coords="444,83,612,112">
+<area shape="rect" href="$tor_8h.html" title="Gère les capteurs de contact TOR." alt="" coords="315,160,368,189">
+<area shape="rect" href="$usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="687,83,839,112">
+<area shape="rect" href="$usb__device_8c.html" title="usb_device.c" alt="" coords="863,83,980,112">
+<area shape="rect" href="$usb__function__hid_8c.html" title="usb_function_hid.c" alt="" coords="1004,83,1164,112">
+<area shape="rect" href="$eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="149,160,240,189">
+<area shape="rect" href="$rangefinder_8c.html" title="Gère la télémétrie." alt="" coords="5,237,125,267">

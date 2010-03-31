@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence de la structure LUN_FUNCTIONS</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li class="current"><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="classes.html"><span>Liste&nbsp;alphabétique</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la structure LUN_FUNCTIONS</h1><!-- doxytag: class="LUN_FUNCTIONS" --><code>#include &lt;usb_function_msd.h&gt;</code>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#05b11d1c29041fdc91855129c5187997">MediaInitialize</a> )()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#47886af342cc2b8345bc7633f68fe308">ReadCapacity</a> )()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#37f1276f323d0d3fdd31dd065a206c47">ReadSectorSize</a> )()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#bd02a8902a56bffd86a74ed4179bbd67">MediaDetect</a> )()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#f29cc5deeaf347898108ab7a9c7a0884">SectorRead</a> )(<a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> sector_addr, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *buffer)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#27a2361c769fa173a6cf9f09025c0899">WriteProtectState</a> )()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#f90088d84f20fb8f6712a684ace9a21a">SectorWrite</a> )(<a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> sector_addr, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *buffer, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> allowWriteToZero)</td></tr>
+
+</table>
+<hr><h2>Documentation des champs</h2>
+<a class="anchor" name="05b11d1c29041fdc91855129c5187997"></a><!-- doxytag: member="LUN_FUNCTIONS::MediaInitialize" ref="05b11d1c29041fdc91855129c5187997" args=")()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#05b11d1c29041fdc91855129c5187997">LUN_FUNCTIONS::MediaInitialize</a>)()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="47886af342cc2b8345bc7633f68fe308"></a><!-- doxytag: member="LUN_FUNCTIONS::ReadCapacity" ref="47886af342cc2b8345bc7633f68fe308" args=")()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#47886af342cc2b8345bc7633f68fe308">LUN_FUNCTIONS::ReadCapacity</a>)()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="37f1276f323d0d3fdd31dd065a206c47"></a><!-- doxytag: member="LUN_FUNCTIONS::ReadSectorSize" ref="37f1276f323d0d3fdd31dd065a206c47" args=")()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#37f1276f323d0d3fdd31dd065a206c47">LUN_FUNCTIONS::ReadSectorSize</a>)()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bd02a8902a56bffd86a74ed4179bbd67"></a><!-- doxytag: member="LUN_FUNCTIONS::MediaDetect" ref="bd02a8902a56bffd86a74ed4179bbd67" args=")()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#bd02a8902a56bffd86a74ed4179bbd67">LUN_FUNCTIONS::MediaDetect</a>)()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f29cc5deeaf347898108ab7a9c7a0884"></a><!-- doxytag: member="LUN_FUNCTIONS::SectorRead" ref="f29cc5deeaf347898108ab7a9c7a0884" args=")(DWORD sector_addr, BYTE *buffer)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#f29cc5deeaf347898108ab7a9c7a0884">LUN_FUNCTIONS::SectorRead</a>)(<a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> sector_addr, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *buffer)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="27a2361c769fa173a6cf9f09025c0899"></a><!-- doxytag: member="LUN_FUNCTIONS::WriteProtectState" ref="27a2361c769fa173a6cf9f09025c0899" args=")()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#27a2361c769fa173a6cf9f09025c0899">LUN_FUNCTIONS::WriteProtectState</a>)()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f90088d84f20fb8f6712a684ace9a21a"></a><!-- doxytag: member="LUN_FUNCTIONS::SectorWrite" ref="f90088d84f20fb8f6712a684ace9a21a" args=")(DWORD sector_addr, BYTE *buffer, BYTE allowWriteToZero)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>(* <a class="el" href="struct_l_u_n___f_u_n_c_t_i_o_n_s.html#f90088d84f20fb8f6712a684ace9a21a">LUN_FUNCTIONS::SectorWrite</a>)(<a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> sector_addr, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *buffer, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> allowWriteToZero)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="usb__function__msd_8h.html">usb_function_msd.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:35 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

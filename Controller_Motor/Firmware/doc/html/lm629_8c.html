@@ -1,0 +1,1524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte d&#39;asservissement (bi): Référence du fichier lm629.c</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier lm629.c</h1>Gère l'interface avec les circuits intégrés LM629. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &quot;<a class="el" href="lm629_8h.html">lm629.h</a>&quot;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de lm629.c:</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c__incl.png" border="0" usemap="#lm629.c_map" alt=""></center>
+<map name="lm629.c_map">
+<area shape="rect" href="lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="273,83,351,112"><area shape="rect" href="_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="112,160,275,189"><area shape="rect" href="_compiler_8h.html" title="Compiler.h" alt="" coords="233,237,332,267"><area shape="rect" href="_hardware_profile_8h.html" title="Définitions spécifiques au PIC utilisé, pour l&#39;USB et les LEDs notamment." alt="" coords="441,237,593,267"><area shape="rect" href="motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="349,160,424,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc">dataBusDirection</a> (char dir)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la direction du BUS de donnée.  <a href="#6c314f24d23be4191ad86293c9a5fecc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba">waitBusyLM</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Attends que le ou les LM(s) ne soient plus occupés.  <a href="#89cbdf56bf6a423f871db85d9b25b7ba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516">writeCommand</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> command)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Envoie une commande à/aux LM(s).  <a href="#6fa7a38bcd0eeb3fb9c107702f73f516"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878">writeDataWord</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Envoie un mot au LM (un mot = 2 octets = 16 bits).  <a href="#151178ea603ed04beaa1ba4151496878"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#ec750313f79234101e43e09e3083b947">readDataWord</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lire un mot envoyé par le LM (un mot = 2 octets = 16 bits).  <a href="#ec750313f79234101e43e09e3083b947"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45">readStatus</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lire l'état d'un LM.  <a href="#87c455cfb4cbd87a3de45fd9f38a1b45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa">readStatusBit</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> type)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lire un bit d'état du LM.  <a href="#e3ef6f2f44349bc4e6af34671b6aa4aa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248">resetInterrupt</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset les bits d'interruption du/des LM(s).  <a href="#3917d5827bfa6cc17f4e1a47ff073248"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#18cecfad364f842e6a71efbd459857df">initLM</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> kp, <a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> ki, <a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> kd)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un LM, c'est-à-dire :<ul>
+<li>Contrôle que le RESET s'est fait correctement ;</li><li>Active ou non certaines interruptions ;</li><li>Reset les interruptions ;</li><li>Charge et applique les paramètres du correcteur. </li></ul>
+ <a href="#18cecfad364f842e6a71efbd459857df"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#49e97890e5c9ab4f6fca2ba9ce33c885">initLMs</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise les 2 LMs avec les paramètres par défaut.  <a href="#49e97890e5c9ab4f6fca2ba9ce33c885"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41">newPosition</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> pos, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> vel, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> acc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Programme une nouvelle position à atteindre.  <a href="#50cb02e459a813bf1d2d14a80d905a41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#ecadba62e0d1041ce012f142027c9e8f">newVelocity</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> vel, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> acc, char dir)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Programme une nouvelle vitesse à atteindre.  <a href="#ecadba62e0d1041ce012f142027c9e8f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#590732570bf403f7d5b9b9b592430c3d">changeVelocity</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a> vel, char dir)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la vitesse en court.  <a href="#590732570bf403f7d5b9b9b592430c3d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499">start</a> (char axis)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre la trajectoire programmée.  <a href="#adb0186b6cbfbfe2f37d6e5d64284499"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#8923736db73fa9668b246c31b6bacd70">stop</a> (char axis, <a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> type)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrête le/les moteur(s).  <a href="#8923736db73fa9668b246c31b6bacd70"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#bdba60aec4c9ae15e242fe1824ca4e5b">moveForward</a> (short pos, short vel, short acc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Avance.  <a href="#bdba60aec4c9ae15e242fe1824ca4e5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#f53f9dcb4f2401d3b013a07e63f8762d">moveBackward</a> (short pos, short vel, short acc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recule.  <a href="#f53f9dcb4f2401d3b013a07e63f8762d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#f1b311aa12043bf3b42a8739e7026d84">turnRight</a> (short angle, short vel, short acc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tourne vers la droite.  <a href="#f1b311aa12043bf3b42a8739e7026d84"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#f72df7582ddf637a05b2de0e420656bf">turnLeft</a> (short angle, short vel, short acc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Tourne vers la gauche.  <a href="#f72df7582ddf637a05b2de0e420656bf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd">isTrajComplete</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indique si la dernière trajectoire est terminée.  <a href="#928f6fe98ffaaa8f72282688bcc8d1cd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="lm629_8c.html#0d4260799cdc0b7d43ff0bce6bc77c2a">waitTrajComplete</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Attend la fin de la trajectoire en court.  <a href="#0d4260799cdc0b7d43ff0bce6bc77c2a"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Gère l'interface avec les circuits intégrés LM629. 
+<p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="590732570bf403f7d5b9b9b592430c3d"></a><!-- doxytag: member="lm629.c::changeVelocity" ref="590732570bf403f7d5b9b9b592430c3d" args="(char axis, DWORD vel, char dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeVelocity           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>dir</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Change la vitesse en court. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à programmer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dir</em>&nbsp;</td><td>sens de rotation, peut valoir : <br>
+ <a class="el" href="lm629_8h.html#c47196e19ad296c963c7ffd1d906b6b9">LM_LTRJ_FORWARD_DIR</a> avance <br>
+ <a class="el" href="lm629_8h.html#f874d75feeff13d96887c6255c9c10ea">LM_LTRJ_BACKWARD_DIR</a> recule </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00485"></a>00485                                                     {
+<a name="l00486"></a>00486         <a class="code" href="lm629_8c.html#ecadba62e0d1041ce012f142027c9e8f" title="Programme une nouvelle vitesse à atteindre.">newVelocity</a>(axis, vel, <a class="code" href="_generic_type_defs_8h.html#070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, dir);
+<a name="l00487"></a>00487 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_590732570bf403f7d5b9b9b592430c3d_cgraph.png" border="0" usemap="#lm629_8c_590732570bf403f7d5b9b9b592430c3d_cgraph_map" alt=""></center>
+<map name="lm629_8c_590732570bf403f7d5b9b9b592430c3d_cgraph_map">
+<area shape="rect" href="lm629_8c.html#ecadba62e0d1041ce012f142027c9e8f" title="Programme une nouvelle vitesse à atteindre." alt="" coords="188,32,295,61"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="345,5,473,35"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="344,59,475,88"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="680,32,827,61"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="524,32,631,61"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="6c314f24d23be4191ad86293c9a5fecc"></a><!-- doxytag: member="lm629.c::dataBusDirection" ref="6c314f24d23be4191ad86293c9a5fecc" args="(char dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dataBusDirection           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>dir</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Change la direction du BUS de donnée. 
+<p>
+Cette fonction est utilisée en interne et ne doit pas être appelée sinon.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>dir</em>&nbsp;</td><td>la direction du BUS, peut valoir : <br>
+ <a class="el" href="lm629_8h.html#bfb497db759edfde127952c40722ddf3" title="Envoyer des données vers le LM.">DATA_OUT</a> transfert du PIC vers le LM <br>
+ <a class="el" href="lm629_8h.html#bebff40b775e10e37faa4ec7b45d6a89" title="Recevoir des données du LM.">DATA_IN</a> transfert du LM vers le PIC </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00019"></a>00019                                 {
+<a name="l00020"></a>00020         <span class="keywordflow">if</span> (dir == <a class="code" href="lm629_8h.html#bfb497db759edfde127952c40722ddf3" title="Envoyer des données vers le LM.">DATA_OUT</a>) {
+<a name="l00021"></a>00021                 TRISE&amp;= 0b11111000;
+<a name="l00022"></a>00022                 TRISC&amp;= 0b00111100;
+<a name="l00023"></a>00023                 TRISD&amp;= 0b11101111;
+<a name="l00024"></a>00024         }
+<a name="l00025"></a>00025         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dir == <a class="code" href="lm629_8h.html#bebff40b775e10e37faa4ec7b45d6a89" title="Recevoir des données du LM.">DATA_IN</a>) {
+<a name="l00026"></a>00026                 TRISE|= 0b00000111;
+<a name="l00027"></a>00027                 TRISC|= 0b11000011;
+<a name="l00028"></a>00028                 TRISD|= 0b00010000;
+<a name="l00029"></a>00029         }
+<a name="l00030"></a>00030 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="18cecfad364f842e6a71efbd459857df"></a><!-- doxytag: member="lm629.c::initLM" ref="18cecfad364f842e6a71efbd459857df" args="(char axis, WORD kp, WORD ki, WORD kd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initLM           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td>
+          <td class="paramname"> <em>kp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td>
+          <td class="paramname"> <em>ki</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td>
+          <td class="paramname"> <em>kd</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise un LM, c'est-à-dire :<ul>
+<li>Contrôle que le RESET s'est fait correctement ;</li><li>Active ou non certaines interruptions ;</li><li>Reset les interruptions ;</li><li>Charge et applique les paramètres du correcteur. </li></ul>
+
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Cette fonction s'assure que le LM est correctement initialisé. Si ce n'est pas le cas, le LM est resetté jusqu'à ce que son état soit correct. Dans le cas d'un LM défaillant, il est possible que cette fonction bloque le programme indéfiniment, si aucun RESET correct n'est obtenu. <p>
+Cette fonction effectue un RESET en envoyant au LM la commande <a class="el" href="lm629_8h.html#00469936d76c3c07d2599cf7c9360888" title="Initialize -- Reset LM628.">LM_CMD_RESET</a>. Elle n'effectue pas de RESET hardware avec <a class="el" href="lm629_8h.html#cf5656e8cd94ba58f9efe1fa2e444a5f">LM_RST</a>, car cela affecterait les 2 LMs simultanément, ce qui invaliderait l'initialisation de l'autre LM ! <p>
+Une cause possible du blocage de cette fonction est que l'état de la sortie <a class="el" href="lm629_8h.html#cf5656e8cd94ba58f9efe1fa2e444a5f">LM_RST</a> ait été altéré durant l'exécution du programme, empêchant le LM de s'initialiser (RESET hardware permanent si <a class="el" href="lm629_8h.html#cf5656e8cd94ba58f9efe1fa2e444a5f">LM_RST</a> est à 0).</dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à initialiser, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>kp</em>&nbsp;</td><td>la constante proportionnelle pour le correcteur, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ki</em>&nbsp;</td><td>la constante intégrale pour le correcteur, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>kd</em>&nbsp;</td><td>la constante dérivée pour le correcteur, sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00354"></a>00354                                                   {
+<a name="l00355"></a>00355         <span class="comment">// Reset du LM (si nécessaire)</span>
+<a name="l00356"></a>00356         <span class="keywordflow">while</span> (<a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis) != 0x84 &amp;&amp; <a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis) != 0xC4) {
+<a name="l00357"></a>00357 initLM_RESET:
+<a name="l00358"></a>00358                 <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#00469936d76c3c07d2599cf7c9360888" title="Initialize -- Reset LM628.">LM_CMD_RESET</a>);       <span class="comment">// attendre au moins 1.5 ms</span>
+<a name="l00359"></a>00359                 Delay10KTCYx(2);                                        <span class="comment">// attends 20000 cycles, à 48 MHz / 4 = 1.67 ms (&gt; 1.5 ms)</span>
+<a name="l00360"></a>00360         }
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362         <span class="comment">// Activation de certaines interruptions</span>
+<a name="l00363"></a>00363         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#407ae15fa1d1bccf3b4ee5233a47861d" title="Interrupt -- Mask Interrupts.">LM_CMD_MSKI</a>);
+<a name="l00364"></a>00364         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#82baca2a5876592ab43532578564a601" title="Command Error [Interrupt].">LM_COMMAND_ERROR</a> | <a class="code" href="lm629_8h.html#f7cef48ae625eba691c0ff5d3fe6dd46" title="Index Pulse Observed [Interrupt].">LM_INDEX_PULSE</a>);
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366         <span class="comment">// Reset des interruptions</span>
+<a name="l00367"></a>00367         <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(axis);
+<a name="l00368"></a>00368 
+<a name="l00369"></a>00369         <span class="keywordflow">if</span> (<a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis) != 0x80 &amp;&amp; <a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis) != 0xC0)
+<a name="l00370"></a>00370                 <span class="keywordflow">goto</span> initLM_RESET;
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372         <span class="keywordflow">if</span> (<a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis) == 0xC0)
+<a name="l00373"></a>00373                 <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(axis);
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375         <span class="comment">// Chargement des paramètres du filtre</span>
+<a name="l00376"></a>00376         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#ee9833005d19f68d50291742f95a6387" title="Filter -- Load Filter Parameters.">LM_CMD_LFIL</a>);
+<a name="l00377"></a>00377         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, 0x0000 | <a class="code" href="lm629_8h.html#ccf342c05cd12fca5a3fdaa51855b8df">LM_LFIL_KP</a> | <a class="code" href="lm629_8h.html#d05122b606acedfd9e4c525b6492c028">LM_LFIL_KI</a> | <a class="code" href="lm629_8h.html#94774d37fd276c4b7d2917b6f7fa8139">LM_LFIL_KD</a> | <a class="code" href="lm629_8h.html#93cb979336e1f9e4f345c9b01c540da5">LM_LFIL_IL</a>);
+<a name="l00378"></a>00378         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, kp);
+<a name="l00379"></a>00379         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, ki);
+<a name="l00380"></a>00380         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, kd);
+<a name="l00381"></a>00381         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#687e26ac0b98cb5b317dc8503c9482e5" title="Integration Limit -- limite la contribution du terme intégrateur (doit être non...">DEFAULT_IL</a>);
+<a name="l00382"></a>00382 
+<a name="l00383"></a>00383         <span class="comment">// Application du filtre</span>
+<a name="l00384"></a>00384         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#7fc5d242ddbac5f0945ca93eebaad5cc" title="Filter -- Update Filter.">LM_CMD_UDF</a>);
+<a name="l00385"></a>00385 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_18cecfad364f842e6a71efbd459857df_cgraph.png" border="0" usemap="#lm629_8c_18cecfad364f842e6a71efbd459857df_cgraph_map" alt=""></center>
+<map name="lm629_8c_18cecfad364f842e6a71efbd459857df_cgraph_map">
+<area shape="rect" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="301,5,400,35"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="119,108,236,137"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="287,71,415,100"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="285,148,416,177"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="621,77,768,107"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="465,51,572,80"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="49e97890e5c9ab4f6fca2ba9ce33c885"></a><!-- doxytag: member="lm629.c::initLMs" ref="49e97890e5c9ab4f6fca2ba9ce33c885" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a> initLMs           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise les 2 LMs avec les paramètres par défaut. 
+<p>
+Cette fonction doit être appelée au moins une fois avant le chargement de la première trajectoire.<p>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>success renvoie <a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba82764c3079aea4e60c80e45befbb839">TRUE</a> en cas de succès et <a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba1e095cc966dbecf6a0d8aad75348d1a">FALSE</a> si une erreur est survenue </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00393"></a>00393                    {
+<a name="l00394"></a>00394         <a class="code" href="lm629_8c.html#18cecfad364f842e6a71efbd459857df" title="Initialise un LM, c&amp;#39;est-à-dire :Contrôle que le RESET s&amp;#39;est fait correctement...">initLM</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>, <a class="code" href="lm629_8h.html#0a0faa44632edd1da90cf562ec2f19e6" title="Paramètres par défault du correcteur.">DEFAULT_KP</a>, <a class="code" href="lm629_8h.html#4567b54152d2a9baae45716e3ab66d7c" title="Constante action intégrale.">DEFAULT_KI</a>, <a class="code" href="lm629_8h.html#133d0d1f063256087b0f0dde400926a6" title="Constante action dérivée.">DEFAULT_KD</a>);
+<a name="l00395"></a>00395         <a class="code" href="lm629_8c.html#18cecfad364f842e6a71efbd459857df" title="Initialise un LM, c&amp;#39;est-à-dire :Contrôle que le RESET s&amp;#39;est fait correctement...">initLM</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>, <a class="code" href="lm629_8h.html#0a0faa44632edd1da90cf562ec2f19e6" title="Paramètres par défault du correcteur.">DEFAULT_KP</a>, <a class="code" href="lm629_8h.html#4567b54152d2a9baae45716e3ab66d7c" title="Constante action intégrale.">DEFAULT_KI</a>, <a class="code" href="lm629_8h.html#133d0d1f063256087b0f0dde400926a6" title="Constante action dérivée.">DEFAULT_KD</a>);
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>, <a class="code" href="lm629_8h.html#94eec23916e3cb0c9054dd8f9b92b26f" title="Initialize -- Define Home.">LM_CMD_DFH</a>);
+<a name="l00398"></a>00398 
+<a name="l00399"></a>00399         <span class="keywordflow">return</span> (!<a class="code" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&amp;#39;état du LM.">readStatusBit</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>, <a class="code" href="lm629_8h.html#82baca2a5876592ab43532578564a601" title="Command Error [Interrupt].">LM_COMMAND_ERROR</a>) &amp;&amp; !<a class="code" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&amp;#39;état du LM.">readStatusBit</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>, <a class="code" href="lm629_8h.html#82baca2a5876592ab43532578564a601" title="Command Error [Interrupt].">LM_COMMAND_ERROR</a>));
+<a name="l00400"></a>00400 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_49e97890e5c9ab4f6fca2ba9ce33c885_cgraph.png" border="0" usemap="#lm629_8c_49e97890e5c9ab4f6fca2ba9ce33c885_cgraph_map" alt=""></center>
+<map name="lm629_8c_49e97890e5c9ab4f6fca2ba9ce33c885_cgraph_map">
+<area shape="rect" href="lm629_8c.html#18cecfad364f842e6a71efbd459857df" title="Initialise un LM, c&#39;est&#45;à&#45;dire :Contrôle que le RESET s&#39;est fait correctement..." alt="" coords="153,97,217,127"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="463,161,591,191"><area shape="rect" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&#39;état du LM." alt="" coords="127,19,244,48"><area shape="rect" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="304,5,403,35"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="295,109,412,139"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="461,108,592,137"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="797,83,944,112"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="641,108,748,137"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="928f6fe98ffaaa8f72282688bcc8d1cd"></a><!-- doxytag: member="lm629.c::isTrajComplete" ref="928f6fe98ffaaa8f72282688bcc8d1cd" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a> isTrajComplete           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Indique si la dernière trajectoire est terminée. 
+<p>
+Attention : cette fonction renvoie 1 dès que la trajectoire programmée est atteinte, ce qui signifie qu'en cas de dépassement (ce qui peut se produire si le correcteur est mal réglé par exemple), cette fonction peut renvoyer 1 alors même que le moteur continue à tourner. Ainsi, dans le cas d'un système pseudo-armorti, il n'est pas possible d'enchainer des trajectoires avec cette fonction et sans délais supplémentaire sans perdre drastiquement en précision.<p>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>done renvoie <a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba82764c3079aea4e60c80e45befbb839">TRUE</a> en si la trajectoire est terminée et <a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba1e095cc966dbecf6a0d8aad75348d1a">FALSE</a> sinon </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00620"></a>00620                           {
+<a name="l00621"></a>00621 <span class="comment">//      Delay10KTCYx(12);                                       // attends 120000 cycles, à 48 MHz / 4 = 10 ms</span>
+<a name="l00622"></a>00622 
+<a name="l00623"></a>00623         <span class="keywordflow">return</span> (<a class="code" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&amp;#39;état du LM.">readStatusBit</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>, <a class="code" href="lm629_8h.html#a66aad69eb7c3b5448bbd5025aed187a" title="Trajectory Complete [Interrupt].">LM_TRAJECTORY_COMPLETE</a>)
+<a name="l00624"></a>00624                 &amp;&amp; <a class="code" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&amp;#39;état du LM.">readStatusBit</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>, <a class="code" href="lm629_8h.html#a66aad69eb7c3b5448bbd5025aed187a" title="Trajectory Complete [Interrupt].">LM_TRAJECTORY_COMPLETE</a>));
+<a name="l00625"></a>00625 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_928f6fe98ffaaa8f72282688bcc8d1cd_cgraph.png" border="0" usemap="#lm629_8c_928f6fe98ffaaa8f72282688bcc8d1cd_cgraph_map" alt=""></center>
+<map name="lm629_8c_928f6fe98ffaaa8f72282688bcc8d1cd_cgraph_map">
+<area shape="rect" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&#39;état du LM." alt="" coords="183,5,300,35"><area shape="rect" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="351,5,449,35"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="656,5,803,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="500,31,607,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="f53f9dcb4f2401d3b013a07e63f8762d"></a><!-- doxytag: member="lm629.c::moveBackward" ref="f53f9dcb4f2401d3b013a07e63f8762d" args="(short pos, short vel, short acc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void moveBackward           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>acc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Recule. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>position à atteindre, en mm, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse max., en mm/s, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, en mm/s², sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00549"></a>00549                                                    {
+<a name="l00550"></a>00550         <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00551"></a>00551 
+<a name="l00552"></a>00552         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>,
+<a name="l00553"></a>00553                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) pos * <a class="code" href="lm629_8h.html#f2a4d3b56ba2d2b9acd784a68ff06c5e">COEF_RIGHT_WHEEL</a>), 
+<a name="l00554"></a>00554                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#0207d3ff367d6998a9cce42e6e537cd0">CONST_VEL</a>),
+<a name="l00555"></a>00555                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00556"></a>00556         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>,
+<a name="l00557"></a>00557                 - (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) pos * <a class="code" href="lm629_8h.html#0f774dfae4bfd44352cfcd445d00f572">COEF_LEFT_WHEEL</a>),
+<a name="l00558"></a>00558                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_LEFT_WHEEL * CONST_VEL),
+<a name="l00559"></a>00559                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_LEFT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00560"></a>00560 
+<a name="l00561"></a>00561         <a class="code" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée.">start</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00562"></a>00562 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_f53f9dcb4f2401d3b013a07e63f8762d_cgraph.png" border="0" usemap="#lm629_8c_f53f9dcb4f2401d3b013a07e63f8762d_cgraph_map" alt=""></center>
+<map name="lm629_8c_f53f9dcb4f2401d3b013a07e63f8762d_cgraph_map">
+<area shape="rect" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="193,112,300,141"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="188,59,305,88"><area shape="rect" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="221,5,272,35"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="356,59,484,88"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="355,112,485,141"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="691,85,837,115"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="535,85,641,115"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="bdba60aec4c9ae15e242fe1824ca4e5b"></a><!-- doxytag: member="lm629.c::moveForward" ref="bdba60aec4c9ae15e242fe1824ca4e5b" args="(short pos, short vel, short acc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void moveForward           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>acc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Avance. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>position à atteindre, en mm, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse max., en mm/s, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, en mm/s², sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00527"></a>00527                                                   {
+<a name="l00528"></a>00528         <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00529"></a>00529 
+<a name="l00530"></a>00530         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>,
+<a name="l00531"></a>00531                 - (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) pos * <a class="code" href="lm629_8h.html#f2a4d3b56ba2d2b9acd784a68ff06c5e">COEF_RIGHT_WHEEL</a>), 
+<a name="l00532"></a>00532                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#0207d3ff367d6998a9cce42e6e537cd0">CONST_VEL</a>),
+<a name="l00533"></a>00533                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00534"></a>00534         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>,
+<a name="l00535"></a>00535                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) pos * <a class="code" href="lm629_8h.html#0f774dfae4bfd44352cfcd445d00f572">COEF_LEFT_WHEEL</a>),
+<a name="l00536"></a>00536                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_LEFT_WHEEL * CONST_VEL),
+<a name="l00537"></a>00537                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_LEFT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00538"></a>00538 
+<a name="l00539"></a>00539         <a class="code" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée.">start</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00540"></a>00540 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_bdba60aec4c9ae15e242fe1824ca4e5b_cgraph.png" border="0" usemap="#lm629_8c_bdba60aec4c9ae15e242fe1824ca4e5b_cgraph_map" alt=""></center>
+<map name="lm629_8c_bdba60aec4c9ae15e242fe1824ca4e5b_cgraph_map">
+<area shape="rect" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="180,112,287,141"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="175,59,292,88"><area shape="rect" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="208,5,259,35"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="343,59,471,88"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="341,112,472,141"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="677,85,824,115"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="521,85,628,115"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="50cb02e459a813bf1d2d14a80d905a41"></a><!-- doxytag: member="lm629.c::newPosition" ref="50cb02e459a813bf1d2d14a80d905a41" args="(char axis, DWORD pos, DWORD vel, DWORD acc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void newPosition           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>acc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Programme une nouvelle position à atteindre. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à programmer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>position à atteindre, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse max., sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, sur 16 bits <br>
+ /!\ uniquement si l'on part d'une position à l'arrêt l'accélération ne peut pas être changée en court de trajectoire </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00416"></a>00416                                                              {
+<a name="l00417"></a>00417         <a class="code" href="union___d_w_o_r_d___v_a_l.html">DWORD_VAL</a> posData = {pos};
+<a name="l00418"></a>00418         <a class="code" href="union___d_w_o_r_d___v_a_l.html">DWORD_VAL</a> velData = {vel};
+<a name="l00419"></a>00419         <a class="code" href="union___d_w_o_r_d___v_a_l.html">DWORD_VAL</a> accData = {acc};
+<a name="l00420"></a>00420 
+<a name="l00421"></a>00421         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#9b3afc89ffd7438464c042e0d0752147" title="Trajectory -- Load Trajectory.">LM_CMD_LTRJ</a>);
+<a name="l00422"></a>00422 
+<a name="l00423"></a>00423         <span class="keywordflow">if</span> (accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#4919f510dcac6be2acec24a14020a162">Val</a> != <a class="code" href="_generic_type_defs_8h.html#070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {
+<a name="l00424"></a>00424                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#1e708cd1e6b100363999b58ec28da9c3">LM_LTRJ_LOAD_POS</a> | <a class="code" href="lm629_8h.html#b0d951dab43f8d113377678b5efa188e">LM_LTRJ_POS_REL</a> | <a class="code" href="lm629_8h.html#a5b03e6f436b0a0bcd96580066d7d1f3">LM_LTRJ_LOAD_VEL</a> | <a class="code" href="lm629_8h.html#a3be3ef647d69aaf3d25d1cf3fcdf614">LM_LTRJ_LOAD_ACC</a>);
+<a name="l00425"></a>00425                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#e329642eb1aff5886d2fe1bfc95e20ef">HW</a>);
+<a name="l00426"></a>00426                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#081f67fb9fb8b1148f3f7940638a73cd">LW</a>);
+<a name="l00427"></a>00427         }
+<a name="l00428"></a>00428         <span class="keywordflow">else</span>
+<a name="l00429"></a>00429                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#1e708cd1e6b100363999b58ec28da9c3">LM_LTRJ_LOAD_POS</a> | <a class="code" href="lm629_8h.html#b0d951dab43f8d113377678b5efa188e">LM_LTRJ_POS_REL</a> | <a class="code" href="lm629_8h.html#a5b03e6f436b0a0bcd96580066d7d1f3">LM_LTRJ_LOAD_VEL</a>);
+<a name="l00430"></a>00430 
+<a name="l00431"></a>00431         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, velData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#e329642eb1aff5886d2fe1bfc95e20ef">HW</a>);
+<a name="l00432"></a>00432         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, velData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#081f67fb9fb8b1148f3f7940638a73cd">LW</a>);
+<a name="l00433"></a>00433         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, posData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#e329642eb1aff5886d2fe1bfc95e20ef">HW</a>);
+<a name="l00434"></a>00434         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, posData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#081f67fb9fb8b1148f3f7940638a73cd">LW</a>);
+<a name="l00435"></a>00435 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_50cb02e459a813bf1d2d14a80d905a41_cgraph.png" border="0" usemap="#lm629_8c_50cb02e459a813bf1d2d14a80d905a41_cgraph_map" alt=""></center>
+<map name="lm629_8c_50cb02e459a813bf1d2d14a80d905a41_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="164,5,292,35"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="163,59,293,88"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="499,32,645,61"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="343,32,449,61"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="ecadba62e0d1041ce012f142027c9e8f"></a><!-- doxytag: member="lm629.c::newVelocity" ref="ecadba62e0d1041ce012f142027c9e8f" args="(char axis, DWORD vel, DWORD acc, char dir)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void newVelocity           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#d342ac907eb044443153a22f964bf0af">DWORD</a>&nbsp;</td>
+          <td class="paramname"> <em>acc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>dir</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Programme une nouvelle vitesse à atteindre. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à programmer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, sur 16 bits <br>
+ /!\ uniquement si l'on part d'une position à l'arrêt l'accélération ne peut pas être changée en court de trajectoire</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dir</em>&nbsp;</td><td>sens de rotation, peut valoir : <br>
+ <a class="el" href="lm629_8h.html#c47196e19ad296c963c7ffd1d906b6b9">LM_LTRJ_FORWARD_DIR</a> avance <br>
+ <a class="el" href="lm629_8h.html#f874d75feeff13d96887c6255c9c10ea">LM_LTRJ_BACKWARD_DIR</a> recule </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00454"></a>00454                                                             {
+<a name="l00455"></a>00455         <a class="code" href="union___d_w_o_r_d___v_a_l.html">DWORD_VAL</a> velData = {vel};
+<a name="l00456"></a>00456         <a class="code" href="union___d_w_o_r_d___v_a_l.html">DWORD_VAL</a> accData = {acc};
+<a name="l00457"></a>00457 
+<a name="l00458"></a>00458         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#9b3afc89ffd7438464c042e0d0752147" title="Trajectory -- Load Trajectory.">LM_CMD_LTRJ</a>);
+<a name="l00459"></a>00459 
+<a name="l00460"></a>00460         <span class="keywordflow">if</span> (accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#4919f510dcac6be2acec24a14020a162">Val</a> != <a class="code" href="_generic_type_defs_8h.html#070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {
+<a name="l00461"></a>00461                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#a5b03e6f436b0a0bcd96580066d7d1f3">LM_LTRJ_LOAD_VEL</a> | <a class="code" href="lm629_8h.html#a3be3ef647d69aaf3d25d1cf3fcdf614">LM_LTRJ_LOAD_ACC</a> | <a class="code" href="lm629_8h.html#15110b567dd31b5dd11703ff9772df58">LM_LTRJ_VEL_MODE</a> | dir);
+<a name="l00462"></a>00462                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#e329642eb1aff5886d2fe1bfc95e20ef">HW</a>);
+<a name="l00463"></a>00463                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, accData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#081f67fb9fb8b1148f3f7940638a73cd">LW</a>);
+<a name="l00464"></a>00464         }
+<a name="l00465"></a>00465         <span class="keywordflow">else</span>
+<a name="l00466"></a>00466                 <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, <a class="code" href="lm629_8h.html#a5b03e6f436b0a0bcd96580066d7d1f3">LM_LTRJ_LOAD_VEL</a> | <a class="code" href="lm629_8h.html#15110b567dd31b5dd11703ff9772df58">LM_LTRJ_VEL_MODE</a> | dir);
+<a name="l00467"></a>00467 
+<a name="l00468"></a>00468         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, velData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#e329642eb1aff5886d2fe1bfc95e20ef">HW</a>);
+<a name="l00469"></a>00469         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, velData.<a class="code" href="union___d_w_o_r_d___v_a_l.html#a685f58ffe0cfd4f85e5cc18bb359827">word</a>.<a class="code" href="union___d_w_o_r_d___v_a_l.html#081f67fb9fb8b1148f3f7940638a73cd">LW</a>);
+<a name="l00470"></a>00470 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_ecadba62e0d1041ce012f142027c9e8f_cgraph.png" border="0" usemap="#lm629_8c_ecadba62e0d1041ce012f142027c9e8f_cgraph_map" alt=""></center>
+<map name="lm629_8c_ecadba62e0d1041ce012f142027c9e8f_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="164,5,292,35"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="163,59,293,88"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="499,32,645,61"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="343,32,449,61"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="ec750313f79234101e43e09e3083b947"></a><!-- doxytag: member="lm629.c::readDataWord" ref="ec750313f79234101e43e09e3083b947" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> readDataWord           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lire un mot envoyé par le LM (un mot = 2 octets = 16 bits). 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Il n'est évidemment pas possible de lire 2 LMs simultanément, puisqu'ils partagent le même bus de donnée.</dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à lire, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>word le mot reçu, sur 16 bits </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00210"></a>00210                              {
+<a name="l00211"></a>00211         <a class="code" href="union___w_o_r_d___v_a_l.html">WORD_VAL</a> word;
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213         <a class="code" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés.">waitBusyLM</a>(axis);
+<a name="l00214"></a>00214         <a class="code" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée.">dataBusDirection</a>(<a class="code" href="lm629_8h.html#bebff40b775e10e37faa4ec7b45d6a89" title="Recevoir des données du LM.">DATA_IN</a>);
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>) {
+<a name="l00217"></a>00217                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00218"></a>00218                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 1;
+<a name="l00219"></a>00219         }
+<a name="l00220"></a>00220         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>) {
+<a name="l00221"></a>00221                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 1;
+<a name="l00222"></a>00222                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <a class="code" href="lm629_8h.html#ec9c2920a09a95964e4295686d5f6479">LM_PS</a> = <a class="code" href="lm629_8h.html#de83aa8327ccb5370aa5b24b1cb48973" title="Envoyer des données.">PS_DATA</a>;                                        <span class="comment">// attendre au moins 30 ns avant LM_READ = 0</span>
+<a name="l00226"></a>00226         Nop();                                                          <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00227"></a>00227         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 0;                                            <span class="comment">// attendre au moins 180 ns avant de lire le bus</span>
+<a name="l00228"></a>00228         Nop(); Nop(); Nop();                            <span class="comment">// attends 3 cycles, à 48 MHz / 4 = 250 ns (&gt; 180 ns)</span>
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230         word.<a class="code" href="union___w_o_r_d___v_a_l.html#cdce4917ed4b8de7a7a0c07f21a56141">byte</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#912b51805454255a794b26e6646c0cf1">HB</a> = <a class="code" href="lm629_8h.html#db2b9b062b4510149371b58af96e53c1">LM_DATA_BUS</a>;
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 1;                                            <span class="comment">// attendre au moins 120 ns avant LM_READ = 0</span>
+<a name="l00233"></a>00233         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00234"></a>00234         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 0;                                            <span class="comment">// attendre au moins 180 ns avant de lire le bus</span>
+<a name="l00235"></a>00235         Nop(); Nop(); Nop();                            <span class="comment">// attends 3 cycles, à 48 MHz / 4 = 250 ns (&gt; 180 ns)</span>
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237         word.<a class="code" href="union___w_o_r_d___v_a_l.html#cdce4917ed4b8de7a7a0c07f21a56141">byte</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#a012d9c31fb3018cbe4d6a5052d98f51">LB</a> = <a class="code" href="lm629_8h.html#db2b9b062b4510149371b58af96e53c1">LM_DATA_BUS</a>;
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 1;                                            <span class="comment">// attendre au moins 30 ns avant une autre action</span>
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241         <span class="keywordflow">return</span> word.<a class="code" href="union___w_o_r_d___v_a_l.html#3b0f626d2e15ff5aa21804dd598d23c9">Val</a>;
+<a name="l00242"></a>00242 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_ec750313f79234101e43e09e3083b947_cgraph.png" border="0" usemap="#lm629_8c_ec750313f79234101e43e09e3083b947_cgraph_map" alt=""></center>
+<map name="lm629_8c_ec750313f79234101e43e09e3083b947_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="341,5,488,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="185,31,292,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="87c455cfb4cbd87a3de45fd9f38a1b45"></a><!-- doxytag: member="lm629.c::readStatus" ref="87c455cfb4cbd87a3de45fd9f38a1b45" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> readStatus           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lire l'état d'un LM. 
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Il n'est évidemment pas possible de lire l'état de 2 LMs simultanément, puisqu'ils partagent le même bus de donnée.</dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à lire, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>status l'état du LM, sur 8 bits </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00255"></a>00255                            {
+<a name="l00256"></a>00256         <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> status = 0;
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258         <a class="code" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés.">waitBusyLM</a>(axis);
+<a name="l00259"></a>00259         <a class="code" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée.">dataBusDirection</a>(<a class="code" href="lm629_8h.html#bebff40b775e10e37faa4ec7b45d6a89" title="Recevoir des données du LM.">DATA_IN</a>);
+<a name="l00260"></a>00260 
+<a name="l00261"></a>00261         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>) {
+<a name="l00262"></a>00262                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00263"></a>00263                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 1;
+<a name="l00264"></a>00264         }
+<a name="l00265"></a>00265         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>) {
+<a name="l00266"></a>00266                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 1;
+<a name="l00267"></a>00267                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00268"></a>00268         }
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270         <a class="code" href="lm629_8h.html#ec9c2920a09a95964e4295686d5f6479">LM_PS</a> = <a class="code" href="lm629_8h.html#e3fd2e7e29e99a5b6b5457acc1c99bec" title="Envoyer une commande.">PS_COMMAND</a>;                                     <span class="comment">// attendre au moins 30 ns avant LM_READ = 0</span>
+<a name="l00271"></a>00271         Nop();                                                          <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00272"></a>00272         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 0;                                            <span class="comment">// attendre au moins 180 ns avant de lire le bus</span>
+<a name="l00273"></a>00273         Nop(); Nop(); Nop();                            <span class="comment">// attends 3 cycles, à 48 MHz / 4 = 250 ns (&gt; 180 ns)</span>
+<a name="l00274"></a>00274 
+<a name="l00275"></a>00275         status = <a class="code" href="lm629_8h.html#db2b9b062b4510149371b58af96e53c1">LM_DATA_BUS</a>;
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 1;                                            <span class="comment">// attendre au moins 30 ns avant une autre action</span>
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279         <span class="keywordflow">return</span> status;
+<a name="l00280"></a>00280 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_87c455cfb4cbd87a3de45fd9f38a1b45_cgraph.png" border="0" usemap="#lm629_8c_87c455cfb4cbd87a3de45fd9f38a1b45_cgraph_map" alt=""></center>
+<map name="lm629_8c_87c455cfb4cbd87a3de45fd9f38a1b45_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="312,5,459,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="156,31,263,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="e3ef6f2f44349bc4e6af34671b6aa4aa"></a><!-- doxytag: member="lm629.c::readStatusBit" ref="e3ef6f2f44349bc4e6af34671b6aa4aa" args="(char axis, BYTE type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#54d65c7fa62e62c9754371e42f5111b9">BOOL</a> readStatusBit           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lire un bit d'état du LM. 
+<p>
+Cette fonction appelle simplement <a class="el" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM.">readStatus()</a> et applique le masque correspondant au bit à lire.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à lire, peut valoir : <br>
+ MOTOR_RIGH le moteur de droite <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bit</em>&nbsp;</td><td>le bit à lire, peut valoir : <br>
+ <a class="el" href="lm629_8h.html#d040c9625454795ba4245f5521dbaa33" title="Busy bit.">LM_BUSY_BIT</a> Busy bit <br>
+ <a class="el" href="lm629_8h.html#82baca2a5876592ab43532578564a601" title="Command Error [Interrupt].">LM_COMMAND_ERROR</a> Command Error [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#a66aad69eb7c3b5448bbd5025aed187a" title="Trajectory Complete [Interrupt].">LM_TRAJECTORY_COMPLETE</a> Trajectory Complete [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#f7cef48ae625eba691c0ff5d3fe6dd46" title="Index Pulse Observed [Interrupt].">LM_INDEX_PULSE</a> Index Pulse Observed [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#174763b102c266abb86decf9bde37c18" title="Wraparound Occurred [Interrupt].">LM_WRAP_AROUND</a> Wraparound Occurred [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#7f032c01af6c13ef1b4c2237498abe5a" title="Excessive Position Error [Interrupt].">LM_POSITION_ERROR</a> Excessive Position Error [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#2262b091449d594fa1ebe5f704794da1" title="Breakpoint Reached [Interrupt].">LM_BREAKPOINT</a> Breakpoint Reached [Interrupt] <br>
+ <a class="el" href="lm629_8h.html#d86512740662c4075c38599969e2cc8d" title="Motor Off.">LM_MOTOR_OFF</a> Motor Off</td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>value la valeur du bit, 0 (<a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>) ou 1 (<a class="el" href="_generic_type_defs_8h.html#fbf708854fe02af8475a9ba02f3196cba82764c3079aea4e60c80e45befbb839">TRUE</a>). </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00303"></a>00303                                          {
+<a name="l00304"></a>00304         <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> status = 0;
+<a name="l00305"></a>00305 
+<a name="l00306"></a>00306         status = <a class="code" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&amp;#39;état d&amp;#39;un LM.">readStatus</a>(axis);
+<a name="l00307"></a>00307         status = (status &amp; type);
+<a name="l00308"></a>00308 
+<a name="l00309"></a>00309         <span class="keywordflow">if</span> (status != 0)
+<a name="l00310"></a>00310                 <span class="keywordflow">return</span> 1;
+<a name="l00311"></a>00311         <span class="keywordflow">else</span>
+<a name="l00312"></a>00312                 <span class="keywordflow">return</span> 0;
+<a name="l00313"></a>00313 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_e3ef6f2f44349bc4e6af34671b6aa4aa_cgraph.png" border="0" usemap="#lm629_8c_e3ef6f2f44349bc4e6af34671b6aa4aa_cgraph_map" alt=""></center>
+<map name="lm629_8c_e3ef6f2f44349bc4e6af34671b6aa4aa_cgraph_map">
+<area shape="rect" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="175,5,273,35"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="480,5,627,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="324,31,431,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="3917d5827bfa6cc17f4e1a47ff073248"></a><!-- doxytag: member="lm629.c::resetInterrupt" ref="3917d5827bfa6cc17f4e1a47ff073248" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void resetInterrupt           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reset les bits d'interruption du/des LM(s). 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à programmer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00323"></a>00323                                {
+<a name="l00324"></a>00324         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#0a34e8c681d4361f7793d18ff1173150" title="Interrupt -- Reset Interrupts.">LM_CMD_RSTI</a>);
+<a name="l00325"></a>00325         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, 0x0000);
+<a name="l00326"></a>00326 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_3917d5827bfa6cc17f4e1a47ff073248_cgraph.png" border="0" usemap="#lm629_8c_3917d5827bfa6cc17f4e1a47ff073248_cgraph_map" alt=""></center>
+<map name="lm629_8c_3917d5827bfa6cc17f4e1a47ff073248_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="175,5,303,35"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="173,59,304,88"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="509,32,656,61"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="353,32,460,61"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="adb0186b6cbfbfe2f37d6e5d64284499"></a><!-- doxytag: member="lm629.c::start" ref="adb0186b6cbfbfe2f37d6e5d64284499" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void start           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Démarre la trajectoire programmée. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à démarrer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00497"></a>00497                       {
+<a name="l00498"></a>00498         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#56f443b5bde869da30fa77059347be56" title="Trajectory -- Start Motion.">LM_CMD_STT</a>);
+<a name="l00499"></a>00499 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_adb0186b6cbfbfe2f37d6e5d64284499_cgraph.png" border="0" usemap="#lm629_8c_adb0186b6cbfbfe2f37d6e5d64284499_cgraph_map" alt=""></center>
+<map name="lm629_8c_adb0186b6cbfbfe2f37d6e5d64284499_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="108,5,236,35"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="443,5,589,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="287,31,393,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="8923736db73fa9668b246c31b6bacd70"></a><!-- doxytag: member="lm629.c::stop" ref="8923736db73fa9668b246c31b6bacd70" args="(char axis, WORD type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Arrête le/les moteur(s). 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à démarrer, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>type d'arrêt, peut valoir : <br>
+ <a class="el" href="lm629_8h.html#1f18d097c255274fb73dd70ae6de7a93">LM_LTRJ_MOTOR_OFF</a> arrêt en roue libre <br>
+ <a class="el" href="lm629_8h.html#adf2ce3f3e39fab47814f57bd5f394a0">LM_LTRJ_STOP_ABRUPT</a> arrêt brutale <br>
+ <a class="el" href="lm629_8h.html#129ba2f09e0740800cfe76adce26b6d9">LM_LTRJ_STOP_SMOOTH</a> arrêt doux </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00514"></a>00514                                 {
+<a name="l00515"></a>00515         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#9b3afc89ffd7438464c042e0d0752147" title="Trajectory -- Load Trajectory.">LM_CMD_LTRJ</a>);
+<a name="l00516"></a>00516         <a class="code" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord</a>(axis, type);
+<a name="l00517"></a>00517         <a class="code" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand</a>(axis, <a class="code" href="lm629_8h.html#56f443b5bde869da30fa77059347be56" title="Trajectory -- Start Motion.">LM_CMD_STT</a>);
+<a name="l00518"></a>00518 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_8923736db73fa9668b246c31b6bacd70_cgraph.png" border="0" usemap="#lm629_8c_8923736db73fa9668b246c31b6bacd70_cgraph_map" alt=""></center>
+<map name="lm629_8c_8923736db73fa9668b246c31b6bacd70_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="108,5,236,35"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="107,59,237,88"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="443,32,589,61"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="287,32,393,61"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="f72df7582ddf637a05b2de0e420656bf"></a><!-- doxytag: member="lm629.c::turnLeft" ref="f72df7582ddf637a05b2de0e420656bf" args="(short angle, short vel, short acc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void turnLeft           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>acc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Tourne vers la gauche. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>angle de rotation par rapport à la direction initiale du robot, en °, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse max., en mm/s, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, en mm/s², sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00593"></a>00593                                                  {
+<a name="l00594"></a>00594         <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00595"></a>00595 
+<a name="l00596"></a>00596         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>,
+<a name="l00597"></a>00597                 - (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) angle * <a class="code" href="lm629_8h.html#d6dd1039b9e339057dfdf6707103e4f1">CONST_POS</a> * <a class="code" href="lm629_8h.html#7a32722a170545438e63331dec716db9" title="Distance entre les 2 roues (en mm).">WHEELS_DIST</a> * <a class="code" href="lm629_8h.html#f2a4d3b56ba2d2b9acd784a68ff06c5e">COEF_RIGHT_WHEEL</a>), 
+<a name="l00598"></a>00598                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#0207d3ff367d6998a9cce42e6e537cd0">CONST_VEL</a>),
+<a name="l00599"></a>00599                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00600"></a>00600         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>,
+<a name="l00601"></a>00601                 - (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) angle * <a class="code" href="lm629_8h.html#d6dd1039b9e339057dfdf6707103e4f1">CONST_POS</a> * <a class="code" href="lm629_8h.html#7a32722a170545438e63331dec716db9" title="Distance entre les 2 roues (en mm).">WHEELS_DIST</a> * <a class="code" href="lm629_8h.html#0f774dfae4bfd44352cfcd445d00f572">COEF_LEFT_WHEEL</a>),
+<a name="l00602"></a>00602                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_LEFT_WHEEL * CONST_VEL),
+<a name="l00603"></a>00603                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_LEFT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00604"></a>00604 
+<a name="l00605"></a>00605         <a class="code" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée.">start</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00606"></a>00606 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_f72df7582ddf637a05b2de0e420656bf_cgraph.png" border="0" usemap="#lm629_8c_f72df7582ddf637a05b2de0e420656bf_cgraph_map" alt=""></center>
+<map name="lm629_8c_f72df7582ddf637a05b2de0e420656bf_cgraph_map">
+<area shape="rect" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="137,112,244,141"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="132,59,249,88"><area shape="rect" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="165,5,216,35"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="300,59,428,88"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="299,112,429,141"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="635,85,781,115"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="479,85,585,115"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="f1b311aa12043bf3b42a8739e7026d84"></a><!-- doxytag: member="lm629.c::turnRight" ref="f1b311aa12043bf3b42a8739e7026d84" args="(short angle, short vel, short acc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void turnRight           </td>
+          <td>(</td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>vel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&nbsp;</td>
+          <td class="paramname"> <em>acc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Tourne vers la droite. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>angle de rotation par rapport à la direction initiale du robot, en °, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vel</em>&nbsp;</td><td>vitesse max., en mm/s, sur 16 bits </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>acc</em>&nbsp;</td><td>accélération, en mm/s², sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00571"></a>00571                                                   {
+<a name="l00572"></a>00572         <a class="code" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&amp;#39;interruption du/des LM(s).">resetInterrupt</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00573"></a>00573 
+<a name="l00574"></a>00574         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>,
+<a name="l00575"></a>00575                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) angle * <a class="code" href="lm629_8h.html#d6dd1039b9e339057dfdf6707103e4f1">CONST_POS</a> * <a class="code" href="lm629_8h.html#7a32722a170545438e63331dec716db9" title="Distance entre les 2 roues (en mm).">WHEELS_DIST</a> * <a class="code" href="lm629_8h.html#f2a4d3b56ba2d2b9acd784a68ff06c5e">COEF_RIGHT_WHEEL</a>), 
+<a name="l00576"></a>00576                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#0207d3ff367d6998a9cce42e6e537cd0">CONST_VEL</a>),
+<a name="l00577"></a>00577                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_RIGHT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00578"></a>00578         <a class="code" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre.">newPosition</a>(<a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>,
+<a name="l00579"></a>00579                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) angle * <a class="code" href="lm629_8h.html#d6dd1039b9e339057dfdf6707103e4f1">CONST_POS</a> * <a class="code" href="lm629_8h.html#7a32722a170545438e63331dec716db9" title="Distance entre les 2 roues (en mm).">WHEELS_DIST</a> * <a class="code" href="lm629_8h.html#0f774dfae4bfd44352cfcd445d00f572">COEF_LEFT_WHEEL</a>),
+<a name="l00580"></a>00580                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) vel * COEF_LEFT_WHEEL * CONST_VEL),
+<a name="l00581"></a>00581                 (<span class="keywordtype">long</span>) ((<span class="keywordtype">float</span>) acc * COEF_LEFT_WHEEL * <a class="code" href="lm629_8h.html#cb83aa519abc3716d6cfa893d4cff90b">CONST_ACC</a>));
+<a name="l00582"></a>00582 
+<a name="l00583"></a>00583         <a class="code" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée.">start</a>(<a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>);
+<a name="l00584"></a>00584 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_f1b311aa12043bf3b42a8739e7026d84_cgraph.png" border="0" usemap="#lm629_8c_f1b311aa12043bf3b42a8739e7026d84_cgraph_map" alt=""></center>
+<map name="lm629_8c_f1b311aa12043bf3b42a8739e7026d84_cgraph_map">
+<area shape="rect" href="lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="148,112,255,141"><area shape="rect" href="lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="143,59,260,88"><area shape="rect" href="lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="176,5,227,35"><area shape="rect" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="311,59,439,88"><area shape="rect" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="309,112,440,141"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="645,85,792,115"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="489,85,596,115"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="89cbdf56bf6a423f871db85d9b25b7ba"></a><!-- doxytag: member="lm629.c::waitBusyLM" ref="89cbdf56bf6a423f871db85d9b25b7ba" args="(char axis)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void waitBusyLM           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Attends que le ou les LM(s) ne soient plus occupés. 
+<p>
+Cette fonction est appelée en interne dans <a class="el" href="lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s).">writeCommand()</a>, <a class="el" href="lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits).">writeDataWord()</a>, <a class="el" href="lm629_8c.html#ec750313f79234101e43e09e3083b947" title="Lire un mot envoyé par le LM (un mot = 2 octets = 16 bits).">readDataWord()</a> et <a class="el" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM.">readStatus()</a>. Il n'est donc pas nécessaire de l'appeler avant d'utiliser l'une de ces fonctions et vous ne devriez en fait jamais devoir l'appeler.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM que l'on veut attendre, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs, on attends donc que les 2 LMs ne soient plus occupés </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043                            {
+<a name="l00044"></a>00044         <span class="keywordtype">char</span> busy_bit;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <a class="code" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée.">dataBusDirection</a>(<a class="code" href="lm629_8h.html#bebff40b775e10e37faa4ec7b45d6a89" title="Recevoir des données du LM.">DATA_IN</a>);
+<a name="l00047"></a>00047         <a class="code" href="lm629_8h.html#ec9c2920a09a95964e4295686d5f6479">LM_PS</a> = <a class="code" href="lm629_8h.html#e3fd2e7e29e99a5b6b5457acc1c99bec" title="Envoyer une commande.">PS_COMMAND</a>;                                     <span class="comment">// attendre au moins 30 ns avant LM_READ = 0</span>
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049         <span class="comment">// La durée d'attente ne devrait pas excéder 100 us</span>
+<a name="l00050"></a>00050         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> || axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00051"></a>00051                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00052"></a>00052                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 1;                                             <span class="comment">// attendre au moins 30 ns avant LM_READ = 0</span>
+<a name="l00053"></a>00053                 Nop();                                                  <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055                 <span class="keywordflow">do</span> {
+<a name="l00056"></a>00056                         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 0;                                            <span class="comment">// attendre au moins 180 ns avant de lire le bus</span>
+<a name="l00057"></a>00057                         Nop(); Nop(); Nop();                            <span class="comment">// attends 3 cycles, à 48 MHz / 4 = 250 ns (&gt; 180 ns)</span>
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059                         busy_bit = <a class="code" href="lm629_8h.html#409b530bd16741bc75f7516c61d6e1b8">LM_D0</a>;
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061                         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 1;                                            <span class="comment">// attendre au moins 120 ns avant LM_READ = 0</span>
+<a name="l00062"></a>00062                         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00063"></a>00063                 }
+<a name="l00064"></a>00064                 <span class="keywordflow">while</span> (busy_bit == 1);
+<a name="l00065"></a>00065         }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="comment">// La durée d'attente ne devrait pas excéder 100 us</span>
+<a name="l00068"></a>00068         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> || axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00069"></a>00069                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 1;
+<a name="l00070"></a>00070                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;                                             <span class="comment">// attendre au moins 30 ns avant LM_READ = 0</span>
+<a name="l00071"></a>00071                 Nop();                                                  <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073                 <span class="keywordflow">do</span> {
+<a name="l00074"></a>00074                         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 0;                                            <span class="comment">// attendre au moins 180 ns avant de lire le bus</span>
+<a name="l00075"></a>00075                         Nop(); Nop(); Nop();                            <span class="comment">// attends 3 cycles, à 48 MHz / 4 = 250 ns (&gt; 180 ns)</span>
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077                         busy_bit = <a class="code" href="lm629_8h.html#409b530bd16741bc75f7516c61d6e1b8">LM_D0</a>;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079                         <a class="code" href="lm629_8h.html#9b922daf8fe163941ff86c04e1e6c9b0">LM_READ</a> = 1;                                            <span class="comment">// attendre au moins 120 ns avant LM_READ = 0</span>
+<a name="l00080"></a>00080                         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00081"></a>00081                 }
+<a name="l00082"></a>00082                 <span class="keywordflow">while</span> (busy_bit == 1);
+<a name="l00083"></a>00083         }
+<a name="l00084"></a>00084 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_89cbdf56bf6a423f871db85d9b25b7ba_cgraph.png" border="0" usemap="#lm629_8c_89cbdf56bf6a423f871db85d9b25b7ba_cgraph_map" alt=""></center>
+<map name="lm629_8c_89cbdf56bf6a423f871db85d9b25b7ba_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="163,5,309,35"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="0d4260799cdc0b7d43ff0bce6bc77c2a"></a><!-- doxytag: member="lm629.c::waitTrajComplete" ref="0d4260799cdc0b7d43ff0bce6bc77c2a" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void waitTrajComplete           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Attend la fin de la trajectoire en court. 
+<p>
+Même remarque que pour la fonction <a class="el" href="lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd" title="Indique si la dernière trajectoire est terminée.">isTrajComplete()</a>. <dl class="attention" compact><dt><b>Attention:</b></dt><dd>Cette fonction bloque entièrement le PIC durant toute la durée d'attente de fin de trajectoire. Il est préférable d'utiliser la fonction <a class="el" href="lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd" title="Indique si la dernière trajectoire est terminée.">isTrajComplete()</a> pour venir vérifier à intervalles réguliers si la trajectoire est complétée ou non, tout en permettant au programme de tourner le reste du temps. </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00635"></a>00635                             {
+<a name="l00636"></a>00636         <span class="keywordflow">while</span> (!<a class="code" href="lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd" title="Indique si la dernière trajectoire est terminée.">isTrajComplete</a>());
+<a name="l00637"></a>00637 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_0d4260799cdc0b7d43ff0bce6bc77c2a_cgraph.png" border="0" usemap="#lm629_8c_0d4260799cdc0b7d43ff0bce6bc77c2a_cgraph_map" alt=""></center>
+<map name="lm629_8c_0d4260799cdc0b7d43ff0bce6bc77c2a_cgraph_map">
+<area shape="rect" href="lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd" title="Indique si la dernière trajectoire est terminée." alt="" coords="197,5,325,35"><area shape="rect" href="lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&#39;état du LM." alt="" coords="375,5,492,35"><area shape="rect" href="lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="543,5,641,35"><area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="848,5,995,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="692,31,799,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="6fa7a38bcd0eeb3fb9c107702f73f516"></a><!-- doxytag: member="lm629.c::writeCommand" ref="6fa7a38bcd0eeb3fb9c107702f73f516" args="(char axis, BYTE command)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void writeCommand           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td>
+          <td class="paramname"> <em>command</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Envoie une commande à/aux LM(s). 
+<p>
+Il est possible d'envoyer une même commande aux 2 LMs simultanément.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à atteindre, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>command</em>&nbsp;</td><td>la commande à envoyer, peut valoir : <br>
+ LM_CMD_* une des constante commande du LM </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00098"></a>00098                                            {
+<a name="l00099"></a>00099         <a class="code" href="union___b_y_t_e___v_a_l.html">BYTE_VAL</a> cmd = {command};
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <a class="code" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés.">waitBusyLM</a>(axis);
+<a name="l00102"></a>00102         <a class="code" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée.">dataBusDirection</a>(<a class="code" href="lm629_8h.html#bfb497db759edfde127952c40722ddf3" title="Envoyer des données vers le LM.">DATA_OUT</a>);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>) {
+<a name="l00105"></a>00105                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00106"></a>00106                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 1;
+<a name="l00107"></a>00107         }
+<a name="l00108"></a>00108         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>) {
+<a name="l00109"></a>00109                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 1;
+<a name="l00110"></a>00110                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00113"></a>00113                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00114"></a>00114                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00115"></a>00115         }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117         <a class="code" href="lm629_8h.html#ec9c2920a09a95964e4295686d5f6479">LM_PS</a> = <a class="code" href="lm629_8h.html#e3fd2e7e29e99a5b6b5457acc1c99bec" title="Envoyer une commande.">PS_COMMAND</a>;                                     <span class="comment">// attendre au moins 30 ns avant LM_WRITE = 0</span>
+<a name="l00118"></a>00118         Nop();                                                          <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00119"></a>00119         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 0;                                           <span class="comment">// doit rester à 0 pendant au moins 100 ns</span>
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <a class="code" href="lm629_8h.html#409b530bd16741bc75f7516c61d6e1b8">LM_D0</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#dfc3463e000550dc137d6c843fae8ca9">b0</a>;
+<a name="l00122"></a>00122         <a class="code" href="lm629_8h.html#e0c1457c34f6e542249dffef54296771">LM_D1</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#a98264748eaa529787556702f7e5ba7e">b1</a>;
+<a name="l00123"></a>00123         <a class="code" href="lm629_8h.html#db58e342f5b0080b1463451671619452">LM_D2</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#3859845d15eda165e2921b42febed358">b2</a>;
+<a name="l00124"></a>00124         <a class="code" href="lm629_8h.html#f0633c70375e2f6968aa9a8009edeca4">LM_D3</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#58d5041f61693591756bfd89006f9551">b3</a>;
+<a name="l00125"></a>00125         <a class="code" href="lm629_8h.html#4cb00c1f7d95bafa95aae32164ec658d">LM_D4</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#46fe5fb854ee15040858cd074311f747">b4</a>;
+<a name="l00126"></a>00126         <a class="code" href="lm629_8h.html#ecd9cbaf0facf83921a39e3f5224459d">LM_D5</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#88fbd2bf174801ac7c2a3e14198d06f4">b5</a>;
+<a name="l00127"></a>00127         <a class="code" href="lm629_8h.html#14045dd11badb03089fdf89bcecb4e9d">LM_D6</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#da25eec4b3fa53686c8943c1513688df">b6</a>;
+<a name="l00128"></a>00128         <a class="code" href="lm629_8h.html#e17f35f8b23f07e2f9c827cb7e1c33a0">LM_D7</a> = cmd.<a class="code" href="union___b_y_t_e___v_a_l.html#e19260ddc6341ad9d36c88c6cef29209">bits</a>.<a class="code" href="union___b_y_t_e___v_a_l.html#60220f7aaf248081cf6e4476e1ecc4f3">b7</a>;                            <span class="comment">// attendre au moins 50 ns avant LM_WRITE = 1</span>
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 100 ns + 50 ns)</span>
+<a name="l00131"></a>00131         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 1;                                           <span class="comment">// attendre au moins 30 ns avant LM_PS = PS_DATA + attendre au moins 120 ns avant de changer les données</span>
+<a name="l00132"></a>00132         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00133"></a>00133 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_6fa7a38bcd0eeb3fb9c107702f73f516_cgraph.png" border="0" usemap="#lm629_8c_6fa7a38bcd0eeb3fb9c107702f73f516_cgraph_map" alt=""></center>
+<map name="lm629_8c_6fa7a38bcd0eeb3fb9c107702f73f516_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="341,5,488,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="185,31,292,60"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="151178ea603ed04beaa1ba4151496878"></a><!-- doxytag: member="lm629.c::writeDataWord" ref="151178ea603ed04beaa1ba4151496878" args="(char axis, WORD data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void writeDataWord           </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>axis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Envoie un mot au LM (un mot = 2 octets = 16 bits). 
+<p>
+Il est possible d'envoyer un même mot aux 2 LMs simultanément.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>axis</em>&nbsp;</td><td>l'axe moteur correspondant au LM à atteindre, peut valoir : <br>
+ <a class="el" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a> le moteur de droite uniquement <br>
+ <a class="el" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a> le moteur de gauche uniquement <br>
+ <a class="el" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a> les 2 moteurs</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>word</em>&nbsp;</td><td>le mot à envoyer, sur 16 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00146"></a>00146                                          {
+<a name="l00147"></a>00147         <a class="code" href="union___w_o_r_d___v_a_l.html">WORD_VAL</a> word = {data};
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149         <a class="code" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés.">waitBusyLM</a>(axis);
+<a name="l00150"></a>00150         <a class="code" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée.">dataBusDirection</a>(<a class="code" href="lm629_8h.html#bfb497db759edfde127952c40722ddf3" title="Envoyer des données vers le LM.">DATA_OUT</a>);
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#9eff471d17bc68f18b14ff75f23aa3bc" title="Sélection du moteur de droite (moteur 1).">MOTOR_RIGHT</a>) {
+<a name="l00153"></a>00153                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00154"></a>00154                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 1;
+<a name="l00155"></a>00155         }
+<a name="l00156"></a>00156         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#0e2d750df9008232cafa398d2424b778" title="Sélection du moteur de gauche (moteur 2).">MOTOR_LEFT</a>) {
+<a name="l00157"></a>00157                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 1;
+<a name="l00158"></a>00158                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00159"></a>00159         }
+<a name="l00160"></a>00160         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (axis == <a class="code" href="motor_8h.html#327dd27b4e08cc7c38cb5d48d55dac7c" title="Sélection des 2 moteurs simultanément.">MOTOR_BOTH</a>) {
+<a name="l00161"></a>00161                 <a class="code" href="lm629_8h.html#d2c0f212270a2a4cc1d35cb5e5358fa7">LM_CS1</a> = 0;
+<a name="l00162"></a>00162                 <a class="code" href="lm629_8h.html#929000e38340f0ad31f92dd1eccd97ff">LM_CS2</a> = 0;
+<a name="l00163"></a>00163         }
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <a class="code" href="lm629_8h.html#ec9c2920a09a95964e4295686d5f6479">LM_PS</a> = <a class="code" href="lm629_8h.html#de83aa8327ccb5370aa5b24b1cb48973" title="Envoyer des données.">PS_DATA</a>;                                        <span class="comment">// attendre au moins 30 ns avant LM_WRITE = 0</span>
+<a name="l00166"></a>00166         Nop();                                                          <span class="comment">// attends 1 cycle, à 48 MHz / 4 = 83.3 ns (&gt; 30 ns)</span>
+<a name="l00167"></a>00167         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 0;                                           <span class="comment">// doit rester à 0 pendant au moins 100 ns</span>
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <span class="comment">// On transfert l'octet de poids fort en premier</span>
+<a name="l00170"></a>00170         <a class="code" href="lm629_8h.html#409b530bd16741bc75f7516c61d6e1b8">LM_D0</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#e322f2039328377b564663b2a91b8923">b8</a>;
+<a name="l00171"></a>00171         <a class="code" href="lm629_8h.html#e0c1457c34f6e542249dffef54296771">LM_D1</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#3183066a4a5cdada55336ad5d6a7637b">b9</a>;
+<a name="l00172"></a>00172         <a class="code" href="lm629_8h.html#db58e342f5b0080b1463451671619452">LM_D2</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#51b4a6a3fc052e4e18551a229d74104a">b10</a>;
+<a name="l00173"></a>00173         <a class="code" href="lm629_8h.html#f0633c70375e2f6968aa9a8009edeca4">LM_D3</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#ed3264e8cef619c077bd51e54f8e8247">b11</a>;
+<a name="l00174"></a>00174         <a class="code" href="lm629_8h.html#4cb00c1f7d95bafa95aae32164ec658d">LM_D4</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#4f11e54b4739f3a36697add7239213ac">b12</a>;
+<a name="l00175"></a>00175         <a class="code" href="lm629_8h.html#ecd9cbaf0facf83921a39e3f5224459d">LM_D5</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#8351b58d43fd5f1cf8a899b5c3f86cc3">b13</a>;
+<a name="l00176"></a>00176         <a class="code" href="lm629_8h.html#14045dd11badb03089fdf89bcecb4e9d">LM_D6</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#1c39a273a020342a48b3b72c91f0bf60">b14</a>;
+<a name="l00177"></a>00177         <a class="code" href="lm629_8h.html#e17f35f8b23f07e2f9c827cb7e1c33a0">LM_D7</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#e383c4b1f9c1bdb7ccb8ca77f6b1f6b3">b15</a>;                          <span class="comment">// attendre au moins 50 ns avant LM_WRITE = 1</span>
+<a name="l00178"></a>00178 
+<a name="l00179"></a>00179         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 100 ns + 50 ns)</span>
+<a name="l00180"></a>00180         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 1;                                           <span class="comment">// attendre au moins 120 ns avant LM_WRITE = 0</span>
+<a name="l00181"></a>00181         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00182"></a>00182         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 0;                                           <span class="comment">// doit rester à 0 pendant au moins 100 ns</span>
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184         <span class="comment">// On transfert l'octet de poids faible en second</span>
+<a name="l00185"></a>00185         <a class="code" href="lm629_8h.html#409b530bd16741bc75f7516c61d6e1b8">LM_D0</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#ca395247f98b217aa47606ebc9e4ece5">b0</a>;
+<a name="l00186"></a>00186         <a class="code" href="lm629_8h.html#e0c1457c34f6e542249dffef54296771">LM_D1</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#ac719f227481ce215d17c0aa01dc3489">b1</a>;
+<a name="l00187"></a>00187         <a class="code" href="lm629_8h.html#db58e342f5b0080b1463451671619452">LM_D2</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#0800a0353cb700029d8948c2a6eed9ce">b2</a>;
+<a name="l00188"></a>00188         <a class="code" href="lm629_8h.html#f0633c70375e2f6968aa9a8009edeca4">LM_D3</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#22ab538f4c1104a386e03ca814829931">b3</a>;
+<a name="l00189"></a>00189         <a class="code" href="lm629_8h.html#4cb00c1f7d95bafa95aae32164ec658d">LM_D4</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#7b2fb071625983d4cedbb99d4e09bad3">b4</a>;
+<a name="l00190"></a>00190         <a class="code" href="lm629_8h.html#ecd9cbaf0facf83921a39e3f5224459d">LM_D5</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#6d8402e2dba294732cb7d087386b4701">b5</a>;
+<a name="l00191"></a>00191         <a class="code" href="lm629_8h.html#14045dd11badb03089fdf89bcecb4e9d">LM_D6</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#2d6ca3daaad6f21f492b8fb494a79f48">b6</a>;
+<a name="l00192"></a>00192         <a class="code" href="lm629_8h.html#e17f35f8b23f07e2f9c827cb7e1c33a0">LM_D7</a> = word.<a class="code" href="union___w_o_r_d___v_a_l.html#6c9b51cab989c1ff6f75df0ea21400d8">bits</a>.<a class="code" href="union___w_o_r_d___v_a_l.html#eaf069f1cad00a2940ff59af8d6937e4">b7</a>;                           <span class="comment">// attendre au moins 50 ns avant LM_WRITE = 1</span>
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 100 ns + 50 ns)</span>
+<a name="l00195"></a>00195         <a class="code" href="lm629_8h.html#fa90442962f2177190392173e693e354">LM_WRITE</a> = 1;                                           <span class="comment">// attendre au moins 120 ns avant de changer les données</span>
+<a name="l00196"></a>00196         Nop(); Nop();                                           <span class="comment">// attends 2 cycles, à 48 MHz / 4 = 166 ns (&gt; 120 ns)</span>
+<a name="l00197"></a>00197 }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="lm629_8c_151178ea603ed04beaa1ba4151496878_cgraph.png" border="0" usemap="#lm629_8c_151178ea603ed04beaa1ba4151496878_cgraph_map" alt=""></center>
+<map name="lm629_8c_151178ea603ed04beaa1ba4151496878_cgraph_map">
+<area shape="rect" href="lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="341,5,488,35"><area shape="rect" href="lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="185,31,292,60"></map>
+</div>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:04:50 2009 pour Carte d'asservissement (bi) par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

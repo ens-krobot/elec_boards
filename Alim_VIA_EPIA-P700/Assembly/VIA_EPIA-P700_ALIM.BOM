@@ -1,0 +1,20 @@
+Alimentation VIA EPIA-P700  Revised: Saturday, March 14, 2009
+          Revision: 1.0
+
+Olivier BICHLER
+
+
+
+
+
+Bill Of Materials          March 14,2009      13:40:47	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	1	D1	LED
+2	1	J1	On/Off
+3	1	J2	12V 30W
+4	1	J3	9V - 36V
+5	1	R1	1.6k
+6	1	U1	TEN 30-2412WIN

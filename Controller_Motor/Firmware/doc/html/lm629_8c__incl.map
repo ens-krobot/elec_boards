@@ -1,0 +1,5 @@
+<area shape="rect" href="$lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="273,83,351,112">
+<area shape="rect" href="$_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="112,160,275,189">
+<area shape="rect" href="$_compiler_8h.html" title="Compiler.h" alt="" coords="233,237,332,267">
+<area shape="rect" href="$_hardware_profile_8h.html" title="Définitions spécifiques au PIC utilisé, pour l&#39;USB et les LEDs notamment." alt="" coords="441,237,593,267">
+<area shape="rect" href="$motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="349,160,424,189">

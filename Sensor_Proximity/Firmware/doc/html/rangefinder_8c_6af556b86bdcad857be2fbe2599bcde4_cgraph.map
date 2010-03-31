@@ -1,0 +1,6 @@
+<area shape="rect" href="$rangefinder_8c.html#905b1f6dd68931ac8abb5db4dac699bd" title="Donne la distance mesurée pour un télémètre." alt="" coords="141,5,285,35">
+<area shape="rect" href="$rangefinder_8c.html#7782486c96b2ff62dab69f99636a861e" title="Mesure une distance sur un télémètre." alt="" coords="140,59,287,88">
+<area shape="rect" href="$eeprom_8c.html#23c79775828a6c484c66ba66b42ca847" title="Lit dans l&#39;EEPROM du PIC." alt="" coords="149,112,277,141">
+<area shape="rect" href="$eeprom_8c.html#fd48dcf153304aa7a2726ca1b717ab14" title="Ecrit dans l&#39;EEPROM du PIC." alt="" coords="148,165,279,195">
+<area shape="rect" href="$rangefinder_8c.html#438675a7ef66fd328e56e27a7bff362f" title="Sélection d&#39;un télémètre." alt="" coords="336,32,488,61">
+<area shape="rect" href="$rangefinder_8c.html#6d00149bf7ccb02aed245c211ce25826" title="Envoie une impulsion ultrason." alt="" coords="364,85,460,115">

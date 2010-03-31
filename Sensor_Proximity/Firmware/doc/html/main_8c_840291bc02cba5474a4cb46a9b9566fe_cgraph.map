@@ -1,0 +1,49 @@
+<area shape="rect" href="$main_8c.html#4f80a71f6079faf7617114a373a05017" title="Centralise les routines d&#39;initialisation." alt="" coords="116,341,249,371">
+<area shape="rect" href="$main_8c.html#ace5bc936ba3a482762863d6da13c941" title="Fonction de traitement principale du programme." alt="" coords="133,160,232,189">
+<area shape="rect" href="$usb__device_8h.html#f35807553af66eab5b5d459fa13b274e" title="PUBLIC PROTOTYPES." alt="" coords="109,792,256,821">
+<area shape="rect" href="$usb__device_8h.html#16da2c36e4eb6a018808f99f291433ca" title="DECLARATIONS." alt="" coords="367,368,492,397">
+<area shape="rect" href="$main_8c.html#655d748c28aad5b529f5826b50fe1251" title="Routine d&#39;initialisation utilisateur." alt="" coords="391,315,468,344">
+<area shape="rect" href="$usb__device_8h.html#42d85f637ff9d3615ca3090303008adc" title="USBClearInterruptFlag" alt="" coords="623,739,807,768">
+<area shape="rect" href="$main_8c.html#d3060f9b061e802bba79e880c4484505" title="ResetSource() permet de connaitre l&#39;origine du dernier reset tout en réinitialisant..." alt="" coords="657,315,772,344">
+<area shape="rect" href="$main_8c.html#42a6b0f3c41a4e5e1722aca3c3a4b4b5" title="PRIVATE PROTOTYPES." alt="" coords="363,56,496,85">
+<area shape="rect" href="$rangefinder_8c.html#6af556b86bdcad857be2fbe2599bcde4" title="Fonction de calibration semi&#45;automatique d&#39;un télémètre." alt="" coords="388,160,471,189">
+<area shape="rect" href="$rangefinder_8c.html#905b1f6dd68931ac8abb5db4dac699bd" title="Donne la distance mesurée pour un télémètre." alt="" coords="643,31,787,60">
+<area shape="rect" href="$rangefinder_8c.html#7782486c96b2ff62dab69f99636a861e" title="Mesure une distance sur un télémètre." alt="" coords="641,115,788,144">
+<area shape="rect" href="$eeprom_8c.html#23c79775828a6c484c66ba66b42ca847" title="Lit dans l&#39;EEPROM du PIC." alt="" coords="651,180,779,209">
+<area shape="rect" href="$eeprom_8c.html#fd48dcf153304aa7a2726ca1b717ab14" title="Ecrit dans l&#39;EEPROM du PIC." alt="" coords="649,256,780,285">
+<area shape="rect" href="$rangefinder_8c.html#438675a7ef66fd328e56e27a7bff362f" title="Sélection d&#39;un télémètre." alt="" coords="915,141,1067,171">
+<area shape="rect" href="$rangefinder_8c.html#6d00149bf7ccb02aed245c211ce25826" title="Envoie une impulsion ultrason." alt="" coords="943,88,1039,117">
+<area shape="rect" href="$usb__otg_8h.html#c5d1852c92a2364bf541966638962f42" title="USB_OTGEventHandler" alt="" coords="333,952,525,981">
+<area shape="rect" href="$usb__device_8h.html#d39fa1008b49fb91555086e40710d573" title="The USB host sends out a SOF packet to full&#45;speed devices every 1 ms." alt="" coords="337,1005,521,1035">
+<area shape="rect" href="$usb__device_8h.html#e6717d77804b36ca26a975fd0bee6f01" title="The purpose of this callback is mainly for debugging during development." alt="" coords="344,1059,515,1088">
+<area shape="rect" href="$usb__device_8h.html#e5d35bef641e59de9a7279d639cc10b6" title="USBCtrlEPService" alt="" coords="352,899,507,928">
+<area shape="rect" href="$usb__otg_8h.html#d078cd43132c6251de3865b19b8de4cb" title="USBOTGDisableHnp" alt="" coords="1428,925,1599,955">
+<area shape="rect" href="$usb__otg_8h.html#0e4aa57c5361e842d6ff6892aab573b6" title="USBOTGClearSRPReady" alt="" coords="327,1163,532,1192">
+<area shape="rect" href="$usb__otg_8h.html#d4bbe76141dea5928c75ce40938717e1" title="USBOTGClearSRPTimeOutFlag" alt="" coords="304,1216,555,1245">
+<area shape="rect" href="$usb__otg_8h.html#f436961125c7e07df2081b53e4b37001" title="USBOTGDeactivateHnp" alt="" coords="333,1269,525,1299">
+<area shape="rect" href="$usb__otg_8h.html#78ca11f637dbda5615015004b1af7a43" title="USBOTGGetSRPTimeOutFlag" alt="" coords="312,472,547,501">
+<area shape="rect" href="$usb__otg_8h.html#1821d7229191e748ee716d497b14e5a2" title="USBOTGInitialize" alt="" coords="356,525,503,555">
+<area shape="rect" href="$usb__otg_8h.html#f06c63d6f822660c4a2a3a52c29fd257" title="USBOTGIsSRPTimeOutExpired" alt="" coords="305,579,553,608">
+<area shape="rect" href="$usb__otg_8h.html#6b7e526fa731f878145d8a05ac1afc02" title="USBOTGSelectRole" alt="" coords="348,632,511,661">
+<area shape="rect" href="$usb__otg_8h.html#074a26ffca9ba1473076efdb826d1771" title="USBOTGSRPIsReady" alt="" coords="340,685,519,715">
+<area shape="rect" href="$usb__device_8h.html#f7fca92a339183ae8f268bb8c3ca4e7e" title="USBStallHandler" alt="" coords="360,739,499,768">
+<area shape="rect" href="$usb__device_8h.html#1e0966febda8e01d2e4e58ceb42dd46a" title="USBSuspend" alt="" coords="371,792,488,821">
+<area shape="rect" href="$usb__device_8h.html#9104bea8c7f5045558f6cc5721e7455f" title="USBWakeFromSuspend" alt="" coords="329,845,529,875">
+<area shape="rect" href="$usb__device_8h.html#8bfda535b2c9273a24983c1799f3fb42" title="USBCtrlTrfInHandler" alt="" coords="631,953,799,983">
+<area shape="rect" href="$usb__device_8h.html#d30a9aeba644af617b04c45333fc5125" title="USBCtrlTrfOutHandler" alt="" coords="625,1007,804,1036">
+<area shape="rect" href="$usb__device_8h.html#4fd82120d0ce7ac5df27574b2fcd2b8f" title="USBCtrlTrfSetupHandler" alt="" coords="616,899,813,928">
+<area shape="rect" href="$usb__device_8h.html#6dde221e5c27eb18f62335810c830630" title="USBCtrlTrfTxService" alt="" coords="1180,1008,1351,1037">
+<area shape="rect" href="$usb__device_8h.html#5fff309db0c489c108b02e5b0c665f3a" title="USBPrepareForNextSetupTrf" alt="" coords="875,1005,1107,1035">
+<area shape="rect" href="$usb__device_8h.html#8cc0ab9c4555c92370fe9d0ffb0685c7" title="USBCtrlTrfRxService" alt="" coords="905,1059,1076,1088">
+<area shape="rect" href="$usb__device_8h.html#a1730f3cc119bd8eb04d9b55ebed56e6" title="When SETUP packets arrive from the host, some firmware must process the request and..." alt="" coords="895,741,1087,771">
+<area shape="rect" href="$usb__device_8h.html#6d12a2e760ab2e6dc50498a76e3cfcc4" title="USBCheckStdRequest" alt="" coords="899,848,1083,877">
+<area shape="rect" href="$usb__device_8h.html#0913bb6b0a880a6e29d58c88c3c1e730" title="USBCtrlEPServiceComplete" alt="" coords="879,901,1103,931">
+<area shape="rect" href="$usb__function__hid_8h.html#5e0b02add954ecf19bcdef679a58988b" title="Section: PUBLIC PROTOTYPES." alt="" coords="1172,688,1359,717">
+<area shape="rect" href="$usb__function__hid_8c.html#fb60fd12cb265cc70fd3b2d11802cd09" title="PRIVATE PROTOTYPES." alt="" coords="1424,688,1603,717">
+<area shape="rect" href="$usb__device_8h.html#85c176c4ca674eb30b43b414f6a66260" title="The USBCBStdSetDscHandler() callback function is called when a SETUP, bRequest: SET_DESCRIPTOR..." alt="" coords="1160,955,1371,984">
+<area shape="rect" href="$usb__device_8h.html#109b75c6ceba7a1ac93ac8653dae6405" title="USBStdFeatureReqHandler" alt="" coords="1156,741,1375,771">
+<area shape="rect" href="$usb__device_8h.html#05d1ee4a1e4a8c8af6fb4816eba0a591" title="USBStdGetDscHandler" alt="" coords="1172,795,1359,824">
+<area shape="rect" href="$usb__device_8h.html#07599ba7765be64baabac4e86cdb5358" title="USBStdGetStatusHandler" alt="" coords="1164,848,1367,877">
+<area shape="rect" href="$usb__device_8h.html#23b85d487e9d3b37a4580138baf6b097" title="USBStdSetCfgHandler" alt="" coords="1173,901,1357,931">
+<area shape="rect" href="$usb__device_8h.html#24bc7f902cfd3ef505708c71099ca32a" title="Section: CALLBACKS." alt="" coords="644,792,785,821">
+<area shape="rect" href="$usb__device_8h.html#cb07fd7b59801b89093d5f5a375a1bb1" title="This function is called when the USB interrupt bit is set In this example the interrupt..." alt="" coords="604,845,825,875">

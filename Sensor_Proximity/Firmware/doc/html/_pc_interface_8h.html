@@ -1,0 +1,1477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence du fichier PcInterface.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier PcInterface.h</h1>Fichier commun avec le programme hôte sur la carte mère (USB PC). <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dynsection">
+<p><center><img src="_pc_interface_8h__dep__incl.png" border="0" usemap="#PcInterface.hdep_map" alt=""></center>
+<map name="PcInterface.hdep_map">
+<area shape="rect" href="rangefinder_8h.html" title="Gère la télémétrie." alt="" coords="77,83,197,112"><area shape="rect" href="main_8c.html" title="Contient la fonction main() du programme." alt="" coords="5,160,75,189"><area shape="rect" href="usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="221,83,373,112"><area shape="rect" href="rangefinder_8c.html" title="Gère la télémétrie." alt="" coords="99,160,219,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#3398c7225386f04c72fd9025fcb44734">USB_VID</a>&nbsp;&nbsp;&nbsp;0x04D8</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vendor ID commun aux différentes cartes USB.  <a href="#3398c7225386f04c72fd9025fcb44734"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#bba6b000f540f42a24dabad0fac3efad">USB_PID_CARTE_ESSAIS</a>&nbsp;&nbsp;&nbsp;0x0001</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Product ID de la Carte d'essais.  <a href="#bba6b000f540f42a24dabad0fac3efad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#c9a921897d5a0e932dada9094469ea32">USB_PID_CARTE_CAPTEURS</a>&nbsp;&nbsp;&nbsp;0x0002</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Product ID de la Carte capteurs.  <a href="#c9a921897d5a0e932dada9094469ea32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#062d57c6d442c8768182beeb22505da7">USB_PID_CARTE_ASSERVISSEMENT</a>&nbsp;&nbsp;&nbsp;0x0003</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Product ID de la Carte d'asservissement.  <a href="#062d57c6d442c8768182beeb22505da7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#fe1dd8546b0a8cd30b19a0229205c8df">CMD_RESET</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset du PIC.  <a href="#fe1dd8546b0a8cd30b19a0229205c8df"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#d005dfb346cb7a56a2450a33f9cec621">CMD_BOOTLOADER</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset du PIC en mode bootloader.  <a href="#d005dfb346cb7a56a2450a33f9cec621"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#39f82f93564bba7925fd849ce7967a2b">CMD_GET</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Obtenir une information.  <a href="#39f82f93564bba7925fd849ce7967a2b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#46fec82bccecfa46f11015c448c79fe7">CMD_RESPOND</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Réponse à une commande.  <a href="#46fec82bccecfa46f11015c448c79fe7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#fadcbe33225bd4df3b3f033a11408785">CMD_ERR</a>&nbsp;&nbsp;&nbsp;0x04</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Envoyer une erreur.  <a href="#fadcbe33225bd4df3b3f033a11408785"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5e7e23f7dd514b640eddf3ac0c367f45">CMD_SEND</a>&nbsp;&nbsp;&nbsp;0x05</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Envoyer du texte.  <a href="#5e7e23f7dd514b640eddf3ac0c367f45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#bb268d264836b9443ef23350814c0f68">CMD_SET</a>&nbsp;&nbsp;&nbsp;0x06</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir l'état d'un paramètre.  <a href="#bb268d264836b9443ef23350814c0f68"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#a4853b407fdfe89d987756478ea51fef">CMD_TEST</a>&nbsp;&nbsp;&nbsp;0x07</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Commande générique pour déclencher une action de test.  <a href="#a4853b407fdfe89d987756478ea51fef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#9bf6cbf9e00dcc0a9927806a18024a48">CMD_CALIBRATE</a>&nbsp;&nbsp;&nbsp;0x08</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lance la calibration d'un télémètre [Carte capteurs].  <a href="#9bf6cbf9e00dcc0a9927806a18024a48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#1d93585646df2b625c747dce1d612831">GET_RESET_SOURCE</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC la source du Reset.  <a href="#1d93585646df2b625c747dce1d612831"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#35512d717451a9b2fed3ee5a7ea996b3">GET_FIRMWARE_BUILD</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC des infos sur le firmware.  <a href="#35512d717451a9b2fed3ee5a7ea996b3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#12e2decd6772ba16d9da85602bb09407">GET_PORTS_CONFIG</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande la config TRIS des ports du PIC.  <a href="#12e2decd6772ba16d9da85602bb09407"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ce80ddb6d57fbd68150570e3fbe9caac">GET_PORTS_STATE</a>&nbsp;&nbsp;&nbsp;0x04</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande l'état des ports du PIC.  <a href="#ce80ddb6d57fbd68150570e3fbe9caac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#b86bc6867060ef696ac4afd0272bc2ad">GET_RANGEFINDER_STATE</a>&nbsp;&nbsp;&nbsp;0x05</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC les mesures des télémètres [Carte capteurs].  <a href="#b86bc6867060ef696ac4afd0272bc2ad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#d91d480df9448cda096e31a8540c372c">GET_ISENS</a>&nbsp;&nbsp;&nbsp;0x06</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC les valeurs des courants moteurs mesurées [Carte d'asservissement].  <a href="#d91d480df9448cda096e31a8540c372c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#f6e3c07112d6ecf73e4b87000f723ca1">GET_CURRENT_POS</a>&nbsp;&nbsp;&nbsp;0x07</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC les positions actuelles des moteurs [Carte d'asservissement].  <a href="#f6e3c07112d6ecf73e4b87000f723ca1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#dbbb127c4ba9a4f8adbbe4cd02fb72a5">GET_RANGEFINDER_CALIBRATION</a>&nbsp;&nbsp;&nbsp;0x08</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC les valeurs de calibration des télémètres [Carte capteurs].  <a href="#dbbb127c4ba9a4f8adbbe4cd02fb72a5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#3c6b735f5e687c11085ca3f6a205994a">GET_TOR_STATE</a>&nbsp;&nbsp;&nbsp;0x09</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande au PIC l'état des capteurs de contact [Carte capteurs].  <a href="#3c6b735f5e687c11085ca3f6a205994a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ddfc7b504ad733cd1f4458751222e4a3">ERR_UNKNOWN_CMD</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Commande inconnue.  <a href="#ddfc7b504ad733cd1f4458751222e4a3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#e950cf46a1155de5f6adfbdb614e0814">ERR_UNKNOWN_GET</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Demande inconnue.  <a href="#e950cf46a1155de5f6adfbdb614e0814"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#13e8b628304d0a496433c2a21f5b3d8c">ERR_INVALID_RESPONSE</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Réponse invalide.  <a href="#13e8b628304d0a496433c2a21f5b3d8c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#9671e443af58a672c1cac982aab3c217">SET_PORTS_CONFIG_INPUTS</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir les entrées du PIC.  <a href="#9671e443af58a672c1cac982aab3c217"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#dc99d65115f431a881dd153a540ff00a">SET_PORTS_CONFIG_OUTPUTS</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir les sorties du PIC.  <a href="#dc99d65115f431a881dd153a540ff00a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#4337af1b4705171921d322adc502d4db">SET_PORTS_STATE_LOW</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir les sorties à l'état bas du PIC.  <a href="#4337af1b4705171921d322adc502d4db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#802886de95962fcc1e851e2a8963dd7a">SET_PORTS_STATE_HIGH</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir les sorties à l'état haut du PIC.  <a href="#802886de95962fcc1e851e2a8963dd7a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#30991f7f4aee5697ba90b2d170aab54f">CAL_START</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#b3a6812f76031ffc540dce45f0cb296d">CAL_CONTINUE</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5c5f9642bc95f721df64c9fe1eac6f35">CAL_STOP</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#9b77ae51e68ff13de5c3187f9213de63">CAL_ERROR</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5b3e1e1135d0ee281abc8da6512aeb3f">CAL_DONE</a>&nbsp;&nbsp;&nbsp;0x04</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#61c9f7089dc916208160b364c39bb1ec">CAL_PLACE_INF</a>&nbsp;&nbsp;&nbsp;0x05</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#1918d3513feff231a52562cb3536e68a">CAL_PLACE_30</a>&nbsp;&nbsp;&nbsp;0x06</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#b3b6643ad6e92c76b670f0ad22861d4b">CAL_PLACE_100</a>&nbsp;&nbsp;&nbsp;0x07</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#524422e4fc9d394e0fd93b7c237f7a0d">RESET_SOURCE_POR</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Power-on Reset.  <a href="#524422e4fc9d394e0fd93b7c237f7a0d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#245ebb4ee7f1ea33154309bd1ed81f38">RESET_SOURCE_RI</a>&nbsp;&nbsp;&nbsp;0x02</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">RESET Instruction.  <a href="#245ebb4ee7f1ea33154309bd1ed81f38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#03a64d894da05e34b82b30d9ce329214">RESET_SOURCE_BOR</a>&nbsp;&nbsp;&nbsp;0x03</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Brown-out Reset.  <a href="#03a64d894da05e34b82b30d9ce329214"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#f12060aee7309d1d1c1ced73ee42bfdf">RESET_SOURCE_WDT</a>&nbsp;&nbsp;&nbsp;0x04</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Watchdog Time-out Reset.  <a href="#f12060aee7309d1d1c1ced73ee42bfdf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#94baa8b4f808e0f4c6ca558f1e107e25">RESET_SOURCE_STKFUL</a>&nbsp;&nbsp;&nbsp;0x05</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stack Full Reset.  <a href="#94baa8b4f808e0f4c6ca558f1e107e25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#aed300e8316412f12e8f29cf667a391d">RESET_SOURCE_STKUNF</a>&nbsp;&nbsp;&nbsp;0x06</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stack Underflow Reset.  <a href="#aed300e8316412f12e8f29cf667a391d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#39d66f0028a870a4ca903fdb417464f2">RESET_SOURCE_MCLR</a>&nbsp;&nbsp;&nbsp;0x07</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Master Clear Reset.  <a href="#39d66f0028a870a4ca903fdb417464f2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#c8ab0491d2f4cdc2c7cad38c7235ee95">PORTA_RA0</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ea9270e0734a592b66880bd19e9d13b3">PORTA_RA1</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#906186f6841d9e41d5d8bca116e5092f">PORTA_RA2</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#19970113f406ddfc8f410e2636dc822f">PORTA_RA3</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#3910edd7f6355bc0349104a32e866001">PORTA_RA4</a>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#8579683392db93e697571d04d5c407cf">PORTA_RA5</a>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#065033dbd89e1b0d40bad530045ff67f">PORTA_RA6</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5b60aab75b904ea90f21af2cae18b783">PORTB_RB0</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#8bff15d6e6cc94e5e63d7f01edc3842d">PORTB_RB1</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#14f0b0b5894cd478e8496767c93b11d3">PORTB_RB2</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#6aea9b0c16eae3b73402b69be07b143f">PORTB_RB3</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#c010d369f68fa5a477eddf998add6787">PORTB_RB4</a>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#0ce34678eb7e03a4d8c309a80e8406d0">PORTB_RB5</a>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5da80177a5dc3a844b1d91b2b96c6bcd">PORTB_RB6</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ae257dd8f8a1a406c4c633f5b8055d57">PORTB_RB7</a>&nbsp;&nbsp;&nbsp;128</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#74f59f16b519e848b85691099ce62140">PORTC_RC0</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#0714fbe18582683873638d57f49ab0c5">PORTC_RC1</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#fefcd267c7b3cebd243277d7e6ab5553">PORTC_RC2</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ffd3d753b3d60147a9b33882c16b8fd6">PORTC_RC4</a>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5dc6da4bc5cf22e16f040c4eecb9ec16">PORTC_RC5</a>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#d914e13cd50954f001c74ee6b926e8a5">PORTC_RC6</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#02ba012fc812597db8eefff387d246c5">PORTC_RC7</a>&nbsp;&nbsp;&nbsp;128</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#b25461686d4ba22de0b51a3f43f74668">PORTD_RD0</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#4a482494278f1eae249057027c727586">PORTD_RD1</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#65ed78e609ddfdcf3cb94fa398bdbaaa">PORTD_RD2</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#61a978445e887a0137864f4ad2a6955b">PORTD_RD3</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#b4b63e57b1769bf082435baa1c039715">PORTD_RD4</a>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#492f024ab32e928ec64fd84574a37124">PORTD_RD5</a>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#14c4a8a3b1dc1ee870ba0d518d6a3438">PORTD_RD6</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#51a0b647613d6831978dc4f85618255d">PORTD_RD7</a>&nbsp;&nbsp;&nbsp;128</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#2a467c07b24179efb11e0b4875e70974">PORTE_RE0</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#f0dc21967498016a0bbb6e127f740202">PORTE_RE1</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#ebe42d3dab88afe80e1b538a8ec54051">PORTE_RE2</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_pc_interface_8h.html#5342e8eaede9107898393a27fda9d810">PORTE_RE3</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fichier commun avec le programme hôte sur la carte mère (USB PC). 
+<p>
+Ce fichier définit de nombreuses constantes utilisées pour le protocole de communication carte &lt;-&gt; PC. <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="b3a6812f76031ffc540dce45f0cb296d"></a><!-- doxytag: member="PcInterface.h::CAL_CONTINUE" ref="b3a6812f76031ffc540dce45f0cb296d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_CONTINUE&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5b3e1e1135d0ee281abc8da6512aeb3f"></a><!-- doxytag: member="PcInterface.h::CAL_DONE" ref="5b3e1e1135d0ee281abc8da6512aeb3f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_DONE&nbsp;&nbsp;&nbsp;0x04          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9b77ae51e68ff13de5c3187f9213de63"></a><!-- doxytag: member="PcInterface.h::CAL_ERROR" ref="9b77ae51e68ff13de5c3187f9213de63" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_ERROR&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b3b6643ad6e92c76b670f0ad22861d4b"></a><!-- doxytag: member="PcInterface.h::CAL_PLACE_100" ref="b3b6643ad6e92c76b670f0ad22861d4b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_PLACE_100&nbsp;&nbsp;&nbsp;0x07          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1918d3513feff231a52562cb3536e68a"></a><!-- doxytag: member="PcInterface.h::CAL_PLACE_30" ref="1918d3513feff231a52562cb3536e68a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_PLACE_30&nbsp;&nbsp;&nbsp;0x06          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="61c9f7089dc916208160b364c39bb1ec"></a><!-- doxytag: member="PcInterface.h::CAL_PLACE_INF" ref="61c9f7089dc916208160b364c39bb1ec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_PLACE_INF&nbsp;&nbsp;&nbsp;0x05          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="30991f7f4aee5697ba90b2d170aab54f"></a><!-- doxytag: member="PcInterface.h::CAL_START" ref="30991f7f4aee5697ba90b2d170aab54f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_START&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5c5f9642bc95f721df64c9fe1eac6f35"></a><!-- doxytag: member="PcInterface.h::CAL_STOP" ref="5c5f9642bc95f721df64c9fe1eac6f35" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAL_STOP&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d005dfb346cb7a56a2450a33f9cec621"></a><!-- doxytag: member="PcInterface.h::CMD_BOOTLOADER" ref="d005dfb346cb7a56a2450a33f9cec621" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_BOOTLOADER&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reset du PIC en mode bootloader. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9bf6cbf9e00dcc0a9927806a18024a48"></a><!-- doxytag: member="PcInterface.h::CMD_CALIBRATE" ref="9bf6cbf9e00dcc0a9927806a18024a48" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_CALIBRATE&nbsp;&nbsp;&nbsp;0x08          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lance la calibration d'un télémètre [Carte capteurs]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fadcbe33225bd4df3b3f033a11408785"></a><!-- doxytag: member="PcInterface.h::CMD_ERR" ref="fadcbe33225bd4df3b3f033a11408785" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_ERR&nbsp;&nbsp;&nbsp;0x04          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Envoyer une erreur. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="39f82f93564bba7925fd849ce7967a2b"></a><!-- doxytag: member="PcInterface.h::CMD_GET" ref="39f82f93564bba7925fd849ce7967a2b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_GET&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Obtenir une information. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe1dd8546b0a8cd30b19a0229205c8df"></a><!-- doxytag: member="PcInterface.h::CMD_RESET" ref="fe1dd8546b0a8cd30b19a0229205c8df" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_RESET&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reset du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="46fec82bccecfa46f11015c448c79fe7"></a><!-- doxytag: member="PcInterface.h::CMD_RESPOND" ref="46fec82bccecfa46f11015c448c79fe7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_RESPOND&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Réponse à une commande. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e7e23f7dd514b640eddf3ac0c367f45"></a><!-- doxytag: member="PcInterface.h::CMD_SEND" ref="5e7e23f7dd514b640eddf3ac0c367f45" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_SEND&nbsp;&nbsp;&nbsp;0x05          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Envoyer du texte. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bb268d264836b9443ef23350814c0f68"></a><!-- doxytag: member="PcInterface.h::CMD_SET" ref="bb268d264836b9443ef23350814c0f68" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_SET&nbsp;&nbsp;&nbsp;0x06          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Définir l'état d'un paramètre. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a4853b407fdfe89d987756478ea51fef"></a><!-- doxytag: member="PcInterface.h::CMD_TEST" ref="a4853b407fdfe89d987756478ea51fef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_TEST&nbsp;&nbsp;&nbsp;0x07          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Commande générique pour déclencher une action de test. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="13e8b628304d0a496433c2a21f5b3d8c"></a><!-- doxytag: member="PcInterface.h::ERR_INVALID_RESPONSE" ref="13e8b628304d0a496433c2a21f5b3d8c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR_INVALID_RESPONSE&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Réponse invalide. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ddfc7b504ad733cd1f4458751222e4a3"></a><!-- doxytag: member="PcInterface.h::ERR_UNKNOWN_CMD" ref="ddfc7b504ad733cd1f4458751222e4a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR_UNKNOWN_CMD&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Commande inconnue. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e950cf46a1155de5f6adfbdb614e0814"></a><!-- doxytag: member="PcInterface.h::ERR_UNKNOWN_GET" ref="e950cf46a1155de5f6adfbdb614e0814" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR_UNKNOWN_GET&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande inconnue. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f6e3c07112d6ecf73e4b87000f723ca1"></a><!-- doxytag: member="PcInterface.h::GET_CURRENT_POS" ref="f6e3c07112d6ecf73e4b87000f723ca1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_CURRENT_POS&nbsp;&nbsp;&nbsp;0x07          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC les positions actuelles des moteurs [Carte d'asservissement]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="35512d717451a9b2fed3ee5a7ea996b3"></a><!-- doxytag: member="PcInterface.h::GET_FIRMWARE_BUILD" ref="35512d717451a9b2fed3ee5a7ea996b3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_FIRMWARE_BUILD&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC des infos sur le firmware. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d91d480df9448cda096e31a8540c372c"></a><!-- doxytag: member="PcInterface.h::GET_ISENS" ref="d91d480df9448cda096e31a8540c372c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_ISENS&nbsp;&nbsp;&nbsp;0x06          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC les valeurs des courants moteurs mesurées [Carte d'asservissement]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="12e2decd6772ba16d9da85602bb09407"></a><!-- doxytag: member="PcInterface.h::GET_PORTS_CONFIG" ref="12e2decd6772ba16d9da85602bb09407" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_PORTS_CONFIG&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande la config TRIS des ports du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ce80ddb6d57fbd68150570e3fbe9caac"></a><!-- doxytag: member="PcInterface.h::GET_PORTS_STATE" ref="ce80ddb6d57fbd68150570e3fbe9caac" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_PORTS_STATE&nbsp;&nbsp;&nbsp;0x04          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande l'état des ports du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dbbb127c4ba9a4f8adbbe4cd02fb72a5"></a><!-- doxytag: member="PcInterface.h::GET_RANGEFINDER_CALIBRATION" ref="dbbb127c4ba9a4f8adbbe4cd02fb72a5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_RANGEFINDER_CALIBRATION&nbsp;&nbsp;&nbsp;0x08          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC les valeurs de calibration des télémètres [Carte capteurs]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b86bc6867060ef696ac4afd0272bc2ad"></a><!-- doxytag: member="PcInterface.h::GET_RANGEFINDER_STATE" ref="b86bc6867060ef696ac4afd0272bc2ad" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_RANGEFINDER_STATE&nbsp;&nbsp;&nbsp;0x05          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC les mesures des télémètres [Carte capteurs]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d93585646df2b625c747dce1d612831"></a><!-- doxytag: member="PcInterface.h::GET_RESET_SOURCE" ref="1d93585646df2b625c747dce1d612831" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_RESET_SOURCE&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC la source du Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3c6b735f5e687c11085ca3f6a205994a"></a><!-- doxytag: member="PcInterface.h::GET_TOR_STATE" ref="3c6b735f5e687c11085ca3f6a205994a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GET_TOR_STATE&nbsp;&nbsp;&nbsp;0x09          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Demande au PIC l'état des capteurs de contact [Carte capteurs]. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c8ab0491d2f4cdc2c7cad38c7235ee95"></a><!-- doxytag: member="PcInterface.h::PORTA_RA0" ref="c8ab0491d2f4cdc2c7cad38c7235ee95" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA0&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ea9270e0734a592b66880bd19e9d13b3"></a><!-- doxytag: member="PcInterface.h::PORTA_RA1" ref="ea9270e0734a592b66880bd19e9d13b3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA1&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="906186f6841d9e41d5d8bca116e5092f"></a><!-- doxytag: member="PcInterface.h::PORTA_RA2" ref="906186f6841d9e41d5d8bca116e5092f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA2&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="19970113f406ddfc8f410e2636dc822f"></a><!-- doxytag: member="PcInterface.h::PORTA_RA3" ref="19970113f406ddfc8f410e2636dc822f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA3&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3910edd7f6355bc0349104a32e866001"></a><!-- doxytag: member="PcInterface.h::PORTA_RA4" ref="3910edd7f6355bc0349104a32e866001" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA4&nbsp;&nbsp;&nbsp;16          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8579683392db93e697571d04d5c407cf"></a><!-- doxytag: member="PcInterface.h::PORTA_RA5" ref="8579683392db93e697571d04d5c407cf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA5&nbsp;&nbsp;&nbsp;32          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="065033dbd89e1b0d40bad530045ff67f"></a><!-- doxytag: member="PcInterface.h::PORTA_RA6" ref="065033dbd89e1b0d40bad530045ff67f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTA_RA6&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5b60aab75b904ea90f21af2cae18b783"></a><!-- doxytag: member="PcInterface.h::PORTB_RB0" ref="5b60aab75b904ea90f21af2cae18b783" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB0&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8bff15d6e6cc94e5e63d7f01edc3842d"></a><!-- doxytag: member="PcInterface.h::PORTB_RB1" ref="8bff15d6e6cc94e5e63d7f01edc3842d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB1&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="14f0b0b5894cd478e8496767c93b11d3"></a><!-- doxytag: member="PcInterface.h::PORTB_RB2" ref="14f0b0b5894cd478e8496767c93b11d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB2&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6aea9b0c16eae3b73402b69be07b143f"></a><!-- doxytag: member="PcInterface.h::PORTB_RB3" ref="6aea9b0c16eae3b73402b69be07b143f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB3&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c010d369f68fa5a477eddf998add6787"></a><!-- doxytag: member="PcInterface.h::PORTB_RB4" ref="c010d369f68fa5a477eddf998add6787" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB4&nbsp;&nbsp;&nbsp;16          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0ce34678eb7e03a4d8c309a80e8406d0"></a><!-- doxytag: member="PcInterface.h::PORTB_RB5" ref="0ce34678eb7e03a4d8c309a80e8406d0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB5&nbsp;&nbsp;&nbsp;32          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5da80177a5dc3a844b1d91b2b96c6bcd"></a><!-- doxytag: member="PcInterface.h::PORTB_RB6" ref="5da80177a5dc3a844b1d91b2b96c6bcd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB6&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ae257dd8f8a1a406c4c633f5b8055d57"></a><!-- doxytag: member="PcInterface.h::PORTB_RB7" ref="ae257dd8f8a1a406c4c633f5b8055d57" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTB_RB7&nbsp;&nbsp;&nbsp;128          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="74f59f16b519e848b85691099ce62140"></a><!-- doxytag: member="PcInterface.h::PORTC_RC0" ref="74f59f16b519e848b85691099ce62140" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC0&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0714fbe18582683873638d57f49ab0c5"></a><!-- doxytag: member="PcInterface.h::PORTC_RC1" ref="0714fbe18582683873638d57f49ab0c5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC1&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fefcd267c7b3cebd243277d7e6ab5553"></a><!-- doxytag: member="PcInterface.h::PORTC_RC2" ref="fefcd267c7b3cebd243277d7e6ab5553" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC2&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ffd3d753b3d60147a9b33882c16b8fd6"></a><!-- doxytag: member="PcInterface.h::PORTC_RC4" ref="ffd3d753b3d60147a9b33882c16b8fd6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC4&nbsp;&nbsp;&nbsp;16          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5dc6da4bc5cf22e16f040c4eecb9ec16"></a><!-- doxytag: member="PcInterface.h::PORTC_RC5" ref="5dc6da4bc5cf22e16f040c4eecb9ec16" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC5&nbsp;&nbsp;&nbsp;32          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d914e13cd50954f001c74ee6b926e8a5"></a><!-- doxytag: member="PcInterface.h::PORTC_RC6" ref="d914e13cd50954f001c74ee6b926e8a5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC6&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="02ba012fc812597db8eefff387d246c5"></a><!-- doxytag: member="PcInterface.h::PORTC_RC7" ref="02ba012fc812597db8eefff387d246c5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTC_RC7&nbsp;&nbsp;&nbsp;128          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b25461686d4ba22de0b51a3f43f74668"></a><!-- doxytag: member="PcInterface.h::PORTD_RD0" ref="b25461686d4ba22de0b51a3f43f74668" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD0&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4a482494278f1eae249057027c727586"></a><!-- doxytag: member="PcInterface.h::PORTD_RD1" ref="4a482494278f1eae249057027c727586" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD1&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="65ed78e609ddfdcf3cb94fa398bdbaaa"></a><!-- doxytag: member="PcInterface.h::PORTD_RD2" ref="65ed78e609ddfdcf3cb94fa398bdbaaa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD2&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="61a978445e887a0137864f4ad2a6955b"></a><!-- doxytag: member="PcInterface.h::PORTD_RD3" ref="61a978445e887a0137864f4ad2a6955b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD3&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b4b63e57b1769bf082435baa1c039715"></a><!-- doxytag: member="PcInterface.h::PORTD_RD4" ref="b4b63e57b1769bf082435baa1c039715" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD4&nbsp;&nbsp;&nbsp;16          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="492f024ab32e928ec64fd84574a37124"></a><!-- doxytag: member="PcInterface.h::PORTD_RD5" ref="492f024ab32e928ec64fd84574a37124" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD5&nbsp;&nbsp;&nbsp;32          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="14c4a8a3b1dc1ee870ba0d518d6a3438"></a><!-- doxytag: member="PcInterface.h::PORTD_RD6" ref="14c4a8a3b1dc1ee870ba0d518d6a3438" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD6&nbsp;&nbsp;&nbsp;64          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="51a0b647613d6831978dc4f85618255d"></a><!-- doxytag: member="PcInterface.h::PORTD_RD7" ref="51a0b647613d6831978dc4f85618255d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTD_RD7&nbsp;&nbsp;&nbsp;128          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2a467c07b24179efb11e0b4875e70974"></a><!-- doxytag: member="PcInterface.h::PORTE_RE0" ref="2a467c07b24179efb11e0b4875e70974" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTE_RE0&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0dc21967498016a0bbb6e127f740202"></a><!-- doxytag: member="PcInterface.h::PORTE_RE1" ref="f0dc21967498016a0bbb6e127f740202" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTE_RE1&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ebe42d3dab88afe80e1b538a8ec54051"></a><!-- doxytag: member="PcInterface.h::PORTE_RE2" ref="ebe42d3dab88afe80e1b538a8ec54051" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTE_RE2&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5342e8eaede9107898393a27fda9d810"></a><!-- doxytag: member="PcInterface.h::PORTE_RE3" ref="5342e8eaede9107898393a27fda9d810" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORTE_RE3&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="03a64d894da05e34b82b30d9ce329214"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_BOR" ref="03a64d894da05e34b82b30d9ce329214" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_BOR&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Brown-out Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="39d66f0028a870a4ca903fdb417464f2"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_MCLR" ref="39d66f0028a870a4ca903fdb417464f2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_MCLR&nbsp;&nbsp;&nbsp;0x07          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Master Clear Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="524422e4fc9d394e0fd93b7c237f7a0d"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_POR" ref="524422e4fc9d394e0fd93b7c237f7a0d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_POR&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Power-on Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="245ebb4ee7f1ea33154309bd1ed81f38"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_RI" ref="245ebb4ee7f1ea33154309bd1ed81f38" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_RI&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+RESET Instruction. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="94baa8b4f808e0f4c6ca558f1e107e25"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_STKFUL" ref="94baa8b4f808e0f4c6ca558f1e107e25" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_STKFUL&nbsp;&nbsp;&nbsp;0x05          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Stack Full Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="aed300e8316412f12e8f29cf667a391d"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_STKUNF" ref="aed300e8316412f12e8f29cf667a391d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_STKUNF&nbsp;&nbsp;&nbsp;0x06          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Stack Underflow Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f12060aee7309d1d1c1ced73ee42bfdf"></a><!-- doxytag: member="PcInterface.h::RESET_SOURCE_WDT" ref="f12060aee7309d1d1c1ced73ee42bfdf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_SOURCE_WDT&nbsp;&nbsp;&nbsp;0x04          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Watchdog Time-out Reset. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9671e443af58a672c1cac982aab3c217"></a><!-- doxytag: member="PcInterface.h::SET_PORTS_CONFIG_INPUTS" ref="9671e443af58a672c1cac982aab3c217" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_PORTS_CONFIG_INPUTS&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Définir les entrées du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc99d65115f431a881dd153a540ff00a"></a><!-- doxytag: member="PcInterface.h::SET_PORTS_CONFIG_OUTPUTS" ref="dc99d65115f431a881dd153a540ff00a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_PORTS_CONFIG_OUTPUTS&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Définir les sorties du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="802886de95962fcc1e851e2a8963dd7a"></a><!-- doxytag: member="PcInterface.h::SET_PORTS_STATE_HIGH" ref="802886de95962fcc1e851e2a8963dd7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_PORTS_STATE_HIGH&nbsp;&nbsp;&nbsp;0x03          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Définir les sorties à l'état haut du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4337af1b4705171921d322adc502d4db"></a><!-- doxytag: member="PcInterface.h::SET_PORTS_STATE_LOW" ref="4337af1b4705171921d322adc502d4db" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_PORTS_STATE_LOW&nbsp;&nbsp;&nbsp;0x02          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Définir les sorties à l'état bas du PIC. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="062d57c6d442c8768182beeb22505da7"></a><!-- doxytag: member="PcInterface.h::USB_PID_CARTE_ASSERVISSEMENT" ref="062d57c6d442c8768182beeb22505da7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_PID_CARTE_ASSERVISSEMENT&nbsp;&nbsp;&nbsp;0x0003          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Product ID de la Carte d'asservissement. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c9a921897d5a0e932dada9094469ea32"></a><!-- doxytag: member="PcInterface.h::USB_PID_CARTE_CAPTEURS" ref="c9a921897d5a0e932dada9094469ea32" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_PID_CARTE_CAPTEURS&nbsp;&nbsp;&nbsp;0x0002          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Product ID de la Carte capteurs. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bba6b000f540f42a24dabad0fac3efad"></a><!-- doxytag: member="PcInterface.h::USB_PID_CARTE_ESSAIS" ref="bba6b000f540f42a24dabad0fac3efad" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_PID_CARTE_ESSAIS&nbsp;&nbsp;&nbsp;0x0001          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Product ID de la Carte d'essais. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3398c7225386f04c72fd9025fcb44734"></a><!-- doxytag: member="PcInterface.h::USB_VID" ref="3398c7225386f04c72fd9025fcb44734" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define USB_VID&nbsp;&nbsp;&nbsp;0x04D8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vendor ID commun aux différentes cartes USB. 
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:21 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

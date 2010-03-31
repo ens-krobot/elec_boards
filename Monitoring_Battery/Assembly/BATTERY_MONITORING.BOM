@@ -1,0 +1,45 @@
+Battery Monitoring - Current Measurement  Revised: Wednesday, June 24, 2009
+          Revision: 1.0
+
+Olivier BICHLER
+
+
+
+
+
+Bill Of Materials      September 19,2009      14:13:08	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	2	C1,C3	47n
+2	1	C2	4.7n
+3	11	C4,C5,C6,C7,C8,C9,C10,	100n
+		C11,C13,C14,C18
+4	1	C12	0.33u
+5	2	C15,C16	22p
+6	1	C17	220n
+7	2	D1,D3	10BQ040
+8	1	D2	LED alim 5V
+9	1	D4	LED1
+10	1	D5	LED2
+11	1	J1	Equilibrage accu. 1
+12	1	J2	Equilibrage accu. 2
+13	1	J3	Présence puissance
+14	1	J4	Bornier alim. 12 V
+15	1	J5	Con. PROG
+16	2	J6,J7	Bus I2C
+17	1	J8	Con. mini USB
+18	1	LS1	BUZZER 5VDC (EMX-7T05SP)
+19	1	Q1	BC846AL
+20	1	R1	50k
+21	3	R2,R5,R9	10k
+22	1	R3	3.3k
+23	3	R4,R6,R7	680
+24	1	R8	100k
+25	1	SW1	RESET
+26	1	U1	HAIS50-P
+27	8	U2,U3,U4,U5,U6,U7,U8,U9	INA148
+28	1	U10	LM7805C/TO220
+29	1	U11	PIC18F4550-TQFP
+30	1	X1	8 MHz

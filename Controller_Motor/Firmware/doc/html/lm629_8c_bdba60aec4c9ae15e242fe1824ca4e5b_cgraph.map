@@ -1,0 +1,7 @@
+<area shape="rect" href="$lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="180,112,287,141">
+<area shape="rect" href="$lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="175,59,292,88">
+<area shape="rect" href="$lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="208,5,259,35">
+<area shape="rect" href="$lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="343,59,471,88">
+<area shape="rect" href="$lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="341,112,472,141">
+<area shape="rect" href="$lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="677,85,824,115">
+<area shape="rect" href="$lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="521,85,628,115">

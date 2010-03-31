@@ -1,0 +1,49 @@
+<area shape="rect" href="$main_8c.html#4f80a71f6079faf7617114a373a05017" title="Centralise les routines d&#39;initialisation." alt="" coords="116,989,249,1019">
+<area shape="rect" href="$main_8c.html#ace5bc936ba3a482762863d6da13c941" title="Fonction de traitement principale du programme." alt="" coords="133,1432,232,1461">
+<area shape="rect" href="$usb__device_8h.html#f35807553af66eab5b5d459fa13b274e" title="PUBLIC PROTOTYPES." alt="" coords="109,539,256,568">
+<area shape="rect" href="$usb__device_8h.html#16da2c36e4eb6a018808f99f291433ca" title="DECLARATIONS." alt="" coords="367,963,492,992">
+<area shape="rect" href="$main_8c.html#655d748c28aad5b529f5826b50fe1251" title="Routine d&#39;initialisation utilisateur." alt="" coords="391,1016,468,1045">
+<area shape="rect" href="$usb__device_8h.html#42d85f637ff9d3615ca3090303008adc" title="USBClearInterruptFlag" alt="" coords="623,856,807,885">
+<area shape="rect" href="$main_8c.html#d3060f9b061e802bba79e880c4484505" title="ResetSource() permet de connaitre l&#39;origine du dernier reset tout en réinitialisant..." alt="" coords="657,1016,772,1045">
+<area shape="rect" href="$main_8c.html#42a6b0f3c41a4e5e1722aca3c3a4b4b5" title="Gestion des LEDs selon l&#39;état du périphérique USB." alt="" coords="363,1539,496,1568">
+<area shape="rect" href="$motor_8c.html#189f66fb3cf35d131837dd26974a3b8c" title="Active un ou plusieurs axe(s) moteur(s)." alt="" coords="375,1592,484,1621">
+<area shape="rect" href="$motor_8c.html#f28faafd0d5603bd1dfabbcd9731e0d9" title="Récupère la mesure du courant dans un moteur." alt="" coords="388,1645,471,1675">
+<area shape="rect" href="$lm629_8c.html#49e97890e5c9ab4f6fca2ba9ce33c885" title="Initialise les 2 LMs avec les paramètres par défaut." alt="" coords="393,1328,465,1357">
+<area shape="rect" href="$lm629_8c.html#6fa7a38bcd0eeb3fb9c107702f73f516" title="Envoie une commande à/aux LM(s)." alt="" coords="1095,1224,1223,1253">
+<area shape="rect" href="$lm629_8c.html#e3ef6f2f44349bc4e6af34671b6aa4aa" title="Lire un bit d&#39;état du LM." alt="" coords="656,1656,773,1685">
+<area shape="rect" href="$lm629_8c.html#928f6fe98ffaaa8f72282688bcc8d1cd" title="Indique si la dernière trajectoire est terminée." alt="" coords="365,1699,493,1728">
+<area shape="rect" href="$lm629_8c.html#f53f9dcb4f2401d3b013a07e63f8762d" title="Recule." alt="" coords="649,1276,780,1305">
+<area shape="rect" href="$lm629_8c.html#bdba60aec4c9ae15e242fe1824ca4e5b" title="Avance." alt="" coords="655,1223,775,1252">
+<area shape="rect" href="$lm629_8c.html#ec750313f79234101e43e09e3083b947" title="Lire un mot envoyé par le LM (un mot = 2 octets = 16 bits)." alt="" coords="1095,1377,1223,1407">
+<area shape="rect" href="$eeprom_8c.html#23c79775828a6c484c66ba66b42ca847" title="Lit dans l&#39;EEPROM du PIC." alt="" coords="365,1432,493,1461">
+<area shape="rect" href="$eeprom_8c.html#fd48dcf153304aa7a2726ca1b717ab14" title="Ecrit dans l&#39;EEPROM du PIC." alt="" coords="364,1485,495,1515">
+<area shape="rect" href="$lm629_8c.html#18cecfad364f842e6a71efbd459857df" title="Initialise un LM, c&#39;est&#45;à&#45;dire :Contrôle que le RESET s&#39;est fait correctement..." alt="" coords="683,1329,747,1359">
+<area shape="rect" href="$lm629_8c.html#87c455cfb4cbd87a3de45fd9f38a1b45" title="Lire l&#39;état d&#39;un LM." alt="" coords="1109,1431,1208,1460">
+<area shape="rect" href="$lm629_8c.html#3917d5827bfa6cc17f4e1a47ff073248" title="Reset les bits d&#39;interruption du/des LM(s)." alt="" coords="901,1277,1019,1307">
+<area shape="rect" href="$lm629_8c.html#151178ea603ed04beaa1ba4151496878" title="Envoie un mot au LM (un mot = 2 octets = 16 bits)." alt="" coords="1093,1277,1224,1307">
+<area shape="rect" href="$lm629_8c.html#6c314f24d23be4191ad86293c9a5fecc" title="Change la direction du BUS de donnée." alt="" coords="1429,1328,1576,1357">
+<area shape="rect" href="$lm629_8c.html#89cbdf56bf6a423f871db85d9b25b7ba" title="Attends que le ou les LM(s) ne soient plus occupés." alt="" coords="1273,1328,1380,1357">
+<area shape="rect" href="$lm629_8c.html#50cb02e459a813bf1d2d14a80d905a41" title="Programme une nouvelle position à atteindre." alt="" coords="907,1224,1013,1253">
+<area shape="rect" href="$lm629_8c.html#adb0186b6cbfbfe2f37d6e5d64284499" title="Démarre la trajectoire programmée." alt="" coords="935,1171,985,1200">
+<area shape="rect" href="$usb__otg_8h.html#c5d1852c92a2364bf541966638962f42" title="USB_OTGEventHandler" alt="" coords="333,112,525,141">
+<area shape="rect" href="$usb__device_8h.html#d39fa1008b49fb91555086e40710d573" title="The USB host sends out a SOF packet to full&#45;speed devices every 1 ms." alt="" coords="337,165,521,195">
+<area shape="rect" href="$usb__device_8h.html#e6717d77804b36ca26a975fd0bee6f01" title="The purpose of this callback is mainly for debugging during development." alt="" coords="344,219,515,248">
+<area shape="rect" href="$usb__device_8h.html#e5d35bef641e59de9a7279d639cc10b6" title="USBCtrlEPService" alt="" coords="352,59,507,88">
+<area shape="rect" href="$usb__otg_8h.html#0e4aa57c5361e842d6ff6892aab573b6" title="USBOTGClearSRPReady" alt="" coords="327,325,532,355">
+<area shape="rect" href="$usb__otg_8h.html#d4bbe76141dea5928c75ce40938717e1" title="USBOTGClearSRPTimeOutFlag" alt="" coords="304,379,555,408">
+<area shape="rect" href="$usb__otg_8h.html#f436961125c7e07df2081b53e4b37001" title="USBOTGDeactivateHnp" alt="" coords="333,432,525,461">
+<area shape="rect" href="$usb__otg_8h.html#d078cd43132c6251de3865b19b8de4cb" title="USBOTGDisableHnp" alt="" coords="344,485,515,515">
+<area shape="rect" href="$usb__otg_8h.html#78ca11f637dbda5615015004b1af7a43" title="USBOTGGetSRPTimeOutFlag" alt="" coords="312,539,547,568">
+<area shape="rect" href="$usb__otg_8h.html#1821d7229191e748ee716d497b14e5a2" title="USBOTGInitialize" alt="" coords="356,592,503,621">
+<area shape="rect" href="$usb__otg_8h.html#f06c63d6f822660c4a2a3a52c29fd257" title="USBOTGIsSRPTimeOutExpired" alt="" coords="305,645,553,675">
+<area shape="rect" href="$usb__otg_8h.html#6b7e526fa731f878145d8a05ac1afc02" title="USBOTGSelectRole" alt="" coords="348,699,511,728">
+<area shape="rect" href="$usb__otg_8h.html#074a26ffca9ba1473076efdb826d1771" title="USBOTGSRPIsReady" alt="" coords="340,752,519,781">
+<area shape="rect" href="$usb__device_8h.html#f7fca92a339183ae8f268bb8c3ca4e7e" title="USBStallHandler" alt="" coords="360,856,499,885">
+<area shape="rect" href="$usb__device_8h.html#1e0966febda8e01d2e4e58ceb42dd46a" title="USBSuspend" alt="" coords="371,909,488,939">
+<area shape="rect" href="$usb__device_8h.html#9104bea8c7f5045558f6cc5721e7455f" title="USBWakeFromSuspend" alt="" coords="329,272,529,301">
+<area shape="rect" href="$usb__device_8h.html#8bfda535b2c9273a24983c1799f3fb42" title="USBCtrlTrfInHandler" alt="" coords="631,112,799,141">
+<area shape="rect" href="$usb__device_8h.html#d30a9aeba644af617b04c45333fc5125" title="USBCtrlTrfOutHandler" alt="" coords="625,5,804,35">
+<area shape="rect" href="$usb__device_8h.html#4fd82120d0ce7ac5df27574b2fcd2b8f" title="USBCtrlTrfSetupHandler" alt="" coords="616,59,813,88">
+<area shape="rect" href="$usb__device_8h.html#6dde221e5c27eb18f62335810c830630" title="USBCtrlTrfTxService" alt="" coords="875,112,1045,141">
+<area shape="rect" href="$usb__device_8h.html#24bc7f902cfd3ef505708c71099ca32a" title="Section: CALLBACKS." alt="" coords="644,909,785,939">
+<area shape="rect" href="$usb__device_8h.html#cb07fd7b59801b89093d5f5a375a1bb1" title="This function is called when the USB interrupt bit is set In this example the interrupt..." alt="" coords="604,272,825,301">

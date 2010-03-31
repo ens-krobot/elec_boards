@@ -1,0 +1,4 @@
+<area shape="rect" href="$_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="112,83,275,112">
+<area shape="rect" href="$_compiler_8h.html" title="Compiler.h" alt="" coords="233,160,332,189">
+<area shape="rect" href="$_hardware_profile_8h.html" title="Définitions spécifiques au PIC utilisé, pour l&#39;USB et les LEDs notamment." alt="" coords="441,160,593,189">
+<area shape="rect" href="$motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="349,83,424,112">

@@ -1,0 +1,12 @@
+<area shape="rect" href="$eeprom_8h.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="56,83,147,112">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="239,237,308,267">
+<area shape="rect" href="$usb__device_8h.html" title="usb_device.h" alt="" coords="221,83,339,112">
+<area shape="rect" href="$usb__function__msd_8h.html" title="usb_function_msd.h" alt="" coords="363,83,531,112">
+<area shape="rect" href="$lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="591,160,668,189">
+<area shape="rect" href="$motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="555,83,629,112">
+<area shape="rect" href="$usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="704,83,856,112">
+<area shape="rect" href="$usb__device_8c.html" title="usb_device.c" alt="" coords="880,83,997,112">
+<area shape="rect" href="$usb__function__hid_8c.html" title="usb_function_hid.c" alt="" coords="1021,83,1181,112">
+<area shape="rect" href="$eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="5,160,96,189">
+<area shape="rect" href="$lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="591,237,668,267">
+<area shape="rect" href="$motor_8c.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="492,160,567,189">

@@ -1,0 +1,41 @@
+Carte d'asservissement - Alimentation  Revised: Thursday, January 01, 2009
+          Revision: 1.0
+
+
+
+
+
+
+
+Bill Of Materials        January 3,2009      13:06:26	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	2	C2,C4	22p
+2	6	C6,C15,C18,C24,C25,C26	100n
+3	1	C17	0.33u
+4	1	C21	220n
+5	1	D9	LED alim 5V
+6	1	D16	D1N4001
+7	1	D18	D1N5817
+8	1	D23	LED1
+9	1	D24	LED2
+10	2	J4,J6	Codeur moteur
+11	1	J7	Courant mot. 1
+12	1	J8	Com. moteur 1
+13	2	J9,J13	Bus I2C
+14	1	J10	Con. USB
+15	1	J11	Courant mot. 2
+16	1	J14	Com. moteur 2
+17	1	J26	Bornier alim. 12 V
+18	1	J32	Con. PROG
+19	3	R22,R23,R29	680
+20	5	R38,R39,R42,R43,R44	10k
+21	1	SW6	RESET
+22	1	U8	LM7805C/TO220
+23	1	U9	PIC18F4550-PDIP
+24	2	U12,U14	LM629N-8
+25	1	U19	OSC 8 MHz (max)
+26	1	U24	74HCT367
+27	1	X2	8 MHz

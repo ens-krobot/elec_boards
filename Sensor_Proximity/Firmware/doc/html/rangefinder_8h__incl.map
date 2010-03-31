@@ -1,0 +1,5 @@
+<area shape="rect" href="$_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="139,160,301,189">
+<area shape="rect" href="$_compiler_8h.html" title="Compiler.h" alt="" coords="325,160,424,189">
+<area shape="rect" href="$_hardware_profile_8h.html" title="Définitions spécifiques au PIC utilisé, pour l&#39;USB et les LEDs notamment." alt="" coords="376,83,528,112">
+<area shape="rect" href="$eeprom_8h.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="211,83,301,112">
+<area shape="rect" href="$_pc_interface_8h.html" title="Fichier commun avec le programme hôte sur la carte mère (USB PC)." alt="" coords="552,83,688,112">

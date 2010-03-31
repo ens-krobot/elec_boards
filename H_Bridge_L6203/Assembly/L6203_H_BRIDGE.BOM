@@ -1,0 +1,33 @@
+Carte pont en H avec L6203 - L6203s  Revised: Sunday, May 17, 2009
+          Revision: 1.1
+
+Olivier BICHLER
+
+
+
+
+
+Bill Of Materials            May 17,2009      18:16:43	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	2	C1,C6	220n
+2	5	C2,C7,C11,C12,C14	100n
+3	4	C3,C4,C8,C9	15n
+4	2	C5,C10	22n
+5	1	C13	2200 uF
+6	4	D1,D2,D3,D4	BYW98-200 / SF34G
+7	1	D5	LED alim 5V
+8	1	F1	Fusible thermique
+9	1	J1	Alim. 12 V - 36 V
+10	1	J2	Moteur 1
+11	1	J3	Commande 1
+12	1	J4	Moteur 2
+13	1	J5	Commande 2
+14	2	R1,R2	10
+15	1	R3	680
+16	2	R4,R5	10k
+17	2	U1,U2	L6203
+18	2	U3,U4	74HC00
+19	1	U5	LM7805C/TO220

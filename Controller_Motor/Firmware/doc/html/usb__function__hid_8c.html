@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte d&#39;asservissement (bi): Référence du fichier usb_function_hid.c</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier usb_function_hid.c</h1><code>#include &quot;<a class="el" href="_generic_type_defs_8h.html">GenericTypeDefs.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_compiler_8h.html">Compiler.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="usb__config_8h.html">usb_config.h</a>&quot;</code><br>
+<code>#include &quot;./USB/usb_device.h&quot;</code><br>
+<code>#include &quot;./USB/usb_function_hid.h&quot;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de usb_function_hid.c:</div>
+<div class="dynsection">
+<p><center><img src="usb__function__hid_8c__incl.png" border="0" usemap="#usb_function_hid.c_map" alt=""></center>
+<map name="usb_function_hid.c_map">
+<area shape="rect" href="_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="5,83,168,112"><area shape="rect" href="_compiler_8h.html" title="Compiler.h" alt="" coords="192,83,291,112"><area shape="rect" href="usb__config_8h.html" title="usb_config.h" alt="" coords="315,83,429,112"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#fb60fd12cb265cc70fd3b2d11802cd09">HIDGetReportHandler</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PRIVATE PROTOTYPES.  <a href="#fb60fd12cb265cc70fd3b2d11802cd09"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#6d8be1c6f7f1a3ffb6c3b56ae1f067a6">HIDSetReportHandler</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#5e0b02add954ecf19bcdef679a58988b">USBCheckHIDRequest</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Section: DECLARATIONS.  <a href="#5e0b02add954ecf19bcdef679a58988b"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#c0d02fe9e758567fbe260ade4a072a7b">idle_rate</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">INCLUDES.  <a href="#c0d02fe9e758567fbe260ade4a072a7b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#3855f42cfa5d48f49e203d8de90295c2">active_protocol</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__function__hid_8c.html#faee72671c39c18a6e4b5144928966f1">hid_rpt_rx_len</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Section: EXTERNS.  <a href="#faee72671c39c18a6e4b5144928966f1"></a><br></td></tr>
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="fb60fd12cb265cc70fd3b2d11802cd09"></a><!-- doxytag: member="usb_function_hid.c::HIDGetReportHandler" ref="fb60fd12cb265cc70fd3b2d11802cd09" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HIDGetReportHandler           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+PRIVATE PROTOTYPES. 
+<p>
+<div class="fragment"><pre class="fragment"><a name="l00225"></a>00225 {
+<a name="l00226"></a>00226 }<span class="comment">//end HIDGetReportHandler</span>
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6d8be1c6f7f1a3ffb6c3b56ae1f067a6"></a><!-- doxytag: member="usb_function_hid.c::HIDSetReportHandler" ref="6d8be1c6f7f1a3ffb6c3b56ae1f067a6" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HIDSetReportHandler           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<div class="fragment"><pre class="fragment"><a name="l00229"></a>00229 {
+<a name="l00230"></a>00230 }<span class="comment">//end HIDSetReportHandler</span>
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e0b02add954ecf19bcdef679a58988b"></a><!-- doxytag: member="usb_function_hid.c::USBCheckHIDRequest" ref="5e0b02add954ecf19bcdef679a58988b" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void USBCheckHIDRequest           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Section: DECLARATIONS. 
+<p>
+Section: PUBLIC PROTOTYPES.<p>
+Section: CLASS SPECIFIC REQUESTS <div class="fragment"><pre class="fragment"><a name="l00154"></a>00154 {
+<a name="l00155"></a>00155     <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.Recipient != <a class="code" href="usb__device_8h.html#34421f863b077bb1c5bd3df1f1502360">RCPT_INTF</a>) <span class="keywordflow">return</span>;
+<a name="l00156"></a>00156     <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.bIntfID != <a class="code" href="usb__config_8h.html#bc9e5d4b68a81d0ae93c6d196e1c4214" title="ENDPOINTS ALLOCATION.">HID_INTF_ID</a>) <span class="keywordflow">return</span>;
+<a name="l00157"></a>00157     
+<a name="l00158"></a>00158     <span class="comment">/*</span>
+<a name="l00159"></a>00159 <span class="comment">     * There are two standard requests that hid.c may support.</span>
+<a name="l00160"></a>00160 <span class="comment">     * 1. GET_DSC(DSC_HID,DSC_RPT,DSC_PHY);</span>
+<a name="l00161"></a>00161 <span class="comment">     * 2. SET_DSC(DSC_HID,DSC_RPT,DSC_PHY);</span>
+<a name="l00162"></a>00162 <span class="comment">     */</span>
+<a name="l00163"></a>00163     <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.bRequest == <a class="code" href="usb__device_8h.html#24e3cca701a91e33a03e010006dac5ab">GET_DSC</a>)
+<a name="l00164"></a>00164     {
+<a name="l00165"></a>00165         <span class="keywordflow">switch</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.bDescriptorType)
+<a name="l00166"></a>00166         {
+<a name="l00167"></a>00167             <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#b44191061dc89d3deeedac1138b1b8dd">DSC_HID</a>:           
+<a name="l00168"></a>00168                 <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#91adced4a63e99db6b4b72faa09e78c5">USBActiveConfiguration</a> == 1)
+<a name="l00169"></a>00169                 {
+<a name="l00170"></a>00170                     <a class="code" href="usb__device_8h.html#86d286edd0b91f2f10f8baa7c6730a54">USBEP0SendROMPtr</a>(
+<a name="l00171"></a>00171                         (<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a> <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>*)&amp;<a class="code" href="usb__device_8h.html#0e36d44f1d361bc8279cf9b49b7533bd">configDescriptor1</a> + 18,
+<a name="l00172"></a>00172                         <span class="keyword">sizeof</span>(<a class="code" href="struct___u_s_b___h_i_d___d_s_c.html">USB_HID_DSC</a>)+3,
+<a name="l00173"></a>00173                         <a class="code" href="usb__device_8h.html#50dd396cbf24e9805949f44b4e4c8356">USB_EP0_INCLUDE_ZERO</a>);
+<a name="l00174"></a>00174                 }
+<a name="l00175"></a>00175                 <span class="keywordflow">break</span>;
+<a name="l00176"></a>00176             <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#4dda799ef1bff0cf21a21bf3ed5a14ab">DSC_RPT</a>:             
+<a name="l00177"></a>00177                 <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#91adced4a63e99db6b4b72faa09e78c5">USBActiveConfiguration</a> == 1)
+<a name="l00178"></a>00178                 {
+<a name="l00179"></a>00179                     <a class="code" href="usb__device_8h.html#86d286edd0b91f2f10f8baa7c6730a54">USBEP0SendROMPtr</a>(
+<a name="l00180"></a>00180                         (<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a> <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>*)&amp;<a class="code" href="usb__descriptors_8c.html#5ce8d8b77ce0da6fa663bdfd476ec094">hid_rpt01</a>,
+<a name="l00181"></a>00181                         <span class="keyword">sizeof</span>(hid_rpt01),     <span class="comment">//See usbcfg.h</span>
+<a name="l00182"></a>00182                         <a class="code" href="usb__device_8h.html#50dd396cbf24e9805949f44b4e4c8356">USB_EP0_INCLUDE_ZERO</a>);
+<a name="l00183"></a>00183                 }
+<a name="l00184"></a>00184                 <span class="keywordflow">break</span>;
+<a name="l00185"></a>00185             <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#52019928ef0101e4d73caf64576c306c">DSC_PHY</a>:
+<a name="l00186"></a>00186                 <a class="code" href="usb__device_8h.html#fee617384321d6b43b09661c9501826d">USBEP0Transmit</a>(<a class="code" href="usb__device_8h.html#122bae86ee59c3932e8d3c16b316c410">USB_EP0_NO_DATA</a>);
+<a name="l00187"></a>00187                 <span class="keywordflow">break</span>;
+<a name="l00188"></a>00188         }<span class="comment">//end switch(SetupPkt.bDescriptorType)</span>
+<a name="l00189"></a>00189     }<span class="comment">//end if(SetupPkt.bRequest == GET_DSC)</span>
+<a name="l00190"></a>00190     
+<a name="l00191"></a>00191     <span class="keywordflow">if</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.RequestType != <a class="code" href="usb__device_8h.html#eb04f2e0012cb07d68538599161c9693">CLASS</a>) <span class="keywordflow">return</span>;
+<a name="l00192"></a>00192     <span class="keywordflow">switch</span>(<a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.bRequest)
+<a name="l00193"></a>00193     {
+<a name="l00194"></a>00194         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#ec9b0c917ae70aff81322f2d721bbb16" title="INCLUDES.">GET_REPORT</a>:
+<a name="l00195"></a>00195             <a class="code" href="usb__function__hid_8c.html#fb60fd12cb265cc70fd3b2d11802cd09" title="PRIVATE PROTOTYPES.">HIDGetReportHandler</a>();
+<a name="l00196"></a>00196             <span class="keywordflow">break</span>;
+<a name="l00197"></a>00197         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#43ea531ba036e94e9754dcfaf2ce1e56">SET_REPORT</a>:
+<a name="l00198"></a>00198             <a class="code" href="usb__function__hid_8c.html#6d8be1c6f7f1a3ffb6c3b56ae1f067a6">HIDSetReportHandler</a>();            
+<a name="l00199"></a>00199             <span class="keywordflow">break</span>;
+<a name="l00200"></a>00200         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#0f26d84d681fc95257f35c406c07903b">GET_IDLE</a>:
+<a name="l00201"></a>00201             <a class="code" href="usb__device_8h.html#5ded7630943dd42d14d0f07d08e9b6ec">USBEP0SendRAMPtr</a>(
+<a name="l00202"></a>00202                 (<a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>*)&amp;<a class="code" href="usb__function__hid_8c.html#c0d02fe9e758567fbe260ade4a072a7b" title="INCLUDES.">idle_rate</a>,
+<a name="l00203"></a>00203                 1,
+<a name="l00204"></a>00204                 <a class="code" href="usb__device_8h.html#50dd396cbf24e9805949f44b4e4c8356">USB_EP0_INCLUDE_ZERO</a>);
+<a name="l00205"></a>00205             <span class="keywordflow">break</span>;
+<a name="l00206"></a>00206         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#619da8498155cc851c445dca41b32dd4">SET_IDLE</a>:
+<a name="l00207"></a>00207             <a class="code" href="usb__device_8h.html#fee617384321d6b43b09661c9501826d">USBEP0Transmit</a>(<a class="code" href="usb__device_8h.html#122bae86ee59c3932e8d3c16b316c410">USB_EP0_NO_DATA</a>);
+<a name="l00208"></a>00208             <a class="code" href="usb__function__hid_8c.html#c0d02fe9e758567fbe260ade4a072a7b" title="INCLUDES.">idle_rate</a> = <a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.W_Value.byte.HB;
+<a name="l00209"></a>00209             <span class="keywordflow">break</span>;
+<a name="l00210"></a>00210         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#41e17456a13f2c97f925fa8f526454fd">GET_PROTOCOL</a>:
+<a name="l00211"></a>00211             <a class="code" href="usb__device_8h.html#5ded7630943dd42d14d0f07d08e9b6ec">USBEP0SendRAMPtr</a>(
+<a name="l00212"></a>00212                 (<a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>*)&amp;<a class="code" href="usb__function__hid_8c.html#3855f42cfa5d48f49e203d8de90295c2">active_protocol</a>,
+<a name="l00213"></a>00213                 1,
+<a name="l00214"></a>00214                 <a class="code" href="usb__device_8h.html#701b0fe39f013f7b3c1073b1972f626f">USB_EP0_NO_OPTIONS</a>);
+<a name="l00215"></a>00215             <span class="keywordflow">break</span>;
+<a name="l00216"></a>00216         <span class="keywordflow">case</span> <a class="code" href="usb__function__hid_8h.html#a08ce2c5a3e5dd390c6079c4ec998cc3">SET_PROTOCOL</a>:
+<a name="l00217"></a>00217             <a class="code" href="usb__device_8h.html#fee617384321d6b43b09661c9501826d">USBEP0Transmit</a>(<a class="code" href="usb__device_8h.html#122bae86ee59c3932e8d3c16b316c410">USB_EP0_NO_DATA</a>);
+<a name="l00218"></a>00218             <a class="code" href="usb__function__hid_8c.html#3855f42cfa5d48f49e203d8de90295c2">active_protocol</a> = <a class="code" href="usb__device_8h.html#53fb51fd8f590f349a2703af36c04a57">SetupPkt</a>.W_Value.byte.LB;
+<a name="l00219"></a>00219             <span class="keywordflow">break</span>;
+<a name="l00220"></a>00220     }<span class="comment">//end switch(SetupPkt.bRequest)</span>
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 }<span class="comment">//end USBCheckHIDRequest</span>
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dynsection">
+<p><center><img src="usb__function__hid_8c_5e0b02add954ecf19bcdef679a58988b_cgraph.png" border="0" usemap="#usb__function__hid_8c_5e0b02add954ecf19bcdef679a58988b_cgraph_map" alt=""></center>
+<map name="usb__function__hid_8c_5e0b02add954ecf19bcdef679a58988b_cgraph_map">
+<area shape="rect" href="usb__function__hid_8c.html#fb60fd12cb265cc70fd3b2d11802cd09" title="PRIVATE PROTOTYPES." alt="" coords="243,5,421,35"><area shape="rect" href="usb__function__hid_8c.html#6d8be1c6f7f1a3ffb6c3b56ae1f067a6" title="HIDSetReportHandler" alt="" coords="244,59,420,88"></map>
+</div>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="3855f42cfa5d48f49e203d8de90295c2"></a><!-- doxytag: member="usb_function_hid.c::active_protocol" ref="3855f42cfa5d48f49e203d8de90295c2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__function__hid_8c.html#3855f42cfa5d48f49e203d8de90295c2">active_protocol</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="faee72671c39c18a6e4b5144928966f1"></a><!-- doxytag: member="usb_function_hid.c::hid_rpt_rx_len" ref="faee72671c39c18a6e4b5144928966f1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__function__hid_8c.html#faee72671c39c18a6e4b5144928966f1">hid_rpt_rx_len</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Section: EXTERNS. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c0d02fe9e758567fbe260ade4a072a7b"></a><!-- doxytag: member="usb_function_hid.c::idle_rate" ref="c0d02fe9e758567fbe260ade4a072a7b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__function__hid_8c.html#c0d02fe9e758567fbe260ade4a072a7b">idle_rate</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+INCLUDES. 
+<p>
+VARIABLES 
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:05:07 2009 pour Carte d'asservissement (bi) par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

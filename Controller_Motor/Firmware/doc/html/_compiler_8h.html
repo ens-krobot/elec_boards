@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte d&#39;asservissement (bi): Référence du fichier Compiler.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier Compiler.h</h1><code>#include &lt;stdio.h&gt;</code><br>
+<code>#include &lt;stdlib.h&gt;</code><br>
+<code>#include &lt;string.h&gt;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de Compiler.h:</div>
+<div class="dynsection">
+<p><center><img src="_compiler_8h__incl.png" border="0" usemap="#Compiler.h_map" alt=""></center>
+</div>
+
+<p>
+<div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dynsection">
+<p><center><img src="_compiler_8h__dep__incl.png" border="0" usemap="#Compiler.hdep_map" alt=""></center>
+<map name="Compiler.hdep_map">
+<area shape="rect" href="eeprom_8h.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="56,83,147,112"><area shape="rect" href="main_8c.html" title="Contient la fonction main() du programme." alt="" coords="239,237,308,267"><area shape="rect" href="usb__device_8h.html" title="usb_device.h" alt="" coords="221,83,339,112"><area shape="rect" href="usb__function__msd_8h.html" title="usb_function_msd.h" alt="" coords="363,83,531,112"><area shape="rect" href="lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="591,160,668,189"><area shape="rect" href="motor_8h.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="555,83,629,112"><area shape="rect" href="usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="704,83,856,112"><area shape="rect" href="usb__device_8c.html" title="usb_device.c" alt="" coords="880,83,997,112"><area shape="rect" href="usb__function__hid_8c.html" title="usb_function_hid.c" alt="" coords="1021,83,1181,112"><area shape="rect" href="eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="5,160,96,189"><area shape="rect" href="lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="591,237,668,267"><area shape="rect" href="motor_8c.html" title="Gère l&#39;interface avec la carte de puissance du moteur." alt="" coords="492,160,567,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#46b18135478d794760b91597d1b4a102">memcmppgm2ram</a>(a, b, c)&nbsp;&nbsp;&nbsp;memcmp(a,b,c)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#bb3dadaca2fcbe093269c2ab298193b5">strcmppgm2ram</a>(a, b)&nbsp;&nbsp;&nbsp;strcmp(a,b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#4f908a557b3e9ac6b9b0df4be62dce8f">memcpypgm2ram</a>(a, b, c)&nbsp;&nbsp;&nbsp;memcpy(a,b,c)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#82a8886d100fad77a03f98bdbfbc5bd2">strcpypgm2ram</a>(a, b)&nbsp;&nbsp;&nbsp;strcpy(a,b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#3048b9295c9c60f0c088fc1fc8b8d6f2">strncpypgm2ram</a>(a, b, c)&nbsp;&nbsp;&nbsp;strncpy(a,b,c)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#c28e9a1904f09a9bdd88798cdd1c38f4">strstrrampgm</a>(a, b)&nbsp;&nbsp;&nbsp;strstr(a,b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#5584efd87a5897955a518156d87dd91e">strlenpgm</a>(a)&nbsp;&nbsp;&nbsp;strlen(a)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#6d10049f0c057bf9b0f8abcf76b1b05a">strchrpgm</a>(a, b)&nbsp;&nbsp;&nbsp;strchr(a,b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#5e42f7bf7b2e4f4e8d9e79a02a3e0704">strcatpgm2ram</a>(a, b)&nbsp;&nbsp;&nbsp;strcat(a,b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a>&nbsp;&nbsp;&nbsp;const</td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="46b18135478d794760b91597d1b4a102"></a><!-- doxytag: member="Compiler.h::memcmppgm2ram" ref="46b18135478d794760b91597d1b4a102" args="(a, b, c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define memcmppgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">c&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;memcmp(a,b,c)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4f908a557b3e9ac6b9b0df4be62dce8f"></a><!-- doxytag: member="Compiler.h::memcpypgm2ram" ref="4f908a557b3e9ac6b9b0df4be62dce8f" args="(a, b, c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define memcpypgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">c&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;memcpy(a,b,c)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="408c4c066164afa1b6aa3f804c3d3528"></a><!-- doxytag: member="Compiler.h::ROM" ref="408c4c066164afa1b6aa3f804c3d3528" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ROM&nbsp;&nbsp;&nbsp;const          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e42f7bf7b2e4f4e8d9e79a02a3e0704"></a><!-- doxytag: member="Compiler.h::strcatpgm2ram" ref="5e42f7bf7b2e4f4e8d9e79a02a3e0704" args="(a, b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strcatpgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strcat(a,b)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6d10049f0c057bf9b0f8abcf76b1b05a"></a><!-- doxytag: member="Compiler.h::strchrpgm" ref="6d10049f0c057bf9b0f8abcf76b1b05a" args="(a, b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strchrpgm          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strchr(a,b)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bb3dadaca2fcbe093269c2ab298193b5"></a><!-- doxytag: member="Compiler.h::strcmppgm2ram" ref="bb3dadaca2fcbe093269c2ab298193b5" args="(a, b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strcmppgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strcmp(a,b)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="82a8886d100fad77a03f98bdbfbc5bd2"></a><!-- doxytag: member="Compiler.h::strcpypgm2ram" ref="82a8886d100fad77a03f98bdbfbc5bd2" args="(a, b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strcpypgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strcpy(a,b)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5584efd87a5897955a518156d87dd91e"></a><!-- doxytag: member="Compiler.h::strlenpgm" ref="5584efd87a5897955a518156d87dd91e" args="(a)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strlenpgm          </td>
+          <td>(</td>
+          <td class="paramtype">a&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strlen(a)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3048b9295c9c60f0c088fc1fc8b8d6f2"></a><!-- doxytag: member="Compiler.h::strncpypgm2ram" ref="3048b9295c9c60f0c088fc1fc8b8d6f2" args="(a, b, c)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strncpypgm2ram          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">c&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strncpy(a,b,c)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c28e9a1904f09a9bdd88798cdd1c38f4"></a><!-- doxytag: member="Compiler.h::strstrrampgm" ref="c28e9a1904f09a9bdd88798cdd1c38f4" args="(a, b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define strstrrampgm          </td>
+          <td>(</td>
+          <td class="paramtype">a,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">b&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;strstr(a,b)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:04:46 2009 pour Carte d'asservissement (bi) par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

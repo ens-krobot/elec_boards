@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte d&#39;asservissement (bi): Carte d&#39;asservissement (bi)</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li class="current"><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Carte d'asservissement (bi)</h1>
+<p>
+<h3 align="center">1.1 </h3><h2><a class="anchor" name="Introduction">
+Introduction</a></h2>
+Ce firmware est destiné à la Carte d'asservissement (bi), équipée d'un PIC18F4550 et de 2 modules LM629. Il implémente entre autre l'interface PIC - LM629, ainsi que les fonctions de commande de trajectoire de haut niveau. <br>
+ Voir la fonction <a class="el" href="main_8c.html#ace5bc936ba3a482762863d6da13c941" title="Fonction de traitement principale du programme.">ProcessIO()</a> ainsi que les fichiers <a class="el" href="lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629.">lm629.c</a> et <a class="el" href="lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629.">lm629.h</a> pour l'essentiel.<h2><a class="anchor" name="Installation">
+Installation</a></h2>
+Pour transférer le firmware sur le PIC, procéder de la manière suivante :<ul>
+<li>Mettre le PIC en mode bootloader (bouton spécifique sur la carte ou commande logiciel avec le programme RobotMainboard.exe) ;</li><li>Ouvrir le programme "PICDEM FS USB Demo Tool" (Pdfsusb) de Microchip (doit être exécuté en tant qu'Administrateur sous Windows) ;</li><li>Sélectionner la carte dans la liste (la carte doit être connecté en USB au PC et alimentée) ;</li><li>Cliquer sur "Load HEX File" pour charger le firmware à transférer au PIC ;</li><li>Cliquer sur "Program Device", puis "Execute" pour relancer le PIC avec le nouveau firmware.</li></ul>
+<p>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Le programme ne contient pas la configuration du PIC et est destiné à être transféré via un bootloader.</dd></dl>
+<dl class="author" compact><dt><b>Auteur:</b></dt><dd>Olivier BICHLER </dd></dl>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.0 (<a class="el" href="_hardware_profile_8h.html#56df7b87d2bb8ac764e72e17fbe69dad">REV_1_0</a>) et 1.1 (REV_1_1) </dd></dl>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:04:45 2009 pour Carte d'asservissement (bi) par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<area shape="rect" href="$usb__device_8h.html#85c176c4ca674eb30b43b414f6a66260" title="The USBCBStdSetDscHandler() callback function is called when a SETUP, bRequest: SET_DESCRIPTOR..." alt="" coords="243,112,453,141">
+<area shape="rect" href="$usb__device_8h.html#109b75c6ceba7a1ac93ac8653dae6405" title="USBStdFeatureReqHandler" alt="" coords="239,165,457,195">
+<area shape="rect" href="$usb__device_8h.html#05d1ee4a1e4a8c8af6fb4816eba0a591" title="USBStdGetDscHandler" alt="" coords="255,219,441,248">
+<area shape="rect" href="$usb__device_8h.html#07599ba7765be64baabac4e86cdb5358" title="USBStdGetStatusHandler" alt="" coords="247,272,449,301">
+<area shape="rect" href="$usb__device_8h.html#23b85d487e9d3b37a4580138baf6b097" title="USBStdSetCfgHandler" alt="" coords="256,325,440,355">
+<area shape="rect" href="$usb__otg_8h.html#df4bb848d4c77a2b5542dd3478bafa76" title="USBOTGDisableAltHnp" alt="" coords="528,5,715,35">
+<area shape="rect" href="$usb__otg_8h.html#d078cd43132c6251de3865b19b8de4cb" title="USBOTGDisableHnp" alt="" coords="536,59,707,88">
+<area shape="rect" href="$usb__otg_8h.html#6ea42b055d88fc42421bd7cb9c120a4a" title="USBOTGDisableSupportHnp" alt="" coords="508,112,735,141">
+<area shape="rect" href="$usb__otg_8h.html#a79b51ab15ce5d80d5e4e78298c9d4c6" title="USBOTGEnableAltHnp" alt="" coords="529,165,713,195">
+<area shape="rect" href="$usb__otg_8h.html#4055c7be50b72d3312c60ccce3464782" title="USBOTGEnableHnp" alt="" coords="539,219,704,248">
+<area shape="rect" href="$usb__otg_8h.html#37a367b19b4b2f62c2dc0064f61d13fb" title="USBOTGEnableSupportHnp" alt="" coords="509,272,733,301">
+<area shape="rect" href="$usb__device_8h.html#e69da16b1f966a62cdd1831df5561cbf" title="This function is called when the device becomes initialized, which occurs after the..." alt="" coords="561,325,681,355">
+<area shape="rect" href="$usb__device_8h.html#25c6b82e249f563f00732a7e242c4267" title="USBEnableEndpoint" alt="" coords="784,325,952,355">
+<area shape="rect" href="$usb__device_8h.html#1901fa27385226b6cdad1f5b091e5374" title="USBConfigureEndpoint" alt="" coords="1001,325,1191,355">

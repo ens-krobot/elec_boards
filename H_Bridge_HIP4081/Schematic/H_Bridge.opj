@@ -1,0 +1,107 @@
+(ExpressProject "H_Bridge"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\h_bridge.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File "C:\krobot\USB_Module\H_Bridge\Board\H_Bridge-1_0.mnl")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File "C:\krobot\USB_Module\H_Bridge\Assembly\H_BRIDGE.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File "..\board\h_bridge-1_0.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\h_bridge.bom"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\USB_Module\H_Bridge\Schematic\h_bridge.dsn")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\USB_Module\H_Bridge\Schematic\h_bridge.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 302 0 678"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Alimentation"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Commande pont"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Logique d'entrée"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Mesure courant"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 304 1884 0 1057")
+        (Scroll "0 0")
+        (Zoom "133")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Pont (puissance)")))
+  (MPSSessionName "Olivier"))

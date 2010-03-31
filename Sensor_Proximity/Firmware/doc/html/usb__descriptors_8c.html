@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence du fichier usb_descriptors.c</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier usb_descriptors.c</h1><code>#include &quot;<a class="el" href="_generic_type_defs_8h.html">GenericTypeDefs.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_compiler_8h.html">Compiler.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="usb__config_8h.html">usb_config.h</a>&quot;</code><br>
+<code>#include &quot;./USB/usb_device.h&quot;</code><br>
+<code>#include &quot;./USB/usb_function_hid.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="_pc_interface_8h.html">PcInterface.h</a>&quot;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de usb_descriptors.c:</div>
+<div class="dynsection">
+<p><center><img src="usb__descriptors_8c__incl.png" border="0" usemap="#usb_descriptors.c_map" alt=""></center>
+<map name="usb_descriptors.c_map">
+<area shape="rect" href="_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="5,83,168,112"><area shape="rect" href="_compiler_8h.html" title="Compiler.h" alt="" coords="192,83,291,112"><area shape="rect" href="usb__config_8h.html" title="usb_config.h" alt="" coords="315,83,429,112"><area shape="rect" href="_pc_interface_8h.html" title="Fichier commun avec le programme hôte sur la carte mère (USB PC)." alt="" coords="875,83,995,112"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ROM <a class="el" href="usb__ch9_8h.html#d7ce0a3b2c181d57c0aa02db35e484ed">USB_DEVICE_DESCRIPTOR</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#0043fcf8534afb25f3b9aea047aef1ba">device_dsc</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">INCLUDES.  <a href="#0043fcf8534afb25f3b9aea047aef1ba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#0e36d44f1d361bc8279cf9b49b7533bd">configDescriptor1</a> []</td></tr>
+
+<tr><td class="memItemLeft" nowrap>struct {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#8e443464272fdf3bd5148df0b7f5dcaf">bLength</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#3641ecfd04e86c3ce95c6bed0c066a5d">bDscType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#d0728b1dbd57f22237ee08f6d5eb1c1f">string</a> [1]</td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#114c2b97900d95da3d45b964bb3d286c">sd000</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>struct {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#8e443464272fdf3bd5148df0b7f5dcaf">bLength</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#3641ecfd04e86c3ce95c6bed0c066a5d">bDscType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#d0728b1dbd57f22237ee08f6d5eb1c1f">string</a> [21]</td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#529718e7d315eb3c5c0d350496efaf00">sd001</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>struct {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#8e443464272fdf3bd5148df0b7f5dcaf">bLength</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#3641ecfd04e86c3ce95c6bed0c066a5d">bDscType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#d0728b1dbd57f22237ee08f6d5eb1c1f">string</a> [16]</td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#bef37ee951f263337d9d17a8b99e7640">sd002</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap>struct {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;&nbsp;&nbsp;<a class="el" href="usb__descriptors_8c.html#45e2f6faa2ef8e018e6388452dc2ccb5">report</a> [HID_RPT01_SIZE]</td></tr>
+
+<tr><td class="memItemLeft" nowrap valign="top">}&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#5ce8d8b77ce0da6fa663bdfd476ec094">hid_rpt01</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *ROM&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#6cef2d16780d8287c7c9719af33cdab0">USB_CD_Ptr</a> []</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *ROM&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="usb__descriptors_8c.html#5fd678847473856bf6b261994bcc1814">USB_SD_Ptr</a> []</td></tr>
+
+</table>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="3641ecfd04e86c3ce95c6bed0c066a5d"></a><!-- doxytag: member="usb_descriptors.c::bDscType" ref="3641ecfd04e86c3ce95c6bed0c066a5d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__descriptors_8c.html#3641ecfd04e86c3ce95c6bed0c066a5d">bDscType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8e443464272fdf3bd5148df0b7f5dcaf"></a><!-- doxytag: member="usb_descriptors.c::bLength" ref="8e443464272fdf3bd5148df0b7f5dcaf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__descriptors_8c.html#8e443464272fdf3bd5148df0b7f5dcaf">bLength</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e36d44f1d361bc8279cf9b49b7533bd"></a><!-- doxytag: member="usb_descriptors.c::configDescriptor1" ref="0e36d44f1d361bc8279cf9b49b7533bd" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__descriptors_8c.html#0e36d44f1d361bc8279cf9b49b7533bd">configDescriptor1</a>[]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0043fcf8534afb25f3b9aea047aef1ba"></a><!-- doxytag: member="usb_descriptors.c::device_dsc" ref="0043fcf8534afb25f3b9aea047aef1ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM <a class="el" href="usb__ch9_8h.html#d7ce0a3b2c181d57c0aa02db35e484ed">USB_DEVICE_DESCRIPTOR</a> <a class="el" href="usb__descriptors_8c.html#0043fcf8534afb25f3b9aea047aef1ba">device_dsc</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment">
+{
+    0x12,    
+    <a class="code" href="usb__ch9_8h.html#c6d0566773ed4549fe1a7a932e6c46de">USB_DESCRIPTOR_DEVICE</a>,                
+    0x0200,                 
+    0x00,                   
+    0x00,                   
+    0x00,                   
+    <a class="code" href="usb__config_8h.html#e0068b787dd02f5b2515756b2a0b14a4" title="DEFINITIONS.">USB_EP0_BUFF_SIZE</a>,          
+    <a class="code" href="_pc_interface_8h.html#3398c7225386f04c72fd9025fcb44734" title="Vendor ID commun aux différentes cartes USB.">USB_VID</a>,                
+    <a class="code" href="_pc_interface_8h.html#c9a921897d5a0e932dada9094469ea32" title="Product ID de la Carte capteurs.">USB_PID_CARTE_CAPTEURS</a>,   
+    0x0002,                 
+    0x01,                   
+    0x02,                   
+    0x00,                   
+    0x01                    
+}
+</pre></div>INCLUDES. 
+<p>
+CONSTANTS 
+</div>
+</div><p>
+<a class="anchor" name="5ce8d8b77ce0da6fa663bdfd476ec094"></a><!-- doxytag: member="usb_descriptors.c::hid_rpt01" ref="5ce8d8b77ce0da6fa663bdfd476ec094" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM { ... }  <a class="el" href="usb__descriptors_8c.html#5ce8d8b77ce0da6fa663bdfd476ec094">hid_rpt01</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="45e2f6faa2ef8e018e6388452dc2ccb5"></a><!-- doxytag: member="usb_descriptors.c::report" ref="45e2f6faa2ef8e018e6388452dc2ccb5" args="[HID_RPT01_SIZE]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> <a class="el" href="usb__descriptors_8c.html#45e2f6faa2ef8e018e6388452dc2ccb5">report</a>[HID_RPT01_SIZE]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="114c2b97900d95da3d45b964bb3d286c"></a><!-- doxytag: member="usb_descriptors.c::sd000" ref="114c2b97900d95da3d45b964bb3d286c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM { ... }  <a class="el" href="usb__descriptors_8c.html#114c2b97900d95da3d45b964bb3d286c">sd000</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="529718e7d315eb3c5c0d350496efaf00"></a><!-- doxytag: member="usb_descriptors.c::sd001" ref="529718e7d315eb3c5c0d350496efaf00" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM { ... }  <a class="el" href="usb__descriptors_8c.html#529718e7d315eb3c5c0d350496efaf00">sd001</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bef37ee951f263337d9d17a8b99e7640"></a><!-- doxytag: member="usb_descriptors.c::sd002" ref="bef37ee951f263337d9d17a8b99e7640" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM { ... }  <a class="el" href="usb__descriptors_8c.html#bef37ee951f263337d9d17a8b99e7640">sd002</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d0728b1dbd57f22237ee08f6d5eb1c1f"></a><!-- doxytag: member="usb_descriptors.c::string" ref="d0728b1dbd57f22237ee08f6d5eb1c1f" args="[1]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#2b0e863dadf920709ec53d9088ee7c91">WORD</a> <a class="el" href="usb__descriptors_8c.html#d0728b1dbd57f22237ee08f6d5eb1c1f">string</a>[16]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6cef2d16780d8287c7c9719af33cdab0"></a><!-- doxytag: member="usb_descriptors.c::USB_CD_Ptr" ref="6cef2d16780d8287c7c9719af33cdab0" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>* ROM <a class="el" href="usb__descriptors_8c.html#6cef2d16780d8287c7c9719af33cdab0">USB_CD_Ptr</a>[]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment">
+{
+    (<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a> <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a>)&amp;<a class="code" href="usb__device_8h.html#0e36d44f1d361bc8279cf9b49b7533bd">configDescriptor1</a>
+}
+</pre></div>
+</div>
+</div><p>
+<a class="anchor" name="5fd678847473856bf6b261994bcc1814"></a><!-- doxytag: member="usb_descriptors.c::USB_SD_Ptr" ref="5fd678847473856bf6b261994bcc1814" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ROM <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>* ROM <a class="el" href="usb__descriptors_8c.html#5fd678847473856bf6b261994bcc1814">USB_SD_Ptr</a>[]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur initiale :</b><div class="fragment"><pre class="fragment">
+{
+    (<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a> <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a>)&amp;<a class="code" href="usb__descriptors_8c.html#114c2b97900d95da3d45b964bb3d286c">sd000</a>,
+    (<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a> <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *<a class="code" href="_compiler_8h.html#408c4c066164afa1b6aa3f804c3d3528">ROM</a>)&amp;<a class="code" href="usb__descriptors_8c.html#529718e7d315eb3c5c0d350496efaf00">sd001</a>,
+    (ROM <a class="code" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> *ROM)&amp;<a class="code" href="usb__descriptors_8c.html#bef37ee951f263337d9d17a8b99e7640">sd002</a>
+}
+</pre></div>
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:23 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

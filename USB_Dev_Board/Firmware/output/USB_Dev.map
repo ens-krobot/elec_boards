@@ -1,0 +1,1517 @@
+MPLINK 4.21, Linker
+Linker Map File - Created Sat Oct 24 00:11:49 2009
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+               _entry_scn       code   0x000000    program   0x000006
+    HIGH_INTERRUPT_VECTOR       code   0x000008    program   0x000006
+     LOW_INTERRUPT_VECTOR       code   0x000018    program   0x000006
+    REMAPPED_RESET_VECTOR       code   0x000800    program   0x000006
+REMAPPED_HIGH_INTERRUPT_VECTOR       code   0x000808    program   0x000006
+REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
+                   .cinit    romdata   0x00082a    program   0x000026
+       .code_usb_device.o       code   0x000850    program   0x000b62
+             .code_main.o       code   0x0013b2    program   0x000a42
+            .code_rs232.o       code   0x001df4    program   0x0007f0
+                   STRING       code   0x0025e4    program   0x00011e
+                   STDLIB       code   0x002702    program   0x000102
+             .stringtable    romdata   0x002804    program   0x0000f7
+      .romdata_i2c_clos.o    romdata   0x0028fb    program   0x000000
+      .romdata_i2c_idle.o    romdata   0x0028fb    program   0x000000
+      .romdata_i2c_open.o    romdata   0x0028fb    program   0x000000
+        .idata_t1open.o_i    romdata   0x0028fb    program   0x000000
+        .romdata_t1open.o    romdata   0x0028fb    program   0x000000
+         .idata_uopen.o_i    romdata   0x0028fb    program   0x000000
+         .romdata_uopen.o    romdata   0x0028fb    program   0x000000
+         .idata_uread.o_i    romdata   0x0028fb    program   0x000000
+         .romdata_uputs.o    romdata   0x0028fb    program   0x000000
+         .romdata_uread.o    romdata   0x0028fb    program   0x000000
+         .idata_udefs.o_i    romdata   0x0028fb    program   0x000000
+         .idata_uputs.o_i    romdata   0x0028fb    program   0x000000
+         .romdata_udefs.o    romdata   0x0028fb    program   0x000000
+      .romdata_i2c_writ.o    romdata   0x0028fb    program   0x000000
+       .idata_t1write.o_i    romdata   0x0028fb    program   0x000000
+       .romdata_t1write.o    romdata   0x0028fb    program   0x000000
+        .romdata___init.o    romdata   0x0028fb    program   0x000000
+      .romdata_i2c_puts.o    romdata   0x0028fb    program   0x000000
+        .romdata_uwrite.o    romdata   0x0028fb    program   0x000000
+        .idata_uwrite.o_i    romdata   0x0028fb    program   0x000000
+        .romdata_uputrs.o    romdata   0x0028fb    program   0x000000
+        .idata_uputrs.o_i    romdata   0x0028fb    program   0x000000
+          .romdata_main.o    romdata   0x0028fb    program   0x000000
+.idata_usb_descriptors.o_i    romdata   0x0028fb    program   0x000000
+        .romdata_eeprom.o    romdata   0x0028fb    program   0x000000
+         .romdata_c018i.o    romdata   0x0028fb    program   0x000000
+         .idata_rs232.o_i    romdata   0x0028fb    program   0x000001
+         .romdata_rs232.o    romdata   0x0028fb    program   0x000000
+    .idata_usb_device.o_i    romdata   0x0028fb    program   0x000000
+    .romdata_usb_device.o    romdata   0x0028fb    program   0x000000
+.idata_usb_function_hid.o_i    romdata   0x0028fb    program   0x000000
+         .romdata_error.o    romdata   0x0028fb    program   0x000000
+.romdata_usb_function_hid.o    romdata   0x0028fb    program   0x000000
+ .code_usb_function_hid.o       code   0x0028fc    program   0x0000ce
+.romdata_usb_descriptors.o    romdata   0x0029ca    program   0x0000bc
+               _cinit_scn       code   0x002a86    program   0x00009e
+            .code_uopen.o       code   0x002b24    program   0x00008a
+         .code_i2c_puts.o       code   0x002bae    program   0x000076
+           .code_eeprom.o       code   0x002c24    program   0x00006c
+           .code_uputrs.o       code   0x002c90    program   0x000064
+            .code_uputs.o       code   0x002cf4    program   0x00004c
+           .code_t1open.o       code   0x002d40    program   0x000042
+            .code_uread.o       code   0x002d82    program   0x00003e
+         .code_i2c_writ.o       code   0x002dc0    program   0x00003c
+          .code_t1write.o       code   0x002dfc    program   0x000038
+         .code_i2c_open.o       code   0x002e34    program   0x000036
+            .code_error.o       code   0x002e6a    program   0x000036
+             D10KTCYXCODE       code   0x002ea0    program   0x00002e
+           .code_uwrite.o       code   0x002ece    program   0x00002e
+             _startup_scn       code   0x002efc    program   0x00001c
+              D10TCYXCODE       code   0x002f18    program   0x000016
+         .code_i2c_idle.o       code   0x002f2e    program   0x00000e
+                    .code       code   0x002f3c    program   0x00000e
+         .code_i2c_clos.o       code   0x002f4a    program   0x000004
+           .code___init.o       code   0x002f4e    program   0x000002
+          .idata_main.o_i    romdata   0x002f50    program   0x00000e
+      .idata_i2c_puts.o_i    romdata   0x002f5e    program   0x000000
+      .idata_i2c_writ.o_i    romdata   0x002f5e    program   0x000000
+         .idata_error.o_i    romdata   0x002f5e    program   0x000021
+      .idata_i2c_open.o_i    romdata   0x002f5e    program   0x000000
+      .idata_i2c_idle.o_i    romdata   0x002f5e    program   0x000000
+      .idata_i2c_clos.o_i    romdata   0x002f5e    program   0x000000
+        .idata_eeprom.o_i    romdata   0x002f7f    program   0x000000
+        .idata___init.o_i    romdata   0x002f7f    program   0x000000
+         .idata_c018i.o_i    romdata   0x002f7f    program   0x000000
+  .code_usb_descriptors.o       code   0x002f80    program   0x000000
+            .code_udefs.o       code   0x002f80    program   0x000000
+            .code_c018i.o       code   0x002f80    program   0x000000
+                MATH_DATA      udata   0x000000       data   0x00000b
+                 .tmpdata      udata   0x00000b       data   0x000004
+                DELAYDAT2      udata   0x00000f       data   0x000001
+                DELAYDAT1      udata   0x000010       data   0x000001
+      .udata_usb_device.o      udata   0x000060       data   0x000026
+           .idata_error.o      idata   0x000086       data   0x000021
+           .udata_rs232.o      udata   0x0000a7       data   0x000020
+            .idata_main.o      idata   0x0000c7       data   0x00000e
+           .udata_c018i.o      udata   0x0000d5       data   0x00000a
+            .udata_main.o      udata   0x0000df       data   0x000005
+.udata_usb_function_hid.o      udata   0x0000e4       data   0x000002
+           .udata_udefs.o      udata   0x0000e6       data   0x000001
+          .udata_eeprom.o      udata   0x0000e7       data   0x000001
+           .idata_rs232.o      idata   0x0000e8       data   0x000001
+           .idata_uopen.o      idata   0x0000e9       data   0x000000
+           .udata_uread.o      udata   0x0000e9       data   0x000000
+           .idata_uread.o      idata   0x0000e9       data   0x000000
+           .idata_udefs.o      idata   0x0000e9       data   0x000000
+        .udata_i2c_writ.o      udata   0x0000e9       data   0x000000
+        .idata_i2c_writ.o      idata   0x0000e9       data   0x000000
+           .idata_uputs.o      idata   0x0000e9       data   0x000000
+           .udata_uputs.o      udata   0x0000e9       data   0x000000
+         .udata_t1write.o      udata   0x0000e9       data   0x000000
+         .idata_t1write.o      idata   0x0000e9       data   0x000000
+          .udata___init.o      udata   0x0000e9       data   0x000000
+        .idata_i2c_puts.o      idata   0x0000e9       data   0x000000
+          .idata___init.o      idata   0x0000e9       data   0x000000
+          .udata_uputrs.o      udata   0x0000e9       data   0x000000
+        .udata_i2c_puts.o      udata   0x0000e9       data   0x000000
+          .idata_uputrs.o      idata   0x0000e9       data   0x000000
+          .udata_uwrite.o      udata   0x0000e9       data   0x000000
+          .idata_uwrite.o      idata   0x0000e9       data   0x000000
+           .idata_c018i.o      idata   0x0000e9       data   0x000000
+ .udata_usb_descriptors.o      udata   0x0000e9       data   0x000000
+ .idata_usb_descriptors.o      idata   0x0000e9       data   0x000000
+          .idata_eeprom.o      idata   0x0000e9       data   0x000000
+      .idata_usb_device.o      idata   0x0000e9       data   0x000000
+.idata_usb_function_hid.o      idata   0x0000e9       data   0x000000
+           .udata_error.o      udata   0x0000e9       data   0x000000
+        .udata_i2c_clos.o      udata   0x0000e9       data   0x000000
+        .idata_i2c_clos.o      idata   0x0000e9       data   0x000000
+        .udata_i2c_idle.o      udata   0x0000e9       data   0x000000
+        .idata_i2c_idle.o      idata   0x0000e9       data   0x000000
+        .udata_i2c_open.o      udata   0x0000e9       data   0x000000
+        .idata_i2c_open.o      idata   0x0000e9       data   0x000000
+          .udata_t1open.o      udata   0x0000e9       data   0x000000
+          .idata_t1open.o      idata   0x0000e9       data   0x000000
+           .udata_uopen.o      udata   0x0000e9       data   0x000000
+                   .stack      udata   0x000300       data   0x000100
+                  USB_BDT      udata   0x000400       data   0x000036
+            USB_VARIABLES      udata   0x000500       data   0x000080
+            SFR_UNBANKED0      udata   0x000f62       data   0x00009e
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000005      
+                            0x000008    0x00000d      
+                            0x000018    0x00001d      
+                            0x000800    0x000805      
+                            0x000808    0x00080d      
+                            0x000818    0x00081d      
+                            0x00082a    0x002f7e      
+            10105 out of 33048 program addresses used, program memory utilization is 30%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           BlinkUSBStatus   0x001b8e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                 CloseI2C   0x002f4a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   D10K_1   0x002eac    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x002eb8    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x002eaa    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10_1   0x002f28    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x002f20    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+             Delay10KTCYx   0x002ea0    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+              Delay10TCYx   0x002f18    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+                 High_ISR   0x000008    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  IdleI2C   0x002f2e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+         InitializeSystem   0x0014d2    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                  Low_ISR   0x000018    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  OneByte   0x0027f2    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+                  OpenI2C   0x002e34    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+               OpenTimer1   0x002d40    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                OpenUSART   0x002b24    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
+                ProcLower   0x0027b4    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                ProcUpper   0x0027aa    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                ProcessIO   0x00159c    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             RS232Receive   0x001df4    program     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               ReadEEPROM   0x002c64    program     extern C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+                ReadUSART   0x002d82    program     extern C:\MCC18\src\pmc_common\USART\uread.c
+        Remapped_High_ISR   0x000808    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         Remapped_Low_ISR   0x000818    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              ResetSource   0x001d14    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         Switch1IsPressed   0x001b52    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         Switch2IsPressed   0x001b70    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                 TstLower   0x00279e    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                 TstUpper   0x002798    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+       USBCBCheckOtherReq   0x001c24    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+        USBCBErrorHandler   0x001c22    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              USBCBInitEP   0x001c2a    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+          USBCBSendResume   0x001c62    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+    USBCBStdSetDscHandler   0x001c28    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             USBCBSuspend   0x001c0c    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+     USBCBWakeFromSuspend   0x001c16    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+        USBCB_SOF_Handler   0x001c20    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       USBCheckHIDRequest   0x0028fc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+       USBCheckStdRequest   0x000bb6    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+    USBClearInterruptFlag   0x001170    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBConfigureEndpoint   0x00102c    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+         USBCtrlEPService   0x000a3e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+ USBCtrlEPServiceComplete   0x000e24    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfInHandler   0x000b14    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBCtrlTrfOutHandler   0x000af8    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfRxService   0x000f3e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   USBCtrlTrfSetupHandler   0x000ad4    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfTxService   0x000e98    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+            USBDeviceInit   0x000850    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+           USBDeviceTasks   0x0008bc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+        USBEnableEndpoint   0x0010a4    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+USBPrepareForNextSetupTrf   0x000b6e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+         USBStallEndpoint   0x0010de    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+          USBStallHandler   0x0009ee    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+  USBStdFeatureReqHandler   0x000c5e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBStdGetDscHandler   0x000d20    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   USBStdGetStatusHandler   0x000da2    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBStdSetCfgHandler   0x000ff6    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+               USBSuspend   0x000a14    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBTransferOnePacket   0x001108    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       USBWakeFromSuspend   0x000a26    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+               USB_CD_Ptr   0x002a7e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x002a80    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001c7e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                 UserInit   0x0014e0    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              WriteEEPROM   0x002c24    program     extern C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+                 WriteI2C   0x002dc0    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+              WriteTimer1   0x002dfc    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+               WriteUSART   0x002ece    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
+  YourHighPriorityISRCode   0x0013b2    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+   YourLowPriorityISRCode   0x00147e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              _2jContinue   0x002642    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+              _3jContinue   0x00260e    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                   _3jEnd   0x00264c    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _4jEnd   0x002618    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+       _D10KTCYXCODE_0010   0x002eb0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x002ebc    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+        _D10TCYXCODE_000A   0x002f22    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x002f24    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x002f26    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+           ___?:_lbl00023   0x001612    program     static                          
+           ___?:_lbl00024   0x001602    program     static                          
+           ___?:_lbl00030   0x0016c0    program     static                          
+           ___?:_lbl00031   0x0016b0    program     static                          
+           ___?:_lbl00035   0x001724    program     static                          
+           ___?:_lbl00036   0x001714    program     static                          
+           ___?:_lbl00065   0x001ad8    program     static                          
+           ___?:_lbl00066   0x001ac8    program     static                          
+      ___case_-1_lbl00117   0x001cfe    program     static                          
+       ___case_0_lbl00033   0x0016e4    program     static                          
+       ___case_0_lbl00038   0x00175c    program     static                          
+       ___case_0_lbl00058   0x0019ae    program     static                          
+      ___case_10_lbl00043   0x001842    program     static                          
+       ___case_1_lbl00034   0x0016e8    program     static                          
+       ___case_1_lbl00039   0x001762    program     static                          
+       ___case_1_lbl00059   0x0019ce    program     static                          
+       ___case_1_lbl00118   0x001d02    program     static                          
+      ___case_21_lbl00111   0x001ce6    program     static                          
+      ___case_22_lbl00112   0x001cea    program     static                          
+      ___case_23_lbl00113   0x001cee    program     static                          
+       ___case_2_lbl00040   0x001792    program     static                          
+       ___case_2_lbl00056   0x001708    program     static                          
+       ___case_2_lbl00060   0x0019ee    program     static                          
+       ___case_2_lbl00114   0x001cf2    program     static                          
+       ___case_3_lbl00041   0x001816    program     static                          
+       ___case_3_lbl00061   0x001a0e    program     static                          
+       ___case_3_lbl00116   0x001cfa    program     static                          
+       ___case_4_lbl00042   0x00182c    program     static                          
+       ___case_4_lbl00115   0x001cf6    program     static                          
+       ___case_5_lbl00064   0x001a60    program     static                          
+      ___case_65_lbl00010   0x001f90    program     static                          
+      ___case_65_lbl00019   0x0021d0    program     static                          
+      ___case_65_lbl00034   0x0022ea    program     static                          
+      ___case_65_lbl00043   0x00252a    program     static                          
+      ___case_66_lbl00011   0x001fe8    program     static                          
+      ___case_66_lbl00022   0x0021e4    program     static                          
+      ___case_66_lbl00035   0x002342    program     static                          
+      ___case_66_lbl00046   0x00253e    program     static                          
+      ___case_67_lbl00012   0x002040    program     static                          
+      ___case_67_lbl00025   0x0021f8    program     static                          
+      ___case_67_lbl00036   0x00239a    program     static                          
+      ___case_67_lbl00049   0x002552    program     static                          
+      ___case_68_lbl00013   0x002098    program     static                          
+      ___case_68_lbl00028   0x00220c    program     static                          
+      ___case_68_lbl00037   0x0023f2    program     static                          
+      ___case_68_lbl00052   0x002566    program     static                          
+      ___case_69_lbl00014   0x0020f0    program     static                          
+      ___case_69_lbl00029   0x002220    program     static                          
+      ___case_69_lbl00038   0x00244a    program     static                          
+      ___case_69_lbl00055   0x00257a    program     static                          
+       ___case_6_lbl00063   0x001998    program     static                          
+      ___default_lbl00015   0x002148    program     static                          
+      ___default_lbl00030   0x002242    program     static                          
+      ___default_lbl00039   0x0024a2    program     static                          
+      ___default_lbl00054   0x001942    program     static                          
+      ___default_lbl00056   0x00258e    program     static                          
+      ___default_lbl00062   0x001a2e    program     static                          
+      ___default_lbl00068   0x001abc    program     static                          
+      ___default_lbl00119   0x001d06    program     static                          
+         ___else_lbl00004   0x001e40    program     static                          
+         ___else_lbl00018   0x0021de    program     static                          
+         ___else_lbl00019   0x0015be    program     static                          
+         ___else_lbl00021   0x0021f2    program     static                          
+         ___else_lbl00024   0x002206    program     static                          
+         ___else_lbl00027   0x00221a    program     static                          
+         ___else_lbl00028   0x001696    program     static                          
+         ___else_lbl00042   0x002538    program     static                          
+         ___else_lbl00045   0x00254c    program     static                          
+         ___else_lbl00048   0x002560    program     static                          
+         ___else_lbl00051   0x002574    program     static                          
+         ___else_lbl00052   0x001922    program     static                          
+         ___else_lbl00054   0x002588    program     static                          
+         ___else_lbl00058   0x0025b0    program     static                          
+         ___else_lbl00060   0x0024c4    program     static                          
+         ___else_lbl00062   0x002264    program     static                          
+         ___else_lbl00064   0x00216a    program     static                          
+         ___else_lbl00066   0x001f00    program     static                          
+         ___else_lbl00068   0x001eac    program     static                          
+         ___else_lbl00070   0x001e62    program     static                          
+          ___for_lbl00044   0x00192a    program     static                          
+          ___for_lbl00045   0x001936    program     static                          
+          ___for_lbl00046   0x0018e4    program     static                          
+          ___for_lbl00047   0x0018f0    program     static                          
+          ___for_lbl00049   0x0018ac    program     static                          
+          ___for_lbl00053   0x001882    program     static                          
+           ___if_lbl00003   0x001e60    program     static                          
+           ___if_lbl00016   0x0015de    program     static                          
+           ___if_lbl00017   0x0015de    program     static                          
+           ___if_lbl00017   0x0021e2    program     static                          
+           ___if_lbl00018   0x0015de    program     static                          
+           ___if_lbl00020   0x0021f6    program     static                          
+           ___if_lbl00020   0x0015e6    program     static                          
+           ___if_lbl00022   0x0015f6    program     static                          
+           ___if_lbl00023   0x00220a    program     static                          
+           ___if_lbl00026   0x00221e    program     static                          
+           ___if_lbl00026   0x0016a4    program     static                          
+           ___if_lbl00027   0x0016a4    program     static                          
+           ___if_lbl00029   0x0016a4    program     static                          
+           ___if_lbl00041   0x00253c    program     static                          
+           ___if_lbl00044   0x002550    program     static                          
+           ___if_lbl00047   0x002564    program     static                          
+           ___if_lbl00048   0x0018e4    program     static                          
+           ___if_lbl00050   0x002578    program     static                          
+           ___if_lbl00050   0x001906    program     static                          
+           ___if_lbl00051   0x001926    program     static                          
+           ___if_lbl00053   0x00258c    program     static                          
+           ___if_lbl00055   0x001996    program     static                          
+           ___if_lbl00057   0x0025d0    program     static                          
+           ___if_lbl00059   0x0025d0    program     static                          
+           ___if_lbl00061   0x0025d0    program     static                          
+           ___if_lbl00063   0x0025d0    program     static                          
+           ___if_lbl00065   0x0025d0    program     static                          
+           ___if_lbl00067   0x001b3e    program     static                          
+           ___if_lbl00067   0x0025d0    program     static                          
+           ___if_lbl00069   0x001b3e    program     static                          
+           ___if_lbl00069   0x0025d0    program     static                          
+       ___return_lbl00000   0x000804    program     static                          
+       ___return_lbl00000   0x0025d0    program     static                          
+       ___return_lbl00000   0x000004    program     static                          
+       ___return_lbl00001   0x00080c    program     static                          
+       ___return_lbl00001   0x002f16    program     static                          
+       ___return_lbl00002   0x00081c    program     static                          
+       ___return_lbl00002   0x002b22    program     static                          
+       ___return_lbl00003   0x00000c    program     static                          
+       ___return_lbl00004   0x00001c    program     static                          
+       ___return_lbl00015   0x001b3e    program     static                          
+       ___return_lbl00109   0x001d0c    program     static                          
+   ___switchexit_lbl00009   0x002168    program     static                          
+   ___switchexit_lbl00016   0x002262    program     static                          
+   ___switchexit_lbl00032   0x001b3e    program     static                          
+   ___switchexit_lbl00033   0x0024c2    program     static                          
+   ___switchexit_lbl00037   0x001948    program     static                          
+   ___switchexit_lbl00040   0x0025ae    program     static                          
+   ___switchexit_lbl00057   0x001a38    program     static                          
+   ___switchexit_lbl00110   0x001d08    program     static                          
+        ___while_lbl00001   0x001e00    program     static                          
+        ___while_lbl00002   0x001e04    program     static                          
+        ___while_lbl00005   0x001eda    program     static                          
+        ___while_lbl00006   0x001ede    program     static                          
+        ___while_lbl00007   0x001f6e    program     static                          
+        ___while_lbl00008   0x001f72    program     static                          
+        ___while_lbl00031   0x0022c8    program     static                          
+        ___while_lbl00032   0x0022cc    program     static                          
+                   __init   0x002f4e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+                   __pa_0   0x002e92    program     static C:\krobot\USB_Dev_Board\Firmware\error.c
+                   __pa_0   0x00119a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_0   0x002c14    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                   __pa_0   0x001d66    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_0   0x002c80    program     static C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+                   __pa_1   0x0011a8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_1   0x001d80    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                  __pa_10   0x0011f8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_11   0x001208    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_12   0x00121c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_13   0x00122e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_14   0x00123a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_15   0x001256    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_16   0x00125c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_17   0x001266    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_18   0x001272    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_19   0x00127e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_2   0x001d94    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_2   0x0011ae    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_20   0x00128e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_21   0x00129e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_22   0x0012ae    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_23   0x0012bc    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_24   0x0012ca    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_25   0x0012d8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_26   0x0012e6    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_27   0x0012f4    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_28   0x00130c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_29   0x001328    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_3   0x001da2    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_3   0x0011b8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_30   0x001332    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_31   0x00133a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_32   0x00134c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_33   0x001356    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_34   0x001360    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_35   0x00136a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_36   0x00137a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_37   0x001388    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_38   0x001392    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_39   0x00139c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_4   0x001db4    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_4   0x0011c0    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_40   0x0013a4    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_41   0x0013ac    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_5   0x001dc0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_5   0x0011ca    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_6   0x001dd0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_6   0x0011d2    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_7   0x001de0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_7   0x0011da    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_8   0x001dea    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_8   0x0011e0    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_9   0x0011ee    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+               __string_0   0x00281b    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_0   0x0028c8    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_1   0x00280f    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_1   0x0028c2    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+              __string_10   0x00283e    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_2   0x00280d    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_2   0x0028bd    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_3   0x002804    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_3   0x0028b8    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_4   0x0028b4    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_5   0x00289a    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_6   0x002896    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_7   0x002863    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_8   0x002860    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_9   0x00285d    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __tmplbl_0   0x001e1e    program     static                          
+               __tmplbl_0   0x0015f4    program     static                          
+               __tmplbl_1   0x0015ee    program     static                          
+              __tmplbl_10   0x001cd8    program     static                          
+              __tmplbl_11   0x001ce2    program     static                          
+               __tmplbl_2   0x00162a    program     static                          
+              __tmplbl_20   0x0011d2    program     static                          
+              __tmplbl_27   0x0011d2    program     static                          
+               __tmplbl_3   0x001616    program     static                          
+               __tmplbl_4   0x001c9a    program     static                          
+               __tmplbl_5   0x001ca6    program     static                          
+               __tmplbl_6   0x001cb0    program     static                          
+               __tmplbl_7   0x001cba    program     static                          
+               __tmplbl_8   0x001cc4    program     static                          
+               __tmplbl_9   0x001cce    program     static                          
+            __zero_memory   0x002f3c    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                _do_cinit   0x002a86    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                   _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                   _reset   0x000800    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                 _startup   0x002efc    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                   btoBCD   0x0027be    program     extern C:\MCC18\src\traditional\stdclib\btobcd.asm
+                     btoa   0x002702    program     extern C:\MCC18\src\traditional\stdclib\btoa.asm
+               clear_loop   0x002f42    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+        configDescriptor1   0x0029dc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                copy_loop   0x002af8    program     static                          
+            copy_one_byte   0x002afe    program     static                          
+               device_dsc   0x0029ca    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                     done   0x002b22    program     static                          
+             done_copying   0x002b0c    program     static                          
+                    error   0x002e6a    program     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+                hid_rpt01   0x002a61    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                     jDo1   0x002764    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jDo2   0x002760    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jDo3   0x00275c    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jEnd   0x002700    program     static C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                     jEnd   0x0026d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x002654    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                     jEnd   0x002620    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                     jEnd   0x0027ee    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+                    jLoop   0x002602    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                    jLoop   0x0026f4    program     static C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                    jLoop   0x0027d4    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+                    jLoop   0x002636    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x0026ca    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x002684    program     static C:\MCC18\src\traditional\stdclib\strcat.asm
+                jNullLoop   0x0026c4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                jNullLoop   0x00267e    program     static C:\MCC18\src\traditional\stdclib\strcat.asm
+                jTstLowZ1   0x0027a8    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                jTstSign1   0x002726    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     loop   0x002f0c    program     static                          
+                     main   0x0014c8    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+            memcmppgm2ram   0x0025e4    program     extern C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                   memset   0x002622    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+               putrsUSART   0x002c90    program     extern C:\MCC18\src\pmc_common\USART\uputrs.c
+                  putsI2C   0x002bae    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                putsUSART   0x002cf4    program     extern C:\MCC18\src\pmc_common\USART\uputs.c
+                    sd000   0x002a05    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                    sd001   0x002a09    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                    sd002   0x002a35    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                   strcat   0x002656    program     extern C:\MCC18\src\traditional\stdclib\strcat.asm
+            strcatpgm2ram   0x00269e    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+            strcmppgm2ram   0x0026d6    program     extern C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                     test   0x002aa0    program     static                          
+                   ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON1bits   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADCON2   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON2bits   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    ADRES   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADRESH   0x000fc4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADRESL   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  BAUDCON   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      BDT   0x000400       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                      BSR   0x000fe0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+       BothEP0OutUOWNsSet   0x000081       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   CCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               CCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP1CONbits   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP1DEL   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP1DELbits   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP2CON   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP2CONbits   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CCPR1   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR1H   0x000fbf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR1L   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CCPR2   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR2H   0x000fbc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR2L   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CMCON   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                CMCONbits   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CVRCON   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               CVRCONbits   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CtrlTrfData   0x000428       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                     DDRA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRD   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRDbits   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRE   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDREbits   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+            DelayCounter1   0x000010       data     extern C:\MCC18\src\traditional\delays\delayd1.asm
+            DelayCounter2   0x00000f       data     extern C:\MCC18\src\traditional\delays\delayd2.asm
+                  ECCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              ECCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 ECCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+             ECCP1CONbits   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 ECCP1DEL   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+             ECCP1DELbits   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    EEADR   0x000fa9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EECON1   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               EECON1bits   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EECON2   0x000fa7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EEDATA   0x000fa8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR0   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR0H   0x000fea       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR1   0x000fe1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR1H   0x000fe2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR1L   0x000fe1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR2   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR2H   0x000fda       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               GIE_Status   0x0000e7       data     static C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+                  HLVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF0   0x000fef       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF1   0x000fe7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF2   0x000fdf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   INTCON   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  INTCON2   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              INTCON2bits   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  INTCON3   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               INTCONbits   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     IPR1   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 IPR1bits   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     IPR2   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATA   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATB   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATBbits   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATC   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATCbits   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATD   0x000f8c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATDbits   0x000f8c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATE   0x000f8d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATEbits   0x000f8d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   LVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   OSCCON   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  OSCTUNE   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                       PC   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      PCL   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PCLATH   0x000ffa       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PCLATU   0x000ffb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIE1   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIE1bits   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIE2   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIE2bits   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIR1   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIR2   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIR2bits   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW0   0x000feb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW1   0x000fe3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW2   0x000fdb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTA   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTAbits   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTB   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTBbits   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTC   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTCbits   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTD   0x000f83       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTDbits   0x000f83       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTE   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTEbits   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC0   0x000fed       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC1   0x000fe5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC2   0x000fdd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC0   0x000fee       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC1   0x000fe6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC2   0x000fde       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      PR2   0x000fcb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC0   0x000fec       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC1   0x000fe4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC2   0x000fdc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PROD   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PRODH   0x000ff4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PRODL   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     RCON   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 RCONbits   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    RCREG   0x000fae       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    RCSTA   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                RCSTAbits   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+       ReceivedDataBuffer   0x000500       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             RemoteWakeup   0x00007f       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                     SIGN   0x000009       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+                    SPBRG   0x000faf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPBRGH   0x000fb0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPCFG   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPCFGbits   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPCON   0x000f65       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPCONbits   0x000f65       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SPPDATA   0x000f62       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPEPS   0x000f64       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPEPSbits   0x000f64       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SSPADD   0x000fc8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SSPBUF   0x000fc9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPCON1   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPCON1bits   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPCON2bits   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPSTATbits   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               STATUSbits   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   STKPTR   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               STKPTRbits   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 SetupPkt   0x000420       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                    T0CON   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T0CONbits   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T1CONbits   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T2CON   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T2CONbits   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T3CON   0x000fb1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T3CONbits   0x000fb1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   TABLAT   0x000ff5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRH   0x000ff7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRL   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRU   0x000ff8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR0H   0x000fd7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR0L   0x000fd6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR1H   0x000fcf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR1L   0x000fce       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TMR2   0x000fcc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR3H   0x000fb3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR3L   0x000fb2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      TOS   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSH   0x000ffe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSL   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSU   0x000fff       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISD   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISDbits   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISE   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISEbits   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TXREG   0x000fad       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TXSTA   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TXSTAbits   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+         ToSendDataBuffer   0x000540       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                    UADDR   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UADDRbits   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UCFG   0x000f6f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UCFGbits   0x000f6f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UCON   0x000f6d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UCONbits   0x000f6d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEIE   0x000f6b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEIEbits   0x000f6b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEIR   0x000f6a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEIRbits   0x000f6a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP0   0x000f70       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP0bits   0x000f70       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP1   0x000f71       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP10   0x000f7a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP10bits   0x000f7a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP11   0x000f7b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP11bits   0x000f7b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP12   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP12bits   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP13   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP13bits   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP14   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP14bits   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP15   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP15bits   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP1bits   0x000f71       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP2   0x000f72       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP2bits   0x000f72       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP3   0x000f73       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP3bits   0x000f73       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP4   0x000f74       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP4bits   0x000f74       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP5   0x000f75       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP5bits   0x000f75       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP6   0x000f76       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP6bits   0x000f76       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP7   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP7bits   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP8   0x000f78       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP8bits   0x000f78       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP9   0x000f79       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP9bits   0x000f79       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UFRM   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UFRMH   0x000f67       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UFRMHbits   0x000f67       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UFRML   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UFRMLbits   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      UIE   0x000f69       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  UIEbits   0x000f69       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      UIR   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  UIRbits   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              UPClientSeq   0x0000cc       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             USART_Status   0x0000e6       data     extern C:\MCC18\src\pmc_common\USART\udefs.c
+   USBActiveConfiguration   0x000061       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+    USBAlternateInterface   0x000062       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+           USBDeviceState   0x000060       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                USBInData   0x000084       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+              USBInHandle   0x0000c9       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       USBInMaxPacketSize   0x000082       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+             USBOutHandle   0x0000c7       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                    USTAT   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                USTATbits   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                USTATcopy   0x000080       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   WDTCON   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               WDTCONbits   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     WREG   0x000fe8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 __AARGB0   0x000007       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB1   0x000006       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB2   0x000005       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB3   0x000004       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB4   0x000003       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB5   0x000002       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB6   0x000001       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB7   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                   __AEXP   0x000008       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                __FPFLAGS   0x00000a       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x00000a       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+                  __REMB0   0x000003       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB1   0x000002       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB2   0x000001       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB3   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __tmp_0   0x00000b       data     static C:\MCC18\src\pmc_common\USART\uopen.c
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+          active_protocol   0x0000e5       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+         blinkStatusValid   0x0000cb       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+     controlTransferState   0x000070       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                curr_byte   0x0000d8       data     static C:\MCC18\src\traditional\startup\c018i.c
+               curr_entry   0x0000da       data     static C:\MCC18\src\traditional\startup\c018i.c
+                 data_ptr   0x0000dc       data     static C:\MCC18\src\traditional\startup\c018i.c
+              delay_count   0x0000e2       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                      err   0x000086       data     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+                    errno   0x0000a6       data     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+            hid_report_in   0x000433       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+           hid_report_out   0x000430       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                idle_rate   0x0000e4       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+                  inPipes   0x000071       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                led_count   0x0000d3       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                led_count   0x0000d1       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                       ms   0x0000cd       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  old_sw1   0x0000df       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  old_sw2   0x0000e0       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                 outPipes   0x000076       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   pBDTEntryEP0OutCurrent   0x000063       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      pBDTEntryEP0OutNext   0x000065       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+              pBDTEntryIn   0x00006b       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+             pBDTEntryOut   0x000067       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                     pDst   0x00007d       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                     prom   0x0000d5       data     static C:\MCC18\src\traditional\startup\c018i.c
+              resetSource   0x0000e1       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             rs232_buffer   0x0000a7       data     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+              rs232_index   0x0000e8       data     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+                        s   0x0000cf       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+        shortPacketStatus   0x00006f       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
+       ___return_lbl00000   0x000004    program     static                          
+                 High_ISR   0x000008    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       ___return_lbl00003   0x00000c    program     static                          
+                  Low_ISR   0x000018    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       ___return_lbl00004   0x00001c    program     static                          
+                   _reset   0x000800    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       ___return_lbl00000   0x000804    program     static                          
+        Remapped_High_ISR   0x000808    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       ___return_lbl00001   0x00080c    program     static                          
+         Remapped_Low_ISR   0x000818    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       ___return_lbl00002   0x00081c    program     static                          
+            USBDeviceInit   0x000850    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+           USBDeviceTasks   0x0008bc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+          USBStallHandler   0x0009ee    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+               USBSuspend   0x000a14    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       USBWakeFromSuspend   0x000a26    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+         USBCtrlEPService   0x000a3e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   USBCtrlTrfSetupHandler   0x000ad4    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBCtrlTrfOutHandler   0x000af8    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfInHandler   0x000b14    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+USBPrepareForNextSetupTrf   0x000b6e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       USBCheckStdRequest   0x000bb6    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+  USBStdFeatureReqHandler   0x000c5e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBStdGetDscHandler   0x000d20    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   USBStdGetStatusHandler   0x000da2    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+ USBCtrlEPServiceComplete   0x000e24    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfTxService   0x000e98    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBCtrlTrfRxService   0x000f3e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      USBStdSetCfgHandler   0x000ff6    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBConfigureEndpoint   0x00102c    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+        USBEnableEndpoint   0x0010a4    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+         USBStallEndpoint   0x0010de    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     USBTransferOnePacket   0x001108    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+    USBClearInterruptFlag   0x001170    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_0   0x00119a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_1   0x0011a8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_2   0x0011ae    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_3   0x0011b8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_4   0x0011c0    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_5   0x0011ca    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+              __tmplbl_27   0x0011d2    program     static                          
+              __tmplbl_20   0x0011d2    program     static                          
+                   __pa_6   0x0011d2    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_7   0x0011da    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_8   0x0011e0    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                   __pa_9   0x0011ee    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_10   0x0011f8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_11   0x001208    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_12   0x00121c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_13   0x00122e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_14   0x00123a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_15   0x001256    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_16   0x00125c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_17   0x001266    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_18   0x001272    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_19   0x00127e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_20   0x00128e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_21   0x00129e    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_22   0x0012ae    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_23   0x0012bc    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_24   0x0012ca    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_25   0x0012d8    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_26   0x0012e6    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_27   0x0012f4    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_28   0x00130c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_29   0x001328    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_30   0x001332    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_31   0x00133a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_32   0x00134c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_33   0x001356    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_34   0x001360    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_35   0x00136a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_36   0x00137a    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_37   0x001388    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_38   0x001392    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_39   0x00139c    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_40   0x0013a4    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __pa_41   0x0013ac    program     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+  YourHighPriorityISRCode   0x0013b2    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+   YourLowPriorityISRCode   0x00147e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                     main   0x0014c8    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         InitializeSystem   0x0014d2    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                 UserInit   0x0014e0    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                ProcessIO   0x00159c    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         ___else_lbl00019   0x0015be    program     static                          
+           ___if_lbl00016   0x0015de    program     static                          
+           ___if_lbl00017   0x0015de    program     static                          
+           ___if_lbl00018   0x0015de    program     static                          
+           ___if_lbl00020   0x0015e6    program     static                          
+               __tmplbl_1   0x0015ee    program     static                          
+               __tmplbl_0   0x0015f4    program     static                          
+           ___if_lbl00022   0x0015f6    program     static                          
+           ___?:_lbl00024   0x001602    program     static                          
+           ___?:_lbl00023   0x001612    program     static                          
+               __tmplbl_3   0x001616    program     static                          
+               __tmplbl_2   0x00162a    program     static                          
+         ___else_lbl00028   0x001696    program     static                          
+           ___if_lbl00026   0x0016a4    program     static                          
+           ___if_lbl00027   0x0016a4    program     static                          
+           ___if_lbl00029   0x0016a4    program     static                          
+           ___?:_lbl00031   0x0016b0    program     static                          
+           ___?:_lbl00030   0x0016c0    program     static                          
+       ___case_0_lbl00033   0x0016e4    program     static                          
+       ___case_1_lbl00034   0x0016e8    program     static                          
+       ___case_2_lbl00056   0x001708    program     static                          
+           ___?:_lbl00036   0x001714    program     static                          
+           ___?:_lbl00035   0x001724    program     static                          
+       ___case_0_lbl00038   0x00175c    program     static                          
+       ___case_1_lbl00039   0x001762    program     static                          
+       ___case_2_lbl00040   0x001792    program     static                          
+       ___case_3_lbl00041   0x001816    program     static                          
+       ___case_4_lbl00042   0x00182c    program     static                          
+      ___case_10_lbl00043   0x001842    program     static                          
+          ___for_lbl00053   0x001882    program     static                          
+          ___for_lbl00049   0x0018ac    program     static                          
+           ___if_lbl00048   0x0018e4    program     static                          
+          ___for_lbl00046   0x0018e4    program     static                          
+          ___for_lbl00047   0x0018f0    program     static                          
+           ___if_lbl00050   0x001906    program     static                          
+         ___else_lbl00052   0x001922    program     static                          
+           ___if_lbl00051   0x001926    program     static                          
+          ___for_lbl00044   0x00192a    program     static                          
+          ___for_lbl00045   0x001936    program     static                          
+      ___default_lbl00054   0x001942    program     static                          
+   ___switchexit_lbl00037   0x001948    program     static                          
+           ___if_lbl00055   0x001996    program     static                          
+       ___case_6_lbl00063   0x001998    program     static                          
+       ___case_0_lbl00058   0x0019ae    program     static                          
+       ___case_1_lbl00059   0x0019ce    program     static                          
+       ___case_2_lbl00060   0x0019ee    program     static                          
+       ___case_3_lbl00061   0x001a0e    program     static                          
+      ___default_lbl00062   0x001a2e    program     static                          
+   ___switchexit_lbl00057   0x001a38    program     static                          
+       ___case_5_lbl00064   0x001a60    program     static                          
+      ___default_lbl00068   0x001abc    program     static                          
+           ___?:_lbl00066   0x001ac8    program     static                          
+           ___?:_lbl00065   0x001ad8    program     static                          
+   ___switchexit_lbl00032   0x001b3e    program     static                          
+       ___return_lbl00015   0x001b3e    program     static                          
+           ___if_lbl00067   0x001b3e    program     static                          
+           ___if_lbl00069   0x001b3e    program     static                          
+         Switch1IsPressed   0x001b52    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         Switch2IsPressed   0x001b70    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+           BlinkUSBStatus   0x001b8e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+             USBCBSuspend   0x001c0c    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+     USBCBWakeFromSuspend   0x001c16    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+        USBCB_SOF_Handler   0x001c20    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+        USBCBErrorHandler   0x001c22    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+       USBCBCheckOtherReq   0x001c24    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+    USBCBStdSetDscHandler   0x001c28    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              USBCBInitEP   0x001c2a    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+          USBCBSendResume   0x001c62    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001c7e    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+               __tmplbl_4   0x001c9a    program     static                          
+               __tmplbl_5   0x001ca6    program     static                          
+               __tmplbl_6   0x001cb0    program     static                          
+               __tmplbl_7   0x001cba    program     static                          
+               __tmplbl_8   0x001cc4    program     static                          
+               __tmplbl_9   0x001cce    program     static                          
+              __tmplbl_10   0x001cd8    program     static                          
+              __tmplbl_11   0x001ce2    program     static                          
+      ___case_21_lbl00111   0x001ce6    program     static                          
+      ___case_22_lbl00112   0x001cea    program     static                          
+      ___case_23_lbl00113   0x001cee    program     static                          
+       ___case_2_lbl00114   0x001cf2    program     static                          
+       ___case_4_lbl00115   0x001cf6    program     static                          
+       ___case_3_lbl00116   0x001cfa    program     static                          
+      ___case_-1_lbl00117   0x001cfe    program     static                          
+       ___case_1_lbl00118   0x001d02    program     static                          
+      ___default_lbl00119   0x001d06    program     static                          
+   ___switchexit_lbl00110   0x001d08    program     static                          
+       ___return_lbl00109   0x001d0c    program     static                          
+              ResetSource   0x001d14    program     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_0   0x001d66    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_1   0x001d80    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_2   0x001d94    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_3   0x001da2    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_4   0x001db4    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_5   0x001dc0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_6   0x001dd0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_7   0x001de0    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                   __pa_8   0x001dea    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+             RS232Receive   0x001df4    program     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+        ___while_lbl00001   0x001e00    program     static                          
+        ___while_lbl00002   0x001e04    program     static                          
+               __tmplbl_0   0x001e1e    program     static                          
+         ___else_lbl00004   0x001e40    program     static                          
+           ___if_lbl00003   0x001e60    program     static                          
+         ___else_lbl00070   0x001e62    program     static                          
+         ___else_lbl00068   0x001eac    program     static                          
+        ___while_lbl00005   0x001eda    program     static                          
+        ___while_lbl00006   0x001ede    program     static                          
+         ___else_lbl00066   0x001f00    program     static                          
+        ___while_lbl00007   0x001f6e    program     static                          
+        ___while_lbl00008   0x001f72    program     static                          
+      ___case_65_lbl00010   0x001f90    program     static                          
+      ___case_66_lbl00011   0x001fe8    program     static                          
+      ___case_67_lbl00012   0x002040    program     static                          
+      ___case_68_lbl00013   0x002098    program     static                          
+      ___case_69_lbl00014   0x0020f0    program     static                          
+      ___default_lbl00015   0x002148    program     static                          
+   ___switchexit_lbl00009   0x002168    program     static                          
+         ___else_lbl00064   0x00216a    program     static                          
+      ___case_65_lbl00019   0x0021d0    program     static                          
+         ___else_lbl00018   0x0021de    program     static                          
+           ___if_lbl00017   0x0021e2    program     static                          
+      ___case_66_lbl00022   0x0021e4    program     static                          
+         ___else_lbl00021   0x0021f2    program     static                          
+           ___if_lbl00020   0x0021f6    program     static                          
+      ___case_67_lbl00025   0x0021f8    program     static                          
+         ___else_lbl00024   0x002206    program     static                          
+           ___if_lbl00023   0x00220a    program     static                          
+      ___case_68_lbl00028   0x00220c    program     static                          
+         ___else_lbl00027   0x00221a    program     static                          
+           ___if_lbl00026   0x00221e    program     static                          
+      ___case_69_lbl00029   0x002220    program     static                          
+      ___default_lbl00030   0x002242    program     static                          
+   ___switchexit_lbl00016   0x002262    program     static                          
+         ___else_lbl00062   0x002264    program     static                          
+        ___while_lbl00031   0x0022c8    program     static                          
+        ___while_lbl00032   0x0022cc    program     static                          
+      ___case_65_lbl00034   0x0022ea    program     static                          
+      ___case_66_lbl00035   0x002342    program     static                          
+      ___case_67_lbl00036   0x00239a    program     static                          
+      ___case_68_lbl00037   0x0023f2    program     static                          
+      ___case_69_lbl00038   0x00244a    program     static                          
+      ___default_lbl00039   0x0024a2    program     static                          
+   ___switchexit_lbl00033   0x0024c2    program     static                          
+         ___else_lbl00060   0x0024c4    program     static                          
+      ___case_65_lbl00043   0x00252a    program     static                          
+         ___else_lbl00042   0x002538    program     static                          
+           ___if_lbl00041   0x00253c    program     static                          
+      ___case_66_lbl00046   0x00253e    program     static                          
+         ___else_lbl00045   0x00254c    program     static                          
+           ___if_lbl00044   0x002550    program     static                          
+      ___case_67_lbl00049   0x002552    program     static                          
+         ___else_lbl00048   0x002560    program     static                          
+           ___if_lbl00047   0x002564    program     static                          
+      ___case_68_lbl00052   0x002566    program     static                          
+         ___else_lbl00051   0x002574    program     static                          
+           ___if_lbl00050   0x002578    program     static                          
+      ___case_69_lbl00055   0x00257a    program     static                          
+         ___else_lbl00054   0x002588    program     static                          
+           ___if_lbl00053   0x00258c    program     static                          
+      ___default_lbl00056   0x00258e    program     static                          
+   ___switchexit_lbl00040   0x0025ae    program     static                          
+         ___else_lbl00058   0x0025b0    program     static                          
+           ___if_lbl00059   0x0025d0    program     static                          
+           ___if_lbl00057   0x0025d0    program     static                          
+       ___return_lbl00000   0x0025d0    program     static                          
+           ___if_lbl00069   0x0025d0    program     static                          
+           ___if_lbl00061   0x0025d0    program     static                          
+           ___if_lbl00067   0x0025d0    program     static                          
+           ___if_lbl00063   0x0025d0    program     static                          
+           ___if_lbl00065   0x0025d0    program     static                          
+            memcmppgm2ram   0x0025e4    program     extern C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                    jLoop   0x002602    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+              _3jContinue   0x00260e    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                   _4jEnd   0x002618    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                     jEnd   0x002620    program     static C:\MCC18\src\traditional\stdclib\mcmpp2r.asm
+                   memset   0x002622    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x002636    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+              _2jContinue   0x002642    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x00264c    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                     jEnd   0x002654    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   strcat   0x002656    program     extern C:\MCC18\src\traditional\stdclib\strcat.asm
+                jNullLoop   0x00267e    program     static C:\MCC18\src\traditional\stdclib\strcat.asm
+                    jLoop   0x002684    program     static C:\MCC18\src\traditional\stdclib\strcat.asm
+            strcatpgm2ram   0x00269e    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                jNullLoop   0x0026c4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x0026ca    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x0026d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+            strcmppgm2ram   0x0026d6    program     extern C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                    jLoop   0x0026f4    program     static C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                     jEnd   0x002700    program     static C:\MCC18\src\traditional\stdclib\scmpp2r.asm
+                     btoa   0x002702    program     extern C:\MCC18\src\traditional\stdclib\btoa.asm
+                jTstSign1   0x002726    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jDo3   0x00275c    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jDo2   0x002760    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                     jDo1   0x002764    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                 TstUpper   0x002798    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                 TstLower   0x00279e    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                jTstLowZ1   0x0027a8    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                ProcUpper   0x0027aa    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                ProcLower   0x0027b4    program     static C:\MCC18\src\traditional\stdclib\btoa.asm
+                   btoBCD   0x0027be    program     extern C:\MCC18\src\traditional\stdclib\btobcd.asm
+                    jLoop   0x0027d4    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+                     jEnd   0x0027ee    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+                  OneByte   0x0027f2    program     static C:\MCC18\src\traditional\stdclib\btobcd.asm
+               __string_3   0x002804    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_2   0x00280d    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_1   0x00280f    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+               __string_0   0x00281b    program     static C:\krobot\USB_Dev_Board\Firmware\main.c
+              __string_10   0x00283e    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_9   0x00285d    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_8   0x002860    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_7   0x002863    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_6   0x002896    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_5   0x00289a    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_4   0x0028b4    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_3   0x0028b8    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_2   0x0028bd    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_1   0x0028c2    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+               __string_0   0x0028c8    program     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+       USBCheckHIDRequest   0x0028fc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+               device_dsc   0x0029ca    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+        configDescriptor1   0x0029dc    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                    sd000   0x002a05    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                    sd001   0x002a09    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                    sd002   0x002a35    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                hid_rpt01   0x002a61    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x002a7e    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x002a80    program     extern C:\krobot\USB_Dev_Board\Firmware\usb_descriptors.c
+                _do_cinit   0x002a86    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x002aa0    program     static                          
+                copy_loop   0x002af8    program     static                          
+            copy_one_byte   0x002afe    program     static                          
+             done_copying   0x002b0c    program     static                          
+                     done   0x002b22    program     static                          
+       ___return_lbl00002   0x002b22    program     static                          
+                OpenUSART   0x002b24    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
+                  putsI2C   0x002bae    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                   __pa_0   0x002c14    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+              WriteEEPROM   0x002c24    program     extern C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+               ReadEEPROM   0x002c64    program     extern C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+                   __pa_0   0x002c80    program     static C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+               putrsUSART   0x002c90    program     extern C:\MCC18\src\pmc_common\USART\uputrs.c
+                putsUSART   0x002cf4    program     extern C:\MCC18\src\pmc_common\USART\uputs.c
+               OpenTimer1   0x002d40    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                ReadUSART   0x002d82    program     extern C:\MCC18\src\pmc_common\USART\uread.c
+                 WriteI2C   0x002dc0    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+              WriteTimer1   0x002dfc    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+                  OpenI2C   0x002e34    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+                    error   0x002e6a    program     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+                   __pa_0   0x002e92    program     static C:\krobot\USB_Dev_Board\Firmware\error.c
+             Delay10KTCYx   0x002ea0    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x002eaa    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                   D10K_1   0x002eac    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x002eb0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x002eb8    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x002ebc    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+               WriteUSART   0x002ece    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
+                 _startup   0x002efc    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x002f0c    program     static                          
+       ___return_lbl00001   0x002f16    program     static                          
+              Delay10TCYx   0x002f18    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x002f20    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x002f22    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x002f24    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x002f26    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x002f28    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                  IdleI2C   0x002f2e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+            __zero_memory   0x002f3c    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               clear_loop   0x002f42    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+                 CloseI2C   0x002f4a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   __init   0x002f4e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+                  __REMB3   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB7   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB2   0x000001       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB6   0x000001       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB1   0x000002       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB5   0x000002       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB4   0x000003       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                  __REMB0   0x000003       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB3   0x000004       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB2   0x000005       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB1   0x000006       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                 __AARGB0   0x000007       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                   __AEXP   0x000008       data     extern C:\MCC18\src\traditional\math\aarg.asm
+                     SIGN   0x000009       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+                __FPFLAGS   0x00000a       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x00000a       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                  __tmp_0   0x00000b       data     static C:\MCC18\src\pmc_common\USART\uopen.c
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  __tmp_0   0x00000b       data     static C:\krobot\USB_Dev_Board\Firmware\rs232.c
+            DelayCounter2   0x00000f       data     extern C:\MCC18\src\traditional\delays\delayd2.asm
+            DelayCounter1   0x000010       data     extern C:\MCC18\src\traditional\delays\delayd1.asm
+           USBDeviceState   0x000060       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   USBActiveConfiguration   0x000061       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+    USBAlternateInterface   0x000062       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+   pBDTEntryEP0OutCurrent   0x000063       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+      pBDTEntryEP0OutNext   0x000065       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+             pBDTEntryOut   0x000067       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+              pBDTEntryIn   0x00006b       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+        shortPacketStatus   0x00006f       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+     controlTransferState   0x000070       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                  inPipes   0x000071       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                 outPipes   0x000076       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                     pDst   0x00007d       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+             RemoteWakeup   0x00007f       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                USTATcopy   0x000080       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       BothEP0OutUOWNsSet   0x000081       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       USBInMaxPacketSize   0x000082       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                USBInData   0x000084       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                      err   0x000086       data     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+                    errno   0x0000a6       data     extern C:\krobot\USB_Dev_Board\Firmware\error.c
+             rs232_buffer   0x0000a7       data     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+             USBOutHandle   0x0000c7       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              USBInHandle   0x0000c9       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         blinkStatusValid   0x0000cb       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              UPClientSeq   0x0000cc       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                       ms   0x0000cd       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                        s   0x0000cf       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                led_count   0x0000d1       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                led_count   0x0000d3       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                     prom   0x0000d5       data     static C:\MCC18\src\traditional\startup\c018i.c
+                curr_byte   0x0000d8       data     static C:\MCC18\src\traditional\startup\c018i.c
+               curr_entry   0x0000da       data     static C:\MCC18\src\traditional\startup\c018i.c
+                 data_ptr   0x0000dc       data     static C:\MCC18\src\traditional\startup\c018i.c
+                  old_sw1   0x0000df       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  old_sw2   0x0000e0       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              resetSource   0x0000e1       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+              delay_count   0x0000e2       data     static C:\krobot\USB_Dev_Board\Firmware\main.c
+                idle_rate   0x0000e4       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+          active_protocol   0x0000e5       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_function_hid.c
+             USART_Status   0x0000e6       data     extern C:\MCC18\src\pmc_common\USART\udefs.c
+               GIE_Status   0x0000e7       data     static C:\krobot\USB_Dev_Board\Firmware\eeprom.c
+              rs232_index   0x0000e8       data     extern C:\krobot\USB_Dev_Board\Firmware\rs232.c
+                      BDT   0x000400       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+                 SetupPkt   0x000420       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+              CtrlTrfData   0x000428       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+           hid_report_out   0x000430       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+            hid_report_in   0x000433       data     extern C:\krobot\USB_Dev_Board\Firmware\usb_device.c
+       ReceivedDataBuffer   0x000500       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+         ToSendDataBuffer   0x000540       data     extern C:\krobot\USB_Dev_Board\Firmware\main.c
+                  SPPDATA   0x000f62       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPCFGbits   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPCFG   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPEPS   0x000f64       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPEPSbits   0x000f64       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               SPPCONbits   0x000f65       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPPCON   0x000f65       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UFRMLbits   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UFRML   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UFRM   0x000f66       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UFRMHbits   0x000f67       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UFRMH   0x000f67       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  UIRbits   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      UIR   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      UIE   0x000f69       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  UIEbits   0x000f69       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEIR   0x000f6a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEIRbits   0x000f6a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEIE   0x000f6b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEIEbits   0x000f6b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                USTATbits   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    USTAT   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UCON   0x000f6d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UCONbits   0x000f6d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UADDR   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UADDRbits   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UCFGbits   0x000f6f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UCFG   0x000f6f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP0bits   0x000f70       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP0   0x000f70       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP1   0x000f71       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP1bits   0x000f71       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP2   0x000f72       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP2bits   0x000f72       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP3   0x000f73       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP3bits   0x000f73       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP4   0x000f74       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP4bits   0x000f74       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP5   0x000f75       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP5bits   0x000f75       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP6bits   0x000f76       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP6   0x000f76       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP7   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP7bits   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP8bits   0x000f78       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP8   0x000f78       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 UEP9bits   0x000f79       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     UEP9   0x000f79       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP10   0x000f7a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP10bits   0x000f7a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP11bits   0x000f7b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP11   0x000f7b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP12bits   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP12   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP13bits   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP13   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP14   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP14bits   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    UEP15   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                UEP15bits   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTA   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTAbits   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTB   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTBbits   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTC   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTCbits   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTD   0x000f83       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTDbits   0x000f83       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PORTE   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                PORTEbits   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATA   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATB   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATBbits   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATC   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATCbits   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATDbits   0x000f8c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATD   0x000f8c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 LATEbits   0x000f8d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     LATE   0x000f8d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISDbits   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDRDbits   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRD   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISD   0x000f95       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TRISEbits   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TRISE   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     DDRE   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 DDREbits   0x000f96       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  OSCTUNE   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIE1   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIE1bits   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIR1   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 IPR1bits   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     IPR1   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIE2bits   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIE2   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PIR2   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 PIR2bits   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     IPR2   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EECON1   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               EECON1bits   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EECON2   0x000fa7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   EEDATA   0x000fa8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    EEADR   0x000fa9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                RCSTAbits   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    RCSTA   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TXSTA   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                TXSTAbits   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TXREG   0x000fad       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    RCREG   0x000fae       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    SPBRG   0x000faf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SPBRGH   0x000fb0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T3CON   0x000fb1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T3CONbits   0x000fb1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR3L   0x000fb2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR3H   0x000fb3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CMCON   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                CMCONbits   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CVRCON   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               CVRCONbits   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  ECCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              ECCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               CCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP1DELbits   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP1DEL   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 ECCP1DEL   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+             ECCP1DELbits   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  BAUDCON   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP2CONbits   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP2CON   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR2L   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CCPR2   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR2H   0x000fbc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              CCP1CONbits   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 ECCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+             ECCP1CONbits   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    CCPR1   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR1L   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   CCPR1H   0x000fbf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON2bits   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADCON2   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON1bits   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    ADRES   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADRESL   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   ADRESH   0x000fc4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPCON2bits   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPCON1   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPCON1bits   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              SSPSTATbits   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SSPADD   0x000fc8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   SSPBUF   0x000fc9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T2CONbits   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T2CON   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      PR2   0x000fcb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TMR2   0x000fcc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T1CONbits   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR1L   0x000fce       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR1H   0x000fcf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     RCON   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 RCONbits   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               WDTCONbits   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   WDTCON   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   LVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  HLVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   OSCCON   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                T0CONbits   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    T0CON   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR0L   0x000fd6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    TMR0H   0x000fd7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               STATUSbits   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR2   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR2H   0x000fda       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW2   0x000fdb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC2   0x000fdc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC2   0x000fdd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC2   0x000fde       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF2   0x000fdf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      BSR   0x000fe0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR1L   0x000fe1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR1   0x000fe1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR1H   0x000fe2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW1   0x000fe3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC1   0x000fe4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC1   0x000fe5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC1   0x000fe6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF1   0x000fe7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     WREG   0x000fe8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     FSR0   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    FSR0H   0x000fea       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PLUSW0   0x000feb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  PREINC0   0x000fec       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTDEC0   0x000fed       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                 POSTINC0   0x000fee       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    INDF0   0x000fef       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  INTCON3   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+              INTCON2bits   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  INTCON2   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               INTCONbits   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   INTCON   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     PROD   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PRODL   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                    PRODH   0x000ff4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   TABLAT   0x000ff5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRL   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRH   0x000ff7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                  TBLPTRU   0x000ff8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      PCL   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                       PC   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PCLATH   0x000ffa       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   PCLATU   0x000ffb       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                   STKPTR   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               STKPTRbits   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                      TOS   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSL   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSH   0x000ffe       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                     TOSU   0x000fff       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+
+

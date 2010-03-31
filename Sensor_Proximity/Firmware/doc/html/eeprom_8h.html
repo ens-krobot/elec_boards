@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Carte capteurs: Référence du fichier eeprom.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.6 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="classes.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier eeprom.h</h1>Fonctions de lecture et d'écriture avec l'EEPROM du PIC. <a href="#_details">Plus de détails...</a>
+<p>
+<code>#include &lt;delays.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="_generic_type_defs_8h.html">GenericTypeDefs.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_compiler_8h.html">Compiler.h</a>&quot;</code><br>
+
+<p>
+<div class="dynheader">
+Graphe des dépendances par inclusion de eeprom.h:</div>
+<div class="dynsection">
+<p><center><img src="eeprom_8h__incl.png" border="0" usemap="#eeprom.h_map" alt=""></center>
+<map name="eeprom.h_map">
+<area shape="rect" href="_generic_type_defs_8h.html" title="GenericTypeDefs.h" alt="" coords="112,83,275,112"><area shape="rect" href="_compiler_8h.html" title="Compiler.h" alt="" coords="299,83,397,112"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dynsection">
+<p><center><img src="eeprom_8h__dep__incl.png" border="0" usemap="#eeprom.hdep_map" alt=""></center>
+<map name="eeprom.hdep_map">
+<area shape="rect" href="eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="5,83,96,112"><area shape="rect" href="main_8c.html" title="Contient la fonction main() du programme." alt="" coords="99,160,168,189"><area shape="rect" href="rangefinder_8h.html" title="Gère la télémétrie." alt="" coords="171,83,291,112"><area shape="rect" href="rangefinder_8c.html" title="Gère la télémétrie." alt="" coords="192,160,312,189"></map>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="eeprom_8h.html#23c79775828a6c484c66ba66b42ca847">ReadEEPROM</a> (<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> addr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Lit dans l'EEPROM du PIC.  <a href="#23c79775828a6c484c66ba66b42ca847"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="eeprom_8h.html#fd48dcf153304aa7a2726ca1b717ab14">WriteEEPROM</a> (<a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> addr, <a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrit dans l'EEPROM du PIC.  <a href="#fd48dcf153304aa7a2726ca1b717ab14"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Fonctions de lecture et d'écriture avec l'EEPROM du PIC. 
+<p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="23c79775828a6c484c66ba66b42ca847"></a><!-- doxytag: member="eeprom.h::ReadEEPROM" ref="23c79775828a6c484c66ba66b42ca847" args="(BYTE addr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a> ReadEEPROM           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td>
+          <td class="paramname"> <em>addr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Lit dans l'EEPROM du PIC. 
+<p>
+La taille totale de la mémoire est de 256 * 8 bits = 256 octets.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>addr</em>&nbsp;</td><td>emplacement de l'octet à lire (de 0 à 255) </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>data données lues, sur 8 bits </dd></dl>
+<div class="fragment"><pre class="fragment"><a name="l00043"></a>00043                            {
+<a name="l00044"></a>00044         EEADR = addr;                                   <span class="comment">// EEPROM memory location</span>
+<a name="l00045"></a>00045         EECON1bits.EEPGD = 0;                   <span class="comment">// Enable read sequence</span>
+<a name="l00046"></a>00046         EECON1bits.CFGS = 0;                    <span class="comment">// Enable read sequence</span>
+<a name="l00047"></a>00047         EECON1bits.RD = 1;                              <span class="comment">// Enable read sequence</span>
+<a name="l00048"></a>00048         Delay10TCYx(2);                                 <span class="comment">// Delay to ensure read is completed</span>
+<a name="l00049"></a>00049         <span class="keywordflow">return</span> EEDATA;
+<a name="l00050"></a>00050 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fd48dcf153304aa7a2726ca1b717ab14"></a><!-- doxytag: member="eeprom.h::WriteEEPROM" ref="fd48dcf153304aa7a2726ca1b717ab14" args="(BYTE addr, BYTE data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WriteEEPROM           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td>
+          <td class="paramname"> <em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_generic_type_defs_8h.html#4ae1dab0fb4b072a66584546209e7d58">BYTE</a>&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ecrit dans l'EEPROM du PIC. 
+<p>
+La taille totale de la mémoire est de 256 * 8 bits = 256 octets.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>addr</em>&nbsp;</td><td>emplacement de l'octet à écrire (de 0 à 255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>données à écrire, sur 8 bits </td></tr>
+  </table>
+</dl>
+<div class="fragment"><pre class="fragment"><a name="l00018"></a>00018                                        {
+<a name="l00019"></a>00019         <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> GIE_Status;
+<a name="l00020"></a>00020         EEADR = addr;                                   <span class="comment">// EEPROM memory location</span>
+<a name="l00021"></a>00021         EEDATA = data;                                  <span class="comment">// Data to be writen </span>
+<a name="l00022"></a>00022         EECON1bits.EEPGD = 0;                   <span class="comment">// Enable EEPROM write</span>
+<a name="l00023"></a>00023         EECON1bits.CFGS = 0;                    <span class="comment">// Enable EEPROM write</span>
+<a name="l00024"></a>00024         EECON1bits.WREN = 1;                    <span class="comment">// Enable EEPROM write</span>
+<a name="l00025"></a>00025         GIE_Status = INTCONbits.GIE;    <span class="comment">// Save global interrupt enable bit</span>
+<a name="l00026"></a>00026         INTCONbits.GIE = 0;                             <span class="comment">// Disable global interrupts</span>
+<a name="l00027"></a>00027         EECON2 = 0x55;                                  <span class="comment">// Required sequence to start write cycle</span>
+<a name="l00028"></a>00028         EECON2 = 0xAA;                                  <span class="comment">// Required sequence to start write cycle</span>
+<a name="l00029"></a>00029         EECON1bits.WR = 1;                              <span class="comment">// Required sequence to start write cycle</span>
+<a name="l00030"></a>00030         INTCONbits.GIE = GIE_Status;    <span class="comment">// Restore the original global interrupt status</span>
+<a name="l00031"></a>00031         <span class="keywordflow">while</span>(EECON1bits.WR);                   <span class="comment">// Wait for completion of write sequence</span>
+<a name="l00032"></a>00032         PIR2bits.EEIF = 0;                              <span class="comment">// Disable EEPROM write</span>
+<a name="l00033"></a>00033         EECON1bits.WREN = 0;                    <span class="comment">// Disable EEPROM write</span>
+<a name="l00034"></a>00034 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Feb 14 20:09:18 2009 pour Carte capteurs par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
+</body>
+</html>

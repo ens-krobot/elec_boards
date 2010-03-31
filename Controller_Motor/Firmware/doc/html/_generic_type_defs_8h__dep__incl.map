@@ -1,0 +1,12 @@
+<area shape="rect" href="$eeprom_8h.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="16,83,107,112">
+<area shape="rect" href="$main_8c.html" title="Contient la fonction main() du programme." alt="" coords="120,160,189,189">
+<area shape="rect" href="$usb__common_8h.html" title="usb_common.h" alt="" coords="181,83,312,112">
+<area shape="rect" href="$usb__function__generic_8h.html" title="usb_function_generic.h" alt="" coords="336,83,528,112">
+<area shape="rect" href="$usb__function__msd_8h.html" title="usb_function_msd.h" alt="" coords="552,83,720,112">
+<area shape="rect" href="$usb__host_8h.html" title="usb_host.h" alt="" coords="744,83,843,112">
+<area shape="rect" href="$lm629_8h.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="867,83,944,112">
+<area shape="rect" href="$usb__descriptors_8c.html" title="usb_descriptors.c" alt="" coords="968,83,1120,112">
+<area shape="rect" href="$usb__device_8c.html" title="usb_device.c" alt="" coords="1144,83,1261,112">
+<area shape="rect" href="$usb__function__hid_8c.html" title="usb_function_hid.c" alt="" coords="1285,83,1445,112">
+<area shape="rect" href="$eeprom_8c.html" title="Fonctions de lecture et d&#39;écriture avec l&#39;EEPROM du PIC." alt="" coords="5,160,96,189">
+<area shape="rect" href="$lm629_8c.html" title="Gère l&#39;interface avec les circuits intégrés LM629." alt="" coords="867,160,944,189">
