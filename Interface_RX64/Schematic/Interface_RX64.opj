@@ -18,8 +18,34 @@
     (ANNOTATE_No_Page_Number_Change "FALSE")
     (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
     (ANNOTATE_IncludeNonPrimitive "TRUE")
-    (ANNOTATE_Refdes_Control_Required "FALSE"))
-  (Folder "Outputs")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\krobot\elec\boards\Interface_RX64\PCB\INTERFACE_RX64.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (TRUE)
+    (LAYOUT_Units "0")
+    (FALSE)
+    (FALSE)
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\KROBOT\ELEC\BOARDS\INTERFACE_RX64\SCHEMATIC\INTERFACE_RX64.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "C:\KROBOT\ELEC\BOARDS\INTERFACE_RX64\SCHEMATIC\INTERFACE_RX64.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File "..\pcb\interface_rx64.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File ".\interface_rx64.bom"
+      (Type "Report")))
   (Folder "PSpice Resources"
     (Folder "Simulation Profiles")
     (Folder "Model Libraries"
@@ -30,6 +56,28 @@
       (Sort User)))
   (DefaultLibraryBrowseDirectory "library\PSpice")
   (PartMRUSelector
+    (BC857/PLP
+      (FullPartName "BC857/PLP.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\PHIL_BJT.OLB")
+      (DeviceIndex "0"))
+    (BC857
+      (FullPartName "BC857.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\INFINEON_S_AFBJT.OLB")
+      (DeviceIndex "0"))
+    (CON6A
+      (FullPartName "CON6A.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (10BQ040
+      (FullPartName "10BQ040.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\IRF.OLB")
+      (DeviceIndex "0"))
+    ("RESISTOR VAR"
+      (FullPartName "RESISTOR VAR.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
     (BC557
       (FullPartName "BC557.Normal")
       (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\TRANSISTOR.OLB")
@@ -66,11 +114,7 @@
       (Path "Design Resources")
       (Path "Design Resources"
          "C:\krobot\elec\boards\Interface_RX64\Schematic\interface_rx64.dsn")
-      (Path "Design Resources"
-         "C:\krobot\elec\boards\Interface_RX64\Schematic\interface_rx64.dsn"
-         "SCHEMATIC1")
-      (Select "Design Resources"
-         "C:\krobot\elec\boards\Interface_RX64\Schematic\interface_rx64.dsn"))
+      (Path "Outputs"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")

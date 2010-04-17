@@ -1,0 +1,40 @@
+RX-64 Interface  Revised: Saturday, April 17, 2010
+          Revision: 1.0
+
+
+
+
+
+
+
+Bill Of Materials          April 17,2010      15:29:55	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	4	C1,C2,C3,C4	1u
+2	4	C5,C6,C7,C8	4.7u
+3	1	C9	330u
+4	1	C10	2.2u
+5	3	C11,C12,C14	100n
+6	1	C13	0.33u
+7	1	D1	LED transmit mode
+8	1	D2	LED bus power
+9	1	D3	10BQ040
+10	1	D4	LED 5 V
+11	2	J1,J3	Bus RX-64
+12	1	J2	Terminate
+13	1	J4	DC Power
+14	1	J5	CON6A
+15	1	P1	Serial port
+16	1	Q1	BC857
+17	2	R1,R2	1.2k
+18	1	R3	120
+19	4	R4,R5,R6,R8	2.2k
+20	2	R7,R11	680
+21	1	R10	2.4k
+22	1	R12	4.46k 1% (1k - 10k)
+23	1	U1	75176
+24	1	U2	MAX232
+25	1	U3	PTN78060H
+26	1	U4	LM7805C/TO220
