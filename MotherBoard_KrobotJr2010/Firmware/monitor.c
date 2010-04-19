@@ -78,36 +78,6 @@ void getHandler(BaseChannel *chp, int argc, char* argv[]) {
                                         (position)%10);
 };
 
-void resetHandler(BaseChannel *chp, int argc, char* argv[]) {
-
-  if (argc != 1) {
-    shellPrintLine(chp, "Usage : reset numEncodeur.");
-    return;
-  }
-  switch (argv[0][0]) {
-    case '1':
-      resetEncoderPosition(ENCODER1);
-      shellPrintLine(chp, "Reset encodeur 1.");
-      break;
-    case '2':
-      resetEncoderPosition(ENCODER2);
-      shellPrintLine(chp, "Reset encodeur 2.");
-      break;
-    case '3':
-      resetEncoderPosition(ENCODER3);
-      shellPrintLine(chp, "Reset encodeur 3.");
-      break;
-    case 'a':
-      resetEncoderPosition(ENCODER1);
-      resetEncoderPosition(ENCODER2);
-      resetEncoderPosition(ENCODER3);
-      shellPrintLine(chp, "Reset de tous les encodeurs.");
-      break;
-    default:
-      shellPrintLine(chp, "Il n'y a que 3 encodeurs !");      
-  }
-}
-
 void setSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
   uint8_t motor = 0, i;
@@ -141,7 +111,7 @@ void setSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
   }
   if (argv[1][0] == '-')
     speed = -speed;
-  motorSetSpeed(motor, speed);
+  sc_setRefSpeed(motor, speed);
   iprintf("set speed :  %d%d%d%d%d\r\n", (speed/10000)%10,
                                          (speed/1000)%10,
                                          (speed/100)%10,
@@ -149,42 +119,34 @@ void setSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
                                          (speed)%10);
 }
 
-void motorEnableHandler(BaseChannel *chp, int argc, char* argv[]) {
+void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
-  uint8_t motor = 0;
+  int speed;
 
-  if (argc != 2) {    
-    shellPrintLine(chp, "Usage : motor numMoteur enabled.");
+  if (argc != 1) {    
+    shellPrintLine(chp, "Usage : getSpeed numMoteur.");
     return;
   }
   switch (argv[0][0]) {
     case '1':
-      motor = MOTOR1;
+      speed = sc_getRealSpeed(MOTOR1);
       break;
     case '2':
-      motor = MOTOR2;
+      speed = sc_getRealSpeed(MOTOR2);
       break;
     case '3':
-      motor = MOTOR3;
-      break;
-    case 'a':
-      motor = MOTOR1 | MOTOR2 | MOTOR3;
+      speed = sc_getRealSpeed(MOTOR3);
       break;
     default:
       shellPrintLine(chp, "Mauvais moteur spécifié");
       return;
   }
-  switch (argv[1][0]) {
-    case '0':
-      disableMotor(motor);
-      break;
-    case '1':
-      enableMotor(motor);
-      break;
-    default:
-      shellPrintLine(chp, "gné ?");
-      return;
-  }
+
+  iprintf("vitesse :  %d%d%d%d%d\r\n", (speed/10000)%10,
+                                       (speed/1000)%10,
+                                       (speed/100)%10,
+                                       (speed/10)%10,
+                                       (speed)%10);
 }
 
 
@@ -195,9 +157,8 @@ static const ShellCommand commands[] = {
   {"bonjour", bonjourHandler},
   {"load", loadHandler},
   {"get", getHandler},
-  {"reset", resetHandler},
   {"setSpeed", setSpeedHandler},
-  {"motorEnable", motorEnableHandler},
+  {"getSpeed", getSpeedHandler},
   {NULL, NULL}
 };
 
@@ -208,6 +169,6 @@ static const ShellConfig shellConfig = {
 
 void monitorInit(void) {
   shellInit();
-  shellCreate(&shellConfig, THD_WA_SIZE(512), NORMALPRIO);
-  cdtp = chThdCreateFromHeap(NULL, THD_WA_SIZE(512), NORMALPRIO + 1, consoleThread, NULL);
+  shellCreate(&shellConfig, THD_WA_SIZE(256), NORMALPRIO);
+  cdtp = chThdCreateFromHeap(NULL, THD_WA_SIZE(128), NORMALPRIO + 1, consoleThread, NULL);
 }

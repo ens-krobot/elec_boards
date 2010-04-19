@@ -1,6 +1,7 @@
 /*
-  Template program using ChibiOS/RT
-*/
+ * Control Software for the Krobot Junior MotherBoard
+ * Xavier Lagorce
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,8 +13,8 @@
 
 #include "monitor.h"
 #include "encoder.h"
-#include "motor.h"
 #include "cpu_load.h"
+#include "speed_control.h"
 
 /*
  * Global variables
@@ -27,10 +28,31 @@ static msg_t Thread1(void *arg) {
 
   (void)arg;
   while (TRUE) {
+    sc_setRefSpeed(MOTOR1, 0);
+    sc_setRefSpeed(MOTOR2, -360);
+    sc_setRefSpeed(MOTOR3, 360);
+    chThdSleepMilliseconds(2000);
+
+    sc_setRefSpeed(MOTOR1, 360);
+    sc_setRefSpeed(MOTOR2, 0);
+    sc_setRefSpeed(MOTOR3, -360);
+    chThdSleepMilliseconds(2000);
+
+
+    sc_setRefSpeed(MOTOR1, -360);
+    sc_setRefSpeed(MOTOR2, 360);
+    sc_setRefSpeed(MOTOR3, 0);
+    chThdSleepMilliseconds(2000);
+
+    sc_setRefSpeed(MOTOR1, 0);
+    sc_setRefSpeed(MOTOR2, 0);
+    sc_setRefSpeed(MOTOR3, 0);
+
     palClearPad(IOPORT3, GPIOC_LED);
-    chThdSleepMilliseconds(500);
+    chThdSleepMilliseconds(1000);
+
     palSetPad(IOPORT3, GPIOC_LED);
-    chThdSleepMilliseconds(500);
+    chThdSleepMilliseconds(1000);
   }
   return 0;
 }
@@ -80,22 +102,20 @@ int main(int argc, char **argv) {
   /*
    * Activates the serial driver 2 using the driver default configuration.
    */
-  sdStart(&SD2, NULL);
+  //sdStart(&SD2, NULL);
 
   /*
    * Initialise the monitor
    */
-  monitorInit();
+  //monitorInit();
 
   /*
-   * Initialise the encoder Interface
+   * Initialise the speed controller
    */
-  encodersInit();
+  speedControlInit();
 
-  /*
-   * Initialise the motor Interface
-   */
-  motorsInit();
+  chThdSleepMilliseconds(2000);
+
 
   /*
    * Creates the blinker thread.

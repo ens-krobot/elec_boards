@@ -21,6 +21,7 @@
 #include "encoder.h"
 #include "motor.h"
 #include "cpu_load.h"
+#include "speed_control.h"
 
 extern Thread *cdtp;
 
