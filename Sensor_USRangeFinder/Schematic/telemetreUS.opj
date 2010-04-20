@@ -1,0 +1,88 @@
+(ExpressProject "telemetreUS"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "..\bibliothèques\krobot.olb"
+        (Type "Schematic Library"))
+      (File "..\bibliothèques\crans.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\telemetreus.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File "TELEMETREUS.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (TRUE)
+    (LAYOUT_Units "0")
+    (TRUE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\Documents and Settings\XL\My Documents\cartesMars2010\BOM\telemetreUltrasons.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File "C:\ORCAD_DATA\TELEMETREUS\TELEMETREUS.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
+  (Folder "Outputs"
+    (File ".\telemetreus.mnl"
+      (Type "LAYOUT Netlist File"))
+    (File
+       "c:\documents and settings\xl\my documents\cartesmars2010\bom\telemetreultrasons.bom"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (JP4
+      (FullPartName "JP4.Normal")
+      (LibraryName "C:\ORCAD_DATA\BIBLIOTHÈQUES\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (MAX202
+      (FullPartName "MAX202.Normal")
+      (LibraryName "C:\ORCAD_DATA\BIBLIOTHÈQUES\CRANS.OLB")
+      (DeviceIndex "0"))
+    (TestPoint
+      (FullPartName "TestPoint.Normal")
+      (LibraryName "C:\ORCAD_DATA\BIBLIOTHÈQUES\CRANS.OLB")
+      (DeviceIndex "0"))
+    (blocUS
+      (FullPartName "blocUS.Normal")
+      (LibraryName "C:\ORCAD_DATA\BIBLIOTHÈQUES\CRANS.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "C:\OrCAD_Data\bibliothèques")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -30 0 301 0 428"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -30 92 1218 77 509")
+        (Scroll "0 0")
+        (Zoom "200")
+        (Occurrence "/"))
+      (Path "C:\ORCAD_DATA\TELEMETREUS\TELEMETREUS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "XL"))
