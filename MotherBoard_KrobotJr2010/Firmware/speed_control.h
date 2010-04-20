@@ -6,13 +6,13 @@
 #ifndef HEADER__SPEEDCONTROL
 #define HEADER__SPEEDCONTROL
 
-#define K_P   20
+#define K_P   25
 #define K_I    1
 #define Te    50
 
 #define K_v   (1000/Te)
 #define K_Pn        K_P
-#define K_In   5//(K_I)*Te
+#define K_In   25//(K_I)*Te
 
 #define DEAD_ZONE       100
 #define MAX_COMMAND   35000

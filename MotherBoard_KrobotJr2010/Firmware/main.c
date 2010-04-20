@@ -38,11 +38,35 @@ static msg_t Thread1(void *arg) {
     sc_setRefSpeed(MOTOR3, -360);
     chThdSleepMilliseconds(2000);
 
-
     sc_setRefSpeed(MOTOR1, -360);
     sc_setRefSpeed(MOTOR2, 360);
     sc_setRefSpeed(MOTOR3, 0);
     chThdSleepMilliseconds(2000);
+
+    sc_setRefSpeed(MOTOR1, 0);
+    sc_setRefSpeed(MOTOR2, 0);
+    sc_setRefSpeed(MOTOR3, 0);
+
+    palClearPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(1000);
+
+    palSetPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(1000);
+
+    sc_setRefSpeed(MOTOR1, 360);
+    sc_setRefSpeed(MOTOR2, 360);
+    sc_setRefSpeed(MOTOR3, 360);
+    chThdSleepMilliseconds(3000);
+
+    sc_setRefSpeed(MOTOR1, 0);
+    sc_setRefSpeed(MOTOR2, 0);
+    sc_setRefSpeed(MOTOR3, 0);
+    chThdSleepMilliseconds(3000);
+
+    sc_setRefSpeed(MOTOR1, -360);
+    sc_setRefSpeed(MOTOR2, -360);
+    sc_setRefSpeed(MOTOR3, -360);
+    chThdSleepMilliseconds(3000);
 
     sc_setRefSpeed(MOTOR1, 0);
     sc_setRefSpeed(MOTOR2, 0);
