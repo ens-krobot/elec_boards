@@ -63,7 +63,11 @@ void CPULoadInit(void) {
   tp = chThdSelf();
 
   chThdCreateFromHeap(NULL, 256, LOWPRIO+1, ThreadCount, NULL);
-  chThdCreateFromHeap(NULL, 256, HIGHPRIO, ThreadLoad, NULL);
+  chThdCreateFromHeap(NULL, 256, HIGHPRIO-1, ThreadLoad, NULL);
 
   chSchGoSleepS(THD_STATE_SUSPENDED);
+}
+
+uint16_t getCPUload(void) {
+  return CPUload;
 }

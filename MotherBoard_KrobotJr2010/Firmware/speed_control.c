@@ -9,7 +9,7 @@
 #define MIN(x,y) ((x) > (y) ? (y) : (x))
 
 int32_t ref_speeds[3] = {0, 0, 0};
-int32_t cur_speeds[3] = {0, 0, 0};
+volatile int32_t cur_speeds[3] = {0, 0, 0};
 
 /*
  * Speed controller thread

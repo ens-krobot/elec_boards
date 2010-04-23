@@ -10,8 +10,6 @@
 #include "chthreads.h"
 #include "chtypes.h"
 
-extern volatile uint16_t CPUload;
-
 void CPULoadInit(void);
-
+uint16_t getCPUload(void);
 #endif

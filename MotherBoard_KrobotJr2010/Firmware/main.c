@@ -87,14 +87,14 @@ static msg_t Thread1(void *arg) {
 static void TimerHandler(eventid_t id) {
 
   (void)id;
-  /*if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
+  if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
     cputs("Coucou !\r");
     if (TIM_GetCounter(TIM3) == 0)
       cputs("c'est nul !\r");
     else
       cputs("ca marche (peut etre...)\r");
     fflush(stdout);
-    }*/
+    }
 }
 
 /*
@@ -120,12 +120,12 @@ int main(int argc, char **argv) {
   /*
    * Activates the serial driver 2 using the driver default configuration.
    */
-  //sdStart(&SD2, NULL);
+  sdStart(&SD2, NULL);
 
   /*
    * Initialise the monitor
    */
-  //monitorInit();
+  monitorInit();
 
   /*
    * Initialise the speed controller

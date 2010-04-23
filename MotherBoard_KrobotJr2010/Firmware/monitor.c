@@ -42,7 +42,7 @@ void loadHandler(BaseChannel *chp, int argc, char* argv[]) {
     shellPrintLine(chp, "Usage : load.");
     return;
   }
-  load = CPUload;
+  load = getCPUload();
   iprintf("charge CPU :  %d%d%d%d%d\r\n", (load/10000)%10,
                                           (load/1000)%10,
                                           (load/100)%10,
@@ -121,7 +121,7 @@ void setSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
 void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
-  int speed;
+  int32_t speed;
 
   if (argc != 1) {    
     shellPrintLine(chp, "Usage : getSpeed numMoteur.");
@@ -142,11 +142,11 @@ void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
       return;
   }
 
-  iprintf("vitesse :  %d%d%d%d%d\r\n", (speed/10000)%10,
-                                       (speed/1000)%10,
-                                       (speed/100)%10,
-                                       (speed/10)%10,
-                                       (speed)%10);
+  iprintf("vitesse :  %ld%ld%ld%ld%ld\r\n", (speed/10000)%10,
+                                            (speed/1000)%10,
+                                            (speed/100)%10,
+                                            (speed/10)%10,
+                                            (speed)%10);
 }
 
 
@@ -169,6 +169,6 @@ static const ShellConfig shellConfig = {
 
 void monitorInit(void) {
   shellInit();
-  shellCreate(&shellConfig, THD_WA_SIZE(256), NORMALPRIO);
+  shellCreate(&shellConfig, THD_WA_SIZE(512), NORMALPRIO);
   cdtp = chThdCreateFromHeap(NULL, THD_WA_SIZE(128), NORMALPRIO + 1, consoleThread, NULL);
 }
