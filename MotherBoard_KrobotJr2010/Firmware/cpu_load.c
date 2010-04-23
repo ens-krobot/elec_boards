@@ -65,5 +65,5 @@ void CPULoadInit(void) {
   chThdCreateFromHeap(NULL, 256, LOWPRIO+1, ThreadCount, NULL);
   chThdCreateFromHeap(NULL, 256, HIGHPRIO, ThreadLoad, NULL);
 
-  chSchGoSleepS(PRSUSPENDED);
+  chSchGoSleepS(THD_STATE_SUSPENDED);
 }

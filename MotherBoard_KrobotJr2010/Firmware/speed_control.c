@@ -8,22 +8,23 @@
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 #define MIN(x,y) ((x) > (y) ? (y) : (x))
 
-volatile int ref_speeds[3] = {0, 0, 0};
-volatile int last_errors[3] = {0, 0, 0};
-volatile int last_commands[3] = {0, 0, 0};
-
-volatile int cur_speeds[3] = {0, 0, 0};
-volatile uint16_t prev_positions[3] = {0, 0, 0};
+int32_t ref_speeds[3] = {0, 0, 0};
+int32_t cur_speeds[3] = {0, 0, 0};
 
 /*
  * Speed controller thread
  */
+static WORKING_AREA(waThreadSC, 512);
 static msg_t ThreadSpeedController(void *arg) {
 
   systime_t time;
-  int commands[3] = {0, 0, 0};
-  int errors[3] = {0, 0, 0};
+  int32_t commands[3] = {0, 0, 0};
+  int32_t errors[3] = {0, 0, 0};
   uint16_t positions[3] = {0, 0, 0};
+  int32_t last_errors[3] = {0, 0, 0};
+  int32_t last_commands[3] = {0, 0, 0};
+  uint16_t prev_positions[3] = {0, 0, 0};
+
 
   (void)arg;
   time = chTimeNow();
@@ -31,13 +32,19 @@ static msg_t ThreadSpeedController(void *arg) {
   while (TRUE) {
     time += MS2ST(Te);
 
+    prev_positions[0] = getEncoderPosition(ENCODER1);
+    prev_positions[1] = getEncoderPosition(ENCODER2);
+    prev_positions[2] = getEncoderPosition(ENCODER3);
+
+    chThdSleepMilliseconds(Tcomp);
+
     positions[0] = getEncoderPosition(ENCODER1);
     positions[1] = getEncoderPosition(ENCODER2);
     positions[2] = getEncoderPosition(ENCODER3);
 
-    cur_speeds[0] = (int16_t)(K_v*((int32_t)positions[0] - (int32_t)prev_positions[0]));
-    cur_speeds[1] = (int16_t)(K_v*((int32_t)positions[1] - (int32_t)prev_positions[1]));
-    cur_speeds[2] = (int16_t)(K_v*((int32_t)positions[2] - (int32_t)prev_positions[2]));
+    cur_speeds[0] = (K_v*((int32_t)positions[0] - (int32_t)prev_positions[0]));
+    cur_speeds[1] = (K_v*((int32_t)positions[1] - (int32_t)prev_positions[1]));
+    cur_speeds[2] = (K_v*((int32_t)positions[2] - (int32_t)prev_positions[2]));
 
     errors[0] = ref_speeds[0] - cur_speeds[0];
     errors[1] = ref_speeds[1] - cur_speeds[1];
@@ -48,7 +55,7 @@ static msg_t ThreadSpeedController(void *arg) {
     commands[1] = (K_Pn + K_In)*errors[1] - K_Pn*last_errors[1] + last_commands[1];
     commands[2] = (K_Pn + K_In)*errors[2] - K_Pn*last_errors[2] + last_commands[2];
     //--> End of command computation
-
+    
     if (commands[0] >= 0)
       commands[0] = MIN(MAX_COMMAND, commands[0]);
     else
@@ -61,30 +68,28 @@ static msg_t ThreadSpeedController(void *arg) {
       commands[2] = MIN(MAX_COMMAND, commands[2]);
     else
       commands[2] = MAX(-MAX_COMMAND, commands[2]);
-
+      
     last_commands[0] = commands[0];
     last_commands[1] = commands[1];
     last_commands[2] = commands[2];
-
+      
     if (commands[0] >= -DEAD_ZONE && commands[0] <= DEAD_ZONE)
       commands[0] = 0;
     if (commands[1] >= -DEAD_ZONE && commands[1] <= DEAD_ZONE)
       commands[1] = 0;
     if (commands[2] >= -DEAD_ZONE && commands[2] <= DEAD_ZONE)
       commands[2] = 0;
-
-    prev_positions[0] = positions[0];
-    prev_positions[1] = positions[1];
-    prev_positions[2] = positions[2];
-
     last_errors[0] = errors[0];
     last_errors[1] = errors[1];
-    last_errors[2] = errors[2];
-
-
+    last_errors[2] = errors[2];      
+    
     motorSetSpeed(MOTOR1, commands[0]);
     motorSetSpeed(MOTOR2, commands[1]);
     motorSetSpeed(MOTOR3, commands[2]);
+    
+    prev_positions[0] = positions[0];
+    prev_positions[1] = positions[1];
+    prev_positions[2] = positions[2];
 
     chThdSleepUntil(time);
   }
@@ -101,14 +106,10 @@ void speedControlInit(void) {
   motorSetSpeed(MOTOR1 | MOTOR2 | MOTOR3, 0);
   resetEncoderPosition(ENCODER1 | ENCODER2 | ENCODER3);
 
-  prev_positions[0] = getEncoderPosition(ENCODER1);
-  prev_positions[1] = getEncoderPosition(ENCODER2);
-  prev_positions[2] = getEncoderPosition(ENCODER3);
-
-  chThdCreateFromHeap(NULL, 256, HIGHPRIO, ThreadSpeedController, NULL);
+  chThdCreateStatic(waThreadSC, sizeof(waThreadSC), HIGHPRIO, ThreadSpeedController, NULL);
 }
 
-void sc_setRefSpeed(uint8_t motor, int speed) {
+void sc_setRefSpeed(uint8_t motor, int32_t speed) {
 
   if (motor & MOTOR1) {
     ref_speeds[0] = speed;
@@ -121,7 +122,7 @@ void sc_setRefSpeed(uint8_t motor, int speed) {
   }
 }
 
-int sc_getRealSpeed(uint8_t motor) {
+int32_t sc_getRealSpeed(uint8_t motor) {
   
   switch(motor) {
     case MOTOR1:
@@ -132,23 +133,6 @@ int sc_getRealSpeed(uint8_t motor) {
       break;
     case MOTOR3:
       return cur_speeds[2];
-      break;
-    default:
-      return 0;
-  }
-}
-
-uint16_t sc_getPosition(uint8_t motor) {
-
-  switch(motor) {
-    case MOTOR1:
-      return prev_positions[0];
-      break;
-    case MOTOR2:
-      return prev_positions[1];
-      break;
-    case MOTOR3:
-      return prev_positions[2];
       break;
     default:
       return 0;

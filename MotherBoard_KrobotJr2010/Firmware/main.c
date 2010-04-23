@@ -23,7 +23,7 @@
 /*
  * Red LEDs blinker thread, times are in milliseconds.
  */
-static WORKING_AREA(waThread1, 128);
+static WORKING_AREA(waThread1, 256);
 static msg_t Thread1(void *arg) {
 
   (void)arg;
@@ -87,14 +87,14 @@ static msg_t Thread1(void *arg) {
 static void TimerHandler(eventid_t id) {
 
   (void)id;
-  if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
+  /*if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
     cputs("Coucou !\r");
     if (TIM_GetCounter(TIM3) == 0)
       cputs("c'est nul !\r");
     else
       cputs("ca marche (peut etre...)\r");
     fflush(stdout);
-  }
+    }*/
 }
 
 /*
@@ -111,12 +111,6 @@ int main(int argc, char **argv) {
 
   (void)argc;
   (void)argv;
-
-  /*
-   * ChibiOS/RT init
-   */
-  halInit();
-  chSysInit();
 
   /*
    * Initialise the load calculator
@@ -144,7 +138,7 @@ int main(int argc, char **argv) {
   /*
    * Creates the blinker thread.
    */
-  chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO, Thread1, NULL);
+  chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO+1, Thread1, NULL);
 
   /*
    * Normal main() thread activity, in this demo it does nothing except

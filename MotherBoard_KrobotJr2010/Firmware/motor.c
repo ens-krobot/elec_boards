@@ -11,11 +11,7 @@ signed char currentSpeedSign[] = {0, 0, 0};
 /*
  * Interrupt routine for PWM generation
  */
-CH_IRQ_HANDLER(VectorB0) {
-  CH_IRQ_PROLOGUE();
-
-  // Prevent preemption by system
-  chSysLockFromIsr();
+void VectorB0(void) {
 
   if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
   {
@@ -49,11 +45,6 @@ CH_IRQ_HANDLER(VectorB0) {
 
     GPIO_SetBits(GPIOC, GPIO_Pin_3 | GPIO_Pin_9 | GPIO_Pin_13);
   }
-
-  // Re-enable preemption by system
-  chSysUnlockFromIsr();
-  
-  CH_IRQ_EPILOGUE();
 }
 
 /*
@@ -174,12 +165,17 @@ void disableMotor(uint8_t motor) {
 /*
  * Step one motor's speed
  */
-void motorSetSpeed(uint8_t motor, int speed) {
+void motorSetSpeed(uint8_t motor, int32_t speed) {
 
   if (speed == 0) {
     motorStop(motor, MOTOR_BRAKE);
     return;
   }
+
+  if (speed >= MAX_PWM)
+    speed = MAX_PWM;
+  if (speed <= -MAX_PWM)
+    speed = -MAX_PWM;
 
   if (motor & MOTOR1) {
     if(speed > 0) {

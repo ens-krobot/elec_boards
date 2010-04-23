@@ -13,6 +13,8 @@
 #define MOTOR_STOP    1
 #define MOTOR_BRAKE   2
 
+#define MAX_PWM  35000
+
 #include "ch.h"
 #include "nvic.h"
 #include "stm32f10x.h"
@@ -23,7 +25,7 @@
 void motorsInit(void);
 void enableMotor(uint8_t motor);
 void disableMotor(uint8_t motor);
-void motorSetSpeed(uint8_t motor, int speed);
+void motorSetSpeed(uint8_t motor, int32_t speed);
 void motorStop(uint8_t motor, uint8_t mode);
 
 #endif

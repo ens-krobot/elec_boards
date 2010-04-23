@@ -7,7 +7,7 @@
 #define HEADER__CPULOAD
 
 #include "ch.h"
-#include "vt.h"
+#include "chthreads.h"
 #include "chtypes.h"
 
 extern volatile uint16_t CPUload;
