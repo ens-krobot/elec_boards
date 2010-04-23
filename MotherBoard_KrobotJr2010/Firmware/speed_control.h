@@ -6,9 +6,9 @@
 #ifndef HEADER__SPEEDCONTROL
 #define HEADER__SPEEDCONTROL
 
-#define K_P     15
+#define K_P     17
 #define K_I      1
-#define Tcomp   30 // speed will be computed on a Tcomp timesample
+#define Tcomp   15 // speed will be computed on a Tcomp timesample
 #define Te      50
 
 #define K_v   (1000/Tcomp)
