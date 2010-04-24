@@ -84,7 +84,7 @@ static void cmd_info(BaseChannel *chp, int argc, char *argv[]) {
     usage(chp, "info");
     return;
   }
-
+  shellPrintLine(chp, "Krobot Jr, par ChibiOS/RT");
   shellPrint(chp, "Kernel version: ");
   shellPrintLine(chp, CH_KERNEL_VERSION);
 #ifdef __GNUC__
@@ -158,9 +158,9 @@ static msg_t shell_thread(void *p) {
   char *args[SHELL_MAX_ARGUMENTS + 1];
 
   shellPrintLine(chp, "");
-  shellPrintLine(chp, "ChibiOS/RT Shell");
+  shellPrintLine(chp, "[Kro]bot Jr Shell");
   while (TRUE) {
-    shellPrint(chp, "ch> ");
+    shellPrint(chp, "KrobotJr> ");
     if (shellGetLine(chp, line, sizeof(line))) {
       shellPrint(chp, "\nlogout");
       break;
