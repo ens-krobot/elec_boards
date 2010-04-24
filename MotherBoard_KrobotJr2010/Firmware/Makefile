@@ -77,7 +77,7 @@ CSRC += $(BOARDSRC)
 CSRC += $(CHIBIOS)/os/various/evtimer.c
 CSRC += $(CHIBIOS)/os/various/syscalls.c
 CSRC += $(CHIBIOS)/os/various/shell.c
-CSRC += monitor.c
+#CSRC += monitor.c
 CSRC += encoder.c
 CSRC += motor.c
 CSRC += cpu_load.c
@@ -133,11 +133,12 @@ CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
-LD   = $(TRGT)gcc
+LD   = $(TRGT)gcc -Wl,--gc-sections
 #LD   = $(TRGT)g++
 CP   = $(TRGT)objcopy
 AS   = $(TRGT)gcc -x assembler-with-cpp
 OD   = $(TRGT)objdump
+SIZE = $(TRGT)size
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
 
@@ -185,7 +186,7 @@ DLIBS =
 #
 
 # List all user C define here, like -D_DEBUG=1
-#UDEFS = -DCH_DBG_ENABLE_STACK_CHECK=1 -DCH_DBG_FILL_THREADS=1
+UDEFS = -DCH_DBG_FILL_THREADS=1
 UDEFS = 
 
 # Define ASM defines here
@@ -198,7 +199,7 @@ UINCDIR =
 ULIBDIR =
 
 # List all user libraries here
-ULIBS =
+ULIBS = -lm
 
 #
 # End of user defines
@@ -213,3 +214,11 @@ endif
 
 include $(CHIBIOS)/os/ports/GCC/ARM/rules.mk
 include jtag/flash.mk
+
+# Display program size at end of compilation
+.PHONY:size
+size: all
+	$(SIZE) $(BUILDDIR)/$(PROJECT).elf
+
+# Prefer compilation with display of program size
+.DEFAULT_GOAL := size
