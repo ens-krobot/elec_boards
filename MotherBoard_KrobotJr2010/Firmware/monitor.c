@@ -119,6 +119,43 @@ void setSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
                                          (speed)%10);
 }
 
+void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
+
+  if (argc != 1) {    
+    shellPrintLine(chp, "Usage : move mode.");
+    return;
+  }
+  switch (argv[0][0]) {
+    case '1':
+      setScrew(0, 0, 100, 0, 0);
+      chThdSleepMilliseconds(2000);
+      setScrew(0, 0, 0, 100, 0);
+      chThdSleepMilliseconds(2000);
+      setScrew(0, 0, -100, 0, 0);
+      chThdSleepMilliseconds(2000);
+      setScrew(0, 0, 0, -100, 0);
+      chThdSleepMilliseconds(2000);
+      setScrew(0, 0, 0, 0, 0);
+      break;
+    case '2':
+      turn(360);
+      chThdSleepMilliseconds(1000);
+      turn(-360);
+      chThdSleepMilliseconds(1000);
+      turn(0);
+      break;
+    case '3':
+      setScrew(0, 200, 0, 0, 60);
+      chThdSleepMilliseconds(6000);
+      turn(0);
+      break;
+  default:
+      shellPrintLine(chp, "Mode inconnu");
+      return;
+  }
+}
+
+
 void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
   int32_t speed;
@@ -150,6 +187,7 @@ void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 }
 
 
+
 /*
  * Shell configuration variables
  */
@@ -158,6 +196,7 @@ static const ShellCommand commands[] = {
   {"load", loadHandler},
   {"get", getHandler},
   {"setSpeed", setSpeedHandler},
+  {"move", moveHandler},
   {"getSpeed", getSpeedHandler},
   {NULL, NULL}
 };

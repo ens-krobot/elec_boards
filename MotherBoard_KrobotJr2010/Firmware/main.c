@@ -15,6 +15,7 @@
 #include "encoder.h"
 #include "cpu_load.h"
 #include "speed_control.h"
+#include "trajectory.h"
 
 /*
  * Global variables
@@ -23,12 +24,12 @@
 /*
  * Red LEDs blinker thread, times are in milliseconds.
  */
-static WORKING_AREA(waThread1, 256);
+static WORKING_AREA(waThread1, 1024);
 static msg_t Thread1(void *arg) {
 
   (void)arg;
   while (TRUE) {
-    sc_setRefSpeed(MOTOR1, 0);
+    /*sc_setRefSpeed(MOTOR1, 0);
     sc_setRefSpeed(MOTOR2, -360);
     sc_setRefSpeed(MOTOR3, 360);
     chThdSleepMilliseconds(2000);
@@ -70,13 +71,17 @@ static msg_t Thread1(void *arg) {
 
     sc_setRefSpeed(MOTOR1, 0);
     sc_setRefSpeed(MOTOR2, 0);
-    sc_setRefSpeed(MOTOR3, 0);
+    sc_setRefSpeed(MOTOR3, 0);*/
 
     palClearPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(1000);
 
     palSetPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(1000);
+
+    /*setScrew(0, 200, 0, 0, 60);
+    chThdSleepMilliseconds(6000);
+    turn(0);*/
   }
   return 0;
 }
@@ -88,13 +93,13 @@ static void TimerHandler(eventid_t id) {
 
   (void)id;
   if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
-    cputs("Coucou !\r");
+    /*cputs("Coucou !\r");
     if (TIM_GetCounter(TIM3) == 0)
       cputs("c'est nul !\r");
     else
       cputs("ca marche (peut etre...)\r");
-    fflush(stdout);
-    }
+      fflush(stdout);*/
+  }
 }
 
 /*

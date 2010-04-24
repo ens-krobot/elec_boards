@@ -77,11 +77,12 @@ CSRC += $(BOARDSRC)
 CSRC += $(CHIBIOS)/os/various/evtimer.c
 CSRC += $(CHIBIOS)/os/various/syscalls.c
 CSRC += $(CHIBIOS)/os/various/shell.c
-#CSRC += monitor.c
+CSRC += monitor.c
 CSRC += encoder.c
 CSRC += motor.c
 CSRC += cpu_load.c
 CSRC += speed_control.c
+CSRC += trajectory.c
 CSRC += main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global

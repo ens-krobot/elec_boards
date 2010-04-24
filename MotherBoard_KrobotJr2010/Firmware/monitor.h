@@ -22,6 +22,7 @@
 #include "motor.h"
 #include "cpu_load.h"
 #include "speed_control.h"
+#include "trajectory.h"
 
 extern Thread *cdtp;
 
