@@ -29,59 +29,12 @@ static msg_t Thread1(void *arg) {
 
   (void)arg;
   while (TRUE) {
-    /*sc_setRefSpeed(MOTOR1, 0);
-    sc_setRefSpeed(MOTOR2, -360);
-    sc_setRefSpeed(MOTOR3, 360);
-    chThdSleepMilliseconds(2000);
-
-    sc_setRefSpeed(MOTOR1, 360);
-    sc_setRefSpeed(MOTOR2, 0);
-    sc_setRefSpeed(MOTOR3, -360);
-    chThdSleepMilliseconds(2000);
-
-    sc_setRefSpeed(MOTOR1, -360);
-    sc_setRefSpeed(MOTOR2, 360);
-    sc_setRefSpeed(MOTOR3, 0);
-    chThdSleepMilliseconds(2000);
-
-    sc_setRefSpeed(MOTOR1, 0);
-    sc_setRefSpeed(MOTOR2, 0);
-    sc_setRefSpeed(MOTOR3, 0);
 
     palClearPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(1000);
 
     palSetPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(1000);
-
-    sc_setRefSpeed(MOTOR1, 360);
-    sc_setRefSpeed(MOTOR2, 360);
-    sc_setRefSpeed(MOTOR3, 360);
-    chThdSleepMilliseconds(3000);
-
-    sc_setRefSpeed(MOTOR1, 0);
-    sc_setRefSpeed(MOTOR2, 0);
-    sc_setRefSpeed(MOTOR3, 0);
-    chThdSleepMilliseconds(3000);
-
-    sc_setRefSpeed(MOTOR1, -360);
-    sc_setRefSpeed(MOTOR2, -360);
-    sc_setRefSpeed(MOTOR3, -360);
-    chThdSleepMilliseconds(3000);
-
-    sc_setRefSpeed(MOTOR1, 0);
-    sc_setRefSpeed(MOTOR2, 0);
-    sc_setRefSpeed(MOTOR3, 0);*/
-
-    palClearPad(IOPORT3, GPIOC_LED);
-    chThdSleepMilliseconds(1000);
-
-    palSetPad(IOPORT3, GPIOC_LED);
-    chThdSleepMilliseconds(1000);
-
-    /*setScrew(0, 200, 0, 0, 60);
-    chThdSleepMilliseconds(6000);
-    turn(0);*/
   }
   return 0;
 }
@@ -93,12 +46,55 @@ static void TimerHandler(eventid_t id) {
 
   (void)id;
   if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
-    /*cputs("Coucou !\r");
-    if (TIM_GetCounter(TIM3) == 0)
-      cputs("c'est nul !\r");
-    else
-      cputs("ca marche (peut etre...)\r");
-      fflush(stdout);*/
+
+    palClearPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(100);
+    palSetPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(100);
+    palClearPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(100);
+    palSetPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(100);
+    palClearPad(IOPORT3, GPIOC_LED);
+    chThdSleepMilliseconds(100);
+    palSetPad(IOPORT3, GPIOC_LED);
+
+
+    chThdSleepMilliseconds(5000);
+
+    setScrew(0, 0, 141, 141, 0);
+    chThdSleepMilliseconds(5000);
+
+    setScrew(0, 0, 0, 0, 0);
+    chThdSleepMilliseconds(200);
+
+    setScrew(450, 200, 0, 0, 40);
+    chThdSleepMilliseconds(3000);
+
+    setScrew(0, 0, 0, 0, 0);
+    chThdSleepMilliseconds(200);
+
+    turn(-60);
+    chThdSleepMilliseconds(2000);
+
+    setScrew(0, 0, 0, 0, 0);
+    chThdSleepMilliseconds(200);
+
+    setScrew(0, 0, 200, 0, 0);
+    chThdSleepMilliseconds(1500);
+
+    setScrew(0, 0, 0, 0, 0);
+    chThdSleepMilliseconds(200);
+
+    setScrew(0, 0, 0, 200, 0);
+    chThdSleepMilliseconds(3500);
+
+    setScrew(0, 0, 0, 0, 0);
+    chThdSleepMilliseconds(200);
+
+    setScrew(0, 0, 282, 282, 0);
+    chThdSleepMilliseconds(1500);
+    turn(0);
   }
 }
 
