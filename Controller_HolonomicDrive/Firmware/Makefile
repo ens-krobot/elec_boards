@@ -50,7 +50,7 @@ endif
 #
 
 # Define project name here
-PROJECT = krobotJr
+PROJECT = holonomicDriveControl
 
 # Define linker script file here
 LDSCRIPT= ch.ld
