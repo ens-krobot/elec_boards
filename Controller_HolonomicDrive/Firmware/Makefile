@@ -83,6 +83,7 @@ CSRC += motor.c
 CSRC += cpu_load.c
 CSRC += speed_control.c
 CSRC += trajectory.c
+CSRC += can_monitor.c
 CSRC += main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global

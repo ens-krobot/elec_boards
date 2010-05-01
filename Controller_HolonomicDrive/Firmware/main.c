@@ -16,6 +16,7 @@
 #include "cpu_load.h"
 #include "speed_control.h"
 #include "trajectory.h"
+#include "can_monitor.h"
 
 /*
  * Global variables
@@ -129,12 +130,15 @@ int main(int argc, char **argv) {
   monitorInit();
 
   /*
+   * Initialise the CAN monitor
+   */
+  canMonitorInit();
+  canMonitorStart();
+
+  /*
    * Initialise the speed controller
    */
   speedControlInit();
-
-  chThdSleepMilliseconds(2000);
-
 
   /*
    * Creates the blinker thread.

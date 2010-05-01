@@ -57,7 +57,7 @@
 /*
  * CAN driver system settings.
  */
-#define USE_STM32_CAN1              FALSE
+#define USE_STM32_CAN1              TRUE
 #define STM32_CAN1_IRQ_PRIORITY     0xB0
 
 /*
