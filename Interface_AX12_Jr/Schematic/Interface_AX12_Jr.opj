@@ -1,0 +1,102 @@
+(ExpressProject "Interface_AX12_Jr"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (NoModify)
+    (File ".\interface_ax12_jr.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (DRC_Scope "0")
+    (DRC_Action "0")
+    (DRC_Create_Warnings "FALSE")
+    (DRC_Check_Ports "TRUE")
+    (DRC_Check_Off-Page_Connectors "TRUE")
+    (DRC_Identical_References "TRUE")
+    (DRC_Type_Mismatch "TRUE")
+    (DRC_Report_Ports_and_Off-page_Connectors "TRUE")
+    (DRC_SDT_Compatibility "FALSE")
+    (DRC_Report_Off-grid_Objects "FALSE")
+    (DRC_Check_Unconnected_Nets "TRUE")
+    (DRC_Check_for_Misleading_TAP "TRUE")
+    (DRC_Visible_Power_pins "FALSE")
+    (DRC_Report_Netnames "TRUE")
+    (DRC_View_Output "FALSE")
+    (DRC_Report_File
+       "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\INTERFACE_AX12_JR.DRC")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "Z:\code\krobot\krobot\elec\boards\Interface_AX12_Jr\PCB\interface_ax12_jr.mnl")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (TRUE)
+    (LAYOUT_Units "0")
+    ( "TRUE"))
+  (Folder "Outputs"
+    (File ".\interface_ax12_jr.drc"
+      (Type "Report"))
+    (File "..\pcb\interface_ax12_jr.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (VCC_WAVE
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (1N4148
+      (FullPartName "1N4148.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\EDIODE.OLB")
+      (DeviceIndex "0"))
+    (JP2
+      (FullPartName "JP2.Normal")
+      (LibraryName "Z:\CODE\KROBOT\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (VCC_CIRCLE
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (JP6
+      (FullPartName "JP6.Normal")
+      (LibraryName "Z:\CODE\KROBOT\KROBOT\ELEC\LIB\ORCAD\CRANS.OLB")
+      (DeviceIndex "0"))
+    (PTR08100WVD
+      (FullPartName "PTR08100WVD.Normal")
+      (LibraryName "Z:\CODE\KROBOT\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (VCC_ARROW
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "Z:\code\krobot\krobot\elec\lib\OrCAD")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\interface_ax12_jr.dsn")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\interface_ax12_jr.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -23 0 200 0 380"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -4 -23 66 906 66 443")
+        (Scroll "0 2")
+        (Zoom "45")
+        (Occurrence "/"))
+      (Path
+         "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\INTERFACE_AX12_JR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "PAGE1")))
+  (MPSSessionName "Nicolas Dandrimont"))
