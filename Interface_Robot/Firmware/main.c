@@ -245,22 +245,26 @@ char ResetSource(void);
             // On réautorise l'interruption
              PIR1bits.RCIF = 0;
         }
-/*
-        // Interruption par le timer0
-        if (INTCONbits.TMR0IF) {
-            interruptMotor1();
-    
-            // On réautorise l'interruption
-            INTCONbits.TMR0IF = 0;
-        }
-*/
-        // Interruption par le timer1
-        if (PIR1bits.TMR1IF) {
-            interruptMotor2();
-    
-            // On réautorise l'interruption
-            PIR1bits.TMR1IF = 0;
-        }
+
+        #ifdef MODE_INAB
+            // Interruption par le timer0
+            if (INTCONbits.TMR0IF) {
+                interruptMotor1();
+        
+                // On réautorise l'interruption
+                INTCONbits.TMR0IF = 0;
+            }
+        #endif
+
+        #ifdef MODE_SENS
+            // Interruption par le timer1
+            if (PIR1bits.TMR1IF) {
+                interruptMotor2();
+        
+                // On réautorise l'interruption
+                PIR1bits.TMR1IF = 0;
+            }
+        #endif
 
         // restauration des registres de calcul
         PRODL = sProdL;
@@ -276,13 +280,15 @@ char ResetSource(void);
         sProdL = PRODL;
         sProdH = PRODH;
 
-        // Interruption par le timer0
-        if (INTCONbits.TMR0IF) {
-            interruptMotor1();
-    
-            // On réautorise l'interruption
-            INTCONbits.TMR0IF = 0;
-        }
+        #ifdef MODE_SENS
+            // Interruption par le timer0
+            if (INTCONbits.TMR0IF) {
+                interruptMotor1();
+        
+                // On réautorise l'interruption
+                INTCONbits.TMR0IF = 0;
+            }
+        #endif
 
         // restauration des registres de calcul
         PRODL = sProdL;
