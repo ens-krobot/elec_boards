@@ -239,6 +239,8 @@ char ResetSource(void);
             
             if (buzzer_on)
                 interruptBuzzer();
+            else
+                BUZZER = 0;
 
             // On réautorise l'interruption
             PIR1bits.TMR1IF = 0;
