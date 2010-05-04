@@ -101,6 +101,7 @@ char resetSource;
 
 volatile unsigned int ms = 0;
 volatile unsigned int s = 0;
+volatile BOOL buzzer_on = TRUE;
 
 extern volatile BYTE err[32];
 extern volatile BYTE errno;
@@ -235,7 +236,9 @@ char ResetSource(void);
             }
 
             interruptMonitor();
-            //interruptBuzzer();
+            
+            if (buzzer_on)
+                interruptBuzzer();
 
             // On réautorise l'interruption
             PIR1bits.TMR1IF = 0;
@@ -556,10 +559,17 @@ void UserInit(void)
 
     initMonitor();  // Il faut le faire avant d'utiliser BUZZER (pin en sortie)
 
-    BUZZER = 1;     // On allume le buzzer pendant la phase d'initialisation,
-                    // ce qui permet de vérifier que celui-ci fonctionne.
-    Delay10KTCYx(0);
+    // BUZZER
+    buzzer_on = (ReadEEPROM(0x01) & 0b1);
+
+    if (buzzer_on) {
+        BUZZER = 1;     // On allume le buzzer pendant la phase d'initialisation,
+                        // ce qui permet de vérifier que celui-ci fonctionne.
+        Delay10KTCYx(0);
+    }
+
     BUZZER = 0;     // Fin de la phase d'initialisation
+
 }//end UserInit
 
 /**
@@ -715,6 +725,18 @@ void ProcessIO(void) {
                         LATC|= ReceivedDataBuffer.DATA[3];
                         LATD|= ReceivedDataBuffer.DATA[4];
                         LATE|= ReceivedDataBuffer.DATA[5];
+                    break;
+
+                    case SET_BUZZER_STATE:
+                        eeprom = ReadEEPROM(0x01);
+
+                        if (ReceivedDataBuffer.DATA[1])
+                            eeprom|= 0b1;
+                        else
+                            eeprom^= 0b1;
+
+                        WriteEEPROM(0x01, eeprom);
+                        buzzer_on = (eeprom & 0b1);
                     break;
 
                     default:
