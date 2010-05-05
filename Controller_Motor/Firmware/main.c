@@ -570,6 +570,8 @@ void UserInit(void)
         INTCONbits.RBIE = 1;      // Enable PORTB Interrupt-on-change
     #endif
 
+    initLMs();
+
 }//end UserInit
 
 /**
@@ -871,7 +873,7 @@ void ProcessIO(void) {
             case CMD_TRAJ:
                 switch (ReceivedDataBuffer.DATA[0]) {
                     case TRAJ_CONFIG:
-                        if (ReceivedDataBuffer.DATA[1] == MOTOR_RIGHT || ReceivedDataBuffer.DATA[1] == MOTOR_BOTH) {
+                        if (ReceivedDataBuffer.DATA[1] & MOTOR_RIGHT) {
                             // KP
                             WriteEEPROM(0x01, ReceivedDataBuffer.DATA[2]);       // HB
                             WriteEEPROM(0x02, ReceivedDataBuffer.DATA[3]);       // LB
@@ -886,7 +888,7 @@ void ProcessIO(void) {
                             WriteEEPROM(0x08, ReceivedDataBuffer.DATA[9]);       // LB
                         }
 
-                        if (ReceivedDataBuffer.DATA[1] == MOTOR_LEFT || ReceivedDataBuffer.DATA[1] == MOTOR_BOTH) {
+                        if (ReceivedDataBuffer.DATA[1] & MOTOR_LEFT) {
                             // KP
                             WriteEEPROM(0x09, ReceivedDataBuffer.DATA[2]);       // HB
                             WriteEEPROM(0x0A, ReceivedDataBuffer.DATA[3]);       // LB
@@ -900,6 +902,9 @@ void ProcessIO(void) {
                             WriteEEPROM(0x0F, ReceivedDataBuffer.DATA[8]);       // HB
                             WriteEEPROM(0x10, ReceivedDataBuffer.DATA[9]);       // LB
                         }
+
+                        // On charge les nouveaux paramètres
+                        initLMs();
                     break;
 
                     case TRAJ_READ_CONFIG:
@@ -965,6 +970,9 @@ void ProcessIO(void) {
                         // IL
                         WriteEEPROM(0x0F, (DEFAULT_IL >> 8) & 0xFF);            // HB
                         WriteEEPROM(0x10, DEFAULT_IL & 0xFF);                   // LB
+
+                        // On charge les nouveaux paramètres
+                        initLMs();
                     break;
 
                     case TRAJ_INIT:
