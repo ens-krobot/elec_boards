@@ -31,7 +31,8 @@
     (LAYOUT_PCB_Footprint "{PCB Footprint}")
     (TRUE)
     (LAYOUT_Units "0")
-    ( "TRUE"))
+    (TRUE)
+    (TRUE))
   (Folder "Outputs"
     (File ".\interface_ax12_jr.drc"
       (Type "Report"))
@@ -77,11 +78,7 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources"
-         "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\interface_ax12_jr.dsn")
-      (Path "Outputs")
-      (Select "Design Resources"
-         "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\interface_ax12_jr.dsn"))
+      (Path "Outputs"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
@@ -91,9 +88,9 @@
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -4 -23 66 906 66 443")
-        (Scroll "0 2")
-        (Zoom "45")
+        (Placement "44 2 3 -1 -1 -4 -23 143 983 66 443")
+        (Scroll "0 0")
+        (Zoom "71")
         (Occurrence "/"))
       (Path
          "Z:\CODE\KROBOT\KROBOT\ELEC\BOARDS\INTERFACE_AX12_JR\SCHEMATIC\INTERFACE_AX12_JR.DSN")
