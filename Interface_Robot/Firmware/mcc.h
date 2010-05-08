@@ -18,25 +18,28 @@
 #define H_BRIDGE_VOLTAGE         24.0
 #define MOTOR1_VOLTAGE           15.0
 #define MOTOR2_VOLTAGE           15.0
-//#define MODE_SENS
-#define MODE_INAB
 
 // Entrées / sorties
-#define ENC1_A                PORTAbits.RA4
-#define ENC1_B                PORTAbits.RA5
-#define ENC1_NI               PORTEbits.RE0
-#define M1_EN                 PORTBbits.RB2
-#define M1_PWM                PORTCbits.RC2
-#define M1_SENS               PORTAbits.RA0
-#define M1_INA                PORTAbits.RA0
-#define M1_INB                PORTBbits.RB4         // Only available if M2 is not used (mode MODE_INAB)
+#ifndef KROBOT_2010
+    #define ENC1_A                PORTAbits.RA4
+    #define ENC1_B                PORTAbits.RA5
+    #define ENC1_NI               PORTEbits.RE0
+    #define M1_EN                 PORTBbits.RB2
+    #define M1_PWM                PORTCbits.RC2
+    #define M1_SENS               PORTAbits.RA0
 
-#define ENC2_A                PORTCbits.RC0
-#define ENC2_B                PORTAbits.RA2
-#define ENC2_NI               PORTAbits.RA3
-#define M2_EN                 PORTBbits.RB5
-#define M2_PWM                PORTBbits.RB3
-#define M2_SENS               PORTBbits.RB4
+    #define ENC2_A                PORTCbits.RC0
+    #define ENC2_B                PORTAbits.RA2
+    #define ENC2_NI               PORTAbits.RA3
+    #define M2_EN                 PORTBbits.RB5
+    #define M2_PWM                PORTBbits.RB3
+    #define M2_SENS               PORTBbits.RB4
+#else
+    #define M1_EN                 PORTBbits.RB2
+    #define M1_PWM                PORTCbits.RC2
+    #define M1_INA                PORTBbits.RB5
+    #define M1_INB                PORTBbits.RB4
+#endif
 
 #define TOR1                  PORTDbits.RD6
 #define TOR2                  PORTDbits.RD7

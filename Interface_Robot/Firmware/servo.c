@@ -10,6 +10,39 @@
 volatile char glbServoAngle[5] = {0};
 volatile BYTE glbServoEnabled = 0;
 
+void initServos() {
+    /* Initialisation des PINs */
+    TRISD&= 0b11100011;        /* SERVO1, SERVO2, SERVO3 */
+
+    #ifndef KROBOT_2010
+        TRISA&= 0b11111101;        /* SERVO4 */
+    #endif
+
+    TRISC&= 0b11111101;        /* SERVO5 */
+
+    /* Configuration du timer3 */
+    PIE2bits.TMR3IE = 1;        /* Autorise les interruption par dépassement du Timer (Timer overflow) */
+    OpenTimer3(TIMER_INT_ON     /* active le timer3 */
+         & T3_16BIT_RW          /* compte sur 16 bits */
+         & T3_SOURCE_INT        /* utilise l'horloge interne */
+         & T3_PS_1_8            /* incrémente le compteur à chaque cycle (1:1) */
+         & T3_OSC1EN_OFF        /* pas d'oscillateur sur le timer3 */
+         & T3_SYNC_EXT_OFF      /* ne pas se synchroniser sur une horloge externe */
+    );
+    WriteTimer3(0);
+
+    /* Initialisation de l'état des PINs */
+    SERVO1 = 0;
+    SERVO2 = 0;
+    SERVO3 = 0;
+
+    #ifndef KROBOT_2010
+        SERVO4 = 0;
+    #endif
+
+    SERVO5 = 0;
+}
+
 void interruptServo(void) {
     static BYTE servo = 0;
     static unsigned int elapsedTime = 0;
@@ -17,7 +50,11 @@ void interruptServo(void) {
     SERVO1 = 0;
     SERVO2 = 0;
     SERVO3 = 0;
-    SERVO4 = 0;
+
+    #ifndef KROBOT_2010
+        SERVO4 = 0;
+    #endif
+
     SERVO5 = 0;
 
 servo0:
@@ -29,7 +66,11 @@ servo0:
             case 0:     SERVO1 = 1;    break;
             case 1:     SERVO2 = 1;    break;
             case 2:     SERVO3 = 1;    break;
-            case 3:     SERVO4 = 1;    break;
+            case 3:
+                #ifndef KROBOT_2010
+                    SERVO4 = 1;
+                #endif
+                break;
             case 4:     SERVO5 = 1;    break;
         }
 

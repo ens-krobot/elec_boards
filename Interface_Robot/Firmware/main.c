@@ -92,9 +92,7 @@
 #include "mcc.h"
 #include "adjd-s371.h"
 #include "lcd.h"
-
-
-#define ADD_LCD 0x07
+#include "infrared.h"
 
 /* VARIABLES ******************************************************/
 #pragma udata
@@ -246,7 +244,11 @@ char ResetSource(void);
              PIR1bits.RCIF = 0;
         }
 
-        #ifdef MODE_INAB
+        #ifdef KROBOT_2010
+            interruptIF();
+        #endif
+
+        #ifdef KROBOT_2010
             // Interruption par le timer0
             if (INTCONbits.TMR0IF) {
                 interruptMotor1();
@@ -256,7 +258,7 @@ char ResetSource(void);
             }
         #endif
 
-        #ifdef MODE_SENS
+        #ifndef KROBOT_2010
             // Interruption par le timer1
             if (PIR1bits.TMR1IF) {
                 interruptMotor2();
@@ -280,7 +282,7 @@ char ResetSource(void);
         sProdL = PRODL;
         sProdH = PRODH;
 
-        #ifdef MODE_SENS
+        #ifndef KROBOT_2010
             // Interruption par le timer0
             if (INTCONbits.TMR0IF) {
                 interruptMotor1();
@@ -583,6 +585,7 @@ void UserInit(void)
     initServos();
     initMCC(0);
     initAdjd();
+    initIF();
 
 }//end UserInit
 
@@ -806,6 +809,16 @@ void ProcessIO(void) {
 
                             CloseI2C();
 */
+                        break;
+
+                        case GET_RANGEFINDER_STATE:
+                            for (i = 0; i < 2; i++) {
+                                dword.Val = getIFRange(i);
+                                ToSendDataBuffer.DATA[4*i] = dword.byte.MB;
+                                ToSendDataBuffer.DATA[4*i + 1] = dword.byte.UB;
+                                ToSendDataBuffer.DATA[4*i + 2] = dword.byte.HB;
+                                ToSendDataBuffer.DATA[4*i + 3] = dword.byte.LB;
+                            }
                         break;
 
                         default:

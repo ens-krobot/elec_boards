@@ -50,6 +50,8 @@
 #ifndef HARDWARE_PROFILE_H
 #define HARDWARE_PROFILE_H
 
+    #define KROBOT_2010
+
     /*******************************************************************/
     /******** USB stack hardware selection options *********************/
     /*******************************************************************/

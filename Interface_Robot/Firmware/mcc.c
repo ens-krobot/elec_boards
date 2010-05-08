@@ -15,7 +15,7 @@ volatile unsigned long durationMotor2 = 0;
 
 void initMCC(char withEncoder) {
     /* Initialisation des PINs */
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         TRISA&= 0b11111110;        /* M1_SENS */
         TRISB&= 0b11000011;        /* M1_EN, M2_PWM, M2_SENS, M2_EN */
         TRISC&= 0b11111011;        /* M1_PWM */
@@ -51,7 +51,7 @@ void initMCC(char withEncoder) {
         );
     }
 
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         INTCON2bits.TMR0IP = 0;  // Low priority interrupt for timer0
 
         // Configuration du timer1
@@ -78,7 +78,7 @@ void initMCC(char withEncoder) {
     #endif
 
     /* Initialisation de l'état des PINs */
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         M1_EN = 0;
         M2_EN = 0;
         M1_PWM = 0;
@@ -104,7 +104,7 @@ void interruptMotor1() {
             CCP1CON = 0;
             M1_PWM = 0;
 
-            #ifdef MODE_INAB
+            #ifdef KROBOT_2010
                 M1_INA = 0;
                 M1_INB = 0;
             #endif
@@ -112,7 +112,7 @@ void interruptMotor1() {
     }
 }
 
-#ifdef MODE_SENS
+#ifndef KROBOT_2010
     void interruptMotor2() {
         WriteTimer1(5536);     // 2^16 - 60 000 : la prochaine interruption a lieu dans 60 000 cycles * 8 = 40 ms
     
@@ -140,7 +140,7 @@ void interruptMotor1() {
  *                             #MOTOR_BOTH        les 2 moteurs
 */
 void enableMotor(char axis) {
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         if (axis & MOTOR_RIGHT)
             M1_EN = 1;
     
@@ -162,7 +162,7 @@ void enableMotor(char axis) {
  *                             #MOTOR_BOTH        les 2 moteurs
 */
 void disableMotor(char axis) {
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         if (axis & MOTOR_RIGHT)
             M1_EN = 0;
     
@@ -185,7 +185,7 @@ void disableMotor(char axis) {
  * @param       duration    durée d'activation, en ms (0 = rotation continue)
 */
 void move(char axis, char sens, BYTE speed, unsigned long duration) {
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         if (axis & MOTOR_RIGHT) {
             durationMotor1 = duration / 40;
             WriteTimer0(5536);
@@ -233,7 +233,7 @@ BOOL checkTOR(void) {
     // M1_SENS == 0 : up (IN3 = RD7 = TOR2)
     // M1_SENS == 1 : down (IN2 = RD6 = TOR1)
 
-    #ifdef MODE_SENS
+    #ifndef KROBOT_2010
         if ((M1_SENS == 1 && !TOR1) || (M1_SENS == 0 && !TOR2)) {
             //ClosePWM1();
             CCP1CON = 0;

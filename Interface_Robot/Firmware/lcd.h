@@ -11,6 +11,8 @@
 #include "HardwareProfile.h"
 #include <i2c.h>
 
+#define ADD_LCD 0x07
+
 // Commandes de l'afficheur LCD
 #define   CMD_HEAD            0x1B
 #define   CMD_CLEAR           0x43
