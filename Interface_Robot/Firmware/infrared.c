@@ -51,7 +51,7 @@ void interruptIF(void) {
         break;
 
         case 2:
-            OPTOSW1 = 0;
+            //OPTOSW1 = 0;
             OPTOSW2 = 1;
 
             // Démarre la convertion sur RA1
@@ -68,7 +68,7 @@ void interruptIF(void) {
         break;
 
         case 4:
-            OPTOSW2 = 0;
+            //OPTOSW2 = 0;
 
             // Traitement des résultats
             IF1_idx++;
