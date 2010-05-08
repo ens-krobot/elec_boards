@@ -20,8 +20,7 @@ void initMCC(char withEncoder) {
         TRISB&= 0b11000011;        /* M1_EN, M2_PWM, M2_SENS, M2_EN */
         TRISC&= 0b11111011;        /* M1_PWM */
     #else
-        TRISA&= 0b11111110;        /* M1_INA */
-        TRISB&= 0b11101011;        /* M1_EN, M1_INB */
+        TRISB&= 0b11001011;        /* M1_EN, M1_INB, M1_INA */
         TRISC&= 0b11111011;        /* M1_PWM */
     #endif
 
