@@ -51,7 +51,7 @@ void interruptIF(void) {
         break;
 
         case 2:
-            //OPTOSW1 = 0;
+            OPTOSW1 = 0;
             OPTOSW2 = 1;
 
             // Démarre la convertion sur RA1
@@ -68,7 +68,7 @@ void interruptIF(void) {
         break;
 
         case 4:
-            //OPTOSW2 = 0;
+            OPTOSW2 = 0;
 
             // Traitement des résultats
             IF1_idx++;
@@ -113,7 +113,7 @@ long getIFRange(char sensor) {
 		return 0;
     }    
 
-    return (long) (((float) IFrange / IF_AVR0 / IF_AVR1) * 5.0 / 1023.0);
+    return (long) (((float) IFrange / IF_AVR0 / IF_AVR1) * 5.0 / 1023.0 * 1000.0);
 }
 
 #endif

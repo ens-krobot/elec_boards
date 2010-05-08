@@ -603,6 +603,9 @@ void ProcessIO(void) {
         BlinkUSBStatus();
     }
 
+    // User Application USB tasks
+    if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
+
     #ifdef KROBOT_2010
         interruptIF();
     #endif
@@ -625,8 +628,6 @@ void ProcessIO(void) {
 //        test = 0;
     }
 */
-    // User Application USB tasks
-    if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
 
     if (traj_engaged && checkTOR() && !HIDTxHandleBusy(USBInHandle)) {
         ToSendDataBuffer.HSEQ    = 0;                        // Numéro séquence PC
