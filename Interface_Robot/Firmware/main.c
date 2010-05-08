@@ -245,10 +245,6 @@ char ResetSource(void);
         }
 
         #ifdef KROBOT_2010
-            interruptIF();
-        #endif
-
-        #ifdef KROBOT_2010
             // Interruption par le timer0
             if (INTCONbits.TMR0IF) {
                 interruptMotor1();
@@ -606,6 +602,11 @@ void ProcessIO(void) {
     if(blinkStatusValid) {
         BlinkUSBStatus();
     }
+
+    #ifdef KROBOT_2010
+        interruptIF();
+    #endif
+
 /*
     if (!HIDTxHandleBusy(USBInHandle) && glbReceived) {
         ToSendDataBuffer.HSEQ    = 0;                        // Numéro séquence PC

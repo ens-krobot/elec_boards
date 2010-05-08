@@ -1,5 +1,5 @@
 MPLINK 4.21, Linker
-Linker Map File - Created Sat May 08 18:41:47 2010
+Linker Map File - Created Sat May 08 19:09:22 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -249,7 +249,7 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                   INT3216   0x0030e6    program     extern C:\MCC18\src\traditional\math\castFP16.asm
                   INT3232   0x003144    program     extern C:\MCC18\src\traditional\math\castFP32.asm
                   IdleI2C   0x0044de    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
-         InitializeSystem   0x000988    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+         InitializeSystem   0x000984    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   Low_ISR   0x000018    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   OpenADC   0x003fac    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
                   OpenI2C   0x004372    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
@@ -259,7 +259,7 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                OpenTimer2   0x00433c    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
                OpenTimer3   0x004198    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
                 OpenUSART   0x003eac    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
-                ProcessIO   0x000a14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                ProcessIO   0x000a10    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   ReadADC   0x0044cc    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
                ReadEEPROM   0x0040c6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
                 ReadUSART   0x0041de    program     extern C:\MCC18\src\pmc_common\USART\uread.c
@@ -303,14 +303,14 @@ USBPrepareForNextSetupTrf   0x001f34    program     extern C:\krobot\elec\boards
                USB_CD_Ptr   0x003e06    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
                USB_SD_Ptr   0x003e08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
 USER_USB_CALLBACK_EVENT_HANDLER   0x0019c0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                 UserInit   0x000992    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                 UserInit   0x00098e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
               WriteEEPROM   0x004086    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
                  WriteI2C   0x00421c    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
               WriteTimer0   0x0042cc    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
               WriteTimer3   0x004294    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
                WriteUSART   0x00446c    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
   YourHighPriorityISRCode   0x000874    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-   YourLowPriorityISRCode   0x000938    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+   YourLowPriorityISRCode   0x000934    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
               _2jContinue   0x00403a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
                    _3jEnd   0x004044    program     static C:\MCC18\src\traditional\stdclib\memset.asm
        _D10KTCYXCODE_0010   0x00444e    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
@@ -424,7 +424,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c0    program     extern C:\krobot\elec\
           ___for_lbl00057   0x002bd4    program     static                          
           ___for_lbl00058   0x002bde    program     static                          
           ___for_lbl00060   0x002b60    program     static                          
-           ___if_lbl00017   0x000a2e    program     static                          
+           ___if_lbl00017   0x000a2a    program     static                          
            ___if_lbl00019   0x000a40    program     static                          
            ___if_lbl00024   0x000ab2    program     static                          
            ___if_lbl00028   0x000b4c    program     static                          
@@ -722,7 +722,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c0    program     extern C:\krobot\elec\
            lcd_write_line   0x003c18    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
                      loop   0x00415e    program     static                          
                      loop   0x0044aa    program     static                          
-                     main   0x00097e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                     main   0x00097a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                    memset   0x00401a    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
                      move   0x0038f6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
                  pingAX12   0x0029a4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
@@ -1114,12 +1114,12 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c0    program     extern C:\krobot\elec\
          Remapped_Low_ISR   0x000818    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00002   0x00081c    program     static                          
   YourHighPriorityISRCode   0x000874    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-   YourLowPriorityISRCode   0x000938    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                     main   0x00097e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-         InitializeSystem   0x000988    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                 UserInit   0x000992    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                ProcessIO   0x000a14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-           ___if_lbl00017   0x000a2e    program     static                          
+   YourLowPriorityISRCode   0x000934    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                     main   0x00097a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+         InitializeSystem   0x000984    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                 UserInit   0x00098e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                ProcessIO   0x000a10    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+           ___if_lbl00017   0x000a2a    program     static                          
                __tmplbl_1   0x000a36    program     static                          
                __tmplbl_0   0x000a3c    program     static                          
            ___if_lbl00019   0x000a40    program     static                          
