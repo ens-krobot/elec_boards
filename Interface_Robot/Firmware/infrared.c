@@ -10,8 +10,8 @@ void initIF() {
     /* Initialisation des PINs */
     TRISD&= 0b11111100;        /* OPTOSW1, OPTOSW2 */
 
-    OPTOSW1 = 0;
-    OPTOSW2 = 0;
+    OPTOSW1 = 1;
+    OPTOSW2 = 1;
 
     OpenADC(ADC_FOSC_64         /* A/D clock source (forcément Fosc / 64 car PIC à 48 MHz) */
         & ADC_RIGHT_JUST        /* A/D result justification */
@@ -35,8 +35,6 @@ void interruptIF(void) {
 
     switch (state) {
         case 0:
-            OPTOSW1 = 1;
-
             // Démarre la convertion sur RA0
             SelChanConvADC(ADC_CH0);
             state = 1;
@@ -51,9 +49,6 @@ void interruptIF(void) {
         break;
 
         case 2:
-            OPTOSW1 = 0;
-            OPTOSW2 = 1;
-
             // Démarre la convertion sur RA1
             SelChanConvADC(ADC_CH1);
             state = 3;
@@ -68,8 +63,6 @@ void interruptIF(void) {
         break;
 
         case 4:
-            OPTOSW2 = 0;
-
             // Traitement des résultats
             IF1_idx++;
 
