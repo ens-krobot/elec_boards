@@ -118,7 +118,7 @@ void enableServo(BYTE servo) {
  * @param        servo        numéro du servomoteur à désactiver à partir de 0 (de 0 à 4)
 */
 void disableServo(BYTE servo) {
-    glbServoEnabled^= (0b1 << servo);
+    glbServoEnabled&= ~(0b1 << servo);
 }
 
 #endif

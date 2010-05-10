@@ -520,7 +520,7 @@ void UserInit(void)
         eeprom|= 0b1;
         WriteEEPROM(0x00, eeprom);
         Delay10KTCYx(0);
-        eeprom^= 0b1;
+        eeprom&= ~0b1;
         WriteEEPROM(0x00, eeprom);
     }
 

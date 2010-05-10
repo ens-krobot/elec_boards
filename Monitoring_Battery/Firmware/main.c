@@ -522,7 +522,7 @@ void UserInit(void)
         eeprom|= 0b1;
         WriteEEPROM(0x00, eeprom);
         Delay10KTCYx(0);
-        eeprom^= 0b1;
+        eeprom&= ~0b1;
         WriteEEPROM(0x00, eeprom);
     }
 
@@ -735,7 +735,7 @@ void ProcessIO(void) {
                         if (ReceivedDataBuffer.DATA[1])
                             eeprom|= 0b1;
                         else
-                            eeprom^= 0b1;
+                            eeprom&= ~0b1;
 
                         WriteEEPROM(0x01, eeprom);
                         buzzer_on = (eeprom & 0b1);

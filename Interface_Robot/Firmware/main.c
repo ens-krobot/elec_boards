@@ -540,7 +540,7 @@ void UserInit(void)
         eeprom|= 0b1;
         WriteEEPROM(0x00, eeprom);
         Delay10KTCYx(0);
-        eeprom^= 0b1;
+        eeprom&= ~0b1;
         WriteEEPROM(0x00, eeprom);
     }
 
@@ -867,7 +867,7 @@ void ProcessIO(void) {
                     break;
 
                     case SET_SERVO_CONFIG:
-                        glbServoEnabled^= ReceivedDataBuffer.DATA[1];        // Servo à désactiver
+                        glbServoEnabled&= ~ReceivedDataBuffer.DATA[1];        // Servo à désactiver
                         glbServoEnabled|= ReceivedDataBuffer.DATA[2];        // Servo à activer
                     break;
 
