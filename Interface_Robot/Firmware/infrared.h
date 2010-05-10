@@ -9,8 +9,8 @@
 #include "error.h"
 
 // Paramètres généraux
-#define IF_AVR0             10
-#define IF_AVR1             10
+#define IF_AVR0             1
+#define IF_AVR1             1
 
 // Entrées / sorties
 #define OPTOSW1                    PORTDbits.RD0
