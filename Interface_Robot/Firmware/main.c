@@ -867,8 +867,10 @@ void ProcessIO(void) {
                     break;
 
                     case SET_SERVO_CONFIG:
-                        glbServoEnabled&= ~ReceivedDataBuffer.DATA[1];        // Servo à désactiver
-                        glbServoEnabled|= ReceivedDataBuffer.DATA[2];        // Servo à activer
+                        // On active d'abord puis on désactive. Ainsi si on demande à la fois d'activer et désactiver
+                        // un même servo, celui-ci reste désactivé (par mesure de sécurité).
+                        glbServoEnabled|= ReceivedDataBuffer.DATA[1];        // Servo à activer
+                        glbServoEnabled&= ~ReceivedDataBuffer.DATA[2];        // Servo à désactiver
                     break;
 
                     case SET_SERVO_STATE:
