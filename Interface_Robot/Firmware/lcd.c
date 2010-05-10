@@ -22,6 +22,7 @@ void lcd_init(BYTE address)
     WriteI2C(CMD_HEAD);  
     WriteI2C(CMD_CLEAR);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }    
 
@@ -39,6 +40,7 @@ void lcd_clear(BYTE address)
     WriteI2C(CMD_HEAD);  
     WriteI2C(CMD_CLEAR);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
 
@@ -62,6 +64,7 @@ void lcd_set_cursor(BYTE address, BOOL activate_cursor)
     else
         WriteI2C(CMD_CURSOR_OFF);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
 
@@ -85,6 +88,7 @@ void lcd_set_backlight(BYTE address, BOOL activate_backlight)
     else
         WriteI2C(CMD_BACKLIGHT_OFF);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
 
@@ -102,6 +106,7 @@ void lcd_goto_origin(BYTE address)
     WriteI2C(CMD_HEAD);
     WriteI2C(CMD_GOTO_ORIGIN);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
     
@@ -123,6 +128,7 @@ void lcd_goto(BYTE address, BYTE xx, BYTE yy)
     WriteI2C(xx);
     WriteI2C(yy);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
 
@@ -140,6 +146,7 @@ void lcd_write(BYTE address, unsigned char *msg)
     WriteI2C(address);
     putsI2C(msg);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
 
@@ -160,5 +167,6 @@ void lcd_write_line(BYTE address, BYTE line, unsigned char *msg)
     WriteI2C(line);
     putsI2C(msg);
     StopI2C();
+    IdleI2C();
     CloseI2C();
 }
