@@ -11,7 +11,7 @@
 #include "HardwareProfile.h"
 #include <i2c.h>
 
-#define ADD_LCD 0x07
+#define   ADD_LCD             0x0E      // 7-bit slave address = 7
 
 // Commandes de l'afficheur LCD
 #define   CMD_HEAD            0x1B
