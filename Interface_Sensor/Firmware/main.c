@@ -771,6 +771,9 @@ void ProcessIO(void) {
                             ToSendDataBuffer.DATA[0] = word1.byte.HB;
                             ToSendDataBuffer.DATA[1] = word1.byte.LB;
                         break;
+
+                        default:
+                            ToSendDataBuffer.ERR = ERR_UNKNOWN_CMD;                    // Erreur
                     }
 
                     USBInHandle = HIDTxPacket(HID_EP, (BYTE*) &ToSendDataBuffer, 64);

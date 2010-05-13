@@ -1,5 +1,5 @@
 MPLINK 4.21, Linker
-Linker Map File - Created Thu May 13 11:17:29 2010
+Linker Map File - Created Thu May 13 11:28:17 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -12,57 +12,57 @@ REMAPPED_HIGH_INTERRUPT_VECTOR       code   0x000808    program   0x000006
 REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                    .cinit    romdata   0x00082a    program   0x00001a
        .code_usb_device.o       code   0x000844    program   0x000b5a
-             .code_main.o       code   0x00139e    program   0x000a94
-             .code_usrf.o       code   0x001e32    program   0x000124
- .code_usb_function_hid.o       code   0x001f56    program   0x0000ce
-.romdata_usb_descriptors.o    romdata   0x002024    program   0x0000b2
-               _cinit_scn       code   0x0020d6    program   0x00009e
-                   STRING       code   0x002174    program   0x00006c
-           .code_eeprom.o       code   0x0021e0    program   0x00006c
-           .code_t1open.o       code   0x00224c    program   0x000042
-             .stringtable    romdata   0x00228e    program   0x00003f
-        .romdata___init.o    romdata   0x0022cd    program   0x000000
-        .idata___init.o_i    romdata   0x0022cd    program   0x000000
-        .romdata_t1open.o    romdata   0x0022cd    program   0x000000
-      .idata_i2c_writ.o_i    romdata   0x0022cd    program   0x000000
-        .idata_t1open.o_i    romdata   0x0022cd    program   0x000000
-      .romdata_i2c_open.o    romdata   0x0022cd    program   0x000000
-      .romdata_i2c_writ.o    romdata   0x0022cd    program   0x000000
-      .idata_i2c_open.o_i    romdata   0x0022cd    program   0x000000
-      .romdata_i2c_idle.o    romdata   0x0022cd    program   0x000000
-       .idata_t1write.o_i    romdata   0x0022cd    program   0x000000
-      .idata_i2c_idle.o_i    romdata   0x0022cd    program   0x000000
-      .romdata_i2c_clos.o    romdata   0x0022cd    program   0x000000
-      .idata_i2c_clos.o_i    romdata   0x0022cd    program   0x000000
-       .romdata_t1write.o    romdata   0x0022cd    program   0x000000
-         .idata_c018i.o_i    romdata   0x0022cd    program   0x000000
-         .romdata_c018i.o    romdata   0x0022cd    program   0x000000
-.idata_usb_descriptors.o_i    romdata   0x0022cd    program   0x000000
-          .romdata_main.o    romdata   0x0022cd    program   0x000000
-        .idata_eeprom.o_i    romdata   0x0022cd    program   0x000000
-        .romdata_eeprom.o    romdata   0x0022cd    program   0x000000
-    .idata_usb_device.o_i    romdata   0x0022cd    program   0x000000
-    .romdata_usb_device.o    romdata   0x0022cd    program   0x000000
-.idata_usb_function_hid.o_i    romdata   0x0022cd    program   0x000000
-          .romdata_usrf.o    romdata   0x0022cd    program   0x000000
-          .idata_usrf.o_i    romdata   0x0022cd    program   0x000000
-         .romdata_error.o    romdata   0x0022cd    program   0x000000
-.romdata_usb_function_hid.o    romdata   0x0022cd    program   0x000000
-         .code_i2c_writ.o       code   0x0022ce    program   0x00003c
-  .code_usb_descriptors.o       code   0x0022ce    program   0x000000
-            .code_c018i.o       code   0x0022ce    program   0x000000
-          .code_t1write.o       code   0x00230a    program   0x000038
-         .code_i2c_open.o       code   0x002342    program   0x000036
-            .code_error.o       code   0x002378    program   0x000036
-             D10KTCYXCODE       code   0x0023ae    program   0x00002e
-             _startup_scn       code   0x0023dc    program   0x00001c
-              D10TCYXCODE       code   0x0023f8    program   0x000016
-         .code_i2c_idle.o       code   0x00240e    program   0x00000e
-                    .code       code   0x00241c    program   0x00000e
-         .code_i2c_clos.o       code   0x00242a    program   0x000004
-           .code___init.o       code   0x00242e    program   0x000002
-          .idata_main.o_i    romdata   0x002430    program   0x00000c
-         .idata_error.o_i    romdata   0x00243c    program   0x000021
+             .code_main.o       code   0x00139e    program   0x000a9a
+             .code_usrf.o       code   0x001e38    program   0x000124
+ .code_usb_function_hid.o       code   0x001f5c    program   0x0000ce
+.romdata_usb_descriptors.o    romdata   0x00202a    program   0x0000b2
+               _cinit_scn       code   0x0020dc    program   0x00009e
+                   STRING       code   0x00217a    program   0x00006c
+           .code_eeprom.o       code   0x0021e6    program   0x00006c
+           .code_t1open.o       code   0x002252    program   0x000042
+             .stringtable    romdata   0x002294    program   0x00003f
+        .romdata___init.o    romdata   0x0022d3    program   0x000000
+        .idata___init.o_i    romdata   0x0022d3    program   0x000000
+        .romdata_t1open.o    romdata   0x0022d3    program   0x000000
+      .idata_i2c_writ.o_i    romdata   0x0022d3    program   0x000000
+        .idata_t1open.o_i    romdata   0x0022d3    program   0x000000
+      .romdata_i2c_open.o    romdata   0x0022d3    program   0x000000
+      .romdata_i2c_writ.o    romdata   0x0022d3    program   0x000000
+      .idata_i2c_open.o_i    romdata   0x0022d3    program   0x000000
+      .romdata_i2c_idle.o    romdata   0x0022d3    program   0x000000
+       .idata_t1write.o_i    romdata   0x0022d3    program   0x000000
+      .idata_i2c_idle.o_i    romdata   0x0022d3    program   0x000000
+      .romdata_i2c_clos.o    romdata   0x0022d3    program   0x000000
+      .idata_i2c_clos.o_i    romdata   0x0022d3    program   0x000000
+       .romdata_t1write.o    romdata   0x0022d3    program   0x000000
+         .idata_c018i.o_i    romdata   0x0022d3    program   0x000000
+         .romdata_c018i.o    romdata   0x0022d3    program   0x000000
+.idata_usb_descriptors.o_i    romdata   0x0022d3    program   0x000000
+          .romdata_main.o    romdata   0x0022d3    program   0x000000
+        .idata_eeprom.o_i    romdata   0x0022d3    program   0x000000
+        .romdata_eeprom.o    romdata   0x0022d3    program   0x000000
+    .idata_usb_device.o_i    romdata   0x0022d3    program   0x000000
+    .romdata_usb_device.o    romdata   0x0022d3    program   0x000000
+.idata_usb_function_hid.o_i    romdata   0x0022d3    program   0x000000
+          .romdata_usrf.o    romdata   0x0022d3    program   0x000000
+          .idata_usrf.o_i    romdata   0x0022d3    program   0x000000
+         .romdata_error.o    romdata   0x0022d3    program   0x000000
+.romdata_usb_function_hid.o    romdata   0x0022d3    program   0x000000
+         .code_i2c_writ.o       code   0x0022d4    program   0x00003c
+  .code_usb_descriptors.o       code   0x0022d4    program   0x000000
+            .code_c018i.o       code   0x0022d4    program   0x000000
+          .code_t1write.o       code   0x002310    program   0x000038
+         .code_i2c_open.o       code   0x002348    program   0x000036
+            .code_error.o       code   0x00237e    program   0x000036
+             D10KTCYXCODE       code   0x0023b4    program   0x00002e
+             _startup_scn       code   0x0023e2    program   0x00001c
+              D10TCYXCODE       code   0x0023fe    program   0x000016
+         .code_i2c_idle.o       code   0x002414    program   0x00000e
+                    .code       code   0x002422    program   0x00000e
+         .code_i2c_clos.o       code   0x002430    program   0x000004
+           .code___init.o       code   0x002434    program   0x000002
+          .idata_main.o_i    romdata   0x002436    program   0x00000c
+         .idata_error.o_i    romdata   0x002442    program   0x000021
                 MATH_DATA      udata   0x000000       data   0x00000b
                  .tmpdata      udata   0x00000b       data   0x000007
                 DELAYDAT2      udata   0x000012       data   0x000001
@@ -113,44 +113,44 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                             0x000800    0x000805      
                             0x000808    0x00080d      
                             0x000818    0x00081d      
-                            0x00082a    0x0022cc      
-                            0x0022ce    0x00245c      
-            7254 out of 33048 program addresses used, program memory utilization is 21%
+                            0x00082a    0x0022d2      
+                            0x0022d4    0x002462      
+            7260 out of 33048 program addresses used, program memory utilization is 21%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-           BlinkUSBStatus   0x001c1a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                 CloseI2C   0x00242a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
-                   D10K_1   0x0023ba    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0023c6    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0023b8    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10_1   0x002408    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                     D10x   0x002400    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-             Delay10KTCYx   0x0023ae    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
-              Delay10TCYx   0x0023f8    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+           BlinkUSBStatus   0x001c20    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                 CloseI2C   0x002430    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   D10K_1   0x0023c0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x0023cc    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x0023be    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10_1   0x00240e    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x002406    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+             Delay10KTCYx   0x0023b4    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+              Delay10TCYx   0x0023fe    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
                  High_ISR   0x000008    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                  IdleI2C   0x00240e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+                  IdleI2C   0x002414    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
          InitializeSystem   0x0014c0    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                   Low_ISR   0x000018    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                  OpenI2C   0x002342    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
-               OpenTimer1   0x00224c    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                  OpenI2C   0x002348    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+               OpenTimer1   0x002252    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
                 ProcessIO   0x001542    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               ReadEEPROM   0x002220    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+               ReadEEPROM   0x002226    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
         Remapped_High_ISR   0x000808    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
          Remapped_Low_ISR   0x000818    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              ResetSource   0x001d90    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-       USBCBCheckOtherReq   0x001ca0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-        USBCBErrorHandler   0x001c9e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              USBCBInitEP   0x001ca6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-          USBCBSendResume   0x001cde    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-    USBCBStdSetDscHandler   0x001ca4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-             USBCBSuspend   0x001c98    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-     USBCBWakeFromSuspend   0x001c9a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-        USBCB_SOF_Handler   0x001c9c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-       USBCheckHIDRequest   0x001f56    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_function_hid.c
+              ResetSource   0x001d96    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+       USBCBCheckOtherReq   0x001ca6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+        USBCBErrorHandler   0x001ca4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+              USBCBInitEP   0x001cac    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+          USBCBSendResume   0x001ce4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+    USBCBStdSetDscHandler   0x001caa    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+             USBCBSuspend   0x001c9e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+     USBCBWakeFromSuspend   0x001ca0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+        USBCB_SOF_Handler   0x001ca2    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+       USBCheckHIDRequest   0x001f5c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_function_hid.c
        USBCheckStdRequest   0x000ba6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
     USBClearInterruptFlag   0x00115c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
      USBConfigureEndpoint   0x001018    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
@@ -174,22 +174,22 @@ USBPrepareForNextSetupTrf   0x000b5e    program     extern C:\krobot\elec\boards
                USBSuspend   0x000a06    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
      USBTransferOnePacket   0x0010f4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
        USBWakeFromSuspend   0x000a18    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-               USB_CD_Ptr   0x0020ce    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x0020d0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               USB_CD_Ptr   0x0020d4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x0020d6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001d00    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                  UserInit   0x0014cc    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              WriteEEPROM   0x0021e0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
-                 WriteI2C   0x0022ce    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
-              WriteTimer1   0x00230a    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+              WriteEEPROM   0x0021e6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+                 WriteI2C   0x0022d4    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+              WriteTimer1   0x002310    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
   YourHighPriorityISRCode   0x00139e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
    YourLowPriorityISRCode   0x00146c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              _2jContinue   0x002194    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x00219e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-       _D10KTCYXCODE_0010   0x0023be    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0023ca    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-        _D10TCYXCODE_000A   0x002402    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x002404    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x002406    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+              _2jContinue   0x00219a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x0021a4    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+       _D10KTCYXCODE_0010   0x0023c4    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x0023d0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+        _D10TCYXCODE_000A   0x002408    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x00240a    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x00240c    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
            ___?:_lbl00019   0x001582    program     static                          
            ___?:_lbl00020   0x001572    program     static                          
            ___?:_lbl00026   0x001630    program     static                          
@@ -198,38 +198,39 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
            ___?:_lbl00032   0x001684    program     static                          
            ___?:_lbl00061   0x001adc    program     static                          
            ___?:_lbl00062   0x001acc    program     static                          
-           ___?:_lbl00068   0x001ba0    program     static                          
-           ___?:_lbl00069   0x001b90    program     static                          
-      ___case_-1_lbl00114   0x001d7a    program     static                          
+           ___?:_lbl00069   0x001ba6    program     static                          
+           ___?:_lbl00070   0x001b96    program     static                          
+      ___case_-1_lbl00115   0x001d80    program     static                          
        ___case_0_lbl00029   0x001654    program     static                          
        ___case_0_lbl00034   0x0016d2    program     static                          
        ___case_0_lbl00055   0x001a0e    program     static                          
        ___case_0_lbl00064   0x001b00    program     static                          
       ___case_10_lbl00040   0x0018a2    program     static                          
-      ___case_14_lbl00067   0x001ac0    program     static                          
+      ___case_14_lbl00068   0x001ac0    program     static                          
        ___case_1_lbl00030   0x001658    program     static                          
        ___case_1_lbl00035   0x0016d8    program     static                          
        ___case_1_lbl00056   0x001a2e    program     static                          
        ___case_1_lbl00065   0x001b10    program     static                          
-       ___case_1_lbl00115   0x001d7e    program     static                          
-      ___case_21_lbl00108   0x001d62    program     static                          
-      ___case_22_lbl00109   0x001d66    program     static                          
-      ___case_23_lbl00110   0x001d6a    program     static                          
+       ___case_1_lbl00116   0x001d84    program     static                          
+      ___case_21_lbl00109   0x001d68    program     static                          
+      ___case_22_lbl00110   0x001d6c    program     static                          
+      ___case_23_lbl00111   0x001d70    program     static                          
        ___case_2_lbl00036   0x001708    program     static                          
        ___case_2_lbl00053   0x001678    program     static                          
        ___case_2_lbl00057   0x001a4e    program     static                          
-       ___case_2_lbl00111   0x001d6e    program     static                          
+       ___case_2_lbl00112   0x001d74    program     static                          
        ___case_3_lbl00037   0x00178c    program     static                          
        ___case_3_lbl00058   0x001a6e    program     static                          
-       ___case_3_lbl00113   0x001d76    program     static                          
+       ___case_3_lbl00114   0x001d7c    program     static                          
        ___case_4_lbl00038   0x0017a2    program     static                          
-       ___case_4_lbl00112   0x001d72    program     static                          
+       ___case_4_lbl00113   0x001d78    program     static                          
        ___case_6_lbl00060   0x0019f8    program     static                          
        ___case_9_lbl00039   0x0017b8    program     static                          
       ___default_lbl00051   0x0019a2    program     static                          
       ___default_lbl00059   0x001a8e    program     static                          
-      ___default_lbl00071   0x001b84    program     static                          
-      ___default_lbl00116   0x001d82    program     static                          
+      ___default_lbl00066   0x001b34    program     static                          
+      ___default_lbl00072   0x001b8a    program     static                          
+      ___default_lbl00117   0x001d88    program     static                          
          ___else_lbl00024   0x001606    program     static                          
          ___else_lbl00049   0x001982    program     static                          
           ___for_lbl00041   0x00198a    program     static                          
@@ -247,32 +248,32 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
            ___if_lbl00047   0x001966    program     static                          
            ___if_lbl00048   0x001986    program     static                          
            ___if_lbl00052   0x0019f6    program     static                          
-           ___if_lbl00066   0x001b82    program     static                          
-           ___if_lbl00070   0x001c06    program     static                          
-           ___if_lbl00072   0x001c06    program     static                          
+           ___if_lbl00067   0x001b88    program     static                          
+           ___if_lbl00071   0x001c0c    program     static                          
+           ___if_lbl00073   0x001c0c    program     static                          
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x000804    program     static                          
-       ___return_lbl00001   0x0023f6    program     static                          
+       ___return_lbl00001   0x0023fc    program     static                          
        ___return_lbl00001   0x00080c    program     static                          
        ___return_lbl00002   0x00081c    program     static                          
-       ___return_lbl00002   0x002172    program     static                          
+       ___return_lbl00002   0x002178    program     static                          
        ___return_lbl00003   0x00000c    program     static                          
        ___return_lbl00004   0x00001c    program     static                          
-       ___return_lbl00015   0x001c06    program     static                          
-       ___return_lbl00106   0x001d88    program     static                          
-   ___switchexit_lbl00028   0x001c06    program     static                          
+       ___return_lbl00015   0x001c0c    program     static                          
+       ___return_lbl00107   0x001d8e    program     static                          
+   ___switchexit_lbl00028   0x001c0c    program     static                          
    ___switchexit_lbl00033   0x0019a8    program     static                          
    ___switchexit_lbl00054   0x001a98    program     static                          
-   ___switchexit_lbl00063   0x001b34    program     static                          
-   ___switchexit_lbl00107   0x001d84    program     static                          
-                   __init   0x00242e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+   ___switchexit_lbl00063   0x001b3a    program     static                          
+   ___switchexit_lbl00108   0x001d8a    program     static                          
+                   __init   0x002434    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                    __pa_0   0x001186    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_0   0x001f00    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_0   0x001de2    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_0   0x0023a0    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
-                   __pa_0   0x00223c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
-                   __pa_1   0x001df6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_1   0x001f20    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_0   0x001f06    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_0   0x001de8    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_0   0x0023a6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
+                   __pa_0   0x002242    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+                   __pa_1   0x001dfc    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_1   0x001f26    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    __pa_1   0x001194    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_10   0x0011e4    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_11   0x0011f4    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
@@ -285,8 +286,8 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
                   __pa_18   0x00125e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_19   0x00126a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                    __pa_2   0x00119a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_2   0x001e08    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_2   0x001f36    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_2   0x001e0e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_2   0x001f3c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                   __pa_20   0x00127a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_21   0x00128a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_22   0x00129a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
@@ -297,9 +298,9 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
                   __pa_27   0x0012e0    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_28   0x0012f8    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_29   0x001314    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_3   0x001e18    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_3   0x001e1e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                    __pa_3   0x0011a4    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_3   0x001f4c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_3   0x001f52    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                   __pa_30   0x00131e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_31   0x001326    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_32   0x001338    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
@@ -311,7 +312,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
                   __pa_38   0x00137e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_39   0x001388    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                    __pa_4   0x0011ac    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_4   0x001e28    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_4   0x001e2e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                   __pa_40   0x001390    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                   __pa_41   0x001398    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                    __pa_5   0x0011b6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
@@ -319,53 +320,53 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\
                    __pa_7   0x0011c6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                    __pa_8   0x0011cc    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
                    __pa_9   0x0011da    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-               __string_0   0x0022a5    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_1   0x002299    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_2   0x002297    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_3   0x00228e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_0   0x0022ab    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_1   0x00229f    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_2   0x00229d    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_3   0x002294    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                __tmplbl_0   0x001564    program     static                          
                __tmplbl_1   0x00155e    program     static                          
-              __tmplbl_10   0x001d54    program     static                          
-              __tmplbl_11   0x001d5e    program     static                          
+              __tmplbl_10   0x001d5a    program     static                          
+              __tmplbl_11   0x001d64    program     static                          
                __tmplbl_2   0x00159a    program     static                          
               __tmplbl_20   0x0011be    program     static                          
               __tmplbl_27   0x0011be    program     static                          
                __tmplbl_3   0x001586    program     static                          
-               __tmplbl_4   0x001d16    program     static                          
-               __tmplbl_5   0x001d22    program     static                          
-               __tmplbl_6   0x001d2c    program     static                          
-               __tmplbl_7   0x001d36    program     static                          
-               __tmplbl_8   0x001d40    program     static                          
-               __tmplbl_9   0x001d4a    program     static                          
-            __zero_memory   0x00241c    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                _do_cinit   0x0020d6    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               __tmplbl_4   0x001d1c    program     static                          
+               __tmplbl_5   0x001d28    program     static                          
+               __tmplbl_6   0x001d32    program     static                          
+               __tmplbl_7   0x001d3c    program     static                          
+               __tmplbl_8   0x001d46    program     static                          
+               __tmplbl_9   0x001d50    program     static                          
+            __zero_memory   0x002422    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                _do_cinit   0x0020dc    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _reset   0x000800    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                 _startup   0x0023dc    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x002422    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
-        configDescriptor1   0x002036    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                copy_loop   0x002148    program     static                          
-            copy_one_byte   0x00214e    program     static                          
-               device_dsc   0x002024    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                     done   0x002172    program     static                          
-             done_copying   0x00215c    program     static                          
-                    error   0x002378    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
-                hid_rpt01   0x0020b1    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                     jEnd   0x0021de    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     jEnd   0x0021a6    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                    jLoop   0x0021d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                    jLoop   0x002188    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                jNullLoop   0x0021ce    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     loop   0x0023ec    program     static                          
+                 _startup   0x0023e2    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x002428    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+        configDescriptor1   0x00203c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                copy_loop   0x00214e    program     static                          
+            copy_one_byte   0x002154    program     static                          
+               device_dsc   0x00202a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                     done   0x002178    program     static                          
+             done_copying   0x002162    program     static                          
+                    error   0x00237e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
+                hid_rpt01   0x0020b7    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                     jEnd   0x0021e4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x0021ac    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x0021da    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x00218e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                jNullLoop   0x0021d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     loop   0x0023f2    program     static                          
                      main   0x0014b6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   memset   0x002174    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
-                    sd000   0x00205f    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                    sd001   0x002063    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                    sd002   0x00208f    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-            strcatpgm2ram   0x0021a8    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     test   0x0020f0    program     static                          
-                  usrfGet   0x001e52    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-              usrfMeasure   0x001e32    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   memset   0x00217a    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+                    sd000   0x002065    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                    sd001   0x002069    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                    sd002   0x002095    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+            strcatpgm2ram   0x0021ae    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     test   0x0020f6    program     static                          
+                  usrfGet   0x001e58    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+              usrfMeasure   0x001e38    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -777,9 +778,9 @@ USBPrepareForNextSetupTrf   0x000b5e    program     extern C:\krobot\elec\boards
                __tmplbl_3   0x001586    program     static                          
                __tmplbl_2   0x00159a    program     static                          
          ___else_lbl00024   0x001606    program     static                          
-           ___if_lbl00022   0x001614    program     static                          
            ___if_lbl00023   0x001614    program     static                          
            ___if_lbl00025   0x001614    program     static                          
+           ___if_lbl00022   0x001614    program     static                          
            ___?:_lbl00027   0x001620    program     static                          
            ___?:_lbl00026   0x001630    program     static                          
        ___case_0_lbl00029   0x001654    program     static                          
@@ -814,119 +815,120 @@ USBPrepareForNextSetupTrf   0x000b5e    program     extern C:\krobot\elec\boards
        ___case_3_lbl00058   0x001a6e    program     static                          
       ___default_lbl00059   0x001a8e    program     static                          
    ___switchexit_lbl00054   0x001a98    program     static                          
-      ___case_14_lbl00067   0x001ac0    program     static                          
+      ___case_14_lbl00068   0x001ac0    program     static                          
            ___?:_lbl00062   0x001acc    program     static                          
            ___?:_lbl00061   0x001adc    program     static                          
        ___case_0_lbl00064   0x001b00    program     static                          
        ___case_1_lbl00065   0x001b10    program     static                          
-   ___switchexit_lbl00063   0x001b34    program     static                          
-           ___if_lbl00066   0x001b82    program     static                          
-      ___default_lbl00071   0x001b84    program     static                          
-           ___?:_lbl00069   0x001b90    program     static                          
-           ___?:_lbl00068   0x001ba0    program     static                          
-   ___switchexit_lbl00028   0x001c06    program     static                          
-       ___return_lbl00015   0x001c06    program     static                          
-           ___if_lbl00072   0x001c06    program     static                          
-           ___if_lbl00070   0x001c06    program     static                          
-           BlinkUSBStatus   0x001c1a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-             USBCBSuspend   0x001c98    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-     USBCBWakeFromSuspend   0x001c9a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-        USBCB_SOF_Handler   0x001c9c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-        USBCBErrorHandler   0x001c9e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-       USBCBCheckOtherReq   0x001ca0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-    USBCBStdSetDscHandler   0x001ca4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              USBCBInitEP   0x001ca6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-          USBCBSendResume   0x001cde    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-USER_USB_CALLBACK_EVENT_HANDLER   0x001cfa    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __tmplbl_4   0x001d16    program     static                          
-               __tmplbl_5   0x001d22    program     static                          
-               __tmplbl_6   0x001d2c    program     static                          
-               __tmplbl_7   0x001d36    program     static                          
-               __tmplbl_8   0x001d40    program     static                          
-               __tmplbl_9   0x001d4a    program     static                          
-              __tmplbl_10   0x001d54    program     static                          
-              __tmplbl_11   0x001d5e    program     static                          
-      ___case_21_lbl00108   0x001d62    program     static                          
-      ___case_22_lbl00109   0x001d66    program     static                          
-      ___case_23_lbl00110   0x001d6a    program     static                          
-       ___case_2_lbl00111   0x001d6e    program     static                          
-       ___case_4_lbl00112   0x001d72    program     static                          
-       ___case_3_lbl00113   0x001d76    program     static                          
-      ___case_-1_lbl00114   0x001d7a    program     static                          
-       ___case_1_lbl00115   0x001d7e    program     static                          
-      ___default_lbl00116   0x001d82    program     static                          
-   ___switchexit_lbl00107   0x001d84    program     static                          
-       ___return_lbl00106   0x001d88    program     static                          
-              ResetSource   0x001d90    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_0   0x001de2    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_1   0x001df6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_2   0x001e08    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_3   0x001e18    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                   __pa_4   0x001e28    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-              usrfMeasure   0x001e32    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                  usrfGet   0x001e52    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_0   0x001f00    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_1   0x001f20    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_2   0x001f36    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_3   0x001f4c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-       USBCheckHIDRequest   0x001f56    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_function_hid.c
-               device_dsc   0x002024    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-        configDescriptor1   0x002036    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                    sd000   0x00205f    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                    sd001   0x002063    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                    sd002   0x00208f    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                hid_rpt01   0x0020b1    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-               USB_CD_Ptr   0x0020ce    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x0020d0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
-                _do_cinit   0x0020d6    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x0020f0    program     static                          
-                copy_loop   0x002148    program     static                          
-            copy_one_byte   0x00214e    program     static                          
-             done_copying   0x00215c    program     static                          
-                     done   0x002172    program     static                          
-       ___return_lbl00002   0x002172    program     static                          
-                   memset   0x002174    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
-                    jLoop   0x002188    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-              _2jContinue   0x002194    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x00219e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                     jEnd   0x0021a6    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-            strcatpgm2ram   0x0021a8    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                jNullLoop   0x0021ce    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                    jLoop   0x0021d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     jEnd   0x0021de    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-              WriteEEPROM   0x0021e0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
-               ReadEEPROM   0x002220    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
-                   __pa_0   0x00223c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
-               OpenTimer1   0x00224c    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-               __string_3   0x00228e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_2   0x002297    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_1   0x002299    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-               __string_0   0x0022a5    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
-                 WriteI2C   0x0022ce    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
-              WriteTimer1   0x00230a    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-                  OpenI2C   0x002342    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
-                    error   0x002378    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
-                   __pa_0   0x0023a0    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
-             Delay10KTCYx   0x0023ae    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0023b8    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                   D10K_1   0x0023ba    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_0010   0x0023be    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0023c6    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0023ca    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                 _startup   0x0023dc    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x0023ec    program     static                          
-       ___return_lbl00001   0x0023f6    program     static                          
-              Delay10TCYx   0x0023f8    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
-                     D10x   0x002400    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000A   0x002402    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x002404    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x002406    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                    D10_1   0x002408    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                  IdleI2C   0x00240e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
-            __zero_memory   0x00241c    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-               clear_loop   0x002422    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
-                 CloseI2C   0x00242a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
-                   __init   0x00242e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+      ___default_lbl00066   0x001b34    program     static                          
+   ___switchexit_lbl00063   0x001b3a    program     static                          
+           ___if_lbl00067   0x001b88    program     static                          
+      ___default_lbl00072   0x001b8a    program     static                          
+           ___?:_lbl00070   0x001b96    program     static                          
+           ___?:_lbl00069   0x001ba6    program     static                          
+       ___return_lbl00015   0x001c0c    program     static                          
+   ___switchexit_lbl00028   0x001c0c    program     static                          
+           ___if_lbl00073   0x001c0c    program     static                          
+           ___if_lbl00071   0x001c0c    program     static                          
+           BlinkUSBStatus   0x001c20    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+             USBCBSuspend   0x001c9e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+     USBCBWakeFromSuspend   0x001ca0    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+        USBCB_SOF_Handler   0x001ca2    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+        USBCBErrorHandler   0x001ca4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+       USBCBCheckOtherReq   0x001ca6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+    USBCBStdSetDscHandler   0x001caa    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+              USBCBInitEP   0x001cac    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+          USBCBSendResume   0x001ce4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001d00    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __tmplbl_4   0x001d1c    program     static                          
+               __tmplbl_5   0x001d28    program     static                          
+               __tmplbl_6   0x001d32    program     static                          
+               __tmplbl_7   0x001d3c    program     static                          
+               __tmplbl_8   0x001d46    program     static                          
+               __tmplbl_9   0x001d50    program     static                          
+              __tmplbl_10   0x001d5a    program     static                          
+              __tmplbl_11   0x001d64    program     static                          
+      ___case_21_lbl00109   0x001d68    program     static                          
+      ___case_22_lbl00110   0x001d6c    program     static                          
+      ___case_23_lbl00111   0x001d70    program     static                          
+       ___case_2_lbl00112   0x001d74    program     static                          
+       ___case_4_lbl00113   0x001d78    program     static                          
+       ___case_3_lbl00114   0x001d7c    program     static                          
+      ___case_-1_lbl00115   0x001d80    program     static                          
+       ___case_1_lbl00116   0x001d84    program     static                          
+      ___default_lbl00117   0x001d88    program     static                          
+   ___switchexit_lbl00108   0x001d8a    program     static                          
+       ___return_lbl00107   0x001d8e    program     static                          
+              ResetSource   0x001d96    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_0   0x001de8    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_1   0x001dfc    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_2   0x001e0e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_3   0x001e1e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                   __pa_4   0x001e2e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+              usrfMeasure   0x001e38    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                  usrfGet   0x001e58    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_0   0x001f06    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_1   0x001f26    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_2   0x001f3c    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_3   0x001f52    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+       USBCheckHIDRequest   0x001f5c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_function_hid.c
+               device_dsc   0x00202a    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+        configDescriptor1   0x00203c    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                    sd000   0x002065    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                    sd001   0x002069    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                    sd002   0x002095    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                hid_rpt01   0x0020b7    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x0020d4    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x0020d6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_descriptors.c
+                _do_cinit   0x0020dc    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x0020f6    program     static                          
+                copy_loop   0x00214e    program     static                          
+            copy_one_byte   0x002154    program     static                          
+             done_copying   0x002162    program     static                          
+                     done   0x002178    program     static                          
+       ___return_lbl00002   0x002178    program     static                          
+                   memset   0x00217a    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x00218e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+              _2jContinue   0x00219a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x0021a4    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                     jEnd   0x0021ac    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+            strcatpgm2ram   0x0021ae    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                jNullLoop   0x0021d4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x0021da    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x0021e4    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+              WriteEEPROM   0x0021e6    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+               ReadEEPROM   0x002226    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+                   __pa_0   0x002242    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
+               OpenTimer1   0x002252    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+               __string_3   0x002294    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_2   0x00229d    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_1   0x00229f    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+               __string_0   0x0022ab    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
+                 WriteI2C   0x0022d4    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+              WriteTimer1   0x002310    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+                  OpenI2C   0x002348    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+                    error   0x00237e    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
+                   __pa_0   0x0023a6    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
+             Delay10KTCYx   0x0023b4    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x0023be    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                   D10K_1   0x0023c0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x0023c4    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x0023cc    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x0023d0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                 _startup   0x0023e2    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x0023f2    program     static                          
+       ___return_lbl00001   0x0023fc    program     static                          
+              Delay10TCYx   0x0023fe    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x002406    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x002408    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x00240a    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x00240c    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x00240e    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                  IdleI2C   0x002414    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+            __zero_memory   0x002422    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               clear_loop   0x002428    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+                 CloseI2C   0x002430    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   __init   0x002434    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                   __REMB3   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
                  __AARGB7   0x000000       data     extern C:\MCC18\src\traditional\math\aarg.asm
                   __REMB2   0x000001       data     extern C:\MCC18\src\traditional\math\aarg.asm

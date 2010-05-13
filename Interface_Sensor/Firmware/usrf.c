@@ -32,7 +32,7 @@ WORD usrfGet(BYTE id) {
 
     RestartI2C();
     IdleI2C();
-    WriteI2C((id << 1) & 0b1);      // 7-bit address + read
+    WriteI2C((id << 1) | 0b1);      // 7-bit address + read
 
     SSPCON2bits.RCEN = 1;
     timeOut = TRUE;
