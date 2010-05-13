@@ -47,7 +47,7 @@ WORD usrfGet(BYTE id) {
 
     if (!timeOut) {
         AckI2C();
-        //IdleI2C();
+        IdleI2C();
 
         SSPCON2bits.RCEN = 1;
         timeOut = TRUE;
