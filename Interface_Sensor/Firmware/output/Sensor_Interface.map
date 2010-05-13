@@ -1,5 +1,5 @@
 MPLINK 4.21, Linker
-Linker Map File - Created Thu May 13 12:31:08 2010
+Linker Map File - Created Thu May 13 12:38:35 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -268,7 +268,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001d00    program     extern C:\krobot\elec\
    ___switchexit_lbl00108   0x001d8a    program     static                          
                    __init   0x002438    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                    __pa_0   0x001186    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usb_device.c
-                   __pa_0   0x001f08    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_0   0x001f0a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    __pa_0   0x001de8    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
                    __pa_0   0x0023aa    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\error.c
                    __pa_0   0x002246    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\eeprom.c
@@ -867,7 +867,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001d00    program     extern C:\krobot\elec\
                    __pa_4   0x001e2e    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\main.c
               usrfMeasure   0x001e38    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                   usrfGet   0x001e58    program     extern C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
-                   __pa_0   0x001f08    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
+                   __pa_0   0x001f0a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    __pa_1   0x001f2a    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    __pa_2   0x001f40    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
                    __pa_3   0x001f56    program     static C:\krobot\elec\boards\Interface_Sensor\Firmware\usrf.c
