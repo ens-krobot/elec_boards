@@ -28,17 +28,23 @@ WORD usrfGet(BYTE id) {
     StartI2C();
     IdleI2C();
     WriteI2C(id << 1);              // 7-bit address + write
+    WriteI2C('b');    
+    StopI2C();
+    IdleI2C();
+    CloseI2C();
+
+    Delay1KTCYx(1);
+
+    OpenI2C(MASTER, SLEW_OFF);
+    StartI2C();
+    IdleI2C();
+    WriteI2C(id << 1);              // 7-bit address + write
     WriteI2C('g');
 
     RestartI2C();
     IdleI2C();
     WriteI2C((id << 1) | 0b1);      // 7-bit address + read
 
-    value.byte.HB = ReadI2C();
-    AckI2C();
-    IdleI2C();
-    value.byte.LB = ReadI2C();
-/*
     SSPCON2bits.RCEN = 1;
     timeOut = TRUE;
 
@@ -68,7 +74,7 @@ WORD usrfGet(BYTE id) {
 
     if (timeOut)
         value.Val = 0;
-*/
+
     NotAckI2C();
     IdleI2C();
     StopI2C();

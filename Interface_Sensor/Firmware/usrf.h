@@ -7,6 +7,7 @@
 #define USRF_H
 
 #include <i2c.h>
+#include <delays.h>
 #include "GenericTypeDefs.h"
 #include "Compiler.h"
 #include "HardwareProfile.h"
