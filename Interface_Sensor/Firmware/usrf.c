@@ -32,7 +32,7 @@ WORD usrfGet(BYTE id) {
     SSPCON2bits.RCEN = 1;
     timeOut = TRUE;
 
-    for (count = 0; count < 1000; count++) {
+    for (count = 0; count < 10; count++) {
         if (DataRdyI2C()) {
             value.byte.HB = SSPBUF;
             timeOut = FALSE;
@@ -46,7 +46,7 @@ WORD usrfGet(BYTE id) {
         SSPCON2bits.RCEN = 1;
         timeOut = TRUE;
     
-        for (count = 0; count < 1000; count++) {
+        for (count = 0; count < 10; count++) {
             if (DataRdyI2C()) {
                 value.byte.LB = SSPBUF;
                 timeOut = FALSE;
