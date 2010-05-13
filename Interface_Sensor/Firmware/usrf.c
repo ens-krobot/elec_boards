@@ -67,7 +67,7 @@ WORD usrfGet(BYTE id) {
     NotAckI2C();
     IdleI2C();
     StopI2C();
-    //IdleI2C();
+    IdleI2C();
     CloseI2C();
 
     return value.Val;
