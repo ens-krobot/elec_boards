@@ -11,11 +11,11 @@
 void usrfMeasure(BYTE id) {    
     OpenI2C(MASTER, SLEW_OFF);
     StartI2C();
-    IdleI2C();
+//    IdleI2C();
     WriteI2C(id << 1);              // 7-bit address + write
     WriteI2C('b');    
     StopI2C();
-    IdleI2C();
+//    IdleI2C();
     CloseI2C();
 }
 
@@ -26,12 +26,12 @@ WORD usrfGet(BYTE id) {
 
     OpenI2C(MASTER, SLEW_OFF);
     StartI2C();
-    IdleI2C();
+//    IdleI2C();
     WriteI2C(id << 1);              // 7-bit address + write
     WriteI2C('g');
 
     RestartI2C();
-    IdleI2C();
+//    IdleI2C();
     WriteI2C((id << 1) | 0b1);      // 7-bit address + read
 
     SSPCON2bits.RCEN = 1;
@@ -67,7 +67,7 @@ WORD usrfGet(BYTE id) {
     NotAckI2C();
 //    IdleI2C();
     StopI2C();
-    IdleI2C();
+//    IdleI2C();
     CloseI2C();
 
     return value.Val;
