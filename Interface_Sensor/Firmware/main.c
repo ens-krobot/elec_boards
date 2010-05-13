@@ -88,6 +88,7 @@
 #include "eeprom.h"
 #include "error.h"
 #include "tor.h"
+#include "usrf.h"
 
 /* VARIABLES ******************************************************/
 #pragma udata
@@ -565,6 +566,7 @@ void ProcessIO(void) {
     UINT i;
     UINT count;
     BOOL timeOut;
+    WORD_VAL word1;
 
     //Blink the LEDs according to the USB device status
     if(blinkStatusValid) {
@@ -749,6 +751,31 @@ void ProcessIO(void) {
                 }
 
                 USBOutHandle = HIDRxPacket(HID_EP,(BYTE*)&ReceivedDataBuffer,64);        // Re-arm the OUT endpoint for the next packet
+            break;
+
+            case CMD_USRF:
+                if (!HIDTxHandleBusy(USBInHandle)) {
+                    ToSendDataBuffer.HSEQ    = ReceivedDataBuffer.HSEQ;    // Numéro séquence PC
+                    ToSendDataBuffer.DSEQ    = 0;                            // Numéro séquence PIC
+                    ToSendDataBuffer.CMD    = CMD_RESPOND;                    // Type requête
+                    ToSendDataBuffer.ERR    = 0;                            // Erreur
+
+                    switch (ReceivedDataBuffer.DATA[0]) {
+                        case USRF_MEASURE:
+                            usrfMeasure(ReceivedDataBuffer.DATA[1]);
+                            ToSendDataBuffer.DATA[0] = 0xFF;
+                        break;
+        
+                        case USRF_GET:
+                            word1.Val = usrfGet(ReceivedDataBuffer.DATA[1]);
+                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                        break;
+                    }
+
+                    USBInHandle = HIDTxPacket(HID_EP, (BYTE*) &ToSendDataBuffer, 64);
+                    USBOutHandle = HIDRxPacket(HID_EP,(BYTE*)&ReceivedDataBuffer,64);        // Re-arm the OUT endpoint for the next packet
+                }
             break;
 
             default:
