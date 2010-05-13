@@ -15,7 +15,7 @@ void usrfMeasure(BYTE id) {
     WriteI2C(id << 1);              // 7-bit address + write
     WriteI2C('b');    
     StopI2C();
-//    IdleI2C();
+    IdleI2C();
     CloseI2C();
 }
 
