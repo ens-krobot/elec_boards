@@ -24,12 +24,12 @@ void encodersInit(void) {
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
   
   //Setup timer for quadrature encoder interface
-  //Encoder1 A channel at PA0.6 (Ch1)
-  //         B channel at PA0.7 (Ch2)
-  //Encoder2 A channel at PA0.8 (Ch1)
-  //         B channel at PA0.9 (Ch2)
-  //Encoder3 A channel at PB0.6 (Ch1)
-  //         B channel at PB0.7 (Ch2)
+  //Encoder1 A channel at PA8 (Ch1)
+  //         B channel at PA9 (Ch2) -> TIM1
+  //Encoder2 A channel at PA6 (Ch1)
+  //         B channel at PA7 (Ch2) -> TIM3
+  //Encoder3 A channel at PB6 (Ch1)
+  //         B channel at PB7 (Ch2) -> TIM4
   GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_6|GPIO_Pin_7|GPIO_Pin_8|GPIO_Pin_9;
   GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_IN_FLOATING;
   GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
