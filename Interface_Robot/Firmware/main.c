@@ -814,7 +814,7 @@ void ProcessIO(void) {
                         break;
 
                         case GET_RANGEFINDER_STATE:
-                            for (i = 0; i < 2; i++) {
+                            for (i = 0; i < 4; i++) {
                                 dword.Val = getIFRange(i);
                                 ToSendDataBuffer.DATA[4*i] = dword.byte.MB;
                                 ToSendDataBuffer.DATA[4*i + 1] = dword.byte.UB;
