@@ -759,6 +759,20 @@ void ProcessIO(void) {
                             ToSendDataBuffer.DATA[7] = dword.byte.LB;
                         break;
 
+                        case GET_DESIRED_POS:
+                            dword.Val = getDesiredPosition(MOTOR_RIGHT);
+                            ToSendDataBuffer.DATA[0] = dword.byte.MB;
+                            ToSendDataBuffer.DATA[1] = dword.byte.UB;
+                            ToSendDataBuffer.DATA[2] = dword.byte.HB;
+                            ToSendDataBuffer.DATA[3] = dword.byte.LB;
+
+                            dword.Val = getDesiredPosition(MOTOR_LEFT);
+                            ToSendDataBuffer.DATA[4] = dword.byte.MB;
+                            ToSendDataBuffer.DATA[5] = dword.byte.UB;
+                            ToSendDataBuffer.DATA[6] = dword.byte.HB;
+                            ToSendDataBuffer.DATA[7] = dword.byte.LB;
+                        break;
+
                         case GET_CURRENT_POS:
                             dword.Val = getRealPosition(MOTOR_RIGHT);
                             ToSendDataBuffer.DATA[0] = dword.byte.MB;
@@ -768,6 +782,20 @@ void ProcessIO(void) {
 
                             dword.Val = getRealPosition(MOTOR_LEFT);
                             ToSendDataBuffer.DATA[4] = dword.byte.MB;
+                            ToSendDataBuffer.DATA[5] = dword.byte.UB;
+                            ToSendDataBuffer.DATA[6] = dword.byte.HB;
+                            ToSendDataBuffer.DATA[7] = dword.byte.LB;
+                        break;
+
+						case GET_DESIRED_SPEED:
+							dword.Val = getDesiredVelocity(MOTOR_RIGHT);
+							ToSendDataBuffer.DATA[0] = dword.byte.MB;
+                            ToSendDataBuffer.DATA[1] = dword.byte.UB;
+                            ToSendDataBuffer.DATA[2] = dword.byte.HB;
+                            ToSendDataBuffer.DATA[3] = dword.byte.LB;
+
+							dword.Val = getDesiredVelocity(MOTOR_LEFT);
+							ToSendDataBuffer.DATA[4] = dword.byte.MB;
                             ToSendDataBuffer.DATA[5] = dword.byte.UB;
                             ToSendDataBuffer.DATA[6] = dword.byte.HB;
                             ToSendDataBuffer.DATA[7] = dword.byte.LB;
