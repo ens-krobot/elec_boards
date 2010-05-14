@@ -722,6 +722,9 @@ void stop(char axis, WORD type) {
     writeCommand(axis, LM_CMD_LTRJ);
     writeDataWord(axis, LM_LTRJ_STOP_SMOOTH);
 
+    writeCommand(axis, LM_CMD_LTRJ);
+    writeDataWord(axis, 0);
+
     //writeCommand(axis, LM_CMD_STT);
     //trajEngaged = 1;
     //trajCompleted = 0;
