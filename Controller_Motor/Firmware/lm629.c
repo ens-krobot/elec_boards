@@ -722,9 +722,9 @@ void stop(char axis, WORD type) {
     writeCommand(axis, LM_CMD_LTRJ);
     writeDataWord(axis, type);
 
-    writeCommand(axis, LM_CMD_STT);
-    trajEngaged = 1;
-    trajCompleted = 0;
+//    writeCommand(axis, LM_CMD_STT);
+//    trajEngaged = 1;
+//    trajCompleted = 0;
 
     INTCONbits.GIE = GIE_Status;     // Restore the original global interrupt status
 }
