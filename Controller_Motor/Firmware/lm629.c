@@ -722,7 +722,7 @@ void stop(char axis, WORD type) {
     writeCommand(axis, LM_CMD_LTRJ);
     writeDataWord(axis, type);
 
-    writeCommand(axis, LM_CMD_STT);
+    //writeCommand(axis, LM_CMD_STT);
     trajEngaged = 1;
     trajCompleted = 0;
 
