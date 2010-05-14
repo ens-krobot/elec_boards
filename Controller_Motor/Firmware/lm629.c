@@ -720,14 +720,11 @@ void stop(char axis, WORD type) {
     INTCONbits.GIE = 0;              // Disable global interrupts
 
     writeCommand(axis, LM_CMD_LTRJ);
-    writeDataWord(axis, LM_LTRJ_STOP_SMOOTH);
+    writeDataWord(axis, type);
 
-    writeCommand(axis, LM_CMD_LTRJ);
-    writeDataWord(axis, 0);
-
-    //writeCommand(axis, LM_CMD_STT);
-    //trajEngaged = 1;
-    //trajCompleted = 0;
+    writeCommand(axis, LM_CMD_STT);
+    trajEngaged = 1;
+    trajCompleted = 0;
 
     INTCONbits.GIE = GIE_Status;     // Restore the original global interrupt status
 }

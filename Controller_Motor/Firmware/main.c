@@ -1102,8 +1102,8 @@ void ProcessIO(void) {
                         ToSendDataBuffer.DATA[1] = word1.byte.LB;
 
                         word1.Val = getRelPos(MOTOR_LEFT);
-                        ToSendDataBuffer.DATA[2] = word2.byte.HB;
-                        ToSendDataBuffer.DATA[3] = word2.byte.LB;
+                        ToSendDataBuffer.DATA[2] = word1.byte.HB;
+                        ToSendDataBuffer.DATA[3] = word1.byte.LB;
 
                         USBInHandle = HIDTxPacket(HID_EP, (BYTE*) &ToSendDataBuffer, 64);
                     break;
