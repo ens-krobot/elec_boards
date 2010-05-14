@@ -1,5 +1,5 @@
 MPLINK 4.21, Linker
-Linker Map File - Created Fri May 14 20:20:21 2010
+Linker Map File - Created Fri May 14 20:33:28 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -13,117 +13,117 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                    .cinit    romdata   0x00082a    program   0x00004a
              .code_main.o       code   0x000874    program   0x0013b6
        .code_usb_device.o       code   0x001c2a    program   0x000b4c
-             .code_ax12.o       code   0x002776    program   0x000602
-                     PROG       code   0x002d78    program   0x000544
-         .code_infrared.o       code   0x0032bc    program   0x000446
-            .code_servo.o       code   0x003702    program   0x00025c
-              .code_mcc.o       code   0x00395e    program   0x00022a
-        .code_adjd-s371.o       code   0x003b88    program   0x000128
-              .code_lcd.o       code   0x003cb0    program   0x0000dc
- .code_usb_function_hid.o       code   0x003d8c    program   0x0000ce
-.romdata_usb_descriptors.o    romdata   0x003e5a    program   0x0000b0
-               _cinit_scn       code   0x003f0a    program   0x00009e
-            .code_uopen.o       code   0x003fa8    program   0x00008a
-         .code_i2c_puts.o       code   0x004032    program   0x000076
-          .code_adcopen.o       code   0x0040a8    program   0x00006e
-                   STRING       code   0x004116    program   0x00006c
-           .code_eeprom.o       code   0x004182    program   0x00006c
-         .code_pw1setdc.o       code   0x0041ee    program   0x00005e
-         .code_fxd3232u.o       code   0x00424c    program   0x000048
-           .code_t3open.o       code   0x004294    program   0x000046
-            .code_uread.o       code   0x0042da    program   0x00003e
-         .code_i2c_writ.o       code   0x004318    program   0x00003c
-             .stringtable    romdata   0x004354    program   0x00003b
-      .idata_i2c_open.o_i    romdata   0x00438f    program   0x000000
-      .romdata_i2c_open.o    romdata   0x00438f    program   0x000000
-         .romdata_uread.o    romdata   0x00438f    program   0x000000
-         .idata_uread.o_i    romdata   0x00438f    program   0x000000
-       .romdata_adcread.o    romdata   0x00438f    program   0x000000
-       .idata_adcread.o_i    romdata   0x00438f    program   0x000000
-.idata_usb_descriptors.o_i    romdata   0x00438f    program   0x000000
-         .romdata_uopen.o    romdata   0x00438f    program   0x000000
-       .idata_pw1open.o_i    romdata   0x00438f    program   0x000000
-         .idata_uopen.o_i    romdata   0x00438f    program   0x000000
-       .romdata_pw1open.o    romdata   0x00438f    program   0x000000
-        .romdata_t3open.o    romdata   0x00438f    program   0x000000
-        .idata_t3open.o_i    romdata   0x00438f    program   0x000000
-        .romdata_t2open.o    romdata   0x00438f    program   0x000000
-        .idata_t2open.o_i    romdata   0x00438f    program   0x000000
-        .romdata_t0open.o    romdata   0x00438f    program   0x000000
-        .idata_t0open.o_i    romdata   0x00438f    program   0x000000
-         .idata_c018i.o_i    romdata   0x00438f    program   0x000000
-         .romdata_c018i.o    romdata   0x00438f    program   0x000000
-      .romdata_i2c_puts.o    romdata   0x00438f    program   0x000000
-      .idata_i2c_puts.o_i    romdata   0x00438f    program   0x000000
-        .romdata___init.o    romdata   0x00438f    program   0x000000
-        .idata___init.o_i    romdata   0x00438f    program   0x000000
-        .romdata_uwrite.o    romdata   0x00438f    program   0x000000
-        .idata_uwrite.o_i    romdata   0x00438f    program   0x000000
-       .romdata_t3write.o    romdata   0x00438f    program   0x000000
-       .idata_t3write.o_i    romdata   0x00438f    program   0x000000
-       .romdata_t0write.o    romdata   0x00438f    program   0x000000
-       .idata_t0write.o_i    romdata   0x00438f    program   0x000000
-      .romdata_i2c_writ.o    romdata   0x00438f    program   0x000000
-      .idata_i2c_writ.o_i    romdata   0x00438f    program   0x000000
-         .romdata_udefs.o    romdata   0x00438f    program   0x000000
-         .idata_udefs.o_i    romdata   0x00438f    program   0x000000
-      .romdata_pw1setdc.o    romdata   0x00438f    program   0x000000
-      .idata_pw1setdc.o_i    romdata   0x00438f    program   0x000000
-  .romdata_adcselchconv.o    romdata   0x00438f    program   0x000000
-  .idata_adcselchconv.o_i    romdata   0x00438f    program   0x000000
-           .romdata_lcd.o    romdata   0x00438f    program   0x000000
-        .idata_eeprom.o_i    romdata   0x00438f    program   0x000000
-           .idata_lcd.o_i    romdata   0x00438f    program   0x000000
-        .romdata_eeprom.o    romdata   0x00438f    program   0x000000
-      .romdata_infrared.o    romdata   0x00438f    program   0x000000
-       .idata_adcbusy.o_i    romdata   0x00438f    program   0x000000
-       .romdata_adcbusy.o    romdata   0x00438f    program   0x000000
-     .romdata_adjd-s371.o    romdata   0x00438f    program   0x000000
-     .idata_adjd-s371.o_i    romdata   0x00438f    program   0x000000
-      .idata_i2c_clos.o_i    romdata   0x00438f    program   0x000000
-      .romdata_i2c_clos.o    romdata   0x00438f    program   0x000000
-    .idata_usb_device.o_i    romdata   0x00438f    program   0x000000
-           .romdata_mcc.o    romdata   0x00438f    program   0x000000
-    .romdata_usb_device.o    romdata   0x00438f    program   0x000000
-          .romdata_main.o    romdata   0x00438f    program   0x000000
-      .idata_fxd3232u.o_i    romdata   0x00438f    program   0x000000
-         .romdata_servo.o    romdata   0x00438f    program   0x000000
-      .romdata_fxd3232u.o    romdata   0x00438f    program   0x000000
-         .romdata_error.o    romdata   0x00438f    program   0x000000
-      .idata_i2c_idle.o_i    romdata   0x00438f    program   0x000000
-      .romdata_i2c_idle.o    romdata   0x00438f    program   0x000000
-.idata_usb_function_hid.o_i    romdata   0x00438f    program   0x000000
-       .idata_adcopen.o_i    romdata   0x00438f    program   0x000000
-          .romdata_ax12.o    romdata   0x00438f    program   0x000000
-       .romdata_adcopen.o    romdata   0x00438f    program   0x000000
-.romdata_usb_function_hid.o    romdata   0x00438f    program   0x000000
-          .code_t3write.o       code   0x004390    program   0x000038
-            .code_c018i.o       code   0x004390    program   0x000000
-            .code_udefs.o       code   0x004390    program   0x000000
-  .code_usb_descriptors.o       code   0x004390    program   0x000000
-          .code_t0write.o       code   0x0043c8    program   0x000038
-           .code_t0open.o       code   0x004400    program   0x000038
-           .code_t2open.o       code   0x004438    program   0x000036
-         .code_i2c_open.o       code   0x00446e    program   0x000036
-            .code_error.o       code   0x0044a4    program   0x000036
-          .code_pw1open.o       code   0x0044da    program   0x000030
-     .code_adcselchconv.o       code   0x00450a    program   0x000030
-             D10KTCYXCODE       code   0x00453a    program   0x00002e
-           .code_uwrite.o       code   0x004568    program   0x00002e
-             _startup_scn       code   0x004596    program   0x00001c
-              D10TCYXCODE       code   0x0045b2    program   0x000016
-          .code_adcread.o       code   0x0045c8    program   0x000012
-         .code_i2c_idle.o       code   0x0045da    program   0x00000e
-                    .code       code   0x0045e8    program   0x00000e
-          .code_adcbusy.o       code   0x0045f6    program   0x00000a
-         .code_i2c_clos.o       code   0x004600    program   0x000004
-           .code___init.o       code   0x004604    program   0x000002
-         .idata_servo.o_i    romdata   0x004606    program   0x000009
-           .idata_mcc.o_i    romdata   0x00460f    program   0x000010
-          .idata_main.o_i    romdata   0x00461f    program   0x000009
-      .idata_infrared.o_i    romdata   0x004628    program   0x000003
-         .idata_error.o_i    romdata   0x00462b    program   0x000021
-          .idata_ax12.o_i    romdata   0x00464c    program   0x000024
+             .code_ax12.o       code   0x002776    program   0x000606
+                     PROG       code   0x002d7c    program   0x000544
+         .code_infrared.o       code   0x0032c0    program   0x000446
+            .code_servo.o       code   0x003706    program   0x00025c
+              .code_mcc.o       code   0x003962    program   0x00022a
+        .code_adjd-s371.o       code   0x003b8c    program   0x000128
+              .code_lcd.o       code   0x003cb4    program   0x0000dc
+ .code_usb_function_hid.o       code   0x003d90    program   0x0000ce
+.romdata_usb_descriptors.o    romdata   0x003e5e    program   0x0000b0
+               _cinit_scn       code   0x003f0e    program   0x00009e
+            .code_uopen.o       code   0x003fac    program   0x00008a
+         .code_i2c_puts.o       code   0x004036    program   0x000076
+          .code_adcopen.o       code   0x0040ac    program   0x00006e
+                   STRING       code   0x00411a    program   0x00006c
+           .code_eeprom.o       code   0x004186    program   0x00006c
+         .code_pw1setdc.o       code   0x0041f2    program   0x00005e
+         .code_fxd3232u.o       code   0x004250    program   0x000048
+           .code_t3open.o       code   0x004298    program   0x000046
+            .code_uread.o       code   0x0042de    program   0x00003e
+         .code_i2c_writ.o       code   0x00431c    program   0x00003c
+             .stringtable    romdata   0x004358    program   0x00003b
+      .idata_i2c_open.o_i    romdata   0x004393    program   0x000000
+      .romdata_i2c_open.o    romdata   0x004393    program   0x000000
+         .romdata_uread.o    romdata   0x004393    program   0x000000
+         .idata_uread.o_i    romdata   0x004393    program   0x000000
+       .romdata_adcread.o    romdata   0x004393    program   0x000000
+       .idata_adcread.o_i    romdata   0x004393    program   0x000000
+.idata_usb_descriptors.o_i    romdata   0x004393    program   0x000000
+         .romdata_uopen.o    romdata   0x004393    program   0x000000
+       .idata_pw1open.o_i    romdata   0x004393    program   0x000000
+         .idata_uopen.o_i    romdata   0x004393    program   0x000000
+       .romdata_pw1open.o    romdata   0x004393    program   0x000000
+        .romdata_t3open.o    romdata   0x004393    program   0x000000
+        .idata_t3open.o_i    romdata   0x004393    program   0x000000
+        .romdata_t2open.o    romdata   0x004393    program   0x000000
+        .idata_t2open.o_i    romdata   0x004393    program   0x000000
+        .romdata_t0open.o    romdata   0x004393    program   0x000000
+        .idata_t0open.o_i    romdata   0x004393    program   0x000000
+         .idata_c018i.o_i    romdata   0x004393    program   0x000000
+         .romdata_c018i.o    romdata   0x004393    program   0x000000
+      .romdata_i2c_puts.o    romdata   0x004393    program   0x000000
+      .idata_i2c_puts.o_i    romdata   0x004393    program   0x000000
+        .romdata___init.o    romdata   0x004393    program   0x000000
+        .idata___init.o_i    romdata   0x004393    program   0x000000
+        .romdata_uwrite.o    romdata   0x004393    program   0x000000
+        .idata_uwrite.o_i    romdata   0x004393    program   0x000000
+       .romdata_t3write.o    romdata   0x004393    program   0x000000
+       .idata_t3write.o_i    romdata   0x004393    program   0x000000
+       .romdata_t0write.o    romdata   0x004393    program   0x000000
+       .idata_t0write.o_i    romdata   0x004393    program   0x000000
+      .romdata_i2c_writ.o    romdata   0x004393    program   0x000000
+      .idata_i2c_writ.o_i    romdata   0x004393    program   0x000000
+         .romdata_udefs.o    romdata   0x004393    program   0x000000
+         .idata_udefs.o_i    romdata   0x004393    program   0x000000
+      .romdata_pw1setdc.o    romdata   0x004393    program   0x000000
+      .idata_pw1setdc.o_i    romdata   0x004393    program   0x000000
+  .romdata_adcselchconv.o    romdata   0x004393    program   0x000000
+  .idata_adcselchconv.o_i    romdata   0x004393    program   0x000000
+           .romdata_lcd.o    romdata   0x004393    program   0x000000
+        .idata_eeprom.o_i    romdata   0x004393    program   0x000000
+           .idata_lcd.o_i    romdata   0x004393    program   0x000000
+        .romdata_eeprom.o    romdata   0x004393    program   0x000000
+      .romdata_infrared.o    romdata   0x004393    program   0x000000
+       .idata_adcbusy.o_i    romdata   0x004393    program   0x000000
+       .romdata_adcbusy.o    romdata   0x004393    program   0x000000
+     .romdata_adjd-s371.o    romdata   0x004393    program   0x000000
+     .idata_adjd-s371.o_i    romdata   0x004393    program   0x000000
+      .idata_i2c_clos.o_i    romdata   0x004393    program   0x000000
+      .romdata_i2c_clos.o    romdata   0x004393    program   0x000000
+    .idata_usb_device.o_i    romdata   0x004393    program   0x000000
+           .romdata_mcc.o    romdata   0x004393    program   0x000000
+    .romdata_usb_device.o    romdata   0x004393    program   0x000000
+          .romdata_main.o    romdata   0x004393    program   0x000000
+      .idata_fxd3232u.o_i    romdata   0x004393    program   0x000000
+         .romdata_servo.o    romdata   0x004393    program   0x000000
+      .romdata_fxd3232u.o    romdata   0x004393    program   0x000000
+         .romdata_error.o    romdata   0x004393    program   0x000000
+      .idata_i2c_idle.o_i    romdata   0x004393    program   0x000000
+      .romdata_i2c_idle.o    romdata   0x004393    program   0x000000
+.idata_usb_function_hid.o_i    romdata   0x004393    program   0x000000
+       .idata_adcopen.o_i    romdata   0x004393    program   0x000000
+          .romdata_ax12.o    romdata   0x004393    program   0x000000
+       .romdata_adcopen.o    romdata   0x004393    program   0x000000
+.romdata_usb_function_hid.o    romdata   0x004393    program   0x000000
+          .code_t3write.o       code   0x004394    program   0x000038
+            .code_c018i.o       code   0x004394    program   0x000000
+            .code_udefs.o       code   0x004394    program   0x000000
+  .code_usb_descriptors.o       code   0x004394    program   0x000000
+          .code_t0write.o       code   0x0043cc    program   0x000038
+           .code_t0open.o       code   0x004404    program   0x000038
+           .code_t2open.o       code   0x00443c    program   0x000036
+         .code_i2c_open.o       code   0x004472    program   0x000036
+            .code_error.o       code   0x0044a8    program   0x000036
+          .code_pw1open.o       code   0x0044de    program   0x000030
+     .code_adcselchconv.o       code   0x00450e    program   0x000030
+             D10KTCYXCODE       code   0x00453e    program   0x00002e
+           .code_uwrite.o       code   0x00456c    program   0x00002e
+             _startup_scn       code   0x00459a    program   0x00001c
+              D10TCYXCODE       code   0x0045b6    program   0x000016
+          .code_adcread.o       code   0x0045cc    program   0x000012
+         .code_i2c_idle.o       code   0x0045de    program   0x00000e
+                    .code       code   0x0045ec    program   0x00000e
+          .code_adcbusy.o       code   0x0045fa    program   0x00000a
+         .code_i2c_clos.o       code   0x004604    program   0x000004
+           .code___init.o       code   0x004608    program   0x000002
+         .idata_servo.o_i    romdata   0x00460a    program   0x000009
+           .idata_mcc.o_i    romdata   0x004613    program   0x000010
+          .idata_main.o_i    romdata   0x004623    program   0x000009
+      .idata_infrared.o_i    romdata   0x00462c    program   0x000003
+         .idata_error.o_i    romdata   0x00462f    program   0x000021
+          .idata_ax12.o_i    romdata   0x004650    program   0x000024
                  .tmpdata      udata   0x000000       data   0x000022
                 MATH_DATA      udata   0x000022       data   0x000014
                 DELAYDAT2      udata   0x000036       data   0x000001
@@ -214,9 +214,9 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                             0x000800    0x000805      
                             0x000808    0x00080d      
                             0x000818    0x00081d      
-                            0x00082a    0x00438e      
-                            0x004390    0x00466f      
-            15977 out of 33048 program addresses used, program memory utilization is 48%
+                            0x00082a    0x004392      
+                            0x004394    0x004673      
+            15981 out of 33048 program addresses used, program memory utilization is 48%
 
 
 
@@ -224,50 +224,50 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
            BlinkUSBStatus   0x001840    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  BusyADC   0x0045f6    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
-                 CloseI2C   0x004600    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
-                   D10K_1   0x004546    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x004552    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x004544    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10_1   0x0045c2    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                     D10x   0x0045ba    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-             Delay10KTCYx   0x00453a    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
-              Delay10TCYx   0x0045b2    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
-                 FLO0832S   0x002d7c    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
-                 FLO0832U   0x002d78    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
-                 FLO1632S   0x002d9e    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
-                 FLO1632U   0x002d9a    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
-                 FLO3232S   0x002dc8    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
-                 FLO3232U   0x002dc4    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
-                    FPA32   0x002dfc    program     extern C:\MCC18\src\traditional\math\addFP.asm
-                    FPD32   0x002f28    program     extern C:\MCC18\src\traditional\math\divFP.asm
-                    FPM32   0x002fce    program     extern C:\MCC18\src\traditional\math\mulFP.asm
-                    FPS32   0x002dfa    program     extern C:\MCC18\src\traditional\math\addFP.asm
-                 FXD3232U   0x00424c    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
-                 FXM1616U   0x0030a8    program     extern C:\MCC18\src\traditional\math\fxm1616u.asm
+                  BusyADC   0x0045fa    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
+                 CloseI2C   0x004604    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   D10K_1   0x00454a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x004556    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x004548    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10_1   0x0045c6    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x0045be    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+             Delay10KTCYx   0x00453e    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+              Delay10TCYx   0x0045b6    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+                 FLO0832S   0x002d80    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
+                 FLO0832U   0x002d7c    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
+                 FLO1632S   0x002da2    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
+                 FLO1632U   0x002d9e    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
+                 FLO3232S   0x002dcc    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
+                 FLO3232U   0x002dc8    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
+                    FPA32   0x002e00    program     extern C:\MCC18\src\traditional\math\addFP.asm
+                    FPD32   0x002f2c    program     extern C:\MCC18\src\traditional\math\divFP.asm
+                    FPM32   0x002fd2    program     extern C:\MCC18\src\traditional\math\mulFP.asm
+                    FPS32   0x002dfe    program     extern C:\MCC18\src\traditional\math\addFP.asm
+                 FXD3232U   0x004250    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
+                 FXM1616U   0x0030ac    program     extern C:\MCC18\src\traditional\math\fxm1616u.asm
                  High_ISR   0x000008    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  INT3216   0x0030e4    program     extern C:\MCC18\src\traditional\math\castFP16.asm
-                  INT3232   0x003142    program     extern C:\MCC18\src\traditional\math\castFP32.asm
-                  IdleI2C   0x0045da    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+                  INT3216   0x0030e8    program     extern C:\MCC18\src\traditional\math\castFP16.asm
+                  INT3232   0x003146    program     extern C:\MCC18\src\traditional\math\castFP32.asm
+                  IdleI2C   0x0045de    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
          InitializeSystem   0x000984    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   Low_ISR   0x000018    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  OpenADC   0x0040a8    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
-                  OpenI2C   0x00446e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
-                 OpenPWM1   0x0044da    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x004506    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
-               OpenTimer0   0x004400    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
-               OpenTimer2   0x004438    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
-               OpenTimer3   0x004294    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
-                OpenUSART   0x003fa8    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
+                  OpenADC   0x0040ac    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
+                  OpenI2C   0x004472    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+                 OpenPWM1   0x0044de    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x00450a    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
+               OpenTimer0   0x004404    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
+               OpenTimer2   0x00443c    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
+               OpenTimer3   0x004298    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
+                OpenUSART   0x003fac    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
                 ProcessIO   0x000a12    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  ReadADC   0x0045c8    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
-               ReadEEPROM   0x0041c2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                ReadUSART   0x0042da    program     extern C:\MCC18\src\pmc_common\USART\uread.c
+                  ReadADC   0x0045cc    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
+               ReadEEPROM   0x0041c6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+                ReadUSART   0x0042de    program     extern C:\MCC18\src\pmc_common\USART\uread.c
         Remapped_High_ISR   0x000808    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
          Remapped_Low_ISR   0x000818    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
               ResetSource   0x001a58    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-           SelChanConvADC   0x00450a    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
-                SetDCPWM1   0x0041ee    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
+           SelChanConvADC   0x00450e    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
+                SetDCPWM1   0x0041f2    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
        USBCBCheckOtherReq   0x001968    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
         USBCBErrorHandler   0x001966    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
               USBCBInitEP   0x00196e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
@@ -276,7 +276,7 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
              USBCBSuspend   0x0018be    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
      USBCBWakeFromSuspend   0x0018fc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
         USBCB_SOF_Handler   0x001964    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-       USBCheckHIDRequest   0x003d8c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+       USBCheckHIDRequest   0x003d90    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
        USBCheckStdRequest   0x001f7e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
     USBClearInterruptFlag   0x002534    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
      USBConfigureEndpoint   0x0023f0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
@@ -300,36 +300,36 @@ USBPrepareForNextSetupTrf   0x001f36    program     extern C:\krobot\elec\boards
                USBSuspend   0x001dde    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
      USBTransferOnePacket   0x0024cc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
        USBWakeFromSuspend   0x001df0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-               USB_CD_Ptr   0x003f02    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x003f04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x003f06    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003f08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
 USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                  UserInit   0x00098e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              WriteEEPROM   0x004182    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                 WriteI2C   0x004318    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
-              WriteTimer0   0x0043c8    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
-              WriteTimer3   0x004390    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
-               WriteUSART   0x004568    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
+              WriteEEPROM   0x004186    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+                 WriteI2C   0x00431c    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+              WriteTimer0   0x0043cc    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+              WriteTimer3   0x004394    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
+               WriteUSART   0x00456c    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
   YourHighPriorityISRCode   0x000874    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
    YourLowPriorityISRCode   0x000934    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              _2jContinue   0x004136    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x004140    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-       _D10KTCYXCODE_0010   0x00454a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x004556    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-        _D10TCYXCODE_000A   0x0045bc    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x0045be    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x0045c0    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                 __FpExit   0x0031bc    program     extern C:\MCC18\src\traditional\math\packFP.asm
-                 __FpPack   0x0031e8    program     extern C:\MCC18\src\traditional\math\packFP.asm
-            __FpReturnNaN   0x0031b0    program     extern C:\MCC18\src\traditional\math\packFP.asm
-         __FpReturnNegInf   0x0031c2    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnNegZero   0x0031da    program     extern C:\MCC18\src\traditional\math\packFP.asm
-         __FpReturnPosInf   0x0031c8    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnPosZero   0x0031e2    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnSignInf   0x0031be    program     extern C:\MCC18\src\traditional\math\packFP.asm
-       __FpReturnSignZero   0x0031d6    program     extern C:\MCC18\src\traditional\math\packFP.asm
-              __FpReturnW   0x003240    program     extern C:\MCC18\src\traditional\math\packFP.asm
-              __FpUnPackA   0x003260    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
-              __FpUnPackB   0x003290    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
+              _2jContinue   0x00413a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x004144    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+       _D10KTCYXCODE_0010   0x00454e    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x00455a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+        _D10TCYXCODE_000A   0x0045c0    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x0045c2    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x0045c4    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                 __FpExit   0x0031c0    program     extern C:\MCC18\src\traditional\math\packFP.asm
+                 __FpPack   0x0031ec    program     extern C:\MCC18\src\traditional\math\packFP.asm
+            __FpReturnNaN   0x0031b4    program     extern C:\MCC18\src\traditional\math\packFP.asm
+         __FpReturnNegInf   0x0031c6    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnNegZero   0x0031de    program     extern C:\MCC18\src\traditional\math\packFP.asm
+         __FpReturnPosInf   0x0031cc    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnPosZero   0x0031e6    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnSignInf   0x0031c2    program     extern C:\MCC18\src\traditional\math\packFP.asm
+       __FpReturnSignZero   0x0031da    program     extern C:\MCC18\src\traditional\math\packFP.asm
+              __FpReturnW   0x003244    program     extern C:\MCC18\src\traditional\math\packFP.asm
+              __FpUnPackA   0x003264    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
+              __FpUnPackB   0x003294    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
            ___?:_lbl00021   0x000a6c    program     static                          
            ___?:_lbl00022   0x000a5c    program     static                          
            ___?:_lbl00025   0x000ad0    program     static                          
@@ -406,35 +406,35 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
       ___default_lbl00117   0x0017aa    program     static                          
       ___default_lbl00162   0x001a4a    program     static                          
          ___else_lbl00051   0x000dfa    program     static                          
-          ___for_lbl00042   0x002a0a    program     static                          
-          ___for_lbl00043   0x002a14    program     static                          
           ___for_lbl00043   0x000e02    program     static                          
+          ___for_lbl00044   0x002a0e    program     static                          
           ___for_lbl00044   0x000e0e    program     static                          
           ___for_lbl00045   0x000dbc    program     static                          
-          ___for_lbl00045   0x0029c6    program     static                          
+          ___for_lbl00045   0x002a18    program     static                          
           ___for_lbl00046   0x000dc8    program     static                          
+          ___for_lbl00047   0x0029ca    program     static                          
           ___for_lbl00048   0x000d84    program     static                          
-          ___for_lbl00050   0x002af0    program     static                          
-          ___for_lbl00051   0x002afa    program     static                          
+          ___for_lbl00052   0x002af4    program     static                          
           ___for_lbl00052   0x000d5a    program     static                          
           ___for_lbl00053   0x000f26    program     static                          
-          ___for_lbl00053   0x002a98    program     static                          
+          ___for_lbl00053   0x002afe    program     static                          
           ___for_lbl00054   0x000f32    program     static                          
           ___for_lbl00055   0x000e22    program     static                          
-          ___for_lbl00055   0x002bd2    program     static                          
-          ___for_lbl00056   0x002bdc    program     static                          
-          ___for_lbl00058   0x002b5e    program     static                          
+          ___for_lbl00055   0x002a9c    program     static                          
+          ___for_lbl00057   0x002bd6    program     static                          
+          ___for_lbl00058   0x002be0    program     static                          
+          ___for_lbl00060   0x002b62    program     static                          
            ___if_lbl00017   0x000a2c    program     static                          
            ___if_lbl00019   0x000a3e    program     static                          
            ___if_lbl00024   0x000ab4    program     static                          
            ___if_lbl00028   0x000b4e    program     static                          
-           ___if_lbl00044   0x0029f2    program     static                          
+           ___if_lbl00046   0x0029f6    program     static                          
            ___if_lbl00047   0x000dbc    program     static                          
            ___if_lbl00049   0x000dde    program     static                          
            ___if_lbl00050   0x000dfe    program     static                          
-           ___if_lbl00052   0x002ad8    program     static                          
-           ___if_lbl00057   0x002bba    program     static                          
+           ___if_lbl00054   0x002adc    program     static                          
            ___if_lbl00058   0x000f88    program     static                          
+           ___if_lbl00059   0x002bbe    program     static                          
            ___if_lbl00066   0x001050    program     static                          
            ___if_lbl00068   0x001066    program     static                          
            ___if_lbl00069   0x00107c    program     static                          
@@ -445,17 +445,17 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
            ___if_lbl00118   0x00182c    program     static                          
        ___return_lbl00000   0x000804    program     static                          
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x004292    program     static                          
+       ___return_lbl00000   0x004296    program     static                          
        ___return_lbl00001   0x00080c    program     static                          
-       ___return_lbl00001   0x0045b0    program     static                          
+       ___return_lbl00001   0x0045b4    program     static                          
        ___return_lbl00002   0x00081c    program     static                          
-       ___return_lbl00002   0x003fa6    program     static                          
+       ___return_lbl00002   0x003faa    program     static                          
        ___return_lbl00003   0x00000c    program     static                          
        ___return_lbl00004   0x00001c    program     static                          
        ___return_lbl00016   0x00182c    program     static                          
-       ___return_lbl00041   0x002a1e    program     static                          
-       ___return_lbl00049   0x002b04    program     static                          
-       ___return_lbl00054   0x002be8    program     static                          
+       ___return_lbl00043   0x002a22    program     static                          
+       ___return_lbl00051   0x002b08    program     static                          
+       ___return_lbl00056   0x002bec    program     static                          
        ___return_lbl00152   0x001a50    program     static                          
    ___switchexit_lbl00031   0x00182c    program     static                          
    ___switchexit_lbl00036   0x000f3a    program     static                          
@@ -464,71 +464,71 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
    ___switchexit_lbl00095   0x0015c2    program     static                          
    ___switchexit_lbl00106   0x001674    program     static                          
    ___switchexit_lbl00153   0x001a4c    program     static                          
-                   __init   0x004604    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-                   __pa_0   0x0044cc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                   __pa_0   0x003894    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_0   0x003b6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_0   0x003c60    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_0   0x003d1e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_0   0x002c70    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_0   0x003624    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_0   0x0041de    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+                   __init   0x004608    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+                   __pa_0   0x0044d0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
+                   __pa_0   0x003898    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_0   0x003b72    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_0   0x003c64    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_0   0x003d22    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_0   0x002c74    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_0   0x003628    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_0   0x0041e2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
                    __pa_0   0x00255e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_0   0x004098    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                   __pa_0   0x00409c    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
                    __pa_0   0x001aa4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_1   0x003b80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_1   0x0038ec    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_1   0x003b84    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_1   0x0038f0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
                    __pa_1   0x00256c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_1   0x002c7c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_1   0x003c6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_1   0x003632    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_1   0x002c80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_1   0x003c6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_1   0x003636    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                    __pa_1   0x001ae0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_1   0x003d44    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_1   0x003d48    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
                   __pa_10   0x001ba0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_10   0x002cfe    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_10   0x0036ae    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_10   0x002d02    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_10   0x0036b2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_10   0x0025bc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_11   0x002d0c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_11   0x002d10    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_11   0x001bae    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_11   0x0025cc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_11   0x0036c2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_12   0x002d16    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_12   0x0036d4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_11   0x0036c6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_12   0x002d1a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_12   0x0036d8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_12   0x001bb8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_12   0x0025e0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_13   0x002d1c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_13   0x002d20    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_13   0x001bcc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_13   0x0036de    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_13   0x0036e2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_13   0x0025f2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_14   0x002d26    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_14   0x0036e8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_14   0x002d2a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_14   0x0036ec    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_14   0x001bd4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_14   0x0025fe    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_15   0x001be0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_15   0x00261a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_15   0x002d3a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_15   0x0036f2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_15   0x002d3e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_15   0x0036f6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_16   0x001bea    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_16   0x002d44    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_16   0x002d48    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_16   0x002620    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_16   0x0036fc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_16   0x003700    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_17   0x00262a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_17   0x002d50    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_17   0x002d54    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_17   0x001bfa    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_18   0x002636    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_18   0x002d58    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_18   0x002d5c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_18   0x001c02    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_19   0x002d68    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_19   0x002d6c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_19   0x001c0a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_19   0x002642    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_2   0x002c9a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_2   0x002c9e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    __pa_2   0x002572    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_2   0x003910    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_2   0x003644    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_2   0x003c98    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_2   0x003914    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_2   0x003648    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_2   0x003c9c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
                    __pa_2   0x001b32    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_2   0x003d58    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                  __pa_20   0x002d70    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_2   0x003d5c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                  __pa_20   0x002d74    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                   __pa_20   0x002652    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_20   0x001c14    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_21   0x002662    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
@@ -542,12 +542,12 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
                   __pa_28   0x0026d0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_29   0x0026ec    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_3   0x001b38    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_3   0x002ca4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_3   0x002ca8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    __pa_3   0x00257c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_3   0x003d5e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_3   0x003926    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_3   0x00364e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_3   0x003ca0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_3   0x003d62    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_3   0x00392a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_3   0x003652    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_3   0x003ca4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
                   __pa_30   0x0026f6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_31   0x0026fe    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_32   0x002710    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
@@ -559,44 +559,44 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
                   __pa_38   0x002756    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_39   0x002760    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_4   0x001b4a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_4   0x002cac    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_4   0x002cb0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    __pa_4   0x002584    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_4   0x003d66    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_4   0x003938    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_4   0x003ca8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_4   0x003664    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_4   0x003d6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_4   0x00393c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_4   0x003cac    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_4   0x003668    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
                   __pa_40   0x002768    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __pa_41   0x002770    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_5   0x003d6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_5   0x00366a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_5   0x002cc0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_5   0x003d6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_5   0x00366e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_5   0x002cc4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    __pa_5   0x001b5e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_5   0x003944    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_5   0x003948    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
                    __pa_5   0x00258e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_6   0x003d72    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_6   0x00367c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_6   0x002cce    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_6   0x00394c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_6   0x003d76    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_6   0x003680    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_6   0x002cd2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_6   0x003950    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
                    __pa_6   0x002596    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_6   0x001b6c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                    __pa_7   0x001b70    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_7   0x002cd6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_7   0x00368e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_7   0x003d78    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_7   0x002cda    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_7   0x003692    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_7   0x003d7c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
                    __pa_7   0x00259e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_8   0x001b80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_8   0x00369a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_8   0x002ce2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_8   0x003d80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_8   0x00369e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_8   0x002ce6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_8   0x003d84    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
                    __pa_8   0x0025a4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_9   0x0036a6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_9   0x002cf2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_9   0x0036aa    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_9   0x002cf6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    __pa_9   0x0025b2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_9   0x001b90    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_0   0x00436b    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_1   0x00435f    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_2   0x00435d    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_3   0x004354    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_0   0x00436f    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_1   0x004363    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_2   0x004361    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_3   0x004358    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                __tmplbl_0   0x000a3a    program     static                          
                __tmplbl_1   0x000a34    program     static                          
               __tmplbl_10   0x0019fe    program     static                          
@@ -615,139 +615,139 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
                __tmplbl_7   0x0019de    program     static                          
                __tmplbl_8   0x0019ea    program     static                          
                __tmplbl_9   0x0019f4    program     static                          
-            __zero_memory   0x0045e8    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                _do_cinit   0x003f0a    program     extern C:\MCC18\src\traditional\startup\c018i.c
+            __zero_memory   0x0045ec    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+                _do_cinit   0x003f0e    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                   _false   0x00428e    program     static                          
+                   _false   0x004292    program     static                          
                    _reset   0x000800    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                 _startup   0x004596    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               actionAX12   0x002c14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-         adjdReadRegister   0x003be2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-        adjdWriteRegister   0x003bbe    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                 checkTOR   0x003b38    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-               clear_loop   0x0045ee    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
-               configAX12   0x00297e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-        configDescriptor1   0x003e6c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                copy_loop   0x003f7c    program     static                          
-            copy_one_byte   0x003f82    program     static                          
-               device_dsc   0x003e5a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-             disableMotor   0x0039e6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-             disableServo   0x003880    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                     done   0x003fa6    program     static                          
-             done_copying   0x003f90    program     static                          
-              enableMotor   0x0039de    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              enableServo   0x00386c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                    error   0x0044a4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
-               getIFRange   0x0034c4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-              getPosition   0x002c64    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 getSpeed   0x002c6a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                     goTo   0x002c1e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              hasTimedOut   0x002958    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                hid_rpt01   0x003ee5    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                 _startup   0x00459a    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               actionAX12   0x002c18    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+         adjdReadRegister   0x003be6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+        adjdWriteRegister   0x003bc2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                 checkTOR   0x003b3c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+               clear_loop   0x0045f2    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+               configAX12   0x002982    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+        configDescriptor1   0x003e70    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                copy_loop   0x003f80    program     static                          
+            copy_one_byte   0x003f86    program     static                          
+               device_dsc   0x003e5e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+             disableMotor   0x0039ea    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+             disableServo   0x003884    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                     done   0x003faa    program     static                          
+             done_copying   0x003f94    program     static                          
+              enableMotor   0x0039e2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+              enableServo   0x003870    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                    error   0x0044a8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
+               getIFRange   0x0034c8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+              getPosition   0x002c68    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 getSpeed   0x002c6e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                     goTo   0x002c22    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              hasTimedOut   0x00295c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                hid_rpt01   0x003ee9    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
                  initAX12   0x002776    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 initAdjd   0x003b88    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   initIF   0x0032bc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  initMCC   0x00395e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-               initServos   0x003702    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                 initAdjd   0x003b8c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   initIF   0x0032c0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  initMCC   0x003962    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+               initServos   0x003706    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
             interruptAX12   0x002780    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              interruptIF   0x0032dc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-          interruptMotor1   0x0039a8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-           interruptServo   0x00372c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-   isStatusPacketReceived   0x002952    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 jANotInf   0x002f46    program     static C:\MCC18\src\traditional\math\divFP.asm
-                 jANotInf   0x002e24    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jANotInf   0x002fec    program     static C:\MCC18\src\traditional\math\mulFP.asm
-                 jANotNeg   0x002eb8    program     static C:\MCC18\src\traditional\math\addFP.asm
-                jANotZero   0x002f5a    program     static C:\MCC18\src\traditional\math\divFP.asm
-              jAandWsetup   0x002e88    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jAltBexp   0x002e76    program     static C:\MCC18\src\traditional\math\addFP.asm
-                jBANotInf   0x002e1a    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jBNotInf   0x002e32    program     static C:\MCC18\src\traditional\math\addFP.asm
-              jBothFinite   0x002ffa    program     static C:\MCC18\src\traditional\math\mulFP.asm
-             jBothNotZero   0x003006    program     static C:\MCC18\src\traditional\math\mulFP.asm
-            jDifOrPosSign   0x002e46    program     static C:\MCC18\src\traditional\math\addFP.asm
-                     jEnd   0x004180    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     jEnd   0x004148    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                    jExit   0x0031ae    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jExit   0x003140    program     static C:\MCC18\src\traditional\math\castFP16.asm
-               jFinalSign   0x002f20    program     static C:\MCC18\src\traditional\math\addFP.asm
-                jHaveZero   0x003002    program     static C:\MCC18\src\traditional\math\mulFP.asm
-                jI2F08Beg   0x002d86    program     static C:\MCC18\src\traditional\math\cast08FP.asm
-                jI2F16Beg   0x002dae    program     static C:\MCC18\src\traditional\math\cast16FP.asm
-                jI2F32Beg   0x002de0    program     static C:\MCC18\src\traditional\math\cast32FP.asm
-                    jLoop   0x00412a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                    jLoop   0x002f82    program     static C:\MCC18\src\traditional\math\divFP.asm
-                    jLoop   0x004176    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                    jLoop   0x003182    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jLoop   0x003120    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                jLoopExit   0x003196    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                jLoopExit   0x003130    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                     jMax   0x003152    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                     jMax   0x0030f4    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jMaxNeg   0x003164    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jMaxNeg   0x003102    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jMaxPos   0x003156    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jMaxPos   0x0030f8    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                    jNext   0x002fa8    program     static C:\MCC18\src\traditional\math\divFP.asm
-                jNoAdjust   0x002fa6    program     static C:\MCC18\src\traditional\math\divFP.asm
-             jNotBothZero   0x002e4a    program     static C:\MCC18\src\traditional\math\addFP.asm
-                  jNotInf   0x003110    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jNotInf   0x003170    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                jNullLoop   0x004170    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                  jPkLoop   0x0031f6    program     static C:\MCC18\src\traditional\math\packFP.asm
-             jPkRoundDone   0x003240    program     static C:\MCC18\src\traditional\math\packFP.asm
-               jPkRoundIt   0x003228    program     static C:\MCC18\src\traditional\math\packFP.asm
-             jPkShiftDone   0x003212    program     static C:\MCC18\src\traditional\math\packFP.asm
-           jReturnPosInf0   0x0031cc    program     static C:\MCC18\src\traditional\math\packFP.asm
-               jShiftDone   0x002ee0    program     static C:\MCC18\src\traditional\math\addFP.asm
-               jShiftLoop   0x002ed2    program     static C:\MCC18\src\traditional\math\addFP.asm
-                jSignDone   0x002f10    program     static C:\MCC18\src\traditional\math\addFP.asm
-              jSignedZero   0x002f50    program     static C:\MCC18\src\traditional\math\divFP.asm
-                  jUnpkA1   0x00326a    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkA2   0x003282    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkANZ   0x003278    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkB1   0x00329a    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkB2   0x0032b2    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkBNZ   0x0032a8    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkNaN   0x00328c    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jWNotNeg   0x002ecc    program     static C:\MCC18\src\traditional\math\addFP.asm
-                   jWr123   0x00315c    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jWrZ123   0x00316c    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jZero   0x00316a    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jZero   0x00310a    program     static C:\MCC18\src\traditional\math\castFP16.asm
-               jZero1and2   0x0031d0    program     static C:\MCC18\src\traditional\math\packFP.asm
-            lastErrorAX12   0x002996    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                lcd_clear   0x003cbe    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_goto   0x003cea    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-          lcd_goto_origin   0x003ce4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_init   0x003cb0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-        lcd_set_backlight   0x003cd4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_set_cursor   0x003cc4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_write   0x003d04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_write_line   0x003d10    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                     loop   0x00425a    program     static                          
-                     loop   0x0045a6    program     static                          
+              interruptIF   0x0032e0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+          interruptMotor1   0x0039ac    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+           interruptServo   0x003730    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+   isStatusPacketReceived   0x002956    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 jANotInf   0x002f4a    program     static C:\MCC18\src\traditional\math\divFP.asm
+                 jANotInf   0x002e28    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jANotInf   0x002ff0    program     static C:\MCC18\src\traditional\math\mulFP.asm
+                 jANotNeg   0x002ebc    program     static C:\MCC18\src\traditional\math\addFP.asm
+                jANotZero   0x002f5e    program     static C:\MCC18\src\traditional\math\divFP.asm
+              jAandWsetup   0x002e8c    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jAltBexp   0x002e7a    program     static C:\MCC18\src\traditional\math\addFP.asm
+                jBANotInf   0x002e1e    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jBNotInf   0x002e36    program     static C:\MCC18\src\traditional\math\addFP.asm
+              jBothFinite   0x002ffe    program     static C:\MCC18\src\traditional\math\mulFP.asm
+             jBothNotZero   0x00300a    program     static C:\MCC18\src\traditional\math\mulFP.asm
+            jDifOrPosSign   0x002e4a    program     static C:\MCC18\src\traditional\math\addFP.asm
+                     jEnd   0x004184    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x00414c    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                    jExit   0x0031b2    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jExit   0x003144    program     static C:\MCC18\src\traditional\math\castFP16.asm
+               jFinalSign   0x002f24    program     static C:\MCC18\src\traditional\math\addFP.asm
+                jHaveZero   0x003006    program     static C:\MCC18\src\traditional\math\mulFP.asm
+                jI2F08Beg   0x002d8a    program     static C:\MCC18\src\traditional\math\cast08FP.asm
+                jI2F16Beg   0x002db2    program     static C:\MCC18\src\traditional\math\cast16FP.asm
+                jI2F32Beg   0x002de4    program     static C:\MCC18\src\traditional\math\cast32FP.asm
+                    jLoop   0x00412e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x002f86    program     static C:\MCC18\src\traditional\math\divFP.asm
+                    jLoop   0x00417a    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x003186    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jLoop   0x003124    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                jLoopExit   0x00319a    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                jLoopExit   0x003134    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                     jMax   0x003156    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                     jMax   0x0030f8    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jMaxNeg   0x003168    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jMaxNeg   0x003106    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jMaxPos   0x00315a    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jMaxPos   0x0030fc    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                    jNext   0x002fac    program     static C:\MCC18\src\traditional\math\divFP.asm
+                jNoAdjust   0x002faa    program     static C:\MCC18\src\traditional\math\divFP.asm
+             jNotBothZero   0x002e4e    program     static C:\MCC18\src\traditional\math\addFP.asm
+                  jNotInf   0x003114    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jNotInf   0x003174    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                jNullLoop   0x004174    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                  jPkLoop   0x0031fa    program     static C:\MCC18\src\traditional\math\packFP.asm
+             jPkRoundDone   0x003244    program     static C:\MCC18\src\traditional\math\packFP.asm
+               jPkRoundIt   0x00322c    program     static C:\MCC18\src\traditional\math\packFP.asm
+             jPkShiftDone   0x003216    program     static C:\MCC18\src\traditional\math\packFP.asm
+           jReturnPosInf0   0x0031d0    program     static C:\MCC18\src\traditional\math\packFP.asm
+               jShiftDone   0x002ee4    program     static C:\MCC18\src\traditional\math\addFP.asm
+               jShiftLoop   0x002ed6    program     static C:\MCC18\src\traditional\math\addFP.asm
+                jSignDone   0x002f14    program     static C:\MCC18\src\traditional\math\addFP.asm
+              jSignedZero   0x002f54    program     static C:\MCC18\src\traditional\math\divFP.asm
+                  jUnpkA1   0x00326e    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkA2   0x003286    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkANZ   0x00327c    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkB1   0x00329e    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkB2   0x0032b6    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkBNZ   0x0032ac    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkNaN   0x003290    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jWNotNeg   0x002ed0    program     static C:\MCC18\src\traditional\math\addFP.asm
+                   jWr123   0x003160    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jWrZ123   0x003170    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jZero   0x00316e    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jZero   0x00310e    program     static C:\MCC18\src\traditional\math\castFP16.asm
+               jZero1and2   0x0031d4    program     static C:\MCC18\src\traditional\math\packFP.asm
+            lastErrorAX12   0x00299a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                lcd_clear   0x003cc2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_goto   0x003cee    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+          lcd_goto_origin   0x003ce8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_init   0x003cb4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+        lcd_set_backlight   0x003cd8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_set_cursor   0x003cc8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_write   0x003d08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_write_line   0x003d14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                     loop   0x00425e    program     static                          
+                     loop   0x0045aa    program     static                          
                      main   0x00097a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   memset   0x004116    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
-                     move   0x0039ee    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 pingAX12   0x0029a2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  putsI2C   0x004032    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
-              readValue16   0x002b1c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               readValue8   0x002a56    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               regWrite16   0x002c04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                regWrite8   0x002bfc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                resetAX12   0x002a36    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                    sd000   0x003e95    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd001   0x003e99    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd002   0x003ec5    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                   memset   0x00411a    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+                     move   0x0039f2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                 pingAX12   0x0029a6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  putsI2C   0x004036    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+              readValue16   0x002b20    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               readValue8   0x002a5a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               regWrite16   0x002c08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                regWrite8   0x002c00    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                resetAX12   0x002a3a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                    sd000   0x003e99    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd001   0x003e9d    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd002   0x003ec9    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
            sendInstPacket   0x002860    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 setParam   0x002966    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            setServoAngle   0x003856    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-            strcatpgm2ram   0x00414a    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     test   0x003f24    program     static                          
-         waitStatusPacket   0x00295e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-             writeValue16   0x002a48    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              writeValue8   0x002a40    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 setParam   0x00296a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+            setServoAngle   0x00385a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+            strcatpgm2ram   0x00414e    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     test   0x003f28    program     static                          
+         waitStatusPacket   0x002962    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+             writeValue16   0x002a4c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              writeValue8   0x002a44    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -1282,8 +1282,8 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x0019c2    program     extern C:\krobot\elec\
                   __pa_15   0x001be0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_16   0x001bea    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_17   0x001bfa    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              __tmplbl_18   0x001c02    program     static                          
                   __pa_18   0x001c02    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+              __tmplbl_18   0x001c02    program     static                          
                   __pa_19   0x001c0a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_20   0x001c14    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
                   __pa_21   0x001c1c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
@@ -1357,284 +1357,284 @@ USBPrepareForNextSetupTrf   0x001f36    program     extern C:\krobot\elec\boards
                  initAX12   0x002776    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
             interruptAX12   0x002780    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
            sendInstPacket   0x002860    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-   isStatusPacketReceived   0x002952    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              hasTimedOut   0x002958    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-         waitStatusPacket   0x00295e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 setParam   0x002966    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               configAX12   0x00297e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            lastErrorAX12   0x002996    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 pingAX12   0x0029a2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-          ___for_lbl00045   0x0029c6    program     static                          
-           ___if_lbl00044   0x0029f2    program     static                          
-          ___for_lbl00042   0x002a0a    program     static                          
-          ___for_lbl00043   0x002a14    program     static                          
-       ___return_lbl00041   0x002a1e    program     static                          
-                resetAX12   0x002a36    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              writeValue8   0x002a40    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-             writeValue16   0x002a48    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               readValue8   0x002a56    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-          ___for_lbl00053   0x002a98    program     static                          
-           ___if_lbl00052   0x002ad8    program     static                          
-          ___for_lbl00050   0x002af0    program     static                          
-          ___for_lbl00051   0x002afa    program     static                          
-       ___return_lbl00049   0x002b04    program     static                          
-              readValue16   0x002b1c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-          ___for_lbl00058   0x002b5e    program     static                          
-           ___if_lbl00057   0x002bba    program     static                          
-          ___for_lbl00055   0x002bd2    program     static                          
-          ___for_lbl00056   0x002bdc    program     static                          
-       ___return_lbl00054   0x002be8    program     static                          
-                regWrite8   0x002bfc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               regWrite16   0x002c04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               actionAX12   0x002c14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                     goTo   0x002c1e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              getPosition   0x002c64    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 getSpeed   0x002c6a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_0   0x002c70    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_1   0x002c7c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_2   0x002c9a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_3   0x002ca4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_4   0x002cac    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_5   0x002cc0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_6   0x002cce    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_7   0x002cd6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_8   0x002ce2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_9   0x002cf2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_10   0x002cfe    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_11   0x002d0c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_12   0x002d16    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_13   0x002d1c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_14   0x002d26    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_15   0x002d3a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_16   0x002d44    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_17   0x002d50    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_18   0x002d58    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_19   0x002d68    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_20   0x002d70    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 FLO0832U   0x002d78    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
-                 FLO0832S   0x002d7c    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
-                jI2F08Beg   0x002d86    program     static C:\MCC18\src\traditional\math\cast08FP.asm
-                 FLO1632U   0x002d9a    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
-                 FLO1632S   0x002d9e    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
-                jI2F16Beg   0x002dae    program     static C:\MCC18\src\traditional\math\cast16FP.asm
-                 FLO3232U   0x002dc4    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
-                 FLO3232S   0x002dc8    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
-                jI2F32Beg   0x002de0    program     static C:\MCC18\src\traditional\math\cast32FP.asm
-                    FPS32   0x002dfa    program     extern C:\MCC18\src\traditional\math\addFP.asm
-                    FPA32   0x002dfc    program     extern C:\MCC18\src\traditional\math\addFP.asm
-                jBANotInf   0x002e1a    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jANotInf   0x002e24    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jBNotInf   0x002e32    program     static C:\MCC18\src\traditional\math\addFP.asm
-            jDifOrPosSign   0x002e46    program     static C:\MCC18\src\traditional\math\addFP.asm
-             jNotBothZero   0x002e4a    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jAltBexp   0x002e76    program     static C:\MCC18\src\traditional\math\addFP.asm
-              jAandWsetup   0x002e88    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jANotNeg   0x002eb8    program     static C:\MCC18\src\traditional\math\addFP.asm
-                 jWNotNeg   0x002ecc    program     static C:\MCC18\src\traditional\math\addFP.asm
-               jShiftLoop   0x002ed2    program     static C:\MCC18\src\traditional\math\addFP.asm
-               jShiftDone   0x002ee0    program     static C:\MCC18\src\traditional\math\addFP.asm
-                jSignDone   0x002f10    program     static C:\MCC18\src\traditional\math\addFP.asm
-               jFinalSign   0x002f20    program     static C:\MCC18\src\traditional\math\addFP.asm
-                    FPD32   0x002f28    program     extern C:\MCC18\src\traditional\math\divFP.asm
-                 jANotInf   0x002f46    program     static C:\MCC18\src\traditional\math\divFP.asm
-              jSignedZero   0x002f50    program     static C:\MCC18\src\traditional\math\divFP.asm
-                jANotZero   0x002f5a    program     static C:\MCC18\src\traditional\math\divFP.asm
-                    jLoop   0x002f82    program     static C:\MCC18\src\traditional\math\divFP.asm
-                jNoAdjust   0x002fa6    program     static C:\MCC18\src\traditional\math\divFP.asm
-                    jNext   0x002fa8    program     static C:\MCC18\src\traditional\math\divFP.asm
-                    FPM32   0x002fce    program     extern C:\MCC18\src\traditional\math\mulFP.asm
-                 jANotInf   0x002fec    program     static C:\MCC18\src\traditional\math\mulFP.asm
-              jBothFinite   0x002ffa    program     static C:\MCC18\src\traditional\math\mulFP.asm
-                jHaveZero   0x003002    program     static C:\MCC18\src\traditional\math\mulFP.asm
-             jBothNotZero   0x003006    program     static C:\MCC18\src\traditional\math\mulFP.asm
-                 FXM1616U   0x0030a8    program     extern C:\MCC18\src\traditional\math\fxm1616u.asm
-                  INT3216   0x0030e4    program     extern C:\MCC18\src\traditional\math\castFP16.asm
-                     jMax   0x0030f4    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jMaxPos   0x0030f8    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jMaxNeg   0x003102    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                    jZero   0x00310a    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  jNotInf   0x003110    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                    jLoop   0x003120    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                jLoopExit   0x003130    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                    jExit   0x003140    program     static C:\MCC18\src\traditional\math\castFP16.asm
-                  INT3232   0x003142    program     extern C:\MCC18\src\traditional\math\castFP32.asm
-                     jMax   0x003152    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jMaxPos   0x003156    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                   jWr123   0x00315c    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jMaxNeg   0x003164    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jZero   0x00316a    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jWrZ123   0x00316c    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                  jNotInf   0x003170    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jLoop   0x003182    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                jLoopExit   0x003196    program     static C:\MCC18\src\traditional\math\castFP32.asm
-                    jExit   0x0031ae    program     static C:\MCC18\src\traditional\math\castFP32.asm
-            __FpReturnNaN   0x0031b0    program     extern C:\MCC18\src\traditional\math\packFP.asm
-                 __FpExit   0x0031bc    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnSignInf   0x0031be    program     extern C:\MCC18\src\traditional\math\packFP.asm
-         __FpReturnNegInf   0x0031c2    program     extern C:\MCC18\src\traditional\math\packFP.asm
-         __FpReturnPosInf   0x0031c8    program     extern C:\MCC18\src\traditional\math\packFP.asm
-           jReturnPosInf0   0x0031cc    program     static C:\MCC18\src\traditional\math\packFP.asm
-               jZero1and2   0x0031d0    program     static C:\MCC18\src\traditional\math\packFP.asm
-       __FpReturnSignZero   0x0031d6    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnNegZero   0x0031da    program     extern C:\MCC18\src\traditional\math\packFP.asm
-        __FpReturnPosZero   0x0031e2    program     extern C:\MCC18\src\traditional\math\packFP.asm
-                 __FpPack   0x0031e8    program     extern C:\MCC18\src\traditional\math\packFP.asm
-                  jPkLoop   0x0031f6    program     static C:\MCC18\src\traditional\math\packFP.asm
-             jPkShiftDone   0x003212    program     static C:\MCC18\src\traditional\math\packFP.asm
-               jPkRoundIt   0x003228    program     static C:\MCC18\src\traditional\math\packFP.asm
-             jPkRoundDone   0x003240    program     static C:\MCC18\src\traditional\math\packFP.asm
-              __FpReturnW   0x003240    program     extern C:\MCC18\src\traditional\math\packFP.asm
-              __FpUnPackA   0x003260    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkA1   0x00326a    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkANZ   0x003278    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkA2   0x003282    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkNaN   0x00328c    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-              __FpUnPackB   0x003290    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkB1   0x00329a    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                 jUnpkBNZ   0x0032a8    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                  jUnpkB2   0x0032b2    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                   initIF   0x0032bc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-              interruptIF   0x0032dc    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               getIFRange   0x0034c4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_0   0x003624    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_1   0x003632    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_2   0x003644    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_3   0x00364e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_4   0x003664    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_5   0x00366a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_6   0x00367c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_7   0x00368e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_8   0x00369a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_9   0x0036a6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_10   0x0036ae    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_11   0x0036c2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_12   0x0036d4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_13   0x0036de    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_14   0x0036e8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_15   0x0036f2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_16   0x0036fc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               initServos   0x003702    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-           interruptServo   0x00372c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-            setServoAngle   0x003856    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-              enableServo   0x00386c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-             disableServo   0x003880    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_0   0x003894    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_1   0x0038ec    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_2   0x003910    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_3   0x003926    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_4   0x003938    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_5   0x003944    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_6   0x00394c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                  initMCC   0x00395e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-          interruptMotor1   0x0039a8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              enableMotor   0x0039de    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-             disableMotor   0x0039e6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                     move   0x0039ee    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 checkTOR   0x003b38    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_0   0x003b6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_1   0x003b80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 initAdjd   0x003b88    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-        adjdWriteRegister   0x003bbe    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-         adjdReadRegister   0x003be2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_0   0x003c60    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_1   0x003c6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_2   0x003c98    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_3   0x003ca0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_4   0x003ca8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                 lcd_init   0x003cb0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_clear   0x003cbe    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_set_cursor   0x003cc4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-        lcd_set_backlight   0x003cd4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-          lcd_goto_origin   0x003ce4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_goto   0x003cea    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_write   0x003d04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_write_line   0x003d10    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_0   0x003d1e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_1   0x003d44    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_2   0x003d58    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_3   0x003d5e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_4   0x003d66    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_5   0x003d6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_6   0x003d72    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_7   0x003d78    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_8   0x003d80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-       USBCheckHIDRequest   0x003d8c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-               device_dsc   0x003e5a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-        configDescriptor1   0x003e6c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd000   0x003e95    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd001   0x003e99    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd002   0x003ec5    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                hid_rpt01   0x003ee5    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_CD_Ptr   0x003f02    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x003f04    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                _do_cinit   0x003f0a    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x003f24    program     static                          
-                copy_loop   0x003f7c    program     static                          
-            copy_one_byte   0x003f82    program     static                          
-             done_copying   0x003f90    program     static                          
-       ___return_lbl00002   0x003fa6    program     static                          
-                     done   0x003fa6    program     static                          
-                OpenUSART   0x003fa8    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
-                  putsI2C   0x004032    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
-                   __pa_0   0x004098    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
-                  OpenADC   0x0040a8    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
-                   memset   0x004116    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
-                    jLoop   0x00412a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-              _2jContinue   0x004136    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                   _3jEnd   0x004140    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-                     jEnd   0x004148    program     static C:\MCC18\src\traditional\stdclib\memset.asm
-            strcatpgm2ram   0x00414a    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                jNullLoop   0x004170    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                    jLoop   0x004176    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-                     jEnd   0x004180    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-              WriteEEPROM   0x004182    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-               ReadEEPROM   0x0041c2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                   __pa_0   0x0041de    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                SetDCPWM1   0x0041ee    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
-                 FXD3232U   0x00424c    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
-                     loop   0x00425a    program     static                          
-                   _false   0x00428e    program     static                          
-       ___return_lbl00000   0x004292    program     static                          
-               OpenTimer3   0x004294    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
-                ReadUSART   0x0042da    program     extern C:\MCC18\src\pmc_common\USART\uread.c
-                 WriteI2C   0x004318    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
-               __string_3   0x004354    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_2   0x00435d    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_1   0x00435f    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_0   0x00436b    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              WriteTimer3   0x004390    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
-              WriteTimer0   0x0043c8    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x004400    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
-               OpenTimer2   0x004438    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
-                  OpenI2C   0x00446e    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
-                    error   0x0044a4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                   __pa_0   0x0044cc    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                 OpenPWM1   0x0044da    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x004506    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
-           SelChanConvADC   0x00450a    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
-             Delay10KTCYx   0x00453a    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x004544    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                   D10K_1   0x004546    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_0010   0x00454a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x004552    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x004556    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
-               WriteUSART   0x004568    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
-                 _startup   0x004596    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x0045a6    program     static                          
-       ___return_lbl00001   0x0045b0    program     static                          
-              Delay10TCYx   0x0045b2    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
-                     D10x   0x0045ba    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000A   0x0045bc    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x0045be    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x0045c0    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                    D10_1   0x0045c2    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
-                  ReadADC   0x0045c8    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
-                  IdleI2C   0x0045da    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
-            __zero_memory   0x0045e8    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-               clear_loop   0x0045ee    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
-                  BusyADC   0x0045f6    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
-                 CloseI2C   0x004600    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
-                   __init   0x004604    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+   isStatusPacketReceived   0x002956    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              hasTimedOut   0x00295c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+         waitStatusPacket   0x002962    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 setParam   0x00296a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               configAX12   0x002982    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+            lastErrorAX12   0x00299a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 pingAX12   0x0029a6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+          ___for_lbl00047   0x0029ca    program     static                          
+           ___if_lbl00046   0x0029f6    program     static                          
+          ___for_lbl00044   0x002a0e    program     static                          
+          ___for_lbl00045   0x002a18    program     static                          
+       ___return_lbl00043   0x002a22    program     static                          
+                resetAX12   0x002a3a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              writeValue8   0x002a44    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+             writeValue16   0x002a4c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               readValue8   0x002a5a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+          ___for_lbl00055   0x002a9c    program     static                          
+           ___if_lbl00054   0x002adc    program     static                          
+          ___for_lbl00052   0x002af4    program     static                          
+          ___for_lbl00053   0x002afe    program     static                          
+       ___return_lbl00051   0x002b08    program     static                          
+              readValue16   0x002b20    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+          ___for_lbl00060   0x002b62    program     static                          
+           ___if_lbl00059   0x002bbe    program     static                          
+          ___for_lbl00057   0x002bd6    program     static                          
+          ___for_lbl00058   0x002be0    program     static                          
+       ___return_lbl00056   0x002bec    program     static                          
+                regWrite8   0x002c00    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               regWrite16   0x002c08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+               actionAX12   0x002c18    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                     goTo   0x002c22    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              getPosition   0x002c68    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 getSpeed   0x002c6e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_0   0x002c74    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_1   0x002c80    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_2   0x002c9e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_3   0x002ca8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_4   0x002cb0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_5   0x002cc4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_6   0x002cd2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_7   0x002cda    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_8   0x002ce6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_9   0x002cf6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_10   0x002d02    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_11   0x002d10    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_12   0x002d1a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_13   0x002d20    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_14   0x002d2a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_15   0x002d3e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_16   0x002d48    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_17   0x002d54    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_18   0x002d5c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_19   0x002d6c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_20   0x002d74    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                 FLO0832U   0x002d7c    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
+                 FLO0832S   0x002d80    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
+                jI2F08Beg   0x002d8a    program     static C:\MCC18\src\traditional\math\cast08FP.asm
+                 FLO1632U   0x002d9e    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
+                 FLO1632S   0x002da2    program     extern C:\MCC18\src\traditional\math\cast16FP.asm
+                jI2F16Beg   0x002db2    program     static C:\MCC18\src\traditional\math\cast16FP.asm
+                 FLO3232U   0x002dc8    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
+                 FLO3232S   0x002dcc    program     extern C:\MCC18\src\traditional\math\cast32FP.asm
+                jI2F32Beg   0x002de4    program     static C:\MCC18\src\traditional\math\cast32FP.asm
+                    FPS32   0x002dfe    program     extern C:\MCC18\src\traditional\math\addFP.asm
+                    FPA32   0x002e00    program     extern C:\MCC18\src\traditional\math\addFP.asm
+                jBANotInf   0x002e1e    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jANotInf   0x002e28    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jBNotInf   0x002e36    program     static C:\MCC18\src\traditional\math\addFP.asm
+            jDifOrPosSign   0x002e4a    program     static C:\MCC18\src\traditional\math\addFP.asm
+             jNotBothZero   0x002e4e    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jAltBexp   0x002e7a    program     static C:\MCC18\src\traditional\math\addFP.asm
+              jAandWsetup   0x002e8c    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jANotNeg   0x002ebc    program     static C:\MCC18\src\traditional\math\addFP.asm
+                 jWNotNeg   0x002ed0    program     static C:\MCC18\src\traditional\math\addFP.asm
+               jShiftLoop   0x002ed6    program     static C:\MCC18\src\traditional\math\addFP.asm
+               jShiftDone   0x002ee4    program     static C:\MCC18\src\traditional\math\addFP.asm
+                jSignDone   0x002f14    program     static C:\MCC18\src\traditional\math\addFP.asm
+               jFinalSign   0x002f24    program     static C:\MCC18\src\traditional\math\addFP.asm
+                    FPD32   0x002f2c    program     extern C:\MCC18\src\traditional\math\divFP.asm
+                 jANotInf   0x002f4a    program     static C:\MCC18\src\traditional\math\divFP.asm
+              jSignedZero   0x002f54    program     static C:\MCC18\src\traditional\math\divFP.asm
+                jANotZero   0x002f5e    program     static C:\MCC18\src\traditional\math\divFP.asm
+                    jLoop   0x002f86    program     static C:\MCC18\src\traditional\math\divFP.asm
+                jNoAdjust   0x002faa    program     static C:\MCC18\src\traditional\math\divFP.asm
+                    jNext   0x002fac    program     static C:\MCC18\src\traditional\math\divFP.asm
+                    FPM32   0x002fd2    program     extern C:\MCC18\src\traditional\math\mulFP.asm
+                 jANotInf   0x002ff0    program     static C:\MCC18\src\traditional\math\mulFP.asm
+              jBothFinite   0x002ffe    program     static C:\MCC18\src\traditional\math\mulFP.asm
+                jHaveZero   0x003006    program     static C:\MCC18\src\traditional\math\mulFP.asm
+             jBothNotZero   0x00300a    program     static C:\MCC18\src\traditional\math\mulFP.asm
+                 FXM1616U   0x0030ac    program     extern C:\MCC18\src\traditional\math\fxm1616u.asm
+                  INT3216   0x0030e8    program     extern C:\MCC18\src\traditional\math\castFP16.asm
+                     jMax   0x0030f8    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jMaxPos   0x0030fc    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jMaxNeg   0x003106    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                    jZero   0x00310e    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  jNotInf   0x003114    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                    jLoop   0x003124    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                jLoopExit   0x003134    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                    jExit   0x003144    program     static C:\MCC18\src\traditional\math\castFP16.asm
+                  INT3232   0x003146    program     extern C:\MCC18\src\traditional\math\castFP32.asm
+                     jMax   0x003156    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jMaxPos   0x00315a    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                   jWr123   0x003160    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jMaxNeg   0x003168    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jZero   0x00316e    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jWrZ123   0x003170    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                  jNotInf   0x003174    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jLoop   0x003186    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                jLoopExit   0x00319a    program     static C:\MCC18\src\traditional\math\castFP32.asm
+                    jExit   0x0031b2    program     static C:\MCC18\src\traditional\math\castFP32.asm
+            __FpReturnNaN   0x0031b4    program     extern C:\MCC18\src\traditional\math\packFP.asm
+                 __FpExit   0x0031c0    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnSignInf   0x0031c2    program     extern C:\MCC18\src\traditional\math\packFP.asm
+         __FpReturnNegInf   0x0031c6    program     extern C:\MCC18\src\traditional\math\packFP.asm
+         __FpReturnPosInf   0x0031cc    program     extern C:\MCC18\src\traditional\math\packFP.asm
+           jReturnPosInf0   0x0031d0    program     static C:\MCC18\src\traditional\math\packFP.asm
+               jZero1and2   0x0031d4    program     static C:\MCC18\src\traditional\math\packFP.asm
+       __FpReturnSignZero   0x0031da    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnNegZero   0x0031de    program     extern C:\MCC18\src\traditional\math\packFP.asm
+        __FpReturnPosZero   0x0031e6    program     extern C:\MCC18\src\traditional\math\packFP.asm
+                 __FpPack   0x0031ec    program     extern C:\MCC18\src\traditional\math\packFP.asm
+                  jPkLoop   0x0031fa    program     static C:\MCC18\src\traditional\math\packFP.asm
+             jPkShiftDone   0x003216    program     static C:\MCC18\src\traditional\math\packFP.asm
+               jPkRoundIt   0x00322c    program     static C:\MCC18\src\traditional\math\packFP.asm
+             jPkRoundDone   0x003244    program     static C:\MCC18\src\traditional\math\packFP.asm
+              __FpReturnW   0x003244    program     extern C:\MCC18\src\traditional\math\packFP.asm
+              __FpUnPackA   0x003264    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkA1   0x00326e    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkANZ   0x00327c    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkA2   0x003286    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkNaN   0x003290    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+              __FpUnPackB   0x003294    program     extern C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkB1   0x00329e    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                 jUnpkBNZ   0x0032ac    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                  jUnpkB2   0x0032b6    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
+                   initIF   0x0032c0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+              interruptIF   0x0032e0    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+               getIFRange   0x0034c8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_0   0x003628    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_1   0x003636    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_2   0x003648    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_3   0x003652    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_4   0x003668    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_5   0x00366e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_6   0x003680    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_7   0x003692    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_8   0x00369e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_9   0x0036aa    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_10   0x0036b2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_11   0x0036c6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_12   0x0036d8    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_13   0x0036e2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_14   0x0036ec    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_15   0x0036f6    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_16   0x003700    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+               initServos   0x003706    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+           interruptServo   0x003730    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+            setServoAngle   0x00385a    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+              enableServo   0x003870    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+             disableServo   0x003884    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_0   0x003898    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_1   0x0038f0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_2   0x003914    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_3   0x00392a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_4   0x00393c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_5   0x003948    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_6   0x003950    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+                  initMCC   0x003962    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+          interruptMotor1   0x0039ac    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+              enableMotor   0x0039e2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+             disableMotor   0x0039ea    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                     move   0x0039f2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                 checkTOR   0x003b3c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_0   0x003b72    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_1   0x003b84    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+                 initAdjd   0x003b8c    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+        adjdWriteRegister   0x003bc2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+         adjdReadRegister   0x003be6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_0   0x003c64    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_1   0x003c6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_2   0x003c9c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_3   0x003ca4    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_4   0x003cac    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                 lcd_init   0x003cb4    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_clear   0x003cc2    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_set_cursor   0x003cc8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+        lcd_set_backlight   0x003cd8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+          lcd_goto_origin   0x003ce8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_goto   0x003cee    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_write   0x003d08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_write_line   0x003d14    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_0   0x003d22    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_1   0x003d48    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_2   0x003d5c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_3   0x003d62    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_4   0x003d6a    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_5   0x003d6e    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_6   0x003d76    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_7   0x003d7c    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_8   0x003d84    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+       USBCheckHIDRequest   0x003d90    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+               device_dsc   0x003e5e    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+        configDescriptor1   0x003e70    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd000   0x003e99    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd001   0x003e9d    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd002   0x003ec9    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                hid_rpt01   0x003ee9    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x003f06    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003f08    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                _do_cinit   0x003f0e    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x003f28    program     static                          
+                copy_loop   0x003f80    program     static                          
+            copy_one_byte   0x003f86    program     static                          
+             done_copying   0x003f94    program     static                          
+       ___return_lbl00002   0x003faa    program     static                          
+                     done   0x003faa    program     static                          
+                OpenUSART   0x003fac    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
+                  putsI2C   0x004036    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                   __pa_0   0x00409c    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
+                  OpenADC   0x0040ac    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
+                   memset   0x00411a    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
+                    jLoop   0x00412e    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+              _2jContinue   0x00413a    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x004144    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+                     jEnd   0x00414c    program     static C:\MCC18\src\traditional\stdclib\memset.asm
+            strcatpgm2ram   0x00414e    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                jNullLoop   0x004174    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                    jLoop   0x00417a    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+                     jEnd   0x004184    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
+              WriteEEPROM   0x004186    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+               ReadEEPROM   0x0041c6    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+                   __pa_0   0x0041e2    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+                SetDCPWM1   0x0041f2    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
+                 FXD3232U   0x004250    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
+                     loop   0x00425e    program     static                          
+                   _false   0x004292    program     static                          
+       ___return_lbl00000   0x004296    program     static                          
+               OpenTimer3   0x004298    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
+                ReadUSART   0x0042de    program     extern C:\MCC18\src\pmc_common\USART\uread.c
+                 WriteI2C   0x00431c    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
+               __string_3   0x004358    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_2   0x004361    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_1   0x004363    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_0   0x00436f    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\main.c
+              WriteTimer3   0x004394    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
+              WriteTimer0   0x0043cc    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x004404    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
+               OpenTimer2   0x00443c    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
+                  OpenI2C   0x004472    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
+                    error   0x0044a8    program     extern C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
+                   __pa_0   0x0044d0    program     static C:\krobot\elec\boards\Interface_Robot\Firmware\error.c
+                 OpenPWM1   0x0044de    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x00450a    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
+           SelChanConvADC   0x00450e    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
+             Delay10KTCYx   0x00453e    program     extern C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x004548    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                   D10K_1   0x00454a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x00454e    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x004556    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x00455a    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
+               WriteUSART   0x00456c    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
+                 _startup   0x00459a    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x0045aa    program     static                          
+       ___return_lbl00001   0x0045b4    program     static                          
+              Delay10TCYx   0x0045b6    program     extern C:\MCC18\src\traditional\delays\d10tcyx.asm
+                     D10x   0x0045be    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x0045c0    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x0045c2    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x0045c4    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x0045c6    program     static C:\MCC18\src\traditional\delays\d10tcyx.asm
+                  ReadADC   0x0045cc    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
+                  IdleI2C   0x0045de    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
+            __zero_memory   0x0045ec    program     extern C:\MCC18\src\traditional\proc\p18F4550.asm
+               clear_loop   0x0045f2    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
+                  BusyADC   0x0045fa    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
+                 CloseI2C   0x004604    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
+                   __init   0x004608    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcread.c
                   __tmp_0   0x000000       data     static C:\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcselchconv.c

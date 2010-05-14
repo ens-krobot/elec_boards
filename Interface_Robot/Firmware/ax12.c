@@ -141,7 +141,7 @@ void sendInstPacket(BYTE id, BYTE inst, BYTE paramLength) {
         WriteUSART(buf[i]);
     }
     
-    //while (BusyUSART());
+    while (BusyUSART());
     
     DIR_PORT = 1; // On replace le bus en mode dynamixel -> carte
     
