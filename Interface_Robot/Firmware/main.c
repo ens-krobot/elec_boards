@@ -906,26 +906,32 @@ void ProcessIO(void) {
         
                     switch (ReceivedDataBuffer.DATA[0]) {
                         case AX12_PING:
-                            ToSendDataBuffer.DATA[0] = pingAX12(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2]);
+                            word1.byte.HB = ReceivedDataBuffer.DATA[2];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[3];
+                            ToSendDataBuffer.DATA[0] = pingAX12(ReceivedDataBuffer.DATA[1], word1.Val);
                         break;
     
                         case AX12_READ8:
-                            ToSendDataBuffer.DATA[0] = readValue8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[4]);
+                            word1.byte.HB = ReceivedDataBuffer.DATA[3];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[4];
+                            ToSendDataBuffer.DATA[0] = readValue8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], word1.Val);
                         break;
 
                         case AX12_READ16:
-                            word1.Val = readValue16(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[4]);
-                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                            word1.byte.HB = ReceivedDataBuffer.DATA[3];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[4];
+                            word2.Val = readValue16(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], word1.Val);
+                            ToSendDataBuffer.DATA[0] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word2.byte.LB;
                         break;
     
                         case AX12_WRITE8:
-                            writeValue8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[4]);
+                            writeValue8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[3]);
                         break;
 
                         case AX12_WRITE16:
-                            word1.byte.HB = ReceivedDataBuffer.DATA[4];
-                            word1.byte.LB = ReceivedDataBuffer.DATA[5];
+                            word1.byte.HB = ReceivedDataBuffer.DATA[3];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[4];
                             writeValue16(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], word1.Val);
                         break;
     
@@ -938,57 +944,65 @@ void ProcessIO(void) {
                         break;
     
                         case AX12_GET_POS:
-                            word1.Val = getPosition(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                            word1.byte.HB = ReceivedDataBuffer.DATA[2];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[3];
+                            word2.Val = getPosition(ReceivedDataBuffer.DATA[1], word1.Val);
+                            ToSendDataBuffer.DATA[0] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word2.byte.LB;
                         break;
     
                         case AX12_GET_SPEED:
-                            word1.Val = getSpeed(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                            word1.byte.HB = ReceivedDataBuffer.DATA[2];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[3];
+                            word2.Val = getSpeed(ReceivedDataBuffer.DATA[1], word1.Val);
+                            ToSendDataBuffer.DATA[0] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word2.byte.LB;
                         break;
     
                         case AX12_GET_LOAD:
-                            word1.Val = readValue16(ReceivedDataBuffer.DATA[1], P_PRESENT_LOAD, ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                            word1.byte.HB = ReceivedDataBuffer.DATA[2];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[3];
+                            word2.Val = readValue16(ReceivedDataBuffer.DATA[1], P_PRESENT_LOAD, word1.Val);
+                            ToSendDataBuffer.DATA[0] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word2.byte.LB;
                         break;
     
                         case AX12_GET_STATS:
+                            word1.byte.HB = ReceivedDataBuffer.DATA[2];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[3];
                             // Position
-                            word1.Val = getPosition(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[0] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[1] = word1.byte.LB;
+                            word2.Val = getPosition(ReceivedDataBuffer.DATA[1], word1.Val);
+                            ToSendDataBuffer.DATA[0] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[1] = word2.byte.LB;
                             // Speed
-                            word1.Val = getSpeed(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[2] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[3] = word1.byte.LB;
+                            word2.Val = getSpeed(ReceivedDataBuffer.DATA[1], word1.Val);
+                            ToSendDataBuffer.DATA[2] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[3] = word2.byte.LB;
                             // Torque
-                            word1.Val = readValue16(ReceivedDataBuffer.DATA[1], P_PRESENT_LOAD, ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[4] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[5] = word1.byte.LB;
+                            word2.Val = readValue16(ReceivedDataBuffer.DATA[1], P_PRESENT_LOAD, word1.Val);
+                            ToSendDataBuffer.DATA[4] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[5] = word2.byte.LB;
                             // Voltage
-                            ToSendDataBuffer.DATA[6] = readValue8(ReceivedDataBuffer.DATA[1], P_PRESENT_VOLTAGE, ReceivedDataBuffer.DATA[2]);
+                            ToSendDataBuffer.DATA[6] = readValue8(ReceivedDataBuffer.DATA[1], P_PRESENT_VOLTAGE, word1.Val);
                             // Temperature
-                            ToSendDataBuffer.DATA[7] = readValue8(ReceivedDataBuffer.DATA[1], P_PRESENT_TEMPERATURE, ReceivedDataBuffer.DATA[2]);
+                            ToSendDataBuffer.DATA[7] = readValue8(ReceivedDataBuffer.DATA[1], P_PRESENT_TEMPERATURE, word1.Val);
                             // CW Angle Limit
-                            word1.Val = readValue16(ReceivedDataBuffer.DATA[1], P_CW_ANGLE_LIMIT, ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[8] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[9] = word1.byte.LB;
+                            word2.Val = readValue16(ReceivedDataBuffer.DATA[1], P_CW_ANGLE_LIMIT, word1.Val);
+                            ToSendDataBuffer.DATA[8] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[9] = word2.byte.LB;
                             // CCW Angle Limit
-                            word1.Val = readValue16(ReceivedDataBuffer.DATA[1], P_CCW_ANGLE_LIMIT, ReceivedDataBuffer.DATA[2]);
-                            ToSendDataBuffer.DATA[10] = word1.byte.HB;
-                            ToSendDataBuffer.DATA[11] = word1.byte.LB;
+                            word2.Val = readValue16(ReceivedDataBuffer.DATA[1], P_CCW_ANGLE_LIMIT, word1.Val);
+                            ToSendDataBuffer.DATA[10] = word2.byte.HB;
+                            ToSendDataBuffer.DATA[11] = word2.byte.LB;
                         break;
     
                         case AX12_WRITE_REG8:
-                            regWrite8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[4]);
+                            regWrite8(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], ReceivedDataBuffer.DATA[3]);
                         break;
 
                         case AX12_WRITE_REG16:
-                            word1.byte.HB = ReceivedDataBuffer.DATA[4];
-                            word1.byte.LB = ReceivedDataBuffer.DATA[5];
+                            word1.byte.HB = ReceivedDataBuffer.DATA[3];
+                            word1.byte.LB = ReceivedDataBuffer.DATA[4];
                             regWrite16(ReceivedDataBuffer.DATA[1], ReceivedDataBuffer.DATA[2], word1.Val);
                         break;
     

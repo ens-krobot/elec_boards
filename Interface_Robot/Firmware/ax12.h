@@ -120,14 +120,14 @@ void configAX12(BYTE newId);
 // Fonctions haut niveau
 BYTE lastErrorAX12(void);
 
-BOOL pingAX12(BYTE id, UINT timeOut);
+BOOL pingAX12(BYTE id, WORD timeOut);
 void resetAX12(BYTE id);
 
 void writeValue8(BYTE id, BYTE reg, BYTE value);
 void writeValue16(BYTE id, BYTE reg, WORD value);
 
-BYTE readValue8(BYTE id, BYTE reg, UINT timeOut);
-WORD readValue16(BYTE id, BYTE reg, UINT timeOut);
+BYTE readValue8(BYTE id, BYTE reg, WORD timeOut);
+WORD readValue16(BYTE id, BYTE reg, WORD timeOut);
 
 void regWrite8(BYTE id, BYTE reg, BYTE value);
 void regWrite16(BYTE id, BYTE reg, WORD value);
@@ -135,7 +135,7 @@ void actionAX12(BYTE id);
 
 // Helper
 void goTo(BYTE id, WORD position, WORD speed, BYTE mode);
-int getPosition(BYTE id, UINT timeOut);
-int getSpeed(BYTE id, UINT timeOut);
+int getPosition(BYTE id, WORD timeOut);
+int getSpeed(BYTE id, WORD timeOut);
 
 #endif

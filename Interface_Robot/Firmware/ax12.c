@@ -248,8 +248,8 @@ BYTE lastErrorAX12(void) {
  *
  * @return #TRUE si un AX12 a repondu, #FALSE sinon
  */
-BOOL pingAX12(BYTE id, UINT timeOut) {
-    UINT count;
+BOOL pingAX12(BYTE id, WORD timeOut) {
+    WORD count;
 
     // Envoi de la requete
     sendInstPacket(id, INST_PING, 0);
@@ -322,15 +322,15 @@ void writeValue16(BYTE id, BYTE reg, WORD value) {
  *
  * @return #TRUE si la reponse a ete recue, #FALSE en cas de Time Out
  */
-BYTE readValue8(BYTE id, BYTE reg, UINT timeOut) {
-    UINT count;
+BYTE readValue8(BYTE id, BYTE reg, WORD timeOut) {
+    WORD count;
 
     // Envoi de la requete
     setParam(0, reg);
     setParam(1, 1); // On lit 1 octet
     sendInstPacket(id, INST_READ, 2);
 
-    for (count = 0; count < 10*timeOut; count++) {
+    for (count = 0; count < timeOut; count++) {
         if (glbReceived) {
             glbTimedOut = FALSE;
             return glbBuffer[5];
@@ -355,8 +355,8 @@ BYTE readValue8(BYTE id, BYTE reg, UINT timeOut) {
  *
  * @return #TRUE si la reponse a ete recue, #FALSE en cas de Time Out
  */
-WORD readValue16(BYTE id, BYTE reg, UINT timeOut) {
-    UINT count;
+WORD readValue16(BYTE id, BYTE reg, WORD timeOut) {
+    WORD count;
     WORD_VAL word;
 
     // Envoi de la requete
@@ -364,7 +364,7 @@ WORD readValue16(BYTE id, BYTE reg, UINT timeOut) {
     setParam(1, 2); // On lit 2 octets
     sendInstPacket(id, INST_READ, 2);
 
-    for (count = 0; count < 10*timeOut; count++) {
+    for (count = 0; count < timeOut; count++) {
         if (glbReceived) {
             glbTimedOut = FALSE;
             word.byte.HB = glbBuffer[6];
@@ -467,7 +467,7 @@ void goTo(BYTE id, WORD position, WORD speed, BYTE mode) {
  *
  * @return #TRUE si la reponse a ete recue, #FALSE en cas de Time Out
  */
-int getPosition(BYTE id, UINT timeOut) {
+int getPosition(BYTE id, WORD timeOut) {
     return readValue16(id, P_PRESENT_POSITION, timeOut);
 }
 
@@ -482,7 +482,7 @@ int getPosition(BYTE id, UINT timeOut) {
  *
  * @return #TRUE si la reponse a ete recue, #FALSE en cas de Time Out
  */
-int getSpeed(BYTE id, UINT timeOut) {
+int getSpeed(BYTE id, WORD timeOut) {
     return readValue16(id, P_PRESENT_SPEED, timeOut);
 }
 
