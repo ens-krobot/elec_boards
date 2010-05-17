@@ -46,7 +46,7 @@ static msg_t Thread1(void *arg) {
 static void TimerHandler(eventid_t id) {
 
   (void)id;
-  if (palReadPad(IOPORT1, GPIOA_BUTTON)) {
+  if (!palReadPad(IOPORT1, GPIOA_BUTTON)) {
 
     palClearPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(100);
@@ -96,7 +96,7 @@ static void TimerHandler(eventid_t id) {
     setScrew(0, 0, 282, 282, 0);
     chThdSleepMilliseconds(1500);
     turn(0);
-  }
+    }
 }
 
 /*
@@ -122,12 +122,12 @@ int main(int argc, char **argv) {
   /*
    * Activates the serial driver 2 using the driver default configuration.
    */
-  sdStart(&SD2, NULL);
+  //sdStart(&SD2, NULL);
 
   /*
    * Initialise the monitor
    */
-  monitorInit();
+  //monitorInit();
 
   /*
    * Initialise the CAN monitor

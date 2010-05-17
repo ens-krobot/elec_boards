@@ -19,7 +19,7 @@ void VectorB0(void) {
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
 
     // End of motor1 pulse
-    GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_1);
   }
   else if (TIM_GetITStatus(TIM2, TIM_IT_CC2) != RESET)
   {
@@ -27,7 +27,7 @@ void VectorB0(void) {
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
 
     // End of motor2 pulse
-    GPIO_ResetBits(GPIOC, GPIO_Pin_3);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_2);
   }
   else if (TIM_GetITStatus(TIM2, TIM_IT_CC3) != RESET)
   {
@@ -35,7 +35,7 @@ void VectorB0(void) {
     TIM_ClearITPendingBit(TIM2, TIM_IT_CC3);
 
     // End of motor3 pulse
-    GPIO_ResetBits(GPIOC, GPIO_Pin_9);
+    GPIO_ResetBits(GPIOA, GPIO_Pin_3);
   }
   else {
     // TIM_IT_Update
@@ -43,7 +43,7 @@ void VectorB0(void) {
     // Clear TIM2 Update interrupt pending bit
     TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 
-    GPIO_SetBits(GPIOC, GPIO_Pin_3 | GPIO_Pin_9 | GPIO_Pin_13);
+    GPIO_SetBits(GPIOA, GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3);
   }
 }
 
@@ -67,23 +67,26 @@ void motorsInit(void) {
   //Motor1 : STBY PC10
   //         IN1  PB0
   //         IN2  PB1
-  //         PWM  PC13
+  //         PWM  PA1
   //Motor2 : STBY PC0
   //         IN1  PC1
   //         IN2  PC2
-  //         PWM  PC3
+  //         PWM  PA2
   //Motor3 : STBY PC6
   //         IN1  PC7
   //         IN2  PC8
-  //         PWM  PC9
-  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_6
-                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_13);
+  //         PWM  PA3
+  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_6
+                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_10 | GPIO_Pin_13);
   GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_Out_PP;
   GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
   GPIO_Init(GPIOC, &GPIO_InitStructure);
 
   GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_0|GPIO_Pin_1;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   // Default value of H-Bridge configuration
   GPIO_ResetBits(GPIOB, GPIO_Pin_0 | GPIO_Pin_1);
@@ -93,7 +96,7 @@ void motorsInit(void) {
   // TimeBase configuration
   TIM_TimeBaseStructure.TIM_Prescaler     = 0;
   TIM_TimeBaseStructure.TIM_CounterMode   = TIM_CounterMode_Up;
-  TIM_TimeBaseStructure.TIM_Period        = 36000; // 20 kHz
+  TIM_TimeBaseStructure.TIM_Period        = 36000; // 2 kHz
   TIM_TimeBaseStructure.TIM_ClockDivision = 0;
   TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
