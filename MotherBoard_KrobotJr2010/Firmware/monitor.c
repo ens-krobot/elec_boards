@@ -144,7 +144,7 @@ void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
   ptX = atoi(argv[0]);
   ptY = atoi(argv[1]);
   vX = atoi(argv[2]);
-  vX = atoi(argv[3]);
+  vY = atoi(argv[3]);
   omega = atoi(argv[4]);
   t = atoi(argv[5]);
 
