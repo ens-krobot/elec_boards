@@ -104,22 +104,25 @@ void ax12Init(void) {
   };
 
   palSetPadMode(IOPORT1, 1, PAL_MODE_OUTPUT_PUSHPULL);
-  palClearPad(IOPORT1, 1); // reading mode
+  palSetPad(IOPORT1, 1); // reading mode
 
   sdStart(&SD2, &ax12_config);
-  chThdCreateStatic(waThreadAX12Rec, sizeof(waThreadAX12Rec), NORMALPRIO+1, ThreadAX12Rec, NULL);
+  //chThdCreateStatic(waThreadAX12Rec, sizeof(waThreadAX12Rec), NORMALPRIO+1, ThreadAX12Rec, NULL);
 }
 
 void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *params) {
   uint8_t chksum, i;
+  uint64_t j;
 
-  chksum = id + len + 2;
+  chksum = id + len + 2 + instruction;
   for (i = 0; i < len; i++)
     chksum += params[i];
   chksum = ~chksum;
 
   // Writing mode
-  //palClearPad(IOPORT1, 1);
+  palClearPad(IOPORT1, 1);
+
+  for (j=0; j < 1000; j++);
 
   chIOPut(ax12_chp, 0xFF);
   chIOPut(ax12_chp, 0xFF);
@@ -130,6 +133,13 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
     chIOPut(ax12_chp, params[i]);
   chIOPut(ax12_chp, chksum);
 
-  // Back to reading mode
-  //palSetPad(IOPORT1, 1);
+  chSysLock();
+
+  while (chIOPutWouldBlock(ax12_chp)) ;
+
+  chThdSleep(1);
+
+  chSysUnlock();
+
+  palSetPad(IOPORT1, 1);
 }
