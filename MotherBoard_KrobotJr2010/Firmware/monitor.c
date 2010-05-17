@@ -134,12 +134,50 @@ void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 
 void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
 
-  if (argc != 1) {    
-    shellPrintLine(chp, "Usage : move.");
+  int16_t ptX, ptY, vX, vY, omega;
+  uint16_t t;
+
+  if (argc != 6) {    
+    shellPrintLine(chp, "Usage : move ptX ptY vX vY omega t");
     return;
   }
+  ptX = atoi(argv[0]);
+  ptY = atoi(argv[1]);
+  vX = atoi(argv[2]);
+  vX = atoi(argv[3]);
+  omega = atoi(argv[4]);
+  t = atoi(argv[5]);
+
+  canSetScrew(ptX, ptY, vX, vY, omega);
+  chThdSleepMilliseconds(t);
 }
 
+void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
+
+  uint16_t h;
+
+  if (argc != 1 && argc != 2) {    
+    shellPrintLine(chp, "Usage : lift (up|down|move h)");
+    return;
+  }
+
+  if(strcmp(argv[0], "up") == 0)
+    h = LIFT_UP;
+  else if(strcmp(argv[0], "down") == 0)
+    h = LIFT_DOWN;
+  else if(strcmp(argv[0], "move") == 0) {
+    if(argc != 2) {
+      shellPrintLine(chp, "Usage : lift (up|down|move h)");
+      return;
+    }
+    h = atoi(argv[1]);
+  }
+  else {
+    shellPrintLine(chp, "Usage : lift (up|down|move h)");
+    return;
+  }
+  liftGoto(h);
+}
 
 /*
  * Shell configuration variables
@@ -149,6 +187,8 @@ static const ShellCommand commands[] = {
   {"get", getHandler},
   {"demo", demoHandler},
   {"getSpeed", getSpeedHandler},
+  {"move", moveHandler},
+  {"lift", liftHandler},
   {NULL, NULL}
 };
 
