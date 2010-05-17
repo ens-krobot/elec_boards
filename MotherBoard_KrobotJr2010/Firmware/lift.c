@@ -68,5 +68,25 @@ void liftInit(void) {
 
   // TIM3 enable counter
   TIM_Cmd(TIM3, ENABLE);
+}
 
+// Set the lift position :
+//  * LIFT_DOWN : max down
+//  * LIFT_UP   : max up
+void liftGoto(uint16_t position) {
+
+  TIM_OCInitTypeDef  TIM_OCInitStructure;
+
+  if (position > LIFT_UP)
+    position = LIFT_UP;
+
+  // PWM1 Mode configuration: Channel1
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+
+  TIM_OCInitStructure.TIM_Pulse = (uint16_t)(6545 - (int32_t)position);
+  TIM_OC1Init(TIM3, &TIM_OCInitStructure);
+  TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+  TIM_ARRPreloadConfig(TIM3, ENABLE);
 }

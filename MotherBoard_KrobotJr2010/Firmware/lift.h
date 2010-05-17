@@ -13,6 +13,10 @@
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_rcc.h"
 
+#define LIFT_UP    3273
+#define LIFT_DOWN     0
+
 void liftInit(void);
+void liftGoto(uint16_t position);
 
 #endif
