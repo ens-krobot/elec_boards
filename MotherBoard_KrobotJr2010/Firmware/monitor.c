@@ -62,10 +62,13 @@ void getHandler(BaseChannel *chp, int argc, char* argv[]) {
                                       (position)%10);
 };
 
-void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
+void demoHandler(BaseChannel *chp, int argc, char* argv[]) {
 
   if (argc != 1) {    
-    shellPrintLine(chp, "Usage : move mode.");
+    shellPrintLine(chp, "Usage : demo mode.");
+    shellPrintLine(chp, " 1 : carré");
+    shellPrintLine(chp, " 2 : tourne");
+    shellPrintLine(chp, " 3 : tourne autour d'un point");
     return;
   }
   switch (argv[0][0]) {
@@ -129,6 +132,14 @@ void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
                                             (speed)%10);
 }
 
+void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
+
+  if (argc != 1) {    
+    shellPrintLine(chp, "Usage : move.");
+    return;
+  }
+}
+
 
 /*
  * Shell configuration variables
@@ -136,7 +147,7 @@ void getSpeedHandler(BaseChannel *chp, int argc, char* argv[]) {
 static const ShellCommand commands[] = {
   {"bonjour", bonjourHandler},
   {"get", getHandler},
-  {"move", moveHandler},
+  {"demo", demoHandler},
   {"getSpeed", getSpeedHandler},
   {NULL, NULL}
 };
