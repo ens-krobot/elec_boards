@@ -57,7 +57,7 @@ LDSCRIPT= ch.ld
 
 # Imported source files
 CHIBIOS = chibios
-include $(CHIBIOS)/boards/OLIMEX_STM32_P103/board.mk
+include $(CHIBIOS)/boards/KROBOTJR_MOTHERBOARD2010/board.mk
 include $(CHIBIOS)/os/hal/platforms/STM32/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F10x/port.mk
@@ -79,6 +79,8 @@ CSRC += $(CHIBIOS)/os/various/syscalls.c
 CSRC += $(CHIBIOS)/os/various/shell.c
 CSRC += monitor.c
 CSRC += can_monitor.c
+CSRC += lift.c
+CSRC += ax12.c
 CSRC += main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -160,7 +162,7 @@ CPPWARN = -Wall -Wextra
 #
 
 # List all default C defines here, like -D_DEBUG=1
-DDEFS = -DSTDOUT_SD=SD2 -DSTDIN_SD=SD2
+DDEFS = -DSTDOUT_SD=SD1 -DSTDIN_SD=SD1
 
 # List all default ASM defines here, like -D_DEBUG=1
 DADEFS =

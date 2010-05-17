@@ -135,7 +135,7 @@ void canSetSpeeds(int32_t motor1, int32_t motor2, int32_t motor3) {
   speedMsg_t *speedMsg;
 
   txmsg.cf_IDE = CAN_IDE_EXT;
-  txmsg.cf_EID = 0x300;
+  txmsg.cf_EID = 0x400;
   txmsg.cf_RTR = CAN_RTR_DATA;
   txmsg.cf_DLC = 8;
   speedMsg = (speedMsg_t*)(&(txmsg.cf_data8[0]));

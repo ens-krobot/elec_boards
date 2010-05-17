@@ -6,9 +6,9 @@
 #ifndef HEADER__MONITOR
 #define HEADER__MONITOR
 
-// Default to USART2
+// Default to USART1
 #ifndef MONITOR_USART
-#define MONITOR_USART SD2
+#define MONITOR_USART SD1
 #endif
 
 #include <stdio.h>

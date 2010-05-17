@@ -66,7 +66,7 @@
  * @brief Enables the ADC subsystem.
  */
 #if !defined(CH_HAL_USE_ADC) || defined(__DOXYGEN__)
-#define CH_HAL_USE_ADC              FALSE
+#define CH_HAL_USE_ADC              TRUE
 #endif
 
 /*===========================================================================*/
