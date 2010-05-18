@@ -10,6 +10,32 @@
 Thread *cdtp;
 
 /*
+ * Handmade atoi, because the one from standard lib does not work
+ */
+int32_t atoi_h(char *str) {
+  int32_t res = 0;
+  uint8_t neg = 0;
+
+  while(isspace((int)*str))
+    str++;
+
+  switch(*str) {
+    case '-':
+      neg = 1;
+    case '+':
+      str++;
+      break;
+  }
+
+  for(; isdigit((int)*str); str++) {
+    res *= 10;
+    res += *str - '0';
+  }
+
+  return neg? -res : res;
+}
+
+/*
  * Thread to print text into the monitor in a thread safe way
  */
 static msg_t consoleThread(void* arg) {
@@ -141,12 +167,12 @@ void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
     shellPrintLine(chp, "Usage : move ptX ptY vX vY omega t");
     return;
   }
-  ptX = atoi(argv[0]);
-  ptY = atoi(argv[1]);
-  vX = atoi(argv[2]);
-  vY = atoi(argv[3]);
-  omega = atoi(argv[4]);
-  t = atoi(argv[5]);
+  ptX = atoi_h(argv[0]);
+  ptY = atoi_h(argv[1]);
+  vX = atoi_h(argv[2]);
+  vY = atoi_h(argv[3]);
+  omega = atoi_h(argv[4]);
+  t = atoi_h(argv[5]);
 
   canSetScrew(ptX, ptY, vX, vY, omega);
   chThdSleepMilliseconds(t);
@@ -170,7 +196,7 @@ void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
       shellPrintLine(chp, "Usage : lift (up|down|move h)");
       return;
     }
-    h = atoi(argv[1]);
+    h = atoi_h(argv[1]);
   }
   else {
     shellPrintLine(chp, "Usage : lift (up|down|move h)");
