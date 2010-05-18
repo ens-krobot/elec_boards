@@ -107,6 +107,7 @@ void ax12Init(void) {
   palSetPad(IOPORT1, 1); // reading mode
 
   sdStart(&SD2, &ax12_config);
+  chIOPut(ax12_chp, 0xFF);
   //chThdCreateStatic(waThreadAX12Rec, sizeof(waThreadAX12Rec), NORMALPRIO+1, ThreadAX12Rec, NULL);
 }
 
@@ -121,11 +122,6 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
 
   chSysLock();
 
-  // Writing mode
-  palClearPad(IOPORT1, 1);
-
-  for (j=0; j < 1000; j++);
-
   chIOPut(ax12_chp, 0xFF);
   chIOPut(ax12_chp, 0xFF);
   chIOPut(ax12_chp, id);
@@ -136,5 +132,41 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
   chIOPut(ax12_chp, chksum);
 
   chSysUnlock();
-  // Reading mode will be set back automatically when the transmission is finished
+}
+
+void ax12Configure(uint8_t id) {
+
+  uint8_t paramsDelay[] = {P_RETURN_DELAY_TIME, 0x0A};
+  uint8_t paramsID[]    = {P_ID, id};
+
+  // Reset default settings
+  ax12SendPacket(ID_BROADCAST, INST_RESET, 0, NULL);
+  chThdSleepMilliseconds(1);
+  // Set response delay at maximum
+  ax12SendPacket(ID_BROADCAST, INST_WRITE, sizeof(paramsDelay), paramsDelay);
+  chThdSleepMilliseconds(1);
+  // Set ID
+  ax12SendPacket(ID_BROADCAST, INST_WRITE, sizeof(paramsID), paramsID);
+  chThdSleepMilliseconds(1);
+
+}
+
+void ax12Goto(uint8_t id, uint16_t position, uint16_t speed, uint8_t mode) {
+
+  uint8_t paramsGoto[] = {P_GOAL_POSITION, position%256, position/256, speed%256, speed/256};
+
+  if (mode == CMD_ACTION)
+    ax12SendPacket(id, INST_REG_WRITE, sizeof(paramsGoto), paramsGoto);
+  else
+    ax12SendPacket(id, INST_WRITE, sizeof(paramsGoto), paramsGoto);
+}
+
+void ax12Action(uint8_t id) {
+
+  ax12SendPacket(id, INST_ACTION, 0, NULL);
+}
+
+void ax12Ping(uint8_t id) {
+
+  ax12SendPacket(id, INST_PING, 0, NULL);
 }

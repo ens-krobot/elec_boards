@@ -108,11 +108,28 @@
 // --- Valeurs specifiques ---
 #define ID_BROADCAST                0xFE
 
-// Événements
+// Events
 #define EVT_AX12_ERROR              1
 #define EVT_AX12_PACKET             2
 
+// Command modes
+#define CMD_NOW                     1
+#define CMD_ACTION                  2
+
+// AX12 names
+#define AX12_ARM1                   1
+#define AX12_GRIP1                  2
+#define AX12_ARM2                   3
+#define AX12_GRIP2                  4
+#define AX12_ARM3                   5
+#define AX12_GRIP3                  6
+
 void ax12Init(void);
 void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *params);
+void ax12Configure(uint8_t id);
+void ax12Goto(uint8_t id, uint16_t position, uint16_t speed, uint8_t mode);
+void ax12Action(uint8_t id);
+void ax12Ping(uint8_t id);
+
 
 #endif

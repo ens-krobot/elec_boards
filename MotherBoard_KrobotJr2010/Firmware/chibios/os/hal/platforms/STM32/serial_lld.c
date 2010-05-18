@@ -212,8 +212,10 @@ static void serve_interruptAX12(SerialDriver *sdp) {
       u->CR1 &= ~USART_CR1_TXEIE; /* Deshabilito interrupcion por Data Register Empty */
       u->CR1 |= USART_CR1_TCIE; /* y la habilito para cuando termine la transmision */
     }
-    else
+    else {
+      palClearPad(IOPORT1, 1);
       u->DR = b;
+    }
     
     chSysUnlockFromIsr();
   }
