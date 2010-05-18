@@ -182,8 +182,8 @@ void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
 
   uint16_t h;
 
-  if (argc != 1 && argc != 2) {    
-    shellPrintLine(chp, "Usage : lift (up|down|move h)");
+  if (argc != 1) {    
+    shellPrintLine(chp, "Usage : lift (up|down|h)");
     return;
   }
 
@@ -191,18 +191,56 @@ void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
     h = LIFT_UP;
   else if(strcmp(argv[0], "down") == 0)
     h = LIFT_DOWN;
-  else if(strcmp(argv[0], "move") == 0) {
-    if(argc != 2) {
-      shellPrintLine(chp, "Usage : lift (up|down|move h)");
-      return;
-    }
+  else
     h = atoi_h(argv[1]);
-  }
-  else {
-    shellPrintLine(chp, "Usage : lift (up|down|move h)");
+  
+  liftGoto(h);
+}
+
+void ax12Handler(BaseChannel *chp, int argc, char* argv[]) {
+
+  uint8_t id;
+  uint16_t pos, spd;
+
+  if (argc < 2) {    
+    shellPrintLine(chp, "Usage : ax12 (config|goto|goto_delayed|action) id ...");
     return;
   }
-  liftGoto(h);
+
+  id = atoi_h(argv[1]);
+
+  if(strcmp(argv[0], "config") == 0) {
+    if (argc != 2) {
+        shellPrintLine(chp, "Usage : ax12 config id");
+        return;
+    }
+    ax12Configure(id);
+  }
+  else if(strcmp(argv[0], "goto") == 0) {
+    if (argc != 4) {
+        shellPrintLine(chp, "Usage : ax12 goto id pos speed");
+        return;
+    }
+    pos = atoi_h(argv[2]);
+    spd = atoi_h(argv[3]);
+    ax12Goto(id, pos, spd, CMD_NOW);
+  }
+  else if(strcmp(argv[0], "goto_delayed") == 0) {
+    if (argc != 4) {
+        shellPrintLine(chp, "Usage : ax12 goto_delayed id pos speed");
+        return;
+    }
+    pos = atoi_h(argv[2]);
+    spd = atoi_h(argv[3]);
+    ax12Goto(id, pos, spd, CMD_ACTION);
+  }
+  else if(strcmp(argv[0], "action") == 0) {
+    ax12Action(id);
+  }
+  else {
+    shellPrintLine(chp, "Usage : ax12 (config|goto|goto_delayed|action) ...");
+    return;
+  }
 }
 
 /*

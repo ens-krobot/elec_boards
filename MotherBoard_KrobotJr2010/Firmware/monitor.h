@@ -19,6 +19,7 @@
 #include "hal.h"
 #include "shell.h"
 #include "can_monitor.h"
+#include "ax12.h"
 #include "lift.h"
 
 extern Thread *cdtp;
