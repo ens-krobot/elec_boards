@@ -253,6 +253,7 @@ static const ShellCommand commands[] = {
   {"getSpeed", getSpeedHandler},
   {"move", moveHandler},
   {"lift", liftHandler},
+  {"ax12", ax12Handler},
   {NULL, NULL}
 };
 
