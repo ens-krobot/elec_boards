@@ -176,6 +176,7 @@ void moveHandler(BaseChannel *chp, int argc, char* argv[]) {
 
   canSetScrew(ptX, ptY, vX, vY, omega);
   chThdSleepMilliseconds(t);
+  canSetScrew(0, 0, 0, 0, 0);
 }
 
 void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
