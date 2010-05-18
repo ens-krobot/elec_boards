@@ -119,6 +119,8 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
     chksum += params[i];
   chksum = ~chksum;
 
+  chSysLock();
+
   // Writing mode
   palClearPad(IOPORT1, 1);
 
@@ -133,13 +135,6 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
     chIOPut(ax12_chp, params[i]);
   chIOPut(ax12_chp, chksum);
 
-  chSysLock();
-
-  while (chIOPutWouldBlock(ax12_chp)) ;
-
-  chThdSleep(1);
-
   chSysUnlock();
-
-  palSetPad(IOPORT1, 1);
+  // Reading mode will be set back automatically when the transmission is finished
 }

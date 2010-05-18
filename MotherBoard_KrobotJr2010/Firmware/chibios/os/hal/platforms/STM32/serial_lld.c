@@ -178,6 +178,54 @@ static void serve_interrupt(SerialDriver *sdp) {
   }
 }
 
+/**
+ * @brief Common IRQ handler for rs485.
+ *
+ * @param[in] sdp       communication channel associated to the USART
+ */
+
+static void serve_interruptAX12(SerialDriver *sdp) {
+
+  USART_TypeDef *u = sdp->usart;
+  uint16_t cr1 = u->CR1;
+  uint16_t sr = u->SR; /* SR reset step 1.*/
+  uint16_t dr = u->DR; /* SR reset step 2.*/
+  
+  if (sr & (USART_SR_LBD | USART_SR_ORE | USART_SR_NE |
+            USART_SR_FE | USART_SR_PE)) {
+    set_error(sdp, sr);
+    u->SR = 0; /* Clears the LBD bit in the SR.*/
+  }
+  
+  if (sr & USART_SR_RXNE) {    
+    chSysLockFromIsr();
+    sdIncomingDataI(sdp, (uint8_t)dr);
+    chSysUnlockFromIsr();
+  }
+  
+  if ((cr1 & USART_CR1_TXEIE) && (sr & USART_SR_TXE)) {
+    msg_t b;
+    chSysLockFromIsr();
+    b = chOQGetI(&sdp->oqueue);
+    if (b < Q_OK) {
+      chEvtBroadcastI(&sdp->oevent);
+      u->CR1 &= ~USART_CR1_TXEIE; /* Deshabilito interrupcion por Data Register Empty */
+      u->CR1 |= USART_CR1_TCIE; /* y la habilito para cuando termine la transmision */
+    }
+    else
+      u->DR = b;
+    
+    chSysUnlockFromIsr();
+  }
+
+  if (sr & USART_SR_TC) {    
+    palSetPad(IOPORT1, 1); /* Desactivo TX */ // antes TXRX1_PIN
+    u->CR1 &= ~USART_CR1_TCIE; /* Deshabilito interrupcion por Transmision completed */
+    u->SR &= ~USART_SR_TC; /* quito el flag de Transmision Complete */
+  }
+}
+
+
 #if USE_STM32_USART1 || defined(__DOXYGEN__)
 static void notify1(void) {
 
@@ -235,7 +283,7 @@ CH_IRQ_HANDLER(VectorD8) {
 
   CH_IRQ_PROLOGUE();
 
-  serve_interrupt(&SD2);
+  serve_interruptAX12(&SD2);
 
   CH_IRQ_EPILOGUE();
 }
