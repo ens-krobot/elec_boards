@@ -200,7 +200,7 @@ void liftHandler(BaseChannel *chp, int argc, char* argv[]) {
 
 void ax12Handler(BaseChannel *chp, int argc, char* argv[]) {
 
-  uint8_t id;
+  uint8_t id, new_id;
   uint16_t pos, spd;
 
   if (argc < 2) {    
@@ -211,11 +211,12 @@ void ax12Handler(BaseChannel *chp, int argc, char* argv[]) {
   id = atoi_h(argv[1]);
 
   if(strcmp(argv[0], "config") == 0) {
-    if (argc != 2) {
-        shellPrintLine(chp, "Usage : ax12 config id");
+    if (argc != 3) {
+        shellPrintLine(chp, "Usage : ax12 config old_id new_id");
         return;
     }
-    ax12Configure(id);
+    new_id = atoi_h(argv[2]);
+    ax12Configure(id, new_id);
   }
   else if(strcmp(argv[0], "goto") == 0) {
     if (argc != 4) {

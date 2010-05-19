@@ -126,7 +126,7 @@
 
 void ax12Init(void);
 void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *params);
-void ax12Configure(uint8_t id);
+void ax12Configure(uint8_t old_id, uint8_t new_id);
 void ax12Goto(uint8_t id, uint16_t position, uint16_t speed, uint8_t mode);
 void ax12Action(uint8_t id);
 void ax12Ping(uint8_t id);

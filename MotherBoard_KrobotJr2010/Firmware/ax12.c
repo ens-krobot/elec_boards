@@ -134,19 +134,22 @@ void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *param
   chSysUnlock();
 }
 
-void ax12Configure(uint8_t id) {
+void ax12Configure(uint8_t old_id, uint8_t new_id) {
 
   uint8_t paramsDelay[] = {P_RETURN_DELAY_TIME, 0x0A};
-  uint8_t paramsID[]    = {P_ID, id};
+  uint8_t paramsID[]    = {P_ID, new_id};
 
+  // UNSAFE !!
+  /*
   // Reset default settings
   ax12SendPacket(ID_BROADCAST, INST_RESET, 0, NULL);
   chThdSleepMilliseconds(1);
   // Set response delay at maximum
   ax12SendPacket(ID_BROADCAST, INST_WRITE, sizeof(paramsDelay), paramsDelay);
   chThdSleepMilliseconds(1);
+  */
   // Set ID
-  ax12SendPacket(ID_BROADCAST, INST_WRITE, sizeof(paramsID), paramsID);
+  ax12SendPacket(old_id, INST_WRITE, sizeof(paramsID), paramsID);
   chThdSleepMilliseconds(1);
 
 }
