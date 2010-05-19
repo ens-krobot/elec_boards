@@ -150,8 +150,6 @@ void ax12Configure(uint8_t old_id, uint8_t new_id) {
   */
   // Set ID
   ax12SendPacket(old_id, INST_WRITE, sizeof(paramsID), paramsID);
-  chThdSleepMilliseconds(1);
-
 }
 
 void ax12Goto(uint8_t id, uint16_t position, uint16_t speed, uint8_t mode) {
