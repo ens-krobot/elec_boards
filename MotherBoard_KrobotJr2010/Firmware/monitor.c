@@ -203,8 +203,8 @@ void ax12Handler(BaseChannel *chp, int argc, char* argv[]) {
   uint8_t id, new_id;
   uint16_t pos, spd;
 
-  if (argc < 2) {    
-    shellPrintLine(chp, "Usage : ax12 (config|goto|goto_delayed|action) id ...");
+  if (argc < 1) {    
+    shellPrintLine(chp, "Usage : ax12 (config|goto|goto_delayed|action|open|close) id ...");
     return;
   }
 
@@ -238,6 +238,153 @@ void ax12Handler(BaseChannel *chp, int argc, char* argv[]) {
   }
   else if(strcmp(argv[0], "action") == 0) {
     ax12Action(id);
+  }
+  else if(strcmp(argv[0], "open") == 0) {
+    if (argc == 1) {
+      ax12Goto(AX12_GRIP1, GRIP_OPEN, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP2, GRIP_OPEN, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP3, GRIP_OPEN, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Action(ID_BROADCAST);
+    }
+    else if (argc == 2) {
+      switch(argv[1][0]) {
+      case '1':
+        ax12Goto(AX12_GRIP1, GRIP_OPEN, 0, CMD_NOW);
+        break;
+      case '2':
+        ax12Goto(AX12_GRIP2, GRIP_OPEN, 0, CMD_NOW);
+        break;
+      case '3':
+        ax12Goto(AX12_GRIP3, GRIP_OPEN, 0, CMD_NOW);
+        break;
+      default:
+        shellPrintLine(chp, "Identifiant de pince entre 1 et 3");
+        break;
+      }
+    }
+    else {
+      shellPrintLine(chp, "Usage : ax12 open [id]");
+    }
+  }
+  else if(strcmp(argv[0], "close") == 0) {
+    if (argc == 1) {
+      ax12Goto(AX12_GRIP1, GRIP_CLOSE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP2, GRIP_CLOSE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP3, GRIP_CLOSE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Action(ID_BROADCAST);
+    }
+    else if (argc == 2) {
+      switch(argv[1][0]) {
+      case '1':
+        ax12Goto(AX12_GRIP1, GRIP_CLOSE, 0, CMD_NOW);
+        break;
+      case '2':
+        ax12Goto(AX12_GRIP2, GRIP_CLOSE, 0, CMD_NOW);
+        break;
+      case '3':
+        ax12Goto(AX12_GRIP3, GRIP_CLOSE, 0, CMD_NOW);
+        break;
+      default:
+        shellPrintLine(chp, "Identifiant de pince entre 1 et 3");
+        break;
+      }
+    }
+    else {
+      shellPrintLine(chp, "Usage : ax12 close [id]");
+    }
+  }
+  else if(strcmp(argv[0], "release") == 0) {
+    if (argc == 1) {
+      ax12Goto(AX12_GRIP1, GRIP_RELEASE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP2, GRIP_RELEASE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_GRIP3, GRIP_RELEASE, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Action(ID_BROADCAST);
+    }
+    else if (argc == 2) {
+      switch(argv[1][0]) {
+      case '1':
+        ax12Goto(AX12_GRIP1, GRIP_RELEASE, 0, CMD_NOW);
+        break;
+      case '2':
+        ax12Goto(AX12_GRIP2, GRIP_RELEASE, 0, CMD_NOW);
+        break;
+      case '3':
+        ax12Goto(AX12_GRIP3, GRIP_RELEASE, 0, CMD_NOW);
+        break;
+      default:
+        shellPrintLine(chp, "Identifiant de pince entre 1 et 3");
+        break;
+      }
+    }
+    else {
+      shellPrintLine(chp, "Usage : ax12 close [id]");
+    }
+  }
+  else if(strcmp(argv[0], "get") == 0) {
+    if (argc == 1) {
+      ax12Goto(AX12_ARM1, ARM_GET, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_ARM2, ARM_GET, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_ARM3, ARM_GET, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Action(ID_BROADCAST);
+    }
+    else if (argc == 2) {
+      switch(argv[1][0]) {
+      case '1':
+        ax12Goto(AX12_ARM1, ARM_GET, 0, CMD_NOW);
+        break;
+      case '2':
+        ax12Goto(AX12_ARM2, ARM_GET, 0, CMD_NOW);
+        break;
+      case '3':
+        ax12Goto(AX12_ARM3, ARM_GET, 0, CMD_NOW);
+        break;
+      default:
+        shellPrintLine(chp, "Identifiant de pince entre 1 et 3");
+        break;
+      }
+    }
+  }
+  else if(strcmp(argv[0], "carry") == 0) {
+    if (argc == 1) {
+      ax12Goto(AX12_ARM1, ARM_CARRY, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_ARM2, ARM_CARRY, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Goto(AX12_ARM3, ARM_CARRY, 0, CMD_ACTION);
+      chThdSleepMilliseconds(5);
+      ax12Action(ID_BROADCAST);
+    }
+    else if (argc == 2) {
+      switch(argv[1][0]) {
+      case '1':
+        ax12Goto(AX12_ARM1, ARM_CARRY, 0, CMD_NOW);
+        break;
+      case '2':
+        ax12Goto(AX12_ARM2, ARM_CARRY, 0, CMD_NOW);
+        break;
+      case '3':
+        ax12Goto(AX12_ARM3, ARM_CARRY, 0, CMD_NOW);
+        break;
+      default:
+        shellPrintLine(chp, "Identifiant de pince entre 1 et 3");
+        break;
+      }
+    }
+    else {
+      shellPrintLine(chp, "Usage : ax12 close [id]");
+    }
   }
   else {
     shellPrintLine(chp, "Usage : ax12 (config|goto|goto_delayed|action) ...");
