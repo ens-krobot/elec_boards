@@ -124,6 +124,14 @@
 #define AX12_ARM3                   6
 #define AX12_GRIP3                  7
 
+// AX12 positions
+#define GRIP_OPEN                 250
+#define GRIP_CLOSE                435
+#define GRIP_RELEASE              350
+
+#define ARM_GET                   512
+#define ARM_CARRY                 200
+
 void ax12Init(void);
 void ax12SendPacket(uint8_t id, uint8_t instruction, uint8_t len, uint8_t *params);
 void ax12Configure(uint8_t old_id, uint8_t new_id);
