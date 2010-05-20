@@ -5,13 +5,14 @@
 
 #include "motor.h"
 
-uint8_t enabledMotors = 0;
+uint8_t enabledMotors = 0, indMotors = 0;
 signed char currentSpeedSign[] = {0, 0, 0};
+TIM_OCInitTypeDef  TIM_OCInitStructure;
 
 /*
  * Interrupt routine for PWM generation
  */
-void VectorB0(void) {
+/*void VectorB0(void) {
 
   if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
   {
@@ -45,7 +46,7 @@ void VectorB0(void) {
 
     GPIO_SetBits(GPIOA, GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3);
   }
-}
+  }*/
 
 /*
  * Initialises TIM2 for PWM generation and associated GPIOs
@@ -53,7 +54,6 @@ void VectorB0(void) {
 void motorsInit(void) {
 
   TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-  TIM_OCInitTypeDef       TIM_OCInitStructure;
   GPIO_InitTypeDef        GPIO_InitStructure;
   
   //Enable GPIOB and GPIOC clock
@@ -68,16 +68,19 @@ void motorsInit(void) {
   //         IN1  PB0
   //         IN2  PB1
   //         PWM  PA1
+  //         IND  PC3
   //Motor2 : STBY PC0
   //         IN1  PC1
   //         IN2  PC2
   //         PWM  PA2
+  //         IND  PC5
   //Motor3 : STBY PC6
   //         IN1  PC7
   //         IN2  PC8
   //         PWM  PA3
-  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_6
-                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_10 | GPIO_Pin_13);
+  //         IND  PC9
+  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6
+                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_13);
   GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_Out_PP;
   GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
   GPIO_Init(GPIOC, &GPIO_InitStructure);
@@ -86,6 +89,7 @@ void motorsInit(void) {
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
   GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;
+  GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF_PP;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   // Default value of H-Bridge configuration
@@ -94,37 +98,32 @@ void motorsInit(void) {
                            | GPIO_Pin_3 | GPIO_Pin_9 | GPIO_Pin_13);
 
   // TimeBase configuration
-  TIM_TimeBaseStructure.TIM_Prescaler     = 0;
+  TIM_TimeBaseStructure.TIM_Prescaler     = (uint16_t) (72000000 / 72000000) - 1;;
   TIM_TimeBaseStructure.TIM_CounterMode   = TIM_CounterMode_Up;
-  TIM_TimeBaseStructure.TIM_Period        = 36000; // 2 kHz
+  TIM_TimeBaseStructure.TIM_Period        = 3600; // 20 kHz
   TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-  TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
   
-  // Output Compare Active Mode configuration: Channel1
-  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_Inactive;
-  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Disable;
-  TIM_OCInitStructure.TIM_Pulse = 18000;
+  // PWM1 Mode configuration: Channel1
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+  TIM_OCInitStructure.TIM_Pulse = 0;
   TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
-  TIM_OC1Init(TIM2, &TIM_OCInitStructure);
   TIM_OC2Init(TIM2, &TIM_OCInitStructure);
+  TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
   TIM_OC3Init(TIM2, &TIM_OCInitStructure);
-  TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Disable);
-  TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Disable);
-  TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Disable);
-
-  // Enable interrupt vector
-  NVICEnableVector(TIM2_IRQn, 0);
-
-  // TIM IT enable
-  TIM_ITConfig(TIM2, TIM_IT_CC1 | TIM_IT_CC2 | TIM_IT_CC3 | TIM_IT_Update, ENABLE);
+  TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
+  TIM_OC4Init(TIM2, &TIM_OCInitStructure);
+  TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
 
   // All motors are disabled
   enabledMotors = 0;
 
   //Enable timer Peripherals
   TIM_Cmd(TIM2,ENABLE);
+
+  GPIO_ResetBits(GPIOC, GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_9);
 }
 
 /*
@@ -170,15 +169,22 @@ void disableMotor(uint8_t motor) {
  */
 void motorSetSpeed(uint8_t motor, int32_t speed) {
 
+  uint8_t ind = 0;
+
   if (speed == 0) {
     motorStop(motor, MOTOR_BRAKE);
     return;
   }
 
-  if (speed >= MAX_PWM)
+  if (speed >= MAX_PWM) {
     speed = MAX_PWM;
-  if (speed <= -MAX_PWM)
+    ind = 1;
+  } else if (speed <= -MAX_PWM) {
     speed = -MAX_PWM;
+    ind = 1;
+  } else {
+    ind = 0;
+  }
 
   if (motor & MOTOR1) {
     if(speed > 0) {
@@ -187,14 +193,26 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
         GPIO_SetBits(GPIOB, GPIO_Pin_1);
         GPIO_ResetBits(GPIOB, GPIO_Pin_0);
       }
-      TIM_SetCompare1(TIM2, (uint16_t)speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
     } else {
       if (currentSpeedSign[0] != -1) {
         currentSpeedSign[0] = -1;
         GPIO_SetBits(GPIOB, GPIO_Pin_0);
         GPIO_ResetBits(GPIOB, GPIO_Pin_1);
       }
-      TIM_SetCompare1(TIM2, (uint16_t)(-speed));
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+    }
+    TIM_OC2Init(TIM2, &TIM_OCInitStructure);
+    TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
+    TIM_ARRPreloadConfig(TIM2, ENABLE);
+    if (ind) {
+      if ((indMotors & MOTOR1) == 0) {
+        GPIO_SetBits(GPIOC, GPIO_Pin_3);
+        indMotors |= MOTOR1;
+      }
+    } else if ((indMotors & MOTOR1) != 0) {
+      GPIO_ResetBits(GPIOC, GPIO_Pin_3);
+      indMotors &= ~MOTOR1;
     }
   }
   if (motor & MOTOR2) {
@@ -204,14 +222,26 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
         GPIO_SetBits(GPIOC, GPIO_Pin_2);
         GPIO_ResetBits(GPIOC, GPIO_Pin_1);
       }
-      TIM_SetCompare2(TIM2, (uint16_t)speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
     } else {
       if (currentSpeedSign[1] != -1) {
         currentSpeedSign[1] = -1;
         GPIO_SetBits(GPIOC, GPIO_Pin_1);
         GPIO_ResetBits(GPIOC, GPIO_Pin_2);
       }
-      TIM_SetCompare2(TIM2, (uint16_t)(-speed));
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+    }
+    TIM_OC3Init(TIM2, &TIM_OCInitStructure);
+    TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
+    TIM_ARRPreloadConfig(TIM2, ENABLE);
+    if (ind) {
+      if ((indMotors & MOTOR2) == 0) {
+        GPIO_SetBits(GPIOC, GPIO_Pin_5);
+        indMotors |= MOTOR2;
+      }
+    } else if ((indMotors & MOTOR2) != 0) {
+      GPIO_ResetBits(GPIOC, GPIO_Pin_5);
+      indMotors &= ~MOTOR2;
     }
   }
   if (motor & MOTOR3) {
@@ -221,7 +251,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
         GPIO_SetBits(GPIOC, GPIO_Pin_8);
         GPIO_ResetBits(GPIOC, GPIO_Pin_7);
       }
-      TIM_SetCompare3(TIM2, (uint16_t)speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
     } else {
       if (currentSpeedSign[2] != -1) {
         currentSpeedSign[2] = -1;
@@ -229,6 +259,18 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
         GPIO_ResetBits(GPIOC, GPIO_Pin_8);
       }
       TIM_SetCompare3(TIM2, (uint16_t)(-speed));
+    }
+    TIM_OC4Init(TIM2, &TIM_OCInitStructure);
+    TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
+    TIM_ARRPreloadConfig(TIM2, ENABLE);
+    if (ind) {
+      if ((indMotors & MOTOR3) == 0) {
+        GPIO_SetBits(GPIOC, GPIO_Pin_9);
+        indMotors |= MOTOR3;
+      }
+    } else if ((indMotors & MOTOR3) != 0) {
+      GPIO_ResetBits(GPIOC, GPIO_Pin_9);
+      indMotors &= ~MOTOR3;
     }
   }
 }

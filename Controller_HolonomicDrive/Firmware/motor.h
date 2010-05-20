@@ -13,7 +13,7 @@
 #define MOTOR_STOP    1
 #define MOTOR_BRAKE   2
 
-#define MAX_PWM  35000
+#define MAX_PWM  3600
 
 #include "ch.h"
 #include "nvic.h"
