@@ -8,7 +8,7 @@
 #define MAX(x,y) ((x) > (y) ? (x) : (y))
 #define MIN(x,y) ((x) > (y) ? (y) : (x))
 
-int32_t ref_speeds[3] = {0, 0, 0};
+volatile int32_t ref_speeds[3] = {0, 0, 0};
 volatile int32_t cur_speeds[3] = {0, 0, 0};
 
 /*
@@ -30,13 +30,14 @@ static msg_t ThreadSpeedController(void *arg) {
   time = chTimeNow();
 
   while (TRUE) {
-    time += MS2ST(Te);
+    time += MS2ST(Tcomp);
 
     prev_positions[0] = getEncoderPosition(ENCODER1);
     prev_positions[1] = getEncoderPosition(ENCODER2);
     prev_positions[2] = getEncoderPosition(ENCODER3);
 
-    chThdSleepMilliseconds(Tcomp);
+    time += MS2ST(Te-Tcomp);
+    chThdSleepUntil(time);
 
     positions[0] = getEncoderPosition(ENCODER1);
     positions[1] = getEncoderPosition(ENCODER2);
@@ -51,9 +52,9 @@ static msg_t ThreadSpeedController(void *arg) {
     errors[2] = ref_speeds[2] - cur_speeds[2];
 
     //--> Command computation
-    commands[0] = (K_Pn + K_In)*errors[0] - K_Pn*last_errors[0] + last_commands[0];
-    commands[1] = (K_Pn + K_In)*errors[1] - K_Pn*last_errors[1] + last_commands[1];
-    commands[2] = (K_Pn + K_In)*errors[2] - K_Pn*last_errors[2] + last_commands[2];
+    commands[0] = ((K_Pn + K_In)*errors[0] - K_Pn*last_errors[0] + 100*last_commands[0])/100;
+    commands[1] = ((K_Pn + K_In)*errors[1] - K_Pn*last_errors[1] + 100*last_commands[1])/100;
+    commands[2] = ((K_Pn + K_In)*errors[2] - K_Pn*last_errors[2] + 100*last_commands[2])/100;
     //--> End of command computation
     
     if (commands[0] >= 0)
@@ -81,7 +82,7 @@ static msg_t ThreadSpeedController(void *arg) {
       commands[2] = 0;
     last_errors[0] = errors[0];
     last_errors[1] = errors[1];
-    last_errors[2] = errors[2];      
+    last_errors[2] = errors[2];
     
     motorSetSpeed(MOTOR1, commands[0]);
     motorSetSpeed(MOTOR2, commands[1]);
