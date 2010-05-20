@@ -6,17 +6,17 @@
 #ifndef HEADER__SPEEDCONTROL
 #define HEADER__SPEEDCONTROL
 
-#define K_P     17
-#define K_I      1
-#define Tcomp   15 // speed will be computed on a Tcomp timesample
-#define Te      50
+#define K_P    80
+#define K_I     1
+#define Tcomp  100 // speed will be computed on a Tcomp timesample
+#define Te     110
 
 #define K_v   (1000/Tcomp)
 #define K_Pn        K_P
-#define K_In   10//(K_I)*Te
+#define K_In    10//(K_I)*Te
 
-#define DEAD_ZONE       100
-#define MAX_COMMAND   35500
+#define DEAD_ZONE         0
+#define MAX_COMMAND    3600
 
 #include "ch.h"
 #include "motor.h"
