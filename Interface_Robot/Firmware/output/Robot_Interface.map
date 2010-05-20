@@ -1,5 +1,5 @@
 MPLINK 4.21, Linker
-Linker Map File - Created Sun May 16 19:49:05 2010
+Linker Map File - Created Thu May 20 21:30:18 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -223,7 +223,7 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-           BlinkUSBStatus   0x0018ca    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+           BlinkUSBStatus   0x0018ca    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                   BusyADC   0x004660    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
                  CloseI2C   0x00466a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
                    D10K_1   0x0045b0    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
@@ -245,12 +245,12 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                     FPS32   0x002e64    program     extern C:\MCC18\src\traditional\math\addFP.asm
                  FXD3232U   0x0042b6    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
                  FXM1616U   0x003112    program     extern C:\MCC18\src\traditional\math\fxm1616u.asm
-                 High_ISR   0x000008    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                 High_ISR   0x000008    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                   INT3216   0x00314e    program     extern C:\MCC18\src\traditional\math\castFP16.asm
                   INT3232   0x0031ac    program     extern C:\MCC18\src\traditional\math\castFP32.asm
                   IdleI2C   0x004644    program     extern C:\MCC18\src\pmc_common\i2c\i2c_idle.c
-         InitializeSystem   0x000984    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  Low_ISR   0x000018    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+         InitializeSystem   0x000984    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  Low_ISR   0x000018    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                   OpenADC   0x004112    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
                   OpenI2C   0x0044d8    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
                  OpenPWM1   0x004544    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
@@ -259,58 +259,58 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000818    program   0x000006
                OpenTimer2   0x0044a2    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
                OpenTimer3   0x0042fe    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
                 OpenUSART   0x004012    program     extern C:\MCC18\src\pmc_common\USART\uopen.c
-                ProcessIO   0x000a12    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                ProcessIO   0x000a12    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                   ReadADC   0x004632    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
-               ReadEEPROM   0x00422c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+               ReadEEPROM   0x00422c    program     extern Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
                 ReadUSART   0x004344    program     extern C:\MCC18\src\pmc_common\USART\uread.c
-        Remapped_High_ISR   0x000808    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-         Remapped_Low_ISR   0x000818    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              ResetSource   0x001ae2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+        Remapped_High_ISR   0x000808    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+         Remapped_Low_ISR   0x000818    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              ResetSource   0x001ae2    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
            SelChanConvADC   0x004574    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
                 SetDCPWM1   0x004258    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
-       USBCBCheckOtherReq   0x0019f2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-        USBCBErrorHandler   0x0019f0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              USBCBInitEP   0x0019f8    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-          USBCBSendResume   0x001a30    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-    USBCBStdSetDscHandler   0x0019f6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-             USBCBSuspend   0x001948    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-     USBCBWakeFromSuspend   0x001986    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-        USBCB_SOF_Handler   0x0019ee    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-       USBCheckHIDRequest   0x003df6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-       USBCheckStdRequest   0x002008    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-    USBClearInterruptFlag   0x0025be    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBConfigureEndpoint   0x00247a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-         USBCtrlEPService   0x001e92    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
- USBCtrlEPServiceComplete   0x002272    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfInHandler   0x001f66    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBCtrlTrfOutHandler   0x001f4a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfRxService   0x00238c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   USBCtrlTrfSetupHandler   0x001f26    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfTxService   0x0022e6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-            USBDeviceInit   0x001cb4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-           USBDeviceTasks   0x001d20    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-        USBEnableEndpoint   0x0024f2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-         USBStallEndpoint   0x00252c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-          USBStallHandler   0x001e42    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-  USBStdFeatureReqHandler   0x0020b0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBStdGetDscHandler   0x002172    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   USBStdGetStatusHandler   0x0021f4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBStdSetCfgHandler   0x002444    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-               USBSuspend   0x001e68    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBTransferOnePacket   0x002556    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       USBWakeFromSuspend   0x001e7a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-               USB_CD_Ptr   0x003f6c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x003f6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                 UserInit   0x00098e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              WriteEEPROM   0x0041ec    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+       USBCBCheckOtherReq   0x0019f2    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+        USBCBErrorHandler   0x0019f0    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              USBCBInitEP   0x0019f8    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+          USBCBSendResume   0x001a30    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+    USBCBStdSetDscHandler   0x0019f6    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+             USBCBSuspend   0x001948    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+     USBCBWakeFromSuspend   0x001986    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+        USBCB_SOF_Handler   0x0019ee    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+       USBCheckHIDRequest   0x003df6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+       USBCheckStdRequest   0x002008    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+    USBClearInterruptFlag   0x0025be    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBConfigureEndpoint   0x00247a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+         USBCtrlEPService   0x001e92    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+ USBCtrlEPServiceComplete   0x002272    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfInHandler   0x001f66    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBCtrlTrfOutHandler   0x001f4a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfRxService   0x00238c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   USBCtrlTrfSetupHandler   0x001f26    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfTxService   0x0022e6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+            USBDeviceInit   0x001cb4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+           USBDeviceTasks   0x001d20    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+        USBEnableEndpoint   0x0024f2    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+         USBStallEndpoint   0x00252c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+          USBStallHandler   0x001e42    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+  USBStdFeatureReqHandler   0x0020b0    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBStdGetDscHandler   0x002172    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   USBStdGetStatusHandler   0x0021f4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBStdSetCfgHandler   0x002444    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+               USBSuspend   0x001e68    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBTransferOnePacket   0x002556    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       USBWakeFromSuspend   0x001e7a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+               USB_CD_Ptr   0x003f6c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003f6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                 UserInit   0x00098e    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              WriteEEPROM   0x0041ec    program     extern Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
                  WriteI2C   0x004382    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
               WriteTimer0   0x004432    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
               WriteTimer3   0x0043fa    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
                WriteUSART   0x0045d2    program     extern C:\MCC18\src\pmc_common\USART\uwrite.c
-  YourHighPriorityISRCode   0x000874    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-   YourLowPriorityISRCode   0x000934    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+  YourHighPriorityISRCode   0x000874    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+   YourLowPriorityISRCode   0x000934    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
               _2jContinue   0x0041a0    program     static C:\MCC18\src\traditional\stdclib\memset.asm
                    _3jEnd   0x0041aa    program     static C:\MCC18\src\traditional\stdclib\memset.asm
        _D10KTCYXCODE_0010   0x0045b4    program     static C:\MCC18\src\traditional\delays\d10ktcyx.asm
@@ -465,138 +465,138 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
    ___switchexit_lbl00106   0x0016fe    program     static                          
    ___switchexit_lbl00153   0x001ad6    program     static                          
                    __init   0x00466e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-                   __pa_0   0x004536    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                   __pa_0   0x0038fe    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_0   0x003bd8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_0   0x003cca    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_0   0x003d88    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_0   0x002cda    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_0   0x00368e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_0   0x004248    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                   __pa_0   0x0025e8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_0   0x004536    program     static Z:\elec\boards\Interface_Robot\Firmware\error.c
+                   __pa_0   0x0038fe    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_0   0x003bd8    program     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_0   0x003cca    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_0   0x003d88    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_0   0x002cda    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_0   0x00368e    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_0   0x004248    program     static Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
+                   __pa_0   0x0025e8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                    __pa_0   0x004102    program     static C:\MCC18\src\pmc_common\i2c\i2c_puts.c
-                   __pa_0   0x001b2e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_1   0x003bea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_1   0x003956    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_1   0x0025f6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_1   0x002ce6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_1   0x003cd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_1   0x00369c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_1   0x001b6a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_1   0x003dae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                  __pa_10   0x001c2a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_10   0x002d68    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_10   0x003718    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_10   0x002646    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_11   0x002d76    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_11   0x001c38    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_11   0x002656    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_11   0x00372c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_12   0x002d80    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_12   0x00373e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_12   0x001c42    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_12   0x00266a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_13   0x002d86    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_13   0x001c56    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_13   0x003748    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_13   0x00267c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_14   0x002d90    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_14   0x003752    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_14   0x001c5e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_14   0x002688    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_15   0x001c6a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_15   0x0026a4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_15   0x002da4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_15   0x00375c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_16   0x001c74    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_16   0x002dae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_16   0x0026aa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_16   0x003766    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_17   0x0026b4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_17   0x002dba    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_17   0x001c84    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_18   0x0026c0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_18   0x002dc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_18   0x001c8c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_19   0x002dd2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_19   0x001c94    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_19   0x0026cc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_2   0x002d04    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_2   0x0025fc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_2   0x00397a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_2   0x0036ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_2   0x003d02    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_2   0x001bbc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_2   0x003dc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                  __pa_20   0x002dda    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_20   0x0026dc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_20   0x001c9e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_21   0x0026ec    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_21   0x001ca6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_22   0x0026fc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_23   0x00270a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_24   0x002718    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_25   0x002726    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_26   0x002734    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_27   0x002742    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_28   0x00275a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_29   0x002776    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_3   0x001bc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_3   0x002d0e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_3   0x002606    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_3   0x003dc8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_3   0x003990    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_3   0x0036b8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_3   0x003d0a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                  __pa_30   0x002780    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_31   0x002788    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_32   0x00279a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_33   0x0027a4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_34   0x0027ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_35   0x0027b8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_36   0x0027c8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_37   0x0027d6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_38   0x0027e0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_39   0x0027ea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_4   0x001bd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_4   0x002d16    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_4   0x00260e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_4   0x003dd0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_4   0x0039a2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_4   0x003d12    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_4   0x0036ce    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_40   0x0027f2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_41   0x0027fa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_5   0x003dd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_5   0x0036d4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_5   0x002d2a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_5   0x001be8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_5   0x0039ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_5   0x002618    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_6   0x003ddc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_6   0x0036e6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_6   0x002d38    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_6   0x0039b6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_6   0x002620    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_6   0x001bf6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_7   0x001bfa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_7   0x002d40    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_7   0x0036f8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_7   0x003de2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_7   0x002628    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_8   0x001c0a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_8   0x003704    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_8   0x002d4c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_8   0x003dea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_8   0x00262e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_9   0x003710    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_9   0x002d5c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_9   0x00263c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_9   0x001c1a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_0   0x0043d5    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_1   0x0043c9    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_2   0x0043c7    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_3   0x0043be    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_0   0x001b2e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_1   0x003bea    program     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_1   0x003956    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_1   0x0025f6    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_1   0x002ce6    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_1   0x003cd4    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_1   0x00369c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_1   0x001b6a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_1   0x003dae    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                  __pa_10   0x001c2a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_10   0x002d68    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_10   0x003718    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_10   0x002646    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_11   0x002d76    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_11   0x001c38    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_11   0x002656    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_11   0x00372c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_12   0x002d80    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_12   0x00373e    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_12   0x001c42    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_12   0x00266a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_13   0x002d86    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_13   0x001c56    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_13   0x003748    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_13   0x00267c    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_14   0x002d90    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_14   0x003752    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_14   0x001c5e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_14   0x002688    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_15   0x001c6a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_15   0x0026a4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_15   0x002da4    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_15   0x00375c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_16   0x001c74    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_16   0x002dae    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_16   0x0026aa    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_16   0x003766    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_17   0x0026b4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_17   0x002dba    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_17   0x001c84    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_18   0x0026c0    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_18   0x002dc2    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_18   0x001c8c    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_19   0x002dd2    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_19   0x001c94    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_19   0x0026cc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_2   0x002d04    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_2   0x0025fc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_2   0x00397a    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_2   0x0036ae    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_2   0x003d02    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_2   0x001bbc    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_2   0x003dc2    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                  __pa_20   0x002dda    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_20   0x0026dc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_20   0x001c9e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_21   0x0026ec    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_21   0x001ca6    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_22   0x0026fc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_23   0x00270a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_24   0x002718    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_25   0x002726    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_26   0x002734    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_27   0x002742    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_28   0x00275a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_29   0x002776    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_3   0x001bc2    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_3   0x002d0e    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_3   0x002606    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_3   0x003dc8    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_3   0x003990    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_3   0x0036b8    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_3   0x003d0a    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                  __pa_30   0x002780    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_31   0x002788    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_32   0x00279a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_33   0x0027a4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_34   0x0027ae    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_35   0x0027b8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_36   0x0027c8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_37   0x0027d6    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_38   0x0027e0    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_39   0x0027ea    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_4   0x001bd4    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_4   0x002d16    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_4   0x00260e    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_4   0x003dd0    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_4   0x0039a2    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_4   0x003d12    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_4   0x0036ce    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_40   0x0027f2    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_41   0x0027fa    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_5   0x003dd4    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_5   0x0036d4    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_5   0x002d2a    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_5   0x001be8    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_5   0x0039ae    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_5   0x002618    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_6   0x003ddc    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_6   0x0036e6    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_6   0x002d38    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_6   0x0039b6    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_6   0x002620    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_6   0x001bf6    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_7   0x001bfa    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_7   0x002d40    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_7   0x0036f8    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_7   0x003de2    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_7   0x002628    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_8   0x001c0a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_8   0x003704    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_8   0x002d4c    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_8   0x003dea    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_8   0x00262e    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_9   0x003710    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_9   0x002d5c    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_9   0x00263c    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_9   0x001c1a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_0   0x0043d5    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_1   0x0043c9    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_2   0x0043c7    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_3   0x0043be    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
                __tmplbl_0   0x000a3a    program     static                          
                __tmplbl_1   0x000a34    program     static                          
               __tmplbl_10   0x001a88    program     static                          
@@ -619,41 +619,41 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                 _do_cinit   0x003f74    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _false   0x0042f8    program     static                          
-                   _reset   0x000800    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                   _reset   0x000800    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                  _startup   0x004600    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               actionAX12   0x002c7e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-         adjdReadRegister   0x003c4c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-        adjdWriteRegister   0x003c28    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                 checkTOR   0x003ba2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
+               actionAX12   0x002c7e    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+         adjdReadRegister   0x003c4c    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+        adjdWriteRegister   0x003c28    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                 checkTOR   0x003ba2    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
                clear_loop   0x004658    program     static C:\MCC18\src\traditional\proc\p18F4550.asm
-               configAX12   0x002a0c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-        configDescriptor1   0x003ed6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               configAX12   0x002a0c    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+        configDescriptor1   0x003ed6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
                 copy_loop   0x003fe6    program     static                          
             copy_one_byte   0x003fec    program     static                          
-               device_dsc   0x003ec4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-             disableMotor   0x003a50    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-             disableServo   0x0038ea    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+               device_dsc   0x003ec4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+             disableMotor   0x003a50    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+             disableServo   0x0038ea    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
                      done   0x004010    program     static                          
              done_copying   0x003ffa    program     static                          
-              enableMotor   0x003a48    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              enableServo   0x0038d6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                    error   0x00450e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-               getIFRange   0x00352e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-              getPosition   0x002cce    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 getSpeed   0x002cd4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                     goTo   0x002c88    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              hasTimedOut   0x0029e6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                hid_rpt01   0x003f4f    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                 initAX12   0x002800    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 initAdjd   0x003bf2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   initIF   0x003326    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  initMCC   0x0039c8    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-               initServos   0x00376c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-            interruptAX12   0x00280a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              interruptIF   0x003346    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-          interruptMotor1   0x003a12    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-           interruptServo   0x003796    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-   isStatusPacketReceived   0x0029e0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              enableMotor   0x003a48    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+              enableServo   0x0038d6    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                    error   0x00450e    program     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+               getIFRange   0x00352e    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+              getPosition   0x002cce    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 getSpeed   0x002cd4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                     goTo   0x002c88    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              hasTimedOut   0x0029e6    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                hid_rpt01   0x003f4f    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                 initAX12   0x002800    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 initAdjd   0x003bf2    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   initIF   0x003326    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  initMCC   0x0039c8    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+               initServos   0x00376c    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+            interruptAX12   0x00280a    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              interruptIF   0x003346    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+          interruptMotor1   0x003a12    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+           interruptServo   0x003796    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+   isStatusPacketReceived   0x0029e0    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
                  jANotInf   0x002fb0    program     static C:\MCC18\src\traditional\math\divFP.asm
                  jANotInf   0x002e8e    program     static C:\MCC18\src\traditional\math\addFP.asm
                  jANotInf   0x003056    program     static C:\MCC18\src\traditional\math\mulFP.asm
@@ -716,38 +716,38 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                     jZero   0x0031d4    program     static C:\MCC18\src\traditional\math\castFP32.asm
                     jZero   0x003174    program     static C:\MCC18\src\traditional\math\castFP16.asm
                jZero1and2   0x00323a    program     static C:\MCC18\src\traditional\math\packFP.asm
-            lastErrorAX12   0x002a24    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                lcd_clear   0x003d28    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_goto   0x003d54    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-          lcd_goto_origin   0x003d4e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_init   0x003d1a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-        lcd_set_backlight   0x003d3e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_set_cursor   0x003d2e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_write   0x003d6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_write_line   0x003d7a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
+            lastErrorAX12   0x002a24    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                lcd_clear   0x003d28    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_goto   0x003d54    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+          lcd_goto_origin   0x003d4e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_init   0x003d1a    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+        lcd_set_backlight   0x003d3e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_set_cursor   0x003d2e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_write   0x003d6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_write_line   0x003d7a    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
                      loop   0x0042c4    program     static                          
                      loop   0x004610    program     static                          
-                     main   0x00097a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                     main   0x00097a    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                    memset   0x004180    program     extern C:\MCC18\src\traditional\stdclib\memset.asm
-                     move   0x003a58    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 pingAX12   0x002a30    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                     move   0x003a58    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                 pingAX12   0x002a30    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
                   putsI2C   0x00409c    program     extern C:\MCC18\src\pmc_common\i2c\i2c_puts.c
-              readValue16   0x002b98    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               readValue8   0x002ae4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               regWrite16   0x002c6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                regWrite8   0x002c66    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                resetAX12   0x002ac4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                    sd000   0x003eff    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd001   0x003f03    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd002   0x003f2f    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-           sendInstPacket   0x0028ea    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 setParam   0x0029f4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            setServoAngle   0x0038c0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
+              readValue16   0x002b98    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               readValue8   0x002ae4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               regWrite16   0x002c6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                regWrite8   0x002c66    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                resetAX12   0x002ac4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                    sd000   0x003eff    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd001   0x003f03    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd002   0x003f2f    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+           sendInstPacket   0x0028ea    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 setParam   0x0029f4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+            setServoAngle   0x0038c0    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
             strcatpgm2ram   0x0041b4    program     extern C:\MCC18\src\traditional\stdclib\scatp2r.asm
                      test   0x003f8e    program     static                          
-         waitStatusPacket   0x0029ec    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-             writeValue16   0x002ad6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              writeValue8   0x002ace    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+         waitStatusPacket   0x0029ec    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+             writeValue16   0x002ad6    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              writeValue8   0x002ace    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -759,9 +759,9 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                    ADRESL   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                   BAUDCON   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
               BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                      BDT   0x000400       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                      BDT   0x000400       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                       BSR   0x000fe0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-       BothEP0OutUOWNsSet   0x000081       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+       BothEP0OutUOWNsSet   0x000081       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                    CCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                CCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                   CCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -780,7 +780,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                 CMCONbits   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    CVRCON   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                CVRCONbits   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-              CtrlTrfData   0x000428       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+              CtrlTrfData   0x000428       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                      DDRA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                  DDRAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                      DDRB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -813,19 +813,19 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                      FSR2   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     FSR2H   0x000fda       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     FSR2L   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-               GIE_Status   0x000141       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+               GIE_Status   0x000141       data     static Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
                   HLVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
               HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                  IF1_idx   0x00013d       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF1range   0x000100       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF1range_0   0x000110       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  IF2_idx   0x00013e       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF2range   0x000104       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF2range_0   0x000114       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF3range   0x000108       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF3range_0   0x000118       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF4range   0x00010c       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF4range_0   0x00011c       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                  IF1_idx   0x00013d       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF1range   0x000100       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF1range_0   0x000110       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  IF2_idx   0x00013e       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF2range   0x000104       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF2range_0   0x000114       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF3range   0x000108       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF3range_0   0x000118       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF4range   0x00010c       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF4range_0   0x00011c       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
                     INDF0   0x000fef       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     INDF1   0x000fe7       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     INDF2   0x000fdf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -898,8 +898,8 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                     RCREG   0x000fae       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     RCSTA   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                 RCSTAbits   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-       ReceivedDataBuffer   0x000500       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-             RemoteWakeup   0x00007f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+       ReceivedDataBuffer   0x000500       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+             RemoteWakeup   0x00007f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                      SIGN   0x000022       data     extern C:\MCC18\src\traditional\math\cmath18.asm
                     SPBRG   0x000faf       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    SPBRGH   0x000fb0       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -922,7 +922,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                STATUSbits   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    STKPTR   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                STKPTRbits   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                 SetupPkt   0x000420       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                 SetupPkt   0x000420       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                     T0CON   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                 T0CONbits   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     T1CON   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -960,7 +960,7 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                     TXREG   0x000fad       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                     TXSTA   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                 TXSTAbits   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-         ToSendDataBuffer   0x000540       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+         ToSendDataBuffer   0x000540       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                     UADDR   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                 UADDRbits   0x000f6e       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                      UCFG   0x000f6f       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -1012,18 +1012,18 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                   UIEbits   0x000f69       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                       UIR   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                   UIRbits   0x000f68       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-              UPClientSeq   0x000138       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+              UPClientSeq   0x000138       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
              USART_Status   0x0000ff       data     extern C:\MCC18\src\pmc_common\USART\udefs.c
-   USBActiveConfiguration   0x000061       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-    USBAlternateInterface   0x000062       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-           USBDeviceState   0x000060       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                USBInData   0x000084       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-              USBInHandle   0x000135       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-       USBInMaxPacketSize   0x000082       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-             USBOutHandle   0x000133       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+   USBActiveConfiguration   0x000061       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+    USBAlternateInterface   0x000062       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+           USBDeviceState   0x000060       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                USBInData   0x000084       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+              USBInHandle   0x000135       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+       USBInMaxPacketSize   0x000082       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+             USBOutHandle   0x000133       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                     USTAT   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                 USTATbits   0x000f6c       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
-                USTATcopy   0x000080       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                USTATcopy   0x000080       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                    WDTCON   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                WDTCONbits   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                      WREG   0x000fe8       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
@@ -1052,58 +1052,58 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                  __TEMPB1   0x000034       data     extern C:\MCC18\src\traditional\math\temparg.asm
                  __TEMPB2   0x000033       data     extern C:\MCC18\src\traditional\math\temparg.asm
                  __TEMPB3   0x000032       data     extern C:\MCC18\src\traditional\math\temparg.asm
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\PWM\pw1setdc.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcselchconv.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcread.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\USART\uopen.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcopen.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-          active_protocol   0x000140       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-         blinkStatusValid   0x000137       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-     controlTransferState   0x000070       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+          active_protocol   0x000140       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+         blinkStatusValid   0x000137       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+     controlTransferState   0x000070       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                 curr_byte   0x000123       data     static C:\MCC18\src\traditional\startup\c018i.c
                curr_entry   0x000125       data     static C:\MCC18\src\traditional\startup\c018i.c
                  data_ptr   0x000127       data     static C:\MCC18\src\traditional\startup\c018i.c
-              delay_count   0x0000fd       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-           durationMotor1   0x0000f4       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-           durationMotor2   0x0000f8       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              elapsedTime   0x000131       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                      err   0x0000cb       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                    errno   0x0000eb       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                   errnoL   0x000139       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                glbBuffer   0x000087       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               glbEnc1Pos   0x0000ec       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-               glbEnc2Pos   0x0000f0       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 glbParam   0x0000aa       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              glbReceived   0x000086       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            glbServoAngle   0x00012a       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-          glbServoEnabled   0x00012f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-              glbTimedOut   0x0000a7       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            hid_report_in   0x000433       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-           hid_report_out   0x000430       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                idle_rate   0x00013f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-                      idx   0x0000a8       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  inPipes   0x000071       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                led_count   0x00013a       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                      len   0x0000ca       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 outPipes   0x000076       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   pBDTEntryEP0OutCurrent   0x000063       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      pBDTEntryEP0OutNext   0x000065       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-              pBDTEntryIn   0x00006b       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-             pBDTEntryOut   0x000067       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                     pDst   0x00007d       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+              delay_count   0x0000fd       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+           durationMotor1   0x0000f4       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+           durationMotor2   0x0000f8       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+              elapsedTime   0x000131       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                      err   0x0000cb       data     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+                    errno   0x0000eb       data     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+                   errnoL   0x000139       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                glbBuffer   0x000087       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               glbEnc1Pos   0x0000ec       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+               glbEnc2Pos   0x0000f0       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                 glbParam   0x0000aa       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              glbReceived   0x000086       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+            glbServoAngle   0x00012a       data     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+          glbServoEnabled   0x00012f       data     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+              glbTimedOut   0x0000a7       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+            hid_report_in   0x000433       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+           hid_report_out   0x000430       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                idle_rate   0x00013f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+                      idx   0x0000a8       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  inPipes   0x000071       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                led_count   0x00013a       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                      len   0x0000ca       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 outPipes   0x000076       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   pBDTEntryEP0OutCurrent   0x000063       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      pBDTEntryEP0OutNext   0x000065       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+              pBDTEntryIn   0x00006b       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+             pBDTEntryOut   0x000067       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                     pDst   0x00007d       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                      prom   0x000120       data     static C:\MCC18\src\traditional\startup\c018i.c
-              resetSource   0x0000fc       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                    servo   0x000130       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-        shortPacketStatus   0x00006f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                    state   0x00013c       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                    write   0x0000a9       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              resetSource   0x0000fc       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                    servo   0x000130       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+        shortPacketStatus   0x00006f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                    state   0x00013c       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                    write   0x0000a9       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
 
 
 
@@ -1112,22 +1112,22 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
                 ---------  ---------  ---------  --------- ---------                
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
-                 High_ISR   0x000008    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                 High_ISR   0x000008    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00003   0x00000c    program     static                          
-                  Low_ISR   0x000018    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                  Low_ISR   0x000018    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00004   0x00001c    program     static                          
-                   _reset   0x000800    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                   _reset   0x000800    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00000   0x000804    program     static                          
-        Remapped_High_ISR   0x000808    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+        Remapped_High_ISR   0x000808    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00001   0x00080c    program     static                          
-         Remapped_Low_ISR   0x000818    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+         Remapped_Low_ISR   0x000818    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
        ___return_lbl00002   0x00081c    program     static                          
-  YourHighPriorityISRCode   0x000874    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-   YourLowPriorityISRCode   0x000934    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                     main   0x00097a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-         InitializeSystem   0x000984    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                 UserInit   0x00098e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                ProcessIO   0x000a12    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+  YourHighPriorityISRCode   0x000874    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+   YourLowPriorityISRCode   0x000934    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                     main   0x00097a    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+         InitializeSystem   0x000984    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                 UserInit   0x00098e    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                ProcessIO   0x000a12    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
            ___if_lbl00017   0x000a2c    program     static                          
                __tmplbl_1   0x000a34    program     static                          
                __tmplbl_0   0x000a3a    program     static                          
@@ -1234,16 +1234,16 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
            ___if_lbl00118   0x0018b6    program     static                          
        ___return_lbl00016   0x0018b6    program     static                          
    ___switchexit_lbl00031   0x0018b6    program     static                          
-           BlinkUSBStatus   0x0018ca    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-             USBCBSuspend   0x001948    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-     USBCBWakeFromSuspend   0x001986    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-        USBCB_SOF_Handler   0x0019ee    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-        USBCBErrorHandler   0x0019f0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-       USBCBCheckOtherReq   0x0019f2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-    USBCBStdSetDscHandler   0x0019f6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              USBCBInitEP   0x0019f8    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-          USBCBSendResume   0x001a30    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+           BlinkUSBStatus   0x0018ca    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+             USBCBSuspend   0x001948    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+     USBCBWakeFromSuspend   0x001986    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+        USBCB_SOF_Handler   0x0019ee    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+        USBCBErrorHandler   0x0019f0    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+       USBCBCheckOtherReq   0x0019f2    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+    USBCBStdSetDscHandler   0x0019f6    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              USBCBInitEP   0x0019f8    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+          USBCBSendResume   0x001a30    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                __tmplbl_7   0x001a68    program     static                          
                __tmplbl_8   0x001a74    program     static                          
                __tmplbl_9   0x001a7e    program     static                          
@@ -1263,154 +1263,154 @@ USER_USB_CALLBACK_EVENT_HANDLER   0x001a4c    program     extern Z:\home\nicolas
       ___default_lbl00162   0x001ad4    program     static                          
    ___switchexit_lbl00153   0x001ad6    program     static                          
        ___return_lbl00152   0x001ada    program     static                          
-              ResetSource   0x001ae2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_0   0x001b2e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_1   0x001b6a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_2   0x001bbc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_3   0x001bc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_4   0x001bd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_5   0x001be8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_6   0x001bf6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_7   0x001bfa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_8   0x001c0a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   __pa_9   0x001c1a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_10   0x001c2a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_11   0x001c38    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_12   0x001c42    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_13   0x001c56    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_14   0x001c5e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_15   0x001c6a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_16   0x001c74    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_17   0x001c84    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_18   0x001c8c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+              ResetSource   0x001ae2    program     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_0   0x001b2e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_1   0x001b6a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_2   0x001bbc    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_3   0x001bc2    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_4   0x001bd4    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_5   0x001be8    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_6   0x001bf6    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_7   0x001bfa    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_8   0x001c0a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   __pa_9   0x001c1a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_10   0x001c2a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_11   0x001c38    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_12   0x001c42    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_13   0x001c56    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_14   0x001c5e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_15   0x001c6a    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_16   0x001c74    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_17   0x001c84    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_18   0x001c8c    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
               __tmplbl_18   0x001c8c    program     static                          
-                  __pa_19   0x001c94    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_20   0x001c9e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                  __pa_21   0x001ca6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-            USBDeviceInit   0x001cb4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-           USBDeviceTasks   0x001d20    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-          USBStallHandler   0x001e42    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-               USBSuspend   0x001e68    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       USBWakeFromSuspend   0x001e7a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-         USBCtrlEPService   0x001e92    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   USBCtrlTrfSetupHandler   0x001f26    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBCtrlTrfOutHandler   0x001f4a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfInHandler   0x001f66    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       USBCheckStdRequest   0x002008    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-  USBStdFeatureReqHandler   0x0020b0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBStdGetDscHandler   0x002172    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   USBStdGetStatusHandler   0x0021f4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
- USBCtrlEPServiceComplete   0x002272    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfTxService   0x0022e6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBCtrlTrfRxService   0x00238c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      USBStdSetCfgHandler   0x002444    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBConfigureEndpoint   0x00247a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-        USBEnableEndpoint   0x0024f2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-         USBStallEndpoint   0x00252c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     USBTransferOnePacket   0x002556    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-    USBClearInterruptFlag   0x0025be    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_0   0x0025e8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_1   0x0025f6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_2   0x0025fc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_3   0x002606    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_4   0x00260e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_5   0x002618    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_6   0x002620    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_19   0x001c94    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_20   0x001c9e    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                  __pa_21   0x001ca6    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+            USBDeviceInit   0x001cb4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+           USBDeviceTasks   0x001d20    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+          USBStallHandler   0x001e42    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+               USBSuspend   0x001e68    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       USBWakeFromSuspend   0x001e7a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+         USBCtrlEPService   0x001e92    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   USBCtrlTrfSetupHandler   0x001f26    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBCtrlTrfOutHandler   0x001f4a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfInHandler   0x001f66    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       USBCheckStdRequest   0x002008    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+  USBStdFeatureReqHandler   0x0020b0    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBStdGetDscHandler   0x002172    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   USBStdGetStatusHandler   0x0021f4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+ USBCtrlEPServiceComplete   0x002272    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfTxService   0x0022e6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBCtrlTrfRxService   0x00238c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      USBStdSetCfgHandler   0x002444    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBConfigureEndpoint   0x00247a    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+        USBEnableEndpoint   0x0024f2    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+         USBStallEndpoint   0x00252c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     USBTransferOnePacket   0x002556    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+    USBClearInterruptFlag   0x0025be    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_0   0x0025e8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_1   0x0025f6    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_2   0x0025fc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_3   0x002606    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_4   0x00260e    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_5   0x002618    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_6   0x002620    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
               __tmplbl_26   0x002620    program     static                          
               __tmplbl_20   0x002620    program     static                          
-                   __pa_7   0x002628    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_8   0x00262e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                   __pa_9   0x00263c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_10   0x002646    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_11   0x002656    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_12   0x00266a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_13   0x00267c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_14   0x002688    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_15   0x0026a4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_16   0x0026aa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_17   0x0026b4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_18   0x0026c0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_19   0x0026cc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_20   0x0026dc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_21   0x0026ec    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_22   0x0026fc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_23   0x00270a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_24   0x002718    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_25   0x002726    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_26   0x002734    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_27   0x002742    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_28   0x00275a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_29   0x002776    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_30   0x002780    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_31   0x002788    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_32   0x00279a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_33   0x0027a4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_34   0x0027ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_35   0x0027b8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_36   0x0027c8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_37   0x0027d6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_38   0x0027e0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_39   0x0027ea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_40   0x0027f2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  __pa_41   0x0027fa    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                 initAX12   0x002800    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            interruptAX12   0x00280a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-           sendInstPacket   0x0028ea    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-   isStatusPacketReceived   0x0029e0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              hasTimedOut   0x0029e6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-         waitStatusPacket   0x0029ec    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 setParam   0x0029f4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               configAX12   0x002a0c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-            lastErrorAX12   0x002a24    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 pingAX12   0x002a30    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_7   0x002628    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_8   0x00262e    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                   __pa_9   0x00263c    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_10   0x002646    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_11   0x002656    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_12   0x00266a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_13   0x00267c    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_14   0x002688    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_15   0x0026a4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_16   0x0026aa    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_17   0x0026b4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_18   0x0026c0    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_19   0x0026cc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_20   0x0026dc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_21   0x0026ec    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_22   0x0026fc    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_23   0x00270a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_24   0x002718    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_25   0x002726    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_26   0x002734    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_27   0x002742    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_28   0x00275a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_29   0x002776    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_30   0x002780    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_31   0x002788    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_32   0x00279a    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_33   0x0027a4    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_34   0x0027ae    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_35   0x0027b8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_36   0x0027c8    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_37   0x0027d6    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_38   0x0027e0    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_39   0x0027ea    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_40   0x0027f2    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __pa_41   0x0027fa    program     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                 initAX12   0x002800    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+            interruptAX12   0x00280a    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+           sendInstPacket   0x0028ea    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+   isStatusPacketReceived   0x0029e0    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              hasTimedOut   0x0029e6    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+         waitStatusPacket   0x0029ec    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 setParam   0x0029f4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               configAX12   0x002a0c    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+            lastErrorAX12   0x002a24    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 pingAX12   0x002a30    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
           ___for_lbl00047   0x002a54    program     static                          
            ___if_lbl00046   0x002a80    program     static                          
           ___for_lbl00044   0x002a98    program     static                          
           ___for_lbl00045   0x002aa2    program     static                          
        ___return_lbl00043   0x002aac    program     static                          
-                resetAX12   0x002ac4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              writeValue8   0x002ace    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-             writeValue16   0x002ad6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               readValue8   0x002ae4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                resetAX12   0x002ac4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              writeValue8   0x002ace    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+             writeValue16   0x002ad6    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               readValue8   0x002ae4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
           ___for_lbl00055   0x002b26    program     static                          
            ___if_lbl00054   0x002b54    program     static                          
           ___for_lbl00052   0x002b6c    program     static                          
           ___for_lbl00053   0x002b76    program     static                          
        ___return_lbl00051   0x002b80    program     static                          
-              readValue16   0x002b98    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+              readValue16   0x002b98    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
           ___for_lbl00060   0x002bda    program     static                          
            ___if_lbl00059   0x002c24    program     static                          
           ___for_lbl00057   0x002c3c    program     static                          
           ___for_lbl00058   0x002c46    program     static                          
        ___return_lbl00056   0x002c52    program     static                          
-                regWrite8   0x002c66    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               regWrite16   0x002c6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-               actionAX12   0x002c7e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                     goTo   0x002c88    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              getPosition   0x002cce    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 getSpeed   0x002cd4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_0   0x002cda    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_1   0x002ce6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_2   0x002d04    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_3   0x002d0e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_4   0x002d16    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_5   0x002d2a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_6   0x002d38    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_7   0x002d40    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_8   0x002d4c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                   __pa_9   0x002d5c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_10   0x002d68    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_11   0x002d76    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_12   0x002d80    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_13   0x002d86    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_14   0x002d90    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_15   0x002da4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_16   0x002dae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_17   0x002dba    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_18   0x002dc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_19   0x002dd2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                  __pa_20   0x002dda    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                regWrite8   0x002c66    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               regWrite16   0x002c6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+               actionAX12   0x002c7e    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                     goTo   0x002c88    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              getPosition   0x002cce    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 getSpeed   0x002cd4    program     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_0   0x002cda    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_1   0x002ce6    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_2   0x002d04    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_3   0x002d0e    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_4   0x002d16    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_5   0x002d2a    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_6   0x002d38    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_7   0x002d40    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_8   0x002d4c    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                   __pa_9   0x002d5c    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_10   0x002d68    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_11   0x002d76    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_12   0x002d80    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_13   0x002d86    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_14   0x002d90    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_15   0x002da4    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_16   0x002dae    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_17   0x002dba    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_18   0x002dc2    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_19   0x002dd2    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __pa_20   0x002dda    program     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
                  FLO0832U   0x002de2    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
                  FLO0832S   0x002de6    program     extern C:\MCC18\src\traditional\math\cast08FP.asm
                 jI2F08Beg   0x002df0    program     static C:\MCC18\src\traditional\math\cast08FP.asm
@@ -1493,80 +1493,80 @@ USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code
                   jUnpkB1   0x003304    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
                  jUnpkBNZ   0x003312    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
                   jUnpkB2   0x00331c    program     static C:\MCC18\src\traditional\math\UnpackFP.asm
-                   initIF   0x003326    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-              interruptIF   0x003346    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               getIFRange   0x00352e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_0   0x00368e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_1   0x00369c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_2   0x0036ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_3   0x0036b8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_4   0x0036ce    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_5   0x0036d4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_6   0x0036e6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_7   0x0036f8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_8   0x003704    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                   __pa_9   0x003710    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_10   0x003718    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_11   0x00372c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_12   0x00373e    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_13   0x003748    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_14   0x003752    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_15   0x00375c    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __pa_16   0x003766    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               initServos   0x00376c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-           interruptServo   0x003796    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-            setServoAngle   0x0038c0    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-              enableServo   0x0038d6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-             disableServo   0x0038ea    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_0   0x0038fe    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_1   0x003956    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_2   0x00397a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_3   0x003990    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_4   0x0039a2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_5   0x0039ae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                   __pa_6   0x0039b6    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                  initMCC   0x0039c8    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-          interruptMotor1   0x003a12    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              enableMotor   0x003a48    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-             disableMotor   0x003a50    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                     move   0x003a58    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 checkTOR   0x003ba2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_0   0x003bd8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                   __pa_1   0x003bea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                 initAdjd   0x003bf2    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-        adjdWriteRegister   0x003c28    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-         adjdReadRegister   0x003c4c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_0   0x003cca    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_1   0x003cd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_2   0x003d02    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_3   0x003d0a    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                   __pa_4   0x003d12    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                 lcd_init   0x003d1a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_clear   0x003d28    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_set_cursor   0x003d2e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-        lcd_set_backlight   0x003d3e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-          lcd_goto_origin   0x003d4e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                 lcd_goto   0x003d54    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                lcd_write   0x003d6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-           lcd_write_line   0x003d7a    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_0   0x003d88    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_1   0x003dae    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_2   0x003dc2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_3   0x003dc8    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_4   0x003dd0    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_5   0x003dd4    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_6   0x003ddc    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_7   0x003de2    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-                   __pa_8   0x003dea    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\lcd.c
-       USBCheckHIDRequest   0x003df6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-               device_dsc   0x003ec4    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-        configDescriptor1   0x003ed6    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd000   0x003eff    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd001   0x003f03    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                    sd002   0x003f2f    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-                hid_rpt01   0x003f4f    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_CD_Ptr   0x003f6c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
-               USB_SD_Ptr   0x003f6e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                   initIF   0x003326    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+              interruptIF   0x003346    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               getIFRange   0x00352e    program     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_0   0x00368e    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_1   0x00369c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_2   0x0036ae    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_3   0x0036b8    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_4   0x0036ce    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_5   0x0036d4    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_6   0x0036e6    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_7   0x0036f8    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_8   0x003704    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                   __pa_9   0x003710    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_10   0x003718    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_11   0x00372c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_12   0x00373e    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_13   0x003748    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_14   0x003752    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_15   0x00375c    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __pa_16   0x003766    program     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               initServos   0x00376c    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+           interruptServo   0x003796    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+            setServoAngle   0x0038c0    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+              enableServo   0x0038d6    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+             disableServo   0x0038ea    program     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_0   0x0038fe    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_1   0x003956    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_2   0x00397a    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_3   0x003990    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_4   0x0039a2    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_5   0x0039ae    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                   __pa_6   0x0039b6    program     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                  initMCC   0x0039c8    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+          interruptMotor1   0x003a12    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+              enableMotor   0x003a48    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+             disableMotor   0x003a50    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                     move   0x003a58    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                 checkTOR   0x003ba2    program     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_0   0x003bd8    program     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                   __pa_1   0x003bea    program     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                 initAdjd   0x003bf2    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+        adjdWriteRegister   0x003c28    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+         adjdReadRegister   0x003c4c    program     extern Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_0   0x003cca    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_1   0x003cd4    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_2   0x003d02    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_3   0x003d0a    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                   __pa_4   0x003d12    program     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                 lcd_init   0x003d1a    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_clear   0x003d28    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_set_cursor   0x003d2e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+        lcd_set_backlight   0x003d3e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+          lcd_goto_origin   0x003d4e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                 lcd_goto   0x003d54    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                lcd_write   0x003d6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+           lcd_write_line   0x003d7a    program     extern Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_0   0x003d88    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_1   0x003dae    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_2   0x003dc2    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_3   0x003dc8    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_4   0x003dd0    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_5   0x003dd4    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_6   0x003ddc    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_7   0x003de2    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+                   __pa_8   0x003dea    program     static Z:\elec\boards\Interface_Robot\Firmware\lcd.c
+       USBCheckHIDRequest   0x003df6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+               device_dsc   0x003ec4    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+        configDescriptor1   0x003ed6    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd000   0x003eff    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd001   0x003f03    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                    sd002   0x003f2f    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+                hid_rpt01   0x003f4f    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x003f6c    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003f6e    program     extern Z:\elec\boards\Interface_Robot\Firmware\usb_descriptors.c
                 _do_cinit   0x003f74    program     extern C:\MCC18\src\traditional\startup\c018i.c
                      test   0x003f8e    program     static                          
                 copy_loop   0x003fe6    program     static                          
@@ -1587,9 +1587,9 @@ USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code
                 jNullLoop   0x0041da    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
                     jLoop   0x0041e0    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
                      jEnd   0x0041ea    program     static C:\MCC18\src\traditional\stdclib\scatp2r.asm
-              WriteEEPROM   0x0041ec    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-               ReadEEPROM   0x00422c    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                   __pa_0   0x004248    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
+              WriteEEPROM   0x0041ec    program     extern Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
+               ReadEEPROM   0x00422c    program     extern Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
+                   __pa_0   0x004248    program     static Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
                 SetDCPWM1   0x004258    program     extern C:\MCC18\src\pmc_common\PWM\pw1setdc.c
                  FXD3232U   0x0042b6    program     extern C:\MCC18\src\traditional\math\fxd3232u.c
                      loop   0x0042c4    program     static                          
@@ -1598,17 +1598,17 @@ USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code
                OpenTimer3   0x0042fe    program     extern C:\MCC18\src\pmc_common\Timers\t3open.c
                 ReadUSART   0x004344    program     extern C:\MCC18\src\pmc_common\USART\uread.c
                  WriteI2C   0x004382    program     extern C:\MCC18\src\pmc_common\i2c\i2c_writ.c
-               __string_3   0x0043be    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_2   0x0043c7    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_1   0x0043c9    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-               __string_0   0x0043d5    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+               __string_3   0x0043be    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_2   0x0043c7    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_1   0x0043c9    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+               __string_0   0x0043d5    program     static Z:\elec\boards\Interface_Robot\Firmware\main.c
               WriteTimer3   0x0043fa    program     extern C:\MCC18\src\pmc_common\Timers\t3write.c
               WriteTimer0   0x004432    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
                OpenTimer0   0x00446a    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
                OpenTimer2   0x0044a2    program     extern C:\MCC18\src\pmc_common\Timers\t2open.c
                   OpenI2C   0x0044d8    program     extern C:\MCC18\src\pmc_common\i2c\i2c_open.c
-                    error   0x00450e    program     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                   __pa_0   0x004536    program     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
+                    error   0x00450e    program     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+                   __pa_0   0x004536    program     static Z:\elec\boards\Interface_Robot\Firmware\error.c
                  OpenPWM1   0x004544    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
          OpenPWM1ConfigIO   0x004570    program     extern C:\MCC18\src\pmc_common\PWM\pw1open.c
            SelChanConvADC   0x004574    program     extern C:\MCC18\src\pmc_common\ADC\adcselchconv.c
@@ -1636,17 +1636,17 @@ USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code
                  CloseI2C   0x00466a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_clos.c
                    __init   0x00466e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcread.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcselchconv.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\PWM\pw1setdc.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\USART\uopen.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcopen.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\adjd-s371.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  __tmp_0   0x000000       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\adjd-s371.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  __tmp_0   0x000000       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
                      SIGN   0x000022       data     extern C:\MCC18\src\traditional\math\cmath18.asm
             __FPFLAGSbits   0x000023       data     extern C:\MCC18\src\traditional\math\cmath18.asm
                 __FPFLAGS   0x000023       data     extern C:\MCC18\src\traditional\math\cmath18.asm
@@ -1675,74 +1675,74 @@ USBPrepareForNextSetupTrf   0x001fc0    program     extern Z:\home\nicolasd\code
                  __TEMPB0   0x000035       data     extern C:\MCC18\src\traditional\math\temparg.asm
             DelayCounter2   0x000036       data     extern C:\MCC18\src\traditional\delays\delayd2.asm
             DelayCounter1   0x000037       data     extern C:\MCC18\src\traditional\delays\delayd1.asm
-           USBDeviceState   0x000060       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   USBActiveConfiguration   0x000061       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-    USBAlternateInterface   0x000062       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-   pBDTEntryEP0OutCurrent   0x000063       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-      pBDTEntryEP0OutNext   0x000065       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-             pBDTEntryOut   0x000067       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-              pBDTEntryIn   0x00006b       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-        shortPacketStatus   0x00006f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-     controlTransferState   0x000070       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                  inPipes   0x000071       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                 outPipes   0x000076       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                     pDst   0x00007d       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-             RemoteWakeup   0x00007f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                USTATcopy   0x000080       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       BothEP0OutUOWNsSet   0x000081       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       USBInMaxPacketSize   0x000082       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                USBInData   0x000084       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-              glbReceived   0x000086       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                glbBuffer   0x000087       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-              glbTimedOut   0x0000a7       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                      idx   0x0000a8       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                    write   0x0000a9       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                 glbParam   0x0000aa       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                      len   0x0000ca       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\ax12.c
-                      err   0x0000cb       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-                    errno   0x0000eb       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\error.c
-               glbEnc1Pos   0x0000ec       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-               glbEnc2Pos   0x0000f0       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-           durationMotor1   0x0000f4       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-           durationMotor2   0x0000f8       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\mcc.c
-              resetSource   0x0000fc       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              delay_count   0x0000fd       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+           USBDeviceState   0x000060       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   USBActiveConfiguration   0x000061       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+    USBAlternateInterface   0x000062       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+   pBDTEntryEP0OutCurrent   0x000063       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+      pBDTEntryEP0OutNext   0x000065       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+             pBDTEntryOut   0x000067       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+              pBDTEntryIn   0x00006b       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+        shortPacketStatus   0x00006f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+     controlTransferState   0x000070       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                  inPipes   0x000071       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                 outPipes   0x000076       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                     pDst   0x00007d       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+             RemoteWakeup   0x00007f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                USTATcopy   0x000080       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       BothEP0OutUOWNsSet   0x000081       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       USBInMaxPacketSize   0x000082       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                USBInData   0x000084       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+              glbReceived   0x000086       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                glbBuffer   0x000087       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+              glbTimedOut   0x0000a7       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                      idx   0x0000a8       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                    write   0x0000a9       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                 glbParam   0x0000aa       data     extern Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                      len   0x0000ca       data     static Z:\elec\boards\Interface_Robot\Firmware\ax12.c
+                      err   0x0000cb       data     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+                    errno   0x0000eb       data     extern Z:\elec\boards\Interface_Robot\Firmware\error.c
+               glbEnc1Pos   0x0000ec       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+               glbEnc2Pos   0x0000f0       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+           durationMotor1   0x0000f4       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+           durationMotor2   0x0000f8       data     extern Z:\elec\boards\Interface_Robot\Firmware\mcc.c
+              resetSource   0x0000fc       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              delay_count   0x0000fd       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
              USART_Status   0x0000ff       data     extern C:\MCC18\src\pmc_common\USART\udefs.c
-                 IF1range   0x000100       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF2range   0x000104       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF3range   0x000108       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                 IF4range   0x00010c       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF1range_0   0x000110       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF2range_0   0x000114       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF3range_0   0x000118       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-               IF4range_0   0x00011c       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF1range   0x000100       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF2range   0x000104       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF3range   0x000108       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                 IF4range   0x00010c       data     extern Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF1range_0   0x000110       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF2range_0   0x000114       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF3range_0   0x000118       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+               IF4range_0   0x00011c       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
                      prom   0x000120       data     static C:\MCC18\src\traditional\startup\c018i.c
                 curr_byte   0x000123       data     static C:\MCC18\src\traditional\startup\c018i.c
                curr_entry   0x000125       data     static C:\MCC18\src\traditional\startup\c018i.c
                  data_ptr   0x000127       data     static C:\MCC18\src\traditional\startup\c018i.c
-            glbServoAngle   0x00012a       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-          glbServoEnabled   0x00012f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-                    servo   0x000130       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-              elapsedTime   0x000131       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\servo.c
-             USBOutHandle   0x000133       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              USBInHandle   0x000135       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-         blinkStatusValid   0x000137       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-              UPClientSeq   0x000138       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                   errnoL   0x000139       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                led_count   0x00013a       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-                    state   0x00013c       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  IF1_idx   0x00013d       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                  IF2_idx   0x00013e       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\infrared.c
-                idle_rate   0x00013f       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-          active_protocol   0x000140       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
-               GIE_Status   0x000141       data     static Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\eeprom.c
-                      BDT   0x000400       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-                 SetupPkt   0x000420       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-              CtrlTrfData   0x000428       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-           hid_report_out   0x000430       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-            hid_report_in   0x000433       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\usb_device.c
-       ReceivedDataBuffer   0x000500       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
-         ToSendDataBuffer   0x000540       data     extern Z:\home\nicolasd\code\krobot\krobot\elec\boards\Interface_Robot\Firmware\main.c
+            glbServoAngle   0x00012a       data     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+          glbServoEnabled   0x00012f       data     extern Z:\elec\boards\Interface_Robot\Firmware\servo.c
+                    servo   0x000130       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+              elapsedTime   0x000131       data     static Z:\elec\boards\Interface_Robot\Firmware\servo.c
+             USBOutHandle   0x000133       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              USBInHandle   0x000135       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+         blinkStatusValid   0x000137       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+              UPClientSeq   0x000138       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                   errnoL   0x000139       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+                led_count   0x00013a       data     static Z:\elec\boards\Interface_Robot\Firmware\main.c
+                    state   0x00013c       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  IF1_idx   0x00013d       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                  IF2_idx   0x00013e       data     static Z:\elec\boards\Interface_Robot\Firmware\infrared.c
+                idle_rate   0x00013f       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+          active_protocol   0x000140       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_function_hid.c
+               GIE_Status   0x000141       data     static Z:\elec\boards\Interface_Robot\Firmware\eeprom.c
+                      BDT   0x000400       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+                 SetupPkt   0x000420       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+              CtrlTrfData   0x000428       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+           hid_report_out   0x000430       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+            hid_report_in   0x000433       data     extern Z:\elec\boards\Interface_Robot\Firmware\usb_device.c
+       ReceivedDataBuffer   0x000500       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
+         ToSendDataBuffer   0x000540       data     extern Z:\elec\boards\Interface_Robot\Firmware\main.c
                   SPPDATA   0x000f62       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                SPPCFGbits   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
                    SPPCFG   0x000f63       data     extern C:\MCC18\src\traditional\proc\p18F4550.asm
