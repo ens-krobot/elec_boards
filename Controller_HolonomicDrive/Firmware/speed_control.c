@@ -22,8 +22,8 @@ static msg_t ThreadSpeedController(void *arg) {
   int32_t errors[3] = {0, 0, 0};
   uint16_t positions[3] = {0, 0, 0};
   int32_t last_errors[3] = {0, 0, 0};
-  int32_t last_commands[3] = {0, 0, 0};
   uint16_t prev_positions[3] = {0, 0, 0};
+  int32_t integ[3] = {0, 0, 0};
 
 
   (void)arg;
@@ -51,35 +51,29 @@ static msg_t ThreadSpeedController(void *arg) {
     errors[1] = ref_speeds[1] - cur_speeds[1];
     errors[2] = ref_speeds[2] - cur_speeds[2];
 
+    integ[0] += (errors[0] + last_errors[0])*Te/2;
+    integ[1] += (errors[1] + last_errors[1])*Te/2;
+    integ[2] += (errors[2] + last_errors[2])*Te/2;
+
+    if (integ[0] > INTEG_MAX)
+      integ[0] = INTEG_MAX;
+    else if (integ[0] < -INTEG_MAX)
+      integ[0] = -INTEG_MAX;
+    if (integ[1] > INTEG_MAX)
+      integ[1] = INTEG_MAX;
+    else if (integ[1] < -INTEG_MAX)
+      integ[1] = -INTEG_MAX;
+    if (integ[2] > INTEG_MAX)
+      integ[2] = INTEG_MAX;
+    else if (integ[2] < -INTEG_MAX)
+      integ[2] = -INTEG_MAX;
+
     //--> Command computation
-    commands[0] = ((K_Pn + K_In)*errors[0] - K_Pn*last_errors[0] + 100*last_commands[0])/100;
-    commands[1] = ((K_Pn + K_In)*errors[1] - K_Pn*last_errors[1] + 100*last_commands[1])/100;
-    commands[2] = ((K_Pn + K_In)*errors[2] - K_Pn*last_errors[2] + 100*last_commands[2])/100;
+    commands[0] = (K_P*errors[0] + K_I*integ[0])/100;
+    commands[1] = (K_P*errors[1] + K_I*integ[1])/100;
+    commands[2] = (K_P*errors[2] + K_I*integ[2])/100;
     //--> End of command computation
     
-    if (commands[0] >= 0)
-      commands[0] = MIN(MAX_COMMAND, commands[0]);
-    else
-      commands[0] = MAX(-MAX_COMMAND, commands[0]);
-    if (commands[1] >= 0)
-      commands[1] = MIN(MAX_COMMAND, commands[1]);
-    else
-      commands[1] = MAX(-MAX_COMMAND, commands[1]);
-    if (commands[2] >= 0)
-      commands[2] = MIN(MAX_COMMAND, commands[2]);
-    else
-      commands[2] = MAX(-MAX_COMMAND, commands[2]);
-      
-    last_commands[0] = commands[0];
-    last_commands[1] = commands[1];
-    last_commands[2] = commands[2];
-      
-    if (commands[0] >= -DEAD_ZONE && commands[0] <= DEAD_ZONE)
-      commands[0] = 0;
-    if (commands[1] >= -DEAD_ZONE && commands[1] <= DEAD_ZONE)
-      commands[1] = 0;
-    if (commands[2] >= -DEAD_ZONE && commands[2] <= DEAD_ZONE)
-      commands[2] = 0;
     last_errors[0] = errors[0];
     last_errors[1] = errors[1];
     last_errors[2] = errors[2];
