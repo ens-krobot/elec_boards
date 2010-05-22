@@ -81,6 +81,7 @@ CSRC += monitor.c
 CSRC += can_monitor.c
 CSRC += lift.c
 CSRC += ax12.c
+CSRC += watch_adc.c
 CSRC += main.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
