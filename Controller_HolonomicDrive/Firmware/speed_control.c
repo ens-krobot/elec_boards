@@ -20,9 +20,9 @@ static msg_t ThreadSpeedController(void *arg) {
   systime_t time;
   int32_t commands[3] = {0, 0, 0};
   int32_t errors[3] = {0, 0, 0};
-  uint16_t positions[3] = {0, 0, 0};
+  int32_t positions[3] = {0, 0, 0};
   int32_t last_errors[3] = {0, 0, 0};
-  uint16_t prev_positions[3] = {0, 0, 0};
+  int32_t prev_positions[3] = {0, 0, 0};
   int32_t integ[3] = {0, 0, 0};
 
 
@@ -32,20 +32,36 @@ static msg_t ThreadSpeedController(void *arg) {
   while (TRUE) {
     time += MS2ST(Tcomp);
 
-    prev_positions[0] = getEncoderPosition(ENCODER1);
-    prev_positions[1] = getEncoderPosition(ENCODER2);
-    prev_positions[2] = getEncoderPosition(ENCODER3);
+    prev_positions[0] = (int32_t)getEncoderPosition(ENCODER1);
+    prev_positions[1] = (int32_t)getEncoderPosition(ENCODER2);
+    prev_positions[2] = (int32_t)getEncoderPosition(ENCODER3);
 
-    time += MS2ST(Te-Tcomp);
     chThdSleepUntil(time);
+    time += MS2ST(Te-Tcomp);
 
-    positions[0] = getEncoderPosition(ENCODER1);
-    positions[1] = getEncoderPosition(ENCODER2);
-    positions[2] = getEncoderPosition(ENCODER3);
+    positions[0] = (int32_t)getEncoderPosition(ENCODER1);
+    positions[1] = (int32_t)getEncoderPosition(ENCODER2);
+    positions[2] = (int32_t)getEncoderPosition(ENCODER3);
 
-    cur_speeds[0] = (K_v*((int32_t)positions[0] - (int32_t)prev_positions[0]));
-    cur_speeds[1] = (K_v*((int32_t)positions[1] - (int32_t)prev_positions[1]));
-    cur_speeds[2] = (K_v*((int32_t)positions[2] - (int32_t)prev_positions[2]));
+    // we MUST consider counter wrapping
+    cur_speeds[0] = positions[0] - prev_positions[0];
+    if (cur_speeds[0] >= 10000)
+      cur_speeds[0] -= 65536;
+    else if (cur_speeds[0] <= -10000)
+      cur_speeds[0] += 65536;
+    cur_speeds[0] *= K_v;
+    cur_speeds[1] = positions[1] - prev_positions[1];
+    if (cur_speeds[1] >= 10000)
+      cur_speeds[1] -= 65536;
+    else if (cur_speeds[1] <= -10000)
+      cur_speeds[1] += 65536;
+    cur_speeds[1] *= K_v;
+    cur_speeds[2] = positions[2] - prev_positions[2];
+    if (cur_speeds[2] >= 10000)
+      cur_speeds[2] -= 65536;
+    else if (cur_speeds[2] <= -10000)
+      cur_speeds[2] += 65536;
+    cur_speeds[2] *= K_v;    
 
     errors[0] = ref_speeds[0] - cur_speeds[0];
     errors[1] = ref_speeds[1] - cur_speeds[1];
@@ -68,6 +84,8 @@ static msg_t ThreadSpeedController(void *arg) {
     else if (integ[2] < -INTEG_MAX)
       integ[2] = -INTEG_MAX;
 
+    chThdSleepUntil(time);
+
     //--> Command computation
     commands[0] = (K_P*errors[0] + K_I*integ[0])/100;
     commands[1] = (K_P*errors[1] + K_I*integ[1])/100;
@@ -81,12 +99,6 @@ static msg_t ThreadSpeedController(void *arg) {
     motorSetSpeed(MOTOR1, commands[0]);
     motorSetSpeed(MOTOR2, commands[1]);
     motorSetSpeed(MOTOR3, commands[2]);
-    
-    prev_positions[0] = positions[0];
-    prev_positions[1] = positions[1];
-    prev_positions[2] = positions[2];
-
-    chThdSleepUntil(time);
   }
   return 0;
 }
@@ -99,7 +111,9 @@ void speedControlInit(void) {
 
   enableMotor(MOTOR1 | MOTOR2 | MOTOR3);
   motorSetSpeed(MOTOR1 | MOTOR2 | MOTOR3, 0);
-  resetEncoderPosition(ENCODER1 | ENCODER2 | ENCODER3);
+  resetEncoderPosition(ENCODER1);
+  resetEncoderPosition(ENCODER2);
+  resetEncoderPosition(ENCODER3);
 
   chThdCreateStatic(waThreadSC, sizeof(waThreadSC), HIGHPRIO, ThreadSpeedController, NULL);
 }
