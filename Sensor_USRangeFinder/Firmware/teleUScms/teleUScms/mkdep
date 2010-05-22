@@ -1,0 +1,24 @@
+-a -f project.dep -p./lib/obj/ -o.o -- -IC:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include -I./lib -IC:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1 -- 
+lib/bufcomp.asm   
+lib/bufcompint.asm   
+lib/comp.asm   
+lib/compteur.asm   
+lib/compteurint.asm   
+lib/declencheur.asm   
+lib/declencheurint.asm   
+lib/filtre1.asm   
+lib/filtre2.asm   
+lib/i2chwcommon.asm   
+lib/i2chwint.asm   
+lib/i2chwrsrcinits.asm   
+lib/inverseur.asm   
+lib/inverseurint.asm   
+lib/pga_1.asm   
+lib/pga_2.asm   
+lib/pga_3.asm   
+lib/porteuse.asm   
+lib/porteuseint.asm   
+lib/psocconfig.asm   
+lib/psocconfigtbl.asm   
+lib/tempsmort.asm   
+lib/tempsmortint.asm 

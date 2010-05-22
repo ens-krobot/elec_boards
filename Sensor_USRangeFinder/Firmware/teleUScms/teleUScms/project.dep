@@ -1,0 +1,83 @@
+# DO NOT DELETE
+./obj/boot.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8ssc.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\lib\GLOBAL~1.INC\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./obj/delay.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./obj/main.o :  ./lib/I2CHWC~1.H ./lib/I2CHWS~1.H ./lib/PGA_1.h\
+   ./lib/PGA_2.h ./lib/PGA_3.h ./lib/PSoCAPI.h ./lib/bufComp.h\
+   ./lib/comp.h ./lib/compteur.h ./lib/DECLEN~1.H ./lib/filtre1.h\
+   ./lib/filtre2.h ./lib/INVERS~1.H ./lib/porteuse.h ./lib/TEMPSM~1.H\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/M8C.h\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.h\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\delay.h
+./lib/obj/bufcomp.o :  ./lib/bufComp.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/bufcompint.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/comp.o :  ./lib/comp.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/compteur.o :  ./lib/compteur.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/compteurint.o :  ./lib/compteur.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc
+./lib/obj/declencheur.o :  ./lib/DECLEN~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/declencheurint.o :  ./lib/DECLEN~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/filtre1.o :  ./lib/filtre1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/filtre2.o :  ./lib/filtre2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/i2chwcommon.o :  ./lib/I2CHWC~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/i2chwint.o :  ./lib/I2CHWC~1.INC ./lib/I2CHWS~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/i2chwrsrcinits.o :  ./lib/I2CHWC~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/inverseur.o :  ./lib/INVERS~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/inverseurint.o :  ./lib/INVERS~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/pga_1.o :  ./lib/PGA_1.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/pga_2.o :  ./lib/PGA_2.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/pga_3.o :  ./lib/PGA_3.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/porteuse.o :  ./lib/porteuse.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/porteuseint.o :  ./lib/porteuse.inc\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/psocconfig.o :  ./lib/GLOBAL~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/psocconfigtbl.o : \
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc
+./lib/obj/tempsmort.o :  ./lib/TEMPSM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc
+./lib/obj/tempsmortint.o :  ./lib/TEMPSM~1.INC\
+   C:/PROGRA~1/Cypress/Common/CYPRES~3/tools/include/CY8C29~1/m8c.inc\
+   C:\DOCUME~1\XL\MYDOCU~1\PSOCDE~1.0PR\TELEUS~1\TELEUS~1\TELEUS~1\memory.inc

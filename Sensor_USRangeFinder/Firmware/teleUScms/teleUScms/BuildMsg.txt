@@ -1,0 +1,39 @@
+Starting MAKE...
+creating project.mk 
+lib/bufcomp.asm
+lib/bufcompint.asm
+lib/comp.asm
+lib/compteur.asm
+lib/compteurint.asm
+lib/declencheur.asm
+lib/declencheurint.asm
+lib/filtre1.asm
+lib/filtre2.asm
+lib/i2chwcommon.asm
+lib/i2chwint.asm
+lib/i2chwrsrcinits.asm
+lib/inverseur.asm
+lib/inverseurint.asm
+lib/pga_1.asm
+lib/pga_2.asm
+lib/pga_3.asm
+lib/porteuse.asm
+lib/porteuseint.asm
+lib/psocconfig.asm
+lib/psocconfigtbl.asm
+lib/tempsmort.asm
+lib/tempsmortint.asm
+./boot.asm
+./delay.asm
+./main.c
+Linking..
+LMM info: area 'InterruptRAM' uses 8 bytes in SRAM bank 0
+LMM info: area 'virtual_registers' uses 15 bytes in SRAM page 0
+LMM info: area 'data' item of 2 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+LMM info: area 'data' item of 1 bytes allocated in SRAM page 0
+  ROM 11% full. 3302 out of 32768 bytes used (does not include absolute areas).
+  RAM 2% full. 27 bytes used (does not include stack usage).
+idata dump at output/teleUScms.idata
+ 
+teleUScms - 0 error(s) 0 warning(s) 17:49:10
