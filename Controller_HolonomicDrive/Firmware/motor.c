@@ -10,45 +10,6 @@ signed char currentSpeedSign[] = {0, 0, 0};
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 
 /*
- * Interrupt routine for PWM generation
- */
-/*void VectorB0(void) {
-
-  if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
-  {
-    // Clear TIM2 Capture Compare1 interrupt pending bit
-    TIM_ClearITPendingBit(TIM2, TIM_IT_CC1);
-
-    // End of motor1 pulse
-    GPIO_ResetBits(GPIOA, GPIO_Pin_1);
-  }
-  else if (TIM_GetITStatus(TIM2, TIM_IT_CC2) != RESET)
-  {
-    // Clear TIM2 Capture Compare2 interrupt pending bit
-    TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
-
-    // End of motor2 pulse
-    GPIO_ResetBits(GPIOA, GPIO_Pin_2);
-  }
-  else if (TIM_GetITStatus(TIM2, TIM_IT_CC3) != RESET)
-  {
-    // Clear TIM2 Capture Compare3 interrupt pending bit
-    TIM_ClearITPendingBit(TIM2, TIM_IT_CC3);
-
-    // End of motor3 pulse
-    GPIO_ResetBits(GPIOA, GPIO_Pin_3);
-  }
-  else {
-    // TIM_IT_Update
-    
-    // Clear TIM2 Update interrupt pending bit
-    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-
-    GPIO_SetBits(GPIOA, GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3);
-  }
-  }*/
-
-/*
  * Initialises TIM2 for PWM generation and associated GPIOs
  */
 void motorsInit(void) {
