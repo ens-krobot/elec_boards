@@ -57,6 +57,7 @@ void motorsInit(void) {
   GPIO_InitTypeDef        GPIO_InitStructure;
   
   //Enable GPIOB and GPIOC clock
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
   
@@ -79,8 +80,8 @@ void motorsInit(void) {
   //         IN2  PC8
   //         PWM  PA3
   //         IND  PC9
-  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6
-                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_13);
+  GPIO_InitStructure.GPIO_Pin     = (GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6
+                                     | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10);
   GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_Out_PP;
   GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
   GPIO_Init(GPIOC, &GPIO_InitStructure);
@@ -94,8 +95,8 @@ void motorsInit(void) {
 
   // Default value of H-Bridge configuration
   GPIO_ResetBits(GPIOB, GPIO_Pin_0 | GPIO_Pin_1);
-  GPIO_ResetBits(GPIOC, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_10
-                           | GPIO_Pin_3 | GPIO_Pin_9 | GPIO_Pin_13);
+  GPIO_ResetBits(GPIOC, GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_6 | GPIO_Pin_7
+                 | GPIO_Pin_8 | GPIO_Pin_10);
 
   // TimeBase configuration
   TIM_TimeBaseStructure.TIM_Prescaler     = (uint16_t) (72000000 / 72000000) - 1;;
@@ -258,7 +259,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
         GPIO_SetBits(GPIOC, GPIO_Pin_7);
         GPIO_ResetBits(GPIOC, GPIO_Pin_8);
       }
-      TIM_SetCompare3(TIM2, (uint16_t)(-speed));
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
     }
     TIM_OC4Init(TIM2, &TIM_OCInitStructure);
     TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
