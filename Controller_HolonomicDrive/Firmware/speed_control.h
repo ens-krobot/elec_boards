@@ -6,14 +6,14 @@
 #ifndef HEADER__SPEEDCONTROL
 #define HEADER__SPEEDCONTROL
 
-#define K_P    150
-#define K_I      3
-#define Tcomp   40 // speed will be computed on a Tcomp timesample
-#define Te      50
+#define K_P    170
+#define K_I      4
+#define Tcomp    5 // speed will be computed on a Tcomp timesample
+#define Te      10
 
 #define K_v   (1000/Tcomp)
 
-#define INTEG_MAX 20000
+#define INTEG_MAX 200000
 
 #include "ch.h"
 #include "motor.h"
