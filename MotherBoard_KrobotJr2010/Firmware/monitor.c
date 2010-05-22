@@ -99,13 +99,13 @@ void demoHandler(BaseChannel *chp, int argc, char* argv[]) {
   }
   switch (argv[0][0]) {
     case '1':
-      canSetScrew(0, 0, 100, 0, 0);
+      canSetScrew(0, 0, 200, 0, 0);
       chThdSleepMilliseconds(2000);
-      canSetScrew(0, 0, 0, 100, 0);
+      canSetScrew(0, 0, 0, 200, 0);
       chThdSleepMilliseconds(2000);
-      canSetScrew(0, 0, -100, 0, 0);
+      canSetScrew(0, 0, -200, 0, 0);
       chThdSleepMilliseconds(2000);
-      canSetScrew(0, 0, 0, -100, 0);
+      canSetScrew(0, 0, 0, -200, 0);
       chThdSleepMilliseconds(2000);
       canSetScrew(0, 0, 0, 0, 0);
       break;
