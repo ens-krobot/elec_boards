@@ -18,6 +18,8 @@
 #include "lift.h"
 #include "ax12.h"
 
+#include "watch_adc.h"
+
 /*
  * Global variables
  */
@@ -39,67 +41,6 @@ static msg_t Thread1(void *arg) {
   }
   return 0;
 }
-
-#define ADC_GRP1_NUM_CHANNELS   8
-#define ADC_GRP1_BUF_DEPTH      16
-
-static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
-static Thread *adctp;
-
-const ADCConfig adccfg = {};
-const ADCConversionGroup adcgrpcfg = {
-  TRUE,
-  ADC_GRP1_NUM_CHANNELS,
-  0,
-  ADC_CR2_EXTSEL_SWSTART | ADC_CR2_TSVREFE | ADC_CR2_CONT,
-  0,
-  0,
-  ADC_SQR1_NUM_CH(ADC_GRP1_NUM_CHANNELS),
-  ADC_SQR2_SQ7_N(ADC_CHANNEL_SENSOR) | ADC_SQR2_SQ6_N(ADC_CHANNEL_VREFINT),
-  ADC_SQR3_SQ5_N(ADC_CHANNEL_IN11)   | ADC_SQR3_SQ4_N(ADC_CHANNEL_IN10) |
-  ADC_SQR3_SQ3_N(ADC_CHANNEL_IN11)   | ADC_SQR3_SQ2_N(ADC_CHANNEL_IN10) |
-  ADC_SQR3_SQ1_N(ADC_CHANNEL_IN11)   | ADC_SQR3_SQ0_N(ADC_CHANNEL_IN10)
-};
-
-/*
- * ADC continuous conversion thread.
- */
-size_t nx = 0, ny = 0;
-static void adccallback(adcsample_t *buffer, size_t n) {
-
-  static uint16_t count = 0;
-
-  if (buffer[11] >= 2400 ) {
-    palClearPad(IOPORT3, GPIOC_LED);
-    //canSetScrew(0,0,0,0,0);
-    //while(1);
-    count++;
-  }
-  else
-    palSetPad(IOPORT3, GPIOC_LED);
-
-  if (count >= 10) {
-    canSetScrew(0,0,0,0,0);
-    while(1);
-  }
-}
-
-static WORKING_AREA(adc_continuous_wa, 256);
-static msg_t adc_continuous_thread(void *p){
-
-  (void)p;
-  palSetGroupMode(IOPORT3,
-                  PAL_PORT_BIT(0) | PAL_PORT_BIT(1),
-                  PAL_MODE_INPUT_ANALOG);
-  adcStart(&ADCD1, &adccfg);
-  while(1) {
-  adcStartConversion(&ADCD1, &adcgrpcfg, samples,
-                     ADC_GRP1_BUF_DEPTH, adccallback);
-  adcWaitConversion(&ADCD1, TIME_INFINITE);
-  adcStop(&ADCD1);}
-  return 0;
-}
-
 
 static WORKING_AREA(waThread2, 1024);
 static msg_t Thread2(void *arg) {
@@ -127,9 +68,6 @@ static msg_t Thread2(void *arg) {
     chThdSleepMilliseconds(10000);
     }
   };*/
-
-  adctp = chThdCreateStatic(adc_continuous_wa, sizeof(adc_continuous_wa),
-                            NORMALPRIO + 9, adc_continuous_thread, NULL);
 
   chThdSleep(MS2ST(85000));
   canSetScrew(0, 0, 0, 0, 0);
@@ -174,6 +112,7 @@ static void TimerHandler(eventid_t id) {
     chThdSleep(MS2ST(15000));
     canSetScrew(0, 0, 0, 0, 0);
   }
+
   /*if (!palReadPad(IOPORT1, GPIOA_BUTTON)) {
 
     palClearPad(IOPORT3, GPIOC_LED);
@@ -260,21 +199,21 @@ int main(int argc, char **argv) {
   canMonitorStart();
 
   /*
-   * Initialise the lift
+   * Initialise lift and grips
    */
   liftInit();
   ax12Init();
 
-  //chThdSleep(MS2ST(2000));
-  
+  /*
+   * Initialise ADCs
+   */
+  adcWatchInit();
+
   /*
    * Init pins
    */
   palSetGroupMode(IOPORT3, PAL_PORT_BIT(6) | PAL_PORT_BIT(8), PAL_MODE_INPUT_PULLDOWN);
-  palSetGroupMode(IOPORT3, PAL_PORT_BIT(0) | PAL_PORT_BIT(2), PAL_MODE_INPUT_ANALOG);
-  adcStart(&ADCD1, NULL);
-  //adctp = chThdCreateStatic(adc_continuous_wa, sizeof(adc_continuous_wa),
-  //                          NORMALPRIO + 9, adc_continuous_thread, NULL);
+
   /*
    * Creates the blinker thread.
    */
@@ -285,9 +224,6 @@ int main(int argc, char **argv) {
    * Normal main() thread activity, in this demo it does nothing except
    * sleeping in a loop and listen for events.
    */
-
-  uint8_t params[] = {P_GOAL_POSITION, 0x00, 0x02, 0x00, 0x02};
-  ax12SendPacket(1, INST_WRITE, 5, params);
 
   evtInit(&evt, MS2ST(500));            /* Initializes an event timer object.   */
   evtStart(&evt);                       /* Starts the event timer.              */
