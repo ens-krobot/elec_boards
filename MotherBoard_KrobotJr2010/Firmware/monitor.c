@@ -413,6 +413,6 @@ static const ShellConfig shellConfig = {
 
 void monitorInit(void) {
   shellInit();
-  shellCreate(&shellConfig, THD_WA_SIZE(512), NORMALPRIO);
-  cdtp = chThdCreateFromHeap(NULL, THD_WA_SIZE(128), NORMALPRIO + 1, consoleThread, NULL);
+  shellCreate(&shellConfig, THD_WA_SIZE(1024), NORMALPRIO);
+  cdtp = chThdCreateFromHeap(NULL, THD_WA_SIZE(256), NORMALPRIO + 1, consoleThread, NULL);
 }
