@@ -11,6 +11,10 @@
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
 static Thread *adctp;
 
+static uint16_t compHigh[8] = {4096, 4096, 4096, 4096, 4096, 4096, 4096, 4096};
+static uint16_t compLow[8]  = {0, 0, 0, 0, 0, 0, 0, 0};
+static uint8_t alarmActi[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+
 const ADCConfig adccfg = {};
 const ADCConversionGroup adcgrpcfg = {
   TRUE,
@@ -31,11 +35,23 @@ const ADCConversionGroup adcgrpcfg = {
  */
 static void adccallback(adcsample_t *buffer, size_t n) {
 
+  static uint8_t ind[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  uint8_t i;
+
   (void)n;
-  if (buffer[ADC_3] >= 2000)
-    palClearPad(IOPORT3, GPIOC_LED);
-  else
-    palSetPad(IOPORT3, GPIOC_LED);
+
+  for (i=0; i < 8; i++) {
+    if (alarmActi[i]) {
+      if (ind[i] == 0 && buffer[i] >= compHigh[i]) {
+        ind[i] = 1;
+        chEvtBroadcastI(&adcAlarmWarn[i]);
+      }
+      if (ind[i] == 1 && buffer[i] <= compLow[i]) {
+        ind[i] = 0;
+        chEvtBroadcastI(&adcAlarmOK[i]);
+      }
+    }
+  }
 }
 
 static WORKING_AREA(adc_continuous_wa, 256);
@@ -50,6 +66,8 @@ static msg_t adc_continuous_thread(void *p){
 
 void adcWatchInit(void) {
 
+  uint8_t i;
+
   // Init pins
   palSetGroupMode(IOPORT1, PAL_PORT_BIT(4) | PAL_PORT_BIT(5), PAL_MODE_INPUT_ANALOG);
   palSetGroupMode(IOPORT3, PAL_PORT_BIT(0) | PAL_PORT_BIT(1) | PAL_PORT_BIT(2)
@@ -58,7 +76,26 @@ void adcWatchInit(void) {
   // Start ADC driver
   adcStart(&ADCD1, &adccfg);
 
+  // Init trigger event
+  for (i=0; i < 8; i++) {
+    chEvtInit(&adcAlarmWarn[i]);
+    chEvtInit(&adcAlarmOK[i]);
+  }
+
   // Start conversion Thread
   adctp = chThdCreateStatic(adc_continuous_wa, sizeof(adc_continuous_wa),
                             NORMALPRIO + 9, adc_continuous_thread, NULL);
+}
+
+void adcSetAlarm(uint8_t adc, uint16_t histLow, uint16_t histHigh) {
+
+  chSysLock();
+  compLow[adc] = histLow;
+  compHigh[adc] = histHigh;
+  alarmActi[adc] = 1;
+  chSysUnlock();
+}
+
+void adcResetAlarm(uint8_t adc) {
+  alarmActi[adc] = 0;
 }

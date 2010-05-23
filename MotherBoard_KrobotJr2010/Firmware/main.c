@@ -167,6 +167,13 @@ static void TimerHandler(eventid_t id) {
   }*/
 }
 
+static void adcHandler(eventid_t id) {
+  palClearPad(IOPORT3, GPIOC_LED);
+}
+static void adcNHandler(eventid_t id) {
+  palSetPad(IOPORT3, GPIOC_LED);
+}
+
 /*
  * Entry point, note, the main() function is already a thread in the system
  * on entry.
@@ -175,9 +182,11 @@ int main(int argc, char **argv) {
 
   static const evhandler_t evhndl[] = {
     TimerHandler,
+    adcHandler,
+    adcNHandler
   };
   static EvTimer evt;
-  struct EventListener el0;
+  struct EventListener el0, elADC, elNADC;
 
   (void)argc;
   (void)argv;
@@ -228,6 +237,9 @@ int main(int argc, char **argv) {
   evtInit(&evt, MS2ST(500));            /* Initializes an event timer object.   */
   evtStart(&evt);                       /* Starts the event timer.              */
   chEvtRegister(&evt.et_es, &el0, 0);   /* Registers on the timer event source. */
+  chEvtRegister(&adcAlarmWarn[ADC_3], &elADC, 1);
+  chEvtRegister(&adcAlarmOK[ADC_3], &elNADC, 2);
+  adcSetAlarm(ADC_3, 1800, 2200);
   while (TRUE)
     chEvtDispatch(evhndl, chEvtWaitOne(ALL_EVENTS));
   return 0;
