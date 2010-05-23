@@ -29,9 +29,9 @@ const ADCConversionGroup adcgrpcfg = {
 /*
  * ADC continuous conversion thread.
  */
-size_t nx = 0, ny = 0;
 static void adccallback(adcsample_t *buffer, size_t n) {
 
+  (void)n;
   if (buffer[ADC_3] >= 2000)
     palClearPad(IOPORT3, GPIOC_LED);
   else
