@@ -25,5 +25,6 @@ EventSource adcAlarmWarn[8], adcAlarmOK[8];
 void adcWatchInit(void);
 void adcSetAlarm(uint8_t adc, uint16_t histLow, uint16_t histHigh);
 void adcResetAlarm(uint8_t adc);
+adcsample_t adcGetSample(uint8_t adc);
 
 #endif

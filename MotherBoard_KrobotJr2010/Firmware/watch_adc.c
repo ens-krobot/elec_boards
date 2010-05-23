@@ -6,9 +6,10 @@
 #include "watch_adc.h"
 
 #define ADC_GRP1_NUM_CHANNELS   8
-#define ADC_GRP1_BUF_DEPTH     16
+#define ADC_GRP1_BUF_DEPTH      3
 
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
+static adcsample_t *curBuffer;
 static Thread *adctp;
 
 static uint16_t compHigh[8] = {4096, 4096, 4096, 4096, 4096, 4096, 4096, 4096};
@@ -39,6 +40,8 @@ static void adccallback(adcsample_t *buffer, size_t n) {
   uint8_t i;
 
   (void)n;
+
+  curBuffer = buffer;
 
   for (i=0; i < 8; i++) {
     if (alarmActi[i]) {
@@ -98,4 +101,10 @@ void adcSetAlarm(uint8_t adc, uint16_t histLow, uint16_t histHigh) {
 
 void adcResetAlarm(uint8_t adc) {
   alarmActi[adc] = 0;
+}
+
+adcsample_t adcGetSample(uint8_t adc) {
+  if (adc > 7)
+    return 0;
+  return curBuffer[adc];
 }
