@@ -38,15 +38,13 @@ static void adccallback(adcsample_t *buffer, size_t n) {
     palSetPad(IOPORT3, GPIOC_LED);
 }
 
-static WORKING_AREA(adc_continuous_wa, 2048);
+static WORKING_AREA(adc_continuous_wa, 256);
 static msg_t adc_continuous_thread(void *p){
 
   (void)p;
-  while(1) {
-    adcStartConversion(&ADCD1, &adcgrpcfg, samples,
-                       ADC_GRP1_BUF_DEPTH, adccallback);
-    adcWaitConversion(&ADCD1, TIME_INFINITE);
-  }
+  adcStartConversion(&ADCD1, &adcgrpcfg, samples,
+                     ADC_GRP1_BUF_DEPTH, adccallback);
+  adcWaitConversion(&ADCD1, TIME_INFINITE);
   return 0;
 }
 
