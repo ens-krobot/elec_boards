@@ -1,0 +1,194 @@
+(ExpressProject "H_Bridge"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\elec\lib\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\h_bridge.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\PCB\H_Bridge-1_0.mnl")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File "C:\krobot\USB_Module\H_Bridge\Assembly\H_BRIDGE.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File "C:\KROBOT\USB_MODULE\H_BRIDGE\SCHEMATIC\H_BRIDGE.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE")
+    (FALSE)
+    (FALSE)
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (FALSE)
+    (FALSE)
+    ( "FALSE"))
+  (Folder "Outputs"
+    (File "..\pcb\h_bridge-1_0.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (LM2675/SO
+      (FullPartName "LM2675/SO.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (IRLR3103
+      (FullPartName "IRLR3103.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\IRF.OLB")
+      (DeviceIndex "0"))
+    (IRFS3006
+      (FullPartName "IRFS3006.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (CON8
+      (FullPartName "CON8.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CD4011A
+      (FullPartName "CD4011A.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\CD4000.OLB")
+      (DeviceIndex "0"))
+    (CD40107B
+      (FullPartName "CD40107B.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\CD4000.OLB")
+      (DeviceIndex "0"))
+    (GND
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (74HC00
+      (FullPartName "74HC00.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\74HC.OLB")
+      (DeviceIndex "0"))
+    (JP3
+      (FullPartName "JP3.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (HCPL-2232
+      (FullPartName "HCPL-2232.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-L
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (ACSL-6400
+      (FullPartName "ACSL-6400.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (CON7
+      (FullPartName "CON7.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON6
+      (FullPartName "CON6.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-R
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
+         "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 302 0 678"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 314 1880 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\H_BRIDGE_HIP4081_SMD\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Power Supply"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 315 1881 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\H_BRIDGE_HIP4081_SMD\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Driver"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 315 1881 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\H_BRIDGE_HIP4081_SMD\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Current Meas."))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 316 1882 0 1067")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\H_BRIDGE_HIP4081_SMD\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "H-Bridge"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 314 1880 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\H_BRIDGE_HIP4081_SMD\SCHEMATIC\H_BRIDGE.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Input Logic")))
+  (MPSSessionName "Olivier")
+  (LastUsedLibraryBrowseDirectory "C:\krobot\elec\lib\OrCAD"))
