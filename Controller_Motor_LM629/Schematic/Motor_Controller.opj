@@ -46,48 +46,18 @@
     (FileView
       (Path "Design Resources")
       (Path "Design Resources"
-         "C:\krobot\USB_Module\Motor_Controller\Schematic\motor_controller.dsn")
+         "C:\krobot\elec\boards\Controller_Motor\Schematic\motor_controller.dsn")
       (Path "Design Resources"
-         "C:\krobot\USB_Module\Motor_Controller\Schematic\motor_controller.dsn"
+         "C:\krobot\elec\boards\Controller_Motor\Schematic\motor_controller.dsn"
          "SCHEMATIC1")
-      (Path "Outputs"))
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\Controller_Motor\Schematic\motor_controller.dsn"
+         "SCHEMATIC1" "Microcontrôleur"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
         (Placement "44 0 1 -1 -1 -1 -1 0 304 0 758"))
-      (Tab 0))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1053")
-        (Scroll "0 0")
-        (Zoom "133")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Alimentation"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
-        (Scroll "0 0")
-        (Zoom "133")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Microcontrôleur"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 306 1886 0 1057")
-        (Scroll "0 0")
-        (Zoom "133")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\USB_MODULE\MOTOR_CONTROLLER\SCHEMATIC\MOTOR_CONTROLLER.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Modules LM")))
+      (Tab 0)))
   (MPSSessionName "Olivier"))
