@@ -1,0 +1,190 @@
+(ExpressProject "Controller_Motors"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\elec\lib\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\controller_motors.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\PCB\CONTROLLER_MOTORS.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Board_sim_option "VHDL_flow")
+    (FALSE)
+    (FALSE)
+    ( "FALSE"))
+  (Folder "Outputs"
+    (File "..\pcb\controller_motors.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (MC306
+      (FullPartName "MC306.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (JP3
+      (FullPartName "JP3.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (L
+      (FullPartName "L.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\FILTSUB.OLB")
+      (DeviceIndex "0"))
+    ("CAPACITOR POL"
+      (FullPartName "CAPACITOR POL.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (JP2
+      (FullPartName "JP2.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (DS26LS32A
+      (FullPartName "DS26LS32A.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\LINEDRIVERRECEIVER.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (CON20A
+      (FullPartName "CON20A.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON4
+      (FullPartName "CON4.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-R
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-L
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (VCC
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (STM32F103RCT
+      (FullPartName "STM32F103RCT.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (GND
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (SN65HVD230
+      (FullPartName "SN65HVD230.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (CON3
+      (FullPartName "CON3.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn"
+         "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn"
+         "SCHEMATIC1" "Microcontroller"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 315 0 710"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Communication"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Driver Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Encoder Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "141")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Microcontroller"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Power Supply")))
+  (MPSSessionName "Olivier"))
