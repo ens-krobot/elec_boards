@@ -12,7 +12,7 @@
     (CompileFileAddedOrDeleted "x")
     (Netlist_TAB "3")
     (LAYOUT_Netlist_File
-       "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\PCB\CONTROLLER_MOTORS.MNL")
+       "C:\krobot\elec\boards\Controller_Motor_STM32\PCB\CONTROLLER_MOTORS.MNL")
     (LAYOUT_PCB_Footprint "{PCB Footprint}")
     (FALSE)
     (LAYOUT_Units "0")
@@ -26,6 +26,7 @@
     (ANNOTATE_IncludeNonPrimitive "TRUE")
     (ANNOTATE_Refdes_Control_Required "FALSE")
     (Board_sim_option "VHDL_flow")
+    (FALSE)
     (FALSE)
     (FALSE)
     ( "FALSE"))
@@ -117,15 +118,11 @@
     (FileView
       (Path "Design Resources")
       (Path "Design Resources"
-         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn")
-      (Path "Design Resources"
-         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn"
-         "SCHEMATIC1")
+         "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn")
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
-         "C:\krobot\elec\boards\Controller_Motors\Schematic\controller_motors.dsn"
-         "SCHEMATIC1" "Microcontroller"))
+         "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
@@ -135,56 +132,56 @@
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
         (Scroll "0 0")
         (Zoom "136")
         (Occurrence "/"))
       (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "Communication"))
+      (Page "Power Supply"))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
         (Scroll "0 0")
         (Zoom "136")
         (Occurrence "/"))
       (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Driver Interface"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
-        (Scroll "0 0")
-        (Zoom "136")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Encoder Interface"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -8 -30 318 1884 0 1068")
-        (Scroll "0 0")
-        (Zoom "141")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
       (Schematic "SCHEMATIC1")
       (Page "Microcontroller"))
     (Doc
       (Type "COrSchematicDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
         (Scroll "0 0")
         (Zoom "136")
         (Occurrence "/"))
       (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTORS\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "Power Supply")))
+      (Page "Encoder Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Driver Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Communication")))
   (MPSSessionName "Olivier"))
