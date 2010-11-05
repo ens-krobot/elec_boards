@@ -1,0 +1,120 @@
+(ExpressProject "USB_CAN"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\elec\lib\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\usb_can.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File "C:\KROBOT\ELEC\BOARDS\USB_CAN\PCB\USB_CAN.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0"))
+  (Folder "Outputs"
+    (File "..\pcb\usb_can.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (MPSSessionName "Olivier")
+  (PartMRUSelector
+    (LP38692MP
+      (FullPartName "LP38692MP.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (LM3940/TO263
+      (FullPartName "LM3940/TO263.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\REGULATOR.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-L
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-R
+      (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (FT232RL
+      (FullPartName "FT232RL.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn" "SCHEMATIC1")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn" "SCHEMATIC1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 318 0 710"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 319 1885 2 1068")
+        (Scroll "0 0")
+        (Zoom "135")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\USB_CAN\SCHEMATIC\USB_CAN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Microcontroller"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 2 1068")
+        (Scroll "0 0")
+        (Zoom "135")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\USB_CAN\SCHEMATIC\USB_CAN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "CAN Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 319 1885 2 1068")
+        (Scroll "0 0")
+        (Zoom "135")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\USB_CAN\SCHEMATIC\USB_CAN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "USB Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 319 1885 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\USB_CAN\SCHEMATIC\USB_CAN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "JTAG Interface"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path "C:\KROBOT\ELEC\BOARDS\USB_CAN\SCHEMATIC\USB_CAN.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "I2C Interface")))
+  (LastUsedLibraryBrowseDirectory
+     "C:\OrCAD\OrCAD_16.0\tools\capture\library\pspice"))
