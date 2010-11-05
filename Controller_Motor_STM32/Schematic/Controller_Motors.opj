@@ -30,7 +30,9 @@
     (FALSE)
     (FALSE)
     (FALSE)
-    ( "FALSE"))
+    (FALSE)
+    (FALSE)
+    (FALSE))
   (Folder "Outputs"
     (File "..\pcb\controller_motors.mnl"
       (Type "LAYOUT Netlist File")))
@@ -120,9 +122,6 @@
       (Path "Design Resources")
       (Path "Design Resources"
          "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn")
-      (Path "Design Resources"
-         "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn"
-         "SCHEMATIC1")
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
@@ -131,7 +130,7 @@
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 315 0 710"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 315 1 711"))
       (Tab 0))
     (Doc
       (Type "COrSchematicDoc")
@@ -176,16 +175,5 @@
       (Path
          "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "Driver Interface"))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
-        (Scroll "0 0")
-        (Zoom "136")
-        (Occurrence "/"))
-      (Path
-         "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "Communication")))
+      (Page "Driver Interface")))
   (MPSSessionName "Olivier"))
