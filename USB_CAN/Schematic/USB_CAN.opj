@@ -14,7 +14,9 @@
     (LAYOUT_Netlist_File "C:\KROBOT\ELEC\BOARDS\USB_CAN\PCB\USB_CAN.MNL")
     (LAYOUT_PCB_Footprint "{PCB Footprint}")
     (FALSE)
-    (LAYOUT_Units "0"))
+    (LAYOUT_Units "0")
+    (FALSE)
+    ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\usb_can.mnl"
       (Type "LAYOUT Netlist File")))
