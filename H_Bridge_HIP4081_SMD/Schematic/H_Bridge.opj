@@ -19,7 +19,8 @@
     (FALSE)
     (BOM_Scope "0")
     (BOM_Mode "0")
-    (BOM_Report_File "C:\krobot\USB_Module\H_Bridge\Assembly\H_BRIDGE.BOM")
+    (BOM_Report_File
+       "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Assembly\H_BRIDGE.BOM")
     (BOM_Merge_Include "FALSE")
     (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
     (BOM_Header "Item\tQuantity\tReference\tPart")
@@ -44,7 +45,9 @@
     (FALSE))
   (Folder "Outputs"
     (File "..\pcb\h_bridge-1_0.mnl"
-      (Type "LAYOUT Netlist File")))
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\h_bridge.bom"
+      (Type "Report")))
   (Folder "PSpice Resources"
     (Folder "Simulation Profiles")
     (Folder "Model Libraries"
@@ -125,16 +128,10 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources"
-         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn")
-      (Path "Design Resources"
-         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
-         "SCHEMATIC1")
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
-         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
-         "SCHEMATIC1" "Input Logic"))
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")

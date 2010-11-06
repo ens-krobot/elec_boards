@@ -1,0 +1,44 @@
+H-Bridge HIP4081 SMD - Current Measurement  Revised: Saturday, August 28, 2010
+          Revision: 1.0
+
+
+
+
+
+
+
+Bill Of Materials       November 6,2010      18:24:56	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	1	C1	220n
+2	4	C2,C7,C8,C9	100n
+3	2	C3,C4	1 uF
+4	1	C5	100 nF
+5	1	C6	0.1 uF
+6	1	C10	EEVFK1H102M
+7	1	C11	68 uF
+8	1	C12	10n
+9	2	D1,D2	ES1B
+10	3	D3,D6,D7	SMBJ30CA
+11	4	D4,D5,D8,D9	SD101AW
+12	1	D10	10BQ040
+13	1	D11	LED
+14	1	E1	INA/DIR
+15	1	F1	Fusible thermique
+16	1	J2	Moteur
+17	1	J3	Control
+18	1	J4	Batterie
+19	1	L1	150 uH
+20	4	M1,M2,M3,M4	IRLR3114
+21	2	R3,R4	220k
+22	4	R5,R6,R8,R9	15
+23	1	R7	33
+24	4	R10,R11,R12,R13	1k
+25	1	R14	680
+26	1	U1	ACS712ELCTR-30A-T
+27	1	U2	HIP4081A
+28	2	U3,U5	HCPL-2232-300E
+29	1	U4	CD4011A
+30	1	U7	LM2675/SO

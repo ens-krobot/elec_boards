@@ -32,10 +32,25 @@
     (FALSE)
     (FALSE)
     (FALSE)
-    (FALSE))
+    (FALSE)
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\ASSEMBLY\CONTROLLER_MOTORS.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_Header "Item\tQuantity\tReference\tPart")
+    (BOM_Include_File
+       "C:\KROBOT\ELEC\BOARDS\CONTROLLER_MOTOR_STM32\SCHEMATIC\CONTROLLER_MOTORS.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "FALSE")
+    (BOM_View_Output "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\controller_motors.mnl"
-      (Type "LAYOUT Netlist File")))
+      (Type "LAYOUT Netlist File"))
+    (File "..\assembly\controller_motors.bom"
+      (Type "Report")))
   (Folder "PSpice Resources"
     (Folder "Simulation Profiles")
     (Folder "Model Libraries"

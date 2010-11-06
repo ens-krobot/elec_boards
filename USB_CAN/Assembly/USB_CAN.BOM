@@ -1,0 +1,52 @@
+Microcontroller  Revised: Saturday, November 06, 2010
+          Revision: 1.0
+
+
+
+
+
+
+
+Bill Of Materials       November 6,2010      18:23:15	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	9	C1,C4,C5,C8,C10,C11,C12,	100n
+		C13,C15
+2	2	C2,C3	12p
+3	2	C6,C7	22p
+4	2	C9,C17	1u
+5	1	C14	10u
+6	2	C19,C21	4.7u
+7	1	C20	10n
+8	1	D6	TXLED#
+9	1	D7	RXLED#
+10	1	D8	LED3
+11	1	D9	LED2
+12	1	D10	LED1
+13	1	E1	CAN_T
+14	1	E2	R-T
+15	1	E3	SCL_PU
+16	1	E4	SDA_PU
+17	1	E5	BOOT0
+18	1	E6	BOOT1
+19	1	J1	CAN #1
+20	1	J2	JTAG
+21	1	J3	CAN #2
+22	1	J4	I2C
+23	1	J9	Con. mini USB
+24	2	L1,L2	Ferrite bead
+25	1	R1	330
+26	14	R2,R4,R5,R6,R7,R8,R9,R10,	10k
+		R11,R24,R25,R26,R36,R37
+27	1	R3	120
+28	5	R32,R33,R38,R39,R40	680
+29	2	R34,R35	4.7k
+30	1	SW1	RESET
+31	1	U1	SN65HVD230
+32	1	U2	STM32F103RET
+33	1	U3	FT232RL
+34	1	U4	LT1521-3.3/SOT
+35	1	X1	32768
+36	1	X2	8 MHz
