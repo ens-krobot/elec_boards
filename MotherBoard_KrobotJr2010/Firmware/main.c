@@ -19,6 +19,7 @@
 #include "ax12.h"
 
 #include "watch_adc.h"
+#include "planner.h"
 
 /*
  * Global variables
@@ -42,41 +43,6 @@ static msg_t Thread1(void *arg) {
   return 0;
 }
 
-static WORKING_AREA(waThread2, 1024);
-static msg_t Thread2(void *arg) {
-
-  /*TIM_OCInitTypeDef  TIM_OCInitStructure;
-
-  // PWM1 Mode configuration: Channel1
-  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-  TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
-
-  (void)arg;
-  while (TRUE) {
-
-    TIM_OCInitStructure.TIM_Pulse = 3272;
-    TIM_OC1Init(TIM3, &TIM_OCInitStructure);
-    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
-    TIM_ARRPreloadConfig(TIM3, ENABLE);
-    chThdSleepMilliseconds(10000);
-
-    TIM_OCInitStructure.TIM_Pulse = 6545;
-    TIM_OC1Init(TIM3, &TIM_OCInitStructure);
-    TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
-    TIM_ARRPreloadConfig(TIM3, ENABLE);
-    chThdSleepMilliseconds(10000);
-    }
-  };*/
-
-  chThdSleep(MS2ST(85000));
-  canSetScrew(0, 0, 0, 0, 0);
-  while(1);
-
-  return 0;
-}
-
-
 /*
  * Executed as event handler at 500mS intervals.
  */
@@ -91,8 +57,109 @@ static void TimerHandler(eventid_t id) {
     else
       color = 1;
 
-    chThdCreateStatic(waThread2, sizeof(waThread2), NORMALPRIO+1, Thread2, NULL);
+    // square
+    canSetScrew(0, 0, -200, 0, 0);
+    chThdSleep(MS2ST(4000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(10));
+    canSetScrew(0, 0, 0, -200, 0);
+    chThdSleep(MS2ST(4000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(10));
+    canSetScrew(0, 0, 200, 0, 0);
+    chThdSleep(MS2ST(4000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(10));
+    canSetScrew(0, 0, 0, 200, 0);
+    chThdSleep(MS2ST(4000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(10));
 
+    // open grips
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP1, GRIP_OPEN, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP2, GRIP_OPEN, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP3, GRIP_OPEN, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Action(ID_BROADCAST);
+    chThdSleepMilliseconds(1000);
+
+    // lift down
+    liftGoto(LIFT_DOWN);
+    chThdSleepMilliseconds(4000);
+
+    // close one grip at a time
+    ax12Goto(AX12_GRIP1, GRIP_CLOSE, 0, CMD_NOW);
+    chThdSleepMilliseconds(1000);
+    ax12Goto(AX12_GRIP2, GRIP_CLOSE, 0, CMD_NOW);
+    chThdSleepMilliseconds(1000);
+    ax12Goto(AX12_GRIP3, GRIP_CLOSE, 0, CMD_NOW);
+    chThdSleepMilliseconds(1000);
+
+    // lift up
+    liftGoto(LIFT_UP);
+    chThdSleepMilliseconds(4000);
+
+    // carry
+    ax12Goto(AX12_ARM1, ARM_CARRY, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_ARM2, ARM_CARRY, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_ARM3, ARM_CARRY, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Action(ID_BROADCAST);
+
+    chThdSleepMilliseconds(2000);
+
+    // release
+    ax12Goto(AX12_GRIP1, GRIP_RELEASE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP2, GRIP_RELEASE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP3, GRIP_RELEASE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Action(ID_BROADCAST);
+
+    chThdSleepMilliseconds(1000);
+
+    // close all
+    ax12Goto(AX12_GRIP1, GRIP_CLOSE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP2, GRIP_CLOSE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_GRIP3, GRIP_CLOSE, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_ARM1, ARM_GET, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_ARM2, ARM_GET, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Goto(AX12_ARM3, ARM_GET, 0, CMD_ACTION);
+    chThdSleepMilliseconds(500);
+    ax12Action(ID_BROADCAST);
+    chThdSleepMilliseconds(500);
+
+    // around an obstacle
+    canSetScrew(0, -300, 0, 0, 60);
+    chThdSleep(MS2ST(6000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(1000));
+
+    // turn
+    canSetScrew(0, 0, 0, 0, 120);
+    chThdSleep(MS2ST(3000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(500));
+    canSetScrew(0, 0, 0, 0, -120);
+    chThdSleep(MS2ST(3000));
+    canSetScrew(0, 0, 0, 0, 0);
+    chThdSleep(MS2ST(500));
+
+    // stop
+    while(1);
+  }
+    /*TrajectoryPlannerStart(TIMELIMIT_90S);
 
     canSetScrew(0, 0, 0, -174, 0);
     chThdSleep(MS2ST(2000));
@@ -111,9 +178,9 @@ static void TimerHandler(eventid_t id) {
     canSetScrew(0, 0, 0, -300, 0);
     chThdSleep(MS2ST(15000));
     canSetScrew(0, 0, 0, 0, 0);
-  }
+    }*/
 
-  /*if (!palReadPad(IOPORT1, GPIOA_BUTTON)) {
+    /*if (!palReadPad(IOPORT1, GPIOA_BUTTON)) {
 
     palClearPad(IOPORT3, GPIOC_LED);
     chThdSleepMilliseconds(100);
@@ -216,18 +283,37 @@ int main(int argc, char **argv) {
   /*
    * Initialise ADCs
    */
-  adcWatchInit();
+  //adcWatchInit();
 
   /*
    * Init pins
    */
   palSetGroupMode(IOPORT3, PAL_PORT_BIT(6) | PAL_PORT_BIT(8), PAL_MODE_INPUT_PULLDOWN);
 
+  ax12Goto(AX12_ARM1, ARM_GET, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_ARM1, ARM_GET, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_ARM2, ARM_GET, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_ARM3, ARM_GET, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Action(ID_BROADCAST);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_GRIP1, GRIP_CLOSE, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_GRIP2, GRIP_CLOSE, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Goto(AX12_GRIP3, GRIP_CLOSE, 0, CMD_ACTION);
+  chThdSleepMilliseconds(500);
+  ax12Action(ID_BROADCAST);
+  chThdSleepMilliseconds(500);
+
   /*
    * Creates the blinker thread.
    */
-  //chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO+1, Thread1, NULL);
-  //chThdCreateStatic(waThread2, sizeof(waThread2), NORMALPRIO+1, Thread2, NULL);
+  chThdCreateStatic(waThread1, sizeof(waThread1), NORMALPRIO+1, Thread1, NULL);
+
 
   /*
    * Normal main() thread activity, in this demo it does nothing except
@@ -237,9 +323,9 @@ int main(int argc, char **argv) {
   evtInit(&evt, MS2ST(500));            /* Initializes an event timer object.   */
   evtStart(&evt);                       /* Starts the event timer.              */
   chEvtRegister(&evt.et_es, &el0, 0);   /* Registers on the timer event source. */
-  chEvtRegister(&adcAlarmWarn[ADC_3], &elADC, 1);
-  chEvtRegister(&adcAlarmOK[ADC_3], &elNADC, 2);
-  adcSetAlarm(ADC_3, 1800, 2200);
+  //chEvtRegister(&adcAlarmWarn[ADC_3], &elADC, 1);
+  //chEvtRegister(&adcAlarmOK[ADC_3], &elNADC, 2);
+  //adcSetAlarm(ADC_3, 1800, 2200);
   while (TRUE)
     chEvtDispatch(evhndl, chEvtWaitOne(ALL_EVENTS));
   return 0;

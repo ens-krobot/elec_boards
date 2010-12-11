@@ -8,6 +8,8 @@
 #define ADC_GRP1_NUM_CHANNELS   8
 #define ADC_GRP1_BUF_DEPTH      3
 
+EventSource adcAlarmWarn[8], adcAlarmOK[8];
+
 static adcsample_t samples[ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH];
 static adcsample_t *curBuffer;
 static Thread *adctp;

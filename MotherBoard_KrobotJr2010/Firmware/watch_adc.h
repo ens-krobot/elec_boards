@@ -20,7 +20,7 @@
 #define ADC_7       7
 
 // Event sources
-EventSource adcAlarmWarn[8], adcAlarmOK[8];
+extern EventSource adcAlarmWarn[8], adcAlarmOK[8];
 
 void adcWatchInit(void);
 void adcSetAlarm(uint8_t adc, uint16_t histLow, uint16_t histHigh);
