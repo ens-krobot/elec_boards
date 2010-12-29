@@ -1,0 +1,87 @@
+(ExpressProject "Monitoring_4Cells"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\elec\lib\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\monitoring_4cells.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\KROBOT\ELEC\BOARDS\MONITORING_4CELLS\PCB\MONITORING_4CELLS.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (FALSE)
+    ( "FALSE"))
+  (Folder "Outputs"
+    (File "..\pcb\monitoring_4cells.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (GND_SIGNAL
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (JP3
+      (FullPartName "JP3.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (ADS7828
+      (FullPartName "ADS7828.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (AD7991
+      (FullPartName "AD7991.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Monitoring_4Cells\Schematic\monitoring_4cells.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Monitoring_4Cells\Schematic\monitoring_4cells.dsn"
+         "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\Monitoring_4Cells\Schematic\monitoring_4cells.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 0 1041 -1 -1 0 319 0 710"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 319 1885 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\MONITORING_4CELLS\SCHEMATIC\MONITORING_4CELLS.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Schematic")))
+  (MPSSessionName "Olivier"))
