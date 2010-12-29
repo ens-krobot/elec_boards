@@ -27,7 +27,8 @@
     (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
     (BOM_One_Part_Per_Line "FALSE")
     (Open_BOM_in_Excel "FALSE")
-    (BOM_View_Output "FALSE"))
+    (BOM_View_Output "FALSE")
+    ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\usb_can.mnl"
       (Type "LAYOUT Netlist File"))
@@ -70,6 +71,8 @@
       (Path "Design Resources")
       (Path "Design Resources"
          "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn" "SCHEMATIC1")
       (Path "Outputs")
       (Select "Design Resources"
          "C:\krobot\elec\boards\USB_CAN\Schematic\usb_can.dsn"))
