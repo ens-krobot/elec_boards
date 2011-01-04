@@ -46,6 +46,7 @@
     (BOM_One_Part_Per_Line "FALSE")
     (Open_BOM_in_Excel "FALSE")
     (BOM_View_Output "FALSE")
+    (FALSE)
     ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\controller_motors.mnl"
@@ -144,7 +145,8 @@
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
-         "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn"))
+         "C:\krobot\elec\boards\Controller_Motor_STM32\Schematic\controller_motors.dsn"
+         "SCHEMATIC1" "Encoder Interface"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
