@@ -1,0 +1,25 @@
+Monitoring 4 Cells  Revised: Wednesday, December 29, 2010
+          Revision: 1.0
+
+
+
+
+
+
+
+Bill Of Materials       February 5,2011      11:47:24	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+
+1	5	C1,C2,C3,C4,C5	100n
+2	1	C6	10u
+3	1	D1	3.3V LED
+4	1	E1	A1
+5	1	E2	A0
+6	1	J1	I2C
+7	1	J2	Cell balancing
+8	8	R1,R2,R3,R4,R5,R6,R7,R8	10k
+9	1	R9	680
+10	4	U1,U2,U4,U5	INA148
+11	1	U3	ADS7828
