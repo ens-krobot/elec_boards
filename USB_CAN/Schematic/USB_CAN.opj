@@ -28,6 +28,7 @@
     (BOM_One_Part_Per_Line "FALSE")
     (Open_BOM_in_Excel "FALSE")
     (BOM_View_Output "FALSE")
+    (FALSE)
     ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\usb_can.mnl"
