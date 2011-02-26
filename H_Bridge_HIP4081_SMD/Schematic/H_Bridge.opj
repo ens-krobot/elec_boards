@@ -42,7 +42,8 @@
     (ANNOTATE_Refdes_Control_Required "FALSE")
     (FALSE)
     (FALSE)
-    (FALSE))
+    (FALSE)
+    ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\h_bridge-1_0.mnl"
       (Type "LAYOUT Netlist File"))
@@ -128,10 +129,16 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
+         "SCHEMATIC1")
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
-         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"))
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
+         "SCHEMATIC1"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
