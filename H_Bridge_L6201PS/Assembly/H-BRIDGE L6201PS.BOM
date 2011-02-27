@@ -7,7 +7,7 @@ H-Bridge L6201PS - H-Bridge 1  Revised: Sunday, January 09, 2011
 
 
 
-Bill Of Materials       February 5,2011      11:01:46	Page1
+Bill Of Materials       February 27,2011      11:36:29	Page1
 
 Item	Quantity	Reference	Part
 ______________________________________________
@@ -18,15 +18,17 @@ ______________________________________________
 4	2	C4,C10	22n
 5	2	C13,C14	EEVFK1H391Q
 6	4	D1,D2,D3,D4	MURS320T3G
-7	1	E1	INA1/DIR1
-8	1	E2	INA2/DIR2
-9	1	F1	Fusible thermique
-10	1	J1	Control #1
-11	1	J2	Motor #1
-12	1	J3	Control #2
-13	1	J4	Motor #2
-14	1	J5	Batterie
-15	2	R1,R3	10k
-16	2	R2,R4	10
-17	2	U1,U3	L6201PS
-18	2	U2,U4	74HCT00
+7	1	D11	LED
+8	1	E1	INA1/DIR1
+9	1	E2	INA2/DIR2
+10	1	F1	Fusible thermique
+11	1	J1	Control #1
+12	1	J2	Motor #1
+13	1	J3	Control #2
+14	1	J4	Motor #2
+15	1	J5	Batterie
+16	2	R1,R3	10k
+17	2	R2,R4	10
+18	1	R14	1.6k
+19	2	U1,U3	L6201PS
+20	2	U2,U4	74HCT00
