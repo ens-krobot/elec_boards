@@ -43,6 +43,7 @@
     (FALSE)
     (FALSE)
     (FALSE)
+    (FALSE)
     ( "FALSE"))
   (Folder "Outputs"
     (File "..\pcb\h_bridge-1_0.mnl"
@@ -59,6 +60,10 @@
       (Sort User)))
   (DefaultLibraryBrowseDirectory "library\PSpice")
   (PartMRUSelector
+    (DIODE
+      (FullPartName "DIODE.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
     (C
       (FullPartName "C.Normal")
       (LibraryName "C:\ORCAD\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
@@ -137,8 +142,7 @@
       (Path "Design Resources" "Library")
       (Path "Outputs")
       (Select "Design Resources"
-         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"
-         "SCHEMATIC1"))
+         "C:\krobot\elec\boards\H_Bridge_HIP4081_SMD\Schematic\h_bridge.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")

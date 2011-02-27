@@ -7,7 +7,7 @@ H-Bridge HIP4081 SMD - Current Measurement  Revised: Saturday, August 28, 2010
 
 
 
-Bill Of Materials       November 6,2010      18:24:56	Page1
+Bill Of Materials       February 27,2011      11:47:46	Page1
 
 Item	Quantity	Reference	Part
 ______________________________________________
@@ -36,7 +36,7 @@ ______________________________________________
 22	4	R5,R6,R8,R9	15
 23	1	R7	33
 24	4	R10,R11,R12,R13	1k
-25	1	R14	680
+25	1	R14	1.2k
 26	1	U1	ACS712ELCTR-30A-T
 27	1	U2	HIP4081A
 28	2	U3,U5	HCPL-2232-300E
