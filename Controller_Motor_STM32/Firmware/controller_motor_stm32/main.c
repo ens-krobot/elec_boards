@@ -12,6 +12,7 @@
 #include <math.h>
 
 #include "hw/hw_led.h"
+#include "motor.h"
 
 static void init(void)
 {
@@ -39,6 +40,9 @@ static void init(void)
 
         // Initialize LED driver
         LEDS_INIT();
+
+        // Initialize MOTOR driver
+        motorsInit();
 }
 
 static void NORETURN speaktome_process(void)
