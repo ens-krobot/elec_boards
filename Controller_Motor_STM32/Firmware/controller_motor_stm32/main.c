@@ -75,6 +75,39 @@ static void NORETURN blink_process(void)
 	}
 }
 
+static void NORETURN square_process(void)
+{
+	/* blinkenlichten ! */
+	while (1)
+	{
+          motorSetSpeed(MOTOR3 | MOTOR4, 500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3, -500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR4, -500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 1000);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 2000);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 2500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 3000);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 3500);
+          timer_delay(2000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 0);
+          timer_delay(2000);
+          break;
+	}
+}
+
 
 int main(void)
 {
@@ -83,8 +116,9 @@ int main(void)
 	/* Create a new child process */
 	proc_new(speaktome_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
         proc_new(blink_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
+        proc_new(square_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
 
-        LED3_ON();
+        enableMotor(MOTOR3 | MOTOR4);
 
 	/*
 	 * The main process is kept to periodically report the stack
