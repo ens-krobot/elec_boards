@@ -87,6 +87,50 @@
  *  }
  *  \endcode
  *
+ * Example usage: wait multiple generic events via event_select()
+ * \code
+ * Event ev1;
+ * Event ev2;
+ *
+ * void event_notifier(void)
+ * {
+ *      Event *evs[] = { &ev1, &ev2 };
+ *
+ *      event_initGeneric(&ev1);
+ *      event_initGeneric(&ev2);
+ *
+ *      while (1)
+ *      {
+ *              int id = event_select(evs, countof(evs),
+ *                                      ms_to_ticks(100));
+ *              if (id < 0)
+ *              {
+ *                      kprintf("no IRQ\n");
+ *                      continue;
+ *              }
+ *              kprintf("IRQ %d happened\n", id);
+ *      }
+ * }
+ *
+ * void irq1_handler(void)
+ * {
+ *      // do something
+ *      ...
+ *
+ *      // notify the completion of event 1
+ *      event_do(&ev1);
+ * }
+ *
+ * void irq2_handler(void)
+ * {
+ *      // do something
+ *      ...
+ *
+ *      // notify the completion of event 2
+ *      event_do(&ev2);
+ * }
+ * \endcode
+ *
  * \author Bernie Innocenti <bernie@codewiz.org>
  */
 
@@ -148,7 +192,6 @@ void event_hook_signal(Event *event);
 void event_hook_softint(Event *event);
 void event_hook_generic(Event *event);
 void event_hook_generic_signal(Event *event);
-void event_hook_generic_timeout(Event *event);
 
 /** Initialize the event \a e as a no-op */
 #define event_initNone(e) \
@@ -242,6 +285,8 @@ INLINE void event_wait(Event *e)
 	MEMORY_BARRIER;
 #endif
 }
+
+int event_select(Event **evs, int n, ticks_t timeout);
 
 #if CONFIG_TIMER_EVENTS
 #include <drv/timer.h> /* timer_clock() */
