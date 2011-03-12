@@ -13,19 +13,11 @@
 
 #include "hw/hw_led.h"
 #include "motor.h"
+#include "encoder.h"
 
 static void init(void)
 {
 	IRQ_ENABLE;
-
-        // Remapping peripherals
-	// Enable clocking on AFIO
-	RCC->APB2ENR |= RCC_APB2_AFIO;
-        // Remap UART3
-        stm32_gpioRemap(GPIO_PARTIALREMAP_USART3, GPIO_REMAP_ENABLE);
-        // UART3 TX in ouput AF mode
-	stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE, BV(10),
-				GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
 
 	/* Initialize debugging module (allow kprintf(), etc.) */
 	kdbg_init();
@@ -43,6 +35,9 @@ static void init(void)
 
         // Initialize MOTOR driver
         motorsInit();
+
+        // Initialize ENCODER driver
+        encodersInit();
 }
 
 static void NORETURN speaktome_process(void)

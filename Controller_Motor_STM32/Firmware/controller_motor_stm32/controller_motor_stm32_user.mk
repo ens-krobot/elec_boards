@@ -12,6 +12,7 @@ controller_motor_stm32_USER_CSRC = \
 	$(controller_motor_stm32_SRC_PATH)/stm32lib/stm32f10x_rcc.c \
 	$(controller_motor_stm32_SRC_PATH)/stm32lib/stm32f10x_tim.c \
 	$(controller_motor_stm32_SRC_PATH)/motor.c \
+	$(controller_motor_stm32_SRC_PATH)/encoder.c \
 	$(controller_motor_stm32_SRC_PATH)/main.c \
 	#
 
