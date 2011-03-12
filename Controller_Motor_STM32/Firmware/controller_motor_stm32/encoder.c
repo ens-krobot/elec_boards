@@ -132,16 +132,16 @@ uint16_t getEncoderPosition(uint8_t encoder) {
 uint8_t getEncoderDirection(uint8_t encoder) {
   switch(encoder) {
     case ENCODER1:
-      return (TIM3->CR1 & TIM_CR1_DIR != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
+      return ((TIM3->CR1 & TIM_CR1_DIR) != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
       break;
     case ENCODER2:
-      return (TIM8->CR1 & TIM_CR1_DIR != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
+      return ((TIM8->CR1 & TIM_CR1_DIR) != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
       break;
     case ENCODER3:
-      return (TIM1->CR1 & TIM_CR1_DIR != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
+      return ((TIM1->CR1 & TIM_CR1_DIR) != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
       break;
     case ENCODER4:
-      return (TIM4->CR1 & TIM_CR1_DIR != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
+      return ((TIM4->CR1 & TIM_CR1_DIR) != 0 ? ENCODER_DIR_DOWN : ENCODER_DIR_UP);
       break;
     default:
       return 0;
