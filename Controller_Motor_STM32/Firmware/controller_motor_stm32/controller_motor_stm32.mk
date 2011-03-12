@@ -9,7 +9,7 @@ Firmware_DEBUG = 1
 # Our target application
 TRG += controller_motor_stm32
 
-controller_motor_stm32_PREFIX = "/home/lxir/opt/arm/bin/arm-none-eabi-"
+controller_motor_stm32_PREFIX = "arm-none-eabi-"
 
 controller_motor_stm32_SUFFIX = ""
 
