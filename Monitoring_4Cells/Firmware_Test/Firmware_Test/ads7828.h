@@ -23,7 +23,7 @@
 
 #include <drv/i2c.h>
 
-
+unsigned int adc7828_measure(I2c* i2c, unsigned char addr, unsigned char ch);
 
 #endif
 

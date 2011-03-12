@@ -89,8 +89,7 @@ static void NORETURN led_process(void)
 int main(void)
 {
     I2c ctx;
-    unsigned int cmd = ADS7828_CMD_PD0 | ADS7828_CMD_PD1 | ADS7828_CMD_SD;
-    unsigned int value;
+    int ch, value;
 
 	/* Hardware initialization */
 	init();
@@ -107,16 +106,14 @@ int main(void)
 	while (1)
 	{
 		//monitor_report();
-		//timer_delay(1000);
-		timer_delay(100);
+		timer_delay(1000);
 
-        value = 0;
-        i2c_start_w(&ctx, ADS7828_ADDR_BASE, 1, I2C_STOP);
-        i2c_write(&ctx, &cmd, 1);
-        i2c_start_r(&ctx, ADS7828_ADDR_BASE, 2, I2C_STOP);
-        i2c_read(&ctx, &value, 2);
-        //kprintf("%d mV\n", (int) (value*ADS7828_LSB*1000.0));
-        kprintf("%d\n", value);
+        for (ch = 0; ch < 8; ++ch) {
+            value = adc7828_measure(&ctx, ADS7828_ADDR_BASE, ch);
+            kprintf("CH%d: %.2f V   (%d)\n", ch, 2.0*value*ADS7828_LSB, value);
+        }
+
+        kprintf("-----------\n");
 	}
 }
 

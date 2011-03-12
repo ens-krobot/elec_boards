@@ -10,6 +10,7 @@ Firmware_Test_PROGRAMMER_PORT = none
 # Files included by the user.
 Firmware_Test_USER_CSRC = \
 	$(Firmware_Test_SRC_PATH)/main.c \
+	$(Firmware_Test_SRC_PATH)/ads7828.c \
 	#
 
 # Files included by the user.
