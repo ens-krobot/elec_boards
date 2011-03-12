@@ -14,6 +14,7 @@
 #include "hw/hw_led.h"
 #include "motor.h"
 #include "encoder.h"
+#include "can_monitor.h"
 
 static void init(void)
 {
@@ -38,19 +39,11 @@ static void init(void)
 
         // Initialize ENCODER driver
         encodersInit();
+
+        // Initialize CAN_MONITOR
+        canMonitorInit();
 }
 
-static void NORETURN speaktome_process(void)
-{
-  double compt = 0.856;
-  /* Periodically speak to me */
-  while (1)
-  {
-    compt = 2*M_PI*sin(compt);
-    kprintf("Coucou ! Tu veux voir mes %f bits ?\n", compt);
-    timer_delay(500);
-  }
-}
 
 static void NORETURN blink_process(void)
 {
@@ -72,33 +65,33 @@ static void NORETURN blink_process(void)
 
 static void NORETURN square_process(void)
 {
-	/* blinkenlichten ! */
+        // Let's roll !
 	while (1)
 	{
           motorSetSpeed(MOTOR3 | MOTOR4, 500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3, -500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR4, -500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 1000);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 1500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 2000);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 2500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 3000);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 3500);
-          timer_delay(2000);
+          timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 0);
-          timer_delay(2000);
+          timer_delay(1000);
           break;
 	}
 }
@@ -109,8 +102,6 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-	proc_new(speaktome_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
-        proc_new(blink_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
         proc_new(square_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
 
         enableMotor(MOTOR3 | MOTOR4);
@@ -121,7 +112,7 @@ int main(void)
 	 */
 	while (1)
 	{
-      		monitor_report();
+                monitor_report();
 		timer_delay(2000);
 	}
 
