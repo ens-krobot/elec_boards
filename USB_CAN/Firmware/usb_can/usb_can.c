@@ -1,11 +1,11 @@
 #include "usb_can.h"
 
-int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *command) {
+int usb_can_execute_command(UNUSED_ARG(can_driver *, candrv), UNUSED_ARG(struct Serial *, serial), UNUSED_ARG(char *, command)) {
 
     return 0;
 }
 
-int usb_can_emit(can_driver *candrv, struct Serial *serial, can_rx_frame *frame) {
+int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame) {
 
     char buffer[32] = "";
     int i = 0, j = 0;
