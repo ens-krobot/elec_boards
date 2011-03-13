@@ -48,14 +48,22 @@
 #include <drv/gpio_stm32.h>
 
 #include <drv/can.h>
-#include <drv/can_stm32.h>
+#include <drv/ser.h>
 #include <drv/timer.h>
 
 #include <kern/monitor.h>
 #include <kern/proc.h>
+#include <io/kfile.h>
 
-PROC_DEFINE_STACK(stack1, KERN_MINSTACKSIZE * 8);
-PROC_DEFINE_STACK(stack2, KERN_MINSTACKSIZE * 8);
+#include "usb_can.h"
+
+#define MAX_CMD_SIZE 64
+
+PROC_DEFINE_STACK(stack_ser_recv, KERN_MINSTACKSIZE * 4);
+PROC_DEFINE_STACK(stack_can_recv, KERN_MINSTACKSIZE * 4);
+PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
+
+static struct Serial ser;
 
 static void init(void)
 {
@@ -64,79 +72,91 @@ static void init(void)
 
     cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
     /* CAN driver in loopback mode */
-    cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6) | CAN_BTR_LBKM;
+    cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);
 
     cfg.n_filters = 0;
     cfg.filters = NULL;
 
 
-	/* Enable all the interrupts */
-	IRQ_ENABLE;
+    /* Enable all the interrupts */
+    IRQ_ENABLE;
 
-	/* Initialize debugging module (allow kprintf(), etc.) */
-	kdbg_init();
-	/* Initialize system timer */
-	timer_init();
+    /* Initialize debugging module (allow kprintf(), etc.) */
+    kdbg_init();
+    /* Initialize system timer */
+    timer_init();
 
 
-	/* Initialize CAN driver */
+    /* Initialize CAN driver */
     can_init();
 
     can_start(CAND1, &cfg);
 
-	/* Initialize LED driver */
-	LEDS_INIT();
+    /* Initialize LED driver */
+    LEDS_INIT();
 
-	/*
-	 * Kernel initialization: processes (allow to create and dispatch
-	 * processes using proc_new()).
-	 */
-	proc_init();
+    LED3_ON();
+
+    /* Initialize Serial driver */
+    ser_init(&ser, SER_UART3);
+
+    /*
+     * Kernel initialization: processes (allow to create and dispatch
+     * processes using proc_new()).
+     */
+    proc_init();
 }
 
-static void NORETURN send_process(void)
+static void NORETURN serial_receive_process(void)
 {
-    bool sent = 0;
+    int nbytes, retval, i = 0;
+    char command[MAX_CMD_SIZE+1];
 
-    can_tx_frame txm;
+    can_tx_frame frame;
 
-    txm.dlc = 8;
-    txm.rtr = 0;
-    txm.ide = 1;
-    txm.sid = 0;
-    txm.eid = 0;
-    txm.data32[0] = 0x42424242;
-    txm.data32[1] = 0x42424242;
+    frame.ide = 1;
+    frame.eid = 0x42;
+    frame.dlc = 4;
+    frame.data8[0] = 1;
+    frame.data8[1] = 1;
+    frame.data8[2] = 1;
+    frame.data8[3] = 1;
 
     for (;;) {
-        txm.data32[0] = (txm.data32[0] << 4) | (txm.data32[0] & 0xf0000000) >> 28;
-        txm.data32[1] = (txm.data32[1] << 2) | (txm.data32[1] & 0xc0000000) >> 30;
-        txm.eid += 1;
-        sent = can_transmit(CAND1, &txm, ms_to_ticks(100));
-        /*        if (sent)
-            kprintf("sent something... %d %08lX %08lX\n", txm.eid, txm.data32[0], txm.data32[1]);
-        else
-        kprintf("sent nothing...\n");*/
-
-        if (txm.eid % 100 > 50)
-            LED1_ON();
-        else
-            LED1_OFF();
-
-        timer_delayHp(100);
+        i = !i;
+        nbytes = kfile_gets(&ser.fd, command, MAX_CMD_SIZE+1);
+        if (nbytes != EOF) {
+            retval = usb_can_execute_command(CAND1, &ser, command);
+            can_transmit(CAND1, &frame, ms_to_ticks(42));
+            kprintf("got %d bytes: [%s]\n", nbytes, command);
+            if (i)
+                LED1_ON();
+            else
+                LED1_OFF();
+        } else {
+            kprintf("got EOF :(\n");
+        }
     }
 }
 
-static void NORETURN receive_process(void)
-{
-    can_rx_frame rxm;
-    uint32_t received = 0;
+static void NORETURN can_receive_process(void) {
+
+    can_rx_frame frame;
+    int retval;
 
     for (;;) {
-        can_receive(CAND1, &rxm, ms_to_ticks(100));
-        received++;
-        if (received % 1000 == 0)
-            kprintf("received something... %d %08lx %08lx\n", rxm.eid, rxm.data32[0], rxm.data32[1]);
+        can_receive(CAND1, &frame, ms_to_ticks(100));
+        retval = usb_can_emit(CAND1, &ser, &frame);
+        kprintf("received something... %d %08lx %08lx\n", frame.ide ? frame.eid:frame.sid, frame.data32[0], frame.data32[1]);
+    }
+}
+
+static void NORETURN blinky_process(void) {
+    for (;;) {
+        LED2_ON();
+        timer_delay(500);
+        LED2_OFF();
+        timer_delay(500);
     }
 }
 
@@ -145,13 +165,13 @@ int main(void)
 
     /* Hardware initialization */
     init();
-    
+
     /* Create a new child process */
-    proc_new(send_process, NULL, sizeof(stack1), stack1);
-    proc_new(receive_process, NULL, sizeof(stack2), stack2);
+    proc_new(serial_receive_process, NULL, sizeof(stack_ser_recv), stack_ser_recv);
+    proc_new(can_receive_process, NULL, sizeof(stack_can_recv), stack_can_recv);
+    proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
 
     for (;;) {
-        monitor_report();
         timer_delay(1000);
     }
 

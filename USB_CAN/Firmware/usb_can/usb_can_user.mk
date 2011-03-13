@@ -10,6 +10,7 @@ usb_can_PROGRAMMER_PORT = none
 # Files included by the user.
 usb_can_USER_CSRC = \
 	$(usb_can_SRC_PATH)/main.c \
+	$(usb_can_SRC_PATH)/usb_can.c \
 	#
 
 # Files included by the user.
