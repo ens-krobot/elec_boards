@@ -13,7 +13,7 @@
 
 #include "hw/hw_led.h"
 #include "motor.h"
-#include "encoder.h"
+#include "motor_controller.h"
 #include "can_monitor.h"
 
 static void init(void)
@@ -31,11 +31,8 @@ static void init(void)
 	 */
 	proc_init();
 
-        // Initialize MOTOR driver
-        motorsInit();
-
-        // Initialize ENCODER driver
-        encodersInit();
+        // Initialize CONTROL driver (will initialize MOTOR and ENCODER subsystems)
+        speedControlInit();
 
         // Initialize CAN_MONITOR
         canMonitorInit();
