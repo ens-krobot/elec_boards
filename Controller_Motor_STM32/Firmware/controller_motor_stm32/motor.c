@@ -118,8 +118,8 @@ void motorsInit(void) {
   //Enable timer Peripherals
   TIM_Cmd(TIM2,ENABLE);
 
-  // Disable indicators
-  //GPIO_ResetBits(GPIOC, GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_9);
+  // Initialize indicators
+  LEDS_INIT();
 }
 
 /*
@@ -211,11 +211,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR1) == 0) {
-        //GPIO_SetBits(GPIOC, GPIO_Pin_3);
+        LED1_ON();
         indMotors |= MOTOR1;
       }
     } else if ((indMotors & MOTOR1) != 0) {
-      //GPIO_ResetBits(GPIOC, GPIO_Pin_3);
+      LED1_OFF();
       indMotors &= ~MOTOR1;
     }
   }
@@ -240,11 +240,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR2) == 0) {
-        //GPIO_SetBits(GPIOC, GPIO_Pin_5);
+        LED2_ON();
         indMotors |= MOTOR2;
       }
     } else if ((indMotors & MOTOR2) != 0) {
-      //GPIO_ResetBits(GPIOC, GPIO_Pin_5);
+      LED2_OFF();
       indMotors &= ~MOTOR2;
     }
   }
@@ -269,11 +269,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR3) == 0) {
-        //GPIO_SetBits(GPIOC, GPIO_Pin_9);
+        LED3_ON();
         indMotors |= MOTOR3;
       }
     } else if ((indMotors & MOTOR3) != 0) {
-      //GPIO_ResetBits(GPIOC, GPIO_Pin_9);
+      LED3_OFF();
       indMotors &= ~MOTOR3;
     }
   }
@@ -298,11 +298,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR4) == 0) {
-        //GPIO_SetBits(GPIOC, GPIO_Pin_9);
+        LED4_ON();
         indMotors |= MOTOR4;
       }
     } else if ((indMotors & MOTOR4) != 0) {
-      //GPIO_ResetBits(GPIOC, GPIO_Pin_9);
+      LED4_OFF();
       indMotors &= ~MOTOR4;
     }
   }

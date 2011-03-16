@@ -24,6 +24,7 @@
 
 #include <drv/gpio_stm32.h>
 #include <drv/clock_stm32.h>
+#include "hw/hw_led.h"
 
 void motorsInit(void);
 void enableMotor(uint8_t motor);
