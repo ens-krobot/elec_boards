@@ -31,7 +31,7 @@ void canMonitorInit(void) {
 
   // Configure CAN driver
   cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
-  cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);// | CAN_BTR_LBKM; // Add LBKM for loopback mode
+  cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);
   cfg.n_filters = 0;
   cfg.filters = NULL;
 
@@ -55,7 +55,7 @@ static void NORETURN canMonitor_process(void) {
   txm.ide = 1;
   txm.sid = 0;
 
-  timer_setDelay(&timer_can, ms_to_ticks(1000));
+  timer_setDelay(&timer_can, ms_to_ticks(10));
   timer_setEvent(&timer_can);
   while(1) {
 
@@ -85,14 +85,6 @@ static void NORETURN canMonitor_process(void) {
 
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
-    // blink !
-    if (ind == 0) {
-      LED2_OFF();
-      ind = 1;
-    } else {
-      LED2_ON();
-      ind = 0;
-    }
   }
 }
 
