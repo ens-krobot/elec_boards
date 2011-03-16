@@ -31,9 +31,6 @@ static void init(void)
 	 */
 	proc_init();
 
-        // Initialize LED driver
-        LEDS_INIT();
-
         // Initialize MOTOR driver
         motorsInit();
 
@@ -42,25 +39,20 @@ static void init(void)
 
         // Initialize CAN_MONITOR
         canMonitorInit();
-}
 
-
-static void NORETURN blink_process(void)
-{
-	/* blinkenlichten ! */
-	while (1)
-	{
+        // Blink to say we are ready
+        for (uint8_t i=0; i < 2; i++) {
           LED1_ON();
-          LED2_OFF();
-          LED3_ON();
-          LED4_OFF();
-          timer_delay(200);
-          LED1_OFF();
           LED2_ON();
-          LED3_OFF();
+          LED3_ON();
           LED4_ON();
-          timer_delay(200);
-	}
+          timer_delay(250);
+          LED1_OFF();
+          LED2_OFF();
+          LED3_OFF();
+          LED4_OFF();
+          timer_delay(250);
+        }
 }
 
 static void NORETURN square_process(void)
@@ -82,7 +74,9 @@ static void NORETURN square_process(void)
           timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 1500);
           timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 2000);
+          //
+          disableMotor(MOTOR3 | MOTOR4);
+          /*motorSetSpeed(MOTOR3 | MOTOR4, 2000);
           timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 2500);
           timer_delay(1000);
@@ -91,7 +85,7 @@ static void NORETURN square_process(void)
           motorSetSpeed(MOTOR3 | MOTOR4, 3500);
           timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 0);
-          timer_delay(1000);
+          timer_delay(1000);*/
           break;
 	}
 }
@@ -105,6 +99,7 @@ int main(void)
         proc_new(square_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
 
         enableMotor(MOTOR3 | MOTOR4);
+        LED1_ON(); LED2_ON();
 
 	/*
 	 * The main process is kept to periodically report the stack
@@ -112,8 +107,8 @@ int main(void)
 	 */
 	while (1)
 	{
-                monitor_report();
-		timer_delay(2000);
+          //monitor_report();
+          timer_delay(2000);
 	}
 
 	return 0;
