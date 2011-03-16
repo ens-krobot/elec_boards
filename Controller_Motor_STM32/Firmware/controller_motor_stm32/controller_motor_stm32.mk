@@ -28,6 +28,7 @@ controller_motor_stm32_WIZARD_CSRC = \
 	bertos/drv/can.c \
 	bertos/mware/formatwr.c \
 	bertos/drv/timer.c \
+	bertos/kern/signal.c \
 	bertos/kern/proc.c \
 	bertos/mware/hex.c \
 	#

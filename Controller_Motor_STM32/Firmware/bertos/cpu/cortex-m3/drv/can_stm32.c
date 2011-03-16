@@ -137,14 +137,13 @@ void can_hw_init(void)
     can_drv_init(CAND1);
     CAND1->can = CAN1;
 
-    // Set the pins to the right mode for CAN.
-    stm32_gpioRemap(GPIO_REMAP1_CAN1, GPIO_REMAP_ENABLE);
-    stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE, BV(8), GPIO_MODE_IPU, GPIO_SPEED_50MHZ);
-    stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE, BV(9), GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
-
     // Enable the clocks
     RCC->APB2ENR |= RCC_APB2_AFIO;
-    RCC->APB2ENR |= RCC_APB2_GPIOB;
+    RCC->APB2ENR |= RCC_APB2_GPIOA;
+
+    // Set the pins to the right mode for CAN.
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(11), GPIO_MODE_IN_FLOATING, GPIO_SPEED_50MHZ);
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(12), GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
 }
 
 void can_hw_start(can_driver *drv) {
