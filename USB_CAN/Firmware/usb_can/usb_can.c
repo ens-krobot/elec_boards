@@ -30,7 +30,7 @@ int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx
         sprintf(&buffer[i], "%02x", frame->data8[j]);
 
     sprintf(&buffer[i], "%04x", timestamp);
-    i+=2;
+    i+=4;
 
     buffer[i] = '\r';
     i++;
