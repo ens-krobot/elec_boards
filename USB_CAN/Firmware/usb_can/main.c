@@ -143,10 +143,12 @@ static void NORETURN can_receive_process(void) {
 
     can_rx_frame frame;
     int retval;
+    int32_t timestamp;
 
     for (;;) {
         can_receive(CAND1, &frame, ms_to_ticks(100));
-        retval = usb_can_emit(CAND1, &ser, &frame);
+        timestamp = ticks_to_ms(timer_clock()) % 60000;
+        retval = usb_can_emit(CAND1, &ser, &frame, (uint16_t)timestamp);
         kprintf("received something... %d %08lx %08lx\n", frame.ide ? frame.eid:frame.sid, frame.data32[0], frame.data32[1]);
     }
 }

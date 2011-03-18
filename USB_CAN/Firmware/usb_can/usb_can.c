@@ -5,7 +5,7 @@ int usb_can_execute_command(UNUSED_ARG(can_driver *, candrv), UNUSED_ARG(struct 
     return 0;
 }
 
-int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame) {
+int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame, uint16_t timestamp) {
 
     char buffer[32] = "";
     int i = 0, j = 0;
@@ -28,6 +28,9 @@ int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx
 
     for(j = 0; j < frame->dlc; i+=2, j++)
         sprintf(&buffer[i], "%02x", frame->data8[j]);
+
+    sprintf(&buffer[i], "%04x", timestamp);
+    i+=2;
 
     buffer[i] = '\r';
     i++;
