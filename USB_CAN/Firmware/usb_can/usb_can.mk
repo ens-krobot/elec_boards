@@ -9,7 +9,7 @@ Firmware_DEBUG = 1
 # Our target application
 TRG += usb_can
 
-usb_can_PREFIX = "/home/nicolasd/opt/arm/bin/arm-none-eabi-"
+usb_can_PREFIX = "arm-none-eabi-"
 
 usb_can_SUFFIX = ""
 
