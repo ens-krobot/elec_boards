@@ -37,6 +37,12 @@ static void init(void)
         // Initialize CAN_MONITOR
         canMonitorInit();
 
+        // Start control of drive motors
+        float k[] = {-68.0325, -1.0205};
+        float l0[] = {0.0236, 3.9715};
+        mc_new_controller(MOTOR3, ENCODER3, 360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0);
+        mc_new_controller(MOTOR4, ENCODER4, 360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0);
+
         // Blink to say we are ready
         for (uint8_t i=0; i < 2; i++) {
           LED1_ON();
@@ -57,34 +63,48 @@ static void NORETURN square_process(void)
         // Let's roll !
 	while (1)
 	{
-          motorSetSpeed(MOTOR3 | MOTOR4, 500);
+          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
           timer_delay(1000);
-          motorSetSpeed(MOTOR3, -500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR4, -500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 1000);
+          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
           timer_delay(1000);
           motorSetSpeed(MOTOR3 | MOTOR4, 1500);
           timer_delay(1000);
-          //
+          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
+          timer_delay(1000);
+          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
+          timer_delay(1000);
+          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
+          timer_delay(1000);
           disableMotor(MOTOR3 | MOTOR4);
-          /*motorSetSpeed(MOTOR3 | MOTOR4, 2000);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 2500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 3000);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 3500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 0);
-          timer_delay(1000);*/
           break;
 	}
+}
+
+static void NORETURN goto_process(void)
+{
+  float inc = 100;
+  float ref = 0;
+  int32_t dt=1000;
+  uint8_t ind = 0;
+
+  // Make the wheels turn
+  while(ref < 1500)
+  {
+    mc_gotoPosition(MOTOR3, ref);
+    mc_gotoPosition(MOTOR4, ref);
+    //position += speed * ((float)dt)/1000.0;
+    ref = ref + inc;
+    timer_delay(dt);
+    if(ind) {
+      LED1_ON();
+      ind = 0;
+    } else {
+      LED1_OFF();
+      ind = 1;
+    }
+  }
+  mc_delete_controller(MOTOR3);
+  mc_delete_controller(MOTOR4);
 }
 
 
@@ -93,10 +113,11 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-        proc_new(square_process, NULL, KERN_MINSTACKSIZE * 2, NULL);
+        proc_new(goto_process, NULL, KERN_MINSTACKSIZE * 8, NULL);
 
-        enableMotor(MOTOR3 | MOTOR4);
-        LED1_ON(); LED2_ON();
+        //timer_delay(4000);
+        //mc_delete_controller(MOTOR3);
+        //mc_delete_controller(MOTOR4);
 
 	/*
 	 * The main process is kept to periodically report the stack

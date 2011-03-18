@@ -195,6 +195,7 @@ uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, fl
     params->last_estimate[0] = 0; params->last_estimate[1] = 0;
     params->last_output = params->last_estimate[0];
     params->last_encoder_pos = getEncoderPosition(encoder);
+    params->reference = 0;
 
     params->F[0] = 1;
     params->F[1] = tau*(1-exp(-T/tau));

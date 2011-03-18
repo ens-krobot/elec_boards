@@ -86,7 +86,7 @@
  * $WIZ$ type = "int"
  * $WIZ$ min = 0
  */
-#define CONFIG_KERN_HEAP_SIZE 4096L
+#define CONFIG_KERN_HEAP_SIZE 8192L
 
 /**
  * Module logging level.

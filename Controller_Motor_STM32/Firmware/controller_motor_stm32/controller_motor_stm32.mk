@@ -9,7 +9,7 @@ Firmware_DEBUG = 1
 # Our target application
 TRG += controller_motor_stm32
 
-controller_motor_stm32_PREFIX = "arm-none-eabi-"
+controller_motor_stm32_PREFIX = "/home/lxir/opt/arm/bin/arm-none-eabi-"
 
 controller_motor_stm32_SUFFIX = ""
 
@@ -22,14 +22,14 @@ controller_motor_stm32_WIZARD_CSRC = \
 	bertos/cpu/cortex-m3/drv/can_stm32.c \
 	bertos/cpu/cortex-m3/hw/switch_ctx_cm3.c \
 	bertos/mware/event.c \
-	bertos/kern/monitor.c \
 	bertos/cpu/cortex-m3/drv/timer_cm3.c \
 	bertos/struct/heap.c \
 	bertos/drv/can.c \
-	bertos/mware/formatwr.c \
+	bertos/kern/monitor.c \
 	bertos/drv/timer.c \
 	bertos/kern/signal.c \
 	bertos/kern/proc.c \
+	bertos/mware/formatwr.c \
 	bertos/mware/hex.c \
 	#
 
