@@ -1,7 +1,7 @@
 (dp0
 S'BERTOS_PATH'
 p1
-S'.'
+V../../../../../../../src/arm/bertos-git
 p2
 sS'SELECTED_FREQ'
 p3

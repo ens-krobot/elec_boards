@@ -33,6 +33,7 @@
  * \brief Configuration file for the CAN module.
  *
  * \author Nicolas Dandrimont <Nicolas.Dandrimont@crans.org>
+ *
  */
 
 #ifndef CFG_CAN_H
@@ -53,5 +54,14 @@
  * $WIZ$ value_list = "log_format"
  */
 #define CAN_LOG_FORMAT     LOG_FMT_VERBOSE
+
+/**
+ * CAN remapping
+ *
+ * $WIZ$ type = "enum"
+ * $WIZ$ value_list = "can_stm32_remaps"
+ * $WIZ$ supports = "stm32"
+ */
+#define CAN_STM32_REMAP    CAN_STM32_PORTA
 
 #endif /* CFG_CAN_H */
