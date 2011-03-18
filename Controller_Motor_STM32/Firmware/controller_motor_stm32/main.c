@@ -82,7 +82,7 @@ static void NORETURN square_process(void)
 
 static void NORETURN goto_process(void)
 {
-  float inc = 3.6;
+  float inc = 1.8;
   float ref = 0;
   int32_t dt= 5;
   uint8_t ind = 0;
@@ -97,7 +97,7 @@ static void NORETURN goto_process(void)
     timer_delay(dt);
   }
   timer_delay(1000);
-  mc_delete_controller(MOTOR3);
+  //mc_delete_controller(MOTOR3);
   mc_delete_controller(MOTOR4);
   LED1_OFF();
 }

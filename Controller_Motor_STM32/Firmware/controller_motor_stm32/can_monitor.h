@@ -14,6 +14,7 @@
 #include <drv/timer.h>
 
 #include "encoder.h"
+#include "motor_controller.h"
 
 void canMonitorInit(void);
 

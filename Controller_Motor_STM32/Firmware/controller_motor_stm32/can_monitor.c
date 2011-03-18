@@ -18,10 +18,20 @@ typedef struct {
   uint16_t padding  __attribute__((__packed__));
 } encoder_msg_t;
 
+typedef struct {
+  float position __attribute__((__packed__));
+  float speed    __attribute__((__packed__));
+} motor_msg_t;
+
 typedef union {
-  encoder_msg_t data_f;
+  encoder_msg_t data;
   uint32_t data32[2];
 } encoder_can_msg_t;
+
+typedef struct {
+  motor_msg_t data;
+  uint32_t data32[2];
+} motor_can_msg_t;
 
 // Process for communication
 static void NORETURN canMonitor_process(void);
@@ -44,13 +54,13 @@ void canMonitorInit(void) {
 }
 
 static void NORETURN canMonitor_process(void) {
-  encoder_can_msg_t msg;
+  encoder_can_msg_t msg_enc;
+  motor_can_msg_t msg_mot;
   can_tx_frame txm;
   Timer timer_can;
-  uint8_t ind = 0;
 
   // Initialize constant parameters of TX frame
-  txm.dlc = 6;
+  txm.dlc = 8;
   txm.rtr = 0;
   txm.ide = 1;
   txm.sid = 0;
@@ -61,26 +71,33 @@ static void NORETURN canMonitor_process(void) {
 
     timer_add(&timer_can);
 
-    // Sending ENCODER1 and ENCODER2 data
-    msg.data_f.encoder1_pos = getEncoderPosition(ENCODER1);
-    msg.data_f.encoder2_pos = getEncoderPosition(ENCODER2);
-    msg.data_f.encoder1_dir = getEncoderDirection(ENCODER1);
-    msg.data_f.encoder2_dir = getEncoderDirection(ENCODER2);
+    // Sending ENCODER3 and ENCODER4 data
+    msg_enc.data.encoder1_pos = getEncoderPosition(ENCODER3);
+    msg_enc.data.encoder2_pos = getEncoderPosition(ENCODER4);
+    msg_enc.data.encoder1_dir = getEncoderDirection(ENCODER3);
+    msg_enc.data.encoder2_dir = getEncoderDirection(ENCODER4);
 
-    txm.data32[0] = msg.data32[0];
-    txm.data32[1] = msg.data32[1];
+    txm.data32[0] = msg_enc.data32[0];
+    txm.data32[1] = msg_enc.data32[1];
     txm.eid = 100;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
-    // Sending ENCODER3 and ENCODER4 data
-    msg.data_f.encoder1_pos = getEncoderPosition(ENCODER3);
-    msg.data_f.encoder2_pos = getEncoderPosition(ENCODER4);
-    msg.data_f.encoder1_dir = getEncoderDirection(ENCODER3);
-    msg.data_f.encoder2_dir = getEncoderDirection(ENCODER4);
+    // Sending MOTOR3 data
+    msg_mot.data.position = mc_getPosition(MOTOR3);
+    msg_mot.data.speed = mc_getSpeed(MOTOR3);
 
-    txm.data32[0] = msg.data32[0];
-    txm.data32[1] = msg.data32[1];
+    txm.data32[0] = msg_mot.data32[0];
+    txm.data32[1] = msg_mot.data32[1];
     txm.eid = 101;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    // Sending MOTOR4 data
+    msg_mot.data.position = mc_getPosition(MOTOR4);
+    msg_mot.data.speed = mc_getSpeed(MOTOR4);
+
+    txm.data32[0] = (int32_t)mc_getPosition(MOTOR4);//msg_mot.data32[0];
+    txm.data32[1] = (int32_t)mc_getSpeed(MOTOR4);//msg_mot.data32[1];
+    txm.eid = 102;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Wait for the next transmission timer
