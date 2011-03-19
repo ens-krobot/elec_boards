@@ -112,23 +112,11 @@ static void NORETURN serial_receive_process(void)
     int nbytes, retval, i = 0;
     char command[MAX_CMD_SIZE+1];
 
-    can_tx_frame frame;
-
-    frame.ide = 1;
-    frame.eid = 0x42;
-    frame.dlc = 4;
-    frame.data8[0] = 1;
-    frame.data8[1] = 1;
-    frame.data8[2] = 1;
-    frame.data8[3] = 1;
-
     for (;;) {
         i = !i;
         nbytes = kfile_gets(&ser.fd, command, MAX_CMD_SIZE+1);
         if (nbytes != EOF) {
             retval = usb_can_execute_command(CAND1, &ser, command);
-            can_transmit(CAND1, &frame, ms_to_ticks(42));
-            kprintf("got %d bytes: [%s]\n", nbytes, command);
             if (i)
                 LED1_ON();
             else
