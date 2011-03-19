@@ -1,11 +1,15 @@
 /**
- * \file
- * <!--
- * This file is part of BeRTOS.
+ * USB-CAN converter
  *
- * Bertos is free software; you can redistribute it and/or modify
+ * This file is the entry point for an USB <-> CAN transceiver.
+ *
+ * Copyright © 2011 Nicolas Dandrimont <olasd@crans.org>
+ * Authors: Nicolas Dandrimont <olasd@crans.org>
+ *          Xavier Lagorce <Xavier.Lagorce@crans.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
+ * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -14,29 +18,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * As a special exception, you may use this file as part of a free software
- * library without restriction.  Specifically, if other files instantiate
- * templates or use macros or inline functions from this file, or you compile
- * this file and link it with other files to produce an executable, this
- * file does not by itself cause the resulting executable to be covered by
- * the GNU General Public License.  This exception does not however
- * invalidate any other reasons why the executable file might be covered by
- * the GNU General Public License.
- *
- * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
- *
- * -->
- *
- * \author Andrea Righi <arighi@develer.com>
- *
- * \brief Kernel project.
- *
- * This is a minimalist kernel project: it just initializes the hardware and
- * creates an independent process to blink an LED, while the main loop
- * continues to monitor the stack utilization of all the processes.
  */
 
 #include "hw/hw_led.h"
