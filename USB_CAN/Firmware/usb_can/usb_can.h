@@ -16,6 +16,6 @@
 
 int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *command);
 
-int usb_can_emit(can_driver *candrv, struct Serial *serial, can_rx_frame *frame, uint16_t timestamp);
+int usb_can_emit(can_driver *candrv, struct Serial *serial, can_rx_frame *frame);
 
 #endif /* !USB_CAN_H */

@@ -5,10 +5,15 @@ int usb_can_execute_command(UNUSED_ARG(can_driver *, candrv), UNUSED_ARG(struct 
     return 0;
 }
 
-int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame, uint16_t timestamp) {
+int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame) {
 
     char buffer[32] = "";
     int i = 0, j = 0;
+    uint16_t timestamp;
+
+    /* The timestamp should wrap around every minute (it works until
+       the 32 bits of timer_clock are exhausted) */
+    timestamp = ticks_to_ms(timer_clock()) % 60000;
 
     buffer[0] = frame->rtr ? 'r' : 't';
 
