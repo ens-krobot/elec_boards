@@ -45,8 +45,41 @@ INLINE uint32_t nibble_to_uint32(char *nibbles, size_t length) {
     return ret;
 }
 
+void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser) {
 
-int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *command) {
+    usbcan->can = can;
+    usbcan->ser = ser;
+    usbcan->is_open = false;
+    usbcan->timestamped = false;
+
+}
+
+void usb_can_open(usb_can *usbcan) {
+    if (usbcan->is_open)
+        kfile_write(&usbcan->ser->fd, "\a", 1);
+    else {
+        usbcan->is_open = true;
+        kfile_write(&usbcan->ser->fd, "\r", 1);
+    }
+}
+
+void usb_can_close(usb_can *usbcan) {
+    if (usbcan->is_open) {
+        usbcan->is_open = false;
+        kfile_write(&usbcan->ser->fd, "\r", 1);
+    }
+    else {
+        kfile_write(&usbcan->ser->fd, "\a", 1);
+    }
+}
+
+void usb_can_set_baudrate(usb_can *usbcan, char *baudrate) {
+    /* FIXME: Implement it for real! */
+    (void)baudrate;
+    kfile_write(&usbcan->ser->fd, "\r", 1);
+}
+
+int usb_can_execute_command(usb_can *usbcan, char *command) {
 
     can_tx_frame frame;
     bool send, ret;
@@ -63,23 +96,29 @@ int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *com
     switch (command[0]) {
       case 'V':
         /* Version number */
-        kfile_write(&serial->fd, "V0402\r", 6);
+        kfile_write(&usbcan->ser->fd, "V0402\r", 6);
         break;
       case 'N':
         /* Serial number */
-        kfile_write(&serial->fd, "NKROB\r", 6);
+        kfile_write(&usbcan->ser->fd, "NKROB\r", 6);
         break;
       case 'O':
         /* Open CAN Channel */
-        /* FIXME: Implement! */
+        usb_can_open(usbcan);
         break;
       case 'S':
         /* Set CAN Channel Baudrate numerically */
-        /* FIXME: Implement! */
-        break;
       case 's':
         /* Set CAN Channel Baudrate with BTR0/1 */
-        /* FIXME: Implement! */
+        usb_can_set_baudrate(usbcan, command);
+        break;
+      case 'Z':
+        /* Set Timestamped packet mode */
+        if (command[1] == '0')
+            usbcan->timestamped = false;
+        else if (command[0] == '1')
+            usbcan->timestamped = true;
+        kfile_write(&usbcan->ser->fd, "\r", 1);
         break;
       case 'R':
         /* Send an extended RTR frame */
@@ -120,25 +159,21 @@ int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *com
     }
 
     if (send) {
-        ret = can_transmit(candrv, &frame, ms_to_ticks(10));
+        ret = can_transmit(usbcan->can, &frame, ms_to_ticks(10));
         if (ret)
-            kfile_write(&serial->fd, frame.ide ? "Z\r" : "z\r", 2);
+            kfile_write(&usbcan->ser->fd, frame.ide ? "Z\r" : "z\r", 2);
         else
-            kfile_write(&serial->fd, "\a", 1);
+            kfile_write(&usbcan->ser->fd, "\a", 1);
     }
 
     return 0;
 }
 
-int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx_frame *frame) {
+int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
 
     char buffer[32] = "";
     int i = 0, j = 0;
     uint16_t timestamp;
-
-    /* The timestamp should wrap around every minute (it works until
-       the 32 bits of timer_clock are exhausted) */
-    timestamp = ticks_to_ms(timer_clock()) % 60000;
 
     buffer[0] = frame->rtr ? 'r' : 't';
 
@@ -159,13 +194,19 @@ int usb_can_emit(UNUSED_ARG(can_driver *, candrv), struct Serial *serial, can_rx
     for(j = 0; j < frame->dlc; i+=2, j++)
         sprintf(&buffer[i], "%02x", frame->data8[j]);
 
-    sprintf(&buffer[i], "%04x", timestamp);
-    i+=4;
+    if (usbcan->timestamped) {
+        /* The timestamp should wrap around every minute (it works until
+           the 32 bits of timer_clock are exhausted) */
+        timestamp = ticks_to_ms(timer_clock()) % 60000;
+
+        sprintf(&buffer[i], "%04x", timestamp);
+        i+=4;
+    }
 
     buffer[i] = '\r';
     i++;
 
-    kfile_write(&serial->fd, buffer, i);
+    kfile_write(&usbcan->ser->fd, buffer, i);
 
     return 0;
 }

@@ -47,14 +47,14 @@ PROC_DEFINE_STACK(stack_can_recv, KERN_MINSTACKSIZE * 4);
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
 
 static struct Serial ser;
+static usb_can usbcan;
 
 static void init(void)
 {
-
     can_config cfg;
 
     cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
-    /* CAN driver in loopback mode */
+    /* 1 Mbit by default (FIXME: O'RLY?) */
     cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);
 
     cfg.n_filters = 0;
@@ -83,6 +83,9 @@ static void init(void)
     /* Initialize Serial driver */
     ser_init(&ser, SER_UART3);
 
+    /* Initialize USB-CAN logic */
+    usb_can_init(&usbcan, CAND1, &ser);
+
     /*
      * Kernel initialization: processes (allow to create and dispatch
      * processes using proc_new()).
@@ -97,9 +100,9 @@ static void NORETURN serial_receive_process(void)
 
     for (;;) {
         i = !i;
-        nbytes = kfile_gets(&ser.fd, command, MAX_CMD_SIZE+1);
+        nbytes = kfile_gets(&usbcan.ser->fd, command, MAX_CMD_SIZE+1);
         if (nbytes != EOF) {
-            retval = usb_can_execute_command(CAND1, &ser, command);
+            retval = usb_can_execute_command(&usbcan, command);
             if (i)
                 LED1_ON();
             else
@@ -118,9 +121,9 @@ static void NORETURN can_receive_process(void) {
 
 
     for (;;) {
-        received = can_receive(CAND1, &frame, ms_to_ticks(100));
+        received = can_receive(usbcan.can, &frame, ms_to_ticks(100));
         if (received) {
-            retval = usb_can_emit(CAND1, &ser, &frame);
+            retval = usb_can_emit(&usbcan, &frame);
             kprintf("received something... %d %08lx %08lx\n", frame.ide ? frame.eid:frame.sid, frame.data32[0], frame.data32[1]);
         }
     }

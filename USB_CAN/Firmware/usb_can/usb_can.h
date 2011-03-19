@@ -1,7 +1,24 @@
-/*
- * USB CAN specific logic
+/**
+ * USB-CAN converter
+ *
+ * This file contains the logic for the USB <-> CAN transceiver.
+ *
  * Copyright © 2011 Nicolas Dandrimont <olasd@crans.org>
- * License : GPLv3+
+ * Authors: Nicolas Dandrimont <olasd@crans.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
 #ifndef USB_CAN_H
@@ -14,8 +31,22 @@
 #include <drv/timer.h>
 #include <io/kfile.h>
 
-int usb_can_execute_command(can_driver *candrv, struct Serial *serial, char *command);
+typedef struct _usb_can {
+    can_driver *can;      // CAN Device
+    struct Serial *ser;   // Serial Device
+    bool is_open;         // Channel open?
+    bool timestamped;     // Emit timestamps?
+} usb_can;
 
-int usb_can_emit(can_driver *candrv, struct Serial *serial, can_rx_frame *frame);
+void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser);
+
+void usb_can_open(usb_can *usbcan);
+void usb_can_close(usb_can *usbcan);
+
+void usb_can_set_baudrate(usb_can *usbcan, char *baudrate);
+
+int usb_can_execute_command(usb_can *usbcan, char *command);
+
+int usb_can_emit(usb_can *usbcan, can_rx_frame *frame);
 
 #endif /* !USB_CAN_H */
