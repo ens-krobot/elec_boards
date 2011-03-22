@@ -31,12 +31,17 @@
 #include <drv/timer.h>
 #include <io/kfile.h>
 
+typedef uint16_t (usb_can_timestamp(void));
+
 typedef struct _usb_can {
     can_driver *can;      // CAN Device
     struct Serial *ser;   // Serial Device
     bool is_open;         // Channel open?
     bool timestamped;     // Emit timestamps?
+    usb_can_timestamp *get_timestamp; // Get Timestamp function
 } usb_can;
+
+uint16_t get_timestamp(void);
 
 void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser);
 

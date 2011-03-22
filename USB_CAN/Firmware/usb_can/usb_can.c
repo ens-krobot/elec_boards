@@ -45,12 +45,19 @@ INLINE uint32_t nibble_to_uint32(char *nibbles, size_t length) {
     return ret;
 }
 
+uint16_t get_timestamp(void) {
+    /* The timestamp should wrap around every minute (it works until
+       the 32 bits of timer_clock are exhausted) */
+    return ticks_to_ms(timer_clock()) % 60000;
+}
+
 void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser) {
 
     usbcan->can = can;
     usbcan->ser = ser;
     usbcan->is_open = false;
     usbcan->timestamped = false;
+    usbcan->get_timestamp = get_timestamp;
 
 }
 
@@ -195,9 +202,7 @@ int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
         sprintf(&buffer[i], "%02x", frame->data8[j]);
 
     if (usbcan->timestamped) {
-        /* The timestamp should wrap around every minute (it works until
-           the 32 bits of timer_clock are exhausted) */
-        timestamp = ticks_to_ms(timer_clock()) % 60000;
+        timestamp = usbcan->get_timestamp();
 
         sprintf(&buffer[i], "%04x", timestamp);
         i+=4;
