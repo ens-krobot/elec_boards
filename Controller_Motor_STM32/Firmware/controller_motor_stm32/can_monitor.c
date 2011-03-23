@@ -28,7 +28,7 @@ typedef union {
   uint32_t data32[2];
 } encoder_can_msg_t;
 
-typedef struct {
+typedef union {
   motor_msg_t data;
   uint32_t data32[2];
 } motor_can_msg_t;
@@ -95,8 +95,8 @@ static void NORETURN canMonitor_process(void) {
     msg_mot.data.position = mc_getPosition(MOTOR4);
     msg_mot.data.speed = mc_getSpeed(MOTOR4);
 
-    txm.data32[0] = (int32_t)mc_getPosition(MOTOR4);//msg_mot.data32[0];
-    txm.data32[1] = (int32_t)mc_getSpeed(MOTOR4);//msg_mot.data32[1];
+    txm.data32[0] = msg_mot.data32[0];
+    txm.data32[1] = msg_mot.data32[1];
     txm.eid = 102;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
