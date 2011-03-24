@@ -15,6 +15,9 @@
 #include "motor.h"
 #include "motor_controller.h"
 #include "can_monitor.h"
+#include "command_generator.h"
+
+command_generator_t generator;
 
 static void init(void)
 {
@@ -38,10 +41,11 @@ static void init(void)
         canMonitorInit();
 
         // Start control of drive motors
+        new_ramp_generator(&generator, 0., 180.);
         float k[] = {-68.0325, -1.0205};
         float l0[] = {0.0236, 3.9715};
-        mc_new_controller(MOTOR3, ENCODER3, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0);
-        mc_new_controller(MOTOR4, ENCODER4, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0);
+        mc_new_controller(MOTOR3, ENCODER3, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &generator);
+        mc_new_controller(MOTOR4, ENCODER4, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &generator);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 2; i++) {
@@ -82,22 +86,14 @@ static void NORETURN square_process(void)
 
 static void NORETURN goto_process(void)
 {
-  float inc = 1.8;
-  float ref = 0;
-  int32_t dt= 5;
-  uint8_t ind = 0;
-
   LED1_ON();
-  // Make the wheels turn
-  while(ref < 7200)
-  {
-    mc_gotoPosition(MOTOR3, ref);
-    mc_gotoPosition(MOTOR4, ref);
-    ref = ref + inc;
-    timer_delay(dt);
-  }
+  start_generator(&generator);
+  timer_delay(2000);
+  pause_generator(&generator);
+  adjust_speed(&generator, 360.);
   timer_delay(1000);
-  //mc_delete_controller(MOTOR3);
+  start_generator(&generator);
+  timer_delay(2000);
   mc_delete_controller(MOTOR4);
   LED1_OFF();
 }

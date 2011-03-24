@@ -17,22 +17,22 @@
 
 typedef struct
 {
-  uint8_t enable;            // Is this controller enabled ?
-  uint8_t motor;             // Motor ID to control
-  uint8_t encoder;           // Encoder ID to measure motor position from
-  float encoder_gain;        // Gain to convert encoder value unit to reference unit
-  float reference;           // Goal position
-  float tau;                 // DC motor time constant
-  float k[2];                // State control gain
-  float l;                   // Reference factoring gain
-  float l0[2];               // State observer gain
-  float last_command;        // Last applyed command
-  float last_estimate[2];    // Last state estimate
-  float last_output;         // Last measured output
-  uint16_t last_encoder_pos; // Last encoder position measured
-  float F[4];                // evolution matrix
-  float G[2];                // command application matrix
-  ticks_t T;                 // sampling period in systicks
+  uint8_t enable;                   // Is this controller enabled ?
+  uint8_t motor;                    // Motor ID to control
+  uint8_t encoder;                  // Encoder ID to measure motor position from
+  float encoder_gain;               // Gain to convert encoder value unit to reference unit
+  command_generator_t *reference;   // Goal position
+  float tau;                        // DC motor time constant
+  float k[2];                       // State control gain
+  float l;                          // Reference factoring gain
+  float l0[2];                      // State observer gain
+  float last_command;               // Last applyed command
+  float last_estimate[2];           // Last state estimate
+  float last_output;                // Last measured output
+  uint16_t last_encoder_pos;        // Last encoder position measured
+  float F[4];                       // evolution matrix
+  float G[2];                       // command application matrix
+  ticks_t T;                        // sampling period in systicks
 } control_params_t;
 
 control_params_t controllers[4];
@@ -88,20 +88,20 @@ float mc_getPosition(uint8_t motor) {
   }
 }
 
-void mc_gotoPosition(uint8_t motor, float position) {
+void mc_setReference(uint8_t motor, command_generator_t *generator) {
 
   switch(motor) {
     case MOTOR1:
-      controllers[0].reference = position;
+      controllers[0].reference = generator;
       break;
     case MOTOR2:
-      controllers[1].reference = position;
+      controllers[1].reference = generator;
       break;
     case MOTOR3:
-      controllers[2].reference = position;
+      controllers[2].reference = generator;
       break;
     case MOTOR4:
-      controllers[3].reference = position;
+      controllers[3].reference = generator;
       break;
   }
 }
@@ -147,7 +147,7 @@ static void NORETURN motorController_process(void) {
       params->last_output += params->encoder_gain*delta;
 
       // Command computation
-      params->last_command = params->l*params->reference + params->k[0]*estimate[0] + params->k[1]*estimate[1];
+      params->last_command = params->l*get_output_value(params->reference) + params->k[0]*estimate[0] + params->k[1]*estimate[1];
 
       // Keep estimate and data
       params->last_estimate[0] = estimate[0];
@@ -171,7 +171,7 @@ void speedControlInit() {
   motorsInit();
 }
 
-uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, float G0, float tau, float T, float *k, float l, float *l0) {
+uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, float G0, float tau, float T, float *k, float l, float *l0, command_generator_t *generator) {
   uint8_t motor_ind;
   control_params_t *params;
 
@@ -195,7 +195,7 @@ uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, fl
     params->last_estimate[0] = 0; params->last_estimate[1] = 0;
     params->last_output = params->last_estimate[0];
     params->last_encoder_pos = getEncoderPosition(encoder);
-    params->reference = 0;
+    params->reference = generator;
 
     params->F[0] = 1;
     params->F[1] = tau*(1-exp(-T/tau));
