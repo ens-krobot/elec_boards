@@ -17,7 +17,9 @@
 #include "can_monitor.h"
 #include "command_generator.h"
 
-command_generator_t generator;
+command_generator_t genR, genL;
+
+PROC_DEFINE_STACK(stack_op, KERN_MINSTACKSIZE * 8);
 
 static void init(void)
 {
@@ -41,11 +43,12 @@ static void init(void)
         canMonitorInit();
 
         // Start control of drive motors
-        new_ramp_generator(&generator, 0., 180.);
+        new_ramp_generator(&genR, 0., 180.);
+        new_ramp_generator(&genL, 0., 180.);
         float k[] = {-68.0325, -1.0205};
         float l0[] = {0.0236, 3.9715};
-        mc_new_controller(MOTOR3, ENCODER3, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &generator);
-        mc_new_controller(MOTOR4, ENCODER4, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &generator);
+        mc_new_controller(MOTOR3, ENCODER3, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &genL);
+        mc_new_controller(MOTOR4, ENCODER4, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &genR);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 2; i++) {
@@ -87,13 +90,21 @@ static void NORETURN square_process(void)
 static void NORETURN goto_process(void)
 {
   LED1_ON();
-  start_generator(&generator);
+  start_generator(&genL);
+  start_generator(&genR);
   timer_delay(2000);
-  pause_generator(&generator);
-  adjust_speed(&generator, 360.);
+  pause_generator(&genL);
+  pause_generator(&genR);
+  adjust_speed(&genL, 360.);
+  adjust_speed(&genR, 360.);
   timer_delay(1000);
-  start_generator(&generator);
+  start_generator(&genL);
+  start_generator(&genR);
   timer_delay(2000);
+  adjust_speed(&genL, 0.);
+  adjust_speed(&genR, 0.);
+  timer_delay(200);
+  mc_delete_controller(MOTOR3);
   mc_delete_controller(MOTOR4);
   LED1_OFF();
 }
@@ -104,7 +115,7 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-        proc_new(goto_process, NULL, KERN_MINSTACKSIZE * 8, NULL);
+        proc_new(goto_process, NULL, sizeof(stack_op), stack_op);
 
 	/*
 	 * The main process is kept to periodically report the stack

@@ -103,6 +103,9 @@ float get_output_value(command_generator_t *generator) {
   int32_t cur_time;
   float speed, dt;
 
+  if (generator->type.state != GEN_STATE_RUNNING)
+    return generator->type.last_output;
+
   switch (generator->type.t) {
   case GEN_CONSTANT:
     // Constant generator, no update needed
@@ -112,12 +115,14 @@ float get_output_value(command_generator_t *generator) {
     dt = (cur_time - generator->ramp.last_time)*1e-6;
     generator->type.last_output += dt*generator->ramp.speed;
     generator->ramp.last_time = cur_time;
+    break;
   case GEN_RAMP2:
     cur_time = ticks_to_us(timer_clock());
     speed = get_output_value(generator->ramp2.speed);
     dt = (cur_time - generator->ramp.last_time)*1e-6;
     generator->type.last_output += dt*speed;
     generator->ramp.last_time = cur_time;
+    break;
   }
 
   switch (generator->type.callback.type) {

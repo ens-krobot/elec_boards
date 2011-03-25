@@ -29,11 +29,11 @@ p13
 (lp14
 S'signal'
 p15
-aS'kernel'
-p16
-aS'monitor'
-p17
 aS'debug'
+p16
+aS'kernel'
+p17
+aS'monitor'
 p18
 aS'timer'
 p19

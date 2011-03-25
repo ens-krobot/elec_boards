@@ -210,7 +210,7 @@ uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, fl
     motorSetSpeed(motor, 0);
 
     // start the controller
-    proc_new(motorController_process, params, KERN_MINSTACKSIZE * 8, NULL);
+    proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
 
     return CONTROLLER_OK;
   } else {

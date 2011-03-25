@@ -10,6 +10,8 @@
 #include "can_monitor.h"
 #include "hw/hw_led.h"
 
+PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
+
 typedef struct {
   uint16_t encoder1_pos  __attribute__((__packed__));
   uint16_t encoder2_pos  __attribute__((__packed__));
@@ -50,7 +52,7 @@ void canMonitorInit(void) {
   can_start(CAND1, &cfg);
 
   // Start communication process
-  proc_new(canMonitor_process, NULL, KERN_MINSTACKSIZE * 8, NULL);
+  proc_new(canMonitor_process, NULL, sizeof(stack_can_send), stack_can_send);
 }
 
 static void NORETURN canMonitor_process(void) {
