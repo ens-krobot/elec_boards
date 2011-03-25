@@ -12,6 +12,7 @@
 
 command_generator_t* new_constant_generator(command_generator_t *generator, float value) {
   generator->type.t = GEN_CONSTANT;
+  generator->type.callback.type = GEN_CALLBACK_NONE;
   generator->constant.gen.last_output = value;
   generator->constant.gen.state = GEN_STATE_PAUSE;
 
@@ -20,6 +21,7 @@ command_generator_t* new_constant_generator(command_generator_t *generator, floa
 
 command_generator_t* new_ramp_generator(command_generator_t *generator, float starting_value, float speed) {
   generator->type.t = GEN_RAMP;
+  generator->type.callback.type = GEN_CALLBACK_NONE;
   generator->ramp.gen.state = GEN_STATE_PAUSE;
   generator->ramp.gen.last_output = starting_value;
   generator->ramp.last_time = 0;
@@ -30,6 +32,7 @@ command_generator_t* new_ramp_generator(command_generator_t *generator, float st
 
 command_generator_t* new_ramp2_generator(command_generator_t *generator, float starting_value, command_generator_t *speed) {
   generator->type.t = GEN_RAMP2;
+  generator->type.callback.type = GEN_CALLBACK_NONE;
   generator->ramp2.gen.state = GEN_STATE_PAUSE;
   generator->ramp2.gen.last_output = starting_value;
   generator->ramp2.last_time = 0;
@@ -81,6 +84,20 @@ command_generator_t* pause_generator(command_generator_t *generator) {
   return generator;
 }
 
+command_generator_t* add_callback(command_generator_t *generator, uint8_t type, float threshold, void (*callback_function)(command_generator_t*)) {
+  generator->type.callback.callback_function = callback_function;
+  generator->type.callback.threshold = threshold;
+  generator->type.callback.type = type;
+
+  return generator;
+}
+
+command_generator_t* remove_callback(command_generator_t *generator) {
+  generator->type.callback.type = GEN_CALLBACK_NONE;
+
+  return generator;
+}
+
 
 float get_output_value(command_generator_t *generator) {
   int32_t cur_time;
@@ -101,6 +118,19 @@ float get_output_value(command_generator_t *generator) {
     dt = (cur_time - generator->ramp.last_time)*1e-6;
     generator->type.last_output += dt*speed;
     generator->ramp.last_time = cur_time;
+  }
+
+  switch (generator->type.callback.type) {
+  case GEN_CALLBACK_NONE :
+    break;
+  case GEN_CALLBACK_SUP :
+    if (generator->type.last_output > generator->type.callback.threshold)
+      generator->type.callback.callback_function(generator);
+    break;
+  case GEN_CALLBACK_INF :
+    if (generator->type.last_output < generator->type.callback.threshold)
+      generator->type.callback.callback_function(generator);
+    break;
   }
 
   return generator->type.last_output;

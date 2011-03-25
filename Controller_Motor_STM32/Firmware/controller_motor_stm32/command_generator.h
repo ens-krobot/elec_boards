@@ -23,12 +23,23 @@
 #define GEN_STATE_PAUSE   0
 #define GEN_STATE_RUNNING 1
 
+#define GEN_CALLBACK_NONE 0
+#define GEN_CALLBACK_SUP 1
+#define GEN_CALLBACK_INF 2
+
 typedef union _command_generator_t command_generator_t;
+
+typedef struct {
+  uint8_t type;
+  float threshold;
+  void (*callback_function)(command_generator_t*);
+} generator_callback_t;
 
 typedef struct {
   uint8_t t;
   float last_output;
   uint8_t state;
+  generator_callback_t callback;
 } placeholder_generator_t;
 
 typedef struct {
@@ -63,6 +74,9 @@ command_generator_t* adjust_speed(command_generator_t *generator, float speed);
 
 command_generator_t* start_generator(command_generator_t *generator);
 command_generator_t* pause_generator(command_generator_t *generator);
+
+command_generator_t* add_callback(command_generator_t *generator, uint8_t type, float threshold, void (*callback_function)(command_generator_t*));
+command_generator_t* remove_callback(command_generator_t *generator);
 
 float get_output_value(command_generator_t *generator);
 
