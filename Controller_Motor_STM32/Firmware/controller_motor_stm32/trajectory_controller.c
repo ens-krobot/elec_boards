@@ -9,10 +9,11 @@
 
 #include "trajectory_controller.h"
 
-#define TRAPEZOID_STATE_STOP  0
-#define TRAPEZOID_STATE_ACC   1
-#define TRAPEZOID_STATE_CONST 2
-#define TRAPEZOID_STATE_DEC   3
+#define TRAPEZOID_STATE_STOP     0
+#define TRAPEZOID_STATE_ACC      1
+#define TRAPEZOID_STATE_CONST    2
+#define TRAPEZOID_STATE_DEC      3
+#define TRAPEZOID_STATE_TRIANGLE 4
 
 #define SIGN(val) ((val) >= 0 ? 1 : -1)
 #define SELECT_THRESHOLD(dir) ((dir) == 1 ? GEN_CALLBACK_SUP : GEN_CALLBACK_INF)
@@ -23,7 +24,7 @@ void trapezoid_callback(command_generator_t *generator);
 typedef struct {
   float angle, speed, acceleration, init_val;
   int8_t dir;
-  uint8_t state;
+  uint8_t state, is_triangle;
 } ramp_automaton_t;
 
 command_generator_t right_wheel, left_wheel, right_wheel_speed, left_wheel_speed;
@@ -63,6 +64,14 @@ void trapezoid_callback(command_generator_t *generator) {
     adjust_value(trap_speed, automaton->speed);
     add_callback(trap, SELECT_THRESHOLD(automaton->dir), automaton->angle - automaton->speed*automaton->speed/automaton->acceleration/2., trapezoid_callback);
     automaton->state = TRAPEZOID_STATE_CONST;
+    break;
+  case TRAPEZOID_STATE_TRIANGLE:
+    // Special case of triangle profile, we have to slow down at the end of the acceleration phase
+    adjust_speed(trap_speed, -automaton->acceleration);
+    adjust_value(trap_speed, automaton->speed);
+    add_callback(trap, SELECT_THRESHOLD(automaton->dir), automaton->angle, trapezoid_callback);
+    add_callback(trap_speed, SELECT_THRESHOLD_DEC(automaton->dir), 0.1*automaton->speed, trapezoid_callback);
+    automaton->state = TRAPEZOID_STATE_DEC;
     break;
   case TRAPEZOID_STATE_CONST:
     // End of the constant speed phase, we have to slow down
@@ -116,72 +125,140 @@ uint8_t tc_is_finished(void) {
 }
 
 void tc_move(float distance, float speed, float acceleration) {
-  float acc_dist;
+  float acc_dist, t_acc, t_end;
 
   // Verify parameters
   if (distance == 0 || speed <= 0 || acceleration <= 0)
     return;
 
-  // Compute trapezoid parameters for right motor
+  // Compute some common parameters
+  // For the right motor
   right_trap.init_val = get_output_value(&right_wheel);
   right_trap.dir = SIGN(distance);
   right_trap.angle = right_trap.init_val + distance / WHEEL_R * 180 / M_PI;
-  right_trap.speed = right_trap.dir * speed / WHEEL_R * 180 / M_PI;
   right_trap.acceleration = right_trap.dir * acceleration / WHEEL_R * 180 / M_PI;
-  right_trap.state = TRAPEZOID_STATE_ACC;
-
-  // Compute trapezoid parameters for left motor
+  // For the left motor
   left_trap.init_val = get_output_value(&left_wheel);
   left_trap.dir = SIGN(distance);
   left_trap.angle = left_trap.init_val + distance / WHEEL_R * 180 / M_PI;
-  left_trap.speed = left_trap.dir * speed / WHEEL_R * 180 / M_PI;
   left_trap.acceleration = left_trap.dir * acceleration / WHEEL_R * 180 / M_PI;
-  left_trap.state = TRAPEZOID_STATE_ACC;
 
-  // This is distance during which the robot will accelerate
-  acc_dist = SIGN(distance) * speed * speed / acceleration / 2.0 / WHEEL_R * 180.0 / M_PI;
+  // Is the trapezoidal speed profile posible ?
+  t_acc = speed / acceleration;
+  t_end = (speed * speed + distance * acceleration) / (speed * acceleration);
 
-  // Set accelerations for the trapezoid's first phase and associated callbacks
-  adjust_speed(&right_wheel_speed, right_trap.acceleration);
-  add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + acc_dist, trapezoid_callback);
-  add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
-  adjust_speed(&left_wheel_speed, left_trap.acceleration);
-  add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + acc_dist, trapezoid_callback);
-  add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  if (t_end > (2. * t_acc)) {
+    // A trapezoidal speed profile is possible
+    right_trap.is_triangle = 0;
+    left_trap.is_triangle = 0;
+
+    // Compute trapezoid parameters for right motor
+    right_trap.speed = right_trap.dir * speed / WHEEL_R * 180 / M_PI;
+    right_trap.state = TRAPEZOID_STATE_ACC;
+
+    // Compute trapezoid parameters for left motor
+    left_trap.speed = left_trap.dir * speed / WHEEL_R * 180 / M_PI;
+    left_trap.state = TRAPEZOID_STATE_ACC;
+
+    // This is distance during which the robot will accelerate
+    acc_dist = SIGN(distance) * speed * speed / acceleration / 2.0 / WHEEL_R * 180.0 / M_PI;
+
+    // Set accelerations for the trapezoid's first phase and associated callbacks
+    adjust_speed(&right_wheel_speed, right_trap.acceleration);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + acc_dist, trapezoid_callback);
+    add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
+    adjust_speed(&left_wheel_speed, left_trap.acceleration);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + acc_dist, trapezoid_callback);
+    add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  } else {
+    // A trapezoidal speed profile is not possible with the given acceleration, let's go for a triangle
+    right_trap.is_triangle = 1;
+    left_trap.is_triangle = 1;
+
+    // Compute triangle parameters for right motor
+    right_trap.speed = right_trap.dir * sqrt(right_trap.angle * right_trap.acceleration);
+    right_trap.state = TRAPEZOID_STATE_TRIANGLE;
+
+    // Compute triangle parameters for left motor
+    left_trap.speed = left_trap.dir * sqrt(left_trap.angle * left_trap.acceleration);
+    left_trap.state = TRAPEZOID_STATE_TRIANGLE;
+
+    // Set accelerations for the triangle's first phase and associated callbacks
+    adjust_speed(&right_wheel_speed, right_trap.acceleration);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + right_trap.angle/2.0, trapezoid_callback);
+    add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
+    adjust_speed(&left_wheel_speed, left_trap.acceleration);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
+    add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  }
 }
 
 void tc_turn(float angle, float speed, float acceleration) {
-  float acc_angle;
+  float acc_angle, t_acc, t_end;
 
   // Verify parameters
   if (angle == 0 || speed <= 0 || acceleration <= 0)
     return;
 
-  // Compute trapezoid parameters for right motor
+  // Compute some common parameters
+  // For the right motor
   right_trap.init_val = get_output_value(&right_wheel);
   right_trap.dir = SIGN(angle);
   right_trap.angle = right_trap.init_val + angle * STRUCT_B / 2.0 / WHEEL_R;
-  right_trap.speed = right_trap.dir * speed * STRUCT_B / 2.0 / WHEEL_R;
   right_trap.acceleration = right_trap.dir * acceleration * STRUCT_B / 2.0 / WHEEL_R;
-  right_trap.state = TRAPEZOID_STATE_ACC;
-
-  // Compute trapezoid parameters for left motor
+  // For the left motor
   left_trap.init_val = get_output_value(&left_wheel);
   left_trap.dir = -right_trap.dir;
   left_trap.angle = left_trap.init_val - angle * STRUCT_B / 2.0 / WHEEL_R;
-  left_trap.speed = left_trap.dir * speed * STRUCT_B / 2.0 / WHEEL_R;
   left_trap.acceleration = left_trap.dir * acceleration * STRUCT_B / 2.0 / WHEEL_R;
-  left_trap.state = TRAPEZOID_STATE_ACC;
 
-  // This is the angle during which the robot will accelerate
-  acc_angle = SIGN(angle) * speed * speed / acceleration / 2.0 * STRUCT_B / 2.0 / WHEEL_R;
+  // Is the trapezoidal speed profile posible ?
+  t_acc = speed / acceleration;
+  t_end = (speed * speed + angle * acceleration) / (speed * acceleration);
 
-  // Set accelerations for the trapezoid's first phase and associated callbacks
-  adjust_speed(&right_wheel_speed, right_trap.acceleration);
-  add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + acc_angle, trapezoid_callback);
-  add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
-  adjust_speed(&left_wheel_speed, left_trap.acceleration);
-  add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val - acc_angle, trapezoid_callback);
-  add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  if (t_end > (2. * t_acc)) {
+    // A trapezoidal speed profile is possible
+    right_trap.is_triangle = 0;
+    left_trap.is_triangle = 0;
+
+    // Compute trapezoid parameters for right motor
+    right_trap.speed = right_trap.dir * speed * STRUCT_B / 2.0 / WHEEL_R;
+    right_trap.state = TRAPEZOID_STATE_ACC;
+
+    // Compute trapezoid parameters for left motor
+    left_trap.speed = left_trap.dir * speed * STRUCT_B / 2.0 / WHEEL_R;
+    left_trap.state = TRAPEZOID_STATE_ACC;
+
+    // This is the angle during which the robot will accelerate
+    acc_angle = SIGN(angle) * speed * speed / acceleration / 2.0 * STRUCT_B / 2.0 / WHEEL_R;
+
+    // Set accelerations for the trapezoid's first phase and associated callbacks
+    adjust_speed(&right_wheel_speed, right_trap.acceleration);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + acc_angle, trapezoid_callback);
+    add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
+    adjust_speed(&left_wheel_speed, left_trap.acceleration);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val - acc_angle, trapezoid_callback);
+    add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  } else {
+    // A trapezoidal speed profile is not possible with the given acceleration, let's go for a triangle
+    right_trap.is_triangle = 1;
+    left_trap.is_triangle = 1;
+
+    // Compute triangle parameters for right motor
+    right_trap.speed = right_trap.dir * sqrt(right_trap.angle * right_trap.acceleration);
+    right_trap.state = TRAPEZOID_STATE_TRIANGLE;
+
+    // Compute triangle parameters for left motor
+    left_trap.speed = left_trap.dir * sqrt(left_trap.angle * left_trap.acceleration);
+    left_trap.state = TRAPEZOID_STATE_TRIANGLE;
+
+    // Set accelerations for the triangle's first phase and associated callbacks
+    adjust_speed(&right_wheel_speed, right_trap.acceleration);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + right_trap.angle/2.0, trapezoid_callback);
+    add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
+    adjust_speed(&left_wheel_speed, left_trap.acceleration);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
+    add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
+  }
 }
 
