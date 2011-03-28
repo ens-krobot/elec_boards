@@ -84,7 +84,7 @@ void trapezoid_callback(command_generator_t *generator) {
     // End of the movement, stop the motor
     adjust_speed(trap_speed, 0.);
     adjust_value(trap_speed, 0.);
-    adjust_value(trap, automaton->angle);
+    //adjust_value(trap, automaton->angle);
     automaton->state = TRAPEZOID_STATE_STOP;
     break;
   }

@@ -32,6 +32,12 @@ typedef struct {
 } status_msg_t;
 
 typedef struct {
+  int16_t x __attribute__((__packed__));     // X position in mm (fixed point representation...)
+  int16_t y __attribute__((__packed__));     // Y position in mm
+  int16_t theta __attribute__((__packed__)); // angle in 1/100 degrees
+} odometry_msg_t;
+
+typedef struct {
   int32_t distance      __attribute__((__packed__));  // Distance in mm (fixed point representation...)
   uint16_t speed        __attribute__((__packed__));  // Speed in mm/s
   uint16_t acceleration __attribute__((__packed__));  // Acceleration in mm/s^2
@@ -60,6 +66,11 @@ typedef union {
 } status_can_msg_t;
 
 typedef union {
+  odometry_msg_t data;
+  uint32_t data32[2];
+} odometry_can_msg_t;
+
+typedef union {
   move_msg_t data;
   uint32_t data32[2];
 } move_can_msg_t;
@@ -74,6 +85,7 @@ typedef union {
 #define CAN_MSG_MOTOR3 101 // motor_can_msg_t
 #define CAN_MSG_MOTOR4 102 // motor_can_msg_t
 #define CAN_MSG_STATUS 103 // status_can_msg_t
+#define CAN_MSG_ODOMETRY 104 // odometry_can_msg_t
 #define CAN_MSG_MOVE 201 // move_can_msg_t
 #define CAN_MSG_TURN 202 // turn_can_msg_t
 
@@ -102,7 +114,9 @@ void canMonitorInit(void) {
 static void NORETURN canMonitor_process(void) {
   //encoder_can_msg_t msg_enc;
   motor_can_msg_t msg_mot;
+  odometry_can_msg_t msg_odo;
   can_tx_frame txm;
+  robot_state_t odometry;
   Timer timer_can;
 
   // Initialize constant parameters of TX frame
@@ -146,6 +160,20 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_MOTOR4;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
+    // Sending odometry data
+    odo_getState(&odometry);
+    msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
+    msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
+    odometry.theta = fmodf(odometry.theta, 360.0);
+    if (odometry.theta > 180.)
+      odometry.theta -= 360.0;
+    msg_odo.data.theta = (int16_t)(odometry.theta * 100.0);
+
+    txm.data32[0] = msg_odo.data32[0];
+    txm.data32[1] = msg_odo.data32[1];
+    txm.eid = CAN_MSG_ODOMETRY;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
   }
@@ -161,6 +189,8 @@ static void NORETURN canMonitorListen_process(void) {
     move_can_msg_t move_msg;
     turn_can_msg_t turn_msg;
 
+    uint8_t i = 0;
+
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
     txm.rtr = 0;
@@ -169,6 +199,14 @@ static void NORETURN canMonitorListen_process(void) {
 
     while (1) {
       received = can_receive(CAND1, &frame, ms_to_ticks(100));
+        if (i == 0) {
+          i = 1;
+          LED2_ON();
+        } else {
+          i = 0;
+          LED2_OFF();
+        }
+        timer_delay(200);
       if (received) {
         if (frame.rtr == 1) {
           // Handle requests
@@ -187,12 +225,14 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_MOVE:
             move_msg.data32[0] = frame.data32[0];
             move_msg.data32[1] = frame.data32[1];
-            tc_move(move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
+            if (tc_is_finished())
+              tc_move(move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
             break;
           case CAN_MSG_TURN:
             turn_msg.data32[0] = frame.data32[0];
             turn_msg.data32[1] = frame.data32[1];
-            tc_turn(turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
+            if (tc_is_finished())
+              tc_turn(turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
             break;
           }
         }

@@ -46,18 +46,21 @@ static void init(void)
         // Start control of drive motors
         init_trajectory_controller();
 
+        // Start odometry
+        odometryInit(1e-3, 0.049245, 0.259, -2.0*M_PI/2000.0/15.0);
+
         // Blink to say we are ready
-        for (uint8_t i=0; i < 2; i++) {
+        for (uint8_t i=0; i < 10; i++) {
           LED1_ON();
           LED2_ON();
           LED3_ON();
           LED4_ON();
-          timer_delay(250);
+          timer_delay(100);
           LED1_OFF();
           LED2_OFF();
           LED3_OFF();
           LED4_OFF();
-          timer_delay(250);
+          timer_delay(100);
         }
 }
 
@@ -93,7 +96,7 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-        proc_new(demo_process, NULL, sizeof(stack_op), stack_op);
+        //proc_new(demo_process, NULL, sizeof(stack_op), stack_op);
 
 	/*
 	 * The main process is kept to periodically report the stack
