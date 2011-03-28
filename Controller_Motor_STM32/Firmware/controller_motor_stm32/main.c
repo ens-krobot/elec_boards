@@ -16,6 +16,7 @@
 #include "motor_controller.h"
 #include "can_monitor.h"
 #include "command_generator.h"
+#include "trajectory_controller.h"
 
 command_generator_t genR, genL;
 
@@ -37,18 +38,13 @@ static void init(void)
 	proc_init();
 
         // Initialize CONTROL driver (will initialize MOTOR and ENCODER subsystems)
-        speedControlInit();
+        motorControllerInit();
 
         // Initialize CAN_MONITOR
         canMonitorInit();
 
         // Start control of drive motors
-        new_ramp_generator(&genR, 0., 180.);
-        new_ramp_generator(&genL, 0., 180.);
-        float k[] = {-68.0325, -1.0205};
-        float l0[] = {0.0236, 3.9715};
-        mc_new_controller(MOTOR3, ENCODER3, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &genL);
-        mc_new_controller(MOTOR4, ENCODER4, -360.0/2000.0/15.0, 0.833, 0.015, 0.005, k, -k[0], l0, &genR);
+        init_trajectory_controller();
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 2; i++) {
@@ -65,57 +61,39 @@ static void init(void)
         }
 }
 
-static void NORETURN square_process(void)
+static void NORETURN demo_process(void)
 {
-        // Let's roll !
-	while (1)
-	{
-          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, 1500);
-          timer_delay(1000);
-          motorSetSpeed(MOTOR3 | MOTOR4, -1500);
-          timer_delay(1000);
-          disableMotor(MOTOR3 | MOTOR4);
-          break;
-	}
-}
+  while (1) {
+    // Light a LED on an unused motor to indicate we should be doing something
+    // with the motors very soon
+    LED1_ON();
+    timer_delay(1000);
 
-static void NORETURN goto_process(void)
-{
-  LED1_ON();
-  start_generator(&genL);
-  start_generator(&genR);
-  timer_delay(2000);
-  pause_generator(&genL);
-  pause_generator(&genR);
-  adjust_speed(&genL, 360.);
-  adjust_speed(&genR, 360.);
-  timer_delay(1000);
-  start_generator(&genL);
-  start_generator(&genR);
-  timer_delay(2000);
-  adjust_speed(&genL, 0.);
-  adjust_speed(&genR, 0.);
-  timer_delay(200);
-  mc_delete_controller(MOTOR3);
-  mc_delete_controller(MOTOR4);
-  LED1_OFF();
-}
+    // Move the robot !
+    tc_move(2., 1., 1.);
 
+    // Wait until the movement is finished
+    while (!tc_is_finished())
+      timer_delay(1000);
+
+    // Stop motor controllers to be able to freely move the robot
+    mc_delete_controller(MOTOR3);
+    mc_delete_controller(MOTOR4);
+
+    // Doing nothing more, so shutdown the LED
+    LED1_OFF();
+
+    // Cleanly stop the demo process
+    proc_exit();
+  }
+}
 
 int main(void)
 {
 	init();
 
 	/* Create a new child process */
-        proc_new(goto_process, NULL, sizeof(stack_op), stack_op);
+        proc_new(demo_process, NULL, sizeof(stack_op), stack_op);
 
 	/*
 	 * The main process is kept to periodically report the stack

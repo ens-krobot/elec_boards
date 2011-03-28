@@ -13,7 +13,7 @@
 #define CONTROLLER_OK 0
 #define CONTROLLER_ALREADY_USED 1
 
-void speedControlInit(void);
+void motorControllerInit(void);
 float mc_getSpeed(uint8_t motor);
 float mc_getPosition(uint8_t motor);
 void mc_setReference(uint8_t motor, command_generator_t *generator);

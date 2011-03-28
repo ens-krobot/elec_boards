@@ -161,7 +161,7 @@ static void NORETURN motorController_process(void) {
   }
 }
 
-void speedControlInit() {
+void motorControllerInit() {
   uint8_t motor_ind;
 
   for (motor_ind = 0; motor_ind < 4; motor_ind++)
