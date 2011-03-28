@@ -1,5 +1,5 @@
 /**
- * \file
+ * \file cfg_led_7seg.h
  * <!--
  * This file is part of BeRTOS.
  *
@@ -27,24 +27,54 @@
  * the GNU General Public License.
  *
  * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
- *
  * -->
  *
- * \brief Low-level ADC module for ARM (interface).
+ * \brief Configuration file for led 7 segment display.
  *
- * \author Daniele Basile <asterix@develer.com>
+ * \author Fabio Bizzi <fbizzi@bizzi.org>
+ *
+ * \addtogroup SevenSegDisplay 7 Segments LED Displays Driver
+ * \{
  *
  */
 
-#include <cpu/detect.h>
+#ifndef CFG_LED_7SEG_H
+#define CFG_LED_7SEG_H
 
-#if CPU_CM3_LM3S
-	#include "adc_lm3s.h"
-#elif CPU_CM3_STM32
-	#include "adc_stm32.h"
-#elif CPU_CM3_SAM3X
-	#include "adc_sam3.h"
-/*#elif  Add other ARM families here */
-#else
-	#error Unknown CPU
-#endif
+/**
+ * Use a Common Cathode display.
+ * $WIZ$ type = "boolean"
+ */
+#define CONFIG_LED_7SEG_CCAT       0
+
+/**
+ * Number of digit present in the LED display.
+ * $WIZ$ type = "int"
+ * $WIZ$ min = 1
+ * $WIZ$ max = 8
+ */
+#define CONFIG_LED_7SEG_DIGIT      4
+
+/**
+ * Max lenght of the string to be displayed.
+ * $WIZ$ type = "int"
+ * $WIZ$ min = 16
+ * $WIZ$ max = 255
+ */
+#define CONFIG_LED_7SEG_STRLEN     255
+
+/**
+ * Default scrolling speed (ms * CONFIG_LED_7SEG_RTIME).
+ * $WIZ$ type = "int"
+ */
+#define CONFIG_LED_7SEG_SSPEED      10
+
+/**
+ * Default refresh time (ms).
+ * $WIZ$ type = "int"
+ */
+#define CONFIG_LED_7SEG_RTIME      5
+
+#endif /* CFG_LED_7SEG_H */
+ /** \} */ //defgroup drivers
+

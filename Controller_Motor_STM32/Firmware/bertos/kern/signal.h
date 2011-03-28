@@ -51,13 +51,44 @@
 #include <cfg/compiler.h>
 #include <cfg/macros.h>    // BV()
 
+#include <cpu/irq.h>
+
 #include <kern/proc.h>
 
 #if CONFIG_KERN_SIGNALS
 
-/* Inter-process Communication services */
-sigmask_t sig_checkSignal(Signal *s, sigmask_t sigs);
+INLINE sigmask_t __sig_checkSignal(Signal *s, sigmask_t sigs)
+{
+	sigmask_t result;
 
+	result = s->recv & sigs;
+	s->recv &= ~sigs;
+
+	return result;
+}
+
+/**
+ * Check if any of the signals in \a sigs has occurred and clear them.
+ *
+ * \return the signals that have occurred.
+ */
+INLINE sigmask_t sig_checkSignal(Signal *s, sigmask_t sigs)
+{
+	cpu_flags_t flags;
+	sigmask_t result;
+
+	IRQ_SAVE_DISABLE(flags);
+	result = __sig_checkSignal(s, sigs);
+	IRQ_RESTORE(flags);
+
+	return result;
+}
+
+/**
+ * Check if any of the signals in \a sigs has occurred and clear them.
+ *
+ * \return the signals that have occurred.
+ */
 INLINE sigmask_t sig_check(sigmask_t sigs)
 {
 	Process *proc = proc_current();
@@ -66,6 +97,16 @@ INLINE sigmask_t sig_check(sigmask_t sigs)
 
 void sig_sendSignal(Signal *s, Process *proc, sigmask_t sig);
 
+/**
+ * Send the signals \a sigs to the process \a proc and immeditaly dispatch it
+ * for execution.
+ *
+ * The process will be awoken if it was waiting for any of them and immediately
+ * dispatched for execution.
+ *
+ * \note This function can't be called from IRQ context, use sig_post()
+ * instead.
+ */
 INLINE void sig_send(Process *proc, sigmask_t sig)
 {
 	sig_sendSignal(&proc->sig, proc, sig);
@@ -73,6 +114,12 @@ INLINE void sig_send(Process *proc, sigmask_t sig)
 
 void sig_postSignal(Signal *s, Process *proc, sigmask_t sig);
 
+/**
+ * Send the signals \a sigs to the process \a proc.
+ * The process will be awoken if it was waiting for any of them.
+ *
+ * \note This call is interrupt safe.
+ */
 INLINE void sig_post(Process *proc, sigmask_t sig)
 {
 	sig_postSignal(&proc->sig, proc, sig);
@@ -89,18 +136,31 @@ INLINE void sig_signal(Process *proc, sigmask_t sig)
 
 sigmask_t sig_waitSignal(Signal *s, sigmask_t sigs);
 
+/**
+ * Sleep until any of the signals in \a sigs occurs.
+ *
+ * \return the signal(s) that have awoken the process.
+ */
 INLINE sigmask_t sig_wait(sigmask_t sigs)
 {
 	Process *proc = proc_current();
 	return sig_waitSignal(&proc->sig, sigs);
 }
 
-sigmask_t sig_waitTimeoutSignal(Signal *s, sigmask_t sigs, ticks_t timeout);
+sigmask_t sig_waitTimeoutSignal(Signal *s, sigmask_t sigs, ticks_t timeout,
+				Hook func, iptr_t data);
 
+/**
+ * Sleep until any of the signals in \a sigs or \a timeout ticks elapse.
+ * If the timeout elapse a SIG_TIMEOUT is added to the received signal(s).
+ * \return the signal(s) that have awoken the process.
+ * \note Caller must check return value to check which signal awoke the process.
+ */
 INLINE sigmask_t sig_waitTimeout(sigmask_t sigs, ticks_t timeout)
 {
 	Process *proc = proc_current();
-	return sig_waitTimeoutSignal(&proc->sig, sigs, timeout);
+	return sig_waitTimeoutSignal(&proc->sig, sigs, timeout,
+			NULL, NULL);
 }
 
 #endif /* CONFIG_KERN_SIGNALS */

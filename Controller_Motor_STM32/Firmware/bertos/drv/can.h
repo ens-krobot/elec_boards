@@ -42,6 +42,8 @@
  * $WIZ$ module_name = "can"
  * $WIZ$ module_configuration = "bertos/cfg/cfg_can.h"
  * $WIZ$ module_supports = "stm32"
+ * $WIZ$ module_depends = "timer", "signal"
+ *
  */
 
 

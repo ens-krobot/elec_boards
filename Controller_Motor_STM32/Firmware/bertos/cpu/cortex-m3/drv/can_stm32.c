@@ -33,6 +33,8 @@
  * \brief CAN hardware-specific implementation
  *
  * \author Nicolas Dandrimont <Nicolas.Dandrimont@crans.org>
+ *
+ * $WIZ$
  */
 
 #include "can_stm32.h"
@@ -52,6 +54,7 @@
 #include <cfg/log.h>
 
 #include <drv/can.h>
+#include <drv/timer.h>
 #include <drv/clock_stm32.h>
 #include <drv/gpio_stm32.h>
 
@@ -62,6 +65,16 @@
 
 #include <drv/irq_cm3.h>
 
+/**
+ * CAN Remapping values for STM32
+ *
+ * $WIZ$ can_stm32_remaps = "CAN_STM32_PORTA", "CAN_STM32_PORTB", "CAN_STM32_PORTD"
+ * \{
+ */
+#define CAN_STM32_PORTA   0
+#define CAN_STM32_PORTB   1
+#define CAN_STM32_PORTD   2
+/* \} */
 
 static can_driver _cand1;
 can_driver *CAND1 = &_cand1;
@@ -139,11 +152,33 @@ void can_hw_init(void)
 
     // Enable the clocks
     RCC->APB2ENR |= RCC_APB2_AFIO;
+
+#if CAN_STM32_REMAP == CAN_STM32_PORTA
     RCC->APB2ENR |= RCC_APB2_GPIOA;
+#elif CAN_STM32_REMAP == CAN_STM32_PORTB
+    RCC->APB2ENR |= RCC_APB2_GPIOB;
+#elif CAN_STM32_REMAP == CAN_STM32_PORTD
+    RCC->APB2ENR |= RCC_APB2_GPIOD;
+#else
+    #error "CAN remapping not supported for stm32"
+#endif
 
     // Set the pins to the right mode for CAN.
-    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(11), GPIO_MODE_IN_FLOATING, GPIO_SPEED_50MHZ);
+#if CAN_STM32_REMAP == CAN_STM32_PORTA
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(11), GPIO_MODE_IPU, GPIO_SPEED_50MHZ);
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(12), GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
+#elif CAN_STM32_REMAP == CAN_STM32_PORTB
+    stm32_gpioRemap(GPIO_REMAP1_CAN1, GPIO_REMAP_ENABLE);
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE, BV(8), GPIO_MODE_IPU, GPIO_SPEED_50MHZ);
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE, BV(9), GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
+#elif CAN_STM32_REMAP == CAN_STM32_PORTD
+    stm32_gpioRemap(GPIO_REMAP2_CAN1, GPIO_REMAP_ENABLE);
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOD_BASE, BV(0), GPIO_MODE_IPU, GPIO_SPEED_50MHZ);
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOD_BASE, BV(1), GPIO_MODE_AF_PP, GPIO_SPEED_50MHZ);
+#else
+    #error "CAN remapping not supported for stm32"
+#endif
+
 }
 
 void can_hw_start(can_driver *drv) {

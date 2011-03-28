@@ -26,25 +26,68 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
+ * Copyright 2011 Develer S.r.l. (http://www.develer.com/)
  *
  * -->
  *
- * \brief Low-level ADC module for ARM (interface).
+ * \brief DAC hardware-specific implementation
  *
  * \author Daniele Basile <asterix@develer.com>
- *
  */
 
-#include <cpu/detect.h>
 
-#if CPU_CM3_LM3S
-	#include "adc_lm3s.h"
-#elif CPU_CM3_STM32
-	#include "adc_stm32.h"
-#elif CPU_CM3_SAM3X
-	#include "adc_sam3.h"
-/*#elif  Add other ARM families here */
-#else
-	#error Unknown CPU
-#endif
+#include "cfg/cfg_dac.h"
+
+#include <cfg/macros.h>
+#include <cfg/compiler.h>
+
+// Define log settings for cfg/log.h.
+#define LOG_LEVEL         DAC_LOG_LEVEL
+#define LOG_FORMAT        DAC_LOG_FORMAT
+#include <cfg/log.h>
+
+#include <drv/dac.h>
+
+#include <drv/irq_cm3.h>
+
+#include <io/cm3.h>
+
+#include <string.h>
+
+int dac_write(int ch, void *buf, size_t len)
+{
+	ASSERT(ch <= 1);
+
+	DACC_MR |= (ch << DACC_USER_SEL_SHIFT) & DACC_USER_SEL_MASK;
+	DACC_CHER |= BV(ch);
+
+	kprintf("mr: %08lx\n", DACC_MR);
+
+	if (len <= sizeof(uint32_t))
+	{
+		memcpy((void *)DACC_CDR, buf, len);
+	}
+	else
+	{
+		DACC_TPR = (uint32_t)buf ;
+		DACC_TCR = len ;
+		DACC_PTCR |= BV(DACC_PTCR_TXTEN);
+	}
+
+	return 0;
+}
+
+void dac_init(void)
+{
+	/* Clock ADC peripheral */
+	pmc_periphEnable(DACC_ID);
+
+	DACC_CR |= BV(DACC_SWRST);
+	DACC_MR = 0;
+
+	/* Refresh period */
+	DACC_MR |= (16 << DACC_REFRESH_SHIFT) & DACC_REFRESH_MASK;
+	/* Start up */
+	DACC_MR |= (DACC_MR_STARTUP_0 << DACC_STARTUP_SHIFT) & DACC_STARTUP_MASK;
+
+}

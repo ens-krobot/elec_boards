@@ -336,7 +336,7 @@ INLINE int kfile_error(struct KFile *fd)
 INLINE void kfile_clearerr(struct KFile *fd)
 {
 	ASSERT(fd->clearerr);
-	fd->clearerr(fd);
+	(fd->clearerr)(fd);
 }
 
 int kfile_putc(int c, struct KFile *fd); ///< Generic putc implementation using kfile_write.

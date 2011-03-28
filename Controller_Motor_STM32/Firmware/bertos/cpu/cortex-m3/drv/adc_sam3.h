@@ -26,25 +26,39 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
+ * Copyright 2008 Develer S.r.l. (http://www.develer.com/)
  *
  * -->
  *
- * \brief Low-level ADC module for ARM (interface).
+ * \brief ADC hardware-specific definition
  *
  * \author Daniele Basile <asterix@develer.com>
- *
  */
 
-#include <cpu/detect.h>
+#ifndef DRV_ADC_SAM3_H
+#define DRV_ADC_SAM3_H
 
-#if CPU_CM3_LM3S
-	#include "adc_lm3s.h"
-#elif CPU_CM3_STM32
-	#include "adc_stm32.h"
-#elif CPU_CM3_SAM3X
-	#include "adc_sam3.h"
-/*#elif  Add other ARM families here */
-#else
-	#error Unknown CPU
-#endif
+#include <hw/hw_cpufreq.h>
+
+#include "cfg/cfg_adc.h"
+
+#include <cfg/compiler.h>
+
+/**
+ * ADC config define.
+ */
+#define ADC_MUX_MAXCH         16 //Max number of channel for ADC.
+#define ADC_BITS              12 //Bit resolution for ADC converter.
+
+/**
+ * Macro for computing correct value to write into ADC
+ * register.
+ */
+#define ADC_PRESCALER    (DIV_ROUNDUP(CPU_FREQ, 2 * CONFIG_ADC_CLOCK) - 1)
+#define ADC_CLOCK        (CPU_FREQ / ((ADC_PRESCALER + 1) * 2))
+
+void adc_hw_select_ch(uint8_t ch);
+uint16_t adc_hw_read(void);
+void adc_hw_init(void);
+
+#endif /* DRV_ADC_SAM3_H */

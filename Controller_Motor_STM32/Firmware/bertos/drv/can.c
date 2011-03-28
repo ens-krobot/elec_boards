@@ -33,6 +33,7 @@
  * \brief CAN driver (implementation)
  *
  * \author Nicolas Dandrimont <Nicolas.Dandrimont@crans.org>
+ *
  */
 
 #include <drv/can.h>
@@ -44,12 +45,14 @@
 	#include CPU_HEADER(can)
 #endif
 
+#include <drv/timer.h>
+#include <mware/event.h>
+
 #include <cfg/debug.h>     // ASSERT()
 #include <cfg/log.h>
 #include <cfg/macros.h>    // MIN()
 #include <cfg/compiler.h>
 #include <cfg/module.h>
-
 MOD_DEFINE(can);
 
 /**
@@ -114,9 +117,11 @@ bool can_transmit(can_driver *drv, can_tx_frame *frame, ticks_t timeout) {
 
     proc_forbid();
     while ((drv->state == CAN_SLEEP) || !can_hw_can_transmit(drv)) {
-        proc_permit();
-        cpu_relax();
-        proc_forbid();
+        ret = event_waitTimeout(&drv->tx_empty_event, timeout);
+        if (ret != true) {
+            proc_permit();
+            return false;
+        }
     }
 
     can_hw_transmit(drv, frame);
@@ -133,9 +138,11 @@ bool can_receive(can_driver *drv, can_rx_frame *frame, ticks_t timeout) {
 
     proc_forbid();
     while ((drv->state == CAN_SLEEP) || !can_hw_can_receive(drv)) {
-        proc_permit();
-        cpu_relax();
-        proc_forbid();
+        ret = event_waitTimeout(&drv->rx_available_event, timeout);
+        if (ret != true) {
+            proc_permit();
+            return false;
+        }
     }
 
     can_hw_receive(drv, frame);

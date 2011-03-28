@@ -26,25 +26,33 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
- *
+ * Copyright 2011 Develer S.r.l. (http://www.develer.com/)
+ * All Rights Reserved.
  * -->
  *
- * \brief Low-level ADC module for ARM (interface).
+ * \brief Configuration file for DAC module.
+ *
  *
  * \author Daniele Basile <asterix@develer.com>
- *
  */
 
-#include <cpu/detect.h>
+#ifndef CFG_DAC_H
+#define CFG_DAC_H
 
-#if CPU_CM3_LM3S
-	#include "adc_lm3s.h"
-#elif CPU_CM3_STM32
-	#include "adc_stm32.h"
-#elif CPU_CM3_SAM3X
-	#include "adc_sam3.h"
-/*#elif  Add other ARM families here */
-#else
-	#error Unknown CPU
-#endif
+/**
+ * Module logging level.
+ *
+ * $WIZ$ type = "enum"
+ * $WIZ$ value_list = "log_level"
+ */
+#define DAC_LOG_LEVEL      LOG_LVL_WARN
+
+/**
+ * Module logging format.
+ *
+ * $WIZ$ type = "enum"
+ * $WIZ$ value_list = "log_format"
+ */
+#define DAC_LOG_FORMAT     LOG_FMT_TERSE
+
+#endif /* CFG_DAC_H */

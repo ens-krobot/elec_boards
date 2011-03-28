@@ -158,6 +158,7 @@
 #include "sam3_sysctl.h"
 #include "sam3_pmc.h"
 #include "sam3_smc.h"
+#include "sam3_sdramc.h"
 #include "sam3_ints.h"
 #include "sam3_pio.h"
 #include "sam3_nvic.h"
@@ -166,6 +167,11 @@
 #include "sam3_spi.h"
 #include "sam3_flash.h"
 #include "sam3_wdt.h"
+#include "sam3_emac.h"
+#include "sam3_rstc.h"
+#include "sam3_adc.h"
+#include "sam3_dacc.h"
+#include "sam3_tc.h"
 
 /**
  * U(S)ART I/O pins

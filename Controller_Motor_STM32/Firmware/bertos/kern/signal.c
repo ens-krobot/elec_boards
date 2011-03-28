@@ -141,29 +141,6 @@
 // Check config dependencies
 CONFIG_DEPEND(CONFIG_KERN_SIGNALS, CONFIG_KERN);
 
-/**
- * Check if any of the signals in \a sigs has occurred and clear them.
- *
- * \return the signals that have occurred.
- */
-sigmask_t sig_checkSignal(Signal *s, sigmask_t sigs)
-{
-	sigmask_t result;
-	cpu_flags_t flags;
-
-	IRQ_SAVE_DISABLE(flags);
-	result = s->recv & sigs;
-	s->recv &= ~sigs;
-	IRQ_RESTORE(flags);
-
-	return result;
-}
-
-
-/**
- * Sleep until any of the signals in \a sigs occurs.
- * \return the signal(s) that have awoken the process.
- */
 sigmask_t sig_waitSignal(Signal *s, sigmask_t sigs)
 {
 	sigmask_t result;
@@ -214,13 +191,9 @@ sigmask_t sig_waitSignal(Signal *s, sigmask_t sigs)
 #if CONFIG_TIMER_EVENTS
 
 #include <drv/timer.h>
-/**
- * Sleep until any of the signals in \a sigs or \a timeout ticks elapse.
- * If the timeout elapse a SIG_TIMEOUT is added to the received signal(s).
- * \return the signal(s) that have awoken the process.
- * \note Caller must check return value to check which signal awoke the process.
- */
-sigmask_t sig_waitTimeoutSignal(Signal *s, sigmask_t sigs, ticks_t timeout)
+
+sigmask_t sig_waitTimeoutSignal(Signal *s, sigmask_t sigs, ticks_t timeout,
+				Hook func, iptr_t data)
 {
 	Timer t;
 	sigmask_t res;
@@ -231,7 +204,10 @@ sigmask_t sig_waitTimeoutSignal(Signal *s, sigmask_t sigs, ticks_t timeout)
 	/* IRQ are needed to run timer */
 	ASSERT(IRQ_ENABLED());
 
-	timer_set_event_signal(&t, proc_current(), SIG_TIMEOUT);
+	if (func)
+		timer_setSoftint(&t, func, data);
+	else
+		timer_set_event_signal(&t, proc_current(), SIG_TIMEOUT);
 	timer_setDelay(&t, timeout);
 	timer_add(&t);
 	res = sig_waitSignal(s, SIG_TIMEOUT | sigs);
@@ -269,16 +245,6 @@ INLINE void __sig_signal(Signal *s, Process *proc, sigmask_t sigs, bool wakeup)
 	IRQ_RESTORE(flags);
 }
 
-/**
- * Send the signals \a sigs to the process \a proc and immeditaly dispatch it
- * for execution.
- *
- * The process will be awoken if it was waiting for any of them and immediately
- * dispatched for execution.
- *
- * \note This function can't be called from IRQ context, use sig_post()
- * instead.
- */
 void sig_sendSignal(Signal *s, Process *proc, sigmask_t sigs)
 {
 	ASSERT_USER_CONTEXT();
@@ -288,12 +254,6 @@ void sig_sendSignal(Signal *s, Process *proc, sigmask_t sigs)
 	__sig_signal(s, proc, sigs, true);
 }
 
-/**
- * Send the signals \a sigs to the process \a proc.
- * The process will be awoken if it was waiting for any of them.
- *
- * \note This call is interrupt safe.
- */
 void sig_postSignal(Signal *s, Process *proc, sigmask_t sigs)
 {
 	__sig_signal(s, proc, sigs, false);

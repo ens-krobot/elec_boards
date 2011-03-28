@@ -26,25 +26,45 @@
  * invalidate any other reasons why the executable file might be covered by
  * the GNU General Public License.
  *
- * Copyright 2010 Develer S.r.l. (http://www.develer.com/)
+ * Copyright 2011 Develer S.r.l. (http://www.develer.com/)
  *
  * -->
  *
- * \brief Low-level ADC module for ARM (interface).
+ * \defgroup dac Generic DAC driver
+ * \ingroup drivers
+ * \{
+ * \brief Digital to Analog Converter driver (DAC).
+ *
+ * <b>Configuration file</b>: cfg_dac.h
  *
  * \author Daniele Basile <asterix@develer.com>
  *
+ * $WIZ$ module_name = "dac"
+ * $WIZ$ module_configuration = "bertos/cfg/cfg_dac.h"
+ * $WIZ$ module_supports = "sam3x"
  */
 
-#include <cpu/detect.h>
 
-#if CPU_CM3_LM3S
-	#include "adc_lm3s.h"
-#elif CPU_CM3_STM32
-	#include "adc_stm32.h"
-#elif CPU_CM3_SAM3X
-	#include "adc_sam3.h"
-/*#elif  Add other ARM families here */
-#else
-	#error Unknown CPU
-#endif
+#ifndef DRV_DAC_H
+#define DRV_DAC_H
+
+#include <cfg/compiler.h>
+#include <cfg/debug.h>
+#include <cpu/attr.h>
+
+int dac_write(int ch, void *buf, size_t len);
+
+INLINE int dac_putHalfWord(int ch, uint16_t sample)
+{
+	return dac_write(ch, &sample, sizeof(uint16_t));
+}
+
+INLINE int dac_putWord(int ch, uint32_t sample)
+{
+	return dac_write(ch, &sample, sizeof(uint32_t));
+}
+
+void dac_init(void);
+
+/** \} */ //defgroup dac
+#endif /* DRV_DAC_H */
