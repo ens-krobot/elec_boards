@@ -15,6 +15,7 @@
 
 #include "encoder.h"
 #include "motor_controller.h"
+#include "trajectory_controller.h"
 
 void canMonitorInit(void);
 
