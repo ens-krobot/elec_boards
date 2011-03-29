@@ -50,7 +50,7 @@ static void init(void)
         odometryInit(1e-3, 0.049245, 0.259, -2.0*M_PI/2000.0/15.0);
 
         // Blink to say we are ready
-        for (uint8_t i=0; i < 10; i++) {
+        for (uint8_t i=0; i < 5; i++) {
           LED1_ON();
           LED2_ON();
           LED3_ON();

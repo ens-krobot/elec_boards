@@ -189,8 +189,6 @@ static void NORETURN canMonitorListen_process(void) {
     move_can_msg_t move_msg;
     turn_can_msg_t turn_msg;
 
-    uint8_t i = 0;
-
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
     txm.rtr = 0;
@@ -199,14 +197,6 @@ static void NORETURN canMonitorListen_process(void) {
 
     while (1) {
       received = can_receive(CAND1, &frame, ms_to_ticks(100));
-        if (i == 0) {
-          i = 1;
-          LED2_ON();
-        } else {
-          i = 0;
-          LED2_OFF();
-        }
-        timer_delay(200);
       if (received) {
         if (frame.rtr == 1) {
           // Handle requests

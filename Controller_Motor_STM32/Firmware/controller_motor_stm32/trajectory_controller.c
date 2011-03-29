@@ -86,6 +86,8 @@ void trapezoid_callback(command_generator_t *generator) {
     adjust_value(trap_speed, 0.);
     //adjust_value(trap, automaton->angle);
     automaton->state = TRAPEZOID_STATE_STOP;
+    if (tc_is_finished())
+      LED1_OFF();
     break;
   }
 }
@@ -191,6 +193,8 @@ void tc_move(float distance, float speed, float acceleration) {
     add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
     add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
   }
+
+  LED1_ON();
 }
 
 void tc_turn(float angle, float speed, float acceleration) {
@@ -260,5 +264,7 @@ void tc_turn(float angle, float speed, float acceleration) {
     add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
     add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
   }
+
+  LED1_ON();
 }
 
