@@ -116,21 +116,27 @@ static void NORETURN can_receive_process(void) {
     can_rx_frame frame;
     int retval;
     bool received = false;
+    bool i = false;
 
 
     for (;;) {
         received = can_receive(usbcan.can, &frame, ms_to_ticks(100));
         if (received) {
+            i = !i;
             retval = usb_can_emit(&usbcan, &frame);
+            if (i)
+                LED2_ON();
+            else
+                LED2_OFF();
         }
     }
 }
 
 static void NORETURN blinky_process(void) {
     for (;;) {
-        LED2_ON();
+        LED3_ON();
         timer_delay(500);
-        LED2_OFF();
+        LED3_OFF();
         timer_delay(500);
     }
 }
