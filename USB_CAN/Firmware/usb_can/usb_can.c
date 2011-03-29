@@ -106,11 +106,11 @@ int usb_can_execute_command(usb_can *usbcan, char *command) {
     switch (command[0]) {
       case 'V':
         /* Version number */
-        kfile_write(&usbcan->ser->fd, "V0402\r", 6);
+        kfile_write(&usbcan->ser->fd, "V0402\r", strlen("V0402\r"));
         break;
       case 'N':
         /* Serial number */
-        kfile_write(&usbcan->ser->fd, "NKROB\r", 6);
+        kfile_write(&usbcan->ser->fd, "NKROB\r", strlen("NKROB\r"));
         break;
       case 'O':
         /* Open CAN Channel */
@@ -171,7 +171,7 @@ int usb_can_execute_command(usb_can *usbcan, char *command) {
     if (send) {
         ret = can_transmit(usbcan->can, &frame, ms_to_ticks(10));
         if (ret)
-            kfile_write(&usbcan->ser->fd, frame.ide ? "\r" : "\r", 1);
+            kfile_write(&usbcan->ser->fd, "\r", 1);
         else
             kfile_write(&usbcan->ser->fd, "\a", 1);
     }

@@ -25,6 +25,7 @@
 #define USB_CAN_H
 
 #include <stdio.h>
+#include <string.h>
 
 #include <kern/sem.h>
 #include <drv/can.h>
