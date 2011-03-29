@@ -26,6 +26,7 @@
 
 #include <stdio.h>
 
+#include <kern/sem.h>
 #include <drv/can.h>
 #include <drv/ser.h>
 #include <drv/timer.h>
@@ -39,6 +40,7 @@ typedef struct _usb_can {
     bool is_open;         // Channel open?
     bool timestamped;     // Emit timestamps?
     usb_can_timestamp *get_timestamp; // Get Timestamp function
+    struct Semaphore sem_receive;    // Avoid receiving when tx_ing
 } usb_can;
 
 uint16_t get_timestamp(void);

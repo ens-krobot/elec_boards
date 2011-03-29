@@ -58,6 +58,7 @@ void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser) {
     usbcan->is_open = false;
     usbcan->timestamped = false;
     usbcan->get_timestamp = get_timestamp;
+    sem_init(&usbcan->sem_receive);
 
 }
 
@@ -99,6 +100,8 @@ int usb_can_execute_command(usb_can *usbcan, char *command) {
     frame.dlc = 0;
     frame.data32[0] = 0;
     frame.data32[1] = 0;
+
+    sem_obtain(&usbcan->sem_receive);
 
     switch (command[0]) {
       case 'V':
@@ -172,6 +175,7 @@ int usb_can_execute_command(usb_can *usbcan, char *command) {
         else
             kfile_write(&usbcan->ser->fd, "\a", 1);
     }
+    sem_release(&usbcan->sem_receive);
 
     return 0;
 }
@@ -181,6 +185,10 @@ int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
     char buffer[32] = "";
     int i = 0, j = 0;
     uint16_t timestamp;
+
+    // Do not interfere with the send ACK
+    if (!sem_attempt(&usbcan->sem_receive))
+        return 0;
 
     buffer[0] = frame->rtr ? 'r' : 't';
 
@@ -213,5 +221,6 @@ int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
 
     kfile_write(&usbcan->ser->fd, buffer, i);
 
+    sem_release(&usbcan->sem_receive);
     return 0;
 }
