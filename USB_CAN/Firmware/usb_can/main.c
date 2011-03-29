@@ -95,7 +95,7 @@ static void init(void)
 
 static void NORETURN serial_receive_process(void)
 {
-    int nbytes, retval, i = 0;
+    int nbytes = 0, retval, i = 0;
     char command[MAX_CMD_SIZE+1];
 
     for (;;) {
@@ -107,8 +107,6 @@ static void NORETURN serial_receive_process(void)
                 LED1_ON();
             else
                 LED1_OFF();
-        } else {
-            kprintf("got EOF :(\n");
         }
     }
 }
@@ -124,7 +122,6 @@ static void NORETURN can_receive_process(void) {
         received = can_receive(usbcan.can, &frame, ms_to_ticks(100));
         if (received) {
             retval = usb_can_emit(&usbcan, &frame);
-            kprintf("received something... %d %08lx %08lx\n", frame.ide ? frame.eid:frame.sid, frame.data32[0], frame.data32[1]);
         }
     }
 }

@@ -89,7 +89,7 @@ void usb_can_set_baudrate(usb_can *usbcan, char *baudrate) {
 int usb_can_execute_command(usb_can *usbcan, char *command) {
 
     can_tx_frame frame;
-    bool send, ret;
+    bool send = false, ret = false;
     int i;
 
     frame.rtr = 0;
@@ -168,7 +168,7 @@ int usb_can_execute_command(usb_can *usbcan, char *command) {
     if (send) {
         ret = can_transmit(usbcan->can, &frame, ms_to_ticks(10));
         if (ret)
-            kfile_write(&usbcan->ser->fd, frame.ide ? "Z\r" : "z\r", 2);
+            kfile_write(&usbcan->ser->fd, frame.ide ? "\r" : "\r", 1);
         else
             kfile_write(&usbcan->ser->fd, "\a", 1);
     }
