@@ -41,6 +41,7 @@
 #include "usb_can.h"
 
 #define MAX_CMD_SIZE 64
+#define SERIAL_BAUDRATE 1000000
 
 PROC_DEFINE_STACK(stack_ser_recv, KERN_MINSTACKSIZE * 4);
 PROC_DEFINE_STACK(stack_can_recv, KERN_MINSTACKSIZE * 4);
@@ -82,6 +83,7 @@ static void init(void)
 
     /* Initialize Serial driver */
     ser_init(&ser, SER_UART3);
+    ser_setbaudrate(&ser, SERIAL_BAUDRATE);
 
     /* Initialize USB-CAN logic */
     usb_can_init(&usbcan, CAND1, &ser);
