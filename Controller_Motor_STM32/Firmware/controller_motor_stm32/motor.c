@@ -175,11 +175,6 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
 
   uint8_t ind = 0;
 
-  if (speed == 0) {
-    motorStop(motor, MOTOR_BRAKE);
-    return;
-  }
-
   if (speed >= MAX_PWM) {
     speed = MAX_PWM;
     ind = 1;
@@ -191,7 +186,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   }
 
   if (motor & MOTOR1) {
-    if(speed > 0) {
+    if(speed >= 0) {
       if (currentSpeedSign[0] != 1) {
         currentSpeedSign[0] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(4), 1);
@@ -220,7 +215,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR2) {
-    if(speed > 0) {
+    if(speed >= 0) {
       if (currentSpeedSign[1] != 1) {
         currentSpeedSign[1] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(1), 1);
@@ -249,7 +244,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR3) {
-    if(speed > 0) {
+    if(speed >= 0) {
       if (currentSpeedSign[2] != 1) {
         currentSpeedSign[2] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(10), 1);
@@ -278,7 +273,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR4) {
-    if(speed > 0) {
+    if(speed >= 0) {
       if (currentSpeedSign[3] != 1) {
         currentSpeedSign[3] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(5), 1);
