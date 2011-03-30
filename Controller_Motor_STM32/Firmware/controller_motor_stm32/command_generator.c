@@ -119,9 +119,9 @@ float get_output_value(command_generator_t *generator) {
   case GEN_RAMP2:
     cur_time = ticks_to_us(timer_clock());
     speed = get_output_value(generator->ramp2.speed);
-    dt = (cur_time - generator->ramp.last_time)*1e-6;
+    dt = (cur_time - generator->ramp2.last_time)*1e-6;
     generator->type.last_output += dt*speed;
-    generator->ramp.last_time = cur_time;
+    generator->ramp2.last_time = cur_time;
     break;
   }
 
