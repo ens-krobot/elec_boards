@@ -122,7 +122,7 @@ uint8_t tc_is_finished(void) {
   if (right_trap.state == TRAPEZOID_STATE_STOP && left_trap.state == TRAPEZOID_STATE_STOP)
     return 1;
 
-  // No running process, last planified action should be finished
+  // One automaton is running, last planified action should be in progress
   return 0;
 }
 
@@ -147,7 +147,7 @@ void tc_move(float distance, float speed, float acceleration) {
 
   // Is the trapezoidal speed profile posible ?
   t_acc = speed / acceleration;
-  t_end = (speed * speed + distance * acceleration) / (speed * acceleration);
+  t_end = (speed * speed + fabsf(distance) * acceleration) / (speed * acceleration);
 
   if (t_end > (2. * t_acc)) {
     // A trapezoidal speed profile is possible
@@ -162,7 +162,7 @@ void tc_move(float distance, float speed, float acceleration) {
     left_trap.speed = left_trap.dir * speed / WHEEL_R * 180 / M_PI;
     left_trap.state = TRAPEZOID_STATE_ACC;
 
-    // This is distance during which the robot will accelerate
+    // This is the distance during which the robot will accelerate
     acc_dist = SIGN(distance) * speed * speed / acceleration / 2.0 / WHEEL_R * 180.0 / M_PI;
 
     // Set accelerations for the trapezoid's first phase and associated callbacks
@@ -178,19 +178,19 @@ void tc_move(float distance, float speed, float acceleration) {
     left_trap.is_triangle = 1;
 
     // Compute triangle parameters for right motor
-    right_trap.speed = right_trap.dir * sqrt(right_trap.angle * right_trap.acceleration);
+    right_trap.speed = right_trap.dir * sqrt(distance / WHEEL_R * 180 / M_PI * right_trap.acceleration);
     right_trap.state = TRAPEZOID_STATE_TRIANGLE;
 
     // Compute triangle parameters for left motor
-    left_trap.speed = left_trap.dir * sqrt(left_trap.angle * left_trap.acceleration);
+    left_trap.speed = left_trap.dir * sqrt(distance / WHEEL_R * 180 / M_PI * left_trap.acceleration);
     left_trap.state = TRAPEZOID_STATE_TRIANGLE;
 
     // Set accelerations for the triangle's first phase and associated callbacks
     adjust_speed(&right_wheel_speed, right_trap.acceleration);
-    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + right_trap.angle/2.0, trapezoid_callback);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + distance / 2.0 / WHEEL_R * 180 / M_PI, trapezoid_callback);
     add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
     adjust_speed(&left_wheel_speed, left_trap.acceleration);
-    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + distance / 2.0 / WHEEL_R * 180 / M_PI, trapezoid_callback);
     add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
   }
 
@@ -218,7 +218,7 @@ void tc_turn(float angle, float speed, float acceleration) {
 
   // Is the trapezoidal speed profile posible ?
   t_acc = speed / acceleration;
-  t_end = (speed * speed + angle * acceleration) / (speed * acceleration);
+  t_end = (speed * speed + fabsf(angle) * acceleration) / (speed * acceleration);
 
   if (t_end > (2. * t_acc)) {
     // A trapezoidal speed profile is possible
@@ -249,19 +249,19 @@ void tc_turn(float angle, float speed, float acceleration) {
     left_trap.is_triangle = 1;
 
     // Compute triangle parameters for right motor
-    right_trap.speed = right_trap.dir * sqrt(right_trap.angle * right_trap.acceleration);
+    right_trap.speed = right_trap.dir * sqrt(angle * STRUCT_B / 2.0 / WHEEL_R * right_trap.acceleration);
     right_trap.state = TRAPEZOID_STATE_TRIANGLE;
 
     // Compute triangle parameters for left motor
-    left_trap.speed = left_trap.dir * sqrt(left_trap.angle * left_trap.acceleration);
+    left_trap.speed = left_trap.dir * sqrt(- angle * STRUCT_B / 2.0 / WHEEL_R * left_trap.acceleration);
     left_trap.state = TRAPEZOID_STATE_TRIANGLE;
 
     // Set accelerations for the triangle's first phase and associated callbacks
     adjust_speed(&right_wheel_speed, right_trap.acceleration);
-    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + right_trap.angle/2.0, trapezoid_callback);
+    add_callback(&right_wheel, SELECT_THRESHOLD(right_trap.dir), right_trap.init_val + angle / 2.0 * STRUCT_B / 2.0 / WHEEL_R, trapezoid_callback);
     add_callback(&right_wheel_speed, SELECT_THRESHOLD(right_trap.dir), right_trap.speed, trapezoid_callback);
     adjust_speed(&left_wheel_speed, left_trap.acceleration);
-    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val + left_trap.angle/2.0, trapezoid_callback);
+    add_callback(&left_wheel, SELECT_THRESHOLD(left_trap.dir), left_trap.init_val - angle / 2.0 * STRUCT_B / 2.0 / WHEEL_R, trapezoid_callback);
     add_callback(&left_wheel_speed, SELECT_THRESHOLD(left_trap.dir), left_trap.speed, trapezoid_callback);
   }
 
