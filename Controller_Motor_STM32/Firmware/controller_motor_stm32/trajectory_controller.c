@@ -124,6 +124,7 @@ void acc_stop_callback(command_generator_t *generator) {
 
   // Stopping acceleration
   adjust_speed(&cont->speed, 0.);
+  adjust_value(&cont->speed, cont->aut.speed);
   cont->working = 0;
 }
 
@@ -250,6 +251,28 @@ void tc_goto(uint8_t motor, float angle, float speed, float acceleration) {
     add_callback(&cont->position, SELECT_THRESHOLD(cont->aut.dir), cont->aut.init_val + angle / 2.0, trapezoid_callback);
     add_callback(&cont->speed, SELECT_THRESHOLD(cont->aut.dir), cont->aut.speed, trapezoid_callback);
   }
+
+  cont->working = 1;
+}
+
+void tc_goto_speed(uint8_t motor, float speed, float acceleration) {
+  trajectory_controller_t *cont;
+
+  // Verify parameters
+  if (acceleration <= 0)
+    return;
+
+  // Get the controller and verifies it is enabled
+  cont = &controllers[get_motor_index(motor)];
+  if (!cont->enabled)
+    return;
+
+  cont->aut.speed = speed;
+  cont->aut.dir = SIGN(speed - cont->speed.type.last_output);
+  // Set acceleration sign depending on the current speed
+  cont->aut.acceleration = cont->aut.dir * acceleration;
+  adjust_speed(&cont->speed, cont->aut.acceleration);
+  add_callback(&cont->speed, SELECT_THRESHOLD(cont->aut.dir), cont->aut.speed, acc_stop_callback);
 
   cont->working = 1;
 }

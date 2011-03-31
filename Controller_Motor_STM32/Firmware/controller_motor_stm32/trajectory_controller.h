@@ -64,6 +64,11 @@ uint8_t tc_is_working(uint8_t motors);
  */
 void tc_goto(uint8_t motor, float angle, float speed, float acceleration);
 
+/* Accelerates or brakes the robot to the given speed
+ *
+ */
+void tc_goto_speed(uint8_t motor, float speed, float acceleration);
+
 /* Moves along a line
  *  - robot : pointer to a structure describing the robot configuration
  *  - distance : distance to move of (in meters), can be positive (forward)
