@@ -55,12 +55,12 @@ void tc_delete_controller(uint8_t motor);
  */
 uint8_t tc_is_working(uint8_t motors);
 
-/* Moves of a given distance
- *  - distance : distance to move of, can be positive (forward) or negative
- *               (backward). The units corresponds to the given scaling factor
- *               during initialization.
- *  - speed : moving speed (in meters per second) should be positive.
- *  - acceleration : in meters per second per second, should be positive.
+/* Moves of a given angle
+ *  - angle : angle to move of, can be positive (forward) or negative
+ *            (backward). The units corresponds to the given scaling factor
+ *            during initialization.
+ *  - speed : moving speed (in units per second) should be positive.
+ *  - acceleration : in units per second per second, should be positive.
  */
 void tc_goto(uint8_t motor, float angle, float speed, float acceleration);
 
