@@ -49,6 +49,10 @@ typedef struct {
   uint16_t acceleration __attribute__((__packed__));  // Acceleration in 1/100 degrees/s^2
 } turn_msg_t;
 
+typedef struct {
+  uint8_t stop;  // stop everything
+} stop_msg_t;
+
 // Union to manipulate CAN messages' data easily
 typedef union {
   encoder_msg_t data;
@@ -80,6 +84,11 @@ typedef union {
   uint32_t data32[2];
 } turn_can_msg_t;
 
+typedef union {
+  stop_msg_t data;
+  uint32_t data32[2];
+} stop_can_msg_t;
+
 // Can messages IDs
 #define CAN_MSG_ENCODERS34 100 // encoder_can_msg_t
 #define CAN_MSG_MOTOR3 101 // motor_can_msg_t
@@ -88,6 +97,8 @@ typedef union {
 #define CAN_MSG_ODOMETRY 104 // odometry_can_msg_t
 #define CAN_MSG_MOVE 201 // move_can_msg_t
 #define CAN_MSG_TURN 202 // turn_can_msg_t
+#define CAN_MSG_ODOMETRY_SET 203 // odometry_can_msg_t
+#define CAN_MSG_STOP 204 // stop_can_msg_t
 
 // Process for communication
 static void NORETURN canMonitor_process(void);
@@ -165,8 +176,10 @@ static void NORETURN canMonitor_process(void) {
     msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
     msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
     odometry.theta = fmodf(odometry.theta, 360.0);
-    if (odometry.theta > 180.)
+    if (odometry.theta > 180.0)
       odometry.theta -= 360.0;
+    if (odometry.theta < -180.0)
+      odometry.theta += 360.0;
     msg_odo.data.theta = (int16_t)(odometry.theta * 100.0);
 
     txm.data32[0] = msg_odo.data32[0];
@@ -184,16 +197,27 @@ static void NORETURN canMonitorListen_process(void) {
     can_rx_frame frame;
     bool received = false;
     can_tx_frame txm;
+    robot_state_t odometry;
 
     status_can_msg_t status_msg;
     move_can_msg_t move_msg;
     turn_can_msg_t turn_msg;
+    odometry_can_msg_t odometry_msg;
+    stop_can_msg_t stop_msg;
+
+    tc_robot_t robot;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
     txm.rtr = 0;
     txm.ide = 1;
     txm.sid = 0;
+
+    // Initialize robot representation
+    robot.left_wheel = MOTOR3;
+    robot.right_wheel = MOTOR4;
+    robot.wheel_radius = 0.049245;
+    robot.shaft_width = 0.259;
 
     while (1) {
       received = can_receive(CAND1, &frame, ms_to_ticks(100));
@@ -202,7 +226,7 @@ static void NORETURN canMonitorListen_process(void) {
           // Handle requests
           switch (frame.eid) {
           case CAN_MSG_STATUS:
-            status_msg.data.is_moving = !tc_is_finished();
+            status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
             txm.data32[0] = status_msg.data32[0];
             txm.data32[1] = status_msg.data32[1];
             txm.eid = CAN_MSG_STATUS;
@@ -215,14 +239,30 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_MOVE:
             move_msg.data32[0] = frame.data32[0];
             move_msg.data32[1] = frame.data32[1];
-            if (tc_is_finished())
-              tc_move(move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
+            if (!tc_is_working(MOTOR3 | MOTOR4))
+              tc_move(&robot, move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
             break;
           case CAN_MSG_TURN:
             turn_msg.data32[0] = frame.data32[0];
             turn_msg.data32[1] = frame.data32[1];
-            if (tc_is_finished())
-              tc_turn(turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
+            if (!tc_is_working(MOTOR3 | MOTOR4))
+              tc_turn(&robot, turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
+            break;
+          case CAN_MSG_STOP:
+            stop_msg.data32[0] = frame.data32[0];
+            stop_msg.data32[1] = frame.data32[1];
+            if (stop_msg.data.stop == 1) {
+              tc_delete_controller(MOTOR3);
+              tc_delete_controller(MOTOR4);
+            }
+            break;
+          case CAN_MSG_ODOMETRY_SET:
+            odometry_msg.data32[0] = frame.data32[0];
+            odometry_msg.data32[1] = frame.data32[1];
+            odometry.x = ((float)odometry_msg.data.x) / 1000.0;
+            odometry.y = ((float)odometry_msg.data.y) / 1000.0;
+            odometry.theta = ((float)odometry_msg.data.theta) / 100.0;
+            odo_setState(&odometry);
             break;
           }
         }
