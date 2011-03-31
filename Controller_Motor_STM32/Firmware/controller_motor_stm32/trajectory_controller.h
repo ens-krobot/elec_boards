@@ -14,46 +14,46 @@
 #include "command_generator.h"
 #include <math.h>
 
-typedef struct {
-  uint8_t encoder;                  // Encoder ID to measure motor position from
-  float encoder_gain;               // Gain to convert encoder value unit to reference unit
-  float G0;                         // DC motor static gain
-  float tau;                        // DC motor time constant
-  float k[2];                       // State control gain
-  float l;                          // Reference factoring gain
-  float l0[2];                      // State observer gain
-  float T;                          // Sampling period of the controller in seconds
-} trajectory_controller_params_t;
+#define NUM_TC_MAX 4
+#define TC_MASK(num) (1 << (num))
 
 typedef struct {
-  uint8_t left_wheel;               // Left wheel motor ID
-  uint8_t right_wheel;              // Right wheel motor ID
+  uint8_t left_wheel;               // Left wheel trajectory controller index
+  uint8_t right_wheel;              // Right wheel trajectory controller index
   float wheel_radius;               // Radius of the wheels
   float shaft_width;                // Width of the propulsion shaft
 } tc_robot_t;
 
-/* Initialize the trajectory controller system
- *
+/*
+ * Initialize the trajectory controller system
  */
 void tc_init(void);
 
 /* Initialize a new trajectory controller with given parameters
  *
- * This function will initialize a new trajectory controller and the
- * necessary motor controller and generators.
+ * This function will initialize a new trajectory controller
+ *  - cntr_index : index of the trajectory controller to initialize. It should
+ *                 be between 0 and (NUM_TC_MAX-1)
  */
-void tc_new_controller(uint8_t motor, trajectory_controller_params_t *params);
+void tc_new_controller(uint8_t cntr_index);
 
-/* Deletes a given trajectory controller
- *
+/*
+ * Deletes a given trajectory controller
  */
-void tc_delete_controller(uint8_t motor);
+void tc_delete_controller(uint8_t cntr_index);
 
-/* Indicates if the last planified action on 'motors' is finished
+/* Indicates if the last planified action on 'cntr_indexes' is finished
+ *  - cntr_indexes : logical OR of TC_MASK(cntr_index) for interesting indexes
  *
  * Returns the logical OR of working controllers among the ones specified in motors
  */
-uint8_t tc_is_working(uint8_t motors);
+uint8_t tc_is_working(uint8_t cntr_indexes);
+
+/*
+ * Returns the position generator outputting the result of the 'cntr_index'th
+ *  Trajectory Generator.
+ */
+command_generator_t* tc_get_position_generator(uint8_t cntr_index);
 
 /* Moves of a given angle
  *  - angle : angle to move of, can be positive (forward) or negative
@@ -62,12 +62,12 @@ uint8_t tc_is_working(uint8_t motors);
  *  - speed : moving speed (in units per second) should be positive.
  *  - acceleration : in units per second per second, should be positive.
  */
-void tc_goto(uint8_t motor, float angle, float speed, float acceleration);
+void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration);
 
 /* Accelerates or brakes the robot to the given speed
  *
  */
-void tc_goto_speed(uint8_t motor, float speed, float acceleration);
+void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration);
 
 /* Moves along a line
  *  - robot : pointer to a structure describing the robot configuration

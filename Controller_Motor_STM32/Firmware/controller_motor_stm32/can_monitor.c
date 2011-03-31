@@ -214,8 +214,8 @@ static void NORETURN canMonitorListen_process(void) {
     txm.sid = 0;
 
     // Initialize robot representation
-    robot.left_wheel = MOTOR3;
-    robot.right_wheel = MOTOR4;
+    robot.left_wheel = 2;
+    robot.right_wheel = 3;
     robot.wheel_radius = 0.049245;
     robot.shaft_width = 0.259;
 
@@ -239,21 +239,21 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_MOVE:
             move_msg.data32[0] = frame.data32[0];
             move_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(MOTOR3 | MOTOR4))
+            if (!tc_is_working(TC_MASK(2) | TC_MASK(3)))
               tc_move(&robot, move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
             break;
           case CAN_MSG_TURN:
             turn_msg.data32[0] = frame.data32[0];
             turn_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(MOTOR3 | MOTOR4))
+            if (!tc_is_working(TC_MASK(2) | TC_MASK(3)))
               tc_turn(&robot, turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];
             stop_msg.data32[1] = frame.data32[1];
             if (stop_msg.data.stop == 1) {
-              tc_delete_controller(MOTOR3);
-              tc_delete_controller(MOTOR4);
+              mc_delete_controller(MOTOR3);
+              mc_delete_controller(MOTOR4);
             }
             break;
           case CAN_MSG_ODOMETRY_SET:

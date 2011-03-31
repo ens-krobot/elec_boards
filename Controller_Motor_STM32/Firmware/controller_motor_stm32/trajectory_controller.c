@@ -36,22 +36,14 @@ typedef struct {
 void trapezoid_callback(command_generator_t *generator);
 void acc_stop_callback(command_generator_t *generator);
 
-trajectory_controller_t controllers[4];
-
-static inline uint8_t get_motor_index(uint8_t motor_id) {
-  uint8_t motor_ind;
-
-  for (motor_ind = 0; (motor_id >> (motor_ind+1)) != 0; motor_ind++) ;
-
-  return motor_ind;
-}
+trajectory_controller_t controllers[NUM_TC_MAX];
 
 void trapezoid_callback(command_generator_t *generator) {
   trajectory_controller_t *cont = NULL;
   uint8_t i;
 
   // Select the correct controller depending on chich callbacl triggered
-  for (i=0; i < 4; i++) {
+  for (i=0; i < NUM_TC_MAX; i++) {
     if (generator == &(controllers[i].position)
         || generator == &(controllers[i].speed) ) {
       cont = &controllers[i];
@@ -104,7 +96,7 @@ void acc_stop_callback(command_generator_t *generator) {
   uint8_t i;
 
   // Select the correct controller depending on chich callbacl triggered
-  for (i=0; i < 4; i++) {
+  for (i=0; i < NUM_TC_MAX; i++) {
     if (generator == &(controllers[i].position)
         || generator == &(controllers[i].speed) ) {
       cont = &controllers[i];
@@ -132,7 +124,7 @@ void tc_init(void) {
   uint8_t i;
 
   // All Trajectory controllers are disabled
-  for (i=0; i < 4; i++) {
+  for (i=0; i < NUM_TC_MAX; i++) {
     controllers[i].enabled = 0;
   }
 
@@ -140,11 +132,14 @@ void tc_init(void) {
   motorControllerInit();
 }
 
-void tc_new_controller(uint8_t motor, trajectory_controller_params_t *params) {
+void tc_new_controller(uint8_t cntr_index) {
   trajectory_controller_t *cont;
 
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+
   // Get corresponding controller
-  cont = &controllers[get_motor_index(motor)];
+  cont = &controllers[cntr_index];
 
   // Do nothing if the controller already exists
   if (cont->enabled == 1)
@@ -154,19 +149,7 @@ void tc_new_controller(uint8_t motor, trajectory_controller_params_t *params) {
   new_ramp_generator(&cont->speed, 0., 0.);
   new_ramp2_generator(&cont->position, 0., &cont->speed);
 
-  // Start control of drive motor
-  mc_new_controller(motor,
-                    params->encoder,
-                    params->encoder_gain,
-                    params->G0,
-                    params->tau,
-                    params->T,
-                    params->k,
-                    -params->k[0],
-                    params->l0,
-                    &cont->position);
-
-  // Start the generator
+  // Start the generators
   start_generator(&cont->position);
   start_generator(&cont->speed);
 
@@ -176,31 +159,48 @@ void tc_new_controller(uint8_t motor, trajectory_controller_params_t *params) {
   cont->enabled = 1;
 }
 
-void tc_delete_controller(uint8_t motor) {
+void tc_delete_controller(uint8_t cntr_index) {
   trajectory_controller_t *cont;
 
-  cont = &controllers[get_motor_index(motor)];
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+
+  cont = &controllers[cntr_index];
 
   if (cont->enabled == 1) {
-    mc_delete_controller(motor);
     cont->working = 0;
     cont->enabled = 0;
+    pause_generator(&cont->speed);
+    pause_generator(&cont->position);
   }
 }
 
-uint8_t tc_is_working(uint8_t motors) {
+uint8_t tc_is_working(uint8_t cntr_indexes) {
   uint8_t state = 0, i;
 
   // For each motor in motor, test if the corresponding controller is working
-  for (i=0; i < 4; i++) {
-    if ( ((motors & (1<<i)) != 0) && controllers[i].working == 1)
-      state |= 1 << i;
+  for (i=0; i < NUM_TC_MAX; i++) {
+    if ( ((cntr_indexes & TC_MASK(i)) != 0) && controllers[i].working == 1)
+      state |= TC_MASK(i);
   }
 
   return state;
 }
 
-void tc_goto(uint8_t motor, float angle, float speed, float acceleration) {
+command_generator_t* tc_get_position_generator(uint8_t cntr_index) {
+ trajectory_controller_t *cont;
+
+  // Get the controller and verifies it is enabled
+  if (cntr_index >= NUM_TC_MAX)
+    return NULL;
+  cont = &controllers[cntr_index];
+  if (!cont->enabled)
+    return NULL;
+
+  return &cont->position;
+}
+
+void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration) {
   float acc_dist, t_acc, t_end;
   trajectory_controller_t *cont;
 
@@ -209,7 +209,9 @@ void tc_goto(uint8_t motor, float angle, float speed, float acceleration) {
     return;
 
   // Get the controller and verifies it is enabled
-  cont = &controllers[get_motor_index(motor)];
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+  cont = &controllers[cntr_index];
   if (!cont->enabled)
     return;
 
@@ -255,7 +257,7 @@ void tc_goto(uint8_t motor, float angle, float speed, float acceleration) {
   cont->working = 1;
 }
 
-void tc_goto_speed(uint8_t motor, float speed, float acceleration) {
+void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration) {
   trajectory_controller_t *cont;
 
   // Verify parameters
@@ -263,7 +265,9 @@ void tc_goto_speed(uint8_t motor, float speed, float acceleration) {
     return;
 
   // Get the controller and verifies it is enabled
-  cont = &controllers[get_motor_index(motor)];
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+  cont = &controllers[cntr_index];
   if (!cont->enabled)
     return;
 
@@ -281,8 +285,8 @@ void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration)
   float dis_s, spe_s, acc_s;
 
   // Let's pause the wheel's speed generators to synchronize movement start
-  pause_generator(&controllers[get_motor_index(robot->left_wheel)].speed);
-  pause_generator(&controllers[get_motor_index(robot->right_wheel)].speed);
+  pause_generator(&controllers[robot->left_wheel].speed);
+  pause_generator(&controllers[robot->right_wheel].speed);
 
   // Compute parameters
   dis_s = distance / robot->wheel_radius * 180.0 / M_PI;
@@ -294,16 +298,16 @@ void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration)
   tc_goto(robot->right_wheel, dis_s, spe_s, acc_s);
 
   // Go
-  start_generator(&controllers[get_motor_index(robot->left_wheel)].speed);
-  start_generator(&controllers[get_motor_index(robot->right_wheel)].speed);
+  start_generator(&controllers[robot->left_wheel].speed);
+  start_generator(&controllers[robot->right_wheel].speed);
 }
 
 void tc_turn(tc_robot_t *robot, float angle, float speed, float acceleration) {
   float angle_s, spe_s, acc_s;
 
   // Let's pause the wheel's speed generators to synchronize movement start
-  pause_generator(&controllers[get_motor_index(robot->left_wheel)].speed);
-  pause_generator(&controllers[get_motor_index(robot->right_wheel)].speed);
+  pause_generator(&controllers[robot->left_wheel].speed);
+  pause_generator(&controllers[robot->right_wheel].speed);
 
   // Compute parameters
   angle_s = angle * robot->shaft_width / 2.0 / robot->wheel_radius;
@@ -315,6 +319,6 @@ void tc_turn(tc_robot_t *robot, float angle, float speed, float acceleration) {
   tc_goto(robot->right_wheel, angle_s, spe_s, acc_s);
 
   // Go
-  start_generator(&controllers[get_motor_index(robot->left_wheel)].speed);
-  start_generator(&controllers[get_motor_index(robot->right_wheel)].speed);
+  start_generator(&controllers[robot->left_wheel].speed);
+  start_generator(&controllers[robot->right_wheel].speed);
 }

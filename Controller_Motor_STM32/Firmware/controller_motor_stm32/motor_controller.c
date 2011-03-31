@@ -171,43 +171,46 @@ void motorControllerInit() {
   motorsInit();
 }
 
-uint8_t mc_new_controller(uint8_t motor, uint8_t encoder, float encoder_gain, float G0, float tau, float T, float *k, float l, float *l0, command_generator_t *generator) {
+uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_generator_t *generator) {
   uint8_t motor_ind;
   control_params_t *params;
+  float tau, T;
 
   // Find the motor index
-  motor_ind = get_motor_index(motor);
+  motor_ind = get_motor_index(cntr_params->motor);
   params = &(controllers[motor_ind]);
 
   if (params->enable == 0) {
     // define user parameters
-    params->motor = motor;
-    params->encoder = encoder;
-    params->encoder_gain = encoder_gain;
-    params->tau = tau;
-    params->T = ms_to_ticks((mtime_t)(T*1000));
-    params->k[0] = k[0]; params->k[1] = k[1];
-    params->l = l;
-    params->l0[0] = l0[0]; params->l0[1] = l0[1];
+    params->motor = cntr_params->motor;
+    params->encoder = cntr_params->encoder;
+    params->encoder_gain = cntr_params->encoder_gain;
+    params->tau = cntr_params->tau;
+    params->T = ms_to_ticks((mtime_t)(cntr_params->T*1000));
+    params->k[0] = cntr_params->k[0]; params->k[1] = cntr_params->k[1];
+    params->l = cntr_params->l;
+    params->l0[0] = cntr_params->l0[0]; params->l0[1] = cntr_params->l0[1];
 
     // compute other parameters
     params->last_command = 0;
     params->last_estimate[0] = 0; params->last_estimate[1] = 0;
     params->last_output = params->last_estimate[0];
-    params->last_encoder_pos = getEncoderPosition(encoder);
+    params->last_encoder_pos = getEncoderPosition(cntr_params->encoder);
     params->reference = generator;
 
+    tau = cntr_params->tau;
+    T = cntr_params->T;
     params->F[0] = 1;
     params->F[1] = tau*(1-exp(-T/tau));
     params->F[2] = 0;
     params->F[3] = exp(-T/tau);
-    params->G[0] = G0*(T+tau*exp(-T/tau)-tau);
-    params->G[1] = G0*(1-exp(-T/tau));
+    params->G[0] = cntr_params->G0*(T+tau*exp(-T/tau)-tau);
+    params->G[1] = cntr_params->G0*(1-exp(-T/tau));
 
     // enable the controller
     params->enable = 1;
-    enableMotor(motor);
-    motorSetSpeed(motor, 0);
+    enableMotor(cntr_params->motor);
+    motorSetSpeed(cntr_params->motor, 0);
 
     // start the controller
     proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);

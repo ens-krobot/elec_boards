@@ -22,7 +22,7 @@ PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
 static void init(void)
 {
-        trajectory_controller_params_t params;
+        motor_controller_params_t params;
 
 	IRQ_ENABLE;
 
@@ -57,10 +57,12 @@ static void init(void)
         params.T = 0.005;
         // Initialize left motor
         params.encoder = ENCODER3;
-        tc_new_controller(MOTOR3, &params);
+        tc_new_controller(2);
+        mc_new_controller(&params, tc_get_position_generator(0));
         // Initialize right motor
         params.encoder = ENCODER4;
-        tc_new_controller(MOTOR4, &params);
+        tc_new_controller(3);
+        mc_new_controller(&params, tc_get_position_generator(1));
 
         // Start odometry
         odometryInit(1e-3, 0.049245, 0.259, -2.0*M_PI/2000.0/15.0);
