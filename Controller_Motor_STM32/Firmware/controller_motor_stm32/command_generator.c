@@ -41,11 +41,29 @@ command_generator_t* new_ramp2_generator(command_generator_t *generator, float s
   return generator;
 }
 
-
-command_generator_t* adjust_value(command_generator_t *generator, float value) {
-  generator->type.last_output = value;
+command_generator_t* new_dd_generator(command_generator_t *generator,
+                                      command_generator_t *linear_speed,
+                                      command_generator_t *rotational_speed,
+                                      float wheel_radius, float shaft_width,
+                                      uint8_t type) {
+  generator->type.t = (type == 1) ? GEN_DD_RIGHT : GEN_DD_LEFT;
+  generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->dd.linear_speed = linear_speed;
+  generator->dd.rotational_speed = rotational_speed;
+  generator->dd.wheel_radius = wheel_radius;
+  generator->dd.shaft_width = shaft_width;
 
   return generator;
+}
+
+
+command_generator_t* adjust_value(command_generator_t *generator, float value) {
+  if (generator->type.t != GEN_DD_RIGHT && generator->type.t != GEN_DD_LEFT) {
+    generator->type.last_output = value;
+    return generator;
+  } else {
+    return NULL;
+  }
 }
 
 command_generator_t* adjust_speed(command_generator_t *generator, float speed) {
@@ -64,7 +82,6 @@ command_generator_t* start_generator(command_generator_t *generator) {
     generator->ramp.last_time = ticks_to_us(timer_clock());
     break;
   case GEN_RAMP2:
-    start_generator(generator->ramp2.speed);
     generator->ramp2.last_time = ticks_to_us(timer_clock());
   }
   generator->type.state = GEN_STATE_RUNNING;
@@ -77,9 +94,6 @@ command_generator_t* pause_generator(command_generator_t *generator) {
   get_output_value(generator);
   // pause the generator
   generator->type.state = GEN_STATE_PAUSE;
-
-  if (generator->type.t == GEN_RAMP2)
-    pause_generator(generator->ramp2.speed);
 
   return generator;
 }
@@ -101,7 +115,7 @@ command_generator_t* remove_callback(command_generator_t *generator) {
 
 float get_output_value(command_generator_t *generator) {
   int32_t cur_time;
-  float speed, dt;
+  float speed, dt, u1, u2;
 
   if (generator->type.state != GEN_STATE_RUNNING)
     return generator->type.last_output;
@@ -122,6 +136,16 @@ float get_output_value(command_generator_t *generator) {
     dt = (cur_time - generator->ramp2.last_time)*1e-6;
     generator->type.last_output += dt*speed;
     generator->ramp2.last_time = cur_time;
+    break;
+  case GEN_DD_RIGHT:
+    u1 = get_output_value(generator->dd.linear_speed);
+    u2 = get_output_value(generator->dd.rotational_speed);
+    generator->type.last_output = (4.0*u1+u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);
+    break;
+  case GEN_DD_LEFT:
+    u1 = get_output_value(generator->dd.linear_speed);
+    u2 = get_output_value(generator->dd.rotational_speed);
+    generator->type.last_output = (4.0*u1-u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);
     break;
   }
 
