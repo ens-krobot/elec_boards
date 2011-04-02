@@ -55,6 +55,13 @@ uint8_t tc_is_working(uint8_t cntr_indexes);
  */
 command_generator_t* tc_get_position_generator(uint8_t cntr_index);
 
+/*
+ * Returns the speed generator outputting the intermediate result of the 'cntr_index'th
+ *  Trajectory Generator.
+ */
+command_generator_t* tc_get_speed_generator(uint8_t cntr_index);
+
+
 /* Moves of a given angle
  *  - angle : angle to move of, can be positive (forward) or negative
  *            (backward). The units corresponds to the given scaling factor

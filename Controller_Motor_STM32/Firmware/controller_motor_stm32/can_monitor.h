@@ -17,6 +17,7 @@
 #include "motor_controller.h"
 #include "trajectory_controller.h"
 #include "odometry.h"
+#include "differential_drive.h"
 
 void canMonitorInit(void);
 

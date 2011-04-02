@@ -14,6 +14,7 @@
 #define __COMMAND_GENERATOR_H
 
 #include <drv/timer.h>
+#include <math.h>
 
 // Generator types
 #define GEN_NONE     0   // No type, the generator is not initialized.

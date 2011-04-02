@@ -12,11 +12,13 @@
 #include <math.h>
 
 #include "hw/hw_led.h"
-#include "motor.h"
 #include "motor_controller.h"
 #include "can_monitor.h"
 #include "command_generator.h"
-#include "trajectory_controller.h"
+#include "differential_drive.h"
+
+#define WHEEL_RADIUS 0.049245
+#define SHAFT_WIDTH 0.259
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
@@ -45,12 +47,13 @@ static void init(void)
 
         // Start control of drive motors
         tc_init();
+        dd_start(WHEEL_RADIUS, SHAFT_WIDTH);
         // Common parameters
-        params.encoder_gain = -360.0/2000.0/15.0;
-        params.G0 = 0.833;
+        params.encoder_gain = -2.0*M_PI/2000.0/15.0;
+        params.G0 = 0.0145;
         params.tau = 0.015;
-        params.k[0] = -68.0325;
-        params.k[1] = -1.0205;
+        params.k[0] = -3898.0;
+        params.k[1] = -58.4696;
         params.l = -params.k[0];
         params.l0[0] = 0.0236;
         params.l0[1] = 3.9715;
@@ -58,16 +61,14 @@ static void init(void)
         // Initialize left motor
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        tc_new_controller(2);
-        mc_new_controller(&params, tc_get_position_generator(2));
+        mc_new_controller(&params, dd_get_left_wheel_generator());
         // Initialize right motor
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
-        tc_new_controller(3);
-        mc_new_controller(&params, tc_get_position_generator(3));
+        mc_new_controller(&params, dd_get_right_wheel_generator());
 
         // Start odometry
-        odometryInit(1e-3, 0.049245, 0.259, -2.0*M_PI/2000.0/15.0);
+        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, -2.0*M_PI/2000.0/15.0);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {

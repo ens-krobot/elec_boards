@@ -99,12 +99,12 @@ static void NORETURN odometry_process(void) {
 void odo_setState(robot_state_t *new_state) {
   state.robot_state.x = new_state->x;
   state.robot_state.y = new_state->y;
-  state.robot_state.theta = new_state->theta * M_PI / 180.0;
+  state.robot_state.theta = new_state->theta;
 }
 
 void odo_getState(robot_state_t *robot_state) {
   robot_state->x = state.robot_state.x;
   robot_state->y = state.robot_state.y;
-  robot_state->theta = state.robot_state.theta * 180.0 / M_PI;
+  robot_state->theta = state.robot_state.theta;
 }
 

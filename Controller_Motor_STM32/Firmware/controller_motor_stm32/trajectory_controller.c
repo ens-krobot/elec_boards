@@ -200,6 +200,19 @@ command_generator_t* tc_get_position_generator(uint8_t cntr_index) {
   return &cont->position;
 }
 
+command_generator_t* tc_get_speed_generator(uint8_t cntr_index) {
+ trajectory_controller_t *cont;
+
+  // Get the controller and verifies it is enabled
+  if (cntr_index >= NUM_TC_MAX)
+    return NULL;
+  cont = &controllers[cntr_index];
+  if (!cont->enabled)
+    return NULL;
+
+  return &cont->speed;
+}
+
 void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration) {
   float acc_dist, t_acc, t_end;
   trajectory_controller_t *cont;
@@ -294,9 +307,9 @@ void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration)
   pause_generator(&controllers[robot->right_wheel].speed);
 
   // Compute parameters
-  dis_s = distance / robot->wheel_radius * 180.0 / M_PI;
-  spe_s = speed / robot->wheel_radius * 180.0 / M_PI;
-  acc_s = acceleration / robot->wheel_radius * 180.0 / M_PI;
+  dis_s = distance / robot->wheel_radius;
+  spe_s = speed / robot->wheel_radius;
+  acc_s = acceleration / robot->wheel_radius;
 
   // Planify movements
   tc_goto(robot->left_wheel, dis_s, spe_s, acc_s);

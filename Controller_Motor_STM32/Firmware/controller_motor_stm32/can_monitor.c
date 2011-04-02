@@ -34,7 +34,7 @@ typedef struct {
 typedef struct {
   int16_t x __attribute__((__packed__));     // X position in mm (fixed point representation...)
   int16_t y __attribute__((__packed__));     // Y position in mm
-  int16_t theta __attribute__((__packed__)); // angle in 1/100 degrees
+  int16_t theta __attribute__((__packed__)); // angle in 1/10000 radians
 } odometry_msg_t;
 
 typedef struct {
@@ -44,9 +44,9 @@ typedef struct {
 } move_msg_t;
 
 typedef struct {
-  int32_t angle         __attribute__((__packed__));  // angle in 1/100 degrees (fixed point representation...)
-  uint16_t speed        __attribute__((__packed__));  // Speed in 1/100 degrees/s
-  uint16_t acceleration __attribute__((__packed__));  // Acceleration in 1/100 degrees/s^2
+  int32_t angle         __attribute__((__packed__));  // angle in 1/10000 radians (fixed point representation...)
+  uint16_t speed        __attribute__((__packed__));  // Speed in 1/1000 rad/s
+  uint16_t acceleration __attribute__((__packed__));  // Acceleration in 1/1000 radians/s^2
 } turn_msg_t;
 
 typedef struct {
@@ -175,12 +175,12 @@ static void NORETURN canMonitor_process(void) {
     odo_getState(&odometry);
     msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
     msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
-    odometry.theta = fmodf(odometry.theta, 360.0);
-    if (odometry.theta > 180.0)
-      odometry.theta -= 360.0;
-    if (odometry.theta < -180.0)
-      odometry.theta += 360.0;
-    msg_odo.data.theta = (int16_t)(odometry.theta * 100.0);
+    odometry.theta = fmodf(odometry.theta, 2*M_PI);
+    if (odometry.theta > M_PI)
+      odometry.theta -= 2*M_PI;
+    if (odometry.theta < -M_PI)
+      odometry.theta += 2*M_PI;
+    msg_odo.data.theta = (int16_t)(odometry.theta * 10000.0);
 
     txm.data32[0] = msg_odo.data32[0];
     txm.data32[1] = msg_odo.data32[1];
@@ -205,19 +205,11 @@ static void NORETURN canMonitorListen_process(void) {
     odometry_can_msg_t odometry_msg;
     stop_can_msg_t stop_msg;
 
-    tc_robot_t robot;
-
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
     txm.rtr = 0;
     txm.ide = 1;
     txm.sid = 0;
-
-    // Initialize robot representation
-    robot.left_wheel = 2;
-    robot.right_wheel = 3;
-    robot.wheel_radius = 0.049245;
-    robot.shaft_width = 0.259;
 
     while (1) {
       received = can_receive(CAND1, &frame, ms_to_ticks(100));
@@ -239,14 +231,14 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_MOVE:
             move_msg.data32[0] = frame.data32[0];
             move_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(TC_MASK(2) | TC_MASK(3)))
-              tc_move(&robot, move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
+            if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
+              dd_move(move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
             break;
           case CAN_MSG_TURN:
             turn_msg.data32[0] = frame.data32[0];
             turn_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(TC_MASK(2) | TC_MASK(3)))
-              tc_turn(&robot, turn_msg.data.angle / 100.0, turn_msg.data.speed / 100.0, turn_msg.data.acceleration / 100.0);
+            if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
+              dd_turn(turn_msg.data.angle / 10000.0, turn_msg.data.speed / 1000.0, turn_msg.data.acceleration / 1000.0);
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];
@@ -261,7 +253,7 @@ static void NORETURN canMonitorListen_process(void) {
             odometry_msg.data32[1] = frame.data32[1];
             odometry.x = ((float)odometry_msg.data.x) / 1000.0;
             odometry.y = ((float)odometry_msg.data.y) / 1000.0;
-            odometry.theta = ((float)odometry_msg.data.theta) / 100.0;
+            odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
             odo_setState(&odometry);
             break;
           }
