@@ -35,7 +35,7 @@ typedef struct
   ticks_t T;                        // sampling period in systicks
 } control_params_t;
 
-control_params_t controllers[4];
+static control_params_t controllers[4];
 
 static inline uint8_t get_motor_index(uint8_t motor_id) {
   uint8_t motor_ind;

@@ -56,13 +56,15 @@ static void init(void)
         params.l0[1] = 3.9715;
         params.T = 0.005;
         // Initialize left motor
+        params.motor = MOTOR3;
         params.encoder = ENCODER3;
         tc_new_controller(2);
-        mc_new_controller(&params, tc_get_position_generator(0));
+        mc_new_controller(&params, tc_get_position_generator(2));
         // Initialize right motor
+        params.motor = MOTOR4;
         params.encoder = ENCODER4;
         tc_new_controller(3);
-        mc_new_controller(&params, tc_get_position_generator(1));
+        mc_new_controller(&params, tc_get_position_generator(3));
 
         // Start odometry
         odometryInit(1e-3, 0.049245, 0.259, -2.0*M_PI/2000.0/15.0);
@@ -79,7 +81,7 @@ static void init(void)
           LED3_OFF();
           LED4_OFF();
           timer_delay(100);
-        }
+          }
 }
 
 static void NORETURN ind_process(void)

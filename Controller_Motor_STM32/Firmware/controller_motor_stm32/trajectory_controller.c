@@ -36,7 +36,7 @@ typedef struct {
 void trapezoid_callback(command_generator_t *generator);
 void acc_stop_callback(command_generator_t *generator);
 
-trajectory_controller_t controllers[NUM_TC_MAX];
+static trajectory_controller_t controllers[NUM_TC_MAX];
 
 void trapezoid_callback(command_generator_t *generator) {
   trajectory_controller_t *cont = NULL;
@@ -270,6 +270,11 @@ void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration) {
   cont = &controllers[cntr_index];
   if (!cont->enabled)
     return;
+
+  // Disable a possibly running trapezoidal profile
+  cont->aut.state = TRAPEZOID_STATE_STOP;
+  remove_callback(&cont->position);
+  remove_callback(&cont->speed);
 
   cont->aut.speed = speed;
   cont->aut.dir = SIGN(speed - cont->speed.type.last_output);
