@@ -28,12 +28,16 @@ void dd_start(float wheel_radius, float shaft_width) {
   tc_new_controller(DD_LINEAR_SPEED_TC);
   tc_new_controller(DD_ROTATIONAL_SPEED_TC);
   new_dd_generator(&params.left_wheel_speed,
+                   tc_get_position_generator(DD_LINEAR_SPEED_TC),
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
+                   tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
                    wheel_radius, shaft_width,
                    -1);
   new_dd_generator(&params.right_wheel_speed,
+                   tc_get_position_generator(DD_LINEAR_SPEED_TC),
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
+                   tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
                    wheel_radius, shaft_width,
                    1);
@@ -92,6 +96,9 @@ void dd_move(float distance, float speed, float acceleration) {
 }
 
 void dd_turn(float angle, float speed, float acceleration) {
+  if (angle > 1.0)
+    LED2_ON();
+
   if (params.enabled) {
     params.last_rot_acceleration = acceleration;
     tc_goto(DD_ROTATIONAL_SPEED_TC, angle, speed, params.last_rot_acceleration);

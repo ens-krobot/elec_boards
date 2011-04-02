@@ -42,13 +42,17 @@ command_generator_t* new_ramp2_generator(command_generator_t *generator, float s
 }
 
 command_generator_t* new_dd_generator(command_generator_t *generator,
+                                      command_generator_t *linear_pos,
                                       command_generator_t *linear_speed,
+                                      command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float shaft_width,
                                       uint8_t type) {
   generator->type.t = (type == 1) ? GEN_DD_RIGHT : GEN_DD_LEFT;
   generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->dd.linear_pos = linear_pos;
   generator->dd.linear_speed = linear_speed;
+  generator->dd.rotational_pos = rotational_pos;
   generator->dd.rotational_speed = rotational_speed;
   generator->dd.wheel_radius = wheel_radius;
   generator->dd.shaft_width = shaft_width;
@@ -138,11 +142,19 @@ float get_output_value(command_generator_t *generator) {
     generator->ramp2.last_time = cur_time;
     break;
   case GEN_DD_RIGHT:
+    // Update position generators to allow callbacks
+    get_output_value(generator->dd.linear_pos);
+    get_output_value(generator->dd.rotational_pos);
+    // Compute output
     u1 = get_output_value(generator->dd.linear_speed);
     u2 = get_output_value(generator->dd.rotational_speed);
     generator->type.last_output = (4.0*u1+u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);
     break;
   case GEN_DD_LEFT:
+    // Update position generators to allow callbacks
+    get_output_value(generator->dd.linear_pos);
+    get_output_value(generator->dd.rotational_pos);
+    // Compute output
     u1 = get_output_value(generator->dd.linear_speed);
     u2 = get_output_value(generator->dd.rotational_speed);
     generator->type.last_output = (4.0*u1-u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);

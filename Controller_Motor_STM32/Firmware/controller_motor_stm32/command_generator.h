@@ -71,7 +71,9 @@ typedef struct {
 
 typedef struct {
   placeholder_generator_t gen;
+  command_generator_t *linear_pos;
   command_generator_t *linear_speed;
+  command_generator_t *rotational_pos;
   command_generator_t *rotational_speed;
   float wheel_radius;
   float shaft_width;
@@ -112,14 +114,22 @@ command_generator_t* new_ramp2_generator(command_generator_t *generator,
 
 /* Initializes a new Differential Drive generator.
  *  - generator : pointer to the generator to initialize
+ *  - linear_pos : pointer to the generator giving the integrates of linear_speed. This
+ *                 generator will be called at each computation to allow update in parallel
+ *                 with linear_speed.
  *  - linear_speed : pointer to the generator giving the linear speed of the drive
+ *  - rotational_pos : pointer to the generator giving the integrates of rotational_speed. This
+ *                 generator will be called at each computation to allow update in parallel
+ *                 with rotational_speed.
  *  - rotational_speed : pointer to the generator giving the rotational speed of the drive
  *  - wheel_radius : radius of the wheels
  *  - shaft_width : width of the propulsion shaft
  *  - type : 1 for the right_wheel, -1 for the left_wheel
  */
 command_generator_t* new_dd_generator(command_generator_t *generator,
+                                      command_generator_t *linear_pos,
                                       command_generator_t *linear_speed,
+                                      command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float shaft_width,
                                       uint8_t type);
