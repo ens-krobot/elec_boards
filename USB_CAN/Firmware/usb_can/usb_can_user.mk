@@ -9,6 +9,8 @@ usb_can_PROGRAMMER_PORT = none
 
 # Files included by the user.
 usb_can_USER_CSRC = \
+	$(usb_can_SRC_PATH)/battery_monitoring/ads7828.c \
+	$(usb_can_SRC_PATH)/battery_monitoring/battery_monitoring.c \
 	$(usb_can_SRC_PATH)/usb_can/usb_can.c \
 	$(usb_can_SRC_PATH)/main.c \
 	#
