@@ -23,6 +23,17 @@
 
 #include "usb_can.h"
 
+PROC_DEFINE_STACK(stack_ser_recv, KERN_MINSTACKSIZE * 4);
+PROC_DEFINE_STACK(stack_can_recv, KERN_MINSTACKSIZE * 4);
+
+static usb_can _usbcan;
+static usb_can *usbcan = &_usbcan;
+
+static void NORETURN can_receive_process(void);
+static void NORETURN serial_receive_process(void);
+
+#define MAX_CMD_SIZE 64
+
 INLINE uint32_t nibble_to_uint32(char *nibbles, size_t length) {
 
     char *p;
@@ -51,7 +62,7 @@ uint16_t get_timestamp(void) {
     return ticks_to_ms(timer_clock()) % 60000;
 }
 
-void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser) {
+usb_can *usb_can_init(can_driver *can, struct Serial *ser) {
 
     usbcan->can = can;
     usbcan->ser = ser;
@@ -60,6 +71,10 @@ void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser) {
     usbcan->get_timestamp = get_timestamp;
     sem_init(&usbcan->sem_receive);
 
+    proc_new(serial_receive_process, NULL, sizeof(stack_ser_recv), stack_ser_recv);
+    proc_new(can_receive_process, NULL, sizeof(stack_can_recv), stack_can_recv);
+
+    return usbcan;
 }
 
 void usb_can_open(usb_can *usbcan) {
@@ -188,7 +203,7 @@ int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
 
     // Do not interfere with the send ACK
     if (!sem_attempt(&usbcan->sem_receive))
-        return 0;
+        return 1;
 
     buffer[0] = frame->rtr ? 'r' : 't';
 
@@ -224,3 +239,42 @@ int usb_can_emit(usb_can *usbcan, can_rx_frame *frame) {
     sem_release(&usbcan->sem_receive);
     return 0;
 }
+
+static void NORETURN serial_receive_process(void)
+{
+    int nbytes = 0, retval, i = 0;
+    char command[MAX_CMD_SIZE+1];
+
+    for (;;) {
+        i = !i;
+        nbytes = kfile_gets(&usbcan->ser->fd, command, MAX_CMD_SIZE+1);
+        if (nbytes != EOF) {
+            retval = usb_can_execute_command(usbcan, command);
+            if (i)
+                LED1_ON();
+            else
+                LED1_OFF();
+        }
+    }
+}
+
+static void NORETURN can_receive_process(void) {
+
+    can_rx_frame frame;
+    int retval;
+    bool received = false;
+    bool i = false;
+
+    for (;;) {
+        received = can_receive(usbcan->can, &frame, ms_to_ticks(100));
+        if (received) {
+            i = !i;
+            retval = usb_can_emit(usbcan, &frame);
+            if (i)
+                LED2_ON();
+            else
+                LED2_OFF();
+        }
+    }
+}
+

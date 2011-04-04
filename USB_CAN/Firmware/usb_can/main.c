@@ -38,21 +38,19 @@
 #include <kern/proc.h>
 #include <io/kfile.h>
 
-#include "usb_can.h"
+#include "usb_can/usb_can.h"
 
-#define MAX_CMD_SIZE 64
 #define SERIAL_BAUDRATE 1000000
 
-PROC_DEFINE_STACK(stack_ser_recv, KERN_MINSTACKSIZE * 4);
-PROC_DEFINE_STACK(stack_can_recv, KERN_MINSTACKSIZE * 4);
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
 
 static struct Serial ser;
-static usb_can usbcan;
 
 static void init(void)
 {
     can_config cfg;
+
+    usb_can *usbcan;
 
     cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
     /* 1 Mbit by default (FIXME: O'RLY?) */
@@ -85,53 +83,16 @@ static void init(void)
     ser_init(&ser, SER_UART3);
     ser_setbaudrate(&ser, SERIAL_BAUDRATE);
 
-    /* Initialize USB-CAN logic */
-    usb_can_init(&usbcan, CAND1, &ser);
 
     /*
      * Kernel initialization: processes (allow to create and dispatch
      * processes using proc_new()).
      */
     proc_init();
-}
 
-static void NORETURN serial_receive_process(void)
-{
-    int nbytes = 0, retval, i = 0;
-    char command[MAX_CMD_SIZE+1];
+    /* Initialize USB-CAN logic */
+    usbcan = usb_can_init(CAND1, &ser);
 
-    for (;;) {
-        i = !i;
-        nbytes = kfile_gets(&usbcan.ser->fd, command, MAX_CMD_SIZE+1);
-        if (nbytes != EOF) {
-            retval = usb_can_execute_command(&usbcan, command);
-            if (i)
-                LED1_ON();
-            else
-                LED1_OFF();
-        }
-    }
-}
-
-static void NORETURN can_receive_process(void) {
-
-    can_rx_frame frame;
-    int retval;
-    bool received = false;
-    bool i = false;
-
-
-    for (;;) {
-        received = can_receive(usbcan.can, &frame, ms_to_ticks(100));
-        if (received) {
-            i = !i;
-            retval = usb_can_emit(&usbcan, &frame);
-            if (i)
-                LED2_ON();
-            else
-                LED2_OFF();
-        }
-    }
 }
 
 static void NORETURN blinky_process(void) {
@@ -150,8 +111,6 @@ int main(void)
     init();
 
     /* Create a new child process */
-    proc_new(serial_receive_process, NULL, sizeof(stack_ser_recv), stack_ser_recv);
-    proc_new(can_receive_process, NULL, sizeof(stack_can_recv), stack_can_recv);
     proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
 
     for (;;) {

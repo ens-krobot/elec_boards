@@ -31,6 +31,7 @@
 #include <drv/can.h>
 #include <drv/ser.h>
 #include <drv/timer.h>
+#include <hw/hw_led.h>
 #include <io/kfile.h>
 
 typedef uint16_t (usb_can_timestamp(void));
@@ -46,7 +47,7 @@ typedef struct _usb_can {
 
 uint16_t get_timestamp(void);
 
-void usb_can_init(usb_can *usbcan, can_driver *can, struct Serial *ser);
+usb_can *usb_can_init(can_driver *can, struct Serial *ser);
 
 void usb_can_open(usb_can *usbcan);
 void usb_can_close(usb_can *usbcan);
