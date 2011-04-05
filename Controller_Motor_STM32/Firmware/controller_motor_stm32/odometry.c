@@ -91,6 +91,13 @@ static void NORETURN odometry_process(void) {
       state.robot_state.x += state.wheel_radius * (delta_r + delta_l) / 2.0 * cos(state.robot_state.theta);
       state.robot_state.y += state.wheel_radius * (delta_r + delta_l) / 2.0 * sin(state.robot_state.theta);
       state.robot_state.theta += state.wheel_radius / state.shaft_width * (delta_r - delta_l);
+
+      // Normalization of theta
+      if (state.robot_state.theta > M_PI) {
+        state.robot_state.theta -= 2*M_PI;
+      } else if (state.robot_state.theta < -M_PI) {
+        state.robot_state.theta += 2*M_PI;
+      }
     }
     timer_waitEvent(&timer); // Wait for the remaining of the sample period
   }
