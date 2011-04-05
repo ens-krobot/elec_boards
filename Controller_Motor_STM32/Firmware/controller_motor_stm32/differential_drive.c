@@ -19,7 +19,7 @@ typedef struct {
 
 static dd_params_t params;
 
-void dd_start(float wheel_radius, float shaft_width) {
+void dd_start(float wheel_radius, float shaft_width, float max_wheel_speed) {
   params.wheel_radius = wheel_radius;
   params.shaft_radius = shaft_width;
   params.last_lin_acceleration = 0.0;
@@ -32,14 +32,14 @@ void dd_start(float wheel_radius, float shaft_width) {
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
                    tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, shaft_width,
+                   wheel_radius, shaft_width, max_wheel_speed,
                    -1);
   new_dd_generator(&params.right_wheel_speed,
                    tc_get_position_generator(DD_LINEAR_SPEED_TC),
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
                    tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, shaft_width,
+                   wheel_radius, shaft_width, max_wheel_speed,
                    1);
   new_ramp2_generator(&params.left_wheel, 0.0, &params.left_wheel_speed);
   new_ramp2_generator(&params.right_wheel, 0.0, &params.right_wheel_speed);

@@ -24,11 +24,12 @@
 /* Initializes the differential drive
  *  - wheel_radius : radius of the wheels (in meters)
  *  - shaft_width : propulsion shaft radius (in meters)
+ *  - max_speed : maximum wheel speed (in rad/s)
  *
  * Note : the differential drive system will use Trajectory controllers
  *        DD_LINEAR_SPEED_TC and DD_ROTATIONAL_SPEED_TC
  */
-void dd_start(float wheel_radius, float shaft_width);
+void dd_start(float wheel_radius, float shaft_width, float max_speed);
 
 /* Pauses or Resumes the differential drive system.
  * In pause mode, the drive will accept no further command and actions will be

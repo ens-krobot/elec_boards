@@ -8,7 +8,7 @@
  */
 
 #include "command_generator.h"
-
+#include <stdlib.h>
 
 command_generator_t* new_constant_generator(command_generator_t *generator, float value) {
   generator->type.t = GEN_CONSTANT;
@@ -46,7 +46,7 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
                                       command_generator_t *linear_speed,
                                       command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
-                                      float wheel_radius, float shaft_width,
+                                      float wheel_radius, float shaft_width, float max_speed,
                                       uint8_t type) {
   generator->type.t = (type == 1) ? GEN_DD_RIGHT : GEN_DD_LEFT;
   generator->type.callback.type = GEN_CALLBACK_NONE;
@@ -56,6 +56,7 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
   generator->dd.rotational_speed = rotational_speed;
   generator->dd.wheel_radius = wheel_radius;
   generator->dd.shaft_width = shaft_width;
+  generator->dd.max_speed = max_speed;
 
   return generator;
 }
@@ -148,7 +149,12 @@ float get_output_value(command_generator_t *generator) {
     // Compute output
     u1 = get_output_value(generator->dd.linear_speed);
     u2 = get_output_value(generator->dd.rotational_speed);
-    generator->type.last_output = (4.0*u1+u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);
+    generator->type.last_output = (2.0*u1+u2*generator->dd.shaft_width) / (2.0 * generator->dd.wheel_radius);
+    if (generator->type.last_output >= 0) {
+      generator->type.last_output = MIN(generator->type.last_output, generator->dd.max_speed);
+    } else {
+      generator->type.last_output = MAX(generator->type.last_output, -generator->dd.max_speed);
+    }
     break;
   case GEN_DD_LEFT:
     // Update position generators to allow callbacks
@@ -157,7 +163,12 @@ float get_output_value(command_generator_t *generator) {
     // Compute output
     u1 = get_output_value(generator->dd.linear_speed);
     u2 = get_output_value(generator->dd.rotational_speed);
-    generator->type.last_output = (4.0*u1-u2*generator->dd.shaft_width) / (4.0 * generator->dd.wheel_radius);
+    generator->type.last_output = (2.0*u1-u2*generator->dd.shaft_width) / (2.0 * generator->dd.wheel_radius);
+    if (generator->type.last_output >= 0) {
+      generator->type.last_output = MIN(generator->type.last_output, generator->dd.max_speed);
+    } else {
+      generator->type.last_output = MAX(generator->type.last_output, -generator->dd.max_speed);
+    }
     break;
   }
 

@@ -77,6 +77,7 @@ typedef struct {
   command_generator_t *rotational_speed;
   float wheel_radius;
   float shaft_width;
+  float max_speed;
 } dd_generator_t;
 
 // Usable generator meta-type
@@ -124,6 +125,7 @@ command_generator_t* new_ramp2_generator(command_generator_t *generator,
  *  - rotational_speed : pointer to the generator giving the rotational speed of the drive
  *  - wheel_radius : radius of the wheels
  *  - shaft_width : width of the propulsion shaft
+ *  - max_speed : maximum wheel speed (in rad/s)
  *  - type : 1 for the right_wheel, -1 for the left_wheel
  */
 command_generator_t* new_dd_generator(command_generator_t *generator,
@@ -131,7 +133,7 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
                                       command_generator_t *linear_speed,
                                       command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
-                                      float wheel_radius, float shaft_width,
+                                      float wheel_radius, float shaft_width, float max_speed,
                                       uint8_t type);
 
 /*

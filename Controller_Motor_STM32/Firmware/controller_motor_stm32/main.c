@@ -47,7 +47,7 @@ static void init(void)
 
         // Start control of drive motors
         tc_init();
-        dd_start(WHEEL_RADIUS, SHAFT_WIDTH);
+        dd_start(WHEEL_RADIUS, SHAFT_WIDTH, 4.8*2*M_PI); // limit wheel speed to 1.5 m/s
         // Common parameters
         params.encoder_gain = -2.0*M_PI/2000.0/15.0;
         params.G0 = 0.0145;
