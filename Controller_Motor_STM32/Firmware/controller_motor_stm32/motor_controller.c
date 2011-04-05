@@ -18,6 +18,7 @@
 typedef struct
 {
   uint8_t enable;                   // Is this controller enabled ?
+  uint8_t running;                  // Is this controller running ?
   uint8_t motor;                    // Motor ID to control
   uint8_t encoder;                  // Encoder ID to measure motor position from
   float encoder_gain;               // Gain to convert encoder value unit to reference unit
@@ -116,12 +117,16 @@ static void NORETURN motorController_process(void) {
   // get data
   params = (control_params_t *) proc_currentUserData();
 
+  // Indicate we are running
+  params->running = 1;
+
   // configure timer
   timer_setDelay(&timer, ms_to_ticks(params->T));
   timer_setEvent(&timer);
 
   while (1) {
     if (params->enable == 0) {
+      params->running = 0;
       proc_exit();
     } else {
       timer_add(&timer);
@@ -164,11 +169,27 @@ static void NORETURN motorController_process(void) {
 void motorControllerInit() {
   uint8_t motor_ind;
 
-  for (motor_ind = 0; motor_ind < 4; motor_ind++)
+  for (motor_ind = 0; motor_ind < 4; motor_ind++) {
     controllers[motor_ind].enable = 0;
+    controllers[motor_ind].running = 0;
+  }
 
   encodersInit();
   motorsInit();
+}
+
+uint8_t mc_is_controller_enabled(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  return params->enable;
+}
+
+uint8_t mc_is_controller_running(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  return params->running;
 }
 
 uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_generator_t *generator) {
@@ -180,7 +201,7 @@ uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_genera
   motor_ind = get_motor_index(cntr_params->motor);
   params = &(controllers[motor_ind]);
 
-  if (params->enable == 0) {
+  if (params->enable == 0 && params->running == 0) {
     // define user parameters
     params->motor = cntr_params->motor;
     params->encoder = cntr_params->encoder;

@@ -33,4 +33,7 @@ void mc_setReference(uint8_t motor, command_generator_t *generator);
 
 uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_generator_t *generator);
 void mc_delete_controller(uint8_t motor);
+
+uint8_t mc_is_controller_enabled(uint8_t motor);
+uint8_t mc_is_controller_running(uint8_t motor);
 #endif
