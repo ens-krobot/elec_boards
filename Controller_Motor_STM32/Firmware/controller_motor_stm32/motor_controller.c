@@ -176,6 +176,8 @@ static void NORETURN motorController_process(void) {
 static void NORETURN motorController_HIL_process(void) {
   control_params_t *params;
   Timer timer;
+  float last_t = 0;
+  uint8_t led_state = 0;
 
   // get data
   params = (control_params_t *) proc_currentUserData();
@@ -194,6 +196,19 @@ static void NORETURN motorController_HIL_process(void) {
     } else {
       timer_add(&timer);
 
+      if (last_t >= 1.0) {
+        if (led_state == 0) {
+          led_state = 1;
+          LED3_ON();
+          LED4_ON();
+        } else {
+          led_state = 0;
+          LED3_ON();
+          LED4_ON();
+        }
+        last_t -= 1.0;
+      }
+
       // Compute "state estimation"
       params->last_estimate[0] = get_output_value(params->reference);
       params->last_estimate[1] = (params->last_estimate[0] - params->last_output) / params->T;
@@ -202,6 +217,7 @@ static void NORETURN motorController_HIL_process(void) {
       params->last_output = params->last_estimate[0];
     }
     timer_waitEvent(&timer); // Wait for the remaining of the sample period
+    last_t += params->T;
   }
 }
 

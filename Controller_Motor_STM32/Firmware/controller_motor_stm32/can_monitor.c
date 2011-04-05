@@ -278,7 +278,7 @@ static void NORETURN canMonitorListen_process(void) {
             odo_setState(&odometry);
             break;
           case CAN_MSG_ODOMETRY:
-            // We should only receiv such message in HIL mode
+            // We should only receive such message in HIL mode
             if (mode == ROBOT_MODE_HIL) {
               odometry_msg.data32[0] = frame.data32[0];
               odometry_msg.data32[1] = frame.data32[1];
