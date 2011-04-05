@@ -96,9 +96,6 @@ void dd_move(float distance, float speed, float acceleration) {
 }
 
 void dd_turn(float angle, float speed, float acceleration) {
-  if (angle > 1.0)
-    LED2_ON();
-
   if (params.enabled) {
     params.last_rot_acceleration = acceleration;
     tc_goto(DD_ROTATIONAL_SPEED_TC, angle, speed, params.last_rot_acceleration);
