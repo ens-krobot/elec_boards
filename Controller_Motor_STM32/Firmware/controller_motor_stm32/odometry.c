@@ -45,6 +45,14 @@ void odo_disable(void) {
   state.enable = 0;
 }
 
+void odo_restart(void) {
+  // Start odometry process
+  if (state.enable == 0 && state.running == 0) {
+    state.enable = 1;
+    proc_new(odometry_process, NULL, sizeof(stack_odometry), stack_odometry);
+  }
+}
+
 static void NORETURN odometry_process(void) {
   float pos_l, pos_r, last_pos_l, last_pos_r, delta_l, delta_r;
   uint8_t dir_l, dir_r;

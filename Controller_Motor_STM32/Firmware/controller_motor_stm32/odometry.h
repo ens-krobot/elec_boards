@@ -22,6 +22,7 @@ typedef struct {
 
 void odometryInit(float Ts, float wheel_radius, float shaft_width, float encoder_gain);
 void odo_disable(void);
+void odo_restart(void);
 
 void odo_setState(robot_state_t *new_state);
 

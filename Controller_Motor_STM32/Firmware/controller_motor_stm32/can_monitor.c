@@ -10,8 +10,14 @@
 #include "can_monitor.h"
 #include "hw/hw_led.h"
 
+#define ROBOT_MODE_NORMAL  0
+#define ROBOT_MODE_HIL     1
+
+// Processes stacks
 PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
+// globals
+uint8_t mode;
 
 // Structures to represent data into CAN messages
 typedef struct {
@@ -53,6 +59,10 @@ typedef struct {
   uint8_t stop;  // stop everything
 } stop_msg_t;
 
+typedef struct {
+  uint8_t mode;
+} controller_mode_msg_t;
+
 // Union to manipulate CAN messages' data easily
 typedef union {
   encoder_msg_t data;
@@ -89,6 +99,11 @@ typedef union {
   uint32_t data32[2];
 } stop_can_msg_t;
 
+typedef union {
+  controller_mode_msg_t data;
+  uint32_t data32[2];
+} controller_mode_can_msg_t;
+
 // Can messages IDs
 #define CAN_MSG_ENCODERS34 100 // encoder_can_msg_t
 #define CAN_MSG_MOTOR3 101 // motor_can_msg_t
@@ -99,6 +114,7 @@ typedef union {
 #define CAN_MSG_TURN 202 // turn_can_msg_t
 #define CAN_MSG_ODOMETRY_SET 203 // odometry_can_msg_t
 #define CAN_MSG_STOP 204 // stop_can_msg_t
+#define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_msg_t
 
 // Process for communication
 static void NORETURN canMonitor_process(void);
@@ -116,6 +132,8 @@ void canMonitorInit(void) {
   // Initialize CAN driver
   can_init();
   can_start(CAND1, &cfg);
+
+  mode = ROBOT_MODE_NORMAL;
 
   // Start communication process
   proc_new(canMonitor_process, NULL, sizeof(stack_can_send), stack_can_send);
@@ -171,21 +189,23 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_MOTOR4;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
-    // Sending odometry data
-    odo_getState(&odometry);
-    msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
-    msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
-    odometry.theta = fmodf(odometry.theta, 2*M_PI);
-    if (odometry.theta > M_PI)
-      odometry.theta -= 2*M_PI;
-    if (odometry.theta < -M_PI)
-      odometry.theta += 2*M_PI;
-    msg_odo.data.theta = (int16_t)(odometry.theta * 10000.0);
+    // Sending odometry data if not in HIL mode
+    if (mode != ROBOT_MODE_HIL) {
+      odo_getState(&odometry);
+      msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
+      msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
+      odometry.theta = fmodf(odometry.theta, 2*M_PI);
+      if (odometry.theta > M_PI)
+        odometry.theta -= 2*M_PI;
+      if (odometry.theta < -M_PI)
+        odometry.theta += 2*M_PI;
+      msg_odo.data.theta = (int16_t)(odometry.theta * 10000.0);
 
-    txm.data32[0] = msg_odo.data32[0];
-    txm.data32[1] = msg_odo.data32[1];
-    txm.eid = CAN_MSG_ODOMETRY;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));
+      txm.data32[0] = msg_odo.data32[0];
+      txm.data32[1] = msg_odo.data32[1];
+      txm.eid = CAN_MSG_ODOMETRY;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
+    }
 
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
@@ -204,6 +224,7 @@ static void NORETURN canMonitorListen_process(void) {
     turn_can_msg_t turn_msg;
     odometry_can_msg_t odometry_msg;
     stop_can_msg_t stop_msg;
+    controller_mode_can_msg_t controller_mode_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -255,6 +276,32 @@ static void NORETURN canMonitorListen_process(void) {
             odometry.y = ((float)odometry_msg.data.y) / 1000.0;
             odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
             odo_setState(&odometry);
+            break;
+          case CAN_MSG_ODOMETRY:
+            // We should only receiv such message in HIL mode
+            if (mode == ROBOT_MODE_HIL) {
+              odometry_msg.data32[0] = frame.data32[0];
+              odometry_msg.data32[1] = frame.data32[1];
+              odometry.x = ((float)odometry_msg.data.x) / 1000.0;
+              odometry.y = ((float)odometry_msg.data.y) / 1000.0;
+              odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
+              odo_setState(&odometry);
+            }
+            break;
+          case CAN_MSG_CONTROLLER_MODE:
+            controller_mode_msg.data32[0] = frame.data32[0];
+            controller_mode_msg.data32[1] = frame.data32[0];
+            if (controller_mode_msg.data.mode == 1) {
+              mc_change_mode(MOTOR3, CONTROLLER_MODE_HIL);
+              mc_change_mode(MOTOR4, CONTROLLER_MODE_HIL);
+              odo_disable();
+              mode = ROBOT_MODE_HIL;
+            } else {
+              mc_change_mode(MOTOR3, CONTROLLER_MODE_NORMAL);
+              mc_change_mode(MOTOR4, CONTROLLER_MODE_NORMAL);
+              odo_restart();
+              mode = ROBOT_MODE_NORMAL;
+            }
             break;
           }
         }

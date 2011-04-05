@@ -19,6 +19,7 @@ typedef struct
 {
   uint8_t enable;                   // Is this controller enabled ?
   uint8_t running;                  // Is this controller running ?
+  uint8_t mode;                     // Is this a real controller or an HIL controller
   uint8_t motor;                    // Motor ID to control
   uint8_t encoder;                  // Encoder ID to measure motor position from
   float encoder_gain;               // Gain to convert encoder value unit to reference unit
@@ -33,7 +34,7 @@ typedef struct
   uint16_t last_encoder_pos;        // Last encoder position measured
   float F[4];                       // evolution matrix
   float G[2];                       // command application matrix
-  ticks_t T;                        // sampling period in systicks
+  ticks_t T;                        // sampling period in seconds
 } control_params_t;
 
 static control_params_t controllers[4];
@@ -46,8 +47,9 @@ static inline uint8_t get_motor_index(uint8_t motor_id) {
   return motor_ind;
 }
 
-// Callback for control
+// Process functions for control and simulation
 static void NORETURN motorController_process(void);
+static void NORETURN motorController_HIL_process(void);
 
 float mc_getSpeed(uint8_t motor) {
 
@@ -121,7 +123,7 @@ static void NORETURN motorController_process(void) {
   params->running = 1;
 
   // configure timer
-  timer_setDelay(&timer, ms_to_ticks(params->T));
+  timer_setDelay(&timer, ms_to_ticks((mtime_t)(params->T*1000)));
   timer_setEvent(&timer);
 
   while (1) {
@@ -166,6 +168,43 @@ static void NORETURN motorController_process(void) {
   }
 }
 
+/* Hardware in the loop controller process
+ * This process is to be used for Hardware in the loop simulation. It will consider
+ * that the motor control process is perfect and send position data to the simulator
+ * through the CAN bus every sampling period.
+ */
+static void NORETURN motorController_HIL_process(void) {
+  control_params_t *params;
+  Timer timer;
+
+  // get data
+  params = (control_params_t *) proc_currentUserData();
+
+  // Indicate we are running
+  params->running = 1;
+
+  // configure timer
+  timer_setDelay(&timer, ms_to_ticks((time_t)(params->T*1000)));
+  timer_setEvent(&timer);
+
+  while (1) {
+    if (params->enable == 0) {
+      params->running = 0;
+      proc_exit();
+    } else {
+      timer_add(&timer);
+
+      // Compute "state estimation"
+      params->last_estimate[0] = get_output_value(params->reference);
+      params->last_estimate[1] = (params->last_estimate[0] - params->last_output) / params->T;
+
+      // Keep some infos
+      params->last_output = params->last_estimate[0];
+    }
+    timer_waitEvent(&timer); // Wait for the remaining of the sample period
+  }
+}
+
 void motorControllerInit() {
   uint8_t motor_ind;
 
@@ -192,7 +231,17 @@ uint8_t mc_is_controller_running(uint8_t motor) {
   return params->running;
 }
 
-uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_generator_t *generator) {
+uint8_t mc_controller_mode(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  if (params->enable)
+    return params->mode;
+  else
+    return 0;
+}
+
+uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_generator_t *generator, uint8_t mode) {
   uint8_t motor_ind;
   control_params_t *params;
   float tau, T;
@@ -207,14 +256,14 @@ uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_genera
     params->encoder = cntr_params->encoder;
     params->encoder_gain = cntr_params->encoder_gain;
     params->tau = cntr_params->tau;
-    params->T = ms_to_ticks((mtime_t)(cntr_params->T*1000));
+    params->T = cntr_params->T;
     params->k[0] = cntr_params->k[0]; params->k[1] = cntr_params->k[1];
     params->l = cntr_params->l;
     params->l0[0] = cntr_params->l0[0]; params->l0[1] = cntr_params->l0[1];
 
     // compute other parameters
     params->last_command = 0;
-    params->last_estimate[0] = 0; params->last_estimate[1] = 0;
+    params->last_estimate[0] = get_output_value(generator); params->last_estimate[1] = 0;
     params->last_output = params->last_estimate[0];
     params->last_encoder_pos = getEncoderPosition(cntr_params->encoder);
     params->reference = generator;
@@ -230,11 +279,17 @@ uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_genera
 
     // enable the controller
     params->enable = 1;
-    enableMotor(cntr_params->motor);
-    motorSetSpeed(cntr_params->motor, 0);
 
-    // start the controller
-    proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
+    // start the correct controller depending on the mode
+    params->mode = mode;
+    if (mode == CONTROLLER_MODE_NORMAL) {
+      proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      enableMotor(cntr_params->motor);
+      motorSetSpeed(cntr_params->motor, 0);
+    }
+    else {
+      proc_new(motorController_HIL_process, params, KERN_MINSTACKSIZE * 16, NULL);
+    }
 
     return CONTROLLER_OK;
   } else {
@@ -257,6 +312,40 @@ void mc_delete_controller(uint8_t motor) {
   // Disable the controller and the power output
   if (params->enable != 0) {
     params->enable = 0;
-    disableMotor(motor);
+    if (params->mode == CONTROLLER_MODE_NORMAL)
+      disableMotor(motor);
+  }
+}
+
+void mc_change_mode(uint8_t motor, uint8_t new_mode) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+
+  // Do something only if the controller is enabled and in a different mode
+  if (params->enable && params->mode != new_mode) {
+    // Delete the old controller
+    mc_delete_controller(motor);
+    // Wait for the controller process to stop
+    while (params->running)
+      cpu_relax();
+    // Recreate the controller in the correct mode
+    params->last_command = 0;
+    params->last_estimate[0] = get_output_value(params->reference); params->last_estimate[1] = 0;
+    params->last_output = params->last_estimate[0];
+    params->last_encoder_pos = getEncoderPosition(params->encoder);
+    params->mode = new_mode;
+    // enable the controller
+    params->enable = 1;
+
+    // start the correct controller depending on the mode
+    if (new_mode == CONTROLLER_MODE_NORMAL) {
+      proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      enableMotor(params->motor);
+      motorSetSpeed(params->motor, 0);
+    }
+    else {
+      proc_new(motorController_HIL_process, params, KERN_MINSTACKSIZE * 16, NULL);
+    }
   }
 }

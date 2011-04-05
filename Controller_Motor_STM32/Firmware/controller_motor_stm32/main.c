@@ -61,11 +61,11 @@ static void init(void)
         // Initialize left motor
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        mc_new_controller(&params, dd_get_left_wheel_generator());
+        mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
         // Initialize right motor
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
-        mc_new_controller(&params, dd_get_right_wheel_generator());
+        mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
         odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, -2.0*M_PI/2000.0/15.0);
