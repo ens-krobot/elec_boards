@@ -16,6 +16,7 @@ typedef struct {
   float wheel_radius, shaft_width, encoder_gain;
   float Ts;
   uint8_t enable;
+  uint8_t running;
 } odometry_state_t;
 
 odometry_state_t state;
@@ -53,12 +54,16 @@ static void NORETURN odometry_process(void) {
   timer_setDelay(&timer, ms_to_ticks(state.Ts));
   timer_setEvent(&timer);
 
+  // Indicate we are running
+  state.running = 1;
+
   // State initialization
   last_pos_l = (float)getEncoderPosition(ENCODER3);
   last_pos_r = (float)getEncoderPosition(ENCODER4);
 
   while (1) {
     if (state.enable == 0) {
+      state.running = 0;
       proc_exit();
     } else {
       timer_add(&timer);
