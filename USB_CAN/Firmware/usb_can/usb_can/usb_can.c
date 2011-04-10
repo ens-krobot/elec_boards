@@ -137,7 +137,7 @@ int usb_can_execute_command(usb_can *usbcan, char *command, size_t len) {
         frame.dlc = nibble_to_uint32(&command[9], 1);
         for (i = 0; i < frame.dlc; i++)
             frame.data8[i] = nibble_to_uint32(&command[10 + 2*i], 2);
-        if (len == (size_t)(8 + 1 + 2*frame.dlc))
+        if (len == (size_t)(9 + 1 + 2*frame.dlc))
             send = true;
         else
             broken = true;
@@ -151,7 +151,7 @@ int usb_can_execute_command(usb_can *usbcan, char *command, size_t len) {
         frame.dlc = nibble_to_uint32(&command[4], 1);
         for (i = 0; i < frame.dlc; i++)
             frame.data8[i] = nibble_to_uint32(&command[5 + 2*i], 2);
-        if (len == (size_t)(3 + 1 + 2*frame.dlc))
+        if (len == (size_t)(4 + 1 + 2*frame.dlc))
             send = true;
         else
             broken = true;
