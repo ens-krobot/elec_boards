@@ -45,7 +45,7 @@
  * $WIZ$ module= "boolean"
  * $WIZ$ conditional_deps = "ser"
  */
-#define CONFIG_USE_HP_TIMER       1
+#define CONFIG_USE_HP_TIMER       0
 
 
 /**
