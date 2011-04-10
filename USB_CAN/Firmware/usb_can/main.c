@@ -28,6 +28,7 @@
 
 #include <cpu/irq.h>
 
+#include <drv/clock_stm32.h>
 #include <drv/gpio_stm32.h>
 
 #include <drv/can.h>
@@ -67,8 +68,11 @@ static void init(void)
     /* Enable all the interrupts */
     IRQ_ENABLE;
 
+    //RCC->APB2ENR |= RCC_APB2_AFIO;
+    //stm32_gpioRemap(GPIO_REMAP_USART1, GPIO_REMAP_ENABLE);
+
     /* Initialize debugging module (allow kprintf(), etc.) */
-    kdbg_init();
+    //kdbg_init();
     /* Initialize system timer */
     timer_init();
 
