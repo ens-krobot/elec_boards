@@ -9,6 +9,7 @@
 #include "motor.h"
 #include "encoder.h"
 #include "command_generator.h"
+#include <kern/proc.h>
 
 #define CONTROLLER_OK 0
 #define CONTROLLER_ALREADY_USED 1

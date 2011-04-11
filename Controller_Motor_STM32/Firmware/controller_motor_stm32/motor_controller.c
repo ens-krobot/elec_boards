@@ -15,6 +15,8 @@
  #define MIN(x,y) ((x) > (y) ? (y) : (x))
 #endif
 
+#define CONTROLLERS_STACK_SIZE (KERN_MINSTACKSIZE*16)
+
 typedef struct
 {
   uint8_t enable;                   // Is this controller enabled ?
@@ -34,10 +36,13 @@ typedef struct
   uint16_t last_encoder_pos;        // Last encoder position measured
   float F[4];                       // evolution matrix
   float G[2];                       // command application matrix
-  float T;                        // sampling period in seconds
+  float T;                          // sampling period in seconds
+  cpu_stack_t *stack;               // controller process stack
+  size_t stack_size;                // controller process stack size
 } control_params_t;
 
 static control_params_t controllers[4];
+static cpu_stack_t controllers_stacks[4][(CONTROLLERS_STACK_SIZE + sizeof(cpu_stack_t) - 1) / sizeof(cpu_stack_t)];
 
 static inline uint8_t get_motor_index(uint8_t motor_id) {
   uint8_t motor_ind;
@@ -251,6 +256,8 @@ void motorControllerInit() {
   for (motor_ind = 0; motor_ind < 4; motor_ind++) {
     controllers[motor_ind].enable = 0;
     controllers[motor_ind].running = 0;
+    controllers[motor_ind].stack = &controllers_stacks[motor_ind][0];
+    controllers[motor_ind].stack_size = sizeof(controllers_stacks[motor_ind]);
   }
 
   encodersInit();
@@ -323,12 +330,12 @@ uint8_t mc_new_controller(motor_controller_params_t *cntr_params, command_genera
     // start the correct controller depending on the mode
     params->mode = mode;
     if (mode == CONTROLLER_MODE_NORMAL) {
-      proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      proc_new(motorController_process, params, params->stack_size, params->stack);
       enableMotor(cntr_params->motor);
       motorSetSpeed(cntr_params->motor, 0);
     }
     else {
-      proc_new(motorController_HIL_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      proc_new(motorController_HIL_process, params, params->stack_size, params->stack);
     }
 
     return CONTROLLER_OK;
@@ -380,12 +387,12 @@ void mc_change_mode(uint8_t motor, uint8_t new_mode) {
 
     // start the correct controller depending on the mode
     if (new_mode == CONTROLLER_MODE_NORMAL) {
-      proc_new(motorController_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      proc_new(motorController_process, params, params->stack_size, params->stack);
       enableMotor(params->motor);
       motorSetSpeed(params->motor, 0);
     }
     else {
-      proc_new(motorController_HIL_process, params, KERN_MINSTACKSIZE * 16, NULL);
+      proc_new(motorController_HIL_process, params, params->stack_size, params->stack);
     }
   }
 }
