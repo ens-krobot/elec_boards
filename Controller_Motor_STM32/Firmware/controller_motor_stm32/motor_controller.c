@@ -34,7 +34,7 @@ typedef struct
   uint16_t last_encoder_pos;        // Last encoder position measured
   float F[4];                       // evolution matrix
   float G[2];                       // command application matrix
-  ticks_t T;                        // sampling period in seconds
+  float T;                        // sampling period in seconds
 } control_params_t;
 
 static control_params_t controllers[4];
@@ -196,17 +196,41 @@ static void NORETURN motorController_HIL_process(void) {
     } else {
       timer_add(&timer);
 
-      if (last_t >= 1.0) {
+      if (last_t >= 0.2) {
         if (led_state == 0) {
           led_state = 1;
-          LED3_ON();
-          LED4_ON();
+          switch (params->motor) {
+          case MOTOR1:
+            LED1_ON();
+            break;
+          case MOTOR2:
+            LED2_ON();
+            break;
+          case MOTOR3:
+            LED3_ON();
+            break;
+          case MOTOR4:
+            LED4_ON();
+            break;
+          }
         } else {
           led_state = 0;
-          LED3_ON();
-          LED4_ON();
+          switch (params->motor) {
+          case MOTOR1:
+            LED1_OFF();
+            break;
+          case MOTOR2:
+            LED2_OFF();
+            break;
+          case MOTOR3:
+            LED3_OFF();
+            break;
+          case MOTOR4:
+            LED4_OFF();
+            break;
+          }
         }
-        last_t -= 1.0;
+        last_t -= 0.2;
       }
 
       // Compute "state estimation"
