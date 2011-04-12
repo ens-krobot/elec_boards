@@ -52,6 +52,40 @@ static inline uint8_t get_motor_index(uint8_t motor_id) {
   return motor_ind;
 }
 
+static inline void motor_led_on(uint8_t motor_id) {
+  switch (motor_id) {
+  case MOTOR1:
+    LED1_ON();
+    break;
+  case MOTOR2:
+    LED2_ON();
+    break;
+  case MOTOR3:
+    LED3_ON();
+    break;
+  case MOTOR4:
+    LED4_ON();
+    break;
+  }
+}
+
+static inline void motor_led_off(uint8_t motor_id) {
+  switch (motor_id) {
+  case MOTOR1:
+    LED1_OFF();
+    break;
+  case MOTOR2:
+    LED2_OFF();
+    break;
+  case MOTOR3:
+    LED3_OFF();
+    break;
+  case MOTOR4:
+    LED4_OFF();
+    break;
+  }
+}
+
 // Process functions for control and simulation
 static void NORETURN motorController_process(void);
 static void NORETURN motorController_HIL_process(void);
@@ -131,6 +165,9 @@ static void NORETURN motorController_process(void) {
   timer_setDelay(&timer, ms_to_ticks((mtime_t)(params->T*1000)));
   timer_setEvent(&timer);
 
+  // Switch off motor LED
+  motor_led_off(params->motor);
+
   while (1) {
     if (params->enable == 0) {
       params->running = 0;
@@ -202,38 +239,11 @@ static void NORETURN motorController_HIL_process(void) {
       timer_add(&timer);
 
       if (last_t >= 0.2) {
-        if (led_state == 0) {
-          led_state = 1;
-          switch (params->motor) {
-          case MOTOR1:
-            LED1_ON();
-            break;
-          case MOTOR2:
-            LED2_ON();
-            break;
-          case MOTOR3:
-            LED3_ON();
-            break;
-          case MOTOR4:
-            LED4_ON();
-            break;
-          }
+        led_state = !led_state;
+        if (led_state) {
+          motor_led_on(params->motor);
         } else {
-          led_state = 0;
-          switch (params->motor) {
-          case MOTOR1:
-            LED1_OFF();
-            break;
-          case MOTOR2:
-            LED2_OFF();
-            break;
-          case MOTOR3:
-            LED3_OFF();
-            break;
-          case MOTOR4:
-            LED4_OFF();
-            break;
-          }
+          motor_led_off(params->motor);
         }
         last_t -= 0.2;
       }

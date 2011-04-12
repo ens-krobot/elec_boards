@@ -17,7 +17,7 @@
 PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
 // globals
-uint8_t mode;
+volatile uint8_t mode;
 
 // Structures to represent data into CAN messages
 typedef struct {
