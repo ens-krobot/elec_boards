@@ -76,6 +76,11 @@ void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration);
  */
 void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration);
 
+/*
+ * Change the speed command of a controller without any concern about acceleration
+ */
+void tc_set_speed(uint8_t cntr_index, float speed);
+
 /* Moves along a line
  *  - robot : pointer to a structure describing the robot configuration
  *  - distance : distance to move of (in meters), can be positive (forward)

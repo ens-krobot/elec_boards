@@ -299,6 +299,30 @@ void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration) {
   cont->working = 1;
 }
 
+void tc_set_speed(uint8_t cntr_index, float speed) {
+  trajectory_controller_t *cont;
+
+  // Get the controller and verifies it is enabled
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+  cont = &controllers[cntr_index];
+  if (!cont->enabled)
+    return;
+
+  // Disable a possibly running profile
+  cont->aut.state = TRAPEZOID_STATE_STOP;
+  remove_callback(&cont->position);
+  remove_callback(&cont->speed);
+
+  // Set speed and acceleration
+  adjust_value(&cont->speed, speed);
+  adjust_speed(&cont->speed, 0.0);
+
+  cont->working = 0;
+}
+
+
+
 void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration) {
   float dis_s, spe_s, acc_s;
 
