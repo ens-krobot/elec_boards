@@ -18,6 +18,7 @@
 #include "trajectory_controller.h"
 #include "odometry.h"
 #include "differential_drive.h"
+#include "can_messages.h"
 
 void canMonitorInit(void);
 

@@ -19,103 +19,6 @@ PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
 // globals
 volatile uint8_t mode;
 
-// Structures to represent data into CAN messages
-typedef struct {
-  uint16_t encoder1_pos  __attribute__((__packed__));
-  uint16_t encoder2_pos  __attribute__((__packed__));
-  uint8_t encoder1_dir;
-  uint8_t encoder2_dir;
-  uint16_t padding  __attribute__((__packed__));
-} encoder_msg_t;
-
-typedef struct {
-  float position __attribute__((__packed__));
-  float speed    __attribute__((__packed__));
-} motor_msg_t;
-
-typedef struct {
-  uint8_t is_moving; // 1 if a movement action is in progress, 0 if it's finished
-} status_msg_t;
-
-typedef struct {
-  int16_t x __attribute__((__packed__));     // X position in mm (fixed point representation...)
-  int16_t y __attribute__((__packed__));     // Y position in mm
-  int16_t theta __attribute__((__packed__)); // angle in 1/10000 radians
-} odometry_msg_t;
-
-typedef struct {
-  int32_t distance      __attribute__((__packed__));  // Distance in mm (fixed point representation...)
-  uint16_t speed        __attribute__((__packed__));  // Speed in mm/s
-  uint16_t acceleration __attribute__((__packed__));  // Acceleration in mm/s^2
-} move_msg_t;
-
-typedef struct {
-  int32_t angle         __attribute__((__packed__));  // angle in 1/10000 radians (fixed point representation...)
-  uint16_t speed        __attribute__((__packed__));  // Speed in 1/1000 rad/s
-  uint16_t acceleration __attribute__((__packed__));  // Acceleration in 1/1000 radians/s^2
-} turn_msg_t;
-
-typedef struct {
-  uint8_t stop;  // stop everything
-} stop_msg_t;
-
-typedef struct {
-  uint8_t mode;
-} controller_mode_msg_t;
-
-// Union to manipulate CAN messages' data easily
-typedef union {
-  encoder_msg_t data;
-  uint32_t data32[2];
-} encoder_can_msg_t;
-
-typedef union {
-  motor_msg_t data;
-  uint32_t data32[2];
-} motor_can_msg_t;
-
-typedef union {
-  status_msg_t data;
-  uint32_t data32[2];
-} status_can_msg_t;
-
-typedef union {
-  odometry_msg_t data;
-  uint32_t data32[2];
-} odometry_can_msg_t;
-
-typedef union {
-  move_msg_t data;
-  uint32_t data32[2];
-} move_can_msg_t;
-
-typedef union {
-  turn_msg_t data;
-  uint32_t data32[2];
-} turn_can_msg_t;
-
-typedef union {
-  stop_msg_t data;
-  uint32_t data32[2];
-} stop_can_msg_t;
-
-typedef union {
-  controller_mode_msg_t data;
-  uint32_t data32[2];
-} controller_mode_can_msg_t;
-
-// Can messages IDs
-#define CAN_MSG_ENCODERS34 100 // encoder_can_msg_t
-#define CAN_MSG_MOTOR3 101 // motor_can_msg_t
-#define CAN_MSG_MOTOR4 102 // motor_can_msg_t
-#define CAN_MSG_STATUS 103 // status_can_msg_t
-#define CAN_MSG_ODOMETRY 104 // odometry_can_msg_t
-#define CAN_MSG_MOVE 201 // move_can_msg_t
-#define CAN_MSG_TURN 202 // turn_can_msg_t
-#define CAN_MSG_ODOMETRY_SET 203 // odometry_can_msg_t
-#define CAN_MSG_STOP 204 // stop_can_msg_t
-#define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_msg_t
-
 // Process for communication
 static void NORETURN canMonitor_process(void);
 static void NORETURN canMonitorListen_process(void);
@@ -144,6 +47,7 @@ static void NORETURN canMonitor_process(void) {
   //encoder_can_msg_t msg_enc;
   motor_can_msg_t msg_mot;
   odometry_can_msg_t msg_odo;
+  ghost_can_msg_t msg_ghost;
   can_tx_frame txm;
   robot_state_t odometry;
   Timer timer_can;
@@ -207,6 +111,16 @@ static void NORETURN canMonitor_process(void) {
       can_transmit(CAND1, &txm, ms_to_ticks(10));
     }
 
+    // Sending ghost state
+    msg_ghost.data.state = dd_get_ghost_state(&odometry);
+    msg_ghost.data.x = (int16_t)(odometry.x * 1000.0);
+    msg_ghost.data.y = (int16_t)(odometry.y * 1000.0);
+    msg_ghost.data.theta = (int16_t)(odometry.theta * 1000.0);
+    txm.data32[0] = msg_ghost.data32[0];
+    txm.data32[1] = msg_ghost.data32[1];
+    txm.eid = CAN_MSG_GHOST;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
   }
@@ -225,6 +139,7 @@ static void NORETURN canMonitorListen_process(void) {
     odometry_can_msg_t odometry_msg;
     stop_can_msg_t stop_msg;
     controller_mode_can_msg_t controller_mode_msg;
+    bezier_can_msg_t bezier_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -260,6 +175,13 @@ static void NORETURN canMonitorListen_process(void) {
             turn_msg.data32[1] = frame.data32[1];
             if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
               dd_turn(turn_msg.data.angle / 10000.0, turn_msg.data.speed / 1000.0, turn_msg.data.acceleration / 1000.0);
+            break;
+          case CAN_MSG_BEZIER_ADD:
+            bezier_msg.data32[0] = frame.data32[0];
+            bezier_msg.data32[1] = frame.data32[1];
+            dd_add_bezier(bezier_msg.data.x_end/1000.0, bezier_msg.data.y_end/1000.0,
+                          bezier_msg.data.d1/100.0, bezier_msg.data.d2/100.0,
+                          bezier_msg.data.theta_end/1000.0, bezier_msg.data.v_end/1000.0);
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];

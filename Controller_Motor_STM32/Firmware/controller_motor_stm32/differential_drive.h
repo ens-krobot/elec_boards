@@ -11,8 +11,11 @@
 #define __DIFFERENTIAL_DRIVE_H
 
 #include <math.h>
+#include <drv/timer.h>
 #include "trajectory_controller.h"
 #include "command_generator.h"
+#include "odometry.h"
+#include "bezier_utils.h"
 
 #ifndef DD_LINEAR_SPEED_TC
   #define DD_LINEAR_SPEED_TC 0
@@ -21,15 +24,28 @@
   #define DD_ROTATIONAL_SPEED_TC 1
 #endif
 
+#define DD_NO_ERROR 0
+#define DD_TRAJECTORY_ALREADY_USED 1
+
+#define DD_GHOST_STOPPED 0
+#define DD_GHOST_MOVING 1
+
 /* Initializes the differential drive
  *  - wheel_radius : radius of the wheels (in meters)
- *  - shaft_width : propulsion shaft radius (in meters)
- *  - max_speed : maximum wheel speed (in rad/s)
+ *  - shaft_width : propulsion shaft width (in meters)
+ *  - max_wheel_speed : maximum wheel speed (in rad/s)
+ *  - v_max : maximum linear speed (in m/s)
+ *  - at_max : maximum tangential acceleration (in m/s/s)
+ *  - ar_max : maximum radial acceleration (in m/s/s)
+ *  - k1, k2, k3 : control loop gain for trajectory following
+ *  - Ts : sample time for control loop in seconds
  *
  * Note : the differential drive system will use Trajectory controllers
  *        DD_LINEAR_SPEED_TC and DD_ROTATIONAL_SPEED_TC
  */
-void dd_start(float wheel_radius, float shaft_width, float max_speed);
+void dd_start(float wheel_radius, float shaft_width, float max_wheel_speed,
+              float v_max, float at_max, float ar_max,
+              float k1, float k2, float k3, float Ts);
 
 /* Pauses or Resumes the differential drive system.
  * In pause mode, the drive will accept no further command and actions will be
@@ -73,5 +89,20 @@ void dd_turn(float angle, float speed, float acceleration);
  */
 void dd_set_linear_speed(float speed, float acceleration);
 void dd_set_rotational_speed(float speed, float acceleration);
+
+/*
+ * Add a Bezier Spline to the trajectory follower
+ */
+uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_angle, float end_speed);
+
+/*
+ * Return the current state of the followed ghost robot
+ *  - state : pointer to a robot_state_t structure where the ghost state will be written
+ *
+ * return value :
+ *  - DD_GHOST_MOVING : if a trajectory is currently followed
+ *  - DD_GHOST_STOPPED : if the ghost robot is stopped
+ */
+uint8_t dd_get_ghost_state(robot_state_t *state);
 
 #endif /* __DIFFERENTIAL_DRIVE_H */

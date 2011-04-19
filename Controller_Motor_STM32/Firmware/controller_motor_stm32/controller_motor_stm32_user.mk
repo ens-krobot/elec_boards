@@ -17,6 +17,7 @@ controller_motor_stm32_USER_CSRC = \
 	$(controller_motor_stm32_SRC_PATH)/motor_controller.c \
 	$(controller_motor_stm32_SRC_PATH)/command_generator.c \
 	$(controller_motor_stm32_SRC_PATH)/trajectory_controller.c \
+	$(controller_motor_stm32_SRC_PATH)/bezier_utils.c \
 	$(controller_motor_stm32_SRC_PATH)/differential_drive.c \
 	$(controller_motor_stm32_SRC_PATH)/can_monitor.c \
 	$(controller_motor_stm32_SRC_PATH)/main.c \
