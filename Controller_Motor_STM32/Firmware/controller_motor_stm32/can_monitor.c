@@ -48,6 +48,7 @@ static void NORETURN canMonitor_process(void) {
   motor_can_msg_t msg_mot;
   odometry_can_msg_t msg_odo;
   ghost_can_msg_t msg_ghost;
+  status_can_msg_t status_msg;
   can_tx_frame txm;
   robot_state_t odometry;
   Timer timer_can;
@@ -58,7 +59,7 @@ static void NORETURN canMonitor_process(void) {
   txm.ide = 1;
   txm.sid = 0;
 
-  timer_setDelay(&timer_can, ms_to_ticks(10));
+  timer_setDelay(&timer_can, ms_to_ticks(5));
   timer_setEvent(&timer_can);
   while(1) {
 
@@ -75,25 +76,7 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_ENCODERS34;
     can_transmit(CAND1, &txm, ms_to_ticks(10));*/
 
-    // Sending MOTOR3 data
-    msg_mot.data.position = mc_getPosition(MOTOR3);
-    msg_mot.data.speed = mc_getSpeed(MOTOR3);
-
-    txm.data32[0] = msg_mot.data32[0];
-    txm.data32[1] = msg_mot.data32[1];
-    txm.eid = CAN_MSG_MOTOR3;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));
-
-    // Sending MOTOR4 data
-    msg_mot.data.position = mc_getPosition(MOTOR4);
-    msg_mot.data.speed = mc_getSpeed(MOTOR4);
-
-    txm.data32[0] = msg_mot.data32[0];
-    txm.data32[1] = msg_mot.data32[1];
-    txm.eid = CAN_MSG_MOTOR4;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));
-
-    // Sending odometry data if not in HIL mode
+    // Sending odometry data if not in HIL mode or motor commands if in HIL mode
     if (mode != ROBOT_MODE_HIL) {
       odo_getState(&odometry);
       msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
@@ -109,7 +92,29 @@ static void NORETURN canMonitor_process(void) {
       txm.data32[1] = msg_odo.data32[1];
       txm.eid = CAN_MSG_ODOMETRY;
       can_transmit(CAND1, &txm, ms_to_ticks(10));
+    } else {
+      // Sending MOTOR3 data
+      msg_mot.data.position = mc_getPosition(MOTOR3);
+      msg_mot.data.speed = mc_getSpeed(MOTOR3);
+
+      txm.data32[0] = msg_mot.data32[0];
+      txm.data32[1] = msg_mot.data32[1];
+      txm.eid = CAN_MSG_MOTOR3;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+      // Sending MOTOR4 data
+      msg_mot.data.position = mc_getPosition(MOTOR4);
+      msg_mot.data.speed = mc_getSpeed(MOTOR4);
+
+      txm.data32[0] = msg_mot.data32[0];
+      txm.data32[1] = msg_mot.data32[1];
+      txm.eid = CAN_MSG_MOTOR4;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
     }
+
+    // Wait before sending the other packets
+    timer_waitEvent(&timer_can);
+    timer_add(&timer_can);
 
     // Sending ghost state
     msg_ghost.data.state = dd_get_ghost_state(&odometry);
@@ -119,6 +124,12 @@ static void NORETURN canMonitor_process(void) {
     txm.data32[0] = msg_ghost.data32[0];
     txm.data32[1] = msg_ghost.data32[1];
     txm.eid = CAN_MSG_GHOST;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
+    txm.data32[0] = status_msg.data32[0];
+    txm.data32[1] = status_msg.data32[1];
+    txm.eid = CAN_MSG_STATUS;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Wait for the next transmission timer
@@ -133,7 +144,6 @@ static void NORETURN canMonitorListen_process(void) {
     can_tx_frame txm;
     robot_state_t odometry;
 
-    status_can_msg_t status_msg;
     move_can_msg_t move_msg;
     turn_can_msg_t turn_msg;
     odometry_can_msg_t odometry_msg;
@@ -153,12 +163,7 @@ static void NORETURN canMonitorListen_process(void) {
         if (frame.rtr == 1) {
           // Handle requests
           switch (frame.eid) {
-          case CAN_MSG_STATUS:
-            status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
-            txm.data32[0] = status_msg.data32[0];
-            txm.data32[1] = status_msg.data32[1];
-            txm.eid = CAN_MSG_STATUS;
-            can_transmit(CAND1, &txm, ms_to_ticks(10));
+          default:
             break;
           }
         } else {
