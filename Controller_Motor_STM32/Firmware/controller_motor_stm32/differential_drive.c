@@ -27,7 +27,7 @@ typedef struct {
   uint8_t initialized, enabled, running, working;
   float wheel_radius, shaft_width;
   float last_lin_acceleration, last_rot_acceleration;
-  float v_max, at_max, ar_max;
+  float u, v_max, at_max, ar_max;
   command_generator_t left_wheel_speed, right_wheel_speed;
   command_generator_t left_wheel, right_wheel;
   uint8_t current_traj;
@@ -44,7 +44,7 @@ static void NORETURN traj_following_process(void) {
   Timer timer;
   uint8_t next_traj, ui;
   robot_state_t rs;
-  float cr, u, v_lin, v_ratio, v_max, v_rot, dxu, dyu;
+  float cr, v_lin, v_ratio, v_max, v_rot, dxu, dyu;
   float z1, z2, z3, w1, w2, u1, u2, dt;
   dd_bezier_traj_t *traj;
   int32_t last_time, cur_time;
@@ -68,7 +68,7 @@ static void NORETURN traj_following_process(void) {
       if (!params.working && params.trajs[next_traj].initialized) {
         LED2_ON();
         params.working = 1;
-        u = 0;
+        params.u = 0;
         ui = 0;
         params.current_traj = next_traj;
         traj = &params.trajs[params.current_traj];
@@ -84,7 +84,7 @@ static void NORETURN traj_following_process(void) {
         odo_getState(&rs);
 
         // Stop following the trajectory if we are close enough to our goal
-        if (u >= 1.0 || ((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
+        if (params.u >= 1.0 || ((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
         //if (((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
           LED2_OFF();
           params.working = 0;
@@ -98,13 +98,13 @@ static void NORETURN traj_following_process(void) {
         } else {
           // We are following a trajectory, let's do it
           // Compute ghost vehicule parameters
-          cr = bezier_cr(u, traj->dparams, traj->ddparams);
-          for (; ui*traj->du <= u; ui++);
+          cr = bezier_cr(params.u, traj->dparams, traj->ddparams);
+          for (; ui*traj->du <= params.u; ui++);
           if (ui*traj->du > 1.0)
             ui--;
           if (ui > 0) {
             v_lin = traj->v_tab[ui-1] +
-              (traj->v_tab[ui]-traj->v_tab[ui-1]) * (u - traj->du*(ui-1))/traj->du;
+              (traj->v_tab[ui]-traj->v_tab[ui-1]) * (params.u - traj->du*(ui-1))/traj->du;
           } else {
             v_lin = traj->v_tab[0];
           }
@@ -123,9 +123,9 @@ static void NORETURN traj_following_process(void) {
           // Evolution of the ghost vehicule state
           cur_time = ticks_to_us(timer_clock());
           dt = (cur_time - last_time) * 1e-6;
-          dxu = bezier_apply(traj->dparams[0], u);
-          dyu = bezier_apply(traj->dparams[1], u);
-          u += v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
+          dxu = bezier_apply(traj->dparams[0], params.u);
+          dyu = bezier_apply(traj->dparams[1], params.u);
+          params.u += v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
           //if (u >= 1.0) {
           //  u = 1.0;
           //} else {
@@ -349,10 +349,11 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
   }
 }
 
-uint8_t dd_get_ghost_state(robot_state_t *state) {
+uint8_t dd_get_ghost_state(robot_state_t *state, float *u) {
   state->x = params.ghost_state.x;
   state->y = params.ghost_state.y;
   state->theta = params.ghost_state.theta;
+  *u = params.u;
 
   if (params.working == 1)
     return DD_GHOST_MOVING;

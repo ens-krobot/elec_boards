@@ -68,6 +68,7 @@ typedef struct {
   int16_t x __attribute__((__packed__));     // X position in mm (fixed point representation...)
   int16_t y __attribute__((__packed__));     // Y position in mm
   int16_t theta __attribute__((__packed__)); // angle in 1/10000 radians
+  uint8_t u; // Parameter on the spline between 0 and 255
   uint8_t state; // 1 if trajectory in progress, 0 else
 } ghost_msg_t;
 

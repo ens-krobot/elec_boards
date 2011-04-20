@@ -51,6 +51,7 @@ static void NORETURN canMonitor_process(void) {
   status_can_msg_t status_msg;
   can_tx_frame txm;
   robot_state_t odometry;
+  float u;
   Timer timer_can;
 
   // Initialize constant parameters of TX frame
@@ -117,10 +118,11 @@ static void NORETURN canMonitor_process(void) {
     timer_add(&timer_can);
 
     // Sending ghost state
-    msg_ghost.data.state = dd_get_ghost_state(&odometry);
+    msg_ghost.data.state = dd_get_ghost_state(&odometry, &u);
     msg_ghost.data.x = (int16_t)(odometry.x * 1000.0);
     msg_ghost.data.y = (int16_t)(odometry.y * 1000.0);
     msg_ghost.data.theta = (int16_t)(odometry.theta * 1000.0);
+    msg_ghost.data.u = (uint8_t)(u * 255);
     txm.data32[0] = msg_ghost.data32[0];
     txm.data32[1] = msg_ghost.data32[1];
     txm.eid = CAN_MSG_GHOST;
