@@ -47,7 +47,13 @@ static void init(void)
 
         // Start control of drive motors
         tc_init();
-        dd_start(WHEEL_RADIUS, SHAFT_WIDTH, 8*2*M_PI, 0.5, 1.0, 1.0, 0.7, 0.7, 1.0, 0.01);
+        dd_start(WHEEL_RADIUS, SHAFT_WIDTH, // Structural parameters
+                 8*2*M_PI, // Absolute wheel speed limitation
+                 0.5, // Linear velocity limitation
+                 1.0, // Linear acceleration limitation
+                 1.0, // Radial acceleration limitation
+                 0.4, 0.7, 1.0, // Controller gains
+                 0.005); // Sample period
         // Common parameters
         params.encoder_gain = -2.0*M_PI/2000.0/15.0;
         params.G0 = 0.0145;
