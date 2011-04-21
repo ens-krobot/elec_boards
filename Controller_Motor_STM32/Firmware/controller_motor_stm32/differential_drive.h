@@ -96,6 +96,15 @@ void dd_set_rotational_speed(float speed, float acceleration);
 uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_angle, float end_speed);
 
 /*
+ * Stops the current trajectory and removes the queued ones.
+ * - rot_acc : acceleration to stop the rotational motion of the drive.
+ * - lin_acc : acceleration to stop the linear motion of the drive.
+ *
+ * If one of the accelerations if zero, the corresponding movement will be stopped abruptly
+ */
+void dd_interrupt_trajectory(float rot_acc, float lin_acc);
+
+/*
  * Return the current state of the followed ghost robot
  *  - state : pointer to a robot_state_t structure where the ghost state will be written
  *  - u : pointer to a float in which to write the current value of the parameter on the spline

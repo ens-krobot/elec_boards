@@ -342,6 +342,21 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
   }
 }
 
+void dd_interrupt_trajectory(float rot_acc, float lin_acc) {
+
+  // Prevent the controller from following the current trajectory
+  params.working = 0;
+
+  // Disable all the trajectories
+  params.trajs[0].initialized = 0;
+  params.trajs[0].enabled = 0;
+  params.trajs[1].initialized = 0;
+  params.trajs[1].enabled = 0;
+  // Brake !
+  dd_set_rotational_speed(0., rot_acc);
+  dd_set_linear_speed(0., lin_acc);
+}
+
 uint8_t dd_get_ghost_state(robot_state_t *state, float *u) {
   if (state != NULL) {
     state->x = params.ghost_state.x;

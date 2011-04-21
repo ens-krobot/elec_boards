@@ -96,9 +96,10 @@ typedef struct {
   uint16_t v_end:11     __attribute__((__packed__)); // final speed in mm/s
 } bezier_msg_t;
 
-// Emergency stop
+// Stop Bezier Spline following and brakes
 typedef struct {
-  uint8_t stop;  // stop everything
+  float lin_acc  __attribute__((__packed__)); // Linear acceleration for braking
+  float rot_acc  __attribute__((__packed__)); // Rotational acceleration for braking
 } stop_msg_t;
 
 // Select robot mode (normal or HIL)

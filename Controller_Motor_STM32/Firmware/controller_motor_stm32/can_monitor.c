@@ -193,10 +193,7 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];
             stop_msg.data32[1] = frame.data32[1];
-            if (stop_msg.data.stop == 1) {
-              mc_delete_controller(MOTOR3);
-              mc_delete_controller(MOTOR4);
-            }
+            dd_interrupt_trajectory(stop_msg.data.rot_acc, stop_msg.data.lin_acc);
             break;
           case CAN_MSG_ODOMETRY_SET:
             odometry_msg.data32[0] = frame.data32[0];
