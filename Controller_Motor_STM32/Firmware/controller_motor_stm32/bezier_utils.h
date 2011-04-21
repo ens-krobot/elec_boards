@@ -10,6 +10,8 @@
 #ifndef __BEZIER_UTILS_H
 #define __BEZIER_UTILS_H
 
+#define BEZIER_UTILS_USE_BERTOS
+
 #include <math.h>
 #include <stdint.h>
 

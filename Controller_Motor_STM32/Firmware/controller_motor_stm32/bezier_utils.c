@@ -9,6 +9,10 @@
 
 #include "bezier_utils.h"
 
+#ifdef BEZIER_UTILS_USE_BERTOS
+#include <kern/proc.h>
+#endif
+
 float bezier_apply(float params[4], float u) {
   return (params[0] + params[1]*u + params[2]*u*u + params[3]*u*u*u);
 }
@@ -62,6 +66,10 @@ void bezier_velocity_profile(float dparams[2][4], float ddparams[2][4],
   vmins[ind] = v_end;
   ind++;
 
+#ifdef BEZIER_UTILS_USE_BERTOS
+  cpu_relax();
+#endif
+
   // Compute speed limitations
   for (j=0; j < ind; j++) {
     im = mins[j];
@@ -95,6 +103,10 @@ void bezier_velocity_profile(float dparams[2][4], float ddparams[2][4],
           break;
         }
       }
+
+#ifdef BEZIER_UTILS_USE_BERTOS
+  cpu_relax();
+#endif
     } // end if (vm < v_max)
   } // for mins
 }
