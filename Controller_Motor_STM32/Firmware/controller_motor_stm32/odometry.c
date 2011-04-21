@@ -59,7 +59,7 @@ static void NORETURN odometry_process(void) {
   Timer timer;
 
   // configure timer
-  timer_setDelay(&timer, ms_to_ticks(state.Ts));
+  timer_setDelay(&timer, ms_to_ticks(1000 * state.Ts));
   timer_setEvent(&timer);
 
   // Indicate we are running
