@@ -343,10 +343,13 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
 }
 
 uint8_t dd_get_ghost_state(robot_state_t *state, float *u) {
-  state->x = params.ghost_state.x;
-  state->y = params.ghost_state.y;
-  state->theta = params.ghost_state.theta;
-  *u = params.u;
+  if (state != NULL) {
+    state->x = params.ghost_state.x;
+    state->y = params.ghost_state.y;
+    state->theta = params.ghost_state.theta;
+  }
+  if (u != NULL)
+    *u = params.u;
 
   if (params.working == 1)
     return DD_GHOST_MOVING;

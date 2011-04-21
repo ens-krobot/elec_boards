@@ -100,6 +100,8 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
  *  - state : pointer to a robot_state_t structure where the ghost state will be written
  *  - u : pointer to a float in which to write the current value of the parameter on the spline
  *
+ * If one of these pointers is NULL, the associated value won't be written.
+ *
  * return value :
  *  - DD_GHOST_MOVING : if a trajectory is currently followed
  *  - DD_GHOST_STOPPED : if the ghost robot is stopped

@@ -94,7 +94,7 @@ static void init(void)
 static void NORETURN ind_process(void)
 {
   while(1) {
-    if (tc_is_working(MOTOR3 | MOTOR4)) {
+    if (dd_get_ghost_state(NULL, NULL) == DD_GHOST_MOVING) {
       LED1_ON();
     } else {
       LED1_OFF();
