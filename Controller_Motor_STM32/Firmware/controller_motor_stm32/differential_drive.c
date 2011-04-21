@@ -19,7 +19,7 @@ typedef struct {
   uint8_t initialized, enabled;
   float params[2][4], dparams[2][4], ddparams[2][4];
   float du, v_tab[101];
-  float goal[2], v_end, theta_end;
+  float goal[2], v_end, theta_end, v_lin;
   float start[2], theta_ini;
 } dd_bezier_traj_t;
 
@@ -44,7 +44,7 @@ static void NORETURN traj_following_process(void) {
   Timer timer;
   uint8_t next_traj, ui;
   robot_state_t rs;
-  float cr, v_lin, v_ratio, v_max, v_rot, dxu, dyu;
+  float cr, v_ratio, v_max, v_rot, dxu, dyu;
   float z1, z2, z3, w1, w2, u1, u2, dt;
   dd_bezier_traj_t *traj;
   int32_t last_time, cur_time;
@@ -100,17 +100,17 @@ static void NORETURN traj_following_process(void) {
           if (ui*traj->du > 1.0)
             ui--;
           if (ui > 0) {
-            v_lin = traj->v_tab[ui-1] +
+            traj->v_lin = traj->v_tab[ui-1] +
               (traj->v_tab[ui]-traj->v_tab[ui-1]) * (params.u - traj->du*(ui-1))/traj->du;
           } else {
-            v_lin = traj->v_tab[0];
+            traj->v_lin = traj->v_tab[0];
           }
           if (isnan(cr) || isinf(cr)) {
             v_ratio = 1.0;
           } else {
             v_ratio = (cr + params.shaft_width/2.0) / (cr - params.shaft_width/2.0);
           }
-          v_max = 2/(1+MIN(fabsf(v_ratio), fabsf(1.0/v_ratio)))*v_lin;
+          v_max = 2/(1+MIN(fabsf(v_ratio), fabsf(1.0/v_ratio)))*traj->v_lin;
           if (cr >= 0) {
             v_rot = v_max * (1 - 1/v_ratio) / params.shaft_width;
           } else {
@@ -122,9 +122,9 @@ static void NORETURN traj_following_process(void) {
           dt = (cur_time - last_time) * 1e-6;
           dxu = bezier_apply(traj->dparams[0], params.u);
           dyu = bezier_apply(traj->dparams[1], params.u);
-          params.u += v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
-          params.ghost_state.x += v_lin*cosf(params.ghost_state.theta)*dt;
-          params.ghost_state.y += v_lin*sinf(params.ghost_state.theta)*dt;
+          params.u += traj->v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
+          params.ghost_state.x += traj->v_lin*cosf(params.ghost_state.theta)*dt;
+          params.ghost_state.y += traj->v_lin*sinf(params.ghost_state.theta)*dt;
           params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
           if (params.ghost_state.theta > M_PI) {
             params.ghost_state.theta -= 2*M_PI;
@@ -137,10 +137,10 @@ static void NORETURN traj_following_process(void) {
           z2=-(rs.x-params.ghost_state.x)*sinf(params.ghost_state.theta)+(rs.y-params.ghost_state.y)*cosf(params.ghost_state.theta);
           z3=tanf(rs.theta-params.ghost_state.theta);
 
-          w1=-params.k1*fabsf(v_lin)*(z1+z2*z3);
-          w2=-params.k2*v_lin*z2-params.k3*fabsf(v_lin)*z3;
+          w1=-params.k1*fabsf(traj->v_lin)*(z1+z2*z3);
+          w2=-params.k2*traj->v_lin*z2-params.k3*fabsf(traj->v_lin)*z3;
 
-          u1=(w1+v_lin)/cosf(rs.theta-params.ghost_state.theta);
+          u1=(w1+traj->v_lin)/cosf(rs.theta-params.ghost_state.theta);
           u2=w2*powf(cosf(rs.theta-params.ghost_state.theta),2)+v_rot;
 
           // Apply command
