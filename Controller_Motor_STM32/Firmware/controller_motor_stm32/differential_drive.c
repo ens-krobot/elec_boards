@@ -66,7 +66,6 @@ static void NORETURN traj_following_process(void) {
       proc_exit();
     } else {
       if (!params.working && params.trajs[next_traj].initialized) {
-        LED2_ON();
         params.working = 1;
         params.u = 0;
         ui = 0;
@@ -85,8 +84,6 @@ static void NORETURN traj_following_process(void) {
 
         // Stop following the trajectory if we are close enough to our goal
         if (params.u >= 1.0 || ((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
-        //if (((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
-          LED2_OFF();
           params.working = 0;
           traj->initialized = 0;
           traj->enabled = 0;
@@ -126,18 +123,14 @@ static void NORETURN traj_following_process(void) {
           dxu = bezier_apply(traj->dparams[0], params.u);
           dyu = bezier_apply(traj->dparams[1], params.u);
           params.u += v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
-          //if (u >= 1.0) {
-          //  u = 1.0;
-          //} else {
-            params.ghost_state.x += v_lin*cosf(params.ghost_state.theta)*dt;
-            params.ghost_state.y += v_lin*sinf(params.ghost_state.theta)*dt;
-            params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
-            if (params.ghost_state.theta > M_PI) {
-              params.ghost_state.theta -= 2*M_PI;
-            } else if (params.ghost_state.theta <= M_PI) {
-              params.ghost_state.theta += 2*M_PI;
-            }
-            //}
+          params.ghost_state.x += v_lin*cosf(params.ghost_state.theta)*dt;
+          params.ghost_state.y += v_lin*sinf(params.ghost_state.theta)*dt;
+          params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
+          if (params.ghost_state.theta > M_PI) {
+            params.ghost_state.theta -= 2*M_PI;
+          } else if (params.ghost_state.theta <= M_PI) {
+            params.ghost_state.theta += 2*M_PI;
+          }
 
           // Compute command
           z1=(rs.x-params.ghost_state.x)*cosf(params.ghost_state.theta)+(rs.y-params.ghost_state.y)*sinf(params.ghost_state.theta);
