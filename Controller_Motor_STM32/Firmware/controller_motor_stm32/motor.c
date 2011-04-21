@@ -16,19 +16,21 @@
 
 uint8_t enabledMotors = 0, indMotors = 0;
 signed char currentSpeedSign[] = {0, 0, 0, 0};
+int32_t maxPWMs[] = {MAX_PWM, MAX_PWM, MAX_PWM, MAX_PWM};
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 
-/*
-  Some dirty imports from the stm32lib from ST <stm32_lib>
- */
-
-//#define     __IO    volatile                  /*!< defines 'read / write' permissions   */
-//typedef __IO uint16_t  vu16;
-
-
-/*
-  End of imports </stm32_lib>
- */
+static int32_t staSpeed(int32_t speed, int32_t maxSpeed, uint8_t *ind) {
+  if (speed >= maxSpeed) {
+    *ind = 1;
+    return MAX_PWM;
+  } else if (speed <= -maxSpeed) {
+    *ind = 1;
+    return -maxSpeed;
+  } else {
+    *ind = 0;
+    return speed;
+  }
+}
 
 /*
  * Initialises TIM2 for PWM generation and associated GPIOs
@@ -174,32 +176,24 @@ void disableMotor(uint8_t motor) {
 void motorSetSpeed(uint8_t motor, int32_t speed) {
 
   uint8_t ind = 0;
-
-  if (speed >= MAX_PWM) {
-    speed = MAX_PWM;
-    ind = 1;
-  } else if (speed <= -MAX_PWM) {
-    speed = -MAX_PWM;
-    ind = 1;
-  } else {
-    ind = 0;
-  }
+  int32_t app_speed;
 
   if (motor & MOTOR1) {
-    if(speed >= 0) {
+    app_speed = staSpeed(speed, maxPWMs[0], &ind);
+    if(app_speed >= 0) {
       if (currentSpeedSign[0] != 1) {
         currentSpeedSign[0] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(4), 1);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(5), 0);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)app_speed;
     } else {
       if (currentSpeedSign[0] != -1) {
         currentSpeedSign[0] = -1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(4), 0);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(5), 1);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-app_speed);
     }
     TIM_OC1Init(TIM2, &TIM_OCInitStructure);
     TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
@@ -215,20 +209,21 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR2) {
-    if(speed >= 0) {
+    app_speed = staSpeed(speed, maxPWMs[1], &ind);
+    if(app_speed >= 0) {
       if (currentSpeedSign[1] != 1) {
         currentSpeedSign[1] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(1), 1);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(14), 0);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)app_speed;
     } else {
       if (currentSpeedSign[1] != -1) {
         currentSpeedSign[1] = -1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(1), 0);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(14), 1);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-app_speed);
     }
     TIM_OC2Init(TIM2, &TIM_OCInitStructure);
     TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
@@ -244,20 +239,21 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR3) {
-    if(speed >= 0) {
+    app_speed = staSpeed(speed, maxPWMs[2], &ind);
+    if(app_speed >= 0) {
       if (currentSpeedSign[2] != 1) {
         currentSpeedSign[2] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(10), 1);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(11), 0);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)app_speed;
     } else {
       if (currentSpeedSign[2] != -1) {
         currentSpeedSign[2] = -1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(10), 0);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOC_BASE), BV(11), 1);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-app_speed);
     }
     TIM_OC3Init(TIM2, &TIM_OCInitStructure);
     TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
@@ -273,20 +269,21 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR4) {
-    if(speed >= 0) {
+    app_speed = staSpeed(speed, maxPWMs[0], &ind);
+    if(app_speed >= 0) {
       if (currentSpeedSign[3] != 1) {
         currentSpeedSign[3] = 1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(5), 1);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(9), 0);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)speed;
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)app_speed;
     } else {
       if (currentSpeedSign[3] != -1) {
         currentSpeedSign[3] = -1;
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(5), 0);
         stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(9), 1);
       }
-      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-speed);
+      TIM_OCInitStructure.TIM_Pulse = (uint16_t)(-app_speed);
     }
     TIM_OC4Init(TIM2, &TIM_OCInitStructure);
     TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
@@ -350,5 +347,35 @@ void motorStop(uint8_t motor, uint8_t mode) {
       stm32_gpioPinWrite(((struct stm32_gpio *)GPIOB_BASE), BV(9), 0);
       currentSpeedSign[3] = 0;
     }
+  }
+}
+
+void motorSetMaxPWM(uint8_t motor, int32_t maxPWM) {
+  if (maxPWM < 0)
+    return;
+
+  if (motor & MOTOR1) {
+    if (maxPWM <= MAX_PWM)
+      maxPWMs[0] = maxPWM;
+    else
+      maxPWMs[0] = MAX_PWM;
+  }
+  if (motor & MOTOR2) {
+    if (maxPWM <= MAX_PWM)
+      maxPWMs[1] = maxPWM;
+    else
+      maxPWMs[1] = MAX_PWM;
+  }
+  if (motor & MOTOR3) {
+    if (maxPWM <= MAX_PWM)
+      maxPWMs[2] = maxPWM;
+    else
+      maxPWMs[2] = MAX_PWM;
+  }
+  if (motor & MOTOR4) {
+    if (maxPWM <= MAX_PWM)
+      maxPWMs[3] = maxPWM;
+    else
+      maxPWMs[3] = MAX_PWM;
   }
 }
