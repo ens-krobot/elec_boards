@@ -10,7 +10,7 @@
 #include "bezier_utils.h"
 
 #ifdef BEZIER_UTILS_USE_BERTOS
-#include <kern/proc.h>
+#include <cpu/power.h>
 #endif
 
 float bezier_apply(float params[4], float u) {
