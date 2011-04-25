@@ -326,7 +326,7 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
     traj->theta_end = end_angle;
     traj->start[0] = x_ini;
     traj->start[1] = y_ini;
-    traj->theta_ini = theta_ini;
+    traj->theta_ini = (d1 >= 0.0) ? theta_ini : (theta_ini + M_PI);
     // Differentiate parameters
     bezier_diff(traj->params, traj->dparams);
     bezier_diff(traj->dparams, traj->ddparams);

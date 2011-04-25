@@ -188,7 +188,7 @@ static void NORETURN canMonitorListen_process(void) {
             bezier_msg.data32[1] = frame.data32[1];
             dd_add_bezier(bezier_msg.data.x_end/1000.0, bezier_msg.data.y_end/1000.0,
                           bezier_msg.data.d1/100.0, bezier_msg.data.d2/100.0,
-                          bezier_msg.data.theta_end/1000.0, bezier_msg.data.v_end/1000.0);
+                          bezier_msg.data.theta_end/100.0, bezier_msg.data.v_end/1000.0);
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];

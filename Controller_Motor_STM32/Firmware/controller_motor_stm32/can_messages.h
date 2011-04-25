@@ -90,9 +90,9 @@ typedef struct {
 typedef struct {
   uint16_t x_end:12     __attribute__((__packed__)); // end point x coordinate in mm
   uint16_t y_end:12     __attribute__((__packed__)); // end point y coordinate in mm
-  uint8_t d1;                                        // first branch length in cm
-  uint8_t d2;                                        // last branch length in cm
-  int16_t theta_end:13  __attribute__((__packed__)); // end angle in 1/1000 radians
+  int16_t d1:9          __attribute__((__packed__)); // first branch length in cm
+  uint8_t d2:8          __attribute__((__packed__)); // last branch length in cm
+  int16_t theta_end:12  __attribute__((__packed__)); // end angle in 1/100 radians
   uint16_t v_end:11     __attribute__((__packed__)); // final speed in mm/s
 } bezier_msg_t;
 
