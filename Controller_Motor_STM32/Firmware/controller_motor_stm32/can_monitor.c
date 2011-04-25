@@ -121,7 +121,7 @@ static void NORETURN canMonitor_process(void) {
     msg_ghost.data.state = dd_get_ghost_state(&odometry, &u);
     msg_ghost.data.x = (int16_t)(odometry.x * 1000.0);
     msg_ghost.data.y = (int16_t)(odometry.y * 1000.0);
-    msg_ghost.data.theta = (int16_t)(odometry.theta * 1000.0);
+    msg_ghost.data.theta = (int16_t)(odometry.theta * 10000.0);
     msg_ghost.data.u = (uint8_t)(u * 255);
     txm.data32[0] = msg_ghost.data32[0];
     txm.data32[1] = msg_ghost.data32[1];
