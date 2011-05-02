@@ -26,6 +26,9 @@
                          // drive.
 #define GEN_DD_RIGHT 5   // Outputs the right wheel speed for a differential
                          // drive.
+#define GEN_HD_B     6   // Outpus the back wheel speed for an holonomic drive.
+#define GEN_HD_RF    7   // Outpus the right-front wheel speed for an holonomic drive.
+#define GEN_HD_LF    8   // Outpus the left-front wheel speed for an holonomic drive.
 
 // Generator states
 #define GEN_STATE_PAUSE   0  // The output is freezed.
@@ -80,6 +83,19 @@ typedef struct {
   float max_speed;
 } dd_generator_t;
 
+typedef struct {
+  placeholder_generator_t gen;
+  command_generator_t *linear_pos_x;
+  command_generator_t *linear_speed_x;
+  command_generator_t *linear_pos_y;
+  command_generator_t *linear_speed_y;
+  command_generator_t *rotational_pos;
+  command_generator_t *rotational_speed;
+  float wheel_radius;
+  float struct_radius;
+  float max_speed;
+} hd_generator_t;
+
 // Usable generator meta-type
 union _command_generator_t {
   placeholder_generator_t type;
@@ -87,6 +103,7 @@ union _command_generator_t {
   ramp_generator_t ramp;
   ramp2_generator_t ramp2;
   dd_generator_t dd;
+  hd_generator_t hd;
 };
 
 /* Initializes a new Constant Generator.
@@ -134,6 +151,40 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
                                       command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float shaft_width, float max_speed,
+                                      uint8_t type);
+
+/* Initializes a new Holonomic Drive generator.
+ *  - generator : pointer to the generator to initialize
+ *  - linear_pos_x : pointer to the generator giving the integrates of linear_speed_x. This
+ *                   generator will be called at each computation to allow update in parallel
+ *                   with linear_speed.
+ *  - linear_speed_x : pointer to the generator giving the linear speed along the x axis of
+ *                     the drive.
+ *  - linear_pos_y : pointer to the generator giving the integrates of linear_speed_y. This
+ *                   generator will be called at each computation to allow update in parallel
+ *                   with linear_speed.
+ *  - linear_speed_y : pointer to the generator giving the linear speed along the y axis of
+ *                     the drive.
+ *  - rotational_pos : pointer to the generator giving the integrates of rotational_speed. This
+ *                     generator will be called at each computation to allow update in parallel
+ *                     with rotational_speed.
+ *  - rotational_speed : pointer to the generator giving the rotational speed of the drive.
+ *  - wheel_radius : radius of the wheels.
+ *  - struct_radius : radius of the holonomic drive.
+ *  - max_speed : maximum wheel speed (in rad/s).
+ *  - type :
+ *     o 1 is the back wheel
+ *     o 2 is the right-front wheel
+ *     o 3 is the left-front wheel
+ */
+command_generator_t* new_hd_generator(command_generator_t *generator,
+                                      command_generator_t *linear_pos_x,
+                                      command_generator_t *linear_speed_x,
+                                      command_generator_t *linear_pos_y,
+                                      command_generator_t *linear_speed_y,
+                                      command_generator_t *rotational_pos,
+                                      command_generator_t *rotational_speed,
+                                      float wheel_radius, float struct_radius, float max_speed,
                                       uint8_t type);
 
 /*
