@@ -1,0 +1,88 @@
+
+Checking Pins and Pin Connections
+
+--------------------------------------------------
+Checking Schematic: SCHEMATIC1
+--------------------------------------------------
+Checking Electrical Rules 
+ERROR:  [DRC0004]  Possible pin type conflict U6,OUT Output Connected to Power
+                    SCHEMATIC1, Power Supply  (4.70, 3.90) 
+ERROR:  [DRC0004]  Possible pin type conflict U1,VDD Power Connected to Output
+                    SCHEMATIC1, Communication  (3.50, 1.20) 
+ERROR:  [DRC0004]  Possible pin type conflict U2,VDD_4 Power Connected to Output
+                    SCHEMATIC1, Microcontroller  (4.50, 3.60) 
+ERROR:  [DRC0004]  Possible pin type conflict U2,VBAT Power Connected to Output
+                    SCHEMATIC1, Microcontroller  (4.50, 1.80) 
+ERROR:  [DRC0004]  Possible pin type conflict U2,VDD_1 Power Connected to Output
+                    SCHEMATIC1, Microcontroller  (4.50, 4.90) 
+ERROR:  [DRC0004]  Possible pin type conflict U2,VDD_3 Power Connected to Output
+                    SCHEMATIC1, Microcontroller  (7.30, 1.80) 
+ERROR:  [DRC0004]  Possible pin type conflict U2,VDD_2 Power Connected to Output
+                    SCHEMATIC1, Microcontroller  (7.30, 3.40) 
+
+Checking for Unconnected Nets
+
+Checking Off-Page Connections
+
+Checking Pin to Port Connections
+
+Checking for Invalid References
+
+Checking for Duplicate References
+
+Reporting Ports
+
+Reporting Off-Page Connections
+    I2C2_2
+    D3
+    CTS1
+    SERVO_OE
+    D8/SERVO6
+    D5/I2C1_3
+    D4
+    CTS2
+    A1
+    JTCK
+    RTS1
+    CAN_TX
+    A2
+    RTS2
+    BUZ
+    SDA1
+    A3
+    CAN_RX
+    A4
+    SDA2
+    JTDO
+    A5
+    NRST
+    A6
+    A7
+    D6/I2C2_3
+    SCL1
+    A8
+    RX1
+    SCL2
+    RX2
+    SERVO1
+    D7/SERVO5
+    TX1
+    SERVO2
+    TX2
+    NJTRST
+    SERVO3
+    SERVO4
+    D1
+    I2C1_1
+    JTDI
+    I2C2_1
+    D2
+    I2C1_2
+    JTMS
+
+Reporting Globals
+    VCC
+    VCC_5V
+    GND
+
+Check Bus width mismatch

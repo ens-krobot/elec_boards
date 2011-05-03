@@ -1,0 +1,231 @@
+(ExpressProject "Sensor Actuator"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "c:\krobot\elec\lib\orcad\krobot.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\sensor actuator.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (DRC_Scope "0")
+    (DRC_Action "0")
+    (DRC_Create_Warnings "FALSE")
+    (DRC_Check_Ports "TRUE")
+    (DRC_Check_Off-Page_Connectors "TRUE")
+    (DRC_Identical_References "TRUE")
+    (DRC_Type_Mismatch "TRUE")
+    (DRC_Report_Ports_and_Off-page_Connectors "TRUE")
+    (DRC_SDT_Compatibility "FALSE")
+    (DRC_Report_Off-grid_Objects "FALSE")
+    (DRC_Check_Unconnected_Nets "TRUE")
+    (DRC_Check_for_Misleading_TAP "FALSE")
+    (DRC_Visible_Power_pins "FALSE")
+    (DRC_Report_Netnames "FALSE")
+    (DRC_View_Output "FALSE")
+    (DRC_Report_File
+       "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DRC")
+    (Netlist_TAB "3")
+    (LAYOUT_Netlist_File
+       "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\PCB\SENSOR ACTUATOR.MNL")
+    (LAYOUT_PCB_Footprint "{PCB Footprint}")
+    (FALSE)
+    (LAYOUT_Units "0")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "0")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "FALSE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}{POWER_GROUP}")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (FALSE)
+    (FALSE)
+    (FALSE))
+  (Folder "Outputs"
+    (File ".\sensor actuator.drc"
+      (Type "Report"))
+    (File "..\pcb\sensor actuator.mnl"
+      (Type "LAYOUT Netlist File")))
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (CON2
+      (FullPartName "CON2.Normal")
+      (LibraryName "D:\ORCAD\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (TPS2087D
+      (FullPartName "TPS2087D.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (ADG1612
+      (FullPartName "ADG1612.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (VCC_ARROW
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (ACS712
+      (FullPartName "ACS712.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (CON3
+      (FullPartName "CON3.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (74HCT365
+      (FullPartName "74HCT365.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\BUSDRIVERTRANSCEIVER.OLB")
+      (DeviceIndex "0"))
+    (74HCT245
+      (FullPartName "74HCT245.Normal")
+      (LibraryName
+         "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\BUSDRIVERTRANSCEIVER.OLB")
+      (DeviceIndex "0"))
+    (CON6
+      (FullPartName "CON6.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (CON5
+      (FullPartName "CON5.Normal")
+      (LibraryName "C:\ORCAD\ORCAD_16.0\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (TXS0108E
+      (FullPartName "TXS0108E.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0"))
+    (JP3
+      (FullPartName "JP3.Normal")
+      (LibraryName "C:\KROBOT\ELEC\LIB\ORCAD\KROBOT.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Sensor_Actuator\Schematic\sensor actuator.dsn")
+      (Path "Design Resources"
+         "C:\krobot\elec\boards\Sensor_Actuator\Schematic\sensor actuator.dsn"
+         "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\Sensor_Actuator\Schematic\sensor actuator.dsn"
+         "SCHEMATIC1"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 0 1041 -8 -30 0 317 0 710"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "137")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Microcontroller"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Communication"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface I2C"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -30 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface Analog"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface Serial"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Power Supply"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface Digital #2"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 317 1883 0 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface Digital #1"))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 318 1884 1 1068")
+        (Scroll "0 0")
+        (Zoom "136")
+        (Occurrence "/"))
+      (Path
+         "C:\KROBOT\ELEC\BOARDS\SENSOR_ACTUATOR\SCHEMATIC\SENSOR ACTUATOR.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Interface Switch")))
+  (LastUsedLibraryBrowseDirectory "C:\OrCAD\OrCAD_16.0\tools\capture\library")
+  (MPSSessionName "Olivier"))
