@@ -133,7 +133,9 @@
          "C:\krobot\elec\boards\Sensor_Actuator\Schematic\sensor actuator.dsn"
          "SCHEMATIC1")
       (Path "Design Resources" "Library")
-      (Path "Outputs"))
+      (Path "Outputs")
+      (Select "Design Resources"
+         "C:\krobot\elec\boards\Sensor_Actuator\Schematic\sensor actuator.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
