@@ -1,0 +1,35 @@
+  Revised: Friday, May 06, 2011
+          Revision: 
+
+
+
+
+
+
+
+Bill Of Materials            May 12,2011      13:43:00	Page1
+
+Reference	Quantity	Part
+______________________________________________
+
+C11			1			10u
+C12,C13		2			100n
+C14			1			1u
+C15			1			4.7u
+D11			1			10BQ040
+D12			1			5V LED
+D13			1			3.3V LED
+E21			1			R-T
+E22			1			SCL_PU
+E23			1			SDA_PU
+HF1			1			XBEE
+J11			1			12V - 24V Power Supply
+J21			1			JTAG
+J22			1			I2C
+J32			1			CON20A
+R11,R12		2			680
+R21,R22,R23,R24,R25,R26,	8	10k
+R27,R28
+R29,R210	2			4.7k
+U11			1			TSR 1-2450
+U12			1			LT1521-3.3/SOT

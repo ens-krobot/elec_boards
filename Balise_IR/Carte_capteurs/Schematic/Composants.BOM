@@ -1,0 +1,43 @@
+Capteurs infrarouge  Revised: Saturday, May 07, 2011
+          Revision: 
+
+
+
+
+
+
+
+Bill Of Materials            May 12,2011      13:44:18	Page1
+
+Item	Quantity	Reference	Part
+______________________________________________
+    	
+1		2			C2,C3		12p
+2		6			C4,C8,C10,C11,C12,C13	100n
+3		2			C6,C7		22p
+4		1			C9			1u
+5		1			C14			10u
+6		16			C24,C25,C26,C27,C28,C29,	4.7u
+					C30,C31,C32,C33,C34,C35,
+					C36,C37,C38,C39
+7		1			D1			LED 1
+8		1			D2			LED 2
+9		1			E5			BOOT0
+10		1			E6			BOOT1
+11		16			J15,J16,J17,J18,J19,J20,	CON4
+					J21,J22,J23,J24,J25,J26,
+					J27,J28,J29,J30
+12		1			J32			CON20A
+13		1			L1			Ferrite bead
+14		3			R24,R36,R37	10k
+15		2			R27,R28	680
+16		16			R48,R50,R52,R54,R56,R58,	100k
+					R60,R62,R64,R66,R68,R70,
+					R72,R74,R76,R78
+17		16			R49,R51,R53,R55,R57,R59,	100
+					R61,R63,R65,R67,R69,R71,
+					R73,R75,R77,R79
+18		1			SW1			RESET
+19		1			U2			STM32F103RET
+20		1			X1			32768
+21		1			X2			8 MHz

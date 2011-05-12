@@ -1,0 +1,43 @@
+  Revised: Friday, May 06, 2011
+          Revision: 
+
+
+
+
+
+
+
+Bill Of Materials            May 12,2011      13:46:16	Page1
+
+Reference	Quantity	Part
+______________________________________________
+
+C11,C12		2			2n
+C13			1			0.1u
+C21,C27,C28,C29,C42,C210,	7	100n
+C211
+C22,C23		2			12p
+C24,C25		2			22p
+C26			1			1u
+C41,C212	2			10u
+D21			1			LED 1
+D22			1			LED 2
+D40,D41,D42,D43,D44,D45,	16	LED
+D46,D47,D48,D49,D410,
+D411,D412,D413,D414,D415
+E21			1			BOOT1
+E22			1			BOOT0
+J31			1			CON20A
+L21			1			Ferrite bead
+R11			1			120k
+R21,R22,R23	3			10k
+R24,R25		2			680
+R41			1			1k
+R42			1			50k
+SW21		1			RESET
+U11			1			ADXL213
+U21			1			STM32F103RET
+U41			1			A6282
+U42			1			74VHC08/SO
+X21			1			32768
+X22			1			8 MHz
