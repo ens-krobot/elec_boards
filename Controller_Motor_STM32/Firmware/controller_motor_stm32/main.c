@@ -18,7 +18,7 @@
 #include "differential_drive.h"
 
 #define WHEEL_RADIUS 0.049245
-#define SHAFT_WIDTH 0.259
+#define SHAFT_WIDTH 0.150
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
@@ -64,17 +64,18 @@ static void init(void)
         params.l0[0] = 0.0236;
         params.l0[1] = 3.9715;
         params.T = 0.005;
-        // Initialize left motor
-        params.motor = MOTOR3;
-        params.encoder = ENCODER3;
-        mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
         // Initialize right motor
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
         mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize left motor
+        params.motor = MOTOR3;
+        params.encoder = ENCODER3;
+        params.encoder_gain = 2.0*M_PI/2000.0/15.0; // Left motor is reversed
+        mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
-        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, -2.0*M_PI/2000.0/15.0);
+        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15.0, -2.0*M_PI/2000.0/15.0);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {

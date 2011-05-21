@@ -13,7 +13,7 @@ PROC_DEFINE_STACK(stack_odometry, KERN_MINSTACKSIZE * 8);
 
 typedef struct {
   robot_state_t robot_state;
-  float wheel_radius, shaft_width, encoder_gain;
+  float wheel_radius, shaft_width, left_encoder_gain, right_encoder_gain;
   float Ts;
   uint8_t enable;
   uint8_t running;
@@ -23,7 +23,7 @@ odometry_state_t state;
 
 static void NORETURN odometry_process(void);
 
-void odometryInit(float Ts, float wheel_radius, float shaft_width, float encoder_gain) {
+void odometryInit(float Ts, float wheel_radius, float shaft_width, float left_encoder_gain, float right_encoder_gain) {
 
   // Initialize initial state
   state.robot_state.x = 0.;
@@ -33,7 +33,8 @@ void odometryInit(float Ts, float wheel_radius, float shaft_width, float encoder
   // Initialize robot parameters
   state.wheel_radius = wheel_radius;
   state.shaft_width = shaft_width;
-  state.encoder_gain = encoder_gain;
+  state.left_encoder_gain = left_encoder_gain;
+  state.right_encoder_gain = right_encoder_gain;
   state.Ts = Ts;
 
   // Start odometry process
@@ -95,8 +96,8 @@ static void NORETURN odometry_process(void) {
         if (delta_r > 0)
           delta_r = delta_r - 65535;
       }
-      delta_l *= state.encoder_gain;
-      delta_r *= state.encoder_gain;
+      delta_l *= state.left_encoder_gain;
+      delta_r *= state.right_encoder_gain;
       last_pos_l = pos_l;
       last_pos_r = pos_r;
 
