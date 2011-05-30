@@ -46,4 +46,5 @@ sensor_actuator_USER_CPPAFLAGS = \
 sensor_actuator_USER_CPPFLAGS = \
 	-fno-strict-aliasing \
 	-fwrapv \
+	-DCPU_CM3_SAM3X=0 \
 	#
