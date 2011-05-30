@@ -32,7 +32,6 @@
 #include <drv/gpio_stm32.h>
 
 #include <drv/can.h>
-#include <drv/i2c.h>
 #include <drv/timer.h>
 
 #include <kern/monitor.h>
@@ -46,8 +45,6 @@
 #define SERIAL_BAUDRATE 1000000
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
-
-static I2c i2c;
 
 static void init(void)
 {
@@ -88,9 +85,6 @@ static void init(void)
     /* Initialize Serial driver */
     serial_init(SERIAL_BAUDRATE);
 
-    /* Initialize I2c interface */
-    i2c_init(&i2c, 0, CONFIG_I2C_FREQ);
-
     /*
      * Kernel initialization: processes (allow to create and dispatch
      * processes using proc_new()).
@@ -99,9 +93,6 @@ static void init(void)
 
     /* Initialize USB-CAN logic */
     usbcan = usb_can_init(CAND1);
-
-    /* Initialize battery monitoring */
-    battery_monitoring_init(usbcan, &i2c);
 }
 
 static void NORETURN blinky_process(void) {
