@@ -36,6 +36,11 @@ void switch_init(void);
 /**
  * Get the switch CAN packet
  */
-void get_switch_state(switch_status *pkt1, switch_status *pkt2);
+void get_switch_status(switch_status *pkt1, switch_status *pkt2);
+
+/**
+ * Set the switch state from the CAN packet
+ */
+void set_switch(switch_request *pkt);
 
 #endif

@@ -38,6 +38,7 @@
 
 #define CAN_SWITCH_STATUS_1 311          // switch_status
 #define CAN_SWITCH_STATUS_2 312          // switch_status
+#define CAN_SWITCH_SET 313               // switch_request
 
 /****************************************************************************/
 
@@ -90,6 +91,12 @@ struct switch_status_pkt {
     uint8_t sw8;
 };
 
+// Switch request
+struct switch_request_pkt {
+    uint8_t num;
+    uint8_t state;
+};
+
 /****************************************************************************/
 
 /**
@@ -115,5 +122,10 @@ typedef union {
     struct switch_status_pkt p;
     uint32_t d[2];
 } switch_status;
+
+typedef union {
+    struct switch_request_pkt p;
+    uint32_t d[2];
+} switch_request;
 
 #endif

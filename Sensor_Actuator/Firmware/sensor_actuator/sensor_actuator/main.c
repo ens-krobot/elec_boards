@@ -38,8 +38,8 @@
 #include <io/kfile.h>
 
 #include "beacon/beacon.h"
-#include "switch/switch.h"
 #include "can/can_monitor.h"
+#include "switch/switch.h"
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
 

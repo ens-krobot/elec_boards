@@ -26,6 +26,29 @@
 PROC_DEFINE_STACK(stack_send, KERN_MINSTACKSIZE * 4)
 PROC_DEFINE_STACK(stack_recv, KERN_MINSTACKSIZE * 4)
 
+static void NORETURN can_sender_process(void);
+static void NORETURN can_receiver_process(void);
+
+void can_processes_init(void) {
+    can_config cfg;
+
+    cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
+    /* 1 Mbit by default (FIXME: O'RLY?) */
+    cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);
+
+    cfg.n_filters = 0;
+    cfg.filters = NULL;
+
+    /* Initialize CAN driver */
+    can_init();
+
+    can_start(CAND1, &cfg);
+
+    proc_new(can_sender_process, NULL, sizeof(stack_send), stack_send);
+    proc_new(can_receiver_process, NULL, sizeof(stack_recv), stack_recv);
+
+}
+
 #define SET_PACKET(f, id, pk) do {              \
         f.eid = id;                             \
         f.dlc = sizeof(pk.p);                   \
@@ -67,7 +90,7 @@ static void NORETURN can_sender_process(void) {
 
         /* Switches */
 
-        get_switch_state(&st1, &st2);
+        get_switch_status(&st1, &st2);
 
         SET_PACKET(f, CAN_SWITCH_STATUS_1, st1);
         can_transmit(CAND1, &f, ms_to_ticks(10));
@@ -75,35 +98,39 @@ static void NORETURN can_sender_process(void) {
         SET_PACKET(f, CAN_SWITCH_STATUS_2, st2);
         can_transmit(CAND1, &f, ms_to_ticks(10));
 
+
+
+
+
+
         timer_waitEvent(&timer_send);
     }
 
 }
 
+#define GET_PACKET(type, name, frame) type name; name.d[0] = frame.data32[0]; name.d[1] = frame.data32[1]
+
 static void NORETURN can_receiver_process(void) {
 
+    can_rx_frame f;
+
+    int ret;
+
     for (;;) {
-        timer_delay(500);
+        ret = can_receive(CAND1, &f, ms_to_ticks(200));
+        if (!ret || f.ide != 1)
+            continue;
+
+        switch (f.eid) {
+          case CAN_SWITCH_SET:
+            do {
+                GET_PACKET(switch_request, req, f);
+                set_switch(&req);
+            } while (0);
+            break;
+          default:
+            break;
+        }
     }
-
-}
-
-void can_processes_init(void) {
-    can_config cfg;
-
-    cfg.mcr = CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP;
-    /* 1 Mbit by default (FIXME: O'RLY?) */
-    cfg.btr = CAN_BTR_SJW(0) | CAN_BTR_TS1(8) | CAN_BTR_TS2(1) | CAN_BTR_BRP(6);
-
-    cfg.n_filters = 0;
-    cfg.filters = NULL;
-
-    /* Initialize CAN driver */
-    can_init();
-
-    can_start(CAND1, &cfg);
-
-    proc_new(can_sender_process, NULL, sizeof(stack_send), stack_send);
-    proc_new(can_receiver_process, NULL, sizeof(stack_recv), stack_recv);
 
 }
