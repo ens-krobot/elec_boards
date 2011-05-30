@@ -37,6 +37,7 @@
 #include <kern/proc.h>
 #include <io/kfile.h>
 
+#include "adc/adc.h"
 #include "beacon/beacon.h"
 #include "can/can_monitor.h"
 #include "switch/switch.h"
@@ -67,6 +68,9 @@ static void init(void)
 
     // Initialize the switches
     switch_init();
+
+    // Initialize the ADCs
+    sa_adc_init();
 
     // Initialize the CAN bus processing
     can_processes_init();

@@ -10,6 +10,7 @@ sensor_actuator_PROGRAMMER_PORT = none
 # Files included by the user.
 sensor_actuator_USER_CSRC = \
 	$(sensor_actuator_SRC_PATH)/main.c \
+	$(sensor_actuator_SRC_PATH)/adc/adc.c \
 	$(sensor_actuator_SRC_PATH)/beacon/stm32lib/stm32f10x_tim.c \
 	$(sensor_actuator_SRC_PATH)/beacon/beacon.c \
 	$(sensor_actuator_SRC_PATH)/can/can_monitor.c \

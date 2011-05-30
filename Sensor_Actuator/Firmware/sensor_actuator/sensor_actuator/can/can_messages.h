@@ -40,6 +40,13 @@
 #define CAN_SWITCH_STATUS_2 312          // switch_status
 #define CAN_SWITCH_SET 313               // switch_request
 
+
+// ADC
+
+#define CAN_ADC_VALUES_1 321             // adc_values
+#define CAN_ADC_VALUES_2 322             // adc_values
+
+
 /****************************************************************************/
 
 /**
@@ -97,6 +104,17 @@ struct switch_request_pkt {
     uint8_t state;
 };
 
+/**
+ * ADC messages
+ */
+// ADC Values
+struct adc_values_pkt {
+    uint16_t val1;
+    uint16_t val2;
+    uint16_t val3;
+    uint16_t val4;
+} __attribute__((packed));
+
 /****************************************************************************/
 
 /**
@@ -127,5 +145,10 @@ typedef union {
     struct switch_request_pkt p;
     uint32_t d[2];
 } switch_request;
+
+typedef union {
+    struct adc_values_pkt p;
+    uint32_t d[2];
+} adc_values;
 
 #endif

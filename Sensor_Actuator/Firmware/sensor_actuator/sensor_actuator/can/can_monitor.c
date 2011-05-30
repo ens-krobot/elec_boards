@@ -67,6 +67,8 @@ static void NORETURN can_sender_process(void) {
 
     switch_status st1, st2;
 
+    adc_values adc1, adc2;
+
     /* Initialize can frame */
 
     f.ide = 1;
@@ -98,9 +100,15 @@ static void NORETURN can_sender_process(void) {
         SET_PACKET(f, CAN_SWITCH_STATUS_2, st2);
         can_transmit(CAND1, &f, ms_to_ticks(10));
 
+        /* ADC */
 
+        get_adc_values(&adc1, &adc2);
 
+        SET_PACKET(f, CAN_ADC_VALUES_1, adc1);
+        can_transmit(CAND1, &f, ms_to_ticks(10));
 
+        SET_PACKET(f, CAN_ADC_VALUES_2, adc2);
+        can_transmit(CAND1, &f, ms_to_ticks(10));
 
 
         timer_waitEvent(&timer_send);

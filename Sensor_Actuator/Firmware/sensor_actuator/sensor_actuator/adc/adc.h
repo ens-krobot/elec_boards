@@ -1,7 +1,7 @@
 /**
- * Sensor-Actuator board CAN processes
+ * Sensor and Actuator Board : ADC Interfacing
  *
- * Header file for the Sensor and Actuator CAN processes initialisation
+ * This file contains the interface for the ADCs
  *
  * Copyright © 2011 Nicolas Dandrimont <olasd@crans.org>
  * Authors: Nicolas Dandrimont <olasd@crans.org>
@@ -21,20 +21,27 @@
  *
  */
 
-#ifndef CAN_MONITOR_H__
-#define CAN_MONITOR_H__
+#ifndef ADC_H__
+#define ADC_H__
 
-#include <drv/can.h>
-#include <drv/timer.h>
+#include <stdlib.h>
+#include <stdint.h>
 
-#include <kern/proc.h>
+#include <drv/adc.h>
+#include <drv/clock_stm32.h>
+#include <drv/gpio_stm32.h>
 
-#include "can_messages.h"
+#include "../can/can_messages.h"
 
-#include "../adc/adc.h"
-#include "../beacon/beacon.h"
-#include "../switch/switch.h"
+/**
+ * Initialize the ADCs
+ */
+void sa_adc_init(void);
 
-void can_processes_init(void);
+/**
+ * Fetch the ADC data in the CAN packets
+ */
+void get_adc_values(adc_values *pkt1, adc_values *pkt2);
+
 
 #endif
