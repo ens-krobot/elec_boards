@@ -22,7 +22,7 @@ TIM_OCInitTypeDef  TIM_OCInitStructure;
 static int32_t staSpeed(int32_t speed, int32_t maxSpeed, uint8_t *ind) {
   if (speed >= maxSpeed) {
     *ind = 1;
-    return MAX_PWM;
+    return maxSpeed;
   } else if (speed <= -maxSpeed) {
     *ind = 1;
     return -maxSpeed;
@@ -269,7 +269,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     }
   }
   if (motor & MOTOR4) {
-    app_speed = staSpeed(speed, maxPWMs[0], &ind);
+    app_speed = staSpeed(speed, maxPWMs[3], &ind);
     if(app_speed >= 0) {
       if (currentSpeedSign[3] != 1) {
         currentSpeedSign[3] = 1;
