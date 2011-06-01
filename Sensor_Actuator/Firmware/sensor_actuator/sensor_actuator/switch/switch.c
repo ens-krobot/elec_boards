@@ -30,9 +30,6 @@ static uint32_t pins[][2] = {
     //{GPIOB_BASE, 1},
     //{GPIOB_BASE, 12},
     //{GPIOB_BASE, 15},
-    //{GPIOC_BASE, 6},
-    //{GPIOC_BASE, 7},
-    //{GPIOC_BASE, 8},
     //{GPIOC_BASE, 9},
     //{GPIOA_BASE, 8},
     //{GPIOC_BASE, 12},
@@ -41,6 +38,9 @@ static uint32_t pins[][2] = {
     {GPIOA_BASE, 6},
     {GPIOA_BASE, 7},
     {GPIOB_BASE, 5},
+    {GPIOC_BASE, 6},
+    {GPIOC_BASE, 7},
+    {GPIOC_BASE, 8},
 };
 
 void switch_init(void) {
@@ -48,24 +48,24 @@ void switch_init(void) {
     // Clock the GPIOs.
     RCC->APB2ENR |= RCC_APB2_GPIOA | RCC_APB2_GPIOB | RCC_APB2_GPIOC;
 
-    // Initialize D1_1 PC(4) and D1_2 PC(5) as inputs
+    // Initialize D1_1 PC(4) and D1_2 PC(5) as pull-up inputs
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE,
                         BV(4) | BV(5),
-                        GPIO_MODE_IN_FLOATING,
+                        GPIO_MODE_IPU,
                         GPIO_SPEED_50MHZ);
-    // Initialize D1_3 PB(0), D1_4 PB(1), D1_5 PB(12), D1_6 PB(15) as inputs
+    // Initialize D1_3 PB(0), D1_4 PB(1), D1_5 PB(12), D1_6 PB(15) as pull-up inputs
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOB_BASE,
                         BV(0) | BV(1) | BV(12) | BV(15),
-                        GPIO_MODE_IN_FLOATING,
+                        GPIO_MODE_IPU,
                         GPIO_SPEED_50MHZ);
 
-    // Initialize D2_1 PC(6), D2_2 PC(7), D2_3 PC(8), D2_4 PC(9), D2_6 PC(12) as inputs
+    // Initialize D2_4 PC(9), D2_6 PC(12) as floating inputs
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE,
-                        BV(6) | BV(7) | BV(8) | BV(9) | BV(12),
+                        BV(9) | BV(12),
                         GPIO_MODE_IN_FLOATING,
                         GPIO_SPEED_50MHZ);
 
-    // Initialize D2_5 PA(8) as input
+    // Initialize D2_5 PA(8) as floating input
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE,
                         BV(8),
                         GPIO_MODE_IN_FLOATING,
@@ -83,6 +83,12 @@ void switch_init(void) {
                         GPIO_MODE_OUT_PP,
                         GPIO_SPEED_50MHZ);
 
+    // Initialize D2_1..3 PC(6..8) as output push-pull
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE,
+                        BV(6) | BV(7) | BV(8),
+                        GPIO_MODE_OUT_PP,
+                        GPIO_SPEED_50MHZ);
+
 }
 
 #define BOOL(a) ((a)?1:0)
@@ -96,9 +102,9 @@ void get_switch_status(switch_status *pkt1, switch_status *pkt2) {
     pkt1->p.sw5 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(12)));
     pkt1->p.sw6 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(15)));
 
-    pkt2->p.sw1 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(6)));
-    pkt2->p.sw2 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(7)));
-    pkt2->p.sw3 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(8)));
+    pkt2->p.sw1 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(6)));
+    pkt2->p.sw2 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(7)));
+    pkt2->p.sw3 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(8)));
     pkt2->p.sw4 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(9)));
     pkt2->p.sw5 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOA_BASE, BV(8)));
     pkt2->p.sw6 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(12)));

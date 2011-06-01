@@ -63,10 +63,6 @@ static DECLARE_ISR(tim1_cc_irq) {
         cur_width = 0;
     }
     i = !i;
-    if (i)
-        LED_ON();
-    else
-        LED_OFF();
 }
 
 

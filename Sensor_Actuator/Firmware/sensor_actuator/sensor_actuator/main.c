@@ -79,15 +79,20 @@ static void init(void)
 
 static void NORETURN blinky_process(void) {
     for (;;) {
-        LED_ON();
+        //LED_ON();
         timer_delay(300);
-        LED_OFF();
+        //LED_OFF();
         timer_delay(300);
     }
 }
 
 int main(void)
 {
+
+    int i = 0;
+    uint8_t t = 0;
+
+    switch_request r;
 
     /* Hardware initialization */
     init();
@@ -96,7 +101,16 @@ int main(void)
     proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
 
     for (;;) {
-        timer_delay(1000);
+
+        r.p.num = i + 5;
+        r.p.state = t;
+
+        set_switch(&r);
+
+        timer_delay(100);
+
+        i = (i+1) % 3;
+        t = t?0:1;
     }
 
 }
