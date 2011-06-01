@@ -69,12 +69,14 @@ static void NORETURN can_sender_process(void) {
 
     adc_values adc1, adc2;
 
+    int i = 0;
+
     /* Initialize can frame */
 
     f.ide = 1;
     f.rtr = 0;
 
-    timer_setDelay(&timer_send, ms_to_ticks(10));
+    timer_setDelay(&timer_send, ms_to_ticks(50));
     timer_setEvent(&timer_send);
 
     for (;;) {
@@ -110,6 +112,12 @@ static void NORETURN can_sender_process(void) {
         SET_PACKET(f, CAN_ADC_VALUES_2, adc2);
         can_transmit(CAND1, &f, ms_to_ticks(10));
 
+        if (i)
+            LED_ON();
+        else
+            LED_OFF();
+
+        i = !i;
 
         timer_waitEvent(&timer_send);
     }

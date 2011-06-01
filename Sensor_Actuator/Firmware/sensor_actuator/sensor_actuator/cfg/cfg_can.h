@@ -62,6 +62,6 @@
  * $WIZ$ value_list = "can_stm32_remaps"
  * $WIZ$ supports = "stm32"
  */
-#define CAN_STM32_REMAP    CAN_STM32_PORTA
+#define CAN_STM32_REMAP    CAN_STM32_PORTB
 
 #endif /* CFG_CAN_H */
