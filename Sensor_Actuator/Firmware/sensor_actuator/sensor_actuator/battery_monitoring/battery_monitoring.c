@@ -83,7 +83,7 @@ static void NORETURN battery_monitoring_process(void) {
         }
 
         measure_flag = 1;
-/*
+
         if (battery_charge == 2) {
             // Full charge state
             set_buzzer(0);
@@ -97,7 +97,7 @@ static void NORETURN battery_monitoring_process(void) {
             set_buzzer(buzzer_state);
             buzzer_state = (buzzer_state == 0) ? 1 : 0;
         }
-*/
+
 
         timer_delay(1000);
     }
