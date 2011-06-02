@@ -43,4 +43,9 @@ void get_switch_status(switch_status *pkt1, switch_status *pkt2);
  */
 void set_switch(switch_request *pkt);
 
+/**
+ * Set the buzzer state
+ */
+void set_buzzer(uint8_t state);
+
 #endif

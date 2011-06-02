@@ -69,6 +69,8 @@ static void NORETURN can_sender_process(void) {
 
     adc_values adc1, adc2;
 
+    battery_status battery1, battery2;
+
     int i = 0;
 
     /* Initialize can frame */
@@ -88,7 +90,7 @@ static void NORETURN can_sender_process(void) {
             SET_PACKET(f, CAN_BEACON_POSITION, pos);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
-            SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos);
+            SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
             can_transmit(CAND1, &f, ms_to_ticks(10));
         }
 
@@ -111,6 +113,17 @@ static void NORETURN can_sender_process(void) {
 
         SET_PACKET(f, CAN_ADC_VALUES_2, adc2);
         can_transmit(CAND1, &f, ms_to_ticks(10));
+
+        /* Battery monitoring */
+        
+        if (get_battery_monitoring(&battery1, &battery2) == 0) {
+
+            SET_PACKET(f, CAN_BATTERY_STATUS_1, battery1);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            SET_PACKET(f, CAN_BATTERY_STATUS_2, battery2);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+        }
 
         if (i)
             LED_ON();

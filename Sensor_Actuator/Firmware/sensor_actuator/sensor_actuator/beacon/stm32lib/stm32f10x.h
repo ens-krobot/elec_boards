@@ -1194,8 +1194,6 @@ typedef struct
 #define USART3              ((USART_TypeDef *) USART3_BASE)
 #define UART4               ((USART_TypeDef *) UART4_BASE)
 #define UART5               ((USART_TypeDef *) UART5_BASE)
-#define I2C1                ((I2C_TypeDef *) I2C1_BASE)
-#define I2C2                ((I2C_TypeDef *) I2C2_BASE)
 #define CAN1                ((CAN_TypeDef *) CAN1_BASE)
 #define CAN2                ((CAN_TypeDef *) CAN2_BASE)
 #define BKP                 ((BKP_TypeDef *) BKP_BASE)

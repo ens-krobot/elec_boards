@@ -42,7 +42,7 @@
 
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
-#define PRESCALER_VALUE 300
+#define PRESCALER_VALUE 1000
 
 #define N_SMOOTH 5
 

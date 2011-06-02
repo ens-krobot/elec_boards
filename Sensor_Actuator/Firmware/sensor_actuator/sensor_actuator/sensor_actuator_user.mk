@@ -15,6 +15,8 @@ sensor_actuator_USER_CSRC = \
 	$(sensor_actuator_SRC_PATH)/beacon/beacon.c \
 	$(sensor_actuator_SRC_PATH)/can/can_monitor.c \
 	$(sensor_actuator_SRC_PATH)/switch/switch.c \
+	$(sensor_actuator_SRC_PATH)/battery_monitoring/ads7828.c \
+	$(sensor_actuator_SRC_PATH)/battery_monitoring/battery_monitoring.c \
 #	$(sensor_actuator_SRC_PATH)/ax12/serial.c \
 #	$(sensor_actuator_SRC_PATH)/ax12/ax12.c \
 	#

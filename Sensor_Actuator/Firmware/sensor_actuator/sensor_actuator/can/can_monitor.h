@@ -34,6 +34,7 @@
 #include "../adc/adc.h"
 #include "../beacon/beacon.h"
 #include "../switch/switch.h"
+#include "../battery_monitoring/battery_monitoring.h"
 
 void can_processes_init(void);
 

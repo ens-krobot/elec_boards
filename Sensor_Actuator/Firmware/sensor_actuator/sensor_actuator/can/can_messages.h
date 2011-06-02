@@ -46,6 +46,11 @@
 #define CAN_ADC_VALUES_1 321             // adc_values
 #define CAN_ADC_VALUES_2 322             // adc_values
 
+// Battery monitoring
+
+#define CAN_BATTERY_STATUS_1 331         // battery_status
+#define CAN_BATTERY_STATUS_2 332         // battery_status
+
 
 /****************************************************************************/
 
@@ -115,6 +120,13 @@ struct adc_values_pkt {
     uint16_t val4;
 } __attribute__((packed));
 
+/**
+ * Battery monitoring
+*/
+struct battery_status_pkt {
+    uint16_t elem[4] __attribute__((packed)); // in 1/10000th volts [0; 6.5536[
+};
+
 /****************************************************************************/
 
 /**
@@ -150,5 +162,10 @@ typedef union {
     struct adc_values_pkt p;
     uint32_t d[2];
 } adc_values;
+
+typedef union {
+    struct battery_status_pkt p;
+    uint32_t d[2];
+} battery_status;
 
 #endif

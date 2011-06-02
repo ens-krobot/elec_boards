@@ -32,6 +32,7 @@
 
 #include <drv/can.h>
 #include <drv/timer.h>
+#include <drv/i2c.h>
 
 #include <kern/monitor.h>
 #include <kern/proc.h>
@@ -41,13 +42,19 @@
 #include "beacon/beacon.h"
 #include "can/can_monitor.h"
 #include "switch/switch.h"
+#include "battery_monitoring/battery_monitoring.h"
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
+ 
+static I2c i2c;
 
 static void init(void)
 {
     /* Enable all the interrupts */
     IRQ_ENABLE;
+
+    /* Initialize I2c interface */
+    i2c_init(&i2c, 1, CONFIG_I2C_FREQ);
 
     /* Initialize system timer */
     timer_init();
@@ -71,6 +78,9 @@ static void init(void)
 
     // Initialize the ADCs
     sa_adc_init();
+
+    // Initialize the Battery monitoring
+    battery_monitoring_init(&i2c);
 
     // Initialize the CAN bus processing
     can_processes_init();

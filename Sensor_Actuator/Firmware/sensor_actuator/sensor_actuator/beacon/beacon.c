@@ -73,7 +73,7 @@ static void NORETURN beacon_update_process(void)
 
     for (;;) {
         event_wait(&got_capture);
-        if(abs(index_width - cur_width) < index_width / 4 ||
+        if(abs(index_width - cur_width) < index_width / 6 ||
            cur_width > index_width ||
            unlikely(index_width == 0)) {
             index_width = cur_width;

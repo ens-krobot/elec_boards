@@ -26,53 +26,84 @@ PROC_DEFINE_STACK(stack_battery_monitoring, KERN_MINSTACKSIZE * 16);
 static battery_monitoring_ctx _ctx;
 battery_monitoring_ctx *ctx = &_ctx;
 
+static uint16_t battery_state[8];
+static uint8_t measure_flag = 0;
+
+int get_battery_monitoring(battery_status *pkt1, battery_status *pkt2) {
+    uint8_t ch;
+
+    if (measure_flag) {
+        // Battery 1
+        for (ch = 0; ch < 4; ++ch)
+            pkt1->p.elem[ch] = battery_state[ch];
+
+        // Battery 2
+        for (ch = 0; ch < 4; ++ch)
+            pkt2->p.elem[ch] = battery_state[ch];
+
+        measure_flag = 0;
+        return 0;
+    }
+    else
+        return -1;
+
+}
+
 static void NORETURN battery_monitoring_process(void) {
 
-    can_tx_frame txf;
-    can_rx_frame rxf;
-
-    battery_status b;
+    uint8_t battery_charge;
+    uint8_t buzzer_state = 0;
 
     uint8_t ch;
     uint16_t value = 42;
 
-    txf.ide = rxf.ide = 1;
-    txf.rtr = rxf.rtr = 0;
-    txf.dlc = rxf.dlc = sizeof(b.p);
-
     for (;;) {
+        battery_charge = 2;
+
         // Battery 1
         for (ch = 0; ch < 4; ++ch) {
             value = adc7828_measure(ctx->i2c, ADS7828_ADDR_BASE, ch);
-            b.p.elem[ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
+            battery_state[ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
+
+            if (battery_state[ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
+                battery_charge = 1;
+            else if (battery_state[ch] < 10*ABSENT_CELL_THRES && battery_charge > 0)
+                battery_charge = 0;
         }
-
-        txf.eid = rxf.eid = 401;
-        txf.data32[0] = rxf.data32[0] = b.d[0];
-        txf.data32[1] = rxf.data32[1] = b.d[1];
-
-        usb_can_emit(ctx->usbcan, &rxf);
-        can_transmit(ctx->usbcan->can, &txf, ms_to_ticks(10));
 
         // Battery 2
         for (ch = 0; ch < 4; ++ch) {
             value = adc7828_measure(ctx->i2c, ADS7828_ADDR_BASE + 2, ch);
-            b.p.elem[ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
+            battery_state[4+ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
+
+            if (battery_state[4+ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
+                battery_charge = 1;
+            else if (battery_state[4+ch] < 10*ABSENT_CELL_THRES && battery_charge > 0)
+                battery_charge = 0;
         }
 
-        txf.eid = rxf.eid = 402;
-        txf.data32[0] = rxf.data32[0] = b.d[0];
-        txf.data32[1] = rxf.data32[1] = b.d[1];
+        measure_flag = 1;
+/*
+        if (battery_charge == 2) {
+            // Full charge state
+            set_buzzer(0);
+        }
+        else if (battery_charge == 1) {
+            // Low charge state
+            set_buzzer(1);
+        }
+        else if (battery_charge == 0) {
+            // No cell, or dead cell, or bad connection
+            set_buzzer(buzzer_state);
+            buzzer_state = (buzzer_state == 0) ? 1 : 0;
+        }
+*/
 
-        usb_can_emit(ctx->usbcan, &rxf);
-        can_transmit(ctx->usbcan->can, &txf, ms_to_ticks(10));
-
-        timer_delay(100);
+        timer_delay(1000);
     }
 }
 
-battery_monitoring_ctx *battery_monitoring_init(usb_can *usbcan, I2c *i2c) {
-    ctx->usbcan = usbcan;
+battery_monitoring_ctx *battery_monitoring_init(I2c *i2c) {
     ctx->i2c = i2c;
 
     proc_new(battery_monitoring_process, NULL, sizeof(stack_battery_monitoring), stack_battery_monitoring);

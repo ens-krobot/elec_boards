@@ -24,24 +24,22 @@
 
 #include <drv/can.h>
 #include <drv/i2c.h>
+#include <drv/timer.h>
 
-#include "../usb_can/usb_can.h"
+#include "../can/can_messages.h"
+#include "../switch/switch.h"
+
 #include "ads7828.h"
 
+#define LOW_CHARGE_THRES        2800                ///< Low charge threshold (in mV) -- trigger an alarm
+#define ABSENT_CELL_THRES        100                ///< Threshold for no cell connected (or dead cell, or bad connection)
+
 typedef struct {
-    usb_can *usbcan;
     I2c *i2c;
 } battery_monitoring_ctx;
 
-struct battery_status_pkt {
-    uint16_t elem[4] __attribute__((packed)); // in 1/10000th volts [0; 6.5536[
-};
+battery_monitoring_ctx *battery_monitoring_init(I2c *i2c);
 
-typedef union {
-    struct battery_status_pkt p;
-    uint32_t d[2];
-} battery_status;
-
-battery_monitoring_ctx *battery_monitoring_init(usb_can *usbcan, I2c *i2c);
+int get_battery_monitoring(battery_status *pkt1, battery_status *pkt2);
 
 #endif

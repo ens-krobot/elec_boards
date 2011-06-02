@@ -124,3 +124,9 @@ void set_switch(switch_request *pkt) {
 
     stm32_gpioPinWrite(base, pin, pkt->p.state);
 }
+
+void set_buzzer(uint8_t state) {
+    
+    stm32_gpioPinWrite((struct stm32_gpio *)GPIOB_BASE, BV(5), state);
+}
+
