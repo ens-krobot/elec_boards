@@ -42,6 +42,45 @@ typedef enum {
     AX12_CMD_SYNC_WRITE = 0x83
 } ax12_cmd;
 
+/**
+ * AX12 Memory Map
+ */
+typedef enum {
+    AX12_MODEL = 0x00,
+    AX12_VERSION = 0x02,
+    AX12_ID = 0x03,
+    AX12_BAUDRATE = 0x04,
+    AX12_RETURN_DELAY = 0x05,
+    AX12_CW_ANGLE_LIMIT = 0x06,
+    AX12_CCW_ANGLE_LIMIT = 0x08,
+    AX12_LIMIT_TEMPERATURE_HI = 0x0B,
+    AX12_LIMIT_VOLTAGE_LO = 0x0C,
+    AX12_LIMIT_VOLTAGE_HI = 0x0D,
+    AX12_MAX_TORQUE = 0x0E,
+    AX12_STATUS_RETURN_LEVEL = 0x10,
+    AX12_ALARM_LED = 0x11,
+    AX12_ALARM_SHUTDOWN = 0x12,
+    AX12_DOWN_CALIBRATION = 0x14,
+    AX12_UP_CALIBRATION = 0x16,
+    AX12_TORQUE_ENABLE = 0x18,
+    AX12_LED = 0x19,
+    AX12_CW_COMPLIANCE_MARGIN = 0x1A,
+    AX12_CCW_COMPLIANCE_MARGIN = 0x1B,
+    AX12_CW_COMPLIANCE_SLOPE = 0x1C,
+    AX12_CCW_COMPLIANCE_SLOPE = 0x1D,
+    AX12_GOAL_POSITION = 0x1E,
+    AX12_MOVING_SPEED = 0x20,
+    AX12_TORQUE_LIMIT = 0x22,
+    AX12_PRESENT_POSITION = 0x24,
+    AX12_PRESENT_SPEED = 0x26,
+    AX12_PRESENT_LOAD = 0x28,
+    AX12_PRESENT_VOLTAGE = 0x2A,
+    AX12_PRESENT_TEMPERATURE = 0x2B,
+    AX12_MOVING = 0x2E,
+    AX12_LOCK = 0x2F,
+    AX12_PUNCH = 0x30
+} ax12_memory_map;
+
 #define AX12_BROADCAST 0xFE
 
 /**
@@ -84,7 +123,5 @@ typedef struct {
 void ax12_write(ax12_cmd_packet *pkt);
 int ax12_read(ax12_st_packet *pkt);
 int ax12_reset(uint8_t new_id);
-
-
 
 #endif

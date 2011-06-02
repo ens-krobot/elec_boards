@@ -51,6 +51,12 @@
 #define CAN_BATTERY_STATUS_1 331         // battery_status
 #define CAN_BATTERY_STATUS_2 332         // battery_status
 
+// AX12
+
+#define CAN_AX12_STATE 341               // ax12_state
+#define CAN_AX12_REQUEST_STATE 342       // ax12_request_state
+#define CAN_AX12_GOTO 343                // ax12_goto
+#define CAN_AX12_RESET 344               // no struct
 
 /****************************************************************************/
 
@@ -122,10 +128,32 @@ struct adc_values_pkt {
 
 /**
  * Battery monitoring
-*/
+ */
 struct battery_status_pkt {
-    uint16_t elem[4] __attribute__((packed)); // in 1/10000th volts [0; 6.5536[
-};
+    uint16_t elem[4]; // in 1/10000th volts [0; 6.5536[
+} __attribute__((packed));
+
+
+/**
+ * AX-12
+ */
+struct ax12_state_pkt {
+    uint8_t address;
+    uint16_t position;
+    uint16_t speed;
+    uint16_t torque;
+} __attribute__((packed));
+
+struct ax12_request_state_pkt {
+    uint8_t address;
+} __attribute__((packed));
+
+struct ax12_goto_pkt {
+    uint8_t address;
+    uint16_t position;
+    uint16_t speed;
+} __attribute__((packed));
+
 
 /****************************************************************************/
 
@@ -167,5 +195,20 @@ typedef union {
     struct battery_status_pkt p;
     uint32_t d[2];
 } battery_status;
+
+typedef union {
+    struct ax12_state_pkt p;
+    uint32_t d[2];
+} ax12_state;
+
+typedef union {
+    struct ax12_request_state_pkt p;
+    uint32_t d[2];
+} ax12_request_state;
+
+typedef union {
+    struct ax12_goto_pkt p;
+    uint32_t d[2];
+} ax12_goto;
 
 #endif

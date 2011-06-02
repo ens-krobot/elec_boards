@@ -1,7 +1,7 @@
 /**
- * Sensor-Actuator board CAN processes
+ * AX12 High-Level Library
  *
- * Header file for the Sensor and Actuator CAN processes initialisation
+ * This file contains the high-level interface for AX12 communication
  *
  * Copyright © 2011 Nicolas Dandrimont <olasd@crans.org>
  * Authors: Nicolas Dandrimont <olasd@crans.org>
@@ -21,22 +21,32 @@
  *
  */
 
-#ifndef CAN_MONITOR_H__
-#define CAN_MONITOR_H__
+#ifndef AX12_HILEVEL_H__
+#define AX12_HILEVEL_H__
 
-#include <drv/can.h>
-#include <drv/timer.h>
+#include <stdint.h>
 
+#include <cpu/power.h>
 #include <kern/proc.h>
 
-#include "can_messages.h"
+#include "../can/can_messages.h"
 
-#include "../adc/adc.h"
-#include "../ax12/ax12_highlevel.h"
-#include "../beacon/beacon.h"
-#include "../switch/switch.h"
-#include "../battery_monitoring/battery_monitoring.h"
+#include "ax12.h"
+#include "serial.h"
 
-void can_processes_init(void);
+struct ax12_hl_command {
+    enum {
+        AX12_HL_RESET,
+        AX12_HL_GET_STATE,
+        AX12_HL_GOTO,
+    } command;
+    uint8_t address;
+    uint16_t args[2];
+};
+
+void ax12_highlevel_init(void);
+
+void ax12_queue_command(struct ax12_hl_command *cmd);
+int ax12_dequeue_state(ax12_state *state);
 
 #endif

@@ -179,6 +179,7 @@ int ax12_read(ax12_st_packet *pkt) {
  */
 static int ax12_baudrates[] = {
     1000000,
+    500000,
     115200,
     9600,
 };
@@ -196,8 +197,9 @@ int ax12_reset(uint8_t new_id) {
 
     unsigned int i;
 
-    ax12_cmd_packet reset_packet, ping_packet, setid_packet;
+    ax12_cmd_packet reset_packet, ping_packet, baudrate_packet, setid_packet;
     uint8_t setid_args[2];
+    uint8_t baudrate_args[1];
 
     ax12_st_packet st_packet;
     uint8_t st_args[256] = {0};
@@ -210,7 +212,16 @@ int ax12_reset(uint8_t new_id) {
     ping_packet.command = AX12_CMD_PING;
     ping_packet.length = 0;
 
-    setid_args[0] = 0x03;
+    baudrate_args[0] = AX12_BAUDRATE;
+    // 500000 bauds.
+    baudrate_args[1] = 3;
+
+    baudrate_packet.address = 0x01;
+    baudrate_packet.command = AX12_CMD_WRITE_DATA;
+    baudrate_packet.length = 2;
+    baudrate_packet.args = baudrate_args;
+
+    setid_args[0] = AX12_ID;
     setid_args[1] = new_id;
 
     setid_packet.address = 0x01;
@@ -226,23 +237,19 @@ int ax12_reset(uint8_t new_id) {
         serial_deinit();
         serial_init(ax12_baudrates[i]);
 
-        kprintf("wr1 %d\n", ax12_baudrates[i]);
-
         ax12_write(&reset_packet);
 
         // Ping the AX12
         serial_deinit();
         serial_init(ax12_baudrates[0]);
 
-        kprintf("wr2 %d\n", ax12_baudrates[0]);
-
         timer_delay(500);
         ax12_write(&ping_packet);
 
-        kprintf("rd %d\n", ax12_baudrates[0]);
-
         if (!ax12_read(&st_packet)) {
-            kprintf("wr3 %d\n", new_id);
+            ax12_write(&baudrate_packet);
+            serial_deinit();
+            serial_init(500000);
             ax12_write(&setid_packet);
             if (!ax12_read(&st_packet)) {
                 return 0;

@@ -71,6 +71,8 @@ static void NORETURN can_sender_process(void) {
 
     battery_status battery1, battery2;
 
+    ax12_state ax12_st;
+
     int i = 0;
 
     /* Initialize can frame */
@@ -115,13 +117,20 @@ static void NORETURN can_sender_process(void) {
         can_transmit(CAND1, &f, ms_to_ticks(10));
 
         /* Battery monitoring */
-        
+
         if (get_battery_monitoring(&battery1, &battery2) == 0) {
 
             SET_PACKET(f, CAN_BATTERY_STATUS_1, battery1);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
             SET_PACKET(f, CAN_BATTERY_STATUS_2, battery2);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+        }
+
+        /* AX-12 */
+
+        while (ax12_dequeue_state(&ax12_st) == 0) {
+            SET_PACKET(f, CAN_AX12_STATE, ax12_st);
             can_transmit(CAND1, &f, ms_to_ticks(10));
         }
 
@@ -155,6 +164,34 @@ static void NORETURN can_receiver_process(void) {
             do {
                 GET_PACKET(switch_request, req, f);
                 set_switch(&req);
+            } while (0);
+            break;
+
+          case CAN_AX12_REQUEST_STATE:
+            do {
+                struct ax12_hl_command hlc;
+                GET_PACKET(ax12_request_state, ax12_req, f);
+                hlc.command = AX12_HL_GET_STATE;
+                hlc.address = ax12_req.p.address;
+                ax12_queue_command(&hlc);
+            } while (0);
+            break;
+          case CAN_AX12_GOTO:
+            do {
+                struct ax12_hl_command hlc;
+                GET_PACKET(ax12_goto, ax12_g, f);
+                hlc.command = AX12_HL_GOTO;
+                hlc.address = ax12_g.p.address;
+                hlc.args[0] = ax12_g.p.position;
+                hlc.args[1] = ax12_g.p.speed;
+                ax12_queue_command(&hlc);
+            } while (0);
+            break;
+          case CAN_AX12_RESET:
+            do {
+                struct ax12_hl_command hlc;
+                hlc.command = AX12_HL_RESET;
+                ax12_queue_command(&hlc);
             } while (0);
             break;
           default:

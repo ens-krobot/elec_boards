@@ -39,10 +39,11 @@
 #include <io/kfile.h>
 
 #include "adc/adc.h"
+#include "ax12/ax12_highlevel.h"
+#include "battery_monitoring/battery_monitoring.h"
 #include "beacon/beacon.h"
 #include "can/can_monitor.h"
 #include "switch/switch.h"
-#include "battery_monitoring/battery_monitoring.h"
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
  
@@ -81,6 +82,9 @@ static void init(void)
 
     // Initialize the Battery monitoring
     battery_monitoring_init(&i2c);
+
+    // Initialize the AX12s
+    ax12_highlevel_init();
 
     // Initialize the CAN bus processing
     can_processes_init();

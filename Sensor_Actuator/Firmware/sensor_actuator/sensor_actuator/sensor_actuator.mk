@@ -9,7 +9,7 @@ sensor_actuator_DEBUG = 1
 # Our target application
 TRG += sensor_actuator
 
-sensor_actuator_PREFIX = "/home/olivier/opt/arm/bin/arm-none-eabi-"
+sensor_actuator_PREFIX = "$$HOME/opt/arm/bin/arm-none-eabi-"
 
 sensor_actuator_SUFFIX = ""
 

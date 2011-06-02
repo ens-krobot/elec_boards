@@ -1,5 +1,5 @@
 /**
- * USB-CAN converter
+ * Sensor_Actuator board : AX12 Serial Interface
  *
  * This file contains the interface for a very simple serial driver for STM32
  *
