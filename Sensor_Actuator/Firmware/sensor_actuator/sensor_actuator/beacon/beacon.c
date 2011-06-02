@@ -37,14 +37,21 @@ static uint32_t beacon_pos = 0;
 PROC_DEFINE_STACK(stack_update, KERN_MINSTACKSIZE * 4);
 
 static float calibration_data[10][2] = {
-    {0.00004, 200.},
-    {0.00003, 300.},
-    {0.000025, 400.},
-    {0.000019, 450.},
-    {0.0000012, 500.},
-    {0.0, 600.},
+    {0.24, 200.},
+    {0.19, 300.},
+    {0.15, 400.},
+    {0.1, 500.},
+    {0.0, 550.},
 };
 
+/**
+ *        <-        cur_period        ->
+ *        <- cur_width ->
+ *        _______________               ______
+ * _______|              |______________|     |______
+ *                                      ^
+ *                                     IRQ
+ */
 static DECLARE_ISR(tim1_cc_irq) {
     static bool i;
 
@@ -72,9 +79,10 @@ static void NORETURN beacon_update_process(void)
 
     for (;;) {
         event_wait(&got_capture);
-        if(abs(index_width - cur_width) < index_width / 6 ||
+        if(abs(index_width - cur_width) < index_width / 6.0 ||
            cur_width > index_width ||
            unlikely(index_width == 0)) {
+            // This is likely the index
             index_width = cur_width;
             period = cur_period;
             if (got_index == true) {
@@ -85,10 +93,12 @@ static void NORETURN beacon_update_process(void)
                 got_index = true;
             }
         } else {
+            // This is likely the beacon
             if (got_index) {
+                // The index was already captured
                 beacon_width = cur_width;
                 // Position : center of index to center of beacon
-                beacon_pos = period - index_width/2 + beacon_width/2;
+                beacon_pos = period - index_width/2.0 + beacon_width/2.0;
                 period += cur_period;
                 got_index = false;
                 event_do(&updated_beacon);
@@ -125,6 +135,7 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
     angle_smooth[n % N_SMOOTH] = (beacon_pos * 2.0 * M_PI) / (period * 1.0);
     angular_width = (beacon_width * 2.0 * M_PI) / (period * 1.0);
 
+    // Compute the real time period (in s)
     t_period = period * PRESCALER_VALUE / (CPU_FREQ * 1.0);
 
     if (angular_width != 0.0) {
@@ -146,16 +157,12 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
         angle /= index;
         distance /= index;
         n++;
-        index = (index == N_SMOOTH) ? N_SMOOTH : index+1;
     } else {
         n = 0;
     }
 
-    //distance = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
-
-
     pos->p.angle = (uint16_t)(angle * 10000.);
-    pos->p.distance = (angle != 0.0)?500:0;
+    pos->p.distance = (uint16_t)(distance);
     pos->p.period = (uint16_t)(t_period * 10000.);
 
     pos_ll->p.angle = (uint16_t)(beacon_width);
