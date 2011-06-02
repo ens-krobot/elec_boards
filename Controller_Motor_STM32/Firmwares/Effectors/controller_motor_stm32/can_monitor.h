@@ -19,6 +19,8 @@
 #include "odometry.h"
 #include "differential_drive.h"
 #include "can_messages.h"
+#include "can_messages_sensors.h"
+#include "lift_controller.h"
 
 void canMonitorInit(void);
 

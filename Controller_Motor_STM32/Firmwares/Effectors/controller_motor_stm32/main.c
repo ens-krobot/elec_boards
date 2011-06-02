@@ -21,8 +21,6 @@ PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
 static void init(void)
 {
-        motor_controller_params_t params;
-
 	IRQ_ENABLE;
 
 	/* Initialize debugging module (allow kprintf(), etc.) */
@@ -36,38 +34,22 @@ static void init(void)
 	 */
 	proc_init();
 
-        // Initialize CONTROL driver (will initialize MOTOR and ENCODER subsystems)
-        motorControllerInit();
-
         // Initialize CAN_MONITOR
         canMonitorInit();
 
-        // Start control of drive motors
+        // Initialize CONTROL driver (will initialize MOTOR and ENCODER subsystems)
+        motorControllerInit();
+        // Initialize Command generator
         tc_init();
-        tc_new_controller(0);
-        tc_new_controller(1);
-        motorSetMaxPWM(MOTOR4, 1600);
+        // Initialize Lift Controller
+        lc_init();
+
+        // Init lifts
+        lc_search_zero(LC_BACK_LIFT);
+
         // Setup Beacon's motor
         motorSetMaxPWM(MOTOR2, 1080);
         enableMotor(MOTOR2);
-        // Common parameters
-        params.encoder_gain = 2.0*M_PI/588.0;
-        params.G0 = 0.0035;
-        params.tau = 0.025;
-        params.k[0] = -10216;
-        params.k[1] = -255.39;
-        params.l = -params.k[0];
-        params.l0[0] = 0.0091;
-        params.l0[1] = 1.6361;
-        params.T = 0.005;
-        // Initialize forward lift
-        params.motor = MOTOR4;
-        params.encoder = ENCODER4;
-        //mc_new_controller(&params, tc_get_position_generator(0), CONTROLLER_MODE_NORMAL);
-        // Initialize backward lift
-        params.motor = MOTOR3;
-        params.encoder = ENCODER3;
-        //mc_new_controller(&params, tc_get_position_generator(1), CONTROLLER_MODE_NORMAL);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
@@ -87,22 +69,16 @@ static void init(void)
 static void NORETURN ind_process(void)
 {
   while(1) {
-    LED4_ON();
-    tc_goto(0, 50/23.475, M_PI, 5);
-    while(tc_is_working(TC_MASK(0)))
+    LED1_ON();
+    lc_goto_position(LC_BACK_LIFT, 150);
+    while(tc_is_working(TC_MASK(LC_TC_BACK)))
       timer_delay(100);
-    timer_delay(500);
-    LED4_OFF();
-    tc_goto(0, -50/23.475, M_PI, 5);
-    while(tc_is_working(TC_MASK(0)))
+    timer_delay(1000);
+    LED1_OFF();
+    lc_goto_position(LC_BACK_LIFT, 0);
+    while(tc_is_working(TC_MASK(LC_TC_BACK)))
       timer_delay(100);
-    timer_delay(500);
-
-    /*if (dd_get_ghost_state(NULL, NULL) == DD_GHOST_MOVING) {
-      LED1_ON();
-    } else {
-      LED1_OFF();
-      }*/
+    timer_delay(1000);
   }
 }
 
@@ -111,10 +87,9 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-        //proc_new(ind_process, NULL, sizeof(stack_ind), stack_ind);
+        proc_new(ind_process, NULL, sizeof(stack_ind), stack_ind);
 
         // Tests
-        //motorSetSpeed(MOTOR4, 400);
         motorSetSpeed(MOTOR2, 1000);
 
 	/*

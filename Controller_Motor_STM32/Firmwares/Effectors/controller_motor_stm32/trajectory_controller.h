@@ -61,6 +61,13 @@ command_generator_t* tc_get_position_generator(uint8_t cntr_index);
  */
 command_generator_t* tc_get_speed_generator(uint8_t cntr_index);
 
+/* Moves to a given angle
+ *  - angle : angle to move to. The units corresponds to the given scaling factor
+ *            during initialization.
+ *  - speed : moving speed (in units per second) should be positive.
+ *  - acceleration : in units per second per second, should be positive.
+ */
+void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration);
 
 /* Moves of a given angle
  *  - angle : angle to move of, can be positive (forward) or negative
@@ -69,7 +76,7 @@ command_generator_t* tc_get_speed_generator(uint8_t cntr_index);
  *  - speed : moving speed (in units per second) should be positive.
  *  - acceleration : in units per second per second, should be positive.
  */
-void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration);
+void tc_move(uint8_t cntr_index, float angle, float speed, float acceleration);
 
 /* Accelerates or brakes the robot to the given speed
  *
@@ -81,22 +88,9 @@ void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration);
  */
 void tc_set_speed(uint8_t cntr_index, float speed);
 
-/* Moves along a line
- *  - robot : pointer to a structure describing the robot configuration
- *  - distance : distance to move of (in meters), can be positive (forward)
- *                or negative (backward).
- *  - speed : moving speed (in meters per second) should be positive.
- *  - acceleration : in meters per second per second, should be positive.
+/*
+ * Stops the current movement by keeping the current value
  */
-void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration);
-
-/* Turns around the propulsion shaft center
- *  - robot : pointer to a structure describing the robot configuration
- *  - angle : angle to turn of (in degrees), can be positive (CCW)
- *                or negative (CW).
- *  - speed : turning speed (in degrees per second) should be positive.
- *  - acceleration : in degrees per second per second, should be positive.
- */
-void tc_turn(tc_robot_t *robot, float angle, float speed, float acceleration);
+void tc_stop(uint8_t cntr_index);
 
 #endif /* __TRAJECTORY_CONTROLLER_H */

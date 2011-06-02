@@ -252,14 +252,14 @@ command_generator_t* dd_get_right_wheel_generator(void) {
 void dd_move(float distance, float speed, float acceleration) {
   if (params.enabled) {
     params.last_lin_acceleration = acceleration;
-    tc_goto(DD_LINEAR_SPEED_TC, distance, speed, params.last_lin_acceleration);
+    tc_move(DD_LINEAR_SPEED_TC, distance, speed, params.last_lin_acceleration);
   }
 }
 
 void dd_turn(float angle, float speed, float acceleration) {
   if (params.enabled) {
     params.last_rot_acceleration = acceleration;
-    tc_goto(DD_ROTATIONAL_SPEED_TC, angle, speed, params.last_rot_acceleration);
+    tc_move(DD_ROTATIONAL_SPEED_TC, angle, speed, params.last_rot_acceleration);
   }
 }
 

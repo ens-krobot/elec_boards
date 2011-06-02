@@ -45,13 +45,7 @@ void canMonitorInit(void) {
 
 static void NORETURN canMonitor_process(void) {
   encoder_can_msg_t msg_enc;
-  motor_can_msg_t msg_mot;
-  odometry_can_msg_t msg_odo;
-  ghost_can_msg_t msg_ghost;
-  status_can_msg_t status_msg;
   can_tx_frame txm;
-  robot_state_t odometry;
-  float u;
   Timer timer_can;
 
   // Initialize constant parameters of TX frame
@@ -77,63 +71,6 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_ENCODERS34;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
-    // Sending odometry data if not in HIL mode or motor commands if in HIL mode
-    /*if (mode != ROBOT_MODE_HIL) {
-      odo_getState(&odometry);
-      msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
-      msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
-      odometry.theta = fmodf(odometry.theta, 2*M_PI);
-      if (odometry.theta > M_PI)
-        odometry.theta -= 2*M_PI;
-      if (odometry.theta < -M_PI)
-        odometry.theta += 2*M_PI;
-      msg_odo.data.theta = (int16_t)(odometry.theta * 10000.0);
-
-      txm.data32[0] = msg_odo.data32[0];
-      txm.data32[1] = msg_odo.data32[1];
-      txm.eid = CAN_MSG_ODOMETRY;
-      can_transmit(CAND1, &txm, ms_to_ticks(10));
-    } else {
-      // Sending MOTOR3 data
-      msg_mot.data.position = mc_getPosition(MOTOR3);
-      msg_mot.data.speed = mc_getSpeed(MOTOR3);
-
-      txm.data32[0] = msg_mot.data32[0];
-      txm.data32[1] = msg_mot.data32[1];
-      txm.eid = CAN_MSG_MOTOR3;
-      can_transmit(CAND1, &txm, ms_to_ticks(10));
-
-      // Sending MOTOR4 data
-      msg_mot.data.position = mc_getPosition(MOTOR4);
-      msg_mot.data.speed = mc_getSpeed(MOTOR4);
-
-      txm.data32[0] = msg_mot.data32[0];
-      txm.data32[1] = msg_mot.data32[1];
-      txm.eid = CAN_MSG_MOTOR4;
-      can_transmit(CAND1, &txm, ms_to_ticks(10));
-      }
-
-    // Wait before sending the other packets
-    timer_waitEvent(&timer_can);
-    timer_add(&timer_can);*/
-
-    // Sending ghost state
-    /*msg_ghost.data.state = dd_get_ghost_state(&odometry, &u);
-    msg_ghost.data.x = (int16_t)(odometry.x * 1000.0);
-    msg_ghost.data.y = (int16_t)(odometry.y * 1000.0);
-    msg_ghost.data.theta = (int16_t)(odometry.theta * 10000.0);
-    msg_ghost.data.u = (uint8_t)(u * 255);
-    txm.data32[0] = msg_ghost.data32[0];
-    txm.data32[1] = msg_ghost.data32[1];
-    txm.eid = CAN_MSG_GHOST;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));
-
-    status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
-    txm.data32[0] = status_msg.data32[0];
-    txm.data32[1] = status_msg.data32[1];
-    txm.eid = CAN_MSG_STATUS;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));*/
-
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
   }
@@ -144,14 +81,11 @@ static void NORETURN canMonitorListen_process(void) {
     can_rx_frame frame;
     bool received = false;
     can_tx_frame txm;
-    robot_state_t odometry;
+    uint8_t end_stops;
 
-    move_can_msg_t move_msg;
-    turn_can_msg_t turn_msg;
-    odometry_can_msg_t odometry_msg;
-    stop_can_msg_t stop_msg;
-    controller_mode_can_msg_t controller_mode_msg;
-    bezier_can_msg_t bezier_msg;
+    //controller_mode_can_msg_t controller_mode_msg;
+
+    switch_status end_courses_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -171,50 +105,7 @@ static void NORETURN canMonitorListen_process(void) {
         } else {
           // Handle commands and other informations
           switch (frame.eid) {
-          case CAN_MSG_MOVE:
-            move_msg.data32[0] = frame.data32[0];
-            move_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
-              dd_move(move_msg.data.distance / 1000.0, move_msg.data.speed / 1000.0, move_msg.data.acceleration / 1000.0);
-            break;
-          case CAN_MSG_TURN:
-            turn_msg.data32[0] = frame.data32[0];
-            turn_msg.data32[1] = frame.data32[1];
-            if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
-              dd_turn(turn_msg.data.angle / 10000.0, turn_msg.data.speed / 1000.0, turn_msg.data.acceleration / 1000.0);
-            break;
-          case CAN_MSG_BEZIER_ADD:
-            bezier_msg.data32[0] = frame.data32[0];
-            bezier_msg.data32[1] = frame.data32[1];
-            dd_add_bezier(bezier_msg.data.x_end/1000.0, bezier_msg.data.y_end/1000.0,
-                          bezier_msg.data.d1/100.0, bezier_msg.data.d2/100.0,
-                          bezier_msg.data.theta_end/100.0, bezier_msg.data.v_end/1000.0);
-            break;
-          case CAN_MSG_STOP:
-            stop_msg.data32[0] = frame.data32[0];
-            stop_msg.data32[1] = frame.data32[1];
-            dd_interrupt_trajectory(stop_msg.data.rot_acc, stop_msg.data.lin_acc);
-            break;
-          case CAN_MSG_ODOMETRY_SET:
-            odometry_msg.data32[0] = frame.data32[0];
-            odometry_msg.data32[1] = frame.data32[1];
-            odometry.x = ((float)odometry_msg.data.x) / 1000.0;
-            odometry.y = ((float)odometry_msg.data.y) / 1000.0;
-            odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
-            odo_setState(&odometry);
-            break;
-          case CAN_MSG_ODOMETRY:
-            // We should only receive such message in HIL mode
-            if (mode == ROBOT_MODE_HIL) {
-              odometry_msg.data32[0] = frame.data32[0];
-              odometry_msg.data32[1] = frame.data32[1];
-              odometry.x = ((float)odometry_msg.data.x) / 1000.0;
-              odometry.y = ((float)odometry_msg.data.y) / 1000.0;
-              odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
-              odo_setState(&odometry);
-            }
-            break;
-          case CAN_MSG_CONTROLLER_MODE:
+        /*case CAN_MSG_CONTROLLER_MODE:
             controller_mode_msg.data32[0] = frame.data32[0];
             controller_mode_msg.data32[1] = frame.data32[0];
             if (controller_mode_msg.data.mode == 1) {
@@ -228,7 +119,22 @@ static void NORETURN canMonitorListen_process(void) {
               odo_restart();
               mode = ROBOT_MODE_NORMAL;
             }
-            break;
+            break;*/
+          case CAN_SWITCH_STATUS_1:
+            end_courses_msg.d[0] = frame.data32[0];
+            end_courses_msg.d[1] = frame.data32[1];
+            end_stops = 0;
+            if (!end_courses_msg.p.sw3)
+              end_stops |= LC_BACK_BOTTOM;
+            if (!end_courses_msg.p.sw4)
+              end_stops |= LC_BACK_UP;
+            lc_end_stop_reached(end_stops);
+            if (end_courses_msg.p.sw1) {
+              lc_release();
+              motorSetSpeed(MOTOR2,0);
+            }
+            //bas = sw3 -> false quand actionné;
+            //haut = sw4;
           }
         }
       }

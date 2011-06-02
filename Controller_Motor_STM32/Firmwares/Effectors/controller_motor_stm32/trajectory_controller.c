@@ -214,6 +214,23 @@ command_generator_t* tc_get_speed_generator(uint8_t cntr_index) {
 }
 
 void tc_goto(uint8_t cntr_index, float angle, float speed, float acceleration) {
+  trajectory_controller_t *cont;
+
+  // Verify parameters
+  if (angle == 0 || speed <= 0 || acceleration <= 0)
+    return;
+
+  // Get the controller and verifies it is enabled
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+  cont = &controllers[cntr_index];
+  if (!cont->enabled)
+    return;
+
+  tc_move(cntr_index, angle - get_output_value(&cont->position), speed, acceleration);
+}
+
+void tc_move(uint8_t cntr_index, float angle, float speed, float acceleration) {
   float acc_dist, t_acc, t_end;
   trajectory_controller_t *cont;
 
@@ -321,46 +338,26 @@ void tc_set_speed(uint8_t cntr_index, float speed) {
   cont->working = 0;
 }
 
+void tc_stop(uint8_t cntr_index) {
+  trajectory_controller_t *cont;
 
+  // Get the controller and verifies it is enabled
+  if (cntr_index >= NUM_TC_MAX)
+    return;
+  cont = &controllers[cntr_index];
+  if (!cont->enabled)
+    return;
 
-void tc_move(tc_robot_t *robot, float distance, float speed, float acceleration) {
-  float dis_s, spe_s, acc_s;
+  // Disable a possibly running profile
+  cont->aut.state = TRAPEZOID_STATE_STOP;
+  remove_callback(&cont->position);
+  remove_callback(&cont->speed);
 
-  // Let's pause the wheel's speed generators to synchronize movement start
-  pause_generator(&controllers[robot->left_wheel].speed);
-  pause_generator(&controllers[robot->right_wheel].speed);
+  // Stop generator evolution
+  adjust_speed(&cont->speed, 0.);
+  adjust_value(&cont->speed, 0.);
 
-  // Compute parameters
-  dis_s = distance / robot->wheel_radius;
-  spe_s = speed / robot->wheel_radius;
-  acc_s = acceleration / robot->wheel_radius;
-
-  // Planify movements
-  tc_goto(robot->left_wheel, dis_s, spe_s, acc_s);
-  tc_goto(robot->right_wheel, dis_s, spe_s, acc_s);
-
-  // Go
-  start_generator(&controllers[robot->left_wheel].speed);
-  start_generator(&controllers[robot->right_wheel].speed);
+  // Trajectory controller is not working anylonger
+  cont->working = 0;
 }
 
-void tc_turn(tc_robot_t *robot, float angle, float speed, float acceleration) {
-  float angle_s, spe_s, acc_s;
-
-  // Let's pause the wheel's speed generators to synchronize movement start
-  pause_generator(&controllers[robot->left_wheel].speed);
-  pause_generator(&controllers[robot->right_wheel].speed);
-
-  // Compute parameters
-  angle_s = angle * robot->shaft_width / 2.0 / robot->wheel_radius;
-  spe_s = speed * robot->shaft_width / 2.0 / robot->wheel_radius;
-  acc_s = acceleration * robot->shaft_width / 2.0 / robot->wheel_radius;
-
-  // Planify movements
-  tc_goto(robot->left_wheel, -angle_s, spe_s, acc_s);
-  tc_goto(robot->right_wheel, angle_s, spe_s, acc_s);
-
-  // Go
-  start_generator(&controllers[robot->left_wheel].speed);
-  start_generator(&controllers[robot->right_wheel].speed);
-}

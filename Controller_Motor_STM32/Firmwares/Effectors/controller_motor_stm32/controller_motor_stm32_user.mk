@@ -20,6 +20,7 @@ controller_motor_stm32_USER_CSRC = \
 	$(controller_motor_stm32_SRC_PATH)/bezier_utils.c \
 	$(controller_motor_stm32_SRC_PATH)/differential_drive.c \
 	$(controller_motor_stm32_SRC_PATH)/can_monitor.c \
+	$(controller_motor_stm32_SRC_PATH)/lift_controller.c \
 	$(controller_motor_stm32_SRC_PATH)/main.c \
 	#
 
