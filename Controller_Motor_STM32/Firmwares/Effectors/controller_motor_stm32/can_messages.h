@@ -32,6 +32,7 @@
 #define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_can_msg_t
 #define CAN_MSG_BEZIER_ADD 206 // bezier_can_msg_t
 
+#define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
    +-----------------------------------------------------------------+ */
@@ -107,6 +108,11 @@ typedef struct {
   uint8_t mode;
 } controller_mode_msg_t;
 
+// Lift command position, a value is ignored if < 0
+typedef struct {
+  float front_lift __attribute__((__packed__));
+  float back_lift  __attribute__((__packed__));
+} lift_cmd_msg_t;
 
 /* +-----------------------------------------------------------------+
    | CAN messages unions for data representation                     |
@@ -162,5 +168,9 @@ typedef union {
   uint32_t data32[2];
 } controller_mode_can_msg_t;
 
+typedef union {
+  lift_cmd_msg_t data;
+  uint32_t data32[2];
+} lift_cmd_can_msg_t;
 
 #endif /* __CAN_MESSAGES_H */

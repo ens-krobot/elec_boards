@@ -86,6 +86,7 @@ static void NORETURN canMonitorListen_process(void) {
     //controller_mode_can_msg_t controller_mode_msg;
 
     switch_status end_courses_msg;
+    lift_cmd_can_msg_t lift_cmd_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -129,12 +130,18 @@ static void NORETURN canMonitorListen_process(void) {
             if (!end_courses_msg.p.sw4)
               end_stops |= LC_BACK_UP;
             lc_end_stop_reached(end_stops);
-            if (end_courses_msg.p.sw1) {
-              lc_release();
-              motorSetSpeed(MOTOR2,0);
-            }
-            //bas = sw3 -> false quand actionné;
-            //haut = sw4;
+            //if (end_courses_msg.p.sw1) {
+            //  lc_release();
+            //  motorSetSpeed(MOTOR2,0);
+            break;
+          case CAN_MSG_LIFT_CMD:
+            lift_cmd_msg.data32[0] = frame.data32[0];
+            lift_cmd_msg.data32[1] = frame.data32[1];
+            if (lift_cmd_msg.data.front_lift >= 0)
+              lc_goto_position(LC_FRONT_LIFT, lift_cmd_msg.data.front_lift);
+            if (lift_cmd_msg.data.back_lift >= 0)
+              lc_goto_position(LC_BACK_LIFT, lift_cmd_msg.data.back_lift);
+            break;
           }
         }
       }

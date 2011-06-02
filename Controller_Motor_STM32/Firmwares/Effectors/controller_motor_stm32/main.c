@@ -46,6 +46,9 @@ static void init(void)
 
         // Init lifts
         lc_homing(LC_BACK_LIFT);
+        lc_goto_position(LC_BACK_LIFT, 0.5);
+        while(tc_is_working(TC_MASK(LC_TC_BACK)))
+          timer_delay(100);
 
         // Setup Beacon's motor
         motorSetMaxPWM(MOTOR2, 1080);
@@ -87,7 +90,7 @@ int main(void)
 	init();
 
 	/* Create a new child process */
-        proc_new(ind_process, NULL, sizeof(stack_ind), stack_ind);
+        //proc_new(ind_process, NULL, sizeof(stack_ind), stack_ind);
 
         // Tests
         motorSetSpeed(MOTOR2, 1000);
