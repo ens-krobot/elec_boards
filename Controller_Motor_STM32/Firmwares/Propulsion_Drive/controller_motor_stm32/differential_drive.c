@@ -87,6 +87,8 @@ static void NORETURN traj_following_process(void) {
           params.working = 0;
           traj->initialized = 0;
           traj->enabled = 0;
+          if (params.u > 1.0)
+            params.u = 1.0;
           if (!params.trajs[next_traj].initialized) {
             // We have no other trajectory to follow, let's brake
             dd_set_rotational_speed(0., params.at_max);
