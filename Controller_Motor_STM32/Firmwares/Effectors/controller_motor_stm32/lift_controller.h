@@ -22,6 +22,9 @@
 #define LC_BACK_UP      4
 #define LC_BACK_BOTTOM  8
 
+#define LC_UP     1
+#define LC_BOTTOM 2
+
 #define LC_POSITION_BOTTOM 1
 #define LC_POSITION_MIDDLE 2
 #define LC_POSITION_UP     4
@@ -31,7 +34,7 @@
 
 void lc_init(void);
 void lc_end_stop_reached(uint8_t end_stops);
-void lc_search_zero(uint8_t lift);
+void lc_homing(uint8_t lift);
 void lc_goto_position(uint8_t lift, float position);
 void lc_release(void);
 

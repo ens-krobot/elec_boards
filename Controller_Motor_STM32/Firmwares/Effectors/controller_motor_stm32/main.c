@@ -45,7 +45,7 @@ static void init(void)
         lc_init();
 
         // Init lifts
-        lc_search_zero(LC_BACK_LIFT);
+        lc_homing(LC_BACK_LIFT);
 
         // Setup Beacon's motor
         motorSetMaxPWM(MOTOR2, 1080);
@@ -70,7 +70,7 @@ static void NORETURN ind_process(void)
 {
   while(1) {
     LED1_ON();
-    lc_goto_position(LC_BACK_LIFT, 150);
+    lc_goto_position(LC_BACK_LIFT, 1.);
     while(tc_is_working(TC_MASK(LC_TC_BACK)))
       timer_delay(100);
     timer_delay(1000);
