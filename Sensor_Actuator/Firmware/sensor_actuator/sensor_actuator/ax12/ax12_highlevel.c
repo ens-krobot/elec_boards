@@ -34,11 +34,11 @@ static int queued_response_read = 0;
 static int queued_response_write = 0;
 
 
-PROC_DEFINE_STACK(ax12_stack, KERN_MINSTACKSIZE * 4);
+PROC_DEFINE_STACK(ax12_stack, KERN_MINSTACKSIZE * 16);
 static void NORETURN ax12_process(void);
 
 void ax12_highlevel_init(void) {
-    serial_init(500000);
+    serial_init(KROBOT_AX12_BAUDRATE);
     proc_new(ax12_process, NULL, sizeof(ax12_stack), ax12_stack);
 }
 
@@ -106,6 +106,8 @@ static void NORETURN ax12_process(void) {
 
     struct ax12_hl_command *read = NULL;
 
+    int res;
+
     for (;;) {
         while (queued_command_read == queued_command_write)
             cpu_relax();
@@ -113,9 +115,6 @@ static void NORETURN ax12_process(void) {
         read = queued_commands + (queued_command_read % N_QUEUED);
 
         switch (read->command) {
-          case AX12_HL_RESET:
-            ax12_reset(read->address);
-            break;
           case AX12_HL_GET_STATE:
             ax12_get_state_hl(read->address);
             break;

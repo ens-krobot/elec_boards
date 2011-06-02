@@ -103,7 +103,7 @@ int ax12_read(ax12_st_packet *pkt) {
     read_state state = ST_START1;
     uint8_t args_ctr = 0;
 
-    int chr;
+    int chr = -1;
 
     uint8_t length;
 
@@ -172,92 +172,4 @@ int ax12_read(ax12_st_packet *pkt) {
     }
 
     return ret;
-}
-
-/*
- * Plausible AX12 baudrates. first is default
- */
-static int ax12_baudrates[] = {
-    1000000,
-    500000,
-    115200,
-    9600,
-};
-
-/*
- * Reset an AX12 to the given new_id
- *
- * This is an unsafe operation, bruteforcing the baud rates until it gets an answer.
- *
- * Returns :
- *   - 0 on success;
- *   - -1 on failure to reset any ax12
- */
-int ax12_reset(uint8_t new_id) {
-
-    unsigned int i;
-
-    ax12_cmd_packet reset_packet, ping_packet, baudrate_packet, setid_packet;
-    uint8_t setid_args[2];
-    uint8_t baudrate_args[1];
-
-    ax12_st_packet st_packet;
-    uint8_t st_args[256] = {0};
-
-    reset_packet.address = AX12_BROADCAST;
-    reset_packet.command = AX12_CMD_RESET;
-    reset_packet.length = 0;
-
-    ping_packet.address = 0x01;
-    ping_packet.command = AX12_CMD_PING;
-    ping_packet.length = 0;
-
-    baudrate_args[0] = AX12_BAUDRATE;
-    // 500000 bauds.
-    baudrate_args[1] = 3;
-
-    baudrate_packet.address = 0x01;
-    baudrate_packet.command = AX12_CMD_WRITE_DATA;
-    baudrate_packet.length = 2;
-    baudrate_packet.args = baudrate_args;
-
-    setid_args[0] = AX12_ID;
-    setid_args[1] = new_id;
-
-    setid_packet.address = 0x01;
-    setid_packet.command = AX12_CMD_WRITE_DATA;
-    setid_packet.length = 2;
-    setid_packet.args = setid_args;
-
-    st_packet.args = st_args;
-
-    for (i = 0; i < sizeof(ax12_baudrates)/sizeof(ax12_baudrates[0]); i++) {
-
-        // Write the reset packet
-        serial_deinit();
-        serial_init(ax12_baudrates[i]);
-
-        ax12_write(&reset_packet);
-
-        // Ping the AX12
-        serial_deinit();
-        serial_init(ax12_baudrates[0]);
-
-        timer_delay(500);
-        ax12_write(&ping_packet);
-
-        if (!ax12_read(&st_packet)) {
-            ax12_write(&baudrate_packet);
-            serial_deinit();
-            serial_init(500000);
-            ax12_write(&setid_packet);
-            if (!ax12_read(&st_packet)) {
-                return 0;
-            } else {
-                return -1;
-            }
-        }
-    }
-
-    return -1;
 }

@@ -25,7 +25,7 @@
 
 #define RX_BUF_SIZE 4096
 
-#define MY_USART USART1_BASE
+#define MY_USART USART3_BASE
 
 static char receive_buffer[RX_BUF_SIZE];
 static uint64_t read;
@@ -51,11 +51,14 @@ struct stm32_usart *serial_init(unsigned long baudrate) {
     write = 0;
 
     // Enable clocks
-    RCC->APB2ENR |= RCC_APB2_AFIO | RCC_APB2_GPIOA | RCC_APB2_USART1;
+    RCC->APB1ENR |= RCC_APB1_USART3;
+    RCC->APB2ENR |= RCC_APB2_AFIO | RCC_APB2_GPIOC;
+
+    stm32_gpioRemap(GPIO_PARTIALREMAP_USART3, GPIO_REMAP_ENABLE);
 
     // Enable pins
     // TX output open drain
-    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE, BV(9),
+    stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE, BV(10),
                         GPIO_MODE_AF_OD, GPIO_SPEED_50MHZ);
 
     // Clear registers
@@ -73,7 +76,7 @@ struct stm32_usart *serial_init(unsigned long baudrate) {
     base->CR1 |= BV(CR1_TE) | BV(CR1_RE);
 
     // Enable the RX interrupt
-    sysirq_setHandler(USART1_IRQHANDLER, uart_irq_handler);
+    sysirq_setHandler(USART3_IRQHANDLER, uart_irq_handler);
 
     base->CR1 |= BV(CR1_RXNEIE);
 
@@ -91,18 +94,16 @@ void serial_deinit(void) {
 
     base->CR1 &= ~BV(CR1_RXNEIE);
 
-    sysirq_freeHandler(USART1_IRQHANDLER);
+    sysirq_freeHandler(USART3_IRQHANDLER);
 
     // Finish him.
     base->CR1 &= ~BV(CR1_UE);
 
-    RCC->APB2ENR &= ~RCC_APB2_USART1;
+    RCC->APB1ENR &= ~RCC_APB1_USART3;
 }
 
 int serial_getchar(void) {
     ticks_t start = timer_clock();
-
-    kprintf("%u %u\n", (unsigned int)read, (unsigned int)write);
 
     for (;;) {
         if (read == write) {

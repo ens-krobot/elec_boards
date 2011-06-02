@@ -36,7 +36,6 @@
 
 struct ax12_hl_command {
     enum {
-        AX12_HL_RESET,
         AX12_HL_GET_STATE,
         AX12_HL_GOTO,
     } command;

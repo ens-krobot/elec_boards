@@ -37,13 +37,12 @@ static uint32_t beacon_pos = 0;
 PROC_DEFINE_STACK(stack_update, KERN_MINSTACKSIZE * 4);
 
 static float calibration_data[10][2] = {
-    {0.20, 300.},
-    {0.15, 470.},
-    {0.11, 700.},
-    {0.095, 810.},
-    {0.087, 970.},
-    {0.050, 1200.},
-    {0.0, 3000.},
+    {0.00004, 200.},
+    {0.00003, 300.},
+    {0.000025, 400.},
+    {0.000019, 450.},
+    {0.0000012, 500.},
+    {0.0, 600.},
 };
 
 static DECLARE_ISR(tim1_cc_irq) {
@@ -110,12 +109,12 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
 
     float ang, angn, dis, disn;
 
-    float distance_smooth[N_SMOOTH];
-    float angle_smooth[N_SMOOTH];
+    static float distance_smooth[N_SMOOTH] = {0};
+    static float angle_smooth[N_SMOOTH] = {0};
 
     int i;
-    int n = 0;
-    int index;
+    static int n = 0;
+    static int index = 0;
 
     angle = 0.0;
     distance = 0.0;
@@ -124,7 +123,6 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
         return -1;
 
     angle_smooth[n % N_SMOOTH] = (beacon_pos * 2.0 * M_PI) / (period * 1.0);
-    //angle = (beacon_pos * 2.0 * M_PI) / (period * 1.0);
     angular_width = (beacon_width * 2.0 * M_PI) / (period * 1.0);
 
     t_period = period * PRESCALER_VALUE / (CPU_FREQ * 1.0);
@@ -136,8 +134,7 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
                 ang = calibration_data[i][0];
                 dis = calibration_data[i][1];
                 disn = calibration_data[i+1][1];
-                distance_smooth[n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
-                //distance = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
+                distance = distance_smooth[n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
                 break;
             }
         }
@@ -149,17 +146,21 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
         angle /= index;
         distance /= index;
         n++;
+        index = (index == N_SMOOTH) ? N_SMOOTH : index+1;
     } else {
         n = 0;
     }
 
+    //distance = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
+
+
     pos->p.angle = (uint16_t)(angle * 10000.);
-    pos->p.distance = (uint16_t)distance;
+    pos->p.distance = (angle != 0.0)?500:0;
     pos->p.period = (uint16_t)(t_period * 10000.);
 
-    pos_ll->p.angle = angle == 0.0 ? 0 : (uint16_t)(angle_smooth[(n-1) % N_SMOOTH] * 10000.);
-    pos_ll->p.width = (uint16_t)(angle * 100000.);
-    pos_ll->p.period = period;
+    pos_ll->p.angle = (uint16_t)(beacon_width);
+    pos_ll->p.width = (uint16_t)(angular_width * 10000.);
+    pos_ll->p.period = index_width;
 
     return 0;
 }
@@ -188,7 +189,7 @@ void beacon_init(void) {
     // PWM input on TIM1_CH1
     TIM_ICStructInit(&TIM_ICInitStructure);
     TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
-    TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Falling;
+    TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;
     TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI;
     TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;
     TIM_ICInitStructure.TIM_ICFilter = 10;

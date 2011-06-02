@@ -29,6 +29,8 @@
 
 #include "serial.h"
 
+#define KROBOT_AX12_BAUDRATE 115200
+
 /**
  * AX12 Commands
  */

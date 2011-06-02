@@ -187,13 +187,6 @@ static void NORETURN can_receiver_process(void) {
                 ax12_queue_command(&hlc);
             } while (0);
             break;
-          case CAN_AX12_RESET:
-            do {
-                struct ax12_hl_command hlc;
-                hlc.command = AX12_HL_RESET;
-                ax12_queue_command(&hlc);
-            } while (0);
-            break;
           default:
             break;
         }
