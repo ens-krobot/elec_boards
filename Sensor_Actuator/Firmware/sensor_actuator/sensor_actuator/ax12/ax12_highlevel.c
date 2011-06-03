@@ -104,14 +104,14 @@ static void ax12_get_state_hl(uint8_t address) {
 
 static void ax12_set_torque_enable_hl(uint8_t address, uint8_t enable) {
     ax12_cmd_packet pkt;
-    uint8_t args[3];
+    uint8_t args[2];
 
     pkt.address = address;
     pkt.command = AX12_CMD_WRITE_DATA;
     pkt.length = 2;
     pkt.args = args;
     pkt.args[0] = AX12_TORQUE_ENABLE;
-    pkt.args[1] = enable == 0 ? 0 : 1;
+    pkt.args[1] = (enable == 0) ? 0 : 1;
 
     ax12_write(&pkt);
     ax12_read(NULL);
@@ -135,7 +135,7 @@ static void NORETURN ax12_process(void) {
           case AX12_HL_GOTO:
             ax12_goto_hl(read->address, read->args[0], read->args[1]);
             break;
-          case AX12_SET_TORQUE_ENABLE:
+          case AX12_HL_SET_TORQUE_ENABLE:
             ax12_set_torque_enable_hl(read->address, read->args[0]);
             break;
         }
