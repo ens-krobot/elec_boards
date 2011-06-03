@@ -38,6 +38,7 @@ struct ax12_hl_command {
     enum {
         AX12_HL_GET_STATE,
         AX12_HL_GOTO,
+        AX12_SET_TORQUE_ENABLE,
     } command;
     uint8_t address;
     uint16_t args[2];

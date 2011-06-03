@@ -187,6 +187,16 @@ static void NORETURN can_receiver_process(void) {
                 ax12_queue_command(&hlc);
             } while (0);
             break;
+          case CAN_AX12_SET_TORQUE_ENABLE:
+            do {
+                struct ax12_hl_command hlc;
+                GET_PACKET(ax12_set_torque_enable, ax12_ste, f);
+                hlc.command = AX12_HL_GOTO;
+                hlc.address = ax12_ste.p.address;
+                hlc.args[0] = ax12_ste.p.enable;
+                ax12_queue_command(&hlc);
+            } while (0);
+            break;
           default:
             break;
         }

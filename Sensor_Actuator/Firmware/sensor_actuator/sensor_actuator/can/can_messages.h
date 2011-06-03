@@ -56,7 +56,8 @@
 #define CAN_AX12_STATE 341               // ax12_state
 #define CAN_AX12_REQUEST_STATE 342       // ax12_request_state
 #define CAN_AX12_GOTO 343                // ax12_goto
-#define CAN_AX12_RESET 344               // no struct
+//#define CAN_AX12_RESET 344             // Not used anymore
+#define CAN_AX12_SET_TORQUE_ENABLE 345   // ax12_set_torque_enable
 
 /****************************************************************************/
 
@@ -154,6 +155,10 @@ struct ax12_goto_pkt {
     uint16_t speed;
 } __attribute__((packed));
 
+struct ax12_set_torque_enable_pkt {
+    uint8_t address;
+    uint8_t enable;
+};
 
 /****************************************************************************/
 
@@ -210,5 +215,10 @@ typedef union {
     struct ax12_goto_pkt p;
     uint32_t d[2];
 } ax12_goto;
+
+typedef union {
+    struct ax12_set_torque_enable_pkt p;
+    uint32_t d[2];
+} ax12_set_torque_enable;
 
 #endif
