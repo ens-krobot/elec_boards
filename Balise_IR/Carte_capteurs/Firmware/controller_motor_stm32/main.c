@@ -53,10 +53,10 @@ static void init(void)
 static void NORETURN ind_process(void)
 {
   while(1) {
-    LED1_ON();
-    timer_delay(500);
-    LED1_OFF();
-    timer_delay(500);
+    /*LED1_ON();
+    timer_delay(250);
+    LED1_OFF();*/
+    timer_delay(250);
   }
 }
 
