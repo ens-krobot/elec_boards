@@ -162,6 +162,7 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_ADC_VALUES_2:
           	adc2_msg.d[0] = frame.data32[0];
           	adc2_msg.d[1] = frame.data32[1];
+		//if you want to test SHARP sensors
           	//if(adc2_msg.p.val1>2000) LED2_ON();
           	//else LED2_OFF();
           break;
