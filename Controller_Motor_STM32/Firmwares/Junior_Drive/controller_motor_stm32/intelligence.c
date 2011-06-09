@@ -95,7 +95,7 @@ void makePath(void)  {
 			  //ouvrir_pinces();
 				holonome.busy=1;
 				holonome.asserPosition=0;
-				holonome.xmax = -2.5;
+				holonome.xmax = -1.5;
 				holonome.ymax = signe*0;
 				holonome.vitesse = 0.25;
 				holonome.acceleration=0.5;
@@ -105,7 +105,7 @@ void makePath(void)  {
 			case 1://recul
 				holonome.busy=1;
 				holonome.asserPosition=0;
-				holonome.xmax = -0.45;
+				holonome.xmax = 0;
 				holonome.ymax = signe*0;
 				holonome.vitesse = 0.25;
 				holonome.acceleration=0.5;
