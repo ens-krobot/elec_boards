@@ -172,7 +172,6 @@ void NORETURN emission_process(void)
   int i,j;
   unsigned short word[LENGTH_WORD]={1};
   unsigned short state=0;
-  int emission_time=EMISSION_TIME_HIGH;
   
   
   for(i=0;i<LENGTH_WORD;i++)  {
@@ -181,69 +180,30 @@ void NORETURN emission_process(void)
   }
   
   initLatch();
-
-//sélection de la diode de départ
-  writeCommande(0);
-
-  		writeSDI(1);
-		wait_clock(100);
-
-  		writeCLK(1);
-  		wait_clock(100);
-  		writeCLK(0);
-		wait_clock(100);
-
-  		writeLatch(1);
-  		wait_clock(100);
-  		writeLatch(0);
-  		wait_clock(100);
   		
   i=0;
   j=0;
   while(1) 
 	{
-	
-		if (state == 0) emission_time = EMISSION_TIME_HIGH;
-		if (state == 1) emission_time = EMISSION_TIME_LOW;
-
-		timer_setDelay(&timer_emission_process, us_to_ticks((utime_t)(emission_time)));
+		timer_setDelay(&timer_emission_process, us_to_ticks((utime_t)(EMISSION_PROCESS_TIME)));
 	  	timer_setEvent(&timer_emission_process);
 	  	timer_add(&timer_emission_process);// Start process timer
 
 		if (state == 0 && word[j] == 1) writeCommande(1);
 		else writeCommande(0);
 
-	      	if(state == 1)
-		{
+	    if(state == 1){
+			
 			state=0;
 			j++;
-			if(j==LENGTH_WORD)
-			{
+			if(j==LENGTH_WORD){
 				j=0;
-				i++;
-				if(i==NUM_LEDS) 
-				{
-					i=0;
-  					writeSDI(1);
-				}
-				else writeSDI(0);
-
-				wait_clock(100);
-			  	writeCLK(1);
-				wait_clock(100);
-			  	writeCLK(0);
-				wait_clock(100);
-
-				writeCommande(0);
-
-				wait_clock(100);
-				writeLatch(1);
-		  		wait_clock(100);
-		  		writeLatch(0);
-		  		wait_clock(100);
+				nextLed();
 			}
 		}
-		else state=1;
+		else {
+			state=1;
+		}
 
   	timer_waitEvent(&timer_emission_process); // Wait until the end of counting
   }
@@ -251,22 +211,18 @@ void NORETURN emission_process(void)
 
 void initLatch(void)  {
 	int i=0;
-	writeCommande(0);
+	// initialise the shift register
+	writeSDI(0);
+
 	for(i=0; i<NUM_LEDS;i++)  {
-  		writeSDI(0);
-  		
-		//wait_clock(100);
-
   		writeCLK(1);
-  		//wait_clock(100);
   		writeCLK(0);
-		//wait_clock(100);
-
-  		writeLatch(1);
-  		//wait_clock(100);
-  		writeLatch(0);
-  		//wait_clock(100);
 	}
+	// light all LEDs off
+	writeCommande(0);
+  	writeLatch(1);
+  	writeLatch(0);
+
 	return;
 }
 
@@ -278,6 +234,9 @@ void wait_clock(int nb_clk)
 
 void selectLed(int num_led)  {
   int i;
+  currentLED = num_led;
+  initLatch();
+
   writeSDI(1); // and we wait ...
   writeCLK(1); // on the rising edge  
   writeCLK(0);
@@ -287,6 +246,7 @@ void selectLed(int num_led)  {
     writeCLK(0);
     }
   // Finally, writting Latch
+  writeCommande(0);
   writeLatch(1);
   writeLatch(0);
   return;
@@ -303,6 +263,7 @@ void nextLed(void)  {
     writeCLK(1);
     writeCLK(0);
   }
+  writeCommande(0);
   writeLatch(1);
   writeLatch(0);
   currentLED++;
@@ -313,12 +274,14 @@ void nextLed(void)  {
 void selectDoubleLed(int num_first_led) {
   int selectLED;
   int i;
+
+  initLatch();
   selectLED = (num_first_led>=NUM_LEDS/2) ? num_first_led - NUM_LEDS/2 : num_first_led;
   writeSDI(1); // and we wait ...
   writeCLK(1); // on the rising edge  
   writeCLK(0);
   writeSDI(0);
-  for(i=0; i<NUM_LEDS;i++) { // and we go
+  for(i=0; i<NUM_LEDS/2-1;i++) { // and we go
     writeCLK(1);
     writeCLK(0);
     }
@@ -331,6 +294,7 @@ void selectDoubleLed(int num_first_led) {
     writeCLK(0);
     }
   // Finally, writting Latch
+  writeCommande(0);
   writeLatch(1);
   writeLatch(0);
   return;
