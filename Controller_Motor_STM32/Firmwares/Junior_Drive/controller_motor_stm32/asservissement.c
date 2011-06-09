@@ -630,9 +630,12 @@ void generateRampeRobotPlan()  {
 			
 			}
 		}
-		
+
+		// In the case of negative desiredT
 		W = signeT*W;
-		//Ajout des composantes de déviations
+
+		// If we want to correct our path
+		// Ajout des composantes de déviations
 	
 			xVirtuel = cos(theta)*holonome.Pprevious;
 			yVirtuel = sin(theta)*holonome.Pprevious; // dans la base de la table
@@ -646,206 +649,44 @@ void generateRampeRobotPlan()  {
 		w[2] = (-Vx*sqrt(3)/2+Vy/2)/R-W*L3/R;
 	
 	
-		
+		// Calculate new variation of rotation
 		for(i=0;i<3;i++)  {
-			Ti[i]=w[i]*T;
+		    Ti[i]=w[i]*T;
 		}
-			
-			
+		
+	
+		// Assign next value of position	
 		for(i=0;i<NUM_MOTORS-1;i++)
 			{
-				Ti[i]+= holonome.Tprevious[i];
-				holonome.Tprevious[i] = Ti[i];
+			    Ti[i]+= holonome.Tprevious[i];
+			    holonome.Tprevious[i] = Ti[i];
 			}
-	
+
+		// Convert rad position in impulsions
 		for(i=1;i<NUM_MOTORS;i++)
 			{
-				//Moteur i	
-					actualPosition = encoders_status[i].startPosition;
-					position = convertRadInImpulsions(Ti[i-1],i);
+			    //Moteur i	
+			    actualPosition = encoders_status[i].startPosition;
+			    position = convertRadInImpulsions(Ti[i-1],i);
 				
-					position+=actualPosition;
+			    position+=actualPosition;
 				
-					encoders_status[i].desiredPosition = position;
+			    encoders_status[i].desiredPosition = position;
 			}
 	}
-	else {
+	else { // We are avoiding obstacles
 		for(i=0;i<NUM_MOTORS-1;i++)
 			{
-				Ti[i]= holonome.Tprevious[i];
-				//holonome.Tprevious[i] = Ti[i];
+			    Ti[i]= holonome.Tprevious[i];
+			    holonome.Tprevious[i] = Ti[i];
 			}
 	
 		for(i=1;i<NUM_MOTORS;i++)
 			{
-				//Moteur i	
-
-					position = convertRadInImpulsions(Ti[i-1],i);
-				
-					encoders_status[i].desiredPosition = position;
+			    //Moteur i	
+			    position = convertRadInImpulsions(Ti[i-1],i);
+			    encoders_status[i].desiredPosition = position;
 			}
 	}
 	return;
 }
-
-/*
-void generateRampeRobotPlan()  {
-	int i,k;
-	//Def des variables nécessaires à la générations des rampes
-		float xmax, ymax,vmax,a;
-		float P,V;
-		float Vx, Vy, theta;
-		float Pvmax,tvmax,tmax;
-		float T = control_refresh/1000000.0; //Défintion de la période d'échantillonnage
-		float t; //Défini le temps discret
-		int N=0; //Nombre de points dans le vecteur de rampe
-		float t1, t2; //Temps pour les trapèzes
-		float desiredP;
-		float Xstart, Ystart;
-		float Ti[3]={0,0,0};
-		float w[3]={0,0,0};
-		
-	int64_t position;
-	int64_t actualPosition;
-	
-	k=holonome.asserPosition;
-	
-	
-	if(k==0) {
-		holonome.Xstart = holonome.X;
-		holonome.Ystart = holonome.Y;
-		holonome.Tstart = holonome.T;
-		xmax = holonome.xmax;
-		ymax = holonome.ymax;
-		
-		Xstart = holonome.Xstart;
-		Ystart = holonome.Ystart;
-		
-		if((ymax-Ystart)==0) {
-			if((xmax-Xstart)<0) holonome.theta=M_PI;
-			else holonome.theta=0;
-		}
-		else holonome.theta = 2*atan((ymax-Ystart)/((xmax-Xstart)+sqrt((xmax-Xstart)*(xmax-Xstart)+(ymax-Ystart)*(ymax-Ystart))));
-		
-		for(i=0; i<3;i++)  {
-			holonome.Tprevious[i]=0;
-		}
-		
-		
-		for(i=1;i<NUM_MOTORS;i++)
-			{
-				encoders_status[i].startPosition=encoders_status[i].globalCounter;
-			}
-	}
-	
-
-	//Récolte des données
-	xmax = holonome.xmax;
-	ymax = holonome.ymax;
-	vmax = holonome.vitesse;
-	a = holonome.acceleration;
-	Xstart = holonome.Xstart;
-	Ystart = holonome.Ystart;
-	theta = holonome.theta;
-	
-	desiredP=sqrt((xmax-Xstart)*(xmax-Xstart)+(ymax-Ystart)*(ymax-Ystart));
-	
-	//Choix du profil : triangulaire ou trapézoïdal
-	tvmax = vmax/a;
-	Pvmax = a*tvmax*tvmax;	
-	if(Pvmax>desiredP) {
-		//On génère un profil triangulaire
-		tmax = 2*sqrt(desiredP/a);
-		N=(int)(floorf(tmax/T))+1;
-		if(N*T < tmax) N+=1; //On oublie forcément le point final
-		//Définition des CI et CF
-		t=(float)(k)*T;
-		
-		if(t<=tmax/2)  {
-			//On est dans la première partie de la courbe
-			P=a/2*t*t;
-			V=a*t;
-		}
-		else  {
-			if(t<=tmax) {
-				//On est dans la deuxième partie de la coube
-				P=-a/2*t*t+a*tmax*t+a*(tmax/2)*(tmax/2)-a/2*tmax*tmax;
-				V=-a*t+a*tmax;
-			}
-			else {
-				P = desiredP;
-				V=0;
-				holonome.busy=0;
-			}
-		}
-	}
-	else  {
-		//On génère un profil trapézoïdal
-		t1=vmax/a;
-		tmax = desiredP/vmax+t1;
-		t2 = tmax - t1;
-		N =(int)(floorf(tmax/T))+1;
-		if(N*T < tmax) N+=1;
-		
-		t=k*T;
-		
-		if(t<=t1)  {
-			//On est dans la première partie de la courbe
-			P=a/2*t*t;
-			V=a*t;
-		}
-		else  {
-			if(t<=t2)  {
-				// On est dans la deuxième partie de la courbe
-				P=a/2*t1*t1+vmax*(t-t1);
-				V=vmax;
-			}
-			else  {
-				if(t<=tmax)  {
-					//On est dans la troisième partie de la coube
-					P=-a/2*t*t+a*tmax*(t-t2)+a/2*(t1*t1+t2*t2)+vmax*(t2-t1);
-					V=-a*t+a*tmax;
-				}
-				else  {
-					P = desiredP;
-					V=0;
-					holonome.busy=0;
-				}
-			}
-			
-		}
-	}	
-	
-	Vx = V*cos(theta);
-	Vy = V*sin(theta);
-	
-	
-	w[0] = (-Vy)/R;
-	w[1] = (Vx*sqrt(3)/2+Vy/2)/R;
-	w[2] = (-Vx*sqrt(3)/2+Vy/2)/R;
-	
-	
-		
-	for(i=0;i<3;i++)  {
-		Ti[i]=w[i]*T;
-	}
-			
-			
-	for(i=0;i<NUM_MOTORS-1;i++)
-		{
-			Ti[i]+= holonome.Tprevious[i];
-			holonome.Tprevious[i] = Ti[i];
-		}
-	
-	for(i=1;i<NUM_MOTORS;i++)
-		{
-			//Moteur i	
-				actualPosition = encoders_status[i].startPosition;
-				position = convertRadInImpulsions(Ti[i-1],i);
-				
-				position+=actualPosition;
-				
-				encoders_status[i].desiredPosition = position;
-		}
-	return;
-}*/
