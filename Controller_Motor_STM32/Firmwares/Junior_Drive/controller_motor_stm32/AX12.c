@@ -2,6 +2,7 @@
 
 
 void AX12Init()  {
+        timer_delay(1000);
 	ax1.address=(uint8_t) 1;
 	ax1.position=(uint16_t) DEFAULT_AX1_POSITION;
 	ax1.speed=(uint16_t) DEFAULT_SPEED;

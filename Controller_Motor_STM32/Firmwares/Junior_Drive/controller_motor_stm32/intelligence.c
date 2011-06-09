@@ -29,8 +29,8 @@ void intelligenceInit(void)  {
 	holonome.ymax=-0;
 	holonome.vYmax=0.3;
 	holonome.ay=0.15;
-	holonome.Tmax=M_PI;
-	holonome.vTmax=5;
+	holonome.Tmax=2*M_PI;
+	holonome.vTmax=2;
 	holonome.aT=0.5;
 	holonome.asserPosition=0;
 	holonome.X=0;
@@ -97,7 +97,7 @@ void makePath(void)  {
 				holonome.asserPosition=0;
 				holonome.xmax = -1.5;
 				holonome.ymax = signe*0;
-				holonome.vitesse = 0.25;
+				holonome.vitesse = 0.5;
 				holonome.acceleration=0.5;
 				//ouvrir_pinces();
 				etape+=1;
