@@ -435,6 +435,7 @@ void generateRampeRobotPlan()  {
 	//Def des variables nécessaires à la générations des rampes
 		float xmax, ymax,vmax,a;
 		float P,V;
+		float W, thetaMax, vthetaMax,aW;
 		float xVirtuel, yVirtuel;
 		float Vx, Vy, theta;
 		float Pvmax,tvmax,tmax;
@@ -442,7 +443,8 @@ void generateRampeRobotPlan()  {
 		float t; //Défini le temps discret
 		int N=0; //Nombre de points dans le vecteur de rampe
 		float t1, t2; //Temps pour les trapèzes
-		float desiredP;
+		float desiredP, desiredT;
+		int signeT=1; //suivant la valeur de DTheta = variation de l'angle du robot
 		float Xstart, Ystart, thetaRobot, Tstart;
 		float Ti[3]={0,0,0};
 		float w[3]={0,0,0};
@@ -486,14 +488,26 @@ void generateRampeRobotPlan()  {
 		xmax = holonome.xmax;
 		ymax = holonome.ymax;
 		vmax = holonome.vitesse;
+		
+		thetaMax = holonome.Tmax;
+		vthetaMax = holonome.vTmax;
+
 		a = holonome.acceleration;
 		Xstart = holonome.Xstart;
 		Ystart = holonome.Ystart;
-		theta = holonome.theta;
-		thetaRobot = holonome_odometry.T;
+		Tstart = holonome.Tstart;
+		theta = holonome.theta; //theta de la droite dans le repère de la table
+		thetaRobot = holonome_odometry.T; //theta du robot dans le repère de la table 
 	
 		desiredP=sqrt((xmax-Xstart)*(xmax-Xstart)+(ymax-Ystart)*(ymax-Ystart));
-	
+		desiredT=thetaMax - Tstart;
+		
+		if(desiredT<0)  {
+		  signeT=-1;
+		  desiredT = -desiredT;
+		}
+		
+		//Calcul de la vitesse linéaire
 		//Choix du profil : triangulaire ou trapézoïdal
 		tvmax = vmax/a;
 		Pvmax = a*tvmax*tvmax;	
@@ -566,7 +580,58 @@ void generateRampeRobotPlan()  {
 	
 		Vx = V*cos(theta-thetaRobot);
 		Vy = V*sin(theta-thetaRobot);
-	
+
+		//Calcul de la composante de rotation
+		//Choix du profil : triangulaire ou trapézoïdal
+			
+		if(vthetaMax*tmax/2>desiredT) {
+		  //On génère un profil triangulaire
+		  aW = desiredT*4/(tmax*tmax);
+			if(t<=tmax/2)  {
+			  //On est dans la première partie de la courbe
+			  //Calcul de aW : accélération sur theta
+			  W=aW*t;
+			}
+			else  {
+				if(t<=tmax) {
+					//On est dans la deuxième partie de la coube
+					W=-aW*t+aW*tmax;
+				}
+				else {
+					W=0;
+				}
+			}
+		}
+		else  {
+		  //On génère un profil trapézoïdal
+		  t1=tmax-desiredT/vthetaMax;
+		  t2 = tmax - t1;
+  
+		  t=k*T;
+		  aW = vthetaMax/t1;
+			if(t<=t1)  {
+				//On est dans la première partie de la courbe
+				W=aW*t;
+			}
+			else  {
+				if(t<=t2)  {
+					// On est dans la deuxième partie de la courbe
+					W=vthetaMax;
+				}
+				else  {
+					if(t<=tmax)  {
+						//On est dans la troisième partie de la coube
+						W=-aW*t+aW*tmax;
+					}
+					else  {
+						W=0;
+					}
+				}
+			
+			}
+		}
+		
+		W = signeT*W;
 		//Ajout des composantes de déviations
 	
 			xVirtuel = cos(theta)*holonome.Pprevious;
@@ -576,9 +641,9 @@ void generateRampeRobotPlan()  {
 			//Vx += ((xVirtuel+Xstart-holonome_odometry.X)*cos(thetaRobot)-(yVirtuel+Ystart-holonome_odometry.Y)*sin(thetaRobot))/(5*T);
 			//Vy += ((yVirtuel+Ystart-holonome_odometry.Y)*cos(thetaRobot)+(xVirtuel+Xstart-holonome_odometry.X)*sin(thetaRobot))/(5*T);
 	
-		w[0] = (-Vy)/R;
-		w[1] = (Vx*sqrt(3)/2+Vy/2)/R;
-		w[2] = (-Vx*sqrt(3)/2+Vy/2)/R;
+		w[0] = (-Vy)/R-W*L1/R;
+		w[1] = (Vx*sqrt(3)/2+Vy/2)/R-W*L2/R;
+		w[2] = (-Vx*sqrt(3)/2+Vy/2)/R-W*L3/R;
 	
 	
 		

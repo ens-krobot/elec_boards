@@ -14,7 +14,7 @@
 
 PROC_DEFINE_STACK(stack_avoid, KERN_MINSTACKSIZE * 4);
 int actual_state;
-float xmax, ymax;
+float xmax, ymax, Tmax;
 int num_wait; 
 unsigned short stop_yet;
 
@@ -125,7 +125,7 @@ void make_choice(void)  {
 	for(i=0;i<NUM_SENSORS;i++)  {
 		if(sharp_sensors.state_trigger[i]==1)  {
 			//Trigger is ON	
-			angle = reset_M_PI((sharp_sensors.circle_position[i]-holonome_odometry.T)-holonome.theta);
+			angle = reset_M_PI((sharp_sensors.circle_position[i]+holonome_odometry.T)-holonome.theta);
 			if(abs(angle)<DETECTION_AREA/2 || abs((sharp_sensors.circle_position[i]-holonome_odometry.T)-holonome.theta-0*M_PI)<DETECTION_AREA/2)  {
 				result=1;
 				//LED2_ON();
@@ -139,10 +139,13 @@ void make_choice(void)  {
 			holonome.asserPosition=0;
 			xmax = holonome.xmax;
 			ymax = holonome.ymax;
+			Tmax = holonome.Tmax;
 			holonome.X = holonome_odometry.X;
 			holonome.Y = holonome_odometry.Y;
+			holonome.T = holonome_odometry.T;
 			holonome.xmax = holonome_odometry.X;
 			holonome.ymax = holonome_odometry.Y;
+			holonome.Tmax = holonome_odometry.T;
 			if(num_wait>=0) stop_yet=1;
 			num_wait++;
 			obstacle=1;
@@ -153,8 +156,10 @@ void make_choice(void)  {
 			holonome.asserPosition = 0;
 			holonome.X = holonome_odometry.X;
 			holonome.Y = holonome_odometry.Y;
+			holonome.T = holonome_odometry.T;
 			holonome.xmax = xmax;
 			holonome.ymax = ymax;
+			holonome.Tmax = Tmax;
 			stop_yet=0;
 			num_wait=0;
 			obstacle=0;

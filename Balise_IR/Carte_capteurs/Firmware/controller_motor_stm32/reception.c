@@ -182,7 +182,7 @@ uint16_t calculate_weight(uint16_t k){
 
 		if((abs(k-i) < 5) & (i!=k)){
 
-			weight += detectionState[i]*pow(3,5-abs(k-i));
+			weight += detectionState[i]*((uint16_t)pow(3,5-abs(k-i)));
 
 		}
 	

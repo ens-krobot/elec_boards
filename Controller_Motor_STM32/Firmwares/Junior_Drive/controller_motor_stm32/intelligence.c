@@ -29,8 +29,8 @@ void intelligenceInit(void)  {
 	holonome.ymax=-0;
 	holonome.vYmax=0.3;
 	holonome.ay=0.15;
-	holonome.Tmax=20*M_PI;
-	holonome.vTmax=3;
+	holonome.Tmax=M_PI;
+	holonome.vTmax=5;
 	holonome.aT=0.5;
 	holonome.asserPosition=0;
 	holonome.X=0;
@@ -81,6 +81,7 @@ void makePath(void)  {
 		
 		holonome.X = holonome_odometry.X;
 		holonome.Y = holonome_odometry.Y;
+		holonome.T = holonome_odometry.T;
 		
 		//holonome.X = holonome.xmax;
 		//holonome.Y = holonome.ymax;
@@ -91,14 +92,14 @@ void makePath(void)  {
 		
 		switch(etape) {
 			case 0://avance droit A(1,2)
-				ouvrir_pinces();
+			  //ouvrir_pinces();
 				holonome.busy=1;
 				holonome.asserPosition=0;
-				holonome.xmax = -0.5;
+				holonome.xmax = -2.5;
 				holonome.ymax = signe*0;
-				holonome.vitesse = 0.5;
+				holonome.vitesse = 0.25;
 				holonome.acceleration=0.5;
-				ouvrir_pinces();
+				//ouvrir_pinces();
 				etape+=1;
 				break;
 			case 1://recul
@@ -106,12 +107,13 @@ void makePath(void)  {
 				holonome.asserPosition=0;
 				holonome.xmax = -0.45;
 				holonome.ymax = signe*0;
-				holonome.vitesse = 0.5;
+				holonome.vitesse = 0.25;
 				holonome.acceleration=0.5;
+				holonome.Tmax = 0;
 				//ouvrir_pinces();
 				etape+=1;
 				break;
-			case 2://drift sur la droite
+				/*case 2://drift sur la droite
 				holonome.busy=1;
 				holonome.asserPosition=0;
 				holonome.xmax = -0.45;
@@ -237,7 +239,7 @@ void makePath(void)  {
 				holonome.acceleration=0.5;
 				etape+=1;
 				break;
-			/*case 15:
+			case 15:
 				holonome.busy=1;
 				holonome.asserPosition=0;
 				holonome.xmax = -0.75;
