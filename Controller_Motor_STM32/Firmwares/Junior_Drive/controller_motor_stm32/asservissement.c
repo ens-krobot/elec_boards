@@ -52,7 +52,6 @@ void NORETURN control_process(void)
   timer_setEvent(&timer_control_process);
   
   enableMotors( MOTEUR4|MOTEUR2|MOTEUR3);
-  //convertRadInImpulsions(desiredPositions, desiredImpulsions);
   
   
   while(1) {
@@ -64,9 +63,9 @@ void NORETURN control_process(void)
   			if (desiredPositions[i]>(2*M_PI)) desiredPositions[i]=2*M_PI;
   		}
   	convertRadInImpulsions(desiredPositions, desiredImpulsions);*/
-  	//generateRampeMotor(MOTEUR4|MOTEUR2|MOTEUR3,-20*2*M_PI,10,5);
+  	//generateRampeMotor(MOTEUR1,2*M_PI,10,5);
   	generateRampeRobotPlan();
-  	controlMotors(MOTEUR4|MOTEUR2|MOTEUR3);	
+  	controlMotors(MOTEUR4|MOTEUR2|MOTEUR3|MOTEUR2);	
 
     timer_waitEvent(&timer_control_process); // Wait until the end of counting
   }

@@ -63,8 +63,8 @@ void NORETURN avoid_process(void)
   	
   	timer_add(&timer_avoid_process);// Start process timer
   	refreshSensors();
-  	if(sharp_sensors.state_trigger[7]==1) LED2_ON();
-  	else LED2_OFF();
+  	//if(sharp_sensors.state_trigger[7]==1) LED2_ON();
+  	//else LED2_OFF();
   	make_choice();
     timer_waitEvent(&timer_avoid_process); // Wait until the end of counting
   }

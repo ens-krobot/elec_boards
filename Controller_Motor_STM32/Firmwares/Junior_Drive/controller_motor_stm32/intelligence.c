@@ -99,7 +99,8 @@ void makePath(void)  {
 				holonome.ymax = signe*0;
 				holonome.vitesse = 0.5;
 				holonome.acceleration=0.5;
-				//ouvrir_pinces();
+				holonome.Tmax=2*M_PI;
+				ouvrir_pinces();
 				etape+=1;
 				break;
 			case 1://recul
@@ -107,11 +108,11 @@ void makePath(void)  {
 				holonome.asserPosition=0;
 				holonome.xmax = 0;
 				holonome.ymax = signe*0;
-				holonome.vitesse = 0.25;
+				holonome.vitesse = 0.5;
 				holonome.acceleration=0.5;
 				holonome.Tmax = 0;
-				//ouvrir_pinces();
-				etape+=1;
+				fermer_pinces();
+				etape=0;
 				break;
 				/*case 2://drift sur la droite
 				holonome.busy=1;

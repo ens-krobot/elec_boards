@@ -88,13 +88,12 @@ int main(void)
 	 * utilization of all the processes (1 probe per second).
 	 */
 	 
-	 
-	
+	//enableMotors(MOTEUR1); 
 	
 	while (1)
 	{
           //monitor_report();
-         /* if( getEncoderDirection(ENCODER3) == FORWARD_DIRECTION ) 
+	  /*if( getEncoderDirection(ENCODER1) == FORWARD_DIRECTION ) 
           	{
           		if(status==0)
           			{
@@ -110,12 +109,11 @@ int main(void)
           				status=0;
           			}
           		LED4_OFF();
-          	}
-          coder = getEncoderCount(ENCODER2);
-          timer_delay(10);
-          if ( getEncoderCount(ENCODER2)==65535) LED3_ON();
-          //else LED3_OFF();
-          timer_delay(10);*/
+          	}*/
+          //coder = getEncoderCount(ENCODER2);
+          //timer_delay(10);
+          //if (abs(encoders_status[0].globalCounter)>10000) LED2_ON();
+          //else LED2_OFF();
           timer_delay(1000);
 	}
 
