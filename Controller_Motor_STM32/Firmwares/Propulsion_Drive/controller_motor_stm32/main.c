@@ -18,7 +18,10 @@
 #include "differential_drive.h"
 
 #define WHEEL_RADIUS 0.049245
-#define SHAFT_WIDTH 0.150
+#define SHAFT_WIDTH 0.14320
+
+//#define WHEEL_RADIUS 0.0325
+//#define SHAFT_WIDTH 0.255
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
@@ -55,27 +58,34 @@ static void init(void)
                  0.4, 0.7, 1.0, // Controller gains
                  0.005); // Sample period
         // Common parameters
-        params.encoder_gain = -2.0*M_PI/2000.0/15.0;
-        params.G0 = 0.0145;
-        params.tau = 0.015;
-        params.k[0] = -3898.0;
-        params.k[1] = -58.4696;
-        params.l = -params.k[0];
-        params.l0[0] = 0.0236;
-        params.l0[1] = 3.9715;
+        params.encoder_gain = -2.0*M_PI/2000.0/15;
         params.T = 0.005;
         // Initialize right motor
+        params.G0 = 0.0146;
+        params.tau = 0.120;
+        params.k[0] = -2139.6;
+        params.k[1] = -193.9178;
+        params.l = -params.k[0];
+        params.l0[0] = 0.0408;
+        params.l0[1] = 0;
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
         mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
         // Initialize left motor
+        params.G0 = 0.0146;
+        params.tau = 0.266;
+        params.k[0] = -4689.1;
+        params.k[1] = -506.4099;
+        params.l = -params.k[0];
+        params.l0[0] = 0.0630;
+        params.l0[1] = 0.0994;
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        params.encoder_gain = 2.0*M_PI/2000.0/15.0; // Left motor is reversed
+        params.encoder_gain = 2.0*M_PI/2000.0/15; // Left motor is reversed
         mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
-        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15.0, -2.0*M_PI/2000.0/15.0);
+        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
