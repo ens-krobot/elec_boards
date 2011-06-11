@@ -52,7 +52,10 @@ int get_battery_monitoring(battery_status *pkt1, battery_status *pkt2) {
 static void NORETURN battery_monitoring_process(void) {
 
     uint8_t battery_charge;
-    uint8_t buzzer_state = 0;
+
+    int dead_cells = 0;
+    int dead_cell_counter = 0;
+    int low_charge_counter = 0;
 
     uint8_t ch;
     uint16_t value = 42;
@@ -67,8 +70,10 @@ static void NORETURN battery_monitoring_process(void) {
 
             if (battery_state[ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
                 battery_charge = 1;
-            else if (battery_state[ch] < 10*ABSENT_CELL_THRES && battery_charge > 0)
+            else if (battery_state[ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
+                dead_cells++;
                 battery_charge = 0;
+            }
         }
 
         // Battery 2
@@ -78,8 +83,10 @@ static void NORETURN battery_monitoring_process(void) {
 
             if (battery_state[4+ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
                 battery_charge = 1;
-            else if (battery_state[4+ch] < 10*ABSENT_CELL_THRES && battery_charge > 0)
+            else if (battery_state[4+ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
+                dead_cells++;
                 battery_charge = 0;
+            }
         }
 
         measure_flag = 1;
@@ -90,12 +97,23 @@ static void NORETURN battery_monitoring_process(void) {
         }
         else if (battery_charge == 1) {
             // Low charge state
-            set_buzzer(1);
+            if (low_charge_counter < 100) {
+                for (int j = 0; j < 4; j++) {
+                    set_buzzer((j+1) % 2);
+                    timer_delay(50);
+                }
+                low_charge_counter++;
+            } else {
+                set_buzzer(1);
+            }
         }
-        else if (battery_charge == 0) {
+        else if (battery_charge == 0 && dead_cell_counter < 2) {
             // No cell, or dead cell, or bad connection
-            set_buzzer(buzzer_state);
-            buzzer_state = (buzzer_state == 0) ? 1 : 0;
+            for (int j = 0; j < 6; j++) {
+                set_buzzer((j+1) % 2);
+                timer_delay(50);
+            }
+            dead_cell_counter++;
         }
 
 
