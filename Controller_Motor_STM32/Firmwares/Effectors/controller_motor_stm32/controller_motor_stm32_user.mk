@@ -7,20 +7,24 @@
 controller_motor_stm32_PROGRAMMER_TYPE = none
 controller_motor_stm32_PROGRAMMER_PORT = none
 
+# Support board library
+controller_motor_stm32_LIB_PATH = $(controller_motor_stm32_SRC_PATH)/../../lib
+CFLAGS += -I$(controller_motor_stm32_LIB_PATH)
+
 # Files included by the user.
 controller_motor_stm32_USER_CSRC = \
-	$(controller_motor_stm32_SRC_PATH)/stm32lib/stm32f10x_rcc.c \
-	$(controller_motor_stm32_SRC_PATH)/stm32lib/stm32f10x_tim.c \
-	$(controller_motor_stm32_SRC_PATH)/motor.c \
-	$(controller_motor_stm32_SRC_PATH)/encoder.c \
-	$(controller_motor_stm32_SRC_PATH)/odometry.c \
-	$(controller_motor_stm32_SRC_PATH)/motor_controller.c \
-	$(controller_motor_stm32_SRC_PATH)/command_generator.c \
-	$(controller_motor_stm32_SRC_PATH)/trajectory_controller.c \
-	$(controller_motor_stm32_SRC_PATH)/bezier_utils.c \
-	$(controller_motor_stm32_SRC_PATH)/differential_drive.c \
+	$(controller_motor_stm32_LIB_PATH)/stm32lib/stm32f10x_rcc.c \
+	$(controller_motor_stm32_LIB_PATH)/stm32lib/stm32f10x_tim.c \
+	$(controller_motor_stm32_LIB_PATH)/motor.c \
+	$(controller_motor_stm32_LIB_PATH)/encoder.c \
+	$(controller_motor_stm32_LIB_PATH)/odometry.c \
+	$(controller_motor_stm32_LIB_PATH)/motor_controller.c \
+	$(controller_motor_stm32_LIB_PATH)/command_generator.c \
+	$(controller_motor_stm32_LIB_PATH)/trajectory_controller.c \
+	$(controller_motor_stm32_LIB_PATH)/bezier_utils.c \
+	$(controller_motor_stm32_LIB_PATH)/differential_drive.c \
+	$(controller_motor_stm32_LIB_PATH)/lift_controller.c \
 	$(controller_motor_stm32_SRC_PATH)/can_monitor.c \
-	$(controller_motor_stm32_SRC_PATH)/lift_controller.c \
 	$(controller_motor_stm32_SRC_PATH)/main.c \
 	#
 
