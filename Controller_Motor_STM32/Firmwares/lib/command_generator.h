@@ -15,6 +15,7 @@
 
 #include <drv/timer.h>
 #include <math.h>
+#include "encoder.h"
 
 // Generator types
 #define GEN_NONE     0   // No type, the generator is not initialized.
@@ -26,9 +27,12 @@
                          // drive.
 #define GEN_DD_RIGHT 5   // Outputs the right wheel speed for a differential
                          // drive.
-#define GEN_HD_B     6   // Outpus the back wheel speed for an holonomic drive.
-#define GEN_HD_RF    7   // Outpus the right-front wheel speed for an holonomic drive.
-#define GEN_HD_LF    8   // Outpus the left-front wheel speed for an holonomic drive.
+#define GEN_HD_B     6   // Outputs the back wheel speed for an holonomic drive.
+#define GEN_HD_RF    7   // Outputs the right-front wheel speed for an holonomic drive.
+#define GEN_HD_LF    8   // Outputs the left-front wheel speed for an holonomic drive.
+#define GEN_AC_T1    9   // Outputs the angle of the first articulation of a RR arm
+#define GEN_AC_T2   10   // Outputs the angle of the second articulation of a RR arm
+
 
 // Generator states
 #define GEN_STATE_PAUSE   0  // The output is freezed.
@@ -96,6 +100,18 @@ typedef struct {
   float max_speed;
 } hd_generator_t;
 
+typedef struct {
+  placeholder_generator_t gen;
+  command_generator_t *linear_pos_x;
+  command_generator_t *linear_speed_x;
+  command_generator_t *linear_pos_y;
+  command_generator_t *linear_speed_y;
+  float l1;
+  float l2;
+  uint8_t enc_theta1;
+  uint8_t enc_theta2;
+} a2r_generator_t;
+
 // Usable generator meta-type
 union _command_generator_t {
   placeholder_generator_t type;
@@ -104,6 +120,7 @@ union _command_generator_t {
   ramp2_generator_t ramp2;
   dd_generator_t dd;
   hd_generator_t hd;
+  a2r_generator_t a2r;
 };
 
 /* Initializes a new Constant Generator.
@@ -186,6 +203,35 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float struct_radius, float max_speed,
                                       uint8_t type);
+
+/* Initializes a new 2R arm controller generator.
+ *  - generator : pointer to the generator to initialize
+ *  - linear_pos_x : pointer to the generator giving the integrates of linear_speed_x. This
+ *                   generator will be called at each computation to allow update in parallel
+ *                   with linear_speed.
+ *  - linear_speed_x : pointer to the generator giving the linear speed along the x axis of
+ *                     the arm end.
+ *  - linear_pos_y : pointer to the generator giving the integrates of linear_speed_y. This
+ *                   generator will be called at each computation to allow update in parallel
+ *                   with linear_speed.
+ *  - linear_speed_y : pointer to the generator giving the linear speed along the y axis of
+ *                     the arm end.
+ *  - l1 : length of the first segment of the arm.
+ *  - l2 : length of the second segment of the arm.
+ *  - enc_theta1 : ID of the encoder measuring the first articulation position
+ *  - enc_theta2 : ID of the encoder measuring the second articulation position
+ *  - type :
+ *     o 1 is the first articulation
+ *     o 2 is the second articulation
+ */
+command_generator_t* new_a2r_generator(command_generator_t *generator,
+                                       command_generator_t *linear_pos_x,
+                                       command_generator_t *linear_speed_x,
+                                       command_generator_t *linear_pos_y,
+                                       command_generator_t *linear_speed_y,
+                                       float l1, float l2,
+                                       uint8_t enc_theta1, uint8_t enc_theta2,
+                                       uint8_t type);
 
 /*
  * Adjusts the current output value of 'generator' to 'value'.

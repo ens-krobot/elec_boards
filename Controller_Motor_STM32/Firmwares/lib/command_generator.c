@@ -98,12 +98,45 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
   return generator;
 }
 
+command_generator_t* new_a2r_generator(command_generator_t *generator,
+                                       command_generator_t *linear_pos_x,
+                                       command_generator_t *linear_speed_x,
+                                       command_generator_t *linear_pos_y,
+                                       command_generator_t *linear_speed_y,
+                                       float l1, float l2,
+                                       uint8_t enc_theta1, uint8_t enc_theta2,
+                                       uint8_t type) {
+  switch (type) {
+  case 1: // Back wheel
+    generator->type.t = GEN_AC_T1;
+    break;
+  case 2: // Right-front wheel
+    generator->type.t = GEN_AC_T2;
+    break;
+  default:
+    return NULL;
+    break;
+  }
+  generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->a2r.linear_pos_x = linear_pos_x;
+  generator->a2r.linear_speed_x = linear_speed_x;
+  generator->a2r.linear_pos_x = linear_pos_y;
+  generator->a2r.linear_speed_x = linear_speed_y;
+  generator->a2r.l1 = l1;
+  generator->a2r.l2 = l2;
+  generator->a2r.enc_theta1 = enc_theta1;
+  generator->a2r.enc_theta2 = enc_theta2;
+
+  return generator;
+}
+
 
 command_generator_t* adjust_value(command_generator_t *generator, float value) {
   uint8_t type = generator->type.t;
 
   if (type != GEN_DD_RIGHT && type != GEN_DD_LEFT
-      && type != GEN_HD_B && type != GEN_HD_RF && type != GEN_HD_LF) {
+      && type != GEN_HD_B && type != GEN_HD_RF && type != GEN_HD_LF
+      && type != GEN_AC_T1 && type != GEN_AC_T2) {
     generator->type.last_output = value;
     return generator;
   } else {
@@ -160,7 +193,8 @@ command_generator_t* remove_callback(command_generator_t *generator) {
 
 float get_output_value(command_generator_t *generator) {
   int32_t cur_time;
-  float speed, dt, u1, u2, u_x, u_y, w;
+  float speed, dt, u1, u2, u_x, u_y, w, theta1, theta2;
+  float l1, l2, s1, c1, s2, c2;
 
   if (generator->type.state != GEN_STATE_RUNNING)
     return generator->type.last_output;
@@ -233,6 +267,32 @@ float get_output_value(command_generator_t *generator) {
       generator->type.last_output = MIN(generator->type.last_output, generator->hd.max_speed);
     } else {
       generator->type.last_output = MAX(generator->type.last_output, -generator->hd.max_speed);
+    }
+    break;
+  case GEN_AC_T1:
+  case GEN_AC_T2:
+    // Update position generators to allow callbacks
+    get_output_value(generator->a2r.linear_pos_x);
+    get_output_value(generator->a2r.linear_pos_y);
+    // Compute output
+    u_x = get_output_value(generator->a2r.linear_speed_x);
+    u_y = get_output_value(generator->a2r.linear_speed_y);
+    l1 = generator->a2r.l1;
+    l2 = generator->a2r.l2;
+    theta1 = getEncoderPosition_f(generator->a2r.enc_theta1);
+    theta2 = getEncoderPosition_f(generator->a2r.enc_theta2);
+    c1 = cos(theta1);
+    c2 = cos(theta2);
+    s1 = sin(theta1);
+    s2 = sin(theta2);
+    w = -l1*l2*s1*c2+l1*l2*s2*c1;
+    switch (generator->type.t) {
+    case GEN_AC_T1:
+      generator->type.last_output = (-l1*s1*u_x+l2*s2*u_y)/w;
+      break;
+    case GEN_AC_T2:
+      generator->type.last_output = (-l1*c1*u_x+l2*c2*u_y)/w;
+      break;
     }
     break;
   }
