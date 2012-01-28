@@ -12,6 +12,12 @@
 #include "stm32lib/stm32f10x_rcc.h"
 #include "stm32lib/stm32f10x_tim.h"
 
+typedef struct {
+  uint16_t origin;
+  float scale;
+} enc_params_t;
+
+enc_params_t enc_params[4];
 
 /*
  * Function to initialise one encoder interface
@@ -101,6 +107,20 @@ void encodersInit(void) {
   TIM_Cmd(TIM8,ENABLE);
   TIM_Cmd(TIM1,ENABLE);
   TIM_Cmd(TIM4,ENABLE);
+
+  // Initialize scaling factors
+  for (int i=0; i < 4; i++) {
+    enc_params[i].origin = 0;
+    enc_params[i].scale= 1.0;
+  }
+}
+
+/*
+ * Helper to set the sacling factor for the readout helper
+ */
+void setEncoderScaling(uint8_t encoder, uint16_t origin, float scale) {
+  enc_params[encoder].origin = origin;
+  enc_params[encoder].scale = scale;
 }
 
 /*
@@ -124,6 +144,14 @@ uint16_t getEncoderPosition(uint8_t encoder) {
     default:
       return 0;
   }
+}
+/*
+ * Helper to get the current encoder position after the applying
+ * some scaling factors
+ */
+float getEncoderPosition_f(uint8_t encoder) {
+  return enc_params[encoder].scale *
+    (getEncoderPosition(encoder) - enc_params[encoder].origin);
 }
 
 /*
