@@ -67,4 +67,20 @@ command_generator_t* a2Rc_get_first_articulation_gen(uint8_t arm);
  */
 command_generator_t* a2Rc_get_second_articulation_gen(uint8_t arm);
 
+/*
+ * Get the current angles of the articulations.
+ *  - arm : ID of the arm of which to get the angles
+ *  - theta1 : address of the variable to write the first angle into
+ *  - theta2 : address of the variable to write the second angle into
+ */
+void a2Rc_get_angles(uint8_t arm, float *theta1, float *theta2);
+
+/*
+ * Computes the current position of the end of the arm
+ *  - arm : ID of the arm of which to compute the end's position
+ *  - x : address of the variable to wirte the X coordinate into
+ *  - y : address of the variable to wirte the Y coordinate into
+ */
+void a2Rc_get_position(uint8_t arm, float *x, float *y);
+
 #endif /* __ARM2R_CONTROLLER_H */
