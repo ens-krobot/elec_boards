@@ -55,6 +55,12 @@ void a2Rc_goto_position_x(uint8_t arm, float position, float speed, float acc);
 void a2Rc_goto_position_y(uint8_t arm, float position, float speed, float acc);
 
 /*
+ * Returns a non-zero value if the arm is moving
+ *  - arm : ID of the arm to consider
+ */
+uint8_t a2Rc_is_moving(uint8_t arm);
+
+/*
  * Get the command generator outputing the reference position for
  * the first articulation
  *  - arm : ID of the arm of which to get the generator

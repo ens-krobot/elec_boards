@@ -91,6 +91,12 @@ void a2Rc_goto_position_y(uint8_t arm, float position, float speed, float acc) {
   tc_goto(arm+A2R_TC_Y, position, speed, acc);
 }
 
+uint8_t a2Rc_is_moving(uint8_t arm) {
+  return tc_is_working(TC_MASK(ac_state[arm].tc_ind[0]))
+    || tc_is_working(TC_MASK(ac_state[arm].tc_ind[1]));
+}
+
+
 command_generator_t* a2Rc_get_first_articulation_gen(uint8_t arm) {
   return &ac_state[arm].theta1;
 }
