@@ -84,6 +84,11 @@ void tc_move(uint8_t cntr_index, float angle, float speed, float acceleration);
 void tc_goto_speed(uint8_t cntr_index, float speed, float acceleration);
 
 /*
+ * Change the position of a controller without any concern about continuity
+ */
+void tc_set_position(uint8_t cntr_index, float position);
+
+/*
  * Change the speed command of a controller without any concern about acceleration
  */
 void tc_set_speed(uint8_t cntr_index, float speed);
