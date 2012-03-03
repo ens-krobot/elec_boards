@@ -109,10 +109,10 @@ void encodersInit(void) {
   TIM_Cmd(TIM4,ENABLE);
 
   // Initialize scaling factors
-  for (int i=0; i < 4; i++) {
-    enc_params[i].origin = 0;
-    enc_params[i].scale= 1.0;
-  }
+  //for (int i=0; i < 4; i++) {
+  //  enc_params[i].origin = 0;
+  //  enc_params[i].scale= 1.0;
+  //}
 }
 
 /*

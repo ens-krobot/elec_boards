@@ -50,6 +50,7 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
                                       uint8_t type) {
   generator->type.t = (type == 1) ? GEN_DD_RIGHT : GEN_DD_LEFT;
   generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->type.state = GEN_STATE_PAUSE;
   generator->dd.linear_pos = linear_pos;
   generator->dd.linear_speed = linear_speed;
   generator->dd.rotational_pos = rotational_pos;
@@ -85,6 +86,7 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
     break;
   }
   generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->type.state = GEN_STATE_PAUSE;
   generator->hd.linear_pos_x = linear_pos_x;
   generator->hd.linear_speed_x = linear_speed_x;
   generator->hd.linear_pos_x = linear_pos_y;
@@ -107,10 +109,10 @@ command_generator_t* new_a2r_generator(command_generator_t *generator,
                                        uint8_t enc_theta1, uint8_t enc_theta2,
                                        uint8_t type) {
   switch (type) {
-  case 1: // Back wheel
+  case 1: // First articulation
     generator->type.t = GEN_AC_T1;
     break;
-  case 2: // Right-front wheel
+  case 2: // Second articulation
     generator->type.t = GEN_AC_T2;
     break;
   default:
@@ -118,10 +120,11 @@ command_generator_t* new_a2r_generator(command_generator_t *generator,
     break;
   }
   generator->type.callback.type = GEN_CALLBACK_NONE;
+  generator->type.state = GEN_STATE_PAUSE;
   generator->a2r.linear_pos_x = linear_pos_x;
   generator->a2r.linear_speed_x = linear_speed_x;
-  generator->a2r.linear_pos_x = linear_pos_y;
-  generator->a2r.linear_speed_x = linear_speed_y;
+  generator->a2r.linear_pos_y = linear_pos_y;
+  generator->a2r.linear_speed_y = linear_speed_y;
   generator->a2r.l1 = l1;
   generator->a2r.l2 = l2;
   generator->a2r.enc_theta1 = enc_theta1;
@@ -286,6 +289,12 @@ float get_output_value(command_generator_t *generator) {
     s1 = sin(theta1);
     s2 = sin(theta2);
     w = -l1*l2*s1*c2+l1*l2*s2*c1;
+    if (w < 0.01 && w > -0.01) {
+      if (w > 0)
+        w = 0.01;
+      else
+        w = -0.01;
+    }
     switch (generator->type.t) {
     case GEN_AC_T1:
       generator->type.last_output = (-l1*s1*u_x+l2*s2*u_y)/w;

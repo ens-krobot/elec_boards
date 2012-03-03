@@ -58,50 +58,51 @@ void a2Rc_start(uint8_t arm,
   tc_set_position(tc_x, x);
   tc_set_position(tc_y, y);
   // Create the command generators
-  new_a2r_generator(&ac_state[arm].theta1_s,
+  new_a2r_generator(&(ac_state[arm].theta1_s),
                     tc_get_position_generator(tc_x),
                     tc_get_speed_generator(tc_x),
                     tc_get_position_generator(tc_y),
                     tc_get_speed_generator(tc_y),
                     l1, l2, enc_theta1, enc_theta2, 1);
-  new_a2r_generator(&ac_state[arm].theta2_s,
+  new_a2r_generator(&(ac_state[arm].theta2_s),
                     tc_get_position_generator(tc_x),
                     tc_get_speed_generator(tc_x),
                     tc_get_position_generator(tc_y),
                     tc_get_speed_generator(tc_y),
                     l1, l2, enc_theta1, enc_theta2, 2);
   // Create the reference generators
-  new_ramp2_generator(&ac_state[arm].theta1, theta1, &ac_state[arm].theta1_s);
-  new_ramp2_generator(&ac_state[arm].theta2, theta2, &ac_state[arm].theta2_s);
+  new_ramp2_generator(&(ac_state[arm].theta1), theta1, &(ac_state[arm].theta1_s));
+  new_ramp2_generator(&(ac_state[arm].theta2), theta2, &(ac_state[arm].theta2_s));
 
   // Start the different references generators
-  start_generator(&ac_state[arm].theta1_s);
-  start_generator(&ac_state[arm].theta2_s);
-  start_generator(&ac_state[arm].theta1);
-  start_generator(&ac_state[arm].theta2);
+  start_generator(&(ac_state[arm].theta1_s));
+  start_generator(&(ac_state[arm].theta2_s));
+  start_generator(&(ac_state[arm].theta1));
+  start_generator(&(ac_state[arm].theta2));
 
   // Activate the 'enabled' flag
   ac_state[arm].enabled = 1;
 }
 
 void a2Rc_goto_position_x(uint8_t arm, float position, float speed, float acc) {
-  tc_goto(arm+A2R_TC_X, position, speed, acc);
+  tc_goto(ac_state[arm].tc_ind[0], position, speed, acc);
 }
 void a2Rc_goto_position_y(uint8_t arm, float position, float speed, float acc) {
-  tc_goto(arm+A2R_TC_Y, position, speed, acc);
+  tc_goto(ac_state[arm].tc_ind[1], position, speed, acc);
 }
 
 uint8_t a2Rc_is_moving(uint8_t arm) {
-  return tc_is_working(TC_MASK(ac_state[arm].tc_ind[0]))
-    || tc_is_working(TC_MASK(ac_state[arm].tc_ind[1]));
+  return tc_is_working(
+           TC_MASK(ac_state[arm].tc_ind[0])
+           | TC_MASK(ac_state[arm].tc_ind[1]));
 }
 
 
 command_generator_t* a2Rc_get_first_articulation_gen(uint8_t arm) {
-  return &ac_state[arm].theta1;
+  return &(ac_state[arm].theta1);
 }
 command_generator_t* a2Rc_get_second_articulation_gen(uint8_t arm) {
-  return &ac_state[arm].theta2;
+  return &(ac_state[arm].theta2);
 }
 
 void a2Rc_get_angles(uint8_t arm, float *theta1, float *theta2) {
