@@ -46,7 +46,7 @@
 #include "switch/switch.h"
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
- 
+
 static I2c i2c;
 
 static void init(void)
@@ -88,7 +88,6 @@ static void init(void)
 
     // Initialize the CAN bus processing
     can_processes_init();
-
 }
 
 static void NORETURN blinky_process(void) {

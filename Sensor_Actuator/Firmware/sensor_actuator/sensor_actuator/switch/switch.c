@@ -37,10 +37,10 @@ static uint32_t pins[][2] = {
     {GPIOA_BASE, 5},
     {GPIOA_BASE, 6},
     {GPIOA_BASE, 7},
-    {GPIOB_BASE, 5},
-    {GPIOC_BASE, 6},
-    {GPIOC_BASE, 7},
-    {GPIOC_BASE, 8},
+    {GPIOB_BASE, 5}, // Buzzer
+    {GPIOC_BASE, 7}, // Yellow cover-LED
+    {GPIOC_BASE, 8}, // Red cover-LED
+    {GPIOC_BASE, 9}, // Green cover-LED
 };
 
 void switch_init(void) {
@@ -59,15 +59,9 @@ void switch_init(void) {
                         GPIO_MODE_IPU,
                         GPIO_SPEED_50MHZ);
 
-    // Initialize D2_4 PC(9), D2_6 PC(12) as floating inputs
+    // Initialize D2_6 PC(12) as floating inputs
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE,
-                        BV(9) | BV(12),
-                        GPIO_MODE_IN_FLOATING,
-                        GPIO_SPEED_50MHZ);
-
-    // Initialize D2_5 PA(8) as floating input
-    stm32_gpioPinConfig((struct stm32_gpio *)GPIOA_BASE,
-                        BV(8),
+                        BV(12),
                         GPIO_MODE_IN_FLOATING,
                         GPIO_SPEED_50MHZ);
 
@@ -83,9 +77,9 @@ void switch_init(void) {
                         GPIO_MODE_OUT_PP,
                         GPIO_SPEED_50MHZ);
 
-    // Initialize D2_1..3 PC(6..8) as output push-pull
+    // Initialize D2_2..4 PC(7..9) as output push-pull
     stm32_gpioPinConfig((struct stm32_gpio *)GPIOC_BASE,
-                        BV(6) | BV(7) | BV(8),
+                        BV(7) | BV(8) | BV(9),
                         GPIO_MODE_OUT_PP,
                         GPIO_SPEED_50MHZ);
 
@@ -95,9 +89,9 @@ void switch_init(void) {
 
 void get_switch_status(switch_status *pkt1, switch_status *pkt2) {
 
-    pkt1->p.sw1 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(4)));
-    pkt1->p.sw2 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(5)));
-    pkt1->p.sw3 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(0)));
+    pkt1->p.sw1 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(4)));   // Start switch
+    pkt1->p.sw2 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(5)));   // Team switch
+    pkt1->p.sw3 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(0)));   // Fault Button
     pkt1->p.sw4 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(1)));
     pkt1->p.sw5 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(12)));
     pkt1->p.sw6 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOB_BASE, BV(15)));
@@ -105,8 +99,8 @@ void get_switch_status(switch_status *pkt1, switch_status *pkt2) {
     pkt2->p.sw1 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(6)));
     pkt2->p.sw2 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(7)));
     pkt2->p.sw3 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(8)));
-    pkt2->p.sw4 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(9)));
-    pkt2->p.sw5 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOA_BASE, BV(8)));
+    pkt2->p.sw4 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(9)));
+    pkt2->p.sw5 = 0; //BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOA_BASE, BV(8)));
     pkt2->p.sw6 = BOOL(stm32_gpioPinRead((struct stm32_gpio *)GPIOC_BASE, BV(12)));
 
 }
@@ -126,7 +120,7 @@ void set_switch(switch_request *pkt) {
 }
 
 void set_buzzer(uint8_t state) {
-    
+
     stm32_gpioPinWrite((struct stm32_gpio *)GPIOB_BASE, BV(5), state);
 }
 
