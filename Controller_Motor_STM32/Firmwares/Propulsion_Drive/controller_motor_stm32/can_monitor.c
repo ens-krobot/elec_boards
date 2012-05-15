@@ -20,6 +20,7 @@ PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
 // globals
 volatile uint8_t mode;
+volatile uint8_t err1, err2, send_err;
 
 // Process for communication
 static void NORETURN canMonitor_process(void);
@@ -45,12 +46,19 @@ void canMonitorInit(void) {
   proc_new(canMonitorListen_process, NULL, sizeof(stack_can_receive), stack_can_receive);
 }
 
+void can_send_error(uint8_t e1, uint8_t e2) {
+  err1 |= e1;
+  err2 |= e2;
+  send_err = 1;
+}
+
 static void NORETURN canMonitor_process(void) {
   //encoder_can_msg_t msg_enc;
   motor_can_msg_t msg_mot;
   odometry_can_msg_t msg_odo;
   ghost_can_msg_t msg_ghost;
   status_can_msg_t status_msg;
+  error_can_msg_t error_msg;
   can_tx_frame txm;
   robot_state_t odometry;
   float u;
@@ -135,6 +143,17 @@ static void NORETURN canMonitor_process(void) {
     txm.data32[1] = status_msg.data32[1];
     txm.eid = CAN_MSG_STATUS;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    // Send error packet if requested
+    if (send_err) {
+      error_msg.data.err1 = err1; err1 = 0;
+      error_msg.data.err2 = err2; err2 = 0;
+      send_err = 0;
+      txm.data32[0] = error_msg.data32[0];
+      txm.data32[1] = error_msg.data32[1];
+      txm.eid = CAN_MSG_CONTROL_ERROR;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
+    }
 
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);

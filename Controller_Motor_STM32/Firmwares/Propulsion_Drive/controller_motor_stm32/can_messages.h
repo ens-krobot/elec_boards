@@ -23,6 +23,7 @@
 #define CAN_MSG_STATUS 103 // status_can_msg_t
 #define CAN_MSG_ODOMETRY 104 // odometry_can_msg_t
 #define CAN_MSG_GHOST 105 // ghost_can_msg_t
+#define CAN_MSG_CONTROL_ERROR 106 // error_can_msg_t
 
 // Received commands
 #define CAN_MSG_MOVE 201 // move_can_msg_t
@@ -57,6 +58,12 @@ typedef struct {
 typedef struct {
   uint8_t is_moving;
 } status_msg_t;
+
+// Error packet
+typedef struct {
+  uint8_t err1;
+  uint8_t err2;
+} error_msg_t;
 
 // Robot state
 typedef struct {
@@ -140,6 +147,11 @@ typedef union {
   status_msg_t data;
   uint32_t data32[2];
 } status_can_msg_t;
+
+typedef union {
+  error_msg_t data;
+  uint32_t data32[2];
+} error_can_msg_t;
 
 typedef union {
   odometry_msg_t data;

@@ -21,5 +21,6 @@
 #include "can_messages.h"
 
 void canMonitorInit(void);
+void can_send_error(uint8_t err1, uint8_t err2);
 
 #endif /* __CAN_MONITOR_H */
