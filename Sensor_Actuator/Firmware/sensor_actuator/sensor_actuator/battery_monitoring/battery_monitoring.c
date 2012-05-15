@@ -39,7 +39,7 @@ int get_battery_monitoring(battery_status *pkt1, battery_status *pkt2) {
 
         // Battery 2
         for (ch = 0; ch < 4; ++ch)
-            pkt2->p.elem[ch] = battery_state[ch];
+            pkt2->p.elem[ch] = battery_state[4+ch];
 
         measure_flag = 0;
         return 0;
