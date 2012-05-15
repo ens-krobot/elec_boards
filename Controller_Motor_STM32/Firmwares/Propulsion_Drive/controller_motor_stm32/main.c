@@ -96,9 +96,6 @@ static void init(void)
           LED4_OFF();
           timer_delay(100);
           }
-
-        // Start Beacon motor
-        //motorSetSpeed(MOTOR2, 1100);
 }
 
 static void NORETURN ind_process(void)

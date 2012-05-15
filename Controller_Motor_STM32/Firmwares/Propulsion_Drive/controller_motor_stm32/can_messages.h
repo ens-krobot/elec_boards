@@ -32,6 +32,7 @@
 #define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_can_msg_t
 #define CAN_MSG_BEZIER_ADD 206 // bezier_can_msg_t
 #define CAN_MSG_BEZIER_LIMITS 207 // bezier_limits_can_msg_t
+#define CAN_MSG_MOTOR_COMMAND 208 // motor_command_can_msg_t
 
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
@@ -115,6 +116,11 @@ typedef struct {
   uint8_t mode;
 } controller_mode_msg_t;
 
+// Command the speed of a particular motor
+typedef struct {
+  uint8_t motor_id;
+  int32_t speed;
+} motor_command_msg_t;
 
 /* +-----------------------------------------------------------------+
    | CAN messages unions for data representation                     |
@@ -175,5 +181,9 @@ typedef union {
   uint32_t data32[2];
 } controller_mode_can_msg_t;
 
+typedef union {
+  motor_command_msg_t data;
+  uint32_t data32[2];
+} motor_command_can_msg_t;
 
 #endif /* __CAN_MESSAGES_H */

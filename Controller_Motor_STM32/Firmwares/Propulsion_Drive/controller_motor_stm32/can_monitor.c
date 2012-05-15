@@ -155,6 +155,7 @@ static void NORETURN canMonitorListen_process(void) {
     controller_mode_can_msg_t controller_mode_msg;
     bezier_can_msg_t bezier_msg;
     bezier_limits_can_msg_t bezier_limits_msg;
+    motor_command_can_msg_t motor_command_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -238,6 +239,12 @@ static void NORETURN canMonitorListen_process(void) {
               odo_restart(CONTROL_ODOMETRY);
               mode = ROBOT_MODE_NORMAL;
             }
+            break;
+          case CAN_MSG_MOTOR_COMMAND:
+            motor_command_msg.data32[0] = frame.data32[0];
+            motor_command_msg.data32[1] = frame.data32[1];
+            motorSetSpeed(motor_command_msg.data.motor_id,
+                          motor_command_msg.data.speed);
             break;
           }
         }
