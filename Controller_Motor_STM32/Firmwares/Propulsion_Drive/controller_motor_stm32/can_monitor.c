@@ -13,6 +13,8 @@
 #define ROBOT_MODE_NORMAL  0
 #define ROBOT_MODE_HIL     1
 
+#define CONTROL_ODOMETRY 0
+
 // Processes stacks
 PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
@@ -79,7 +81,7 @@ static void NORETURN canMonitor_process(void) {
 
     // Sending odometry data if not in HIL mode or motor commands if in HIL mode
     if (mode != ROBOT_MODE_HIL) {
-      odo_getState(&odometry);
+      odo_getState(CONTROL_ODOMETRY, &odometry);
       msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
       msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
       odometry.theta = fmodf(odometry.theta, 2*M_PI);
@@ -152,6 +154,7 @@ static void NORETURN canMonitorListen_process(void) {
     stop_can_msg_t stop_msg;
     controller_mode_can_msg_t controller_mode_msg;
     bezier_can_msg_t bezier_msg;
+    bezier_limits_can_msg_t bezier_limits_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -190,6 +193,13 @@ static void NORETURN canMonitorListen_process(void) {
                           bezier_msg.data.d1/100.0, bezier_msg.data.d2/100.0,
                           bezier_msg.data.theta_end/100.0, bezier_msg.data.v_end/1000.0);
             break;
+          case CAN_MSG_BEZIER_LIMITS:
+            bezier_limits_msg.data32[0] = frame.data32[0];
+            bezier_limits_msg.data32[1] = frame.data32[1];
+            dd_adjust_limits(bezier_limits_msg.data.v_max/1000.0,
+                             bezier_limits_msg.data.at_max/1000.0,
+                             bezier_limits_msg.data.ar_max/1000.0);
+            break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];
             stop_msg.data32[1] = frame.data32[1];
@@ -201,7 +211,7 @@ static void NORETURN canMonitorListen_process(void) {
             odometry.x = ((float)odometry_msg.data.x) / 1000.0;
             odometry.y = ((float)odometry_msg.data.y) / 1000.0;
             odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
-            odo_setState(&odometry);
+            odo_setState(CONTROL_ODOMETRY, &odometry);
             break;
           case CAN_MSG_ODOMETRY:
             // We should only receive such message in HIL mode
@@ -211,7 +221,7 @@ static void NORETURN canMonitorListen_process(void) {
               odometry.x = ((float)odometry_msg.data.x) / 1000.0;
               odometry.y = ((float)odometry_msg.data.y) / 1000.0;
               odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
-              odo_setState(&odometry);
+              odo_setState(CONTROL_ODOMETRY, &odometry);
             }
             break;
           case CAN_MSG_CONTROLLER_MODE:
@@ -220,12 +230,12 @@ static void NORETURN canMonitorListen_process(void) {
             if (controller_mode_msg.data.mode == 1) {
               mc_change_mode(MOTOR3, CONTROLLER_MODE_HIL);
               mc_change_mode(MOTOR4, CONTROLLER_MODE_HIL);
-              odo_disable();
+              odo_disable(CONTROL_ODOMETRY);
               mode = ROBOT_MODE_HIL;
             } else {
               mc_change_mode(MOTOR3, CONTROLLER_MODE_NORMAL);
               mc_change_mode(MOTOR4, CONTROLLER_MODE_NORMAL);
-              odo_restart();
+              odo_restart(CONTROL_ODOMETRY);
               mode = ROBOT_MODE_NORMAL;
             }
             break;

@@ -18,10 +18,9 @@
 #include "differential_drive.h"
 
 #define WHEEL_RADIUS 0.049245
-#define SHAFT_WIDTH 0.14320
+#define SHAFT_WIDTH 0.224
 
-//#define WHEEL_RADIUS 0.0325
-//#define SHAFT_WIDTH 0.255
+#define CONTROL_ODOMETRY 0
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
@@ -50,7 +49,8 @@ static void init(void)
 
         // Start control of drive motors
         tc_init();
-        dd_start(WHEEL_RADIUS, SHAFT_WIDTH, // Structural parameters
+        dd_start(CONTROL_ODOMETRY, // Use odometry CONTROL_ODOMETRY for control
+                 WHEEL_RADIUS, SHAFT_WIDTH, // Structural parameters
                  8*2*M_PI, // Absolute wheel speed limitation
                  0.5, // Linear velocity limitation
                  1.0, // Linear acceleration limitation
@@ -58,34 +58,30 @@ static void init(void)
                  0.4, 0.7, 1.0, // Controller gains
                  0.005); // Sample period
         // Common parameters
-        params.encoder_gain = -2.0*M_PI/2000.0/15;
+        params.encoder_gain = 2.0*M_PI/2000.0/15;
         params.T = 0.005;
-        // Initialize right motor
-        params.G0 = 0.0146;
-        params.tau = 0.120;
-        params.k[0] = -2139.6;
-        params.k[1] = -193.9178;
-        params.l = -params.k[0];
-        params.l0[0] = 0.0408;
-        params.l0[1] = 0;
-        params.motor = MOTOR4;
-        params.encoder = ENCODER4;
-        mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
         // Initialize left motor
-        params.G0 = 0.0146;
-        params.tau = 0.266;
-        params.k[0] = -4689.1;
-        params.k[1] = -506.4099;
+        params.G0 = 0.011686;
+        params.tau = 0.118;
+        params.k[0] = -3735.7;
+        params.k[1] = -297.5867;
         params.l = -params.k[0];
-        params.l0[0] = 0.0630;
-        params.l0[1] = 0.0994;
+        params.l0[0] = 0.0561;
+        params.l0[1] = 0.0108;
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        params.encoder_gain = 2.0*M_PI/2000.0/15; // Left motor is reversed
         mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize right motor
+        params.motor = MOTOR4;
+        params.encoder = ENCODER4;
+        params.encoder_gain = -2.0*M_PI/2000.0/15; // Left motor is reversed
+        mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
-        odometryInit(1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
+        odometryInit(CONTROL_ODOMETRY, 1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
+
+        // Init beacon motor
+        enableMotor(MOTOR2);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
@@ -100,6 +96,9 @@ static void init(void)
           LED4_OFF();
           timer_delay(100);
           }
+
+        // Start Beacon motor
+        //motorSetSpeed(MOTOR2, 1100);
 }
 
 static void NORETURN ind_process(void)

@@ -31,6 +31,7 @@
 #define DD_GHOST_MOVING 1
 
 /* Initializes the differential drive
+ *  - odometry_process : ID of the odometry process to base the control on
  *  - wheel_radius : radius of the wheels (in meters)
  *  - shaft_width : propulsion shaft width (in meters)
  *  - max_wheel_speed : maximum wheel speed (in rad/s)
@@ -43,7 +44,8 @@
  * Note : the differential drive system will use Trajectory controllers
  *        DD_LINEAR_SPEED_TC and DD_ROTATIONAL_SPEED_TC
  */
-void dd_start(float wheel_radius, float shaft_width, float max_wheel_speed,
+void dd_start(uint8_t odometry_process,
+              float wheel_radius, float shaft_width, float max_wheel_speed,
               float v_max, float at_max, float ar_max,
               float k1, float k2, float k3, float Ts);
 
@@ -103,6 +105,13 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
  * If one of the accelerations if zero, the corresponding movement will be stopped abruptly
  */
 void dd_interrupt_trajectory(float rot_acc, float lin_acc);
+
+/* Change limitations of the trajectory follower
+ *  - v_max : maximum linear speed (in m/s)
+ *  - at_max : maximum tangential acceleration (in m/s/s)
+ *  - ar_max : maximum radial acceleration (in m/s/s)
+ */
+void dd_adjust_limits(float v_max, float at_max, float ar_max);
 
 /*
  * Return the current state of the followed ghost robot

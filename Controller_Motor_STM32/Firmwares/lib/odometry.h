@@ -14,18 +14,20 @@
 #include <drv/timer.h>
 #include "encoder.h"
 
+#define MAX_ODOMETRY_PROCESSES 2
+
 typedef struct {
   float x;
   float y;
   float theta;
 } robot_state_t;
 
-void odometryInit(float Ts, float wheel_radius, float shaft_width, float left_encoder_gain, float right_encoder_gain);
-void odo_disable(void);
-void odo_restart(void);
+void odometryInit(uint8_t process_num, float Ts, float wheel_radius, float shaft_width, float left_encoder_gain, float right_encoder_gain);
+void odo_disable(uint8_t process_num);
+void odo_restart(uint8_t process_num);
 
-void odo_setState(robot_state_t *new_state);
+void odo_setState(uint8_t process_num, robot_state_t *new_state);
 
-void odo_getState(robot_state_t *robot_state);
+void odo_getState(uint8_t process_num, robot_state_t *robot_state);
 
 #endif /* __ODOMETRY_H */

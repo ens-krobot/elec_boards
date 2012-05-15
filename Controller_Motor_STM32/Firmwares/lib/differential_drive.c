@@ -25,6 +25,7 @@ typedef struct {
 
 typedef struct {
   uint8_t initialized, enabled, running, working;
+  uint8_t odometry_process;
   float wheel_radius, shaft_width;
   float last_lin_acceleration, last_rot_acceleration;
   float u, v_max, at_max, ar_max;
@@ -80,7 +81,7 @@ static void NORETURN traj_following_process(void) {
       }
       timer_add(&timer);
       if (params.working) {
-        odo_getState(&rs);
+        odo_getState(params.odometry_process, &rs);
 
         // Stop following the trajectory if we are close enough to our goal
         if (params.u >= 1.0 || ((rs.x-traj->goal[0]) * (rs.x-traj->goal[0]) + (rs.y-traj->goal[1]) * (rs.y-traj->goal[1])) <= (0.01*0.01)) {
@@ -123,12 +124,15 @@ static void NORETURN traj_following_process(void) {
           dxu = bezier_apply(traj->dparams[0], params.u);
           dyu = bezier_apply(traj->dparams[1], params.u);
           params.u += traj->v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
-          params.ghost_state.x += traj->v_lin*cosf(params.ghost_state.theta)*dt;
-          params.ghost_state.y += traj->v_lin*sinf(params.ghost_state.theta)*dt;
-          params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
+          //params.ghost_state.x += traj->v_lin*cosf(params.ghost_state.theta)*dt;
+          //params.ghost_state.y += traj->v_lin*sinf(params.ghost_state.theta)*dt;
+          //params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
+          params.ghost_state.x = bezier_apply(traj->params[0],params.u);
+          params.ghost_state.y = bezier_apply(traj->params[1],params.u);
+          params.ghost_state.theta = atan2f(dyu,dxu);
           if (params.ghost_state.theta > M_PI) {
             params.ghost_state.theta -= 2*M_PI;
-          } else if (params.ghost_state.theta <= M_PI) {
+          } else if (params.ghost_state.theta <= -M_PI) {
             params.ghost_state.theta += 2*M_PI;
           }
 
@@ -156,9 +160,11 @@ static void NORETURN traj_following_process(void) {
   }
 }
 
-void dd_start(float wheel_radius, float shaft_width, float max_wheel_speed,
+void dd_start(uint8_t odometry_process,
+              float wheel_radius, float shaft_width, float max_wheel_speed,
               float v_max, float at_max, float ar_max,
               float k1, float k2, float k3, float Ts) {
+  params.odometry_process = odometry_process;
   params.wheel_radius = wheel_radius;
   params.shaft_width = shaft_width;
   params.last_lin_acceleration = 0.0;
@@ -307,7 +313,7 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
       y_ini = params.trajs[params.current_traj].goal[1];
       theta_ini = params.trajs[params.current_traj].theta_end;
     } else {
-      odo_getState(&rs);
+      odo_getState(params.odometry_process, &rs);
       x_ini = rs.x;
       y_ini = rs.y;
       theta_ini = rs.theta;
@@ -355,6 +361,12 @@ void dd_interrupt_trajectory(float rot_acc, float lin_acc) {
   // Brake !
   dd_set_rotational_speed(0., rot_acc);
   dd_set_linear_speed(0., lin_acc);
+}
+
+void dd_adjust_limits(float v_max, float at_max, float ar_max) {
+  params.v_max = v_max;
+  params.at_max = at_max;
+  params.ar_max = ar_max;
 }
 
 uint8_t dd_get_ghost_state(robot_state_t *state, float *u) {

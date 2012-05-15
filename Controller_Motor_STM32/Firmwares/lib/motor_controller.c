@@ -178,12 +178,17 @@ static void NORETURN motorController_process(void) {
       // Measure motor rotation
       encoder_pos = (float)getEncoderPosition(params->encoder);
       delta = encoder_pos - params->last_encoder_pos;
-      if (getEncoderDirection(params->encoder)  == ENCODER_DIR_UP) {
+      /*if (getEncoderDirection(params->encoder)  == ENCODER_DIR_UP) {
         if (delta < 0)
           delta = delta + 65535;
       } else {
         if (delta > 0)
           delta = delta - 65535;
+          }*/
+      if (delta > 32767) {
+        delta = delta - 65535;
+      } else if (delta < - 32767) {
+        delta = delta + 65535;
       }
 
       // New state vector estimation

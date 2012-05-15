@@ -31,6 +31,7 @@
 #define CAN_MSG_STOP 204 // stop_can_msg_t
 #define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_can_msg_t
 #define CAN_MSG_BEZIER_ADD 206 // bezier_can_msg_t
+#define CAN_MSG_BEZIER_LIMITS 207 // bezier_limits_can_msg_t
 
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
@@ -96,6 +97,13 @@ typedef struct {
   uint16_t v_end:11     __attribute__((__packed__)); // final speed in mm/s
 } bezier_msg_t;
 
+// Modify Bezier Spline trajectory generation limits
+typedef struct {
+  uint16_t v_max     __attribute__((__packed__)); // max linear speed in mm/s
+  uint16_t at_max    __attribute__((__packed__)); // max linear acceleration in mm/s/s
+  uint16_t ar_max    __attribute__((__packed__)); // max radial acceleration in mm/s/s
+} bezier_limits_msg_t;
+
 // Stop Bezier Spline following and brakes
 typedef struct {
   float lin_acc  __attribute__((__packed__)); // Linear acceleration for braking
@@ -151,6 +159,11 @@ typedef union {
   bezier_msg_t data;
   uint32_t data32[2];
 } bezier_can_msg_t;
+
+typedef union {
+  bezier_limits_msg_t data;
+  uint32_t data32[2];
+} bezier_limits_can_msg_t;
 
 typedef union {
   stop_msg_t data;
