@@ -209,7 +209,12 @@ static void NORETURN motorController_process(void) {
       params->last_encoder_pos = encoder_pos;
 
       // Apply command
-      motorSetSpeed(params->motor, (int32_t)params->last_command);
+      if (isnan(params->last_command)) {
+        motorSetSpeed(params->motor, 0);
+        motor_led_on(params->motor);
+      } else {
+        motorSetSpeed(params->motor, (int32_t)params->last_command);
+      }
     }
     timer_waitEvent(&timer); // Wait for the remaining of the sample period
   }

@@ -148,8 +148,10 @@ static void NORETURN traj_following_process(void) {
           u2=w2*powf(cosf(rs.theta-params.ghost_state.theta),2)+v_rot;
 
           // Apply command
-          dd_set_linear_speed(u1, 0.);
-          dd_set_rotational_speed(u2, 0.);
+          if (params.working) {
+            dd_set_linear_speed(u1, 0.);
+            dd_set_rotational_speed(u2, 0.);
+          }
 
           // Keep current time
           last_time = cur_time;
