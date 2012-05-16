@@ -253,7 +253,15 @@ static void NORETURN canMonitorListen_process(void) {
             odometry.x = ((float)odometry_msg.data.x) / 1000.0;
             odometry.y = ((float)odometry_msg.data.y) / 1000.0;
             odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
-            odo_setState(CONTROL_ODOMETRY, &odometry);
+            odo_setState(0, &odometry);
+            break;
+          case CAN_MSG_ODOMETRY_INDEP_SET:
+            odometry_msg.data32[0] = frame.data32[0];
+            odometry_msg.data32[1] = frame.data32[1];
+            odometry.x = ((float)odometry_msg.data.x) / 1000.0;
+            odometry.y = ((float)odometry_msg.data.y) / 1000.0;
+            odometry.theta = ((float)odometry_msg.data.theta) / 10000.0;
+            odo_setState(1, &odometry);
             break;
           case CAN_MSG_ODOMETRY:
             // We should only receive such message in HIL mode

@@ -35,6 +35,7 @@
 #define CAN_MSG_BEZIER_ADD 206 // bezier_can_msg_t
 #define CAN_MSG_BEZIER_LIMITS 207 // bezier_limits_can_msg_t
 #define CAN_MSG_MOTOR_COMMAND 208 // motor_command_can_msg_t
+#define CAN_MSG_ODOMETRY_INDEP_SET 209 // odometry_can_msg_t
 
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
