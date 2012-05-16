@@ -231,9 +231,7 @@ static void NORETURN canMonitorListen_process(void) {
                                 bezier_msg.data.d2/100.0,
                                 bezier_msg.data.theta_end/100.0,
                                 bezier_msg.data.v_end/1000.0);
-            if (res != DD_NO_ERROR) {
-              can_send_error(res,0);
-            }
+            can_send_error(res,0);
             break;
           case CAN_MSG_BEZIER_LIMITS:
             bezier_limits_msg.data32[0] = frame.data32[0];
