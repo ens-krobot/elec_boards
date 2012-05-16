@@ -87,7 +87,7 @@ static void NORETURN can_sender_process(void) {
         timer_add(&timer_send);
 
         /* Beacon */
-        if(get_beacon_positions(&pos, &pos_ll) == 0) {
+        if(get_beacon_positions(0, &pos, &pos_ll) == 0) {
 
             SET_PACKET(f, CAN_BEACON_POSITION, pos);
             can_transmit(CAND1, &f, ms_to_ticks(10));

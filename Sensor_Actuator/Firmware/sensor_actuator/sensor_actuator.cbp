@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sensor_actuator" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<MakeCommands>
+			<Build command="make" />
+			<CompileFile command="make" />
+			<Clean command="make clean" />
+			<DistClean command="$make -f $makefile distclean$target" />
+			<AskRebuildNeeded command="$make -q -f $makefile $target" />
+			<SilentBuild command="$make -s -f $makefile $target" />
+		</MakeCommands>
+		<Build>
+			<Target title=" ">
+				<Option output="bin/Release/sensor_actuator" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<MakeCommands>
+					<Build command="make" />
+					<CompileFile command="make" />
+					<Clean command="make clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make -q -f $makefile $target" />
+					<SilentBuild command="$make -s -f $makefile $target" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="sensor_actuator/adc/adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/adc/adc.h" />
+		<Unit filename="sensor_actuator/ax12/ax12.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/ax12/ax12.h" />
+		<Unit filename="sensor_actuator/ax12/ax12_highlevel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/ax12/ax12_highlevel.h" />
+		<Unit filename="sensor_actuator/ax12/serial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/ax12/serial.h" />
+		<Unit filename="sensor_actuator/battery_monitoring/ads7828.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/battery_monitoring/ads7828.h" />
+		<Unit filename="sensor_actuator/battery_monitoring/battery_monitoring.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/battery_monitoring/battery_monitoring.h" />
+		<Unit filename="sensor_actuator/beacon/beacon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/beacon/beacon.h" />
+		<Unit filename="sensor_actuator/beacon/stm32lib/core_cm3.h" />
+		<Unit filename="sensor_actuator/beacon/stm32lib/stm32f10x.h" />
+		<Unit filename="sensor_actuator/beacon/stm32lib/stm32f10x_rcc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/beacon/stm32lib/stm32f10x_rcc.h" />
+		<Unit filename="sensor_actuator/beacon/stm32lib/stm32f10x_tim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/beacon/stm32lib/stm32f10x_tim.h" />
+		<Unit filename="sensor_actuator/can/can_messages.h" />
+		<Unit filename="sensor_actuator/can/can_monitor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/can/can_monitor.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_adc.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_afsk.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_ax25.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_battfs.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_can.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_context_switch.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_dac.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_dataflash.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_dc_motor.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_debug.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_eeprom.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_emb_flash.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_eth.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_fat.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_flash25.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_formatwr.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_gfx.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_hashtable.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_heap.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_i2c.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_i2s.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_ini_reader.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_kbd.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_keytag.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_kfile.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_lcd_32122a.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_lcd_hd44.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_led_7seg.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_lm75.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_lwip.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_md2.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_monitor.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_nand.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_nmea.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_parser.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_phase.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_pocketbus.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_proc.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_pwm.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_ramp.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_random.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_randpool.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_sd.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_sem.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_ser.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_signal.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_spi_bitbang.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_stepper.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_tas5706a.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_tftp.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_thermo.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_timer.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_usb.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_usbkbd.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_usbmouse.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_usbser.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_wdt.h" />
+		<Unit filename="sensor_actuator/cfg/cfg_xmodem.h" />
+		<Unit filename="sensor_actuator/hw/hw_afsk.h" />
+		<Unit filename="sensor_actuator/hw/hw_buzzer.h" />
+		<Unit filename="sensor_actuator/hw/hw_dataflash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/hw/hw_dataflash.h" />
+		<Unit filename="sensor_actuator/hw/hw_dc_motor.h" />
+		<Unit filename="sensor_actuator/hw/hw_ft245rl.h" />
+		<Unit filename="sensor_actuator/hw/hw_hx8347.h" />
+		<Unit filename="sensor_actuator/hw/hw_i2c_bitbang.h" />
+		<Unit filename="sensor_actuator/hw/hw_ili9225.h" />
+		<Unit filename="sensor_actuator/hw/hw_kbd.h" />
+		<Unit filename="sensor_actuator/hw/hw_lcd_32122a.h" />
+		<Unit filename="sensor_actuator/hw/hw_lcd_hd44.h" />
+		<Unit filename="sensor_actuator/hw/hw_led.h" />
+		<Unit filename="sensor_actuator/hw/hw_led_7seg.h" />
+		<Unit filename="sensor_actuator/hw/hw_lm75.h" />
+		<Unit filename="sensor_actuator/hw/hw_mcp41.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/hw/hw_mcp41.h" />
+		<Unit filename="sensor_actuator/hw/hw_ntc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/hw/hw_ntc.h" />
+		<Unit filename="sensor_actuator/hw/hw_phase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/hw/hw_phase.h" />
+		<Unit filename="sensor_actuator/hw/hw_rit128x96.h" />
+		<Unit filename="sensor_actuator/hw/hw_sd.h" />
+		<Unit filename="sensor_actuator/hw/hw_ser.h" />
+		<Unit filename="sensor_actuator/hw/hw_sipo.h" />
+		<Unit filename="sensor_actuator/hw/hw_spi.h" />
+		<Unit filename="sensor_actuator/hw/hw_stepper.h" />
+		<Unit filename="sensor_actuator/hw/hw_tas5706a.h" />
+		<Unit filename="sensor_actuator/hw/hw_thermo.h" />
+		<Unit filename="sensor_actuator/hw/hw_tlv5618.h" />
+		<Unit filename="sensor_actuator/hw/hw_tmp123.h" />
+		<Unit filename="sensor_actuator/hw/kbd_map.h" />
+		<Unit filename="sensor_actuator/hw/mcp41_map.h" />
+		<Unit filename="sensor_actuator/hw/ntc_map.h" />
+		<Unit filename="sensor_actuator/hw/phase_map.h" />
+		<Unit filename="sensor_actuator/hw/pwm_map.h" />
+		<Unit filename="sensor_actuator/hw/thermo_map.h" />
+		<Unit filename="sensor_actuator/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/switch/switch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sensor_actuator/switch/switch.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -26,15 +26,11 @@
 static struct Event got_capture;
 static struct Event updated_beacon;
 
-static uint16_t cur_period = 0;
-static uint16_t cur_width = 0;
-
+static uint16_t beacon_idx = 0;
+static uint32_t beacon_start[MAX_BEACONS] = {0};
+static uint32_t beacon_stop[MAX_BEACONS] = {0};
 static uint32_t period = 0;
-static uint16_t index_width = 0;
-static uint16_t beacon_width = 0;
-static uint32_t beacon_pos = 0;
 
-PROC_DEFINE_STACK(stack_update, KERN_MINSTACKSIZE * 4);
 
 static float calibration_data[10][2] = {
     {0.24, 200.},
@@ -45,130 +41,112 @@ static float calibration_data[10][2] = {
 };
 
 /**
- *        <-        cur_period        ->
- *        <- cur_width ->
- *        _______________               ______
- * _______|              |______________|     |______
- *                                      ^
- *                                     IRQ
- */
+ *  ______________________       _____________
+ *          :             |_____|
+ *          ^             ^     ^
+ *         RAZ           IC1   IC2
+ *                             IRQ
+*/
 static DECLARE_ISR(tim1_cc_irq) {
-    static bool i;
-
-    // Clear TIM1 Capture compare interrupt pending bit
+    /// Rising edge
+    // Clear TIM8 Capture compare interrupt pending bit
     TIM_ClearITPendingBit(TIM1, TIM_IT_CC2);
 
+    if (beacon_idx < MAX_BEACONS) {
+        beacon_start[beacon_idx] = TIM_GetCapture1(TIM1);
+        beacon_stop[beacon_idx] = TIM_GetCounter(TIM8);
+        ++beacon_idx;
+    }
+}
+
+static DECLARE_ISR(tim8_cc_irq) {
+    // Clear TIM8 Capture compare interrupt pending bit
+    TIM_ClearITPendingBit(TIM8, TIM_IT_CC1);
+
     // Get the Input Capture value
-    cur_period = TIM_GetCapture2(TIM1);
+    period = TIM_GetCapture1(TIM8);
 
-    if (cur_period != 0) {
-        cur_width = TIM_GetCapture1(TIM1);
-        TIM_SetCounter(TIM1, 0);
+    if (beacon_idx > 0)
         event_do(&got_capture);
-    } else {
-        cur_width = 0;
-    }
-    i = !i;
+
+    beacon_idx = 0;
+
+    TIM_SetCounter(TIM8, 0);
+    TIM_SetCounter(TIM1, 0);
 }
 
+int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_position *pos_ll) {
 
-static void NORETURN beacon_update_process(void)
-{
-
-    bool got_index;
-
-    for (;;) {
-        event_wait(&got_capture);
-        if(abs(index_width - cur_width) < index_width / 6.0 ||
-           cur_width > index_width ||
-           unlikely(index_width == 0)) {
-            // This is likely the index
-            index_width = cur_width;
-            period = cur_period;
-            if (got_index == true) {
-                beacon_width = 0;
-                beacon_pos = 0;
-                event_do(&updated_beacon);
-            } else {
-                got_index = true;
-            }
-        } else {
-            // This is likely the beacon
-            if (got_index) {
-                // The index was already captured
-                beacon_width = cur_width;
-                // Position : center of index to center of beacon
-                beacon_pos = period - index_width/2.0 + beacon_width/2.0;
-                period += cur_period;
-                got_index = false;
-                event_do(&updated_beacon);
-            } else {
-                // reset : we detected two beacons in a row ?!
-                index_width = 0;
-            }
-        }
-    }
-}
-
-int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll) {
-
-    float angle;
-    float angular_width;
-    float t_period;
-    float distance;
-
-    float ang, angn, dis, disn;
+    float beacon_pos;
+    float beacon_width;
 
     static float distance_smooth[N_SMOOTH] = {0};
     static float angle_smooth[N_SMOOTH] = {0};
+
+    float angular_width;
+    float t_period;
+    float angle;
+    float angle_avg = 0.0;
+    float distance_avg = 0.0;
+
+    float ang, angn, dis, disn;
 
     int i;
     static int n = 0;
     static int index = 0;
 
-    angle = 0.0;
-    distance = 0.0;
-
-    if (!event_waitTimeout(&updated_beacon, 0))
+    if (!event_waitTimeout(&got_capture, 0))
         return -1;
 
-    angle_smooth[n % N_SMOOTH] = (beacon_pos * 2.0 * M_PI) / (period * 1.0);
-    angular_width = (beacon_width * 2.0 * M_PI) / (period * 1.0);
-
-    // Compute the real time period (in s)
-    t_period = period * PRESCALER_VALUE / (CPU_FREQ * 1.0);
+    beacon_width = beacon_stop[beacon_id] - beacon_start[beacon_id];
+    beacon_pos = beacon_start[beacon_id] + beacon_width / 2.0;
+    angle = (beacon_pos * 2.0 * M_PI) / (float) period;
+    angular_width = (beacon_width * 2.0 * M_PI) / (float) period;
 
     if (angular_width != 0.0) {
-        for (i = 0; calibration_data[i][0] != 0.0; i++) {
+        angle_smooth[n % N_SMOOTH] = angle;
+
+        for (i = 0; calibration_data[i][0] != 0.0; ++i) {
             angn = calibration_data[i+1][0];
             if (angular_width > angn) {
                 ang = calibration_data[i][0];
                 dis = calibration_data[i][1];
                 disn = calibration_data[i+1][1];
-                distance = distance_smooth[n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
+                distance_smooth[n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
                 break;
             }
         }
-        index = MIN(n+1, N_SMOOTH);
-        for (i = 0; i < index; i++) {
-            angle = angle + angle_smooth[i];
-            distance = distance + distance_smooth[i];
-        }
-        angle /= index;
-        distance /= index;
-        n++;
-    } else {
-        n = 0;
-    }
 
-    pos->p.angle = (uint16_t)(angle * 10000.);
-    pos->p.distance = (uint16_t)(distance);
+        index = MIN(n+1, N_SMOOTH);
+
+        for (i = 0; i < index; i++) {
+            angle_avg+= angle_smooth[i];
+            distance_avg+= distance_smooth[i];
+        }
+
+        angle_avg/= index;
+        distance_avg/= index;
+        ++n;
+    }
+    else
+        n = 0;
+
+    // Compute the real time period (in s)
+    t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
+
+    pos->p.angle = (uint16_t)(angle_avg * 10000.);
+    pos->p.distance = (uint16_t)(distance_avg);
     pos->p.period = (uint16_t)(t_period * 10000.);
 
-    pos_ll->p.angle = (uint16_t)(beacon_width);
+    pos_ll->p.angle = (uint16_t)(angle * 10000.);
     pos_ll->p.width = (uint16_t)(angular_width * 10000.);
-    pos_ll->p.period = index_width;
+    pos_ll->p.period = period;
 
+/*
+    pos_ll->p.angle = (uint16_t)(beacon_start[beacon_id]);
+    pos_ll->p.width = (uint16_t)(beacon_stop[beacon_id]);
+    pos_ll->p.period = period;
+*/
     return 0;
 }
 
@@ -181,10 +159,11 @@ void beacon_init(void) {
     event_initGeneric(&updated_beacon);
 
     sysirq_setHandler(TIM1_CC_IRQHANDLER, tim1_cc_irq);
+    sysirq_setHandler(TIM8_CC_IRQHANDLER, tim8_cc_irq);
 
-    RCC->APB2ENR |= RCC_APB2_GPIOA | RCC_APB2_TIM1;
+    RCC->APB2ENR |= RCC_APB2_GPIOA | RCC_APB2_TIM1 | RCC_APB2_GPIOC | RCC_APB2_TIM8;
 
-    // Enable TIM1_CH1
+    // Enable TIM1_CH1 (E3Z-R61, Open collector with pull-up + Light-ON switch config => detection at falling edge)
     stm32_gpioPinConfig(((struct stm32_gpio *)GPIOA_BASE), BV(8),
                         GPIO_MODE_IN_FLOATING, GPIO_SPEED_50MHZ);
 
@@ -196,7 +175,7 @@ void beacon_init(void) {
     // PWM input on TIM1_CH1
     TIM_ICStructInit(&TIM_ICInitStructure);
     TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
-    TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;
+    TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Falling;        // /!\ *Falling*
     TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI;
     TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;
     TIM_ICInitStructure.TIM_ICFilter = 10;
@@ -212,12 +191,34 @@ void beacon_init(void) {
     /* Enable the Master/Slave Mode */
     TIM_SelectMasterSlaveMode(TIM1, TIM_MasterSlaveMode_Enable);
 
-    /* TIM enable counter */
-    TIM_Cmd(TIM1, ENABLE);
-
     /* Enable the CC2 Interrupt Request */
     TIM_ITConfig(TIM1, TIM_IT_CC2, ENABLE);
 
-    /* Create a new child process */
-    proc_new(beacon_update_process, NULL, sizeof(stack_update), stack_update);
+    /* TIM enable counter */
+    TIM_Cmd(TIM1, ENABLE);
+
+    // Enable TIM8_CH1
+    stm32_gpioPinConfig(((struct stm32_gpio *)GPIOC_BASE), BV(6),
+                        GPIO_MODE_IN_FLOATING, GPIO_SPEED_50MHZ);
+
+
+    TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+    TIM_TimeBaseStructure.TIM_Prescaler = PRESCALER_VALUE;
+    TIM_TimeBaseInit(TIM8, &TIM_TimeBaseStructure);
+
+    // PWM input on TIM8_CH1
+    TIM_ICStructInit(&TIM_ICInitStructure);
+    TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
+    TIM_ICInitStructure.TIM_ICPolarity = TIM_ICPolarity_Rising;
+    TIM_ICInitStructure.TIM_ICSelection = TIM_ICSelection_DirectTI;
+    TIM_ICInitStructure.TIM_ICPrescaler = TIM_ICPSC_DIV1;
+    TIM_ICInitStructure.TIM_ICFilter = 10;
+
+    TIM_PWMIConfig(TIM8, &TIM_ICInitStructure);
+
+    /* Enable the CC1 Interrupt Request */
+    TIM_ITConfig(TIM8, TIM_IT_CC1, ENABLE);
+
+    /* TIM enable counter */
+    TIM_Cmd(TIM8, ENABLE);
 }
