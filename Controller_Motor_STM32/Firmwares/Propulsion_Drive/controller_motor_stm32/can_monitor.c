@@ -89,7 +89,7 @@ static void NORETURN canMonitor_process(void) {
 
     // Sending odometry data if not in HIL mode or motor commands if in HIL mode
     if (mode != ROBOT_MODE_HIL) {
-      odo_getState(CONTROL_ODOMETRY, &odometry);
+      odo_getState(0, &odometry);
       msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
       msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
       odometry.theta = fmodf(odometry.theta, 2*M_PI);
@@ -102,6 +102,21 @@ static void NORETURN canMonitor_process(void) {
       txm.data32[0] = msg_odo.data32[0];
       txm.data32[1] = msg_odo.data32[1];
       txm.eid = CAN_MSG_ODOMETRY;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+      odo_getState(1, &odometry);
+      msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
+      msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
+      odometry.theta = fmodf(odometry.theta, 2*M_PI);
+      if (odometry.theta > M_PI)
+        odometry.theta -= 2*M_PI;
+      if (odometry.theta < -M_PI)
+        odometry.theta += 2*M_PI;
+      msg_odo.data.theta = (int16_t)(odometry.theta * 10000.0);
+
+      txm.data32[0] = msg_odo.data32[0];
+      txm.data32[1] = msg_odo.data32[1];
+      txm.eid = CAN_MSG_ODOMETRY_INDEP;
       can_transmit(CAND1, &txm, ms_to_ticks(10));
     } else {
       // Sending MOTOR3 data
@@ -166,6 +181,7 @@ static void NORETURN canMonitorListen_process(void) {
     bool received = false;
     can_tx_frame txm;
     robot_state_t odometry;
+    uint8_t res;
 
     move_can_msg_t move_msg;
     turn_can_msg_t turn_msg;
@@ -209,9 +225,15 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_BEZIER_ADD:
             bezier_msg.data32[0] = frame.data32[0];
             bezier_msg.data32[1] = frame.data32[1];
-            dd_add_bezier(bezier_msg.data.x_end/1000.0, bezier_msg.data.y_end/1000.0,
-                          bezier_msg.data.d1/100.0, bezier_msg.data.d2/100.0,
-                          bezier_msg.data.theta_end/100.0, bezier_msg.data.v_end/1000.0);
+            res = dd_add_bezier(bezier_msg.data.x_end/1000.0,
+                                bezier_msg.data.y_end/1000.0,
+                                bezier_msg.data.d1/100.0,
+                                bezier_msg.data.d2/100.0,
+                                bezier_msg.data.theta_end/100.0,
+                                bezier_msg.data.v_end/1000.0);
+            if (res != DD_NO_ERROR) {
+              can_send_error(res,0);
+            }
             break;
           case CAN_MSG_BEZIER_LIMITS:
             bezier_limits_msg.data32[0] = frame.data32[0];

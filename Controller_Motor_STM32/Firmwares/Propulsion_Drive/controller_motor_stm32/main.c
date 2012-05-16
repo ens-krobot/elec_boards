@@ -17,8 +17,11 @@
 #include "command_generator.h"
 #include "differential_drive.h"
 
-#define WHEEL_RADIUS 0.049245
-#define SHAFT_WIDTH 0.224
+#define PROP_WHEEL_RADIUS 0.049245
+#define PROP_SHAFT_WIDTH 0.22264
+
+#define INDEP_WHEEL_RADIUS 0.049245
+#define INDEP_SHAFT_WIDTH 0.22264
 
 #define CONTROL_ODOMETRY 0
 
@@ -50,7 +53,7 @@ static void init(void)
         // Start control of drive motors
         tc_init();
         dd_start(CONTROL_ODOMETRY, // Use odometry CONTROL_ODOMETRY for control
-                 WHEEL_RADIUS, SHAFT_WIDTH, // Structural parameters
+                 PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH, // Structural parameters
                  8*2*M_PI, // Absolute wheel speed limitation
                  0.5, // Linear velocity limitation
                  1.0, // Linear acceleration limitation
@@ -77,8 +80,9 @@ static void init(void)
         params.encoder_gain = -2.0*M_PI/2000.0/15; // Left motor is reversed
         mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
-        // Start odometry
-        odometryInit(CONTROL_ODOMETRY, 1e-3, WHEEL_RADIUS, SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
+        // Start odometrys
+        odometryInit(0, 1e-3, PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
+        odometryInit(1, 1e-3, INDEP_WHEEL_RADIUS, INDEP_SHAFT_WIDTH, 2.0*M_PI/2000.0, -2.0*M_PI/2000.0);
 
         // Init beacon motor
         enableMotor(MOTOR2);
@@ -96,6 +100,7 @@ static void init(void)
           LED4_OFF();
           timer_delay(100);
           }
+
 }
 
 static void NORETURN ind_process(void)

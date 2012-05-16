@@ -24,6 +24,7 @@
 #define CAN_MSG_ODOMETRY 104 // odometry_can_msg_t
 #define CAN_MSG_GHOST 105 // ghost_can_msg_t
 #define CAN_MSG_CONTROL_ERROR 106 // error_can_msg_t
+#define CAN_MSG_ODOMETRY_INDEP 107 // odometry_can_msg_t
 
 // Received commands
 #define CAN_MSG_MOVE 201 // move_can_msg_t
@@ -125,8 +126,8 @@ typedef struct {
 
 // Command the speed of a particular motor
 typedef struct {
-  uint8_t motor_id;
-  int32_t speed;
+  uint8_t motor_id  __attribute__((__packed__));
+  int32_t speed     __attribute__((__packed__));
 } motor_command_msg_t;
 
 /* +-----------------------------------------------------------------+
