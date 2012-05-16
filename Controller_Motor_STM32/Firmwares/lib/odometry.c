@@ -15,6 +15,7 @@ static cpu_stack_t stack_odometry[MAX_ODOMETRY_PROCESSES][(ODOMETRY_STACK_SIZE +
 typedef struct {
   robot_state_t robot_state;
   float wheel_radius, shaft_width, left_encoder_gain, right_encoder_gain;
+  uint8_t left_encoder, right_encoder;
   float Ts;
   uint8_t enable;
   uint8_t running;
@@ -24,7 +25,10 @@ odometry_state_t state[MAX_ODOMETRY_PROCESSES];
 
 static void NORETURN odometry_process(void);
 
-void odometryInit(uint8_t process_num, float Ts, float wheel_radius, float shaft_width, float left_encoder_gain, float right_encoder_gain) {
+void odometryInit(uint8_t process_num, float Ts,
+                  float wheel_radius, float shaft_width,
+                  uint8_t left_encoder, uint8_t right_encoder,
+                  float left_encoder_gain, float right_encoder_gain) {
 
   // Initialize initial state
   state[process_num].robot_state.x = 0.;
@@ -34,6 +38,8 @@ void odometryInit(uint8_t process_num, float Ts, float wheel_radius, float shaft
   // Initialize robot parameters
   state[process_num].wheel_radius = wheel_radius;
   state[process_num].shaft_width = shaft_width;
+  state[process_num].left_encoder = left_encoder;
+  state[process_num].right_encoder = right_encoder;
   state[process_num].left_encoder_gain = left_encoder_gain;
   state[process_num].right_encoder_gain = right_encoder_gain;
   state[process_num].Ts = Ts;
@@ -57,7 +63,6 @@ void odo_restart(uint8_t process_num) {
 
 static void NORETURN odometry_process(void) {
   float pos_l, pos_r, last_pos_l, last_pos_r, delta_l, delta_r;
-  uint8_t dir_l, dir_r;
   Timer timer;
   odometry_state_t *state;
 
@@ -72,8 +77,8 @@ static void NORETURN odometry_process(void) {
   state->running = 1;
 
   // State initialization
-  last_pos_l = (float)getEncoderPosition(ENCODER3);
-  last_pos_r = (float)getEncoderPosition(ENCODER4);
+  last_pos_l = (float)getEncoderPosition(state->left_encoder);
+  last_pos_r = (float)getEncoderPosition(state->right_encoder);
 
   while (1) {
     if (state->enable == 0) {
@@ -83,8 +88,8 @@ static void NORETURN odometry_process(void) {
       timer_add(&timer);
 
       // Measure motors rotation and correct wrapping
-      pos_l = (float)getEncoderPosition(ENCODER3); dir_l = getEncoderDirection(ENCODER3);
-      pos_r = (float)getEncoderPosition(ENCODER4); dir_r = getEncoderDirection(ENCODER4);
+      pos_l = (float)getEncoderPosition(state->left_encoder);
+      pos_r = (float)getEncoderPosition(state->right_encoder);
       delta_l = pos_l - last_pos_l;
       delta_r = pos_r - last_pos_r;
       if (delta_l > 32767) {
@@ -97,20 +102,6 @@ static void NORETURN odometry_process(void) {
       } else if (delta_r < - 32767) {
         delta_r = delta_r + 65535;
       }
-      /*if (dir_l  == ENCODER_DIR_UP) {
-        if (delta_l < 0)
-          delta_l = delta_l + 65535;
-      } else {
-        if (delta_l > 0)
-          delta_l = delta_l - 65535;
-      }
-      if (dir_r  == ENCODER_DIR_UP) {
-        if (delta_r < 0)
-          delta_r = delta_r + 65535;
-      } else {
-        if (delta_r > 0)
-          delta_r = delta_r - 65535;
-          }*/
       delta_l *= state->left_encoder_gain;
       delta_r *= state->right_encoder_gain;
       last_pos_l = pos_l;

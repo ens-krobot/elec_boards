@@ -81,8 +81,14 @@ static void init(void)
         mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometrys
-        odometryInit(0, 1e-3, PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH, 2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
-        odometryInit(1, 1e-3, INDEP_WHEEL_RADIUS, INDEP_SHAFT_WIDTH, 2.0*M_PI/2000.0, -2.0*M_PI/2000.0);
+        odometryInit(0, 1e-3,
+                     PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH,
+                     ENCODER3, ENCODER4,
+                     2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
+        odometryInit(1, 1e-3,
+                     INDEP_WHEEL_RADIUS, INDEP_SHAFT_WIDTH,
+                     ENCODER1, ENCODER2,
+                     2.0*M_PI/2000.0, -2.0*M_PI/2000.0);
 
         // Init beacon motor
         enableMotor(MOTOR2);

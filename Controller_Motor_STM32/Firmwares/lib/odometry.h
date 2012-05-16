@@ -22,7 +22,10 @@ typedef struct {
   float theta;
 } robot_state_t;
 
-void odometryInit(uint8_t process_num, float Ts, float wheel_radius, float shaft_width, float left_encoder_gain, float right_encoder_gain);
+void odometryInit(uint8_t process_num, float Ts,
+                  float wheel_radius, float shaft_width,
+                  uint8_t left_encoder, uint8_t right_encoder,
+                  float left_encoder_gain, float right_encoder_gain);
 void odo_disable(uint8_t process_num);
 void odo_restart(uint8_t process_num);
 
