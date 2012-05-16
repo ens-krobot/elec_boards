@@ -304,6 +304,10 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
   if (params.trajs[t_ind].initialized == 1) {
     return DD_TRAJECTORY_ALREADY_USED;
   } else {
+    // Test the validity of the spline
+    if (fabsf(d1) < 0.01 || fabsf(d2) < 0.01) {
+      return DD_BAD_TRAJECTORY;
+    }
     traj = &params.trajs[t_ind];
     // New trajectory is not enabled
     traj->enabled = 0;
