@@ -43,6 +43,7 @@
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
 #define MAX_BEACONS 2
+#define BEACON_ANGLE_OFFSET 0.0
 
 #define PRESCALER_VALUE 200
 
