@@ -44,7 +44,7 @@
 
 #define MAX_BEACONS 2
 
-#define PRESCALER_VALUE 1000
+#define PRESCALER_VALUE 200
 
 #define N_SMOOTH 5
 
