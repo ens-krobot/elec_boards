@@ -88,7 +88,7 @@ int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_po
     //static float angle_smooth[N_SMOOTH] = {0};        // Issue at the 2*PI <-> 0 transition!
 
     float angular_width;
-    float t_period;
+    //float t_period;
     float angle;
     //float angle_avg = 0.0;
     float distance_avg = 0.0;
@@ -141,12 +141,12 @@ int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_po
         n = 0;
 
     // Compute the real time period (in s)
-    t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
+    //t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
 
     //pos->p.angle = (uint16_t)(angle_avg * 10000.);
-    pos->p.angle = (uint16_t)(angle * 10000.);
-    pos->p.distance = (uint16_t)(distance_avg);
-    pos->p.period = (uint16_t)(t_period * 10000.);
+    pos->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
+    pos->p.distance[beacon_id] = (uint16_t)(distance_avg);
+    //pos->p.period = (uint16_t)(t_period * 10000.);
 
     pos_ll->p.angle = (uint16_t)(angle * 10000.);
     pos_ll->p.width = (uint16_t)(angular_width * 10000.);

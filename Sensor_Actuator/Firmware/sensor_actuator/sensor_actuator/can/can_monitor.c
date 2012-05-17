@@ -74,7 +74,10 @@ static void NORETURN can_sender_process(void) {
     ax12_state ax12_st;
 
     int i = 0;
-    int no_beacon = 0;
+
+    uint8_t beacon_id;
+    uint8_t no_beacon[2] = {0};
+    uint8_t update_beacon = 0;
 
     /* Initialize can frame */
 
@@ -88,36 +91,32 @@ static void NORETURN can_sender_process(void) {
         timer_add(&timer_send);
 
         /* Beacon */
-        if(get_beacon_positions(0, &pos, &pos_ll) == 0) {
+        for (beacon_id = 0; beacon_id < 2; ++beacon_id) {
+            if(get_beacon_positions(beacon_id, &pos, &pos_ll) == 0) {
+                update_beacon = 1;
+                no_beacon[beacon_id] = 0;
+            }
+            else {
+                ++no_beacon[beacon_id];
 
+                if (no_beacon[beacon_id] > 10) {
+                    pos.p.angle[beacon_id] = (uint16_t)(0.);
+                    pos.p.distance[beacon_id] = (uint16_t)(0.);
+
+                    update_beacon = 1;
+                    no_beacon[beacon_id] = 0;
+                }
+            }
+        }
+
+        if (update_beacon) {
             SET_PACKET(f, CAN_BEACON_POSITION, pos);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
             SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
-            no_beacon = 0;
-        }
-        else {
-            ++no_beacon;
-
-            if (no_beacon > 10) {
-                pos.p.angle = (uint16_t)(0.);
-                pos.p.distance = (uint16_t)(0.);
-                pos.p.period = (uint16_t)(0.);
-
-                pos_ll.p.angle = (uint16_t)(0.);
-                pos_ll.p.width = (uint16_t)(0.);
-                pos_ll.p.period = 0;
-
-                SET_PACKET(f, CAN_BEACON_POSITION, pos);
-                can_transmit(CAND1, &f, ms_to_ticks(10));
-
-                SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
-                can_transmit(CAND1, &f, ms_to_ticks(10));
-
-                no_beacon = 0;
-            }
+            update_beacon = 0;
         }
 
         /* Switches */

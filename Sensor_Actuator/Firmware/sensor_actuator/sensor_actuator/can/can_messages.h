@@ -71,9 +71,8 @@
 
 // Position of the opponent
 struct beacon_position_pkt {
-    uint16_t angle;    // in 1/10000th of radians [0; 2*Pi[
-    uint16_t distance; // in mm [0; 65536[
-    uint16_t period;   // in 1/10000th of seconds [0; 1[
+    uint16_t angle[2];    // in 1/10000th of radians [0; 2*Pi[
+    uint16_t distance[2]; // in mm [0; 65536[
 } __attribute__((packed));
 
 
