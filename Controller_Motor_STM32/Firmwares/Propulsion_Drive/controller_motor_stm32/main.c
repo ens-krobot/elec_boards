@@ -20,8 +20,8 @@
 #define PROP_WHEEL_RADIUS 0.049245
 #define PROP_SHAFT_WIDTH 0.22264
 
-#define INDEP_WHEEL_RADIUS 0.049245
-#define INDEP_SHAFT_WIDTH 0.22264
+#define INDEP_WHEEL_RADIUS 0.0359
+#define INDEP_SHAFT_WIDTH 0.266
 
 #define CONTROL_ODOMETRY 0
 
@@ -88,7 +88,7 @@ static void init(void)
         odometryInit(1, 1e-3,
                      INDEP_WHEEL_RADIUS, INDEP_SHAFT_WIDTH,
                      ENCODER1, ENCODER2,
-                     2.0*M_PI/2000.0, -2.0*M_PI/2000.0);
+                     2.0*M_PI/1024.0, -2.0*M_PI/1024.0);
 
         // Init beacon motor
         enableMotor(MOTOR2);
