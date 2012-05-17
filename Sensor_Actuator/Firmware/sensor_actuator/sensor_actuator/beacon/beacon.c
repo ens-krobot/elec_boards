@@ -27,6 +27,7 @@ static struct Event got_capture;
 static struct Event updated_beacon;
 
 static uint16_t beacon_idx = 0;
+static uint16_t beacon_measured = 0;
 static uint32_t beacon_start[MAX_BEACONS] = {0};
 static uint32_t beacon_stop[MAX_BEACONS] = {0};
 static uint32_t period = 0;
@@ -60,6 +61,7 @@ static DECLARE_ISR(tim1_cc_irq) {
     if (beacon_idx < MAX_BEACONS) {
         beacon_start[beacon_idx] = TIM_GetCapture1(TIM1);
         beacon_stop[beacon_idx] = TIM_GetCounter(TIM8);
+        TIM_SetCounter(TIM1, 0);
 
         if (beacon_idx > 0)
             beacon_start[beacon_idx]+= beacon_stop[beacon_idx-1];
@@ -74,84 +76,98 @@ static DECLARE_ISR(tim8_cc_irq) {
 
     // Get the Input Capture value
     period = TIM_GetCapture1(TIM8);
+    beacon_measured = beacon_idx;
 
-    if (beacon_idx > 0)
+    if (beacon_measured > 0)
         event_do(&got_capture);
 
     beacon_idx = 0;
-
     TIM_SetCounter(TIM8, 0);
     TIM_SetCounter(TIM1, 0);
 }
 
-int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_position *pos_ll) {
+int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll) {
 
     float beacon_pos;
     float beacon_width;
 
+    static uint8_t no_beacon[MAX_BEACONS] = {0};
     static float distance_smooth[MAX_BEACONS][N_SMOOTH] = {{0}};
-    //static float angle_smooth[N_SMOOTH] = {0};        // Issue at the 2*PI <-> 0 transition!
+    static uint8_t n_smooth[MAX_BEACONS] = {0};
 
-    float angular_width;
-    //float t_period;
-    float angle;
-    //float angle_avg = 0.0;
-    float distance_avg = 0.0;
+    float angular_width = 0.0;
+    float angle = 0.0;
+    float distance_avg;
 
     float ang, angn, dis, disn;
 
-    int i;
-    static int n = 0;
-    static int index = 0;
+    uint8_t beacon_id;
+    uint8_t i;
+    uint8_t index;
 
-    if (!event_waitTimeout(&got_capture, 0))
-        return -1;
-
-    if (beacon_stop[beacon_id] >= beacon_start[beacon_id])
-        beacon_width = beacon_stop[beacon_id] - beacon_start[beacon_id];
-    else
-        beacon_width = beacon_stop[beacon_id] + period - beacon_start[beacon_id];
-
-    beacon_pos = beacon_start[beacon_id] + beacon_width / 2.0;
-    angle = 2.0 * M_PI - (beacon_pos * 2.0 * M_PI) / (float) period;
-    angular_width = (beacon_width * 2.0 * M_PI) / (float) period;
-
-    if (angular_width != 0.0) {
-        //angle_smooth[n % N_SMOOTH] =  fmod(angle + BEACON_ANGLE_OFFSET, 2.0 * M_PI);
-        angle = fmod(angle + BEACON_ANGLE_OFFSET, 2.0 * M_PI);
-
-        for (i = 0; calibration_data[i][0] != 0.0; ++i) {
-            angn = calibration_data[i+1][0];
-            if (angular_width > angn) {
-                ang = calibration_data[i][0];
-                dis = calibration_data[i][1];
-                disn = calibration_data[i+1][1];
-                distance_smooth[beacon_id][n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
-                break;
+    if (!event_waitTimeout(&got_capture, 0)) {
+        for (beacon_id = 0; beacon_id < 2; ++beacon_id) {
+            if (no_beacon[beacon_id] > 10) {
+                pos->p.angle[beacon_id] = 0;
+                pos->p.distance[beacon_id] = 0;
             }
+            else
+                ++no_beacon[beacon_id];
         }
 
-        index = MIN(n+1, N_SMOOTH);
-
-        for (i = 0; i < index; i++) {
-            //angle_avg+= angle_smooth[i];
-            distance_avg+= distance_smooth[beacon_id][i];
-        }
-
-        //angle_avg/= index;
-        distance_avg/= index;
-        ++n;
+        return 0;
     }
-    else
-        n = 0;
 
-    // Compute the real time period (in s)
-    //t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
+    for (beacon_id = 0; beacon_id < beacon_measured; ++beacon_id) {
+        distance_avg = 0.0;
 
-    //pos->p.angle = (uint16_t)(angle_avg * 10000.);
-    pos->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
-    pos->p.distance[beacon_id] = (uint16_t)(distance_avg);
-    //pos->p.period = (uint16_t)(t_period * 10000.);
+        if (beacon_stop[beacon_id] >= beacon_start[beacon_id])
+            beacon_width = beacon_stop[beacon_id] - beacon_start[beacon_id];
+        else
+            beacon_width = beacon_stop[beacon_id] + period - beacon_start[beacon_id];
+
+        beacon_pos = beacon_start[beacon_id] + beacon_width / 2.0;
+        angle = 2.0 * M_PI - (beacon_pos * 2.0 * M_PI) / (float) period;
+        angular_width = (beacon_width * 2.0 * M_PI) / (float) period;
+
+        if (angular_width != 0.0) {
+            angle = fmod(angle + BEACON_ANGLE_OFFSET, 2.0 * M_PI);
+
+            for (i = 0; calibration_data[i][0] != 0.0; ++i) {
+                angn = calibration_data[i+1][0];
+                if (angular_width > angn) {
+                    ang = calibration_data[i][0];
+                    dis = calibration_data[i][1];
+                    disn = calibration_data[i+1][1];
+                    distance_smooth[beacon_id][n_smooth[beacon_id] % N_SMOOTH]
+                        = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
+                    break;
+                }
+            }
+
+            index = MIN(n_smooth[beacon_id]+1, N_SMOOTH);
+
+            for (i = 0; i < index; i++)
+                distance_avg+= distance_smooth[beacon_id][i];
+
+            distance_avg/= index;
+            ++n_smooth[beacon_id];
+        }
+        else
+            n_smooth[beacon_id] = 0;
+
+        // Compute the real time period (in s)
+        //t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
+
+        pos->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
+        pos->p.distance[beacon_id] = (uint16_t)(distance_avg);
+        //pos->p.period = (uint16_t)(t_period * 10000.);
+
+        no_beacon[beacon_id] = 0;
+    }
+
+    for (; beacon_id < 2; ++beacon_id)
+        ++no_beacon[beacon_id];
 
     pos_ll->p.angle = (uint16_t)(angle * 10000.);
     pos_ll->p.width = (uint16_t)(angular_width * 10000.);

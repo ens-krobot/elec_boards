@@ -59,6 +59,6 @@ void beacon_init(void);
  * Return the beacon positions.
  * The packets are valid when the function returns 0.
  */
-int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_position *pos_ll);
+int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll);
 
 #endif
