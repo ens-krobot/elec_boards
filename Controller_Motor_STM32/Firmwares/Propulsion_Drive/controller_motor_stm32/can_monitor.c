@@ -12,6 +12,7 @@
 
 #define ROBOT_MODE_NORMAL  0
 #define ROBOT_MODE_HIL     1
+#define ROBOT_MODE_FAULT   2
 
 #define CONTROL_ODOMETRY 0
 
@@ -19,7 +20,7 @@
 PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
 // globals
-volatile uint8_t mode;
+volatile uint8_t mode, old_mode;
 volatile uint8_t err1, err2, send_err;
 
 // Process for communication
@@ -40,6 +41,7 @@ void canMonitorInit(void) {
   can_start(CAND1, &cfg);
 
   mode = ROBOT_MODE_NORMAL;
+  old_mode = ROBOT_MODE_NORMAL;
 
   // Start communication process
   proc_new(canMonitor_process, NULL, sizeof(stack_can_send), stack_can_send);
@@ -88,7 +90,8 @@ static void NORETURN canMonitor_process(void) {
     can_transmit(CAND1, &txm, ms_to_ticks(10));*/
 
     // Sending odometry data if not in HIL mode or motor commands if in HIL mode
-    if (mode != ROBOT_MODE_HIL) {
+    if (mode != ROBOT_MODE_HIL ||
+        (mode == ROBOT_MODE_FAULT && old_mode == ROBOT_MODE_HIL)) {
       odo_getState(0, &odometry);
       msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
       msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
@@ -191,6 +194,7 @@ static void NORETURN canMonitorListen_process(void) {
     bezier_can_msg_t bezier_msg;
     bezier_limits_can_msg_t bezier_limits_msg;
     motor_command_can_msg_t motor_command_msg;
+    switch_status switches;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -293,6 +297,20 @@ static void NORETURN canMonitorListen_process(void) {
             motorSetSpeed(motor_command_msg.data.motor_id,
                           motor_command_msg.data.speed);
             break;
+          case CAN_SWITCH_STATUS_1:
+            switches.d[0] = frame.data32[0];
+            switches.d[1] = frame.data32[1];
+            if (mode != ROBOT_MODE_FAULT && !switches.p.sw3) {
+              dd_interrupt_trajectory(0., 0.);
+              old_mode = mode;
+              mode = ROBOT_MODE_FAULT;
+              mc_suspend_controller(MOTOR3);
+              mc_suspend_controller(MOTOR4);
+            } else if (mode == ROBOT_MODE_FAULT && switches.p.sw3) {
+              mode = old_mode;
+              mc_reactivate_controller(MOTOR3);
+              mc_reactivate_controller(MOTOR4);
+            }
           }
         }
       }
