@@ -9,7 +9,7 @@ Firmware_DEBUG = 1
 # Our target application
 TRG += controller_motor_stm32
 
-controller_motor_stm32_PREFIX = "/media/data/krobot/arm-i386/bin/arm-none-eabi-"
+controller_motor_stm32_PREFIX = "$$HOME/opt/arm/bin/arm-none-eabi-"
 
 controller_motor_stm32_SUFFIX = ""
 
