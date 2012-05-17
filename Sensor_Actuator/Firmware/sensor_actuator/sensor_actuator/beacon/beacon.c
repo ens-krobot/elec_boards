@@ -45,11 +45,12 @@ static float calibration_data[10][2] = {
 };
 
 /**
- *  ______________________       _____________
- *          :             |_____|
- *          ^             ^     ^
- *         RAZ           IC1   IC2
- *                             IRQ
+ *  ______________________       _____________         _______________
+ *          :             |_____|             |_______|       :
+ *          ^             ^     ^             ^       ^       ^
+ *         RAZ           IC1   IC2           IC1     IC2     RAZ
+ *                             IRQ                   IRQ
+ *       (index)         (beacon #1)         (beacon #2)
 */
 static DECLARE_ISR(tim1_cc_irq) {
     /// Rising edge
@@ -59,6 +60,10 @@ static DECLARE_ISR(tim1_cc_irq) {
     if (beacon_idx < MAX_BEACONS) {
         beacon_start[beacon_idx] = TIM_GetCapture1(TIM1);
         beacon_stop[beacon_idx] = TIM_GetCounter(TIM8);
+
+        if (beacon_idx > 0)
+            beacon_start[beacon_idx]+= beacon_stop[beacon_idx-1];
+
         ++beacon_idx;
     }
 }
@@ -84,7 +89,7 @@ int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_po
     float beacon_pos;
     float beacon_width;
 
-    static float distance_smooth[N_SMOOTH] = {0};
+    static float distance_smooth[MAX_BEACONS][N_SMOOTH] = {{0}};
     //static float angle_smooth[N_SMOOTH] = {0};        // Issue at the 2*PI <-> 0 transition!
 
     float angular_width;
@@ -121,7 +126,7 @@ int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_po
                 ang = calibration_data[i][0];
                 dis = calibration_data[i][1];
                 disn = calibration_data[i+1][1];
-                distance_smooth[n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
+                distance_smooth[beacon_id][n % N_SMOOTH] = disn - (disn - dis) / (angn - ang) * (angn - angular_width);
                 break;
             }
         }
@@ -130,7 +135,7 @@ int get_beacon_positions(int beacon_id, beacon_position *pos, beacon_lowlevel_po
 
         for (i = 0; i < index; i++) {
             //angle_avg+= angle_smooth[i];
-            distance_avg+= distance_smooth[i];
+            distance_avg+= distance_smooth[beacon_id][i];
         }
 
         //angle_avg/= index;
