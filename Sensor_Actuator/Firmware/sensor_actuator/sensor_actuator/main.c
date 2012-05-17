@@ -101,29 +101,30 @@ static void NORETURN blinky_process(void) {
 
 int main(void)
 {
-
+/*
     int i = 0;
     uint8_t t = 0;
 
     switch_request r;
-
+*/
     /* Hardware initialization */
     init();
 
     /* Create a new child process */
-    proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
+    //proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
 
     for (;;) {
-
+/*
         r.p.num = i + 5;
         r.p.state = t;
 
         set_switch(&r);
-
-        timer_delay(100);
-
+*/
+        timer_delay(1000);
+/*
         i = (i+1) % 3;
         t = t?0:1;
+*/
     }
 
 }
