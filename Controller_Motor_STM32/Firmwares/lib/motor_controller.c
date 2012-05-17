@@ -21,6 +21,7 @@ typedef struct
 {
   uint8_t enable;                   // Is this controller enabled ?
   uint8_t running;                  // Is this controller running ?
+  uint8_t suspended;                // Is this controller suspended ?
   uint8_t mode;                     // Is this a real controller or an HIL controller
   uint8_t motor;                    // Motor ID to control
   uint8_t encoder;                  // Encoder ID to measure motor position from
@@ -178,13 +179,6 @@ static void NORETURN motorController_process(void) {
       // Measure motor rotation
       encoder_pos = (float)getEncoderPosition(params->encoder);
       delta = encoder_pos - params->last_encoder_pos;
-      /*if (getEncoderDirection(params->encoder)  == ENCODER_DIR_UP) {
-        if (delta < 0)
-          delta = delta + 65535;
-      } else {
-        if (delta > 0)
-          delta = delta - 65535;
-          }*/
       if (delta > 32767) {
         delta = delta - 65535;
       } else if (delta < - 32767) {
@@ -208,12 +202,14 @@ static void NORETURN motorController_process(void) {
       params->last_estimate[1] = estimate[1];
       params->last_encoder_pos = encoder_pos;
 
-      // Apply command
-      if (isnan(params->last_command)) {
-        motorSetSpeed(params->motor, 0);
-        motor_led_on(params->motor);
-      } else {
-        motorSetSpeed(params->motor, (int32_t)params->last_command);
+      // Apply command if necessary
+      if (!params->suspended) {
+        if (isnan(params->last_command)) {
+          motorSetSpeed(params->motor, 0);
+          motor_led_on(params->motor);
+        } else {
+          motorSetSpeed(params->motor, (int32_t)params->last_command);
+        }
       }
     }
     timer_waitEvent(&timer); // Wait for the remaining of the sample period
@@ -414,5 +410,30 @@ void mc_change_mode(uint8_t motor, uint8_t new_mode) {
     else {
       proc_new(motorController_HIL_process, params, params->stack_size, params->stack);
     }
+  }
+}
+
+void mc_suspend_controller(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  if (params->enable)
+    params->suspended = 1;
+  disableMotor(motor);
+}
+
+void mc_reactivate_controller(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  if (params->enable && params->suspended) {
+    params->last_command = 0;
+    params->last_estimate[0] = get_output_value(params->reference);
+    params->last_estimate[1] = 0;
+    params->last_output = params->last_estimate[0];
+    params->last_encoder_pos = getEncoderPosition(params->encoder);
+    params->suspended = 0;
+    motorSetSpeed(motor, 0);
+    enableMotor(motor);
   }
 }

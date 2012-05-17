@@ -89,6 +89,13 @@ uint8_t mc_is_controller_running(uint8_t motor);
  * Returns 'motor' 's controller mode
  */
 uint8_t mc_controller_mode(uint8_t motor);
-
+/*
+ * Suspends 'motor' 's controller
+ */
+void mc_suspend_controller(uint8_t motor);
+/*
+ * Get back on-line a controller
+ */
+void mc_reactivate_controller(uint8_t motor);
 
 #endif
