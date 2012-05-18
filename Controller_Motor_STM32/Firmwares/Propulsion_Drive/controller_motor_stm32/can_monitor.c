@@ -195,6 +195,10 @@ static void NORETURN canMonitorListen_process(void) {
     bezier_limits_can_msg_t bezier_limits_msg;
     motor_command_can_msg_t motor_command_msg;
     switch_status switches;
+    torque_limit_can_msg_t torque_limit_msg;
+    drive_torque_limit_can_msg_t drive_torque_limit_msg;
+    controller_activation_can_msg_t cont_act_msg;
+    drive_activation_can_msg_t drive_activation_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -214,6 +218,16 @@ static void NORETURN canMonitorListen_process(void) {
         } else {
           // Handle commands and other informations
           switch (frame.eid) {
+          case CAN_MSG_TORQUE_LIMIT:
+            torque_limit_msg.data32[0] = frame.data32[0];
+            torque_limit_msg.data32[1] = frame.data32[0];
+            motorSetMaxPWM(torque_limit_msg.data.motor, torque_limit_msg.data.limit);
+            break;
+          case CAN_MSG_DRIVE_TORQUE_LIMIT:
+            drive_torque_limit_msg.data32[0] = frame.data32[0];
+            drive_torque_limit_msg.data32[1] = frame.data32[1];
+            motorSetMaxPWM(MOTOR3|MOTOR4, torque_limit_msg.data.limit);;
+            break;
           case CAN_MSG_MOVE:
             move_msg.data32[0] = frame.data32[0];
             move_msg.data32[1] = frame.data32[1];
@@ -225,6 +239,26 @@ static void NORETURN canMonitorListen_process(void) {
             turn_msg.data32[1] = frame.data32[1];
             if (!tc_is_working(TC_MASK(DD_LINEAR_SPEED_TC) | TC_MASK(DD_ROTATIONAL_SPEED_TC)))
               dd_turn(turn_msg.data.angle / 10000.0, turn_msg.data.speed / 1000.0, turn_msg.data.acceleration / 1000.0);
+            break;
+          case CAN_MSG_CONTROLLER_ACTIVATION:
+            cont_act_msg.data32[0] = frame.data32[0];
+            cont_act_msg.data32[1] = frame.data32[1];
+            if (!cont_act_msg.data.activate)
+              mc_suspend_controller(1 << (cont_act_msg.data.motor-1));
+            else
+              mc_reactivate_controller(1 << (cont_act_msg.data.motor-1));
+            break;
+          case CAN_MSG_DRIVE_ACTIVATION:
+            drive_activation_msg.data32[0] = frame.data32[0];
+            drive_activation_msg.data32[1] = frame.data32[1];
+            if (!drive_activation_msg.data.activate) {
+              mc_suspend_controller(MOTOR3);
+              mc_suspend_controller(MOTOR4);
+              dd_interrupt_trajectory(0., 0.);
+            } else {
+              mc_reactivate_controller(MOTOR3);
+              mc_reactivate_controller(MOTOR4);
+            }
             break;
           case CAN_MSG_BEZIER_ADD:
             bezier_msg.data32[0] = frame.data32[0];

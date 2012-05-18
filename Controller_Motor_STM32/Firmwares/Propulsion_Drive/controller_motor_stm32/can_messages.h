@@ -36,6 +36,10 @@
 #define CAN_MSG_BEZIER_LIMITS 207 // bezier_limits_can_msg_t
 #define CAN_MSG_MOTOR_COMMAND 208 // motor_command_can_msg_t
 #define CAN_MSG_ODOMETRY_INDEP_SET 209 // odometry_can_msg_t
+#define CAN_MSG_CONTROLLER_ACTIVATION 210 // controller_activation_can_msg_t
+#define CAN_MSG_DRIVE_ACTIVATION 211 // controller_activation_can_msg_t
+#define CAN_MSG_TORQUE_LIMIT 212 // torque_limit_can_msg_t
+#define CAN_MSG_DRIVE_TORQUE_LIMIT 213 // drive_torque_limit_can_msg_t
 
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
@@ -83,6 +87,17 @@ typedef struct {
   uint8_t state; // 1 if trajectory in progress, 0 else
 } ghost_msg_t;
 
+// Torque limitation on some motors
+typedef struct {
+  uint8_t motor         __attribute__((__packed__)); // Logic OR of bits corresponding to motors
+  uint16_t limit        __attribute__((__packed__)); // Torque limit (between 0 and 3600)
+} torque_limit_msg_t;
+
+// Torque limitation on propulsion drive
+typedef struct {
+  uint16_t limit        __attribute__((__packed__)); // Torque limit (between 0 and 3600)
+} drive_torque_limit_msg_t;
+
 // Move command
 typedef struct {
   int32_t distance      __attribute__((__packed__));  // Distance in mm (fixed point representation...)
@@ -96,6 +111,19 @@ typedef struct {
   uint16_t speed        __attribute__((__packed__));  // Speed in 1/1000 rad/s
   uint16_t acceleration __attribute__((__packed__));  // Acceleration in 1/1000 radians/s^2
 } turn_msg_t;
+
+// Controller activation command
+typedef struct {
+  uint8_t motor         __attribute__((__packed__)); // Motor ID of the motor to act on
+  uint8_t activate      __attribute__((__packed__)); // Activate the controller if non zero
+                                                     // else release the control.
+} controller_activation_msg_t;
+
+// Propulsion Drive activation command
+typedef struct {
+  uint8_t activate      __attribute__((__packed__)); // Activate the propulsion drive if non zero
+                                                     // else release the control.
+} drive_activation_msg_t;
 
 // Add a new Bezier Spline to the wait queue
 typedef struct {
@@ -166,6 +194,16 @@ typedef union {
 } ghost_can_msg_t;
 
 typedef union {
+  torque_limit_msg_t data;
+  uint32_t data32[2];
+} torque_limit_can_msg_t;
+
+typedef union {
+  drive_torque_limit_msg_t data;
+  uint32_t data32[2];
+} drive_torque_limit_can_msg_t;
+
+typedef union {
   move_msg_t data;
   uint32_t data32[2];
 } move_can_msg_t;
@@ -174,6 +212,16 @@ typedef union {
   turn_msg_t data;
   uint32_t data32[2];
 } turn_can_msg_t;
+
+typedef union {
+  controller_activation_msg_t data;
+  uint32_t data32[2];
+} controller_activation_can_msg_t;
+
+typedef union {
+  drive_activation_msg_t data;
+  uint32_t data32[2];
+} drive_activation_can_msg_t;
 
 typedef union {
   bezier_msg_t data;
