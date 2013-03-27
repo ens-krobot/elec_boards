@@ -33,7 +33,8 @@
 
 /* Initializes the differential drive
  *  - odometry_process : ID of the odometry process to base the control on
- *  - wheel_radius : radius of the wheels (in meters)
+ *  - left_wheel_radius : radius of the left wheel (in meters)
+ *  - right_wheel_radius : radius of the right wheel (in meters)
  *  - shaft_width : propulsion shaft width (in meters)
  *  - max_wheel_speed : maximum wheel speed (in rad/s)
  *  - v_max : maximum linear speed (in m/s)
@@ -46,7 +47,8 @@
  *        DD_LINEAR_SPEED_TC and DD_ROTATIONAL_SPEED_TC
  */
 void dd_start(uint8_t odometry_process,
-              float wheel_radius, float shaft_width, float max_wheel_speed,
+              float left_wheel_radius, float right_wheel_radius,
+              float shaft_width, float max_wheel_speed,
               float v_max, float at_max, float ar_max,
               float k1, float k2, float k3, float Ts);
 

@@ -23,7 +23,8 @@ typedef struct {
 } robot_state_t;
 
 void odometryInit(uint8_t process_num, float Ts,
-                  float wheel_radius, float shaft_width,
+                  float left_wheel_radius, float right_wheel_radius,
+                  float shaft_width,
                   uint8_t left_encoder, uint8_t right_encoder,
                   float left_encoder_gain, float right_encoder_gain);
 void odo_disable(uint8_t process_num);

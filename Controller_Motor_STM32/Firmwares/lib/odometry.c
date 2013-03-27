@@ -14,7 +14,8 @@ static cpu_stack_t stack_odometry[MAX_ODOMETRY_PROCESSES][(ODOMETRY_STACK_SIZE +
 
 typedef struct {
   robot_state_t robot_state;
-  float wheel_radius, shaft_width, left_encoder_gain, right_encoder_gain;
+  float left_wheel_radius, right_wheel_radius, shaft_width;
+  float left_encoder_gain, right_encoder_gain;
   uint8_t left_encoder, right_encoder;
   float Ts;
   uint8_t enable;
@@ -26,7 +27,8 @@ odometry_state_t state[MAX_ODOMETRY_PROCESSES];
 static void NORETURN odometry_process(void);
 
 void odometryInit(uint8_t process_num, float Ts,
-                  float wheel_radius, float shaft_width,
+                  float left_wheel_radius, float right_wheel_radius,
+                  float shaft_width,
                   uint8_t left_encoder, uint8_t right_encoder,
                   float left_encoder_gain, float right_encoder_gain) {
 
@@ -36,7 +38,8 @@ void odometryInit(uint8_t process_num, float Ts,
   state[process_num].robot_state.theta = 0;
 
   // Initialize robot parameters
-  state[process_num].wheel_radius = wheel_radius;
+  state[process_num].left_wheel_radius = left_wheel_radius;
+  state[process_num].right_wheel_radius = right_wheel_radius;
   state[process_num].shaft_width = shaft_width;
   state[process_num].left_encoder = left_encoder;
   state[process_num].right_encoder = right_encoder;
@@ -108,10 +111,9 @@ static void NORETURN odometry_process(void) {
       last_pos_r = pos_r;
 
       // New state computation
-      state->robot_state.x += state->wheel_radius * (delta_r + delta_l) / 2.0 * cos(state->robot_state.theta);
-      state->robot_state.y += state->wheel_radius * (delta_r + delta_l) / 2.0 * sin(state->robot_state.theta);
-      state->robot_state.theta += state->wheel_radius / state->shaft_width * (delta_r - delta_l);
-
+      state->robot_state.x += (state->right_wheel_radius * delta_r + state->left_wheel_radius * delta_l) / 2.0 * cos(state->robot_state.theta);
+      state->robot_state.y += (state->right_wheel_radius * delta_r + state->left_wheel_radius * delta_l) / 2.0 * sin(state->robot_state.theta);
+      state->robot_state.theta += (state->right_wheel_radius * delta_r - state->left_wheel_radius * delta_l) / state->shaft_width;
       // Normalization of theta
       if (state->robot_state.theta > M_PI) {
         state->robot_state.theta -= 2*M_PI;

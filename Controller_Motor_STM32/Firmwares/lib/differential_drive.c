@@ -26,7 +26,7 @@ typedef struct {
 typedef struct {
   uint8_t initialized, enabled, running, working;
   uint8_t odometry_process;
-  float wheel_radius, shaft_width;
+  float left_wheel_radius, right_wheel_radius, shaft_width;
   float last_lin_acceleration, last_rot_acceleration;
   float u, v_max, at_max, ar_max;
   command_generator_t left_wheel_speed, right_wheel_speed;
@@ -163,11 +163,13 @@ static void NORETURN traj_following_process(void) {
 }
 
 void dd_start(uint8_t odometry_process,
-              float wheel_radius, float shaft_width, float max_wheel_speed,
+              float left_wheel_radius, float right_wheel_radius,
+              float shaft_width, float max_wheel_speed,
               float v_max, float at_max, float ar_max,
               float k1, float k2, float k3, float Ts) {
   params.odometry_process = odometry_process;
-  params.wheel_radius = wheel_radius;
+  params.left_wheel_radius = left_wheel_radius;
+  params.right_wheel_radius = right_wheel_radius;
   params.shaft_width = shaft_width;
   params.last_lin_acceleration = 0.0;
   params.last_rot_acceleration = 0.0;
@@ -199,14 +201,14 @@ void dd_start(uint8_t odometry_process,
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
                    tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, shaft_width, max_wheel_speed,
+                   left_wheel_radius, shaft_width, max_wheel_speed,
                    -1);
   new_dd_generator(&params.right_wheel_speed,
                    tc_get_position_generator(DD_LINEAR_SPEED_TC),
                    tc_get_speed_generator(DD_LINEAR_SPEED_TC),
                    tc_get_position_generator(DD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(DD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, shaft_width, max_wheel_speed,
+                   right_wheel_radius, shaft_width, max_wheel_speed,
                    1);
   new_ramp2_generator(&params.left_wheel, 0.0, &params.left_wheel_speed);
   new_ramp2_generator(&params.right_wheel, 0.0, &params.right_wheel_speed);

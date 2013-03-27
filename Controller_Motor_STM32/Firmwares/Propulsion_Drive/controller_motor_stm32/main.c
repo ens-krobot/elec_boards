@@ -17,8 +17,11 @@
 #include "command_generator.h"
 #include "differential_drive.h"
 
-#define PROP_WHEEL_RADIUS 0.049245
-#define PROP_SHAFT_WIDTH 0.22264
+//#define PROP_WHEEL_RADIUS 0.049245
+#define PROP_WHEEL_RADIUS_LEFT 0.049207
+#define PROP_WHEEL_RADIUS_RIGHT 0.049283
+#define PROP_WHEEL_RADIUS ((PROP_WHEEL_RADIUS_RIGHT+PROP_WHEEL_RADIUS_LEFT)/2)
+#define PROP_SHAFT_WIDTH 0.22587
 
 #define INDEP_WHEEL_RADIUS 0.0359
 #define INDEP_SHAFT_WIDTH 0.266
@@ -53,7 +56,7 @@ static void init(void)
         // Start control of drive motors
         tc_init();
         dd_start(CONTROL_ODOMETRY, // Use odometry CONTROL_ODOMETRY for control
-                 PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH, // Structural parameters
+                 PROP_WHEEL_RADIUS_LEFT, PROP_WHEEL_RADIUS_RIGHT, PROP_SHAFT_WIDTH, // Structural parameters
                  8*2*M_PI, // Absolute wheel speed limitation
                  0.5, // Linear velocity limitation
                  1.0, // Linear acceleration limitation
@@ -82,11 +85,13 @@ static void init(void)
 
         // Start odometrys
         odometryInit(0, 1e-3,
-                     PROP_WHEEL_RADIUS, PROP_SHAFT_WIDTH,
+                     PROP_WHEEL_RADIUS_LEFT, PROP_WHEEL_RADIUS_RIGHT,
+                     PROP_SHAFT_WIDTH,
                      ENCODER3, ENCODER4,
                      2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
         odometryInit(1, 1e-3,
-                     INDEP_WHEEL_RADIUS, INDEP_SHAFT_WIDTH,
+                     INDEP_WHEEL_RADIUS, INDEP_WHEEL_RADIUS,
+                     INDEP_SHAFT_WIDTH,
                      ENCODER1, ENCODER2,
                      2.0*M_PI/1024.0, -2.0*M_PI/1024.0);
 
