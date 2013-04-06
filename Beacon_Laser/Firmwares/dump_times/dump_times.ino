@@ -37,7 +37,7 @@ void setup() {
   delay(2000);
   flag_data_ready = false ;
   cmd_get_data = true;
-  Serial.begin(115200);
+  Serial.begin(57600);
   attachInterrupt(0,interrupt1,RISING);
 }
 
