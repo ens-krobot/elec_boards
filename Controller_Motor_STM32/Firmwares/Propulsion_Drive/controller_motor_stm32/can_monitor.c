@@ -10,9 +10,10 @@
 #include "can_monitor.h"
 #include "hw/hw_led.h"
 
-#define ROBOT_MODE_NORMAL  0
-#define ROBOT_MODE_HIL     1
-#define ROBOT_MODE_FAULT   2
+#define ROBOT_MODE_NORMAL     0
+#define ROBOT_MODE_HIL        1
+#define ROBOT_MODE_FAULT      2
+#define ROBOT_MODE_SIMULATION 3
 
 #define CONTROL_ODOMETRY 0
 
@@ -89,9 +90,9 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_ENCODERS34;
     can_transmit(CAND1, &txm, ms_to_ticks(10));*/
 
-    // Sending odometry data if not in HIL mode or motor commands if in HIL mode
-    if (mode != ROBOT_MODE_HIL ||
-        (mode == ROBOT_MODE_FAULT && old_mode == ROBOT_MODE_HIL)) {
+    // Sending odometry data if not in simulation mode or motor commands if in HIL mode
+    if (mode != ROBOT_MODE_HIL || mode != ROBOT_MODE_SIMULATION ||
+        (mode == ROBOT_MODE_FAULT && (old_mode == ROBOT_MODE_HIL || old_mode == ROBOT_MODE_SIMULATION))) {
       odo_getState(0, &odometry);
       msg_odo.data.x = (int16_t)(odometry.x * 1000.0);
       msg_odo.data.y = (int16_t)(odometry.y * 1000.0);
@@ -121,7 +122,7 @@ static void NORETURN canMonitor_process(void) {
       txm.data32[1] = msg_odo.data32[1];
       txm.eid = CAN_MSG_ODOMETRY_INDEP;
       can_transmit(CAND1, &txm, ms_to_ticks(10));
-    } else {
+    } else if (mode == ROBOT_MODE_HIL || (mode == ROBOT_MODE_FAULT && old_mode == ROBOT_MODE_HIL)){
       // Sending MOTOR3 data
       msg_mot.data.position = mc_getPosition(MOTOR3);
       msg_mot.data.speed = mc_getSpeed(MOTOR3);
@@ -146,6 +147,7 @@ static void NORETURN canMonitor_process(void) {
     timer_add(&timer_can);
 
     // Sending ghost state
+    if (mode != ROBOT_MODE_SIMULATION || (mode == ROBOT_MODE_FAULT && old_mode != ROBOT_MODE_SIMULATION))
     msg_ghost.data.state = dd_get_ghost_state(&odometry, &u);
     msg_ghost.data.x = (int16_t)(odometry.x * 1000.0);
     msg_ghost.data.y = (int16_t)(odometry.y * 1000.0);
@@ -313,12 +315,20 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_CONTROLLER_MODE:
             controller_mode_msg.data32[0] = frame.data32[0];
             controller_mode_msg.data32[1] = frame.data32[0];
-            if (controller_mode_msg.data.mode == 1) {
+            switch (controller_mode_msg.data.mode) {
+            case SIMULATION_MODE_NORMAL:
+              mc_change_mode(MOTOR3, CONTROLLER_MODE_HIL);
+              mc_change_mode(MOTOR4, CONTROLLER_MODE_HIL);
+              odo_disable(CONTROL_ODOMETRY);
+              mode = ROBOT_MODE_SIMULATION;
+              break;
+            case SIMULATION_MODE_HIL:
               mc_change_mode(MOTOR3, CONTROLLER_MODE_HIL);
               mc_change_mode(MOTOR4, CONTROLLER_MODE_HIL);
               odo_disable(CONTROL_ODOMETRY);
               mode = ROBOT_MODE_HIL;
-            } else {
+              break;
+            default:
               mc_change_mode(MOTOR3, CONTROLLER_MODE_NORMAL);
               mc_change_mode(MOTOR4, CONTROLLER_MODE_NORMAL);
               odo_restart(CONTROL_ODOMETRY);

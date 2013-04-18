@@ -31,7 +31,7 @@
 #define CAN_MSG_TURN 202 // turn_can_msg_t
 #define CAN_MSG_ODOMETRY_SET 203 // odometry_can_msg_t
 #define CAN_MSG_STOP 204 // stop_can_msg_t
-#define CAN_MSG_CONTROLLER_MODE 205 // controller_mode_can_msg_t
+#define CAN_MSG_SIMULATION_MODE 205 // simulation_mode_can_msg_t
 #define CAN_MSG_BEZIER_ADD 206 // bezier_can_msg_t
 #define CAN_MSG_BEZIER_LIMITS 207 // bezier_limits_can_msg_t
 #define CAN_MSG_MOTOR_COMMAND 208 // motor_command_can_msg_t
@@ -40,6 +40,13 @@
 #define CAN_MSG_DRIVE_ACTIVATION 211 // controller_activation_can_msg_t
 #define CAN_MSG_TORQUE_LIMIT 212 // torque_limit_can_msg_t
 #define CAN_MSG_DRIVE_TORQUE_LIMIT 213 // drive_torque_limit_can_msg_t
+
+/* +-----------------------------------------------------------------+
+   | Constants for messages                                          |
+   +-----------------------------------------------------------------+ */
+#define SIMULATION_MODE_NO 0
+#define SIMULATION_MODE_NORMAL 1
+#define SIMULATION_MODE_HIL 2
 
 /* +-----------------------------------------------------------------+
    | CAN messages data structures                                    |
@@ -148,10 +155,10 @@ typedef struct {
   float rot_acc  __attribute__((__packed__)); // Rotational acceleration for braking
 } stop_msg_t;
 
-// Select robot mode (normal or HIL)
+// Select robot mode (normal, simulation or HIL)
 typedef struct {
   uint8_t mode;
-} controller_mode_msg_t;
+} simulation_mode_msg_t;
 
 // Command the speed of a particular motor
 typedef struct {
@@ -239,9 +246,9 @@ typedef union {
 } stop_can_msg_t;
 
 typedef union {
-  controller_mode_msg_t data;
+  simulation_mode_msg_t data;
   uint32_t data32[2];
-} controller_mode_can_msg_t;
+} simulation_mode_can_msg_t;
 
 typedef union {
   motor_command_msg_t data;
