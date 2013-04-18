@@ -73,6 +73,9 @@ static void NORETURN can_sender_process(void) {
 
     ax12_state ax12_st;
 
+    simulation_mode sim_mode_msg;
+    uint8_t sim_mode = SIMULATION_MODE_NO;
+
     int i = 0;
 
     /* Initialize can frame */
@@ -86,51 +89,53 @@ static void NORETURN can_sender_process(void) {
     for (;;) {
         timer_add(&timer_send);
 
-        /* Beacon */
-        get_beacon_positions(&pos, &pos_ll);
+        if (sim_mode == SIMULATION_MODE_NO) {
+            /* Beacon */
+            get_beacon_positions(&pos, &pos_ll);
 
-        SET_PACKET(f, CAN_BEACON_POSITION, pos);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        /* Switches */
-
-        get_switch_status(&st1, &st2);
-
-        SET_PACKET(f, CAN_SWITCH_STATUS_1, st1);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        SET_PACKET(f, CAN_SWITCH_STATUS_2, st2);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        /* ADC */
-
-        get_adc_values(&adc1, &adc2);
-
-        SET_PACKET(f, CAN_ADC_VALUES_1, adc1);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        SET_PACKET(f, CAN_ADC_VALUES_2, adc2);
-        can_transmit(CAND1, &f, ms_to_ticks(10));
-
-        /* Battery monitoring */
-
-        if (get_battery_monitoring(&battery1, &battery2) == 0) {
-
-            SET_PACKET(f, CAN_BATTERY_STATUS_1, battery1);
+            SET_PACKET(f, CAN_BEACON_POSITION, pos);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
-            SET_PACKET(f, CAN_BATTERY_STATUS_2, battery2);
+            SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
             can_transmit(CAND1, &f, ms_to_ticks(10));
-        }
 
-        /* AX-12 */
+            /* Switches */
 
-        while (ax12_dequeue_state(&ax12_st) == 0) {
-            SET_PACKET(f, CAN_AX12_STATE, ax12_st);
+            get_switch_status(&st1, &st2);
+
+            SET_PACKET(f, CAN_SWITCH_STATUS_1, st1);
             can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            SET_PACKET(f, CAN_SWITCH_STATUS_2, st2);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            /* ADC */
+
+            get_adc_values(&adc1, &adc2);
+
+            SET_PACKET(f, CAN_ADC_VALUES_1, adc1);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            SET_PACKET(f, CAN_ADC_VALUES_2, adc2);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            /* Battery monitoring */
+
+            if (get_battery_monitoring(&battery1, &battery2) == 0) {
+
+                SET_PACKET(f, CAN_BATTERY_STATUS_1, battery1);
+                can_transmit(CAND1, &f, ms_to_ticks(10));
+
+                SET_PACKET(f, CAN_BATTERY_STATUS_2, battery2);
+                can_transmit(CAND1, &f, ms_to_ticks(10));
+            }
+
+            /* AX-12 */
+
+            while (ax12_dequeue_state(&ax12_st) == 0) {
+                SET_PACKET(f, CAN_AX12_STATE, ax12_st);
+                can_transmit(CAND1, &f, ms_to_ticks(10));
+            }
         }
 
         if (i)
@@ -158,46 +163,58 @@ static void NORETURN can_receiver_process(void) {
         if (!ret || f.ide != 1)
             continue;
 
-        switch (f.eid) {
+        // These messages are to be interpreted only when not in simulation mode
+        if (sim_mode == SIMULATION_MODE_NO) {
+          switch (f.eid) {
           case CAN_SWITCH_SET:
             do {
-                GET_PACKET(switch_request, req, f);
-                set_switch(&req);
+              GET_PACKET(switch_request, req, f);
+              set_switch(&req);
             } while (0);
             break;
 
           case CAN_AX12_REQUEST_STATE:
             do {
-                struct ax12_hl_command hlc;
-                GET_PACKET(ax12_request_state, ax12_req, f);
-                hlc.command = AX12_HL_GET_STATE;
-                hlc.address = ax12_req.p.address;
-                ax12_queue_command(&hlc);
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_request_state, ax12_req, f);
+              hlc.command = AX12_HL_GET_STATE;
+              hlc.address = ax12_req.p.address;
+              ax12_queue_command(&hlc);
             } while (0);
             break;
           case CAN_AX12_GOTO:
             do {
-                struct ax12_hl_command hlc;
-                GET_PACKET(ax12_goto, ax12_g, f);
-                hlc.command = AX12_HL_GOTO;
-                hlc.address = ax12_g.p.address;
-                hlc.args[0] = ax12_g.p.position;
-                hlc.args[1] = ax12_g.p.speed;
-                ax12_queue_command(&hlc);
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_goto, ax12_g, f);
+              hlc.command = AX12_HL_GOTO;
+              hlc.address = ax12_g.p.address;
+              hlc.args[0] = ax12_g.p.position;
+              hlc.args[1] = ax12_g.p.speed;
+              ax12_queue_command(&hlc);
             } while (0);
             break;
           case CAN_AX12_SET_TORQUE_ENABLE:
             do {
-                struct ax12_hl_command hlc;
-                GET_PACKET(ax12_set_torque_enable, ax12_ste, f);
-                hlc.command = AX12_HL_SET_TORQUE_ENABLE;
-                hlc.address = ax12_ste.p.address;
-                hlc.args[0] = ax12_ste.p.enable;
-                ax12_queue_command(&hlc);
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_set_torque_enable, ax12_ste, f);
+              hlc.command = AX12_HL_SET_TORQUE_ENABLE;
+              hlc.address = ax12_ste.p.address;
+              hlc.args[0] = ax12_ste.p.enable;
+              ax12_queue_command(&hlc);
             } while (0);
             break;
           default:
             break;
+          }
+        }
+        // General messages
+        switch (f.eid) {
+        case CAN_MSG_SIMULATIOn_MODE:
+          do {
+            GET_PACKET(simulation_mode, sim_mode_msg, f);
+            sim_mode = sim_mode_msg.mode;
+          } while (0);
+          break;
         }
     }
 

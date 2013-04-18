@@ -59,6 +59,13 @@
 //#define CAN_AX12_RESET 344             // Not used anymore
 #define CAN_AX12_SET_TORQUE_ENABLE 345   // ax12_set_torque_enable
 
+// Simulation control
+#define CAN_MSG_SIMULATION_MODE 205      // simulation mode
+#define SIMULATION_MODE_NO 0
+#define SIMULATION_MODE_NORMAL 1
+#define SIMULATION_MODE_HIL 2
+
+
 /****************************************************************************/
 
 /**
@@ -159,6 +166,13 @@ struct ax12_set_torque_enable_pkt {
     uint8_t enable;
 };
 
+/**
+ * Simulation mode control
+ */
+struct simulation_mode_pkt {
+    uint8_t mode;
+} __attribute__((packed));
+
 /****************************************************************************/
 
 /**
@@ -219,5 +233,10 @@ typedef union {
     struct ax12_set_torque_enable_pkt p;
     uint32_t d[2];
 } ax12_set_torque_enable;
+
+typedef union {
+    struct simulation_mode_pkt p;
+    uint32_t d[2];
+} simulation_mode;
 
 #endif
