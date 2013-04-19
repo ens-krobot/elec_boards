@@ -29,6 +29,8 @@ PROC_DEFINE_STACK(stack_recv, KERN_MINSTACKSIZE * 4)
 static void NORETURN can_sender_process(void);
 static void NORETURN can_receiver_process(void);
 
+volatile uint8_t sim_mode = SIMULATION_MODE_NO;
+
 void can_processes_init(void) {
     can_config cfg;
 
@@ -72,9 +74,6 @@ static void NORETURN can_sender_process(void) {
     battery_status battery1, battery2;
 
     ax12_state ax12_st;
-
-    simulation_mode sim_mode_msg;
-    uint8_t sim_mode = SIMULATION_MODE_NO;
 
     int i = 0;
 
@@ -209,10 +208,10 @@ static void NORETURN can_receiver_process(void) {
         }
         // General messages
         switch (f.eid) {
-        case CAN_MSG_SIMULATIOn_MODE:
+        case CAN_MSG_SIMULATION_MODE:
           do {
-            GET_PACKET(simulation_mode, sim_mode_msg, f);
-            sim_mode = sim_mode_msg.mode;
+            GET_PACKET(simulation_mode, mode_req, f);
+            sim_mode = mode_req.p.mode;
           } while (0);
           break;
         }
