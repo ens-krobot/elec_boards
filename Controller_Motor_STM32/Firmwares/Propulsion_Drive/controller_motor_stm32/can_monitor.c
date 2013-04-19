@@ -192,7 +192,7 @@ static void NORETURN canMonitorListen_process(void) {
     turn_can_msg_t turn_msg;
     odometry_can_msg_t odometry_msg;
     stop_can_msg_t stop_msg;
-    controller_mode_can_msg_t controller_mode_msg;
+    simulation_mode_can_msg_t simulation_mode_msg;
     bezier_can_msg_t bezier_msg;
     bezier_limits_can_msg_t bezier_limits_msg;
     motor_command_can_msg_t motor_command_msg;
@@ -312,10 +312,10 @@ static void NORETURN canMonitorListen_process(void) {
               odo_setState(CONTROL_ODOMETRY, &odometry);
             }
             break;
-          case CAN_MSG_CONTROLLER_MODE:
-            controller_mode_msg.data32[0] = frame.data32[0];
-            controller_mode_msg.data32[1] = frame.data32[0];
-            switch (controller_mode_msg.data.mode) {
+          case CAN_MSG_SIMULATION_MODE:
+            simulation_mode_msg.data32[0] = frame.data32[0];
+            simulation_mode_msg.data32[1] = frame.data32[0];
+            switch (simulation_mode_msg.data.mode) {
             case SIMULATION_MODE_NORMAL:
               mc_change_mode(MOTOR3, CONTROLLER_MODE_HIL);
               mc_change_mode(MOTOR4, CONTROLLER_MODE_HIL);

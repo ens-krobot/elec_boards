@@ -95,9 +95,6 @@ static void init(void)
                      ENCODER1, ENCODER2,
                      2.0*M_PI/1024.0, -2.0*M_PI/1024.0);
 
-        // Init beacon motor
-        enableMotor(MOTOR2);
-
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
           LED1_ON();
