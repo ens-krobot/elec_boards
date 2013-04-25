@@ -277,6 +277,7 @@ static void NORETURN canMonitorListen_process(void) {
             bezier_limits_msg.data32[0] = frame.data32[0];
             bezier_limits_msg.data32[1] = frame.data32[1];
             dd_adjust_limits(bezier_limits_msg.data.v_max/1000.0,
+                             bezier_limits_msg.data.omega_max/1000.0,
                              bezier_limits_msg.data.at_max/1000.0,
                              bezier_limits_msg.data.ar_max/1000.0);
             break;

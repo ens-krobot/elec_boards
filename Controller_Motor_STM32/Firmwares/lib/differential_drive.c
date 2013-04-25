@@ -28,7 +28,7 @@ typedef struct {
   uint8_t odometry_process;
   float left_wheel_radius, right_wheel_radius, shaft_width;
   float last_lin_acceleration, last_rot_acceleration;
-  float u, v_max, at_max, ar_max;
+  float u, v_max, omega_max, at_max, ar_max;
   command_generator_t left_wheel_speed, right_wheel_speed;
   command_generator_t left_wheel, right_wheel;
   uint8_t current_traj;
@@ -45,7 +45,7 @@ static void NORETURN traj_following_process(void) {
   Timer timer;
   uint8_t next_traj, ui;
   robot_state_t rs;
-  float cr, v_ratio, v_max, v_rot, dxu, dyu;
+  float v_rot, dxu, dyu, ddxu, ddyu, dsu2, dsu, dthetau;
   float z1, z2, z3, w1, w2, u1, u2, dt;
   dd_bezier_traj_t *traj;
   int32_t last_time, cur_time;
@@ -96,7 +96,7 @@ static void NORETURN traj_following_process(void) {
         } else {
           // We are following a trajectory, let's do it
           // Compute ghost vehicule parameters
-          cr = bezier_cr(params.u, traj->dparams, traj->ddparams);
+          //cr = bezier_cr(params.u, traj->dparams, traj->ddparams);
           for (; ui*traj->du <= params.u; ui++);
           if (ui*traj->du > 1.0)
             ui--;
@@ -106,24 +106,26 @@ static void NORETURN traj_following_process(void) {
           } else {
             traj->v_lin = traj->v_tab[0];
           }
-          if (isnan(cr) || isinf(cr)) {
-            v_ratio = 1.0;
-          } else {
-            v_ratio = (cr + params.shaft_width/2.0) / (cr - params.shaft_width/2.0);
-          }
-          v_max = 2/(1+MIN(fabsf(v_ratio), fabsf(1.0/v_ratio)))*traj->v_lin;
-          if (cr >= 0) {
-            v_rot = v_max * (1 - 1/v_ratio) / params.shaft_width;
-          } else {
-            v_rot = v_max * (v_ratio - 1) / params.shaft_width;
+          dxu = bezier_apply(traj->dparams[0], params.u);
+          dyu = bezier_apply(traj->dparams[1], params.u);
+          ddxu = bezier_apply(traj->ddparams[0], params.u);
+          ddyu = bezier_apply(traj->ddparams[1], params.u);
+          dsu2 = dxu*dxu+dyu*dyu;
+          dsu = sqrtf(dsu2);
+          dthetau = (ddyu*dxu - ddxu*dyu) / dsu2;
+          v_rot = dthetau * traj->v_lin / dsu;
+          if (v_rot > params.omega_max) {
+            v_rot = params.omega_max;
+            traj->v_lin = v_rot * dsu / dthetau;
+          } else if (v_rot < -params.omega_max) {
+            v_rot = -params.omega_max;
+            traj->v_lin = v_rot * dsu / dthetau;
           }
 
           // Evolution of the ghost vehicule state
           cur_time = ticks_to_us(timer_clock());
           dt = (cur_time - last_time) * 1e-6;
-          dxu = bezier_apply(traj->dparams[0], params.u);
-          dyu = bezier_apply(traj->dparams[1], params.u);
-          params.u += traj->v_lin/sqrtf(dxu*dxu+dyu*dyu)*dt;
+          params.u += traj->v_lin/dsu*dt;
           //params.ghost_state.x += traj->v_lin*cosf(params.ghost_state.theta)*dt;
           //params.ghost_state.y += traj->v_lin*sinf(params.ghost_state.theta)*dt;
           //params.ghost_state.theta = fmodf(params.ghost_state.theta + v_rot*dt, 2*M_PI);
@@ -346,7 +348,8 @@ uint8_t dd_add_bezier(float x_end, float y_end, float d1, float d2, float end_an
     bezier_diff(traj->dparams, traj->ddparams);
     // Compute velocity profile
     bezier_velocity_profile(traj->dparams, traj->ddparams,
-                            params.v_max, params.at_max, params.ar_max,
+                            params.v_max, params.omega_max,
+                            params.at_max, params.ar_max,
                             v_ini, end_speed,
                             0.01, traj->v_tab);
     traj->du = 0.01;
@@ -371,8 +374,9 @@ void dd_interrupt_trajectory(float rot_acc, float lin_acc) {
   dd_set_linear_speed(0., lin_acc);
 }
 
-void dd_adjust_limits(float v_max, float at_max, float ar_max) {
+void dd_adjust_limits(float v_max, float omega_max, float at_max, float ar_max) {
   params.v_max = v_max;
+  params.omega_max = omega_max;
   params.at_max = at_max;
   params.ar_max = ar_max;
 }

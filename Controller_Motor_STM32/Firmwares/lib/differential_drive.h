@@ -111,10 +111,11 @@ void dd_interrupt_trajectory(float rot_acc, float lin_acc);
 
 /* Change limitations of the trajectory follower
  *  - v_max : maximum linear speed (in m/s)
+ *  - omega_max : maximim rotational speed (in rad/s)
  *  - at_max : maximum tangential acceleration (in m/s/s)
  *  - ar_max : maximum radial acceleration (in m/s/s)
  */
-void dd_adjust_limits(float v_max, float at_max, float ar_max);
+void dd_adjust_limits(float v_max, float omega_max, float at_max, float ar_max);
 
 /*
  * Return the current state of the followed ghost robot

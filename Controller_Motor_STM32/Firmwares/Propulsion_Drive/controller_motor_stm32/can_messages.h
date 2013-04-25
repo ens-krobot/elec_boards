@@ -145,6 +145,7 @@ typedef struct {
 // Modify Bezier Spline trajectory generation limits
 typedef struct {
   uint16_t v_max     __attribute__((__packed__)); // max linear speed in mm/s
+  uint16_t omega_max __attribute__((__packed__)); // max rotational speed in mrad/s
   uint16_t at_max    __attribute__((__packed__)); // max linear acceleration in mm/s/s
   uint16_t ar_max    __attribute__((__packed__)); // max radial acceleration in mm/s/s
 } bezier_limits_msg_t;

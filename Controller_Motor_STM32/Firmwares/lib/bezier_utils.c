@@ -34,7 +34,8 @@ void bezier_generate(float params[2][4],
 }
 
 void bezier_velocity_profile(float dparams[2][4], float ddparams[2][4],
-                             float v_max, float at_max, float ar_max,
+                             float v_max, float omega_max,
+                             float at_max, float ar_max,
                              float v_ini, float v_end,
                              float du, float* v_tab) {
   float vmins[4], cr, cr_p, cr_pp, u, vm, dt, nv, dx, dy, dsu;
