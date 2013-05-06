@@ -49,7 +49,7 @@
 void dd_start(uint8_t odometry_process,
               float left_wheel_radius, float right_wheel_radius,
               float shaft_width, float max_wheel_speed,
-              float v_max, float at_max, float ar_max,
+              float v_max, float omega_max, float at_max, float ar_max,
               float k1, float k2, float k3, float Ts);
 
 /* Pauses or Resumes the differential drive system.

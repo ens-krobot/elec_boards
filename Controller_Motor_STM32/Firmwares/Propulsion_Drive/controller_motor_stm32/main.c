@@ -59,6 +59,7 @@ static void init(void)
                  PROP_WHEEL_RADIUS_LEFT, PROP_WHEEL_RADIUS_RIGHT, PROP_SHAFT_WIDTH, // Structural parameters
                  8*2*M_PI, // Absolute wheel speed limitation
                  0.5, // Linear velocity limitation
+                 3.14,// Rotational speed limitation
                  1.0, // Linear acceleration limitation
                  1.0, // Radial acceleration limitation
                  0.4, 0.7, 1.0, // Controller gains
@@ -109,6 +110,8 @@ static void init(void)
           timer_delay(100);
           }
 
+        // Enable motor pump
+        enableMotor(MOTOR2);
 }
 
 static void NORETURN ind_process(void)
