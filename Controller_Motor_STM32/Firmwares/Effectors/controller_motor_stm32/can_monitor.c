@@ -126,9 +126,9 @@ static void NORETURN canMonitorListen_process(void) {
             end_courses_msg.d[1] = frame.data32[1];
             end_stops = 0;
             if (!end_courses_msg.p.sw3)
-              end_stops |= LC_BACK_BOTTOM;
+              end_stops |= LC_RIGHT_BOTTOM;
             if (!end_courses_msg.p.sw4)
-              end_stops |= LC_BACK_UP;
+              end_stops |= LC_RIGHT_UP;
             lc_end_stop_reached(end_stops);
             //if (end_courses_msg.p.sw1) {
             //  lc_release();
@@ -138,9 +138,9 @@ static void NORETURN canMonitorListen_process(void) {
             lift_cmd_msg.data32[0] = frame.data32[0];
             lift_cmd_msg.data32[1] = frame.data32[1];
             if (lift_cmd_msg.data.front_lift >= 0)
-              lc_goto_position(LC_FRONT_LIFT, lift_cmd_msg.data.front_lift);
+              lc_goto_position(LC_LEFT_LIFT, lift_cmd_msg.data.front_lift);
             if (lift_cmd_msg.data.back_lift >= 0)
-              lc_goto_position(LC_BACK_LIFT, lift_cmd_msg.data.back_lift);
+              lc_goto_position(LC_RIGHT_LIFT, lift_cmd_msg.data.back_lift);
             break;
           }
         }

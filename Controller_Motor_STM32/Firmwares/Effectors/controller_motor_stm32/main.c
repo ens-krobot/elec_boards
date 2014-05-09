@@ -15,7 +15,7 @@
 #include "motor_controller.h"
 #include "can_monitor.h"
 #include "command_generator.h"
-#include "differential_drive.h"
+#include "lift_controller.h"
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 2);
 
@@ -45,9 +45,9 @@ static void init(void)
         lc_init();
 
         // Init lifts
-        lc_homing(LC_BACK_LIFT);
-        lc_goto_position(LC_BACK_LIFT, 0.5);
-        while(tc_is_working(TC_MASK(LC_TC_BACK)))
+        lc_homing(LC_RIGHT_LIFT);
+        lc_goto_position(LC_RIGHT_LIFT, 0.5);
+        while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
           timer_delay(100);
 
         // Setup Beacon's motor
@@ -73,13 +73,13 @@ static void NORETURN ind_process(void)
 {
   while(1) {
     LED1_ON();
-    lc_goto_position(LC_BACK_LIFT, 1.);
-    while(tc_is_working(TC_MASK(LC_TC_BACK)))
+    lc_goto_position(LC_RIGHT_LIFT, 1.);
+    while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
       timer_delay(100);
     timer_delay(1000);
     LED1_OFF();
-    lc_goto_position(LC_BACK_LIFT, 0);
-    while(tc_is_working(TC_MASK(LC_TC_BACK)))
+    lc_goto_position(LC_RIGHT_LIFT, 0);
+    while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
       timer_delay(100);
     timer_delay(1000);
   }

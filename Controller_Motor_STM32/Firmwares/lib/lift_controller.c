@@ -41,12 +41,12 @@ void lc_init(void) {
     lc_state[i].extend = 0;
     lc_state[i].end_stop_ind = 0;
   }
-  lc_state[LC_FRONT_LIFT].tc_ind = LC_TC_FRONT;
-  lc_state[LC_BACK_LIFT].tc_ind = LC_TC_BACK;
+  lc_state[LC_LEFT_LIFT].tc_ind = LC_TC_LEFT;
+  lc_state[LC_RIGHT_LIFT].tc_ind = LC_TC_RIGHT;
 
   // Init Trajectory controllers
-  tc_new_controller(LC_TC_FRONT);
-  tc_new_controller(LC_TC_BACK);
+  tc_new_controller(LC_TC_LEFT);
+  tc_new_controller(LC_TC_RIGHT);
   // Limit PWM value
   motorSetMaxPWM(MOTOR3, 1600);
   motorSetMaxPWM(MOTOR4, 1600);
@@ -63,29 +63,29 @@ void lc_init(void) {
   // Initialize front lift
   params.motor = MOTOR4;
   params.encoder = ENCODER4;
-  mc_new_controller(&params, tc_get_position_generator(LC_TC_FRONT), CONTROLLER_MODE_NORMAL);
+  mc_new_controller(&params, tc_get_position_generator(LC_TC_LEFT), CONTROLLER_MODE_NORMAL);
   // Initialize back lift
   params.motor = MOTOR3;
   params.encoder = ENCODER3;
-  mc_new_controller(&params, tc_get_position_generator(LC_TC_BACK), CONTROLLER_MODE_NORMAL);
+  mc_new_controller(&params, tc_get_position_generator(LC_TC_RIGHT), CONTROLLER_MODE_NORMAL);
 }
 
 void lc_end_stop_reached(uint8_t end_stops) {
 
   // Set the end stop indicators and stop the lift if needed
-  if ((end_stops & LC_FRONT_UP) || (end_stops & LC_FRONT_BOTTOM)) {
-    if ((end_stops & LC_FRONT_UP) && (lc_state[LC_FRONT_LIFT].direction == 1))
-      tc_stop(LC_TC_FRONT);
-    if ((end_stops & LC_FRONT_BOTTOM) && (lc_state[LC_FRONT_LIFT].direction == -1))
-      tc_stop(LC_TC_FRONT);
-    lc_state[LC_FRONT_LIFT].end_stop_ind = end_stops & (LC_FRONT_UP|LC_FRONT_BOTTOM);
+  if ((end_stops & LC_LEFT_UP) || (end_stops & LC_LEFT_BOTTOM)) {
+    if ((end_stops & LC_LEFT_UP) && (lc_state[LC_LEFT_LIFT].direction == 1))
+      tc_stop(LC_TC_LEFT);
+    if ((end_stops & LC_LEFT_BOTTOM) && (lc_state[LC_LEFT_LIFT].direction == -1))
+      tc_stop(LC_TC_LEFT);
+    lc_state[LC_LEFT_LIFT].end_stop_ind = end_stops & (LC_LEFT_UP|LC_LEFT_BOTTOM);
   }
-  if ((end_stops & LC_BACK_UP) || (end_stops & LC_BACK_BOTTOM)) {
-    if ((end_stops & LC_BACK_UP) && (lc_state[LC_BACK_LIFT].direction == 1))
-      tc_stop(LC_TC_BACK);
-    if ((end_stops & LC_BACK_BOTTOM) && (lc_state[LC_BACK_LIFT].direction == -1))
-      tc_stop(LC_TC_BACK);
-    lc_state[LC_BACK_LIFT].end_stop_ind = (end_stops & (LC_BACK_UP|LC_BACK_BOTTOM)) >> 2;
+  if ((end_stops & LC_RIGHT_UP) || (end_stops & LC_RIGHT_BOTTOM)) {
+    if ((end_stops & LC_RIGHT_UP) && (lc_state[LC_RIGHT_LIFT].direction == 1))
+      tc_stop(LC_TC_RIGHT);
+    if ((end_stops & LC_RIGHT_BOTTOM) && (lc_state[LC_RIGHT_LIFT].direction == -1))
+      tc_stop(LC_TC_RIGHT);
+    lc_state[LC_RIGHT_LIFT].end_stop_ind = (end_stops & (LC_RIGHT_UP|LC_RIGHT_BOTTOM)) >> 2;
   }
 }
 
@@ -134,6 +134,6 @@ void lc_release(void) {
   mc_delete_controller(MOTOR3);
   mc_delete_controller(MOTOR4);
 
-  lc_state[LC_FRONT_LIFT].enabled = 0;
-  lc_state[LC_BACK_LIFT].enabled = 0;
+  lc_state[LC_LEFT_LIFT].enabled = 0;
+  lc_state[LC_RIGHT_LIFT].enabled = 0;
 }
