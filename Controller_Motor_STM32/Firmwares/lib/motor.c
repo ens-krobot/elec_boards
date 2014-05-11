@@ -17,6 +17,7 @@
 uint8_t enabledMotors = 0, indMotors = 0;
 signed char currentSpeedSign[] = {0, 0, 0, 0};
 int32_t maxPWMs[] = {MAX_PWM, MAX_PWM, MAX_PWM, MAX_PWM};
+int32_t currentSpeeds[] = {0, 0, 0, 0};
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 
 static int32_t staSpeed(int32_t speed, int32_t maxSpeed, uint8_t *ind) {
@@ -180,6 +181,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
 
   if (motor & MOTOR1) {
     app_speed = staSpeed(speed, maxPWMs[0], &ind);
+    currentSpeeds[MOTOR1] = app_speed;
     if(app_speed >= 0) {
       if (currentSpeedSign[0] != 1) {
         currentSpeedSign[0] = 1;
@@ -210,6 +212,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   }
   if (motor & MOTOR2) {
     app_speed = staSpeed(speed, maxPWMs[1], &ind);
+    currentSpeeds[MOTOR2] = app_speed;
     if(app_speed >= 0) {
       if (currentSpeedSign[1] != 1) {
         currentSpeedSign[1] = 1;
@@ -240,6 +243,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   }
   if (motor & MOTOR3) {
     app_speed = staSpeed(speed, maxPWMs[2], &ind);
+    currentSpeeds[MOTOR3] = app_speed;
     if(app_speed >= 0) {
       if (currentSpeedSign[2] != 1) {
         currentSpeedSign[2] = 1;
@@ -270,6 +274,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   }
   if (motor & MOTOR4) {
     app_speed = staSpeed(speed, maxPWMs[3], &ind);
+    currentSpeeds[MOTOR4] = app_speed;
     if(app_speed >= 0) {
       if (currentSpeedSign[3] != 1) {
         currentSpeedSign[3] = 1;
@@ -298,6 +303,22 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
       indMotors &= ~MOTOR4;
     }
   }
+}
+
+int32_t motorGetSpeed(uint8_t motor) {
+  if (motor & MOTOR1) {
+    return currentSpeeds[MOTOR1];
+  }
+  if (motor & MOTOR2) {
+    return currentSpeeds[MOTOR2];
+  }
+  if (motor & MOTOR3) {
+    return currentSpeeds[MOTOR3];
+  }
+  if (motor & MOTOR4) {
+    return currentSpeeds[MOTOR4];
+  }
+  return 0;
 }
 
 /*
