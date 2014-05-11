@@ -45,6 +45,7 @@ void canMonitorInit(void) {
 
 static void NORETURN canMonitor_process(void) {
   encoder_can_msg_t msg_enc;
+  pump_state_can_msg_t msg_pumps;
   can_tx_frame txm;
   Timer timer_can;
 
@@ -60,15 +61,24 @@ static void NORETURN canMonitor_process(void) {
 
     timer_add(&timer_can);
 
-    // Sending ENCODER3 and ENCODER4 data
-    msg_enc.data.encoder1_pos = getEncoderPosition(ENCODER3);
+    // Sending ENCODER2 and ENCODER4 data
+    msg_enc.data.encoder1_pos = getEncoderPosition(ENCODER2);
     msg_enc.data.encoder2_pos = getEncoderPosition(ENCODER4);
-    msg_enc.data.encoder1_dir = getEncoderDirection(ENCODER3);
+    msg_enc.data.encoder1_dir = getEncoderDirection(ENCODER2);
     msg_enc.data.encoder2_dir = getEncoderDirection(ENCODER4);
 
     txm.data32[0] = msg_enc.data32[0];
     txm.data32[1] = msg_enc.data32[1];
     txm.eid = CAN_MSG_ENCODERS34;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    // Sending pump states
+    msg_pumps.data.left_pump = motorGetSpeed(MOTOR1);
+    msg_pumps.data.right_pump = motorGetSpeed(MOTOR3);
+
+    txm.data32[0] = msg_pumps.data32[0];
+    txm.data32[1] = msg_pumps.data32[1];
+    txm.eid = CAN_MSG_PUMP_STATE;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Wait for the next transmission timer
@@ -87,6 +97,7 @@ static void NORETURN canMonitorListen_process(void) {
 
     switch_status end_courses_msg;
     lift_cmd_can_msg_t lift_cmd_msg;
+    pump_cmd_can_msg_t pump_cmd_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -135,12 +146,20 @@ static void NORETURN canMonitorListen_process(void) {
             //  motorSetSpeed(MOTOR2,0);
             break;
           case CAN_MSG_LIFT_CMD:
-            lift_cmd_msg.data32[0] = frame.data32[0];
-            lift_cmd_msg.data32[1] = frame.data32[1];
-            if (lift_cmd_msg.data.front_lift >= 0)
-              lc_goto_position(LC_LEFT_LIFT, lift_cmd_msg.data.front_lift);
-            if (lift_cmd_msg.data.back_lift >= 0)
-              lc_goto_position(LC_RIGHT_LIFT, lift_cmd_msg.data.back_lift);
+            //lift_cmd_msg.data32[0] = frame.data32[0];
+            //lift_cmd_msg.data32[1] = frame.data32[1];
+            //if (lift_cmd_msg.data.front_lift >= 0)
+            //  lc_goto_position(LC_LEFT_LIFT, lift_cmd_msg.data.front_lift);
+            //if (lift_cmd_msg.data.back_lift >= 0)
+            //  lc_goto_position(LC_RIGHT_LIFT, lift_cmd_msg.data.back_lift);
+            break;
+          case CAN_MSG_PUMP_CMD:
+            pump_cmd_msg.data32[0] = frame.data32[0];
+            pump_cmd_msg.data32[1] = frame.data32[1];
+            if (pump_cmd_msg.data.left_pump >= 0)
+              motorSetSpeed(MOTOR1, pump_cmd_msg.data.left_pump);
+            if (pump_cmd_msg.data.right_pump >= 0)
+              motorSetSpeed(MOTOR3, pump_cmd_msg.data.right_pump);
             break;
           }
         }

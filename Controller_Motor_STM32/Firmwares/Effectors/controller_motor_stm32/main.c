@@ -42,17 +42,21 @@ static void init(void)
         // Initialize Command generator
         tc_init();
         // Initialize Lift Controller
-        lc_init();
+        //lc_init();
 
         // Init lifts
-        lc_homing(LC_RIGHT_LIFT);
-        lc_goto_position(LC_RIGHT_LIFT, 0.5);
-        while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
-          timer_delay(100);
+        //lc_homing(LC_RIGHT_LIFT);
+        //lc_goto_position(LC_RIGHT_LIFT, 0.5);
+        //while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
+        //  timer_delay(100);
 
-        // Setup Beacon's motor
-        motorSetMaxPWM(MOTOR2, 1080);
-        enableMotor(MOTOR2);
+        // Setup Left pump motor
+        motorSetMaxPWM(MOTOR1, 1800); // Limit to 12V
+        enableMotor(MOTOR1);
+
+        // Setup Right pump motor
+        motorSetMaxPWM(MOTOR3, 1800); // Limit to 12V
+        enableMotor(MOTOR3);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
@@ -91,9 +95,6 @@ int main(void)
 
 	/* Create a new child process */
         //proc_new(ind_process, NULL, sizeof(stack_ind), stack_ind);
-
-        // Tests
-        motorSetSpeed(MOTOR2, 1000);
 
 	/*
 	 * The main process is kept to periodically report the stack
