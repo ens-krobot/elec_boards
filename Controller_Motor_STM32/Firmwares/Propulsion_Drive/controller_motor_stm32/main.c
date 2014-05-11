@@ -111,7 +111,7 @@ static void init(void)
           }
 
         // Enable motor pump
-        enableMotor(MOTOR2);
+        //enableMotor(MOTOR2);
 }
 
 static void NORETURN ind_process(void)
