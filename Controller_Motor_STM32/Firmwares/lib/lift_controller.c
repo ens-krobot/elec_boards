@@ -48,8 +48,8 @@ void lc_init(void) {
   tc_new_controller(LC_TC_LEFT);
   tc_new_controller(LC_TC_RIGHT);
   // Limit PWM value
-  motorSetMaxPWM(MOTOR3, 1600);
-  motorSetMaxPWM(MOTOR4, 1600);
+  motorSetMaxPWM(MOTOR2, 1800); // Limit to 12V
+  motorSetMaxPWM(MOTOR4, 1800); // Limit to 12V
   // Common parameters
   params.encoder_gain = 2.0*M_PI/588.0;
   params.G0 = 0.0035;
@@ -60,13 +60,13 @@ void lc_init(void) {
   params.l0[0] = 0.0091;
   params.l0[1] = 1.6361;
   params.T = 0.005;
-  // Initialize front lift
+  // Initialize left lift
+  params.motor = MOTOR2;
+  params.encoder = ENCODER2;
+  mc_new_controller(&params, tc_get_position_generator(LC_TC_LEFT), CONTROLLER_MODE_NORMAL);
+  // Initialize right lift
   params.motor = MOTOR4;
   params.encoder = ENCODER4;
-  mc_new_controller(&params, tc_get_position_generator(LC_TC_LEFT), CONTROLLER_MODE_NORMAL);
-  // Initialize back lift
-  params.motor = MOTOR3;
-  params.encoder = ENCODER3;
   mc_new_controller(&params, tc_get_position_generator(LC_TC_RIGHT), CONTROLLER_MODE_NORMAL);
 }
 
@@ -131,7 +131,7 @@ void lc_goto_position(uint8_t lift, float position) {
 }
 
 void lc_release(void) {
-  mc_delete_controller(MOTOR3);
+  mc_delete_controller(MOTOR2);
   mc_delete_controller(MOTOR4);
 
   lc_state[LC_LEFT_LIFT].enabled = 0;
