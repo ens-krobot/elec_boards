@@ -69,7 +69,7 @@ static void NORETURN canMonitor_process(void) {
 
     txm.data32[0] = msg_enc.data32[0];
     txm.data32[1] = msg_enc.data32[1];
-    txm.eid = CAN_MSG_ENCODERS34;
+    txm.eid = CAN_MSG_LIFT_ENCODERS;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Sending pump states
