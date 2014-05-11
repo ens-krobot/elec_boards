@@ -18,8 +18,8 @@
 #include "trajectory_controller.h"
 #include "odometry.h"
 #include "differential_drive.h"
-#include "can_messages.h"
-#include "can_messages_sensors.h"
+#include "can_messages/can_messages.h"
+#include "can_messages/can_messages_sensors.h"
 
 void canMonitorInit(void);
 void can_send_error(uint8_t err1, uint8_t err2);
