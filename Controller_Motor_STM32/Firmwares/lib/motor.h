@@ -29,6 +29,7 @@
 void motorsInit(void);
 void enableMotor(uint8_t motor);
 void disableMotor(uint8_t motor);
+void motorInvertDirection(uint8_t motor, uint8_t invert);
 void motorSetSpeed(uint8_t motor, int32_t speed);
 int32_t motorGetSpeed(uint8_t motor);
 void motorStop(uint8_t motor, uint8_t mode);

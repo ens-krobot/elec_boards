@@ -18,8 +18,8 @@
 #include "differential_drive.h"
 
 //#define PROP_WHEEL_RADIUS 0.049245
-#define PROP_WHEEL_RADIUS_LEFT 0.049207
-#define PROP_WHEEL_RADIUS_RIGHT 0.049283
+#define PROP_WHEEL_RADIUS_RIGHT 0.049207
+#define PROP_WHEEL_RADIUS_LEFT 0.049283
 #define PROP_WHEEL_RADIUS ((PROP_WHEEL_RADIUS_RIGHT+PROP_WHEEL_RADIUS_LEFT)/2)
 #define PROP_SHAFT_WIDTH 0.22587
 
@@ -55,6 +55,9 @@ static void init(void)
 
         // Start control of drive motors
         tc_init();
+        // Invert motor direction
+        motorInvertDirection(MOTOR3, 1);
+        motorInvertDirection(MOTOR4, 1);
         dd_start(CONTROL_ODOMETRY, // Use odometry CONTROL_ODOMETRY for control
                  PROP_WHEEL_RADIUS_LEFT, PROP_WHEEL_RADIUS_RIGHT, PROP_SHAFT_WIDTH, // Structural parameters
                  8*2*M_PI, // Absolute wheel speed limitation
@@ -65,9 +68,9 @@ static void init(void)
                  0.4, 0.7, 1.0, // Controller gains
                  0.005); // Sample period
         // Common parameters
-        params.encoder_gain = 2.0*M_PI/2000.0/15;
+        params.encoder_gain = -2.0*M_PI/2000.0/15;
         params.T = 0.005;
-        // Initialize left motor
+        // Initialize right motor
         params.G0 = 0.011686;
         params.tau = 0.118;
         params.k[0] = -3735.7;
@@ -77,18 +80,18 @@ static void init(void)
         params.l0[1] = 0.0108;
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
-        // Initialize right motor
+        mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize left motor
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
-        params.encoder_gain = -2.0*M_PI/2000.0/15; // Left motor is reversed
-        mc_new_controller(&params, dd_get_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        params.encoder_gain = 2.0*M_PI/2000.0/15; // Left motor is reversed
+        mc_new_controller(&params, dd_get_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometrys
         odometryInit(0, 1e-3,
                      PROP_WHEEL_RADIUS_LEFT, PROP_WHEEL_RADIUS_RIGHT,
                      PROP_SHAFT_WIDTH,
-                     ENCODER3, ENCODER4,
+                     ENCODER4, ENCODER3,
                      2.0*M_PI/2000.0/15, -2.0*M_PI/2000.0/15);
         odometryInit(1, 1e-3,
                      INDEP_WHEEL_RADIUS, INDEP_WHEEL_RADIUS,

@@ -18,6 +18,7 @@ uint8_t enabledMotors = 0, indMotors = 0;
 signed char currentSpeedSign[] = {0, 0, 0, 0};
 int32_t maxPWMs[] = {MAX_PWM, MAX_PWM, MAX_PWM, MAX_PWM};
 int32_t currentSpeeds[] = {0, 0, 0, 0};
+int32_t invertCmd[] = {1, 1, 1, 1};
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 
 static int32_t staSpeed(int32_t speed, int32_t maxSpeed, uint8_t *ind) {
@@ -171,6 +172,23 @@ void disableMotor(uint8_t motor) {
   }
 }
 
+void motorInvertDirection(uint8_t motor, uint8_t invert) {
+  int32_t val = (invert ? -1 : 1);
+
+  if (motor & MOTOR1) {
+    invertCmd[0] = val;
+  }
+  if (motor & MOTOR2) {
+    invertCmd[1] = val;
+  }
+  if (motor & MOTOR3) {
+    invertCmd[2] = val;
+  }
+  if (motor & MOTOR4) {
+    invertCmd[3] = val;
+  }
+}
+
 /*
  * Step one motor's speed
  */
@@ -182,6 +200,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   if (motor & MOTOR1) {
     app_speed = staSpeed(speed, maxPWMs[0], &ind);
     currentSpeeds[MOTOR1] = app_speed;
+    app_speed *= invertCmd[0];
     if(app_speed >= 0) {
       if (currentSpeedSign[0] != 1) {
         currentSpeedSign[0] = 1;
@@ -213,6 +232,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   if (motor & MOTOR2) {
     app_speed = staSpeed(speed, maxPWMs[1], &ind);
     currentSpeeds[MOTOR2] = app_speed;
+    app_speed *= invertCmd[1];
     if(app_speed >= 0) {
       if (currentSpeedSign[1] != 1) {
         currentSpeedSign[1] = 1;
@@ -244,6 +264,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   if (motor & MOTOR3) {
     app_speed = staSpeed(speed, maxPWMs[2], &ind);
     currentSpeeds[MOTOR3] = app_speed;
+    app_speed *= invertCmd[2];
     if(app_speed >= 0) {
       if (currentSpeedSign[2] != 1) {
         currentSpeedSign[2] = 1;
@@ -275,6 +296,7 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
   if (motor & MOTOR4) {
     app_speed = staSpeed(speed, maxPWMs[3], &ind);
     currentSpeeds[MOTOR4] = app_speed;
+    app_speed *= invertCmd[3];
     if(app_speed >= 0) {
       if (currentSpeedSign[3] != 1) {
         currentSpeedSign[3] = 1;
