@@ -46,6 +46,8 @@ void canMonitorInit(void) {
 static void NORETURN canMonitor_process(void) {
   encoder_can_msg_t msg_enc;
   pump_state_can_msg_t msg_pumps;
+  status_can_msg_t msg_status;
+  lift_position_can_msg_t msg_lift_position;
   can_tx_frame txm;
   Timer timer_can;
 
@@ -72,6 +74,13 @@ static void NORETURN canMonitor_process(void) {
     txm.eid = CAN_MSG_LIFT_ENCODERS;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
+    // Sending TC status
+    msg_status.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
+    txm.data32[0] = msg_status.data32[0];
+    txm.data32[1] = msg_status.data32[1];
+    txm.eid = CAN_MSG_EFFECTOR_STATUS;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
     // Sending pump states
     msg_pumps.data.left_pump = motorGetSpeed(MOTOR1);
     msg_pumps.data.right_pump = motorGetSpeed(MOTOR3);
@@ -79,6 +88,17 @@ static void NORETURN canMonitor_process(void) {
     txm.data32[0] = msg_pumps.data32[0];
     txm.data32[1] = msg_pumps.data32[1];
     txm.eid = CAN_MSG_PUMP_STATE;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    // Wait for the next transmission timer
+    timer_waitEvent(&timer_can);
+    timer_add(&timer_can);
+
+    msg_lift_position.data.left_position = lc_get_position(LC_LEFT_LIFT);
+    msg_lift_position.data.right_position = lc_get_position(LC_RIGHT_LIFT);
+    txm.data32[0] = msg_lift_position.data32[0];
+    txm.data32[1] = msg_lift_position.data32[1];
+    txm.eid = CAN_MSG_LIFT_POSITION;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Wait for the next transmission timer
@@ -136,22 +156,22 @@ static void NORETURN canMonitorListen_process(void) {
             end_courses_msg.d[0] = frame.data32[0];
             end_courses_msg.d[1] = frame.data32[1];
             end_stops = 0;
-            if (!end_courses_msg.p.sw3)
-              end_stops |= LC_RIGHT_BOTTOM;
             if (!end_courses_msg.p.sw4)
-              end_stops |= LC_RIGHT_UP;
+              end_stops |= LC_LEFT_BOTTOM;
+            if (!end_courses_msg.p.sw5)
+              end_stops |= LC_RIGHT_BOTTOM;
             lc_end_stop_reached(end_stops);
             //if (end_courses_msg.p.sw1) {
             //  lc_release();
             //  motorSetSpeed(MOTOR2,0);
             break;
           case CAN_MSG_LIFT_CMD:
-            //lift_cmd_msg.data32[0] = frame.data32[0];
-            //lift_cmd_msg.data32[1] = frame.data32[1];
-            //if (lift_cmd_msg.data.front_lift >= 0)
-            //  lc_goto_position(LC_LEFT_LIFT, lift_cmd_msg.data.front_lift);
-            //if (lift_cmd_msg.data.back_lift >= 0)
-            //  lc_goto_position(LC_RIGHT_LIFT, lift_cmd_msg.data.back_lift);
+            lift_cmd_msg.data32[0] = frame.data32[0];
+            lift_cmd_msg.data32[1] = frame.data32[1];
+            if (lift_cmd_msg.data.left_lift >= 0)
+              lc_goto_position(LC_LEFT_LIFT, lift_cmd_msg.data.left_lift);
+            if (lift_cmd_msg.data.right_lift >= 0)
+              lc_goto_position(LC_RIGHT_LIFT, lift_cmd_msg.data.right_lift);
             break;
           case CAN_MSG_PUMP_CMD:
             pump_cmd_msg.data32[0] = frame.data32[0];

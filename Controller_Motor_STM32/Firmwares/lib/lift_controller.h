@@ -34,7 +34,8 @@
 
 void lc_init(void);
 void lc_end_stop_reached(uint8_t end_stops);
-void lc_homing(uint8_t lift);
+void lc_homing(uint8_t lift, float speed);
+float lc_get_position(uint8_t lift);
 void lc_goto_position(uint8_t lift, float position);
 void lc_release(void);
 

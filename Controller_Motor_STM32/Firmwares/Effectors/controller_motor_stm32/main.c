@@ -42,13 +42,21 @@ static void init(void)
         // Initialize Command generator
         tc_init();
         // Initialize Lift Controller
-        //lc_init();
+        lc_init();
 
         // Init lifts
-        //lc_homing(LC_RIGHT_LIFT);
-        //lc_goto_position(LC_RIGHT_LIFT, 0.5);
-        //while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
-        //  timer_delay(100);
+        lc_homing(LC_RIGHT_LIFT, M_PI);
+        lc_homing(LC_LEFT_LIFT, M_PI);
+        lc_goto_position(LC_RIGHT_LIFT, 0.01);
+        lc_goto_position(LC_LEFT_LIFT, 0.01);
+        while(tc_is_working(TC_MASK(LC_TC_RIGHT)) || tc_is_working(TC_MASK(LC_TC_LEFT)))
+          timer_delay(100);
+        lc_homing(LC_RIGHT_LIFT, M_PI/4);
+        lc_homing(LC_LEFT_LIFT, M_PI/4);
+        lc_goto_position(LC_RIGHT_LIFT, 0.02);
+        lc_goto_position(LC_LEFT_LIFT, 0.02);
+        while(tc_is_working(TC_MASK(LC_TC_RIGHT)) || tc_is_working(TC_MASK(LC_TC_LEFT)))
+          timer_delay(100);
 
         // Setup Left pump motor
         motorSetMaxPWM(MOTOR1, 1800); // Limit to 12V

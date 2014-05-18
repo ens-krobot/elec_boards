@@ -40,6 +40,7 @@ void lc_init(void) {
     lc_state[i].bottom = 0;
     lc_state[i].extend = 0;
     lc_state[i].end_stop_ind = 0;
+    lc_state[i].extend = 1. / 0.005;
   }
   lc_state[LC_LEFT_LIFT].tc_ind = LC_TC_LEFT;
   lc_state[LC_RIGHT_LIFT].tc_ind = LC_TC_RIGHT;
@@ -50,8 +51,10 @@ void lc_init(void) {
   // Limit PWM value
   motorSetMaxPWM(MOTOR2, 1800); // Limit to 12V
   motorSetMaxPWM(MOTOR4, 1800); // Limit to 12V
+  // Invert Right lift motor orientation
+  motorInvertDirection(MOTOR4, 1);
   // Common parameters
-  params.encoder_gain = 2.0*M_PI/588.0;
+  params.encoder_gain = -2.0*M_PI/360.0;
   params.G0 = 0.0035;
   params.tau = 0.025;
   params.k[0] = -10216;
@@ -67,6 +70,7 @@ void lc_init(void) {
   // Initialize right lift
   params.motor = MOTOR4;
   params.encoder = ENCODER4;
+  params.encoder_gain = 2.0*M_PI/360.0;
   mc_new_controller(&params, tc_get_position_generator(LC_TC_RIGHT), CONTROLLER_MODE_NORMAL);
 }
 
@@ -89,10 +93,17 @@ void lc_end_stop_reached(uint8_t end_stops) {
   }
 }
 
-void lc_homing(uint8_t lift) {
+void lc_homing(uint8_t lift, float speed) {
+  if (speed == 0) {
+    speed = M_PI/4;
+  } else if (speed < 0) {
+    speed = -speed;
+  }
+  // Assert end stop
+  lc_state[lift].end_stop_ind &= ~LC_BOTTOM;
   // Go down
   lc_state[lift].direction = -1;
-  tc_goto_speed(lc_state[lift].tc_ind, M_PI/4, 1);
+  tc_goto_speed(lc_state[lift].tc_ind, -speed, 1);
   // Wait for the end stop to trigger
   while (!(lc_state[lift].end_stop_ind & LC_BOTTOM))
     cpu_relax();
@@ -102,9 +113,19 @@ void lc_homing(uint8_t lift) {
   lc_state[lift].end_stop_ind &= ~LC_BOTTOM;
   // Wait and get current generator position as offset
   timer_delay(50);
-  lc_state[lift].bottom = get_output_value(tc_get_position_generator(lc_state[lift].tc_ind));
+  //lc_state[lift].bottom = get_output_value(tc_get_position_generator(lc_state[lift].tc_ind));
+  lc_state[lift].bottom = 0.;
+  if (lift == LC_LEFT_LIFT) {
+    mc_suspend_controller(MOTOR2);
+    tc_set_position(lc_state[lift].tc_ind, 0.);
+    mc_reactivate_controller(MOTOR2);
+  } else if (lift == LC_RIGHT_LIFT) {
+    mc_suspend_controller(MOTOR4);
+    tc_set_position(lc_state[lift].tc_ind, 0.);
+    mc_reactivate_controller(MOTOR4);
+  }
 
-  // Go up
+  /*// Go up
   lc_state[lift].direction = 1;
   tc_goto_speed(lc_state[lift].tc_ind, -M_PI/4, 1);
   // Wait for the end stop to trigger
@@ -117,17 +138,22 @@ void lc_homing(uint8_t lift) {
   // Wait and get current generator position as offset
   timer_delay(50);
   lc_state[lift].extend = get_output_value(tc_get_position_generator(lc_state[lift].tc_ind)) - lc_state[lift].bottom;
+  */
+}
+
+float lc_get_position(uint8_t lift) {
+  return get_output_value(tc_get_position_generator(lc_state[lift].tc_ind));
 }
 
 void lc_goto_position(uint8_t lift, float position) {
   float goal = pos2angle(lift, position);
 
   if (goal > get_output_value(tc_get_position_generator(lc_state[lift].tc_ind))) {
-    lc_state[lift].direction = -1;
-  } else {
     lc_state[lift].direction = 1;
+  } else {
+    lc_state[lift].direction = -1;
   }
-  tc_goto(lift, goal, M_PI, 5);
+  tc_goto(lc_state[lift].tc_ind, goal, M_PI, 5);
 }
 
 void lc_release(void) {

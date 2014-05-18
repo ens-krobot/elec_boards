@@ -28,6 +28,8 @@
 
 #define CAN_MSG_LIFT_ENCODERS 131 // encoder_can_msg_t
 #define CAN_MSG_PUMP_STATE 132 // pump_state_can_msg_t
+#define CAN_MSG_EFFECTOR_STATUS 133 // status_can_msg_t
+#define CAN_MSG_LIFT_POSITION 134 // lift_positions_can_msg_t
 
 // Received commands
 #define CAN_MSG_MOVE 201 // move_can_msg_t
@@ -191,6 +193,12 @@ typedef struct {
   int16_t right_pump  __attribute__((__packed__));
 } pump_cmd_msg_t;
 
+// Awaited positions of the two lifts
+typedef struct {
+  float left_position __attribute__((__packed__)); // position in m
+  float right_position __attribute__((__packed__)); // position in m
+} lift_position_msg_t;
+
 /* +-----------------------------------------------------------------+
    | CAN messages unions for data representation                     |
    +-----------------------------------------------------------------+ */
@@ -294,5 +302,10 @@ typedef union {
   pump_cmd_msg_t data;
   uint32_t data32[2];
 } pump_cmd_can_msg_t;
+
+typedef union {
+  lift_position_msg_t data;
+  uint32_t data32[2];
+} lift_position_can_msg_t;
 
 #endif /* __CAN_MESSAGES_H */
