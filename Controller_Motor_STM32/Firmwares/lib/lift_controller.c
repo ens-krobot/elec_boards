@@ -12,16 +12,74 @@
 #define DIR_UP 0
 #define DIR_DOWN 1
 
+PROC_DEFINE_STACK(stack_homing, KERN_MINSTACKSIZE * 2);
+
 typedef struct {
   uint8_t enabled, tc_ind;
   int8_t direction;
   float bottom, extend;
   uint8_t end_stop_ind;
+  uint8_t homing_done, should_home, homing_state;
+  float homing_speed;
 } lc_state_t;
 
 lc_state_t lc_state[2];
 
 float pos2angle(uint8_t lift, float position);
+
+static void NORETURN homing_process(void)
+{
+  while(1) {
+    for (int i=0; i < 2; i++) {
+      switch (lc_state[i].homing_state) {
+      case 0:
+        if (lc_state[i].should_home != 0) {
+          lc_state[i].homing_done = 0;
+          // Assert end stop
+          lc_state[i].end_stop_ind &= ~LC_BOTTOM;
+          lc_state[i].homing_state = 1;
+          lc_state[i].should_home = 0;
+        }
+        break;
+      case 1:
+          // Go down if necessary
+        if (!(lc_state[i].end_stop_ind & LC_BOTTOM)) {
+          lc_state[i].direction = -1;
+          tc_goto_speed(lc_state[i].tc_ind, -lc_state[i].homing_speed, 1);
+        }
+        lc_state[i].homing_state = 2;
+        break;
+      case 2:
+        if (lc_state[i].end_stop_ind & LC_BOTTOM) {
+          // Stop the lift
+          tc_stop(lc_state[i].tc_ind);
+          // Assert end stop
+          lc_state[i].end_stop_ind &= ~LC_BOTTOM;
+          lc_state[i].homing_state = 3;
+        }
+        break;
+      case 3:
+        lc_state[i].bottom = 0.;
+        if (i == LC_LEFT_LIFT) {
+          mc_suspend_controller(MOTOR3);
+          tc_set_position(lc_state[i].tc_ind, 0.);
+          mc_reactivate_controller(MOTOR3);
+        } else if (i == LC_RIGHT_LIFT) {
+          mc_suspend_controller(MOTOR4);
+          tc_set_position(lc_state[i].tc_ind, 0.);
+          mc_reactivate_controller(MOTOR4);
+        }
+        lc_state[i].homing_done = 1;
+        lc_state[i].homing_state = 0;
+        break;
+      default:
+        lc_state[i].homing_state = 0;
+        break;
+      }
+    }
+    timer_delay(20);
+  }
+}
 
 float pos2angle(uint8_t lift, float position) {
 
@@ -41,6 +99,10 @@ void lc_init(void) {
     lc_state[i].extend = 0;
     lc_state[i].end_stop_ind = 0;
     lc_state[i].extend = 1. / 0.005;
+    lc_state[i].homing_done = 0;
+    lc_state[i].should_home = 0;
+    lc_state[i].homing_state = 0;
+    lc_state[i].homing_speed = M_PI/4;
   }
   lc_state[LC_LEFT_LIFT].tc_ind = LC_TC_LEFT;
   lc_state[LC_RIGHT_LIFT].tc_ind = LC_TC_RIGHT;
@@ -72,6 +134,9 @@ void lc_init(void) {
   params.encoder = ENCODER4;
   params.encoder_gain = 2.0*M_PI/360.0;
   mc_new_controller(&params, tc_get_position_generator(LC_TC_RIGHT), CONTROLLER_MODE_NORMAL);
+
+  // start homing thread
+  proc_new(homing_process, NULL, sizeof(stack_homing), stack_homing);
 }
 
 void lc_end_stop_reached(uint8_t end_stops) {
@@ -99,7 +164,13 @@ void lc_homing(uint8_t lift, float speed) {
   } else if (speed < 0) {
     speed = -speed;
   }
-  // Assert end stop
+
+  if (lc_state[lift].should_home == 0 &&
+      lc_state[lift].homing_state == 0) {
+    lc_state[lift].homing_speed = speed;
+    lc_state[lift].should_home = 1;
+  }
+  /*// Assert end stop
   lc_state[lift].end_stop_ind &= ~LC_BOTTOM;
   // Go down
   lc_state[lift].direction = -1;
@@ -123,7 +194,7 @@ void lc_homing(uint8_t lift, float speed) {
     mc_suspend_controller(MOTOR4);
     tc_set_position(lc_state[lift].tc_ind, 0.);
     mc_reactivate_controller(MOTOR4);
-  }
+    }*/
 
   /*// Go up
   lc_state[lift].direction = 1;
@@ -139,6 +210,16 @@ void lc_homing(uint8_t lift, float speed) {
   timer_delay(50);
   lc_state[lift].extend = get_output_value(tc_get_position_generator(lc_state[lift].tc_ind)) - lc_state[lift].bottom;
   */
+}
+
+uint8_t is_homing_finished(uint8_t lift) {
+  if (lc_state[lift].should_home == 0 &&
+      lc_state[lift].homing_state == 0 &&
+      lc_state[lift].homing_done == 1) {
+    return 1;
+  } else {
+    return 0;
+  }
 }
 
 float lc_get_position(uint8_t lift) {

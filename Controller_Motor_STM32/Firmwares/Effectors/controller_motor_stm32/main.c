@@ -85,12 +85,12 @@ static void NORETURN ind_process(void)
 {
   while(1) {
     LED1_ON();
-    lc_goto_position(LC_RIGHT_LIFT, 1.);
+    lc_goto_position(LC_RIGHT_LIFT, 0.1);
     while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
       timer_delay(100);
     timer_delay(1000);
     LED1_OFF();
-    lc_goto_position(LC_RIGHT_LIFT, 0);
+    lc_goto_position(LC_RIGHT_LIFT, 0.3);
     while(tc_is_working(TC_MASK(LC_TC_RIGHT)))
       timer_delay(100);
     timer_delay(1000);

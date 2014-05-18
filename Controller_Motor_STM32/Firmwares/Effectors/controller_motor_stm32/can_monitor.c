@@ -16,6 +16,7 @@
 // Processes stacks
 PROC_DEFINE_STACK(stack_can_send, KERN_MINSTACKSIZE * 8);
 PROC_DEFINE_STACK(stack_can_receive, KERN_MINSTACKSIZE * 8);
+
 // globals
 volatile uint8_t mode;
 
@@ -94,11 +95,20 @@ static void NORETURN canMonitor_process(void) {
     timer_waitEvent(&timer_can);
     timer_add(&timer_can);
 
+    // Sending lifts awaited positions
     msg_lift_position.data.left_position = lc_get_position(LC_LEFT_LIFT);
     msg_lift_position.data.right_position = lc_get_position(LC_RIGHT_LIFT);
     txm.data32[0] = msg_lift_position.data32[0];
     txm.data32[1] = msg_lift_position.data32[1];
     txm.eid = CAN_MSG_LIFT_POSITION;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
+    // Sending TC status
+    msg_status.data.is_moving =
+      is_homing_finished(LC_LEFT_LIFT) << 1 | is_homing_finished(LC_RIGHT_LIFT);
+    txm.data32[0] = msg_status.data32[0];
+    txm.data32[1] = msg_status.data32[1];
+    txm.eid = CAN_MSG_HOMING_STATUS;
     can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     // Wait for the next transmission timer
@@ -118,6 +128,7 @@ static void NORETURN canMonitorListen_process(void) {
     switch_status end_courses_msg;
     lift_cmd_can_msg_t lift_cmd_msg;
     pump_cmd_can_msg_t pump_cmd_msg;
+    homing_cmd_can_msg_t homing_cmd_msg;
 
     // Initialize constant parameters of TX frame
     txm.dlc = 8;
@@ -181,6 +192,13 @@ static void NORETURN canMonitorListen_process(void) {
             if (pump_cmd_msg.data.right_pump >= 0)
               motorSetSpeed(MOTOR2, pump_cmd_msg.data.right_pump);
             break;
+          case CAN_MSG_HOMING_CMD:
+            homing_cmd_msg.data32[0] = frame.data32[0];
+            homing_cmd_msg.data32[1] = frame.data32[1];
+            if (homing_cmd_msg.data.left_lift > 0)
+              lc_homing(LC_LEFT_LIFT, homing_cmd_msg.data.left_lift);
+            if (homing_cmd_msg.data.right_lift > 0)
+              lc_homing(LC_RIGHT_LIFT, homing_cmd_msg.data.right_lift);
           }
         }
       }

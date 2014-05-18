@@ -30,6 +30,7 @@
 #define CAN_MSG_PUMP_STATE 132 // pump_state_can_msg_t
 #define CAN_MSG_EFFECTOR_STATUS 133 // status_can_msg_t
 #define CAN_MSG_LIFT_POSITION 134 // lift_positions_can_msg_t
+#define CAN_MSG_HOMING_STATUS 135 // status_can_msg_t
 
 // Received commands
 #define CAN_MSG_MOVE 201 // move_can_msg_t
@@ -48,6 +49,7 @@
 
 #define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 #define CAN_MSG_PUMP_CMD 232 // pump_cmd_msg_t
+#define CAN_MSG_HOMING_CMD 233 // homing_command_msg_t
 
 /* +-----------------------------------------------------------------+
    | Constants for messages                                          |
@@ -193,6 +195,12 @@ typedef struct {
   int16_t right_pump  __attribute__((__packed__));
 } pump_cmd_msg_t;
 
+// Pumps voltage command, a value is ignored if < 0
+typedef struct {
+  float left_lift __attribute__((__packed__));
+  float right_lift  __attribute__((__packed__));
+} homing_cmd_msg_t;
+
 // Awaited positions of the two lifts
 typedef struct {
   float left_position __attribute__((__packed__)); // position in m
@@ -302,6 +310,11 @@ typedef union {
   pump_cmd_msg_t data;
   uint32_t data32[2];
 } pump_cmd_can_msg_t;
+
+typedef union {
+  homing_cmd_msg_t data;
+  uint32_t data32[2];
+} homing_cmd_can_msg_t;
 
 typedef union {
   lift_position_msg_t data;
