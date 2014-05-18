@@ -229,12 +229,14 @@ float lc_get_position(uint8_t lift) {
 void lc_goto_position(uint8_t lift, float position) {
   float goal = pos2angle(lift, position);
 
-  if (goal > get_output_value(tc_get_position_generator(lc_state[lift].tc_ind))) {
-    lc_state[lift].direction = 1;
-  } else {
-    lc_state[lift].direction = -1;
+  if (lc_state[lift].homing_done == 1) {
+    if (goal > get_output_value(tc_get_position_generator(lc_state[lift].tc_ind))) {
+      lc_state[lift].direction = 1;
+    } else {
+      lc_state[lift].direction = -1;
+    }
+    tc_goto(lc_state[lift].tc_ind, goal, M_PI, 5);
   }
-  tc_goto(lc_state[lift].tc_ind, goal, M_PI, 5);
 }
 
 void lc_release(void) {
