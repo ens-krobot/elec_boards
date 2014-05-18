@@ -49,7 +49,7 @@ void lc_init(void) {
   tc_new_controller(LC_TC_LEFT);
   tc_new_controller(LC_TC_RIGHT);
   // Limit PWM value
-  motorSetMaxPWM(MOTOR2, 1800); // Limit to 12V
+  motorSetMaxPWM(MOTOR3, 1800); // Limit to 12V
   motorSetMaxPWM(MOTOR4, 1800); // Limit to 12V
   // Invert Right lift motor orientation
   motorInvertDirection(MOTOR4, 1);
@@ -64,7 +64,7 @@ void lc_init(void) {
   params.l0[1] = 1.6361;
   params.T = 0.005;
   // Initialize left lift
-  params.motor = MOTOR2;
+  params.motor = MOTOR3;
   params.encoder = ENCODER2;
   mc_new_controller(&params, tc_get_position_generator(LC_TC_LEFT), CONTROLLER_MODE_NORMAL);
   // Initialize right lift
@@ -116,9 +116,9 @@ void lc_homing(uint8_t lift, float speed) {
   //lc_state[lift].bottom = get_output_value(tc_get_position_generator(lc_state[lift].tc_ind));
   lc_state[lift].bottom = 0.;
   if (lift == LC_LEFT_LIFT) {
-    mc_suspend_controller(MOTOR2);
+    mc_suspend_controller(MOTOR3);
     tc_set_position(lc_state[lift].tc_ind, 0.);
-    mc_reactivate_controller(MOTOR2);
+    mc_reactivate_controller(MOTOR3);
   } else if (lift == LC_RIGHT_LIFT) {
     mc_suspend_controller(MOTOR4);
     tc_set_position(lc_state[lift].tc_ind, 0.);
@@ -157,7 +157,7 @@ void lc_goto_position(uint8_t lift, float position) {
 }
 
 void lc_release(void) {
-  mc_delete_controller(MOTOR2);
+  mc_delete_controller(MOTOR3);
   mc_delete_controller(MOTOR4);
 
   lc_state[LC_LEFT_LIFT].enabled = 0;

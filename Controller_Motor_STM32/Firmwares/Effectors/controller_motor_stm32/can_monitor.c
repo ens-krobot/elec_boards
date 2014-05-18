@@ -83,7 +83,7 @@ static void NORETURN canMonitor_process(void) {
 
     // Sending pump states
     msg_pumps.data.left_pump = motorGetSpeed(MOTOR1);
-    msg_pumps.data.right_pump = motorGetSpeed(MOTOR3);
+    msg_pumps.data.right_pump = motorGetSpeed(MOTOR2);
 
     txm.data32[0] = msg_pumps.data32[0];
     txm.data32[1] = msg_pumps.data32[1];
@@ -179,7 +179,7 @@ static void NORETURN canMonitorListen_process(void) {
             if (pump_cmd_msg.data.left_pump >= 0)
               motorSetSpeed(MOTOR1, pump_cmd_msg.data.left_pump);
             if (pump_cmd_msg.data.right_pump >= 0)
-              motorSetSpeed(MOTOR3, pump_cmd_msg.data.right_pump);
+              motorSetSpeed(MOTOR2, pump_cmd_msg.data.right_pump);
             break;
           }
         }

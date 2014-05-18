@@ -64,7 +64,7 @@ static void init(void)
 
         // Setup Right pump motor
         motorSetMaxPWM(MOTOR3, 1800); // Limit to 12V
-        enableMotor(MOTOR3);
+        enableMotor(MOTOR2);
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
