@@ -45,7 +45,7 @@ static void init(void)
         lc_init();
 
         // Init lifts
-        lc_homing(LC_RIGHT_LIFT, M_PI);
+        /*lc_homing(LC_RIGHT_LIFT, M_PI);
         lc_homing(LC_LEFT_LIFT, M_PI);
         lc_goto_position(LC_RIGHT_LIFT, 0.01);
         lc_goto_position(LC_LEFT_LIFT, 0.01);
@@ -57,6 +57,7 @@ static void init(void)
         lc_goto_position(LC_LEFT_LIFT, 0.02);
         while(tc_is_working(TC_MASK(LC_TC_RIGHT)) || tc_is_working(TC_MASK(LC_TC_LEFT)))
           timer_delay(100);
+        */
 
         // Setup Left pump motor
         motorSetMaxPWM(MOTOR1, 1800); // Limit to 12V
