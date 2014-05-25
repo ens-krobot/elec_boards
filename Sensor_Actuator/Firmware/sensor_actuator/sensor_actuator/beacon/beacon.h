@@ -42,7 +42,7 @@
 
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
-#define MAX_BEACONS 2
+#define MAX_BEACONS 3
 #define BEACON_ANGLE_OFFSET 0.0
 
 #define PRESCALER_VALUE 200
@@ -59,6 +59,7 @@ void beacon_init(void);
  * Return the beacon positions.
  * The packets are valid when the function returns 0.
  */
-int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll);
+int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll,
+                         beacon_angles *angles, beacon_widths *widths);
 
 #endif

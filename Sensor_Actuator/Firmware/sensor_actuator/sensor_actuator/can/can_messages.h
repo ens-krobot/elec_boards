@@ -33,6 +33,8 @@
 #define CAN_BEACON_POSITION 301          // beacon_position
 #define CAN_BEACON_LOWLEVEL_POSITION 302 // beacon_lowlevel_position
 #define CAN_BEACON_CALIBRATION 303       // beacon_calibration
+#define CAN_BEACON_ANGLES 304            // beacon_angles
+#define CAN_BEACON_WIDTHS 305            // beacon_widths
 
 // Switches
 
@@ -97,6 +99,20 @@ struct beacon_lowlevel_position_pkt {
 struct beacon_calibration_pkt {
     uint16_t width;    // in 1/100000th of radians [0; Pi/5[
     uint16_t distance; // in mm [0; 65536[
+} __attribute__((packed));
+
+
+
+// Angle of the beacons seen
+struct beacon_angles_pkt {
+    uint16_t angle[4];    // in 1/10000th of radians [0; 2*Pi[
+} __attribute__((packed));
+
+
+
+// Position of the opponent
+struct beacon_widths_pkt {
+    uint16_t width[4];    // in 1/100000th of radians [0; Pi/5[
 } __attribute__((packed));
 
 
@@ -193,6 +209,16 @@ typedef union {
     struct beacon_calibration_pkt p;
     uint32_t d[2];
 } beacon_calibration;
+
+typedef union {
+    struct beacon_angles_pkt p;
+    uint32_t d[2];
+} beacon_angles;
+
+typedef union {
+    struct beacon_widths_pkt p;
+    uint32_t d[2];
+} beacon_widths;
 
 typedef union {
     struct switch_status_pkt p;

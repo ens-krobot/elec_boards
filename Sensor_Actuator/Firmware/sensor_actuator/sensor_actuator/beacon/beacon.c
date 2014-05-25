@@ -86,7 +86,8 @@ static DECLARE_ISR(tim8_cc_irq) {
     TIM_SetCounter(TIM1, 0);
 }
 
-int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll) {
+int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll,
+                         beacon_angles *angles, beacon_widths *widths) {
 
     float beacon_pos;
     float beacon_width;
@@ -159,15 +160,22 @@ int get_beacon_positions(beacon_position *pos, beacon_lowlevel_position *pos_ll)
         // Compute the real time period (in s)
         //t_period = period * PRESCALER_VALUE / (float) CPU_FREQ;
 
-        pos->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
-        pos->p.distance[beacon_id] = (uint16_t)(distance_avg);
-        //pos->p.period = (uint16_t)(t_period * 10000.);
+        if (beacon_id < 2) {
+          pos->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
+          pos->p.distance[beacon_id] = (uint16_t)(distance_avg);
+          //pos->p.period = (uint16_t)(t_period * 10000.);
+        }
+        angles->p.angle[beacon_id] = (uint16_t)(angle * 10000.);
+        widths->p.width[beacon_id] = (uint16_t)(angular_width * 100000.);
 
         no_beacon[beacon_id] = 0;
     }
 
-    for (; beacon_id < 2; ++beacon_id)
+    for (; beacon_id < MAX_BEACONS; ++beacon_id) {
         ++no_beacon[beacon_id];
+        angles->p.angle[beacon_id] = 0;
+        widths->p.width[beacon_id] = 0;
+    }
 
     pos_ll->p.angle = (uint16_t)(angle * 10000.);
     pos_ll->p.width = (uint16_t)(angular_width * 10000.);

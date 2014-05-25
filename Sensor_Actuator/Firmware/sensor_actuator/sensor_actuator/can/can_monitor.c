@@ -66,6 +66,8 @@ static void NORETURN can_sender_process(void) {
 
     beacon_position pos;
     beacon_lowlevel_position pos_ll;
+    beacon_angles angles;
+    beacon_widths widths;
 
     switch_status st1, st2;
 
@@ -90,12 +92,18 @@ static void NORETURN can_sender_process(void) {
 
         if (sim_mode == SIMULATION_MODE_NO) {
             /* Beacon */
-            get_beacon_positions(&pos, &pos_ll);
+            get_beacon_positions(&pos, &pos_ll, &angles, &widths);
 
             SET_PACKET(f, CAN_BEACON_POSITION, pos);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
             SET_PACKET(f, CAN_BEACON_LOWLEVEL_POSITION, pos_ll);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            SET_PACKET(f, CAN_BEACON_ANGLES, angles);
+            can_transmit(CAND1, &f, ms_to_ticks(10));
+
+            SET_PACKET(f, CAN_BEACON_WIDTHS, widths);
             can_transmit(CAND1, &f, ms_to_ticks(10));
 
             /* Switches */
