@@ -92,8 +92,8 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
   generator->type.state = GEN_STATE_PAUSE;
   generator->hd.linear_pos_x = linear_pos_x;
   generator->hd.linear_speed_x = linear_speed_x;
-  generator->hd.linear_pos_x = linear_pos_y;
-  generator->hd.linear_speed_x = linear_speed_y;
+  generator->hd.linear_pos_y = linear_pos_y;
+  generator->hd.linear_speed_y = linear_speed_y;
   generator->hd.rotational_pos = rotational_pos;
   generator->hd.rotational_speed = rotational_speed;
   generator->hd.wheel_radius = wheel_radius;
