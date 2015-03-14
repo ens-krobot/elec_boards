@@ -17,6 +17,7 @@
    +-----------------------------------------------------------------+ */
 
 // Data sent by the card
+#define CAN_MSG_ENCODERS12 99 // encoder_can_msg_t
 #define CAN_MSG_ENCODERS34 100 // encoder_can_msg_t
 #define CAN_MSG_MOTOR3 101 // motor_can_msg_t
 #define CAN_MSG_MOTOR4 102 // motor_can_msg_t
@@ -46,6 +47,8 @@
 #define CAN_MSG_DRIVE_ACTIVATION 211 // controller_activation_can_msg_t
 #define CAN_MSG_TORQUE_LIMIT 212 // torque_limit_can_msg_t
 #define CAN_MSG_DRIVE_TORQUE_LIMIT 213 // drive_torque_limit_can_msg_t
+#define CAN_MSG_MOVE_X 215 // move_can_msg_t
+#define CAN_MSG_MOVE_Y 216 // move_can_msg_t
 
 #define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 #define CAN_MSG_PUMP_CMD 232 // pump_cmd_msg_t
