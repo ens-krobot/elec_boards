@@ -26,6 +26,7 @@
 #define CAN_MSG_GHOST 105 // ghost_can_msg_t
 #define CAN_MSG_CONTROL_ERROR 106 // error_can_msg_t
 #define CAN_MSG_ODOMETRY_INDEP 107 // odometry_can_msg_t
+#define CAN_MSG_MOTOR2 108 // motor_can_msg_t
 
 #define CAN_MSG_LIFT_ENCODERS 131 // encoder_can_msg_t
 #define CAN_MSG_PUMP_STATE 132 // pump_state_can_msg_t
