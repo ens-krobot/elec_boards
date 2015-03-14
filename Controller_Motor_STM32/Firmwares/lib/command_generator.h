@@ -27,9 +27,9 @@
                          // drive.
 #define GEN_DD_RIGHT 5   // Outputs the right wheel speed for a differential
                          // drive.
-#define GEN_HD_B     6   // Outputs the back wheel speed for an holonomic drive.
-#define GEN_HD_RF    7   // Outputs the right-front wheel speed for an holonomic drive.
-#define GEN_HD_LF    8   // Outputs the left-front wheel speed for an holonomic drive.
+#define GEN_HD_F     6   // Outputs the front wheel speed for an holonomic drive.
+#define GEN_HD_BR    7   // Outputs the back-right wheel speed for an holonomic drive.
+#define GEN_HD_BL    8   // Outputs the back-left wheel speed for an holonomic drive.
 #define GEN_AC_T1    9   // Outputs the angle of the first articulation of a RR arm
 #define GEN_AC_T2   10   // Outputs the angle of the second articulation of a RR arm
 
@@ -190,9 +190,9 @@ command_generator_t* new_dd_generator(command_generator_t *generator,
  *  - struct_radius : radius of the holonomic drive.
  *  - max_speed : maximum wheel speed (in rad/s).
  *  - type :
- *     o 1 is the back wheel
- *     o 2 is the right-front wheel
- *     o 3 is the left-front wheel
+ *     o 1 is the front wheel
+ *     o 2 is the back-right wheel
+ *     o 3 is the back-left wheel
  */
 command_generator_t* new_hd_generator(command_generator_t *generator,
                                       command_generator_t *linear_pos_x,

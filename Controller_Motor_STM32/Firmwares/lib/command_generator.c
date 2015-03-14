@@ -10,6 +10,9 @@
 #include "command_generator.h"
 #include <stdlib.h>
 
+#define COS_2PI_3 (-0.5)
+#define SIN_2PI_3 0.8660254037844387
+
 command_generator_t* new_constant_generator(command_generator_t *generator, float value) {
   generator->type.t = GEN_CONSTANT;
   generator->type.callback.type = GEN_CALLBACK_NONE;
@@ -72,14 +75,14 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
                                       float wheel_radius, float struct_radius, float max_speed,
                                       uint8_t type) {
   switch (type) {
-  case 1: // Back wheel
-    generator->type.t = GEN_HD_B;
+  case 1: // Front wheel
+    generator->type.t = GEN_HD_F;
     break;
-  case 2: // Right-front wheel
-    generator->type.t = GEN_HD_RF;
+  case 2: // Back-right wheel
+    generator->type.t = GEN_HD_BR;
     break;
-  case 3: // Left-front wheel
-    generator->type.t = GEN_HD_LF;
+  case 3: // Back-left wheel
+    generator->type.t = GEN_HD_BL;
     break;
   default:
     return NULL;
@@ -138,7 +141,7 @@ command_generator_t* adjust_value(command_generator_t *generator, float value) {
   uint8_t type = generator->type.t;
 
   if (type != GEN_DD_RIGHT && type != GEN_DD_LEFT
-      && type != GEN_HD_B && type != GEN_HD_RF && type != GEN_HD_LF
+      && type != GEN_HD_F && type != GEN_HD_BR && type != GEN_HD_BL
       && type != GEN_AC_T1 && type != GEN_AC_T2) {
     generator->type.last_output = value;
     return generator;
@@ -241,9 +244,9 @@ float get_output_value(command_generator_t *generator) {
       generator->type.last_output = MAX(generator->type.last_output, -generator->dd.max_speed);
     }
     break;
-  case GEN_HD_B:
-  case GEN_HD_RF:
-  case GEN_HD_LF:
+  case GEN_HD_F:
+  case GEN_HD_BR:
+  case GEN_HD_BL:
     // Update position generators to allow callbacks
     get_output_value(generator->hd.linear_pos_x);
     get_output_value(generator->hd.linear_pos_y);
@@ -253,17 +256,17 @@ float get_output_value(command_generator_t *generator) {
     u_y = get_output_value(generator->hd.linear_speed_y);
     w = get_output_value(generator->hd.rotational_speed);
     switch (generator->type.t) {
-    case GEN_HD_B:
+    case GEN_HD_F:
       generator->type.last_output =
-        (u_x + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
+        (-u_x + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
       break;
-    case GEN_HD_RF:
+    case GEN_HD_BR:
       generator->type.last_output =
-        (-u_x/2.0 + u_y*sqrt(3.0)/2.0 + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
+        (-u_x*COS_2PI_3 + u_y*SIN_2PI_3 + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
       break;
-    case GEN_HD_LF:
+    case GEN_HD_BL:
       generator->type.last_output =
-        (-u_x/2.0 - u_y*sqrt(3.0)/2.0 + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
+        (-u_x*COS_2PI_3 - u_y*SIN_2PI_3 + w*generator->hd.struct_radius) / generator->hd.wheel_radius;
       break;
     }
     if (generator->type.last_output >= 0) {
