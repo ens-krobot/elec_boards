@@ -74,11 +74,30 @@ void hd_move_Y(float distance, float speed, float acceleration);
  */
 void hd_turn(float angle, float speed, float acceleration);
 
+/* Move of a given translation
+ *  - dx,dy: displacements (in meters)
+ */
+void hd_move2D(float dx, float dy);
+
+/* Move to a specific location with a target orientation
+ *  - x,y: coordinates of the destination (in meters)
+ *  - theta: target orientation
+ */
+void hd_move_to(float x, float y, float theta);
+
 /*
  * Modify a given speed of the robot using the specified acceleration
  */
 void hd_set_linear_speed_X(float speed, float acceleration);
 void hd_set_linear_speed_Y(float speed, float acceleration);
 void hd_set_rotational_speed(float speed, float acceleration);
+
+/* Change limitations of the trajectory follower
+ *  - v_lin_max : maximum linear speed (in m/s)
+ *  - v_rot_max : maximim rotational speed (in rad/s)
+ *  - acc_lin_max : maximum linear acceleration (in m/s/s)
+ *  - acc_rot_max : maximum rotational acceleration (in m/s/s)
+ */
+void hd_adjust_limits(float v_lin_max, float v_rot_max, float acc_lin_max, float acc_rot_max);
 
 #endif /* __HOLONOMIC_DRIVE_H */
