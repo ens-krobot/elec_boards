@@ -15,7 +15,7 @@
 
 typedef struct {
   uint8_t initialized, enabled, running, working;
-  uint8_t odometry_process;
+  uint8_t enable_transform;
   float wheel_radius, drive_radius;
   float last_lin_acceleration, last_rot_acceleration;
   command_generator_t f_wheel_speed, br_wheel_speed, bl_wheel_speed;
@@ -25,11 +25,11 @@ typedef struct {
 
 static hd_params_t params;
 
-void hd_start(uint8_t odometry_process,
+void hd_start(uint8_t enable_transform,
               float wheel_radius, float drive_radius,
               float max_wheel_speed,
               float Ts) {
-  params.odometry_process = odometry_process;
+  params.enable_transform = enable_transform;
   params.wheel_radius = wheel_radius;
   params.drive_radius = drive_radius;
   params.last_lin_acceleration = 0.0;
@@ -50,7 +50,7 @@ void hd_start(uint8_t odometry_process,
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
                    wheel_radius, drive_radius, max_wheel_speed,
-                   1);
+                   params.enable_transform, 1);
   new_hd_generator(&params.br_wheel_speed,
                    tc_get_position_generator(HD_LINEAR_SPEED_X_TC),
                    tc_get_speed_generator(HD_LINEAR_SPEED_X_TC),
@@ -59,7 +59,7 @@ void hd_start(uint8_t odometry_process,
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
                    wheel_radius, drive_radius, max_wheel_speed,
-                   2);
+                   params.enable_transform, 2);
   new_hd_generator(&params.bl_wheel_speed,
                    tc_get_position_generator(HD_LINEAR_SPEED_X_TC),
                    tc_get_speed_generator(HD_LINEAR_SPEED_X_TC),
@@ -68,7 +68,7 @@ void hd_start(uint8_t odometry_process,
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
                    wheel_radius, drive_radius, max_wheel_speed,
-                   3);
+                   params.enable_transform, 3);
   new_ramp2_generator(&params.f_wheel, 0.0, &params.f_wheel_speed);
   new_ramp2_generator(&params.br_wheel, 0.0, &params.br_wheel_speed);
   new_ramp2_generator(&params.bl_wheel, 0.0, &params.bl_wheel_speed);

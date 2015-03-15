@@ -16,6 +16,7 @@
 #include <drv/timer.h>
 #include <math.h>
 #include "encoder.h"
+#include "odometry_holonomic.h"
 
 // Generator types
 #define GEN_NONE     0   // No type, the generator is not initialized.
@@ -98,6 +99,7 @@ typedef struct {
   float wheel_radius;
   float struct_radius;
   float max_speed;
+  uint8_t enable_transform;
 } hd_generator_t;
 
 typedef struct {
@@ -202,7 +204,7 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
                                       command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float struct_radius, float max_speed,
-                                      uint8_t type);
+                                      uint8_t enable_transform, uint8_t type);
 
 /* Initializes a new 2R arm controller generator.
  *  - generator : pointer to the generator to initialize

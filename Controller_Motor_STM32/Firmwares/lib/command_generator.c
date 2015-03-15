@@ -73,7 +73,7 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
                                       command_generator_t *rotational_pos,
                                       command_generator_t *rotational_speed,
                                       float wheel_radius, float struct_radius, float max_speed,
-                                      uint8_t type) {
+                                      uint8_t enable_transform, uint8_t type) {
   switch (type) {
   case 1: // Front wheel
     generator->type.t = GEN_HD_F;
@@ -99,6 +99,7 @@ command_generator_t* new_hd_generator(command_generator_t *generator,
   generator->hd.wheel_radius = wheel_radius;
   generator->hd.struct_radius = struct_radius;
   generator->hd.max_speed = max_speed;
+  generator->hd.enable_transform = enable_transform;
 
   return generator;
 }
@@ -252,9 +253,20 @@ float get_output_value(command_generator_t *generator) {
     get_output_value(generator->hd.linear_pos_y);
     get_output_value(generator->hd.rotational_pos);
     // Compute output
-    u_x = get_output_value(generator->hd.linear_speed_x);
-    u_y = get_output_value(generator->hd.linear_speed_y);
+    u1 = get_output_value(generator->hd.linear_speed_x);
+    u2 = get_output_value(generator->hd.linear_speed_y);
     w = get_output_value(generator->hd.rotational_speed);
+
+    // Compute robot speed in local frame of reference if needed
+    if (generator->hd.enable_transform) {
+      theta1 = HolOdo_getTheta();
+      u_x = u1*cos(theta1) + u2*sin(theta1);
+      u_y = -u1*sin(theta1) + u2*cos(theta1);
+    } else {
+      u_x = u1;
+      u_y = u2;
+    }
+
     switch (generator->type.t) {
     case GEN_HD_F:
       generator->type.last_output =

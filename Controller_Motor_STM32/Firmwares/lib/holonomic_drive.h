@@ -21,7 +21,7 @@
 #define HD_ROTATIONAL_SPEED_TC 2
 
 /* Initializes the holonomic drive
- *  - odometry_process : ID of the odometry process to base the control on
+ *  - enable_transform : if non-zero, the movement will in world coordinates system
  *  - wheel_radius : radius of the wheels (in meters)
  *  - drive_radius : radius of the drive system (in meters)
  *  - max_wheel_speed : maximum wheel speed (in rad/s)
@@ -30,7 +30,7 @@
  * Note : the holonomic drive system will use Trajectory controllers
  *        HD_LINEAR_SPEED_{X,Y}_TC and HD_ROTATIONAL_SPEED_TC
  */
-void hd_start(uint8_t odometry_process,
+void hd_start(uint8_t enable_transform,
               float wheel_radius, float drive_radius,
               float max_wheel_speed,
               float Ts);

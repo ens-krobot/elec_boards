@@ -27,4 +27,6 @@ void HolOdo_setState(robot_state_t *new_state);
 
 void HolOdo_getState(robot_state_t *robot_state);
 
+float HolOdo_getTheta(void);
+
 #endif /* __ODOMETRY_HOLONOMIC_H */

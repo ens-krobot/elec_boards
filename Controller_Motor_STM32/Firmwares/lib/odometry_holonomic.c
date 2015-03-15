@@ -152,8 +152,18 @@ void HolOdo_setState(robot_state_t *new_state) {
 }
 
 void HolOdo_getState(robot_state_t *robot_state) {
-  robot_state->x = state.robot_state.x;
-  robot_state->y = state.robot_state.y;
-  robot_state->theta = state.robot_state.theta;
+  if (state.enable == 1) {
+    robot_state->x = state.robot_state.x;
+    robot_state->y = state.robot_state.y;
+    robot_state->theta = state.robot_state.theta;
+  } else {
+    robot_state->x = 0.f;
+    robot_state->y = 0.f;
+    robot_state->theta = 0.f;
+  }
+}
+
+float HolOdo_getTheta(void) {
+  return state.robot_state.theta;
 }
 
