@@ -60,7 +60,14 @@ static void init(void)
                  PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
                  251.*2.*M_PI/60., // Absolute wheel speed limitation
                  0.005); // Sample period
-        // Common parameters
+
+        // Adjust limits for Omnidirectional Drive
+        hd_adjust_limits(0.3, // v_lin_max
+                         M_PI/4., // v_rot_max
+                         0.5, //a_lin_max
+                         M_PI/4.);
+
+          // Common parameters
         params.encoder_gain = -2.0*M_PI/2797.;
         params.T = 0.005;
         params.G0 = 0.0125/2.;//0.01306;
