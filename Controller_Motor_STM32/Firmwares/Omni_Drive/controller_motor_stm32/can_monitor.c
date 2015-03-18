@@ -210,8 +210,10 @@ static void NORETURN canMonitorListen_process(void) {
     odometry_can_msg_t odometry_msg;
     stop_can_msg_t stop_msg;
     simulation_mode_can_msg_t simulation_mode_msg;
-    bezier_can_msg_t bezier_msg;
-    bezier_limits_can_msg_t bezier_limits_msg;
+    //bezier_can_msg_t bezier_msg;
+    //bezier_limits_can_msg_t bezier_limits_msg;
+    omni_limits_can_msg_t omni_limits_msg;
+    omni_goto_can_msg_t omni_goto_msg;
     motor_command_can_msg_t motor_command_msg;
     switch_status switches;
     torque_limit_can_msg_t torque_limit_msg;
@@ -289,27 +291,43 @@ static void NORETURN canMonitorListen_process(void) {
               mc_reactivate_controller(MOTOR4);
             }
             break;
-          case CAN_MSG_BEZIER_ADD:
-            bezier_msg.data32[0] = frame.data32[0];
-            bezier_msg.data32[1] = frame.data32[1];
-            hd_move_to(bezier_msg.data.x_end/1000.0,
-                       bezier_msg.data.y_end/1000.0,
-                       bezier_msg.data.theta_end/100.0);
-            /* res = dd_add_bezier(bezier_msg.data.x_end/1000.0, */
-            /*                     bezier_msg.data.y_end/1000.0, */
-            /*                     bezier_msg.data.d1/100.0, */
-            /*                     bezier_msg.data.d2/100.0, */
-            /*                     bezier_msg.data.theta_end/100.0, */
-            /*                     bezier_msg.data.v_end/1000.0); */
+          /* case CAN_MSG_BEZIER_ADD: */
+          /*   bezier_msg.data32[0] = frame.data32[0]; */
+          /*   bezier_msg.data32[1] = frame.data32[1]; */
+          /*   hd_move_to(bezier_msg.data.x_end/1000.0, */
+          /*              bezier_msg.data.y_end/1000.0, */
+          /*              bezier_msg.data.theta_end/100.0); */
+          /*   /\* res = dd_add_bezier(bezier_msg.data.x_end/1000.0, *\/ */
+          /*   /\*                     bezier_msg.data.y_end/1000.0, *\/ */
+          /*   /\*                     bezier_msg.data.d1/100.0, *\/ */
+          /*   /\*                     bezier_msg.data.d2/100.0, *\/ */
+          /*   /\*                     bezier_msg.data.theta_end/100.0, *\/ */
+          /*   /\*                     bezier_msg.data.v_end/1000.0); *\/ */
+          /*   /\* can_send_error(res,0); *\/ */
+          /*   break; */
+          /* case CAN_MSG_BEZIER_LIMITS: */
+          /*   bezier_limits_msg.data32[0] = frame.data32[0]; */
+          /*   bezier_limits_msg.data32[1] = frame.data32[1]; */
+          /*   hd_adjust_limits(bezier_limits_msg.data.v_max/1000.0, // v_lin_max */
+          /*                    bezier_limits_msg.data.omega_max/1000.0, // v_rot_max */
+          /*                    bezier_limits_msg.data.at_max/1000.0, // acc_lin_max */
+          /*                    bezier_limits_msg.data.ar_max/1000.0); // acc_rot_max */
+          /*   break; */
+          case CAN_MSG_OMNI_GOTO:
+            omni_goto_msg.data32[0] = frame.data32[0];
+            omni_goto_msg.data32[1] = frame.data32[1];
+            hd_move_to(omni_goto_msg.data.x_end/1000.0,
+                       omni_goto_msg.data.y_end/1000.0,
+                       omni_goto_msg.data.theta_end/100.0);
             /* can_send_error(res,0); */
             break;
-          case CAN_MSG_BEZIER_LIMITS:
-            bezier_limits_msg.data32[0] = frame.data32[0];
-            bezier_limits_msg.data32[1] = frame.data32[1];
-            hd_adjust_limits(bezier_limits_msg.data.v_max/1000.0, // v_lin_max
-                             bezier_limits_msg.data.omega_max/1000.0, // v_rot_max
-                             bezier_limits_msg.data.at_max/1000.0, // acc_lin_max
-                             bezier_limits_msg.data.ar_max/1000.0); // acc_rot_max
+          case CAN_MSG_OMNI_LIMITS:
+            omni_limits_msg.data32[0] = frame.data32[0];
+            omni_limits_msg.data32[1] = frame.data32[1];
+            hd_adjust_limits(omni_limits_msg.data.v_lin_max/1000.0, // v_lin_max
+                             omni_limits_msg.data.v_rot_max/1000.0, // v_rot_max
+                             omni_limits_msg.data.a_lin_max/1000.0, // acc_lin_max
+                             omni_limits_msg.data.a_rot_max/1000.0); // acc_rot_max
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];

@@ -50,6 +50,8 @@
 #define CAN_MSG_DRIVE_TORQUE_LIMIT 213 // drive_torque_limit_can_msg_t
 #define CAN_MSG_MOVE_X 215 // move_can_msg_t
 #define CAN_MSG_MOVE_Y 216 // move_can_msg_t
+#define CAN_MSG_OMNI_LIMITS 217 // omni_limits_can_msg_t
+#define CAN_MSG_OMNI_GOTO 218 // omni_goto_can_msg_t
 
 #define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 #define CAN_MSG_PUMP_CMD 232 // pump_cmd_msg_t
@@ -176,6 +178,22 @@ typedef struct {
   float rot_acc  __attribute__((__packed__)); // Rotational acceleration for braking
 } stop_msg_t;
 
+// Send of Goto command to the holonomic drive
+typedef struct {
+  uint16_t x_end:12     __attribute__((__packed__)); // end point x coordinate in mm
+  uint16_t y_end:12     __attribute__((__packed__)); // end point y coordinate in mm
+  int16_t theta_end:12  __attribute__((__packed__)); // end angle in 1/100 radians
+  uint32_t padding:28   __attribute__((__packed__)); // Reserved for futur use
+} omni_goto_msg_t;
+
+// Modify holonomic drive dynamical limits
+typedef struct {
+  uint16_t v_lin_max __attribute__((__packed__)); // max linear speed in mm/s
+  uint16_t v_rot_max __attribute__((__packed__)); // max rotational speed in mrad/s
+  uint16_t a_lin_max __attribute__((__packed__)); // max linear acceleration in mm/s/s
+  uint16_t a_rot_max __attribute__((__packed__)); // max radial acceleration in rad/s/s
+} omni_limits_msg_t;
+
 // Select robot mode (normal, simulation or HIL)
 typedef struct {
   uint8_t mode;
@@ -289,6 +307,16 @@ typedef union {
   bezier_limits_msg_t data;
   uint32_t data32[2];
 } bezier_limits_can_msg_t;
+
+typedef union {
+  omni_goto_msg_t data;
+  uint32_t data32[2];
+} omni_goto_can_msg_t;
+
+typedef union {
+  omni_limits_msg_t data;
+  uint32_t data32[2];
+} omni_limits_can_msg_t;
 
 typedef union {
   stop_msg_t data;
