@@ -163,23 +163,24 @@ static void NORETURN canMonitor_process(void) {
     timer_waitEvent(&timer_can);
     timer_add(&timer_can);
 
-    // Sending ghost state
-    /* if (mode != ROBOT_MODE_SIMULATION || (mode == ROBOT_MODE_FAULT && old_mode != ROBOT_MODE_SIMULATION)) */
-    /* msg_ghost.data.state = dd_get_ghost_state(&odometry, &u); */
-    /* msg_ghost.data.x = (int16_t)(odometry.x * 1000.0); */
-    /* msg_ghost.data.y = (int16_t)(odometry.y * 1000.0); */
-    /* msg_ghost.data.theta = (int16_t)(odometry.theta * 10000.0); */
-    /* msg_ghost.data.u = (uint8_t)(u * 255); */
-    /* txm.data32[0] = msg_ghost.data32[0]; */
-    /* txm.data32[1] = msg_ghost.data32[1]; */
-    /* txm.eid = CAN_MSG_GHOST; */
-    /* can_transmit(CAND1, &txm, ms_to_ticks(10)); */
+    // Sending trajectory controller and ghost state if not in simulation mode
+    if (mode != ROBOT_MODE_SIMULATION || (mode == ROBOT_MODE_FAULT && old_mode != ROBOT_MODE_SIMULATION)) {
+      /* msg_ghost.data.state = dd_get_ghost_state(&odometry, &u); */
+      /* msg_ghost.data.x = (int16_t)(odometry.x * 1000.0); */
+      /* msg_ghost.data.y = (int16_t)(odometry.y * 1000.0); */
+      /* msg_ghost.data.theta = (int16_t)(odometry.theta * 10000.0); */
+      /* msg_ghost.data.u = (uint8_t)(u * 255); */
+      /* txm.data32[0] = msg_ghost.data32[0]; */
+      /* txm.data32[1] = msg_ghost.data32[1]; */
+      /* txm.eid = CAN_MSG_GHOST; */
+      /* can_transmit(CAND1, &txm, ms_to_ticks(10)); */
 
-    status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
-    txm.data32[0] = status_msg.data32[0];
-    txm.data32[1] = status_msg.data32[1];
-    txm.eid = CAN_MSG_STATUS;
-    can_transmit(CAND1, &txm, ms_to_ticks(10));
+      status_msg.data.is_moving = tc_is_working(MOTOR1 | MOTOR2 | MOTOR3 | MOTOR4);
+      txm.data32[0] = status_msg.data32[0];
+      txm.data32[1] = status_msg.data32[1];
+      txm.eid = CAN_MSG_STATUS;
+      can_transmit(CAND1, &txm, ms_to_ticks(10));
+    }
 
     // Send error packet if requested
     if (send_err) {
