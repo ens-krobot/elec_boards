@@ -54,6 +54,7 @@
 #define CAN_MSG_OMNI_GOTO 218 // omni_goto_can_msg_t
 #define CAN_MSG_LOCK_TARGET 219 // lock_target_can_msg_t
 #define CAN_MSG_UNLOCK_TARGET 220
+#define CAN_MSG_LOCK_TARGET_STATUS 221 // lock_target_status_can_msg_t
 
 #define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 #define CAN_MSG_PUMP_CMD 232 // pump_cmd_msg_t
@@ -203,6 +204,12 @@ typedef struct {
   int16_t theta __attribute__((__packed__)); // angle in 1/10000 radians
 } lock_target_msg_t;
 
+// Target lock status message
+typedef struct {
+  float lock_error __attribute__((__packed__)); // angular error in rad
+  uint8_t lock_status __attribute__((__packed__)); // non-zero if target is currently locked
+} lock_target_status_msg_t;
+
 // Select robot mode (normal, simulation or HIL)
 typedef struct {
   uint8_t mode;
@@ -331,6 +338,11 @@ typedef union {
   lock_target_msg_t data;
   uint32_t data32[2];
 } lock_target_can_msg_t;
+
+typedef union {
+  lock_target_status_msg_t data;
+  uint32_t data32[2];
+} lock_target_status_can_msg_t;
 
 typedef union {
   stop_msg_t data;
