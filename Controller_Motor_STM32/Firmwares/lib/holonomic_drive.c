@@ -14,20 +14,26 @@
 #endif
 
 typedef struct {
-  uint8_t initialized, enabled, running, working;
-  uint8_t enable_transform;
+  uint8_t initialized, enabled, running, working, thread_running;
+  uint8_t enable_transform, thread_enable, enable_lock, disable_lock;
   float wheel_radius, drive_radius;
   float v_lin_max, v_rot_max, acc_lin_max, acc_rot_max;
+  float target_x, target_y, target_theta, target_K, target_follow_speed;
+  float lock_error;
   command_generator_t f_wheel_speed, br_wheel_speed, bl_wheel_speed;
   command_generator_t f_wheel, br_wheel, bl_wheel;
   float Ts;
 } hd_params_t;
 
 static hd_params_t params;
+PROC_DEFINE_STACK(holo_stack, KERN_MINSTACKSIZE * 16);
+
+static void NORETURN holoTargetLock_process(void);
 
 void hd_start(uint8_t enable_transform,
               float wheel_radius, float drive_radius,
-              float max_wheel_speed,
+              float max_wheel_speed, float target_follow_speed,
+              float target_K,
               float Ts) {
   params.enable_transform = enable_transform;
   params.wheel_radius = wheel_radius;
@@ -38,8 +44,14 @@ void hd_start(uint8_t enable_transform,
   params.acc_lin_max = 0.5;
   params.acc_rot_max = M_PI/4;
 
+  params.target_follow_speed = target_follow_speed;
+  params.target_K = target_K;
+  params.enable_lock = 0;
+  params.disable_lock = 0;
+
   params.running = 0;
   params.working = 0;
+  params.thread_running = 0;
   params.Ts = Ts;
 
   tc_new_controller(HD_LINEAR_SPEED_X_TC);
@@ -85,6 +97,9 @@ void hd_start(uint8_t enable_transform,
 
   params.initialized = 1;
   params.enabled = 1;
+
+  params.thread_enable = 1;
+  proc_new(holoTargetLock_process, NULL, sizeof(holo_stack), holo_stack);
 }
 
 void hd_pause(void) {
@@ -143,7 +158,7 @@ void hd_move_Y(float distance, float speed, float acceleration) {
 }
 
 void hd_turn(float angle, float speed, float acceleration) {
-  if (params.enabled) {
+  if (params.enabled && !params.enable_lock) {
     tc_move(HD_ROTATIONAL_SPEED_TC, angle, speed, acceleration);
   }
 }
@@ -180,7 +195,9 @@ void hd_move_to(float x, float y, float theta) {
       dtheta += 2*M_PI;
     }
     hd_move2D(dx, dy);
-    hd_turn(dtheta, params.v_rot_max, params.acc_rot_max);
+    if (!params.enable_lock) {
+      hd_turn(dtheta, params.v_rot_max, params.acc_rot_max);
+    }
   }
 }
 
@@ -219,4 +236,82 @@ void hd_adjust_limits(float v_lin_max, float v_rot_max, float acc_lin_max, float
   params.v_rot_max = v_rot_max;
   params.acc_lin_max = acc_lin_max;
   params.acc_rot_max = acc_rot_max;
+}
+
+void hd_lock_target(float target_x, float target_y, float target_theta) {
+  params.target_x = target_x;
+  params.target_y = target_y;
+  params.target_theta = target_theta;
+
+  params.enable_lock = 1;
+}
+
+void hd_unlock_target(void) {
+  params.disable_lock = 1;
+}
+
+float hd_get_lock_error(void) {
+  return params.lock_error;
+}
+
+uint8_t hd_is_lock_enabled_status(void) {
+  return params.enable_lock;
+}
+
+// Holonomic drive target locking process
+static void NORETURN holoTargetLock_process(void) {
+  Timer timer;
+  robot_state_t state;
+  float target_ori, w;
+
+  // Indicate we are running
+  params.thread_running = 1;
+
+  // configure timer
+  timer_setDelay(&timer, ms_to_ticks((mtime_t)(params.Ts*1000)));
+  timer_setEvent(&timer);
+
+  while (1) {
+    if (params.thread_enable == 0) {
+      params.thread_running = 0;
+      proc_exit();
+    } else {
+      timer_add(&timer);
+
+      if (params.disable_lock == 1) {
+        params.disable_lock = 0;
+        params.enable_lock = 0;
+        hd_set_rotational_speed(0., params.acc_rot_max);
+        //hd_set_rotational_speed(0., 0.);
+      }
+
+      if (params.enable_lock) {
+        LED4_ON();
+        HolOdo_getState(&state);
+        // Compute orientation to target
+        target_ori = atan2(params.target_y - state.y, params.target_x - state.x);
+        params.lock_error = target_ori - state.theta;
+        /*if (error >= M_PI) {
+          error -= 2*M_PI;
+          } else if (error < -M_PI) {
+          error += 2*M_PI;
+          }*/
+        if (fabs(params.lock_error) < 0.017) {// 1 degree
+          hd_set_rotational_speed(0., params.acc_rot_max);
+        } else {
+          w = params.target_K * params.lock_error;
+          if (w > params.target_follow_speed) {
+            w = params.target_follow_speed;
+          } else if (w < -params.target_follow_speed) {
+            w = -params.target_follow_speed;
+          }
+          hd_set_rotational_speed(w, params.acc_rot_max);
+          //hd_set_rotational_speed(w, 0.);
+        }
+      } else {
+        LED4_OFF();
+      }
+    }
+    timer_waitEvent(&timer); // Wait for the remaining of the sample period
+  }
 }

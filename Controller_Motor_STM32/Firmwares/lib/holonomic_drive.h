@@ -32,7 +32,8 @@
  */
 void hd_start(uint8_t enable_transform,
               float wheel_radius, float drive_radius,
-              float max_wheel_speed,
+              float max_wheel_speed, float target_follow_speed,
+              float target_K,
               float Ts);
 
 /* Pauses or Resumes the holonomic drive system.
@@ -99,5 +100,18 @@ void hd_set_rotational_speed(float speed, float acceleration);
  *  - acc_rot_max : maximum rotational acceleration (in m/s/s)
  */
 void hd_adjust_limits(float v_lin_max, float v_rot_max, float acc_lin_max, float acc_rot_max);
+
+/* Lock a target with the holonomic drive at position (target_x, target_y)
+ * facing the robot with it orientation 'target_theta'
+ */
+void hd_lock_target(float target_x, float target_y, float target_theta);
+
+/* Stop locking a target
+ */
+void hd_unlock_target(void);
+
+float hd_get_lock_error(void);
+
+uint8_t hd_is_lock_enabled_status(void);
 
 #endif /* __HOLONOMIC_DRIVE_H */

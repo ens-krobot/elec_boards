@@ -167,7 +167,7 @@ static void NORETURN motorController_process(void) {
   timer_setEvent(&timer);
 
   // Switch off motor LED
-  motor_led_off(params->motor);
+  //motor_led_off(params->motor);
 
   while (1) {
     if (params->enable == 0) {
@@ -206,7 +206,7 @@ static void NORETURN motorController_process(void) {
       if (!params->suspended) {
         if (isnan(params->last_command)) {
           motorSetSpeed(params->motor, 0);
-          motor_led_on(params->motor);
+          //motor_led_on(params->motor);
         } else {
           motorSetSpeed(params->motor, (int32_t)params->last_command);
         }

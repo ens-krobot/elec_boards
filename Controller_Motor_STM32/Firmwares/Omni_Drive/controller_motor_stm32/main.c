@@ -59,13 +59,15 @@ static void init(void)
         hd_start(1,
                  PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
                  251.*2.*M_PI/60., // Absolute wheel speed limitation
+                 M_PI/4.,// Maximum target tracking speed
+                 2., // proportional gain for target tracking
                  0.005); // Sample period
 
         // Adjust limits for Omnidirectional Drive
         hd_adjust_limits(0.3, // v_lin_max
                          M_PI/4., // v_rot_max
                          0.5, //a_lin_max
-                         M_PI/4.);
+                         M_PI/4.); //a_rot_max
 
           // Common parameters
         params.encoder_gain = -2.0*M_PI/2797.;
@@ -154,11 +156,10 @@ static void NORETURN ind_process(void)
   /* wait_for_motors(); */
 
   while(1) {
-    /*if (dd_get_ghost_state(NULL, NULL) == DD_GHOST_MOVING) {
-      LED1_ON();
-    } else {
-      LED1_OFF();
-      }*/
+    LED1_ON();
+    timer_delay(500);
+
+    LED1_OFF();
     timer_delay(500);
   }
 }

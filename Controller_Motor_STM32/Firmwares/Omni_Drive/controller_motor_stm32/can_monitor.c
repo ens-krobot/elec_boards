@@ -64,6 +64,8 @@ static void NORETURN canMonitor_process(void) {
   error_can_msg_t error_msg;
   can_tx_frame txm;
   robot_state_t odometry;
+  lock_target_status_can_msg_t lock_status_msg;
+
   //float u;
   Timer timer_can;
 
@@ -131,6 +133,10 @@ static void NORETURN canMonitor_process(void) {
       can_transmit(CAND1, &txm, ms_to_ticks(10));
 
     } else if (mode == ROBOT_MODE_HIL || (mode == ROBOT_MODE_FAULT && old_mode == ROBOT_MODE_HIL)){
+      // Wait before sending the other packets
+      timer_waitEvent(&timer_can);
+      timer_add(&timer_can);
+
       // Sending MOTOR2 data
       msg_mot.data.position = mc_getPosition(MOTOR2);
       msg_mot.data.speed = mc_getSpeed(MOTOR2);
@@ -193,6 +199,14 @@ static void NORETURN canMonitor_process(void) {
       can_transmit(CAND1, &txm, ms_to_ticks(10));
     }
 
+    // Send target lock status
+    lock_status_msg.data.lock_error = hd_get_lock_error();
+    lock_status_msg.data.lock_status = hd_is_lock_enabled_status();
+    txm.data32[0] = lock_status_msg.data32[0];
+    txm.data32[1] = lock_status_msg.data32[1];
+    txm.eid = CAN_MSG_LOCK_TARGET_STATUS;
+    can_transmit(CAND1, &txm, ms_to_ticks(10));
+
     // Wait for the next transmission timer
     timer_waitEvent(&timer_can);
   }
@@ -221,6 +235,7 @@ static void NORETURN canMonitorListen_process(void) {
     drive_torque_limit_can_msg_t drive_torque_limit_msg;
     controller_activation_can_msg_t cont_act_msg;
     drive_activation_can_msg_t drive_activation_msg;
+    lock_target_can_msg_t lock_target_msg;
 
     // Initialize constant parameters of TX frame
     /* txm.dlc = 8; */
@@ -329,6 +344,16 @@ static void NORETURN canMonitorListen_process(void) {
                              omni_limits_msg.data.v_rot_max/1000.0, // v_rot_max
                              omni_limits_msg.data.a_lin_max/1000.0, // acc_lin_max
                              omni_limits_msg.data.a_rot_max/1000.0); // acc_rot_max
+            break;
+          case CAN_MSG_LOCK_TARGET:
+            lock_target_msg.data32[0] = frame.data32[0];
+            lock_target_msg.data32[1] = frame.data32[1];
+            hd_lock_target(((float)lock_target_msg.data.x) / 1000.0,
+                           ((float)lock_target_msg.data.y) / 1000.0,
+                           ((float)lock_target_msg.data.theta) / 10000.0);
+            break;
+          case CAN_MSG_UNLOCK_TARGET:
+            hd_unlock_target();
             break;
           case CAN_MSG_STOP:
             stop_msg.data32[0] = frame.data32[0];

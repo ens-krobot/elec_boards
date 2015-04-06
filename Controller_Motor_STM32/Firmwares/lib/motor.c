@@ -221,11 +221,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR1) == 0) {
-        LED1_ON();
+        //LED1_ON();
         indMotors |= MOTOR1;
       }
     } else if ((indMotors & MOTOR1) != 0) {
-      LED1_OFF();
+      //LED1_OFF();
       indMotors &= ~MOTOR1;
     }
   }
@@ -253,11 +253,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR2) == 0) {
-        LED2_ON();
+        //LED2_ON();
         indMotors |= MOTOR2;
       }
     } else if ((indMotors & MOTOR2) != 0) {
-      LED2_OFF();
+      //LED2_OFF();
       indMotors &= ~MOTOR2;
     }
   }
@@ -285,11 +285,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR3) == 0) {
-        LED3_ON();
+        //LED3_ON();
         indMotors |= MOTOR3;
       }
     } else if ((indMotors & MOTOR3) != 0) {
-      LED3_OFF();
+      //LED3_OFF();
       indMotors &= ~MOTOR3;
     }
   }
@@ -317,11 +317,11 @@ void motorSetSpeed(uint8_t motor, int32_t speed) {
     TIM_ARRPreloadConfig(TIM2, ENABLE);
     if (ind) {
       if ((indMotors & MOTOR4) == 0) {
-        LED4_ON();
+        //LED4_ON();
         indMotors |= MOTOR4;
       }
     } else if ((indMotors & MOTOR4) != 0) {
-      LED4_OFF();
+      //LED4_OFF();
       indMotors &= ~MOTOR4;
     }
   }
