@@ -52,6 +52,8 @@
 #define CAN_MSG_MOVE_Y 216 // move_can_msg_t
 #define CAN_MSG_OMNI_LIMITS 217 // omni_limits_can_msg_t
 #define CAN_MSG_OMNI_GOTO 218 // omni_goto_can_msg_t
+#define CAN_MSG_LOCK_TARGET 219 // lock_target_can_msg_t
+#define CAN_MSG_UNLOCK_TARGET 220
 
 #define CAN_MSG_LIFT_CMD 231 // lift_cmd_msg_t
 #define CAN_MSG_PUMP_CMD 232 // pump_cmd_msg_t
@@ -194,6 +196,13 @@ typedef struct {
   uint16_t a_rot_max __attribute__((__packed__)); // max radial acceleration in rad/s/s
 } omni_limits_msg_t;
 
+// Target position message
+typedef struct {
+  int16_t x __attribute__((__packed__));     // X position in mm (fixed point representation...)
+  int16_t y __attribute__((__packed__));     // Y position in mm
+  int16_t theta __attribute__((__packed__)); // angle in 1/10000 radians
+} lock_target_msg_t;
+
 // Select robot mode (normal, simulation or HIL)
 typedef struct {
   uint8_t mode;
@@ -317,6 +326,11 @@ typedef union {
   omni_limits_msg_t data;
   uint32_t data32[2];
 } omni_limits_can_msg_t;
+
+typedef union {
+  lock_target_msg_t data;
+  uint32_t data32[2];
+} lock_target_can_msg_t;
 
 typedef union {
   stop_msg_t data;
