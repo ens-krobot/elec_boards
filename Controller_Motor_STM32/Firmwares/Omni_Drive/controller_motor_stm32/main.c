@@ -50,9 +50,9 @@ static void init(void)
         // Start control of drive motors
         tc_init();
         // Invert motor direction
-        /*motorInvertDirection(MOTOR2, 1);
+        motorInvertDirection(MOTOR2, 1);
         motorInvertDirection(MOTOR3, 1);
-        motorInvertDirection(MOTOR4, 1);*/
+        motorInvertDirection(MOTOR4, 1);
         //motorSetMaxPWM(MOTOR2, 1800);
         //motorSetMaxPWM(MOTOR3, 1800);
         //motorSetMaxPWM(MOTOR4, 1800);
@@ -70,24 +70,20 @@ static void init(void)
                          M_PI/4.); //a_rot_max
 
           // Common parameters
-        params.encoder_gain = -2.0*M_PI/2797.;
+        params.encoder_gain = -2.0*M_PI/(1024*4*14.);
         params.T = 0.005;
-        params.G0 = 0.0125/2.;//0.01306;
-        params.tau = 0.200;
+        params.G0 = 0.0113;
+        params.tau = 0.025;
         /* params.k[0] = 5000.; // Kp */
         /* params.k[1] = 0.; // Ki */
         /* params.l0[0] = 0.; // N/A */
         /* params.l0[1] = 0.; // N/A */
         /* params.l = 1800.; // integral saturation */
-        params.k[0] = -5870;
-        params.k[1] = -522;
-        params.l0[0] = 0.0729;
-        params.l0[1] = 0.1174;
+        params.k[0] = -3208;
+        params.k[1] = -80.2;
+        params.l0[0] = 0.0091;
+        params.l0[1] = 1.6361;
         params.l = -params.k[0];
-        //params.k[0] = -5616.9;
-        //params.k[1] = -499.6;
-        //params.l0[0] = 0.0729;
-        //params.l0[1] = 0.1174;
         // Initialize front motor
         params.motor = MOTOR4;
         params.encoder = ENCODER4;
@@ -152,6 +148,11 @@ static void NORETURN ind_process(void)
 
   /* timer_delay(1000); */
   /* hd_turn(M_PI/2., 2*M_PI/10., M_PI); */
+  /* timer_delay(100); */
+  /* wait_for_motors(); */
+
+  /* timer_delay(1000); */
+  /* hd_turn(-M_PI/2., 2*M_PI/10., M_PI); */
   /* timer_delay(100); */
   /* wait_for_motors(); */
 
