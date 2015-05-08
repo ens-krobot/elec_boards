@@ -263,7 +263,10 @@ static void NORETURN canMonitorListen_process(void) {
           case CAN_MSG_DRIVE_TORQUE_LIMIT:
             drive_torque_limit_msg.data32[0] = frame.data32[0];
             drive_torque_limit_msg.data32[1] = frame.data32[1];
-            motorSetMaxPWM(MOTOR3|MOTOR4, drive_torque_limit_msg.data.limit);;
+            motorSetMaxPWM(MOTOR2|MOTOR3|MOTOR4, drive_torque_limit_msg.data.limit);
+            mc_reset_controller_error(MOTOR2);
+            mc_reset_controller_error(MOTOR3);
+            mc_reset_controller_error(MOTOR4);
             break;
           case CAN_MSG_MOVE_X:
             move_msg.data32[0] = frame.data32[0];

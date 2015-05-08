@@ -413,6 +413,20 @@ void mc_change_mode(uint8_t motor, uint8_t new_mode) {
   }
 }
 
+void mc_reset_controller_error(uint8_t motor) {
+  control_params_t *params;
+
+  params = &(controllers[get_motor_index(motor)]);
+  if (params->enable) {
+    params->last_command = 0;
+    params->last_estimate[0] = get_output_value(params->reference);
+    params->last_estimate[1] = 0;
+    params->last_output = params->last_estimate[0];
+    params->last_encoder_pos = getEncoderPosition(params->encoder);
+    motorSetSpeed(motor, 0);
+  }
+}
+
 void mc_suspend_controller(uint8_t motor) {
   control_params_t *params;
 
@@ -427,13 +441,8 @@ void mc_reactivate_controller(uint8_t motor) {
 
   params = &(controllers[get_motor_index(motor)]);
   if (params->enable && params->suspended) {
-    params->last_command = 0;
-    params->last_estimate[0] = get_output_value(params->reference);
-    params->last_estimate[1] = 0;
-    params->last_output = params->last_estimate[0];
-    params->last_encoder_pos = getEncoderPosition(params->encoder);
+    mc_reset_controller_error(motor);
     params->suspended = 0;
-    motorSetSpeed(motor, 0);
     enableMotor(motor);
   }
 }
