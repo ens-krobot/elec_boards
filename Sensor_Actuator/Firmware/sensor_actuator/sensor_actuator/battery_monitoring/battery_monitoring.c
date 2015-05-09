@@ -68,9 +68,9 @@ static void NORETURN battery_monitoring_process(void) {
             value = adc7828_measure(ctx->i2c, ADS7828_ADDR_BASE, ch);
             battery_state[ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
 
-            if (battery_state[ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
+            if (ch < ctx->num_elem && battery_state[ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
                 battery_charge = 1;
-            else if (battery_state[ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
+            else if (ch < ctx->num_elem && battery_state[ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
                 dead_cells++;
                 battery_charge = 0;
             }
@@ -81,9 +81,9 @@ static void NORETURN battery_monitoring_process(void) {
             value = adc7828_measure(ctx->i2c, ADS7828_ADDR_BASE + 2, ch);
             battery_state[4+ch] = (uint16_t)(2.0*value*ADS7828_LSB * 10000.);
 
-            if (battery_state[4+ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
+            if (ch < ctx->num_elem && battery_state[4+ch] < 10*LOW_CHARGE_THRES && battery_charge > 1)
                 battery_charge = 1;
-            else if (battery_state[4+ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
+            else if (ch < ctx->num_elem && battery_state[4+ch] < 10*ABSENT_CELL_THRES && battery_charge > 0) {
                 dead_cells++;
                 battery_charge = 0;
             }
@@ -121,8 +121,9 @@ static void NORETURN battery_monitoring_process(void) {
     }
 }
 
-battery_monitoring_ctx *battery_monitoring_init(I2c *i2c) {
+battery_monitoring_ctx *battery_monitoring_init(I2c *i2c, unsigned char num_elem) {
     ctx->i2c = i2c;
+    ctx->num_elem = num_elem;
 
     proc_new(battery_monitoring_process, NULL, sizeof(stack_battery_monitoring), stack_battery_monitoring);
 

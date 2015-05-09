@@ -36,9 +36,10 @@
 
 typedef struct {
     I2c *i2c;
+  unsigned char num_elem;
 } battery_monitoring_ctx;
 
-battery_monitoring_ctx *battery_monitoring_init(I2c *i2c);
+battery_monitoring_ctx *battery_monitoring_init(I2c *i2c, unsigned char num_elem);
 
 int get_battery_monitoring(battery_status *pkt1, battery_status *pkt2);
 
