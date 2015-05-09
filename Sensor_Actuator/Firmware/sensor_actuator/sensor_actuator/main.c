@@ -44,10 +44,11 @@
 #include "beacon/beacon.h"
 #include "can/can_monitor.h"
 #include "switch/switch.h"
+#include "lcd/lcd.h"
 
 PROC_DEFINE_STACK(stack_blinky, KERN_MINSTACKSIZE * 2);
 
-static I2c i2c;
+static I2c i2c1, i2c2;
 
 static void init(void)
 {
@@ -55,7 +56,8 @@ static void init(void)
     IRQ_ENABLE;
 
     /* Initialize I2c interface */
-    i2c_init(&i2c, 1, CONFIG_I2C_FREQ);
+    i2c_init(&i2c1, 0, CONFIG_I2C_FREQ);
+    i2c_init(&i2c2, 1, CONFIG_I2C_FREQ);
 
     /* Initialize system timer */
     timer_init();
@@ -71,6 +73,13 @@ static void init(void)
      */
     proc_init();
 
+    // Initialize the LCD screen
+    lcd_init(&i2c1, 0x0E);
+    lcd_cls();
+    lcd_set_cursor(DEACTIVE);
+    lcd_write_line("     == Nuky ==     ", 1);
+    lcd_write_line("         by [Kro]bot", 2);
+
     // Initialize the rotary beacon
     beacon_init();
 
@@ -81,7 +90,7 @@ static void init(void)
     sa_adc_init();
 
     // Initialize the Battery monitoring
-    battery_monitoring_init(&i2c);
+    battery_monitoring_init(&i2c2, 3);
 
     // Initialize the AX12s
     ax12_highlevel_init();
@@ -92,10 +101,12 @@ static void init(void)
 
 static void NORETURN blinky_process(void) {
     for (;;) {
-        //LED_ON();
-        timer_delay(300);
-        //LED_OFF();
-        timer_delay(300);
+      //LED_ON();
+      //lcd_set_backlight(ACTIVE);
+      timer_delay(1000);
+      //lcd_set_backlight(DEACTIVE);
+      //LED_OFF();
+      timer_delay(1000);
     }
 }
 
@@ -111,7 +122,7 @@ int main(void)
     init();
 
     /* Create a new child process */
-    //proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
+    proc_new(blinky_process, NULL, sizeof(stack_blinky), stack_blinky);
 
     for (;;) {
 /*
