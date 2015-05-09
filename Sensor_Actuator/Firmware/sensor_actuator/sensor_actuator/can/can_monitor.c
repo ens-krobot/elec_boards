@@ -210,6 +210,33 @@ static void NORETURN can_receiver_process(void) {
               ax12_queue_command(&hlc);
             } while (0);
             break;
+          case CAN_LCD_CLS:
+            do {
+              lcd_cls();
+            } while (0);
+            break;
+          case CAN_LCD_BACKLIGHT:
+            do {
+              GET_PACKET(lcd_backlight_t, backlight, f);
+              if (backlight.p.state > 0) {
+                lcd_set_backlight(ACTIVE);
+              } else {
+                lcd_set_backlight(DEACTIVE);
+              }
+            } while (0);
+            break;
+          case CAN_LCD_REFRESH:
+            do {
+              GET_PACKET(lcd_refresh_t, refresh, f);
+              lcd_refresh_line(refresh.p.line);
+            } while (0);
+            break;
+          case CAN_LCD_DATA:
+            do {
+              GET_PACKET(lcd_data_t, data, f);
+              lcd_set_data(data.p.id, data.p.data);
+            } while (0);
+            break;
           default:
             break;
           }

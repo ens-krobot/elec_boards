@@ -61,6 +61,12 @@
 //#define CAN_AX12_RESET 344             // Not used anymore
 #define CAN_AX12_SET_TORQUE_ENABLE 345   // ax12_set_torque_enable
 
+// LCD screen
+#define CAN_LCD_CLS 351                  // none
+#define CAN_LCD_BACKLIGHT 352            // lcd_backlight_t
+#define CAN_LCD_REFRESH 353              // lcd_refresh_t
+#define CAN_LCD_DATA 354                 // lcd_data_t
+
 // Simulation control
 #define CAN_MSG_SIMULATION_MODE 205      // simulation mode
 #define SIMULATION_MODE_NO 0
@@ -183,6 +189,23 @@ struct ax12_set_torque_enable_pkt {
 };
 
 /**
+ * LCD messages
+ */
+
+struct lcd_backlight_pkt {
+  uint8_t state;
+} __attribute__((packed));
+
+struct lcd_refresh_pkt {
+  uint8_t line;
+} __attribute__((packed));
+
+struct lcd_data_pkt {
+  uint8_t id;
+  uint8_t data[7];
+} __attribute__((packed));
+
+/**
  * Simulation mode control
  */
 struct simulation_mode_pkt {
@@ -259,6 +282,21 @@ typedef union {
     struct ax12_set_torque_enable_pkt p;
     uint32_t d[2];
 } ax12_set_torque_enable;
+
+typedef union {
+  struct lcd_backlight_pkt p;
+  uint32_t d[2];
+} lcd_backlight_t;
+
+typedef union {
+  struct lcd_refresh_pkt p;
+  uint32_t d[2];
+} lcd_refresh_t;
+
+typedef union {
+  struct lcd_data_pkt p;
+  uint32_t d[2];
+} lcd_data_t;
 
 typedef union {
     struct simulation_mode_pkt p;

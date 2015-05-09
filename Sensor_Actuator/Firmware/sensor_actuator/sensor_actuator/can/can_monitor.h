@@ -32,6 +32,7 @@
 #include "can_messages.h"
 
 #include "../adc/adc.h"
+#include "../lcd/lcd.h"
 #include "../ax12/ax12_highlevel.h"
 #include "../beacon/beacon.h"
 #include "../switch/switch.h"
