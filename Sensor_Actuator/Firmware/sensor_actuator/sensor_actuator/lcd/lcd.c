@@ -30,6 +30,12 @@ i2c_lcd_ctx *lcd_init(I2c *i2c, uint8_t address) {
   lcd_ctx->i2c = i2c;
   lcd_ctx->address = address;
 
+  for (unsigned int line = 0; line < 4; line++) {
+    for (unsigned int col = 0; col < 22; col++) {
+      lcd_ctx->data_lines[line][col] = ' ';
+    }
+  }
+
   return lcd_ctx;
 }
 
@@ -92,13 +98,16 @@ void lcd_set_data(uint8_t id, unsigned char data[]) {
   uint8_t line, start;
   line = id / 3;
   start = 7*(id % 3);
-  for (unsigned int i=0; i < 7; i++) {
-    lcd_ctx->data_lines[line][start+i] = data[i];
+  if (line < 4) {
+    for (unsigned int i=0; i < 7; i++) {
+      lcd_ctx->data_lines[line][start+i] = data[i];
+    }
   }
 }
 
 void lcd_refresh_line(unsigned char line) {
   if (line >= 1 && line <= 4) {
+    lcd_ctx->data_lines[line-1][20] = '\0';
     lcd_write_line(lcd_ctx->data_lines[line-1], line);
   }
 }
