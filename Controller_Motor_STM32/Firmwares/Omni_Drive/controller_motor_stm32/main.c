@@ -85,22 +85,22 @@ static void init(void)
         params.l0[1] = 1.6361;
         params.l = -params.k[0];
         // Initialize front motor
-        params.motor = MOTOR4;
-        params.encoder = ENCODER4;
-        mc_new_controller(&params, hd_get_front_wheel_generator(), CONTROLLER_MODE_NORMAL);
-        // Initialize back-left motor
-        params.motor = MOTOR2;
-        params.encoder = ENCODER2;
-        mc_new_controller(&params, hd_get_back_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
-        // Initialize back-right motor
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
+        mc_new_controller(&params, hd_get_front_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize back-left motor
+        params.motor = MOTOR4;
+        params.encoder = ENCODER4;
+        mc_new_controller(&params, hd_get_back_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize back-right motor
+        params.motor = MOTOR2;
+        params.encoder = ENCODER2;
         mc_new_controller(&params, hd_get_back_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
         HolonomicOdometryInit(1e-3,
                               PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
-                              ENCODER4, ENCODER2, ENCODER3,
+                              ENCODER3, ENCODER4, ENCODER2,
                               params.encoder_gain);
 
         // Blink to say we are ready
