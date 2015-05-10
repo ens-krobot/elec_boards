@@ -213,6 +213,7 @@ static void NORETURN can_receiver_process(void) {
           case CAN_LCD_CLS:
             do {
               lcd_cls();
+              lcd_clear_buffer();
               lcd_set_cursor(DEACTIVE);
             } while (0);
             break;

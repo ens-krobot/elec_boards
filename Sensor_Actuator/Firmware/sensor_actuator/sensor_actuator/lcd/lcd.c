@@ -30,11 +30,7 @@ i2c_lcd_ctx *lcd_init(I2c *i2c, uint8_t address) {
   lcd_ctx->i2c = i2c;
   lcd_ctx->address = address;
 
-  for (unsigned int line = 0; line < 4; line++) {
-    for (unsigned int col = 0; col < 22; col++) {
-      lcd_ctx->data_lines[line][col] = ' ';
-    }
-  }
+  lcd_clear_buffer();
 
   return lcd_ctx;
 }
@@ -48,6 +44,14 @@ void lcd_cls(void) {
   uint8_t command[] = {CMD_HEAD, CMD_CLEAR};
 
   lcd_write_command(command, sizeof(command)/sizeof(uint8_t));
+}
+
+void lcd_clear_buffer(void) {
+  for (unsigned int line = 0; line < 4; line++) {
+    for (unsigned int col = 0; col < 22; col++) {
+      lcd_ctx->data_lines[line][col] = ' ';
+    }
+  }
 }
 
 void lcd_set_cursor(uint8_t action) {
