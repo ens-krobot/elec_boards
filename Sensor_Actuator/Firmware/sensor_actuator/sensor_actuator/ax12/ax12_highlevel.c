@@ -62,7 +62,30 @@ static void ax12_goto_hl(uint8_t address, uint16_t position, uint16_t speed) {
     pkt.args[4] = (speed >> 8) & 0xFF;
 
     ax12_write(&pkt);
-    ax12_read(NULL);
+    //ax12_read(NULL);
+}
+
+static void ax12_goto_reg_hl(uint8_t address, uint16_t position, uint16_t speed) {
+
+    ax12_cmd_packet pkt;
+
+    uint8_t args[5];
+
+    if (position > 0x3ff || speed > 0x3ff)
+        return;
+
+    pkt.address = address;
+    pkt.command = AX12_CMD_REG_WRITE;
+    pkt.length = 5;
+    pkt.args = args;
+    pkt.args[0] = AX12_GOAL_POSITION;
+    pkt.args[1] = position & 0xFF;
+    pkt.args[2] = (position >> 8) & 0xFF;
+    pkt.args[3] = speed & 0xFF;
+    pkt.args[4] = (speed >> 8) & 0xFF;
+
+    ax12_write(&pkt);
+    //ax12_read(NULL);
 }
 
 static void ax12_get_state_hl(uint8_t address) {
@@ -114,8 +137,41 @@ static void ax12_set_torque_enable_hl(uint8_t address, uint8_t enable) {
     pkt.args[1] = (enable == 0) ? 0 : 1;
 
     ax12_write(&pkt);
-    ax12_read(NULL);
+    //ax12_read(NULL);
 
+}
+
+static void ax12_action_hl(uint8_t address) {
+    ax12_cmd_packet pkt;
+
+    pkt.address = address;
+    pkt.command = AX12_CMD_ACTION;
+    pkt.length = 0;
+    pkt.args = NULL;
+
+    ax12_write(&pkt);
+    //ax12_read(NULL);
+
+}
+
+static void ax12_set_return_level_hl(uint8_t address, uint8_t level) {
+
+    ax12_cmd_packet pkt;
+
+    uint8_t args[2];
+
+    if (level > 2)
+        return;
+
+    pkt.address = address;
+    pkt.command = AX12_CMD_WRITE_DATA;
+    pkt.length = 2;
+    pkt.args = args;
+    pkt.args[0] = AX12_STATUS_RETURN_LEVEL;
+    pkt.args[1] = level;
+
+    ax12_write(&pkt);
+    //ax12_read(NULL);
 }
 
 static void NORETURN ax12_process(void) {
@@ -135,11 +191,19 @@ static void NORETURN ax12_process(void) {
           case AX12_HL_GOTO:
             ax12_goto_hl(read->address, read->args[0], read->args[1]);
             break;
+          case AX12_HL_GOTO_REG:
+            ax12_goto_reg_hl(read->address, read->args[0], read->args[1]);
+            break;
+          case AX12_HL_ACTION:
+            ax12_action_hl(read->address);
+            break;
           case AX12_HL_SET_TORQUE_ENABLE:
             ax12_set_torque_enable_hl(read->address, read->args[0]);
             break;
+          case AX12_HL_SET_RETURN_LEVEL:
+            ax12_set_return_level_hl(read->address, read->args[0]);
+            break;
         }
-
         queued_command_read++;
     }
 

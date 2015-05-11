@@ -200,6 +200,37 @@ static void NORETURN can_receiver_process(void) {
               ax12_queue_command(&hlc);
             } while (0);
             break;
+          case CAN_AX12_GOTO_REG:
+            do {
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_goto, ax12_g, f);
+              hlc.command = AX12_HL_GOTO_REG;
+              hlc.address = ax12_g.p.address;
+              hlc.args[0] = ax12_g.p.position;
+              hlc.args[1] = ax12_g.p.speed;
+              ax12_queue_command(&hlc);
+            } while (0);
+            break;
+          case CAN_AX12_ACTION:
+            do {
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_request_state, ax12_action, f);
+              hlc.command = AX12_HL_ACTION;
+              hlc.address = ax12_action.p.address;
+              ax12_queue_command(&hlc);
+            } while (0);
+            break;
+          case CAN_AX12_STATUS_RETURN_LEVEL:
+            do {
+              struct ax12_hl_command hlc;
+              GET_PACKET(ax12_status_level, ax12_sl, f);
+              hlc.command = AX12_HL_GET_STATE;
+              hlc.address = ax12_sl.p.address;
+              hlc.args[0] = ax12_sl.p.level;
+              ax12_queue_command(&hlc);
+            } while (0);
+            break;
+
           case CAN_AX12_SET_TORQUE_ENABLE:
             do {
               struct ax12_hl_command hlc;

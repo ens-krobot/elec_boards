@@ -60,6 +60,9 @@
 #define CAN_AX12_GOTO 343                // ax12_goto
 //#define CAN_AX12_RESET 344             // Not used anymore
 #define CAN_AX12_SET_TORQUE_ENABLE 345   // ax12_set_torque_enable
+#define CAN_AX12_GOTO_REG 346            // ax12_goto
+#define CAN_AX12_ACTION 347              // ax12_request_state
+#define CAN_AX12_STATUS_RETURN_LEVEL 348 // ax12_status_level
 
 // LCD screen
 #define CAN_LCD_CLS 351                  // none
@@ -188,6 +191,11 @@ struct ax12_set_torque_enable_pkt {
     uint8_t enable;
 };
 
+struct ax12_status_level_pkt {
+    uint8_t address;
+    uint8_t level;
+};
+
 /**
  * LCD messages
  */
@@ -282,6 +290,11 @@ typedef union {
     struct ax12_set_torque_enable_pkt p;
     uint32_t d[2];
 } ax12_set_torque_enable;
+
+typedef union {
+    struct ax12_status_level_pkt p;
+    uint32_t d[2];
+} ax12_status_level;
 
 typedef union {
   struct lcd_backlight_pkt p;
