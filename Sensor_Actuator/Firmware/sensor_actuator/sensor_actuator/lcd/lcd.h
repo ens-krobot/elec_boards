@@ -46,6 +46,7 @@ typedef struct {
 
 i2c_lcd_ctx *lcd_init(I2c *i2c, uint8_t address);
 void lcd_cls(void);
+void lcd_clear_buffer(void);
 void lcd_set_cursor(uint8_t action);
 void lcd_set_backlight(uint8_t action);
 void lcd_goto_origin(void);
