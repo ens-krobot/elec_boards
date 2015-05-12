@@ -289,7 +289,12 @@ static void NORETURN holoTargetLock_process(void) {
         LED4_ON();
         HolOdo_getState(&state);
         // Compute orientation to target
-        target_ori = atan2(params.target_y - state.y, params.target_x - state.x);
+        target_ori = atan2(params.target_y - state.y, params.target_x - state.x) + params.target_theta;
+        if (target_ori >= M_PI) {
+          target_ori -= 2*M_PI;
+        } else if (target_ori < -M_PI) {
+          target_ori += 2*M_PI;
+        }
         params.lock_error = target_ori - state.theta;
         /*if (error >= M_PI) {
           error -= 2*M_PI;
