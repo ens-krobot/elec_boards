@@ -61,7 +61,7 @@ static void init(void)
                  251.*2.*M_PI/60., // Absolute wheel speed limitation
                  M_PI/4.,// Maximum target tracking speed
                  2., // proportional gain for target tracking
-                 0.005); // Sample period
+                 0.001); // Sample period (initial 0.005)
 
         // Adjust limits for Omnidirectional Drive
         hd_adjust_limits(0.3, // v_lin_max
@@ -98,7 +98,7 @@ static void init(void)
         mc_new_controller(&params, hd_get_back_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
-        HolonomicOdometryInit(1e-3,
+        HolonomicOdometryInit(0.1e-3,
                               PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
                               ENCODER3, ENCODER4, ENCODER2,
                               params.encoder_gain);

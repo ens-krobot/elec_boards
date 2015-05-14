@@ -9,8 +9,8 @@
 
 #include "odometry_holonomic.h"
 
-#define COS_FACT 0.6666666666666667 // 1/(1-cos(2*pi/3))
-#define SIN_FACT 0.5773502691896257 // 1/(2*sin(2*pi/3))
+#define COS_FACT 0.6666666666666667f // 1/(1-cos(2*pi/3))
+#define SIN_FACT 0.5773502691896257f // 1/(2*sin(2*pi/3))
 
 #define ODOMETRY_STACK_SIZE (KERN_MINSTACKSIZE * 8)
 
@@ -74,7 +74,7 @@ static void NORETURN odometry_process(void) {
   state = (odometry_state_t *) proc_currentUserData();
 
   // configure timer
-  timer_setDelay(&timer, ms_to_ticks(1000 * state->Ts));
+  timer_setDelay(&timer, us_to_ticks(1e6 * state->Ts));
   timer_setEvent(&timer);
 
   // Indicate we are running
@@ -123,8 +123,8 @@ static void NORETURN odometry_process(void) {
 
       // Displacement according to the robot's reference frame
       lx = (- delta_f
-            + delta_bl / 2.
-            + delta_br / 2.) * state->wheel_radius * COS_FACT;
+            + delta_bl / 2.f
+            + delta_br / 2.f) * state->wheel_radius * COS_FACT;
       ly = (- delta_bl + delta_br) * state->wheel_radius * SIN_FACT;
 
       // New state computation
@@ -132,7 +132,7 @@ static void NORETURN odometry_process(void) {
       state->robot_state.y += lx*sin(state->robot_state.theta) + ly*cos(state->robot_state.theta);
       state->robot_state.theta += (delta_f
                                    + delta_bl
-                                   + delta_br) / (2.*state->drive_radius) * state->wheel_radius * COS_FACT;
+                                   + delta_br) / (2.f*state->drive_radius) * state->wheel_radius * COS_FACT;
 
       // Normalization of theta
       if (state->robot_state.theta > M_PI) {
