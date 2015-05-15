@@ -188,10 +188,10 @@ void hd_move_to(float x, float y, float theta) {
     float dx = x - odometry.x;
     float dy = y - odometry.y;
     float dtheta = theta - odometry.theta;
-    if (dtheta > M_PI) {
+    while (dtheta > M_PI) {
       dtheta -= 2*M_PI;
     }
-    if (dtheta < -M_PI) {
+    while (dtheta < -M_PI) {
       dtheta += 2*M_PI;
     }
     hd_move2D(dx, dy);
