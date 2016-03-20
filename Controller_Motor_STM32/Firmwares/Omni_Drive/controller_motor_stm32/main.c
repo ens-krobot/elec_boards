@@ -18,7 +18,9 @@
 #include "holonomic_drive.h"
 
 #define PROP_WHEEL_RADIUS 0.02475843
-#define PROP_DRIVE_RADIUS 0.14855279 //0.15474249
+#define PROP_DRIVE_RADIUS_BL 0.147046
+#define PROP_DRIVE_RADIUS_BR 0.147046
+#define PROP_DRIVE_RADIUS_F 0.073577
 
 PROC_DEFINE_STACK(stack_ind, KERN_MINSTACKSIZE * 8);
 
@@ -50,14 +52,15 @@ static void init(void)
         // Start control of drive motors
         tc_init();
         // Invert motor direction
-        motorInvertDirection(MOTOR2, 1);
-        motorInvertDirection(MOTOR3, 1);
-        motorInvertDirection(MOTOR4, 1);
+        motorInvertDirection(MOTOR2, 0); // front
+        motorInvertDirection(MOTOR3, 1); // back-left
+        motorInvertDirection(MOTOR4, 1); // back-right
         //motorSetMaxPWM(MOTOR2, 1800);
         //motorSetMaxPWM(MOTOR3, 1800);
         //motorSetMaxPWM(MOTOR4, 1800);
         hd_start(1,
-                 PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
+                 PROP_WHEEL_RADIUS, PROP_WHEEL_RADIUS, PROP_WHEEL_RADIUS,
+                 PROP_DRIVE_RADIUS_F, PROP_DRIVE_RADIUS_BL, PROP_DRIVE_RADIUS_BR,
                  251.*2.*M_PI/60., // Absolute wheel speed limitation
                  M_PI/4.,// Maximum target tracking speed
                  2., // proportional gain for target tracking
@@ -84,24 +87,26 @@ static void init(void)
         params.l0[0] = 0.0091;
         params.l0[1] = 1.6361;
         params.l = -params.k[0];
-        // Initialize front motor
+        // Initialize back-left motor
         params.motor = MOTOR3;
         params.encoder = ENCODER3;
-        mc_new_controller(&params, hd_get_front_wheel_generator(), CONTROLLER_MODE_NORMAL);
-        // Initialize back-left motor
-        params.motor = MOTOR4;
-        params.encoder = ENCODER4;
         mc_new_controller(&params, hd_get_back_left_wheel_generator(), CONTROLLER_MODE_NORMAL);
         // Initialize back-right motor
+        params.motor = MOTOR4;
+        params.encoder = ENCODER4;
+        mc_new_controller(&params, hd_get_back_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        // Initialize front motor
+        params.encoder_gain = 2.0*M_PI/(1024*4*14.);
         params.motor = MOTOR2;
         params.encoder = ENCODER2;
-        mc_new_controller(&params, hd_get_back_right_wheel_generator(), CONTROLLER_MODE_NORMAL);
+        mc_new_controller(&params, hd_get_front_wheel_generator(), CONTROLLER_MODE_NORMAL);
 
         // Start odometry
         HolonomicOdometryInit(0.1e-3,
-                              PROP_WHEEL_RADIUS, PROP_DRIVE_RADIUS,
-                              ENCODER3, ENCODER4, ENCODER2,
-                              params.encoder_gain);
+                              PROP_WHEEL_RADIUS, PROP_WHEEL_RADIUS, PROP_WHEEL_RADIUS,
+                              PROP_DRIVE_RADIUS_F, PROP_DRIVE_RADIUS_BL, PROP_DRIVE_RADIUS_BR,
+                              ENCODER2, ENCODER3, ENCODER4,
+                              2.0*M_PI/(1024*4*14.), -2.0*M_PI/(1024*4*14.), -2.0*M_PI/(1024*4*14.));
 
         // Blink to say we are ready
         for (uint8_t i=0; i < 5; i++) {
@@ -118,21 +123,25 @@ static void init(void)
           }
 
         // Enable motor pump
-        //enableMotor(MOTOR2);
+        /* enableMotor(MOTOR2); */
+        /* enableMotor(MOTOR3); */
+        /* enableMotor(MOTOR4); */
+        /* motorSetSpeed(MOTOR2, 600); */
+        /* motorSetSpeed(MOTOR3, 600); */
+        /* motorSetSpeed(MOTOR4, 600); */
 }
 
 void wait_for_motors(void) {
-  LED1_ON();
+  LED2_ON();
   while (tc_is_working(TC_MASK(HD_LINEAR_SPEED_X_TC)
                        | TC_MASK(HD_LINEAR_SPEED_Y_TC)
                        | TC_MASK(HD_ROTATIONAL_SPEED_TC))) {
     timer_delay(200);
   }
-  LED1_OFF();
+  LED2_OFF();
 }
 
-static void NORETURN ind_process(void)
-{
+static void NORETURN ind_process(void) {
   /* timer_delay(1000); */
   /* hd_move_X(0.5, 0.3, 0.5); */
   /* wait_for_motors(); */
@@ -157,10 +166,10 @@ static void NORETURN ind_process(void)
   /* wait_for_motors(); */
 
   while(1) {
-    LED1_ON();
+    LED2_ON();
     timer_delay(500);
 
-    LED1_OFF();
+    LED2_OFF();
     timer_delay(500);
   }
 }

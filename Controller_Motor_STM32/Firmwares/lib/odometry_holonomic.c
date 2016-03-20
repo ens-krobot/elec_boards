@@ -9,16 +9,18 @@
 
 #include "odometry_holonomic.h"
 
-#define COS_FACT 0.6666666666666667f // 1/(1-cos(2*pi/3))
-#define SIN_FACT 0.5773502691896257f // 1/(2*sin(2*pi/3))
+#define COS_FACT -0.4999999999999998f // cos(2*pi/3)
+#define SIN_FACT  0.8660254037844387f // sin(2*pi/3)
 
-#define ODOMETRY_STACK_SIZE (KERN_MINSTACKSIZE * 8)
+#define ODOMETRY_STACK_SIZE (KERN_MINSTACKSIZE * 32)
 
 PROC_DEFINE_STACK(stack_odometry, ODOMETRY_STACK_SIZE);
 
 typedef struct {
   robot_state_t robot_state;
-  float wheel_radius, drive_radius, encoder_gain;
+  float wheel_radius_f, wheel_radius_bl, wheel_radius_br;
+  float drive_radius_f, drive_radius_bl, drive_radius_br;
+  float encoder_gain_f, encoder_gain_bl, encoder_gain_br, model_factor;
   uint8_t front_encoder, back_left_encoder, back_right_encoder;
   float Ts;
   uint8_t enable;
@@ -30,9 +32,10 @@ odometry_state_t state;
 static void NORETURN odometry_process(void);
 
 void HolonomicOdometryInit(float Ts,
-                           float wheel_radius, float drive_radius,
+                           float wheel_radius_f, float wheel_radius_bl, float wheel_radius_br,
+                           float drive_radius_f, float drive_radius_bl, float drive_radius_br,
                            uint8_t front_encoder, uint8_t back_left_encoder, uint8_t back_right_encoder,
-                           float encoder_gain) {
+                           float encoder_gain_f, float encoder_gain_bl, float encoder_gain_br) {
 
   // Initialize initial state
   state.robot_state.x = 0.;
@@ -40,12 +43,19 @@ void HolonomicOdometryInit(float Ts,
   state.robot_state.theta = 0;
 
   // Initialize robot parameters
-  state.wheel_radius = wheel_radius;
-  state.drive_radius = drive_radius;
+  state.wheel_radius_f = wheel_radius_f;
+  state.wheel_radius_bl = wheel_radius_bl;
+  state.wheel_radius_br = wheel_radius_br;
+  state.drive_radius_f = drive_radius_f;
+  state.drive_radius_bl = drive_radius_bl;
+  state.drive_radius_br = drive_radius_br;
+  state.model_factor = 1/(wheel_radius_bl+wheel_radius_br-2*wheel_radius_f*COS_FACT);
   state.front_encoder = front_encoder;
   state.back_left_encoder = back_left_encoder;
   state.back_right_encoder = back_right_encoder;
-  state.encoder_gain = encoder_gain;
+  state.encoder_gain_f = encoder_gain_f;
+  state.encoder_gain_bl = encoder_gain_bl;
+  state.encoder_gain_br = encoder_gain_br;
   state.Ts = Ts;
 
   // Start odometry process
@@ -114,25 +124,30 @@ static void NORETURN odometry_process(void) {
       } else if (delta_br < - 32767) {
         delta_br = delta_br + 65535;
       }
-      delta_f *= state->encoder_gain;
-      delta_bl *= state->encoder_gain;
-      delta_br *= state->encoder_gain;
+      delta_f *= state->encoder_gain_f;
+      delta_bl *= state->encoder_gain_bl;
+      delta_br *= state->encoder_gain_br;
       last_pos_f = pos_f;
       last_pos_bl = pos_bl;
       last_pos_br = pos_br;
 
       // Displacement according to the robot's reference frame
-      lx = (- delta_f
-            + delta_bl / 2.f
-            + delta_br / 2.f) * state->wheel_radius * COS_FACT;
-      ly = (- delta_bl + delta_br) * state->wheel_radius * SIN_FACT;
+      lx = (- delta_f * state->wheel_radius_f*(state->drive_radius_bl+state->drive_radius_br)
+            + delta_bl * state->wheel_radius_bl*state->drive_radius_f
+            + delta_br * state->wheel_radius_br*state->drive_radius_f
+            ) * state->model_factor;
+      ly = (delta_f * state->wheel_radius_f*(state->drive_radius_br-state->drive_radius_bl)*COS_FACT
+            - delta_bl * state->wheel_radius_bl*(state->drive_radius_br-state->drive_radius_f*COS_FACT)
+            + delta_br * state->wheel_radius_br*(state->drive_radius_bl-state->drive_radius_f*COS_FACT)
+            ) * state->model_factor / SIN_FACT;
 
       // New state computation
       state->robot_state.x += lx*cos(state->robot_state.theta) - ly*sin(state->robot_state.theta);
       state->robot_state.y += lx*sin(state->robot_state.theta) + ly*cos(state->robot_state.theta);
-      state->robot_state.theta += (delta_f
-                                   + delta_bl
-                                   + delta_br) / (2.f*state->drive_radius) * state->wheel_radius * COS_FACT;
+      state->robot_state.theta += (- delta_f*2*state->wheel_radius_f*COS_FACT
+                                   + delta_bl*state->wheel_radius_bl
+                                   + delta_br*state->wheel_radius_br
+                                   ) * state->model_factor;
 
       // Normalization of theta
       if (state->robot_state.theta > M_PI) {

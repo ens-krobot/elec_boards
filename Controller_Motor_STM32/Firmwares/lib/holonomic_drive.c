@@ -16,7 +16,8 @@
 typedef struct {
   uint8_t initialized, enabled, running, working, thread_running;
   uint8_t enable_transform, thread_enable, enable_lock, disable_lock;
-  float wheel_radius, drive_radius;
+  float wheel_radius_f, wheel_radius_bl, wheel_radius_br;
+  float drive_radius_f, drive_radius_bl, drive_radius_br;
   float v_lin_max, v_rot_max, acc_lin_max, acc_rot_max;
   float target_x, target_y, target_theta, target_K, target_follow_speed;
   float lock_error;
@@ -31,13 +32,18 @@ PROC_DEFINE_STACK(holo_stack, KERN_MINSTACKSIZE * 16);
 static void NORETURN holoTargetLock_process(void);
 
 void hd_start(uint8_t enable_transform,
-              float wheel_radius, float drive_radius,
+              float wheel_radius_f, float wheel_radius_bl, float wheel_radius_br,
+              float drive_radius_f, float drive_radius_bl, float drive_radius_br,
               float max_wheel_speed, float target_follow_speed,
               float target_K,
               float Ts) {
   params.enable_transform = enable_transform;
-  params.wheel_radius = wheel_radius;
-  params.drive_radius = drive_radius;
+  params.wheel_radius_f = wheel_radius_f;
+  params.wheel_radius_bl = wheel_radius_bl;
+  params.wheel_radius_br = wheel_radius_br;
+  params.drive_radius_f = drive_radius_f;
+  params.drive_radius_bl = drive_radius_bl;
+  params.drive_radius_br = drive_radius_br;
 
   params.v_lin_max = 0.3;
   params.v_rot_max = M_PI/4.;
@@ -64,7 +70,7 @@ void hd_start(uint8_t enable_transform,
                    tc_get_speed_generator(HD_LINEAR_SPEED_Y_TC),
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, drive_radius, max_wheel_speed,
+                   wheel_radius_f, drive_radius_f, max_wheel_speed,
                    params.enable_transform, 1);
   new_hd_generator(&params.br_wheel_speed,
                    tc_get_position_generator(HD_LINEAR_SPEED_X_TC),
@@ -73,7 +79,7 @@ void hd_start(uint8_t enable_transform,
                    tc_get_speed_generator(HD_LINEAR_SPEED_Y_TC),
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, drive_radius, max_wheel_speed,
+                   wheel_radius_br, drive_radius_br, max_wheel_speed,
                    params.enable_transform, 2);
   new_hd_generator(&params.bl_wheel_speed,
                    tc_get_position_generator(HD_LINEAR_SPEED_X_TC),
@@ -82,7 +88,7 @@ void hd_start(uint8_t enable_transform,
                    tc_get_speed_generator(HD_LINEAR_SPEED_Y_TC),
                    tc_get_position_generator(HD_ROTATIONAL_SPEED_TC),
                    tc_get_speed_generator(HD_ROTATIONAL_SPEED_TC),
-                   wheel_radius, drive_radius, max_wheel_speed,
+                   wheel_radius_bl, drive_radius_bl, max_wheel_speed,
                    params.enable_transform, 3);
   new_ramp2_generator(&params.f_wheel, 0.0, &params.f_wheel_speed);
   new_ramp2_generator(&params.br_wheel, 0.0, &params.br_wheel_speed);

@@ -22,8 +22,8 @@
 
 /* Initializes the holonomic drive
  *  - enable_transform : if non-zero, the movement will in world coordinates system
- *  - wheel_radius : radius of the wheels (in meters)
- *  - drive_radius : radius of the drive system (in meters)
+ *  - wheel_radius_xx : radius of the wheels (in meters)
+ *  - drive_radius_xx : radius of the drive system (in meters)
  *  - max_wheel_speed : maximum wheel speed (in rad/s)
  *  - Ts : sample time for control loop in seconds
  *
@@ -31,7 +31,8 @@
  *        HD_LINEAR_SPEED_{X,Y}_TC and HD_ROTATIONAL_SPEED_TC
  */
 void hd_start(uint8_t enable_transform,
-              float wheel_radius, float drive_radius,
+              float wheel_radius_f, float wheel_radius_bl, float wheel_radius_br,
+              float drive_radius_f, float drive_radius_bl, float drive_radius_br,
               float max_wheel_speed, float target_follow_speed,
               float target_K,
               float Ts);

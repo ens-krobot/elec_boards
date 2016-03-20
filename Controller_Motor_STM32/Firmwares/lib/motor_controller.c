@@ -155,6 +155,7 @@ static void NORETURN motorController_process(void) {
   control_params_t *params;
   float estimate[2], encoder_pos, delta;
   Timer timer;
+  unsigned int count = 0;
 
   // get data
   params = (control_params_t *) proc_currentUserData();
@@ -206,9 +207,16 @@ static void NORETURN motorController_process(void) {
       if (!params->suspended) {
         if (isnan(params->last_command)) {
           motorSetSpeed(params->motor, 0);
-          //motor_led_on(params->motor);
+          motor_led_on(params->motor);
         } else {
           motorSetSpeed(params->motor, (int32_t)params->last_command);
+        }
+        if (params->motor == MOTOR1) {
+          count++;
+          if (count % 100 == 0)
+            LED3_ON();
+          if (count % 100 == 50)
+            LED3_OFF();
         }
       }
     }

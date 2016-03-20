@@ -17,9 +17,10 @@
 
 // Odometry initialization for differential drive
 void HolonomicOdometryInit(float Ts,
-                           float wheel_radius, float drive_radius,
+                           float wheel_radius_f, float wheel_radius_bl, float wheel_radius_br,
+                           float drive_radius_f, float drive_radius_bl, float drive_radius_br,
                            uint8_t front_encoder, uint8_t back_left_encoder, uint8_t back_right_encoder,
-                           float encoder_gain);
+                           float encoder_gain_f, float encoder_gain_bl, float encoder_gain_br);
 void HolOdo_disable(void);
 void HolOdo_restart(void);
 
