@@ -1,0 +1,33 @@
+[submodule "Monitoring_4Cells/Firmware_Test/bertos"]
+	path = Monitoring_4Cells/Firmware_Test/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Rotary_Beacon/Firmware/bertos"]
+	path = Rotary_Beacon/Firmware/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "USB_CAN/Firmware/bertos"]
+	path = USB_CAN/Firmware/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Balise_IR/Carte_capteurs/Firmware/bertos"]
+	path = Balise_IR/Carte_capteurs/Firmware/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Balise_IR/Carte_diodes/Firmware/bertos"]
+	path = Balise_IR/Carte_diodes/Firmware/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Controller_Motor_STM32/Firmwares/Effectors/bertos"]
+	path = Controller_Motor_STM32/Firmwares/Effectors/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Controller_Motor_STM32/Firmwares/Junior_Drive/bertos"]
+	path = Controller_Motor_STM32/Firmwares/Junior_Drive/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Controller_Motor_STM32/Firmwares/Omni_Drive/bertos"]
+	path = Controller_Motor_STM32/Firmwares/Omni_Drive/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Controller_Motor_STM32/Firmwares/Propulsion_Drive/bertos"]
+	path = Controller_Motor_STM32/Firmwares/Propulsion_Drive/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Sensor_Actuator/Firmware/reset_ax12/bertos"]
+	path = Sensor_Actuator/Firmware/reset_ax12/bertos
+	url = https://github.com/develersrl/bertos.git
+[submodule "Sensor_Actuator/Firmware/sensor_actuator/bertos"]
+	path = Sensor_Actuator/Firmware/sensor_actuator/bertos
+	url = https://github.com/develersrl/bertos.git
